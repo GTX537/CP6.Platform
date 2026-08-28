@@ -12,8 +12,13 @@ public sealed class FoundationContractTests
     public void Version_UsesAuditableFourPartFormat()
     {
         var version = File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim();
+        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P01-FOUNDATION.md"));
+        var changelog = File.ReadAllText(Path.Combine(RepositoryRoot, "CHANGELOG.md"));
 
         Assert.Matches(new Regex(@"^\d+\.\d+\.\d+\.\d+$", RegexOptions.CultureInvariant), version);
+        Assert.Contains($"`{version}` / package metadata", decisionRecord, StringComparison.Ordinal);
+        Assert.Contains($"仓库交付版本使用四段 `VERSION`：`{version}`", decisionRecord, StringComparison.Ordinal);
+        Assert.Contains($"## {version} -", changelog, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -122,8 +127,37 @@ public sealed class FoundationContractTests
     {
         var record = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P01-FOUNDATION.md"));
 
-        Assert.Contains("P02", record, StringComparison.Ordinal);
-        Assert.Contains("P10", record, StringComparison.Ordinal);
+        var canonicalRoadmap = new[]
+        {
+            "| P02 | Abstractions + 只读 RequestContext + 无默认租户 | P01 | 单元/ASP.NET 集成测试 |",
+            "| P03 | RS256/JWKS 验证、ProblemDetails、correlation | P01 | Token 负向矩阵和轮换测试 |",
+            "| P04 | CloudEvents + JSON Schema + contract bundle | P01 | Schema/兼容测试和示例 |",
+            "| P05 | Dapr service invocation/PubSub + Kafka conventions | P02,P04 | 真 Dapr/Kafka 集成测试 |",
+            "| P06 | EF Outbox/Inbox、lease、retention、DLQ | P02,P04,P05 | kill/replay/duplicate SQL 测试 |",
+            "| P07 | YARP Gateway、路由、header 清理、限流 | P03 | 直连/伪造头/路由 E2E |",
+            "| P08 | OTel、健康、resiliency、Runbook | P03,P05,P06 | Trace 跨服务、故障注入 |",
+            "| P09 | Compose/K8s Dapr 组件、订阅、Topic/ACL provision | P05,P08 | 非生产部署演练 |",
+            "| P10 | NuGet/镜像 release、System Manifest schema、证据 | P01-P09 | 签名候选和消费方验证 |",
+        };
+
+        Assert.All(canonicalRoadmap, item => Assert.Contains(item, record, StringComparison.Ordinal));
+        foreach (var id in Enumerable.Range(2, 9).Select(number => $"P{number:00}"))
+        {
+            Assert.Single(Regex.Matches(record, $@"^\| {id} \|", RegexOptions.Multiline | RegexOptions.CultureInvariant).Cast<Match>());
+        }
+
+        Assert.Contains("P02–P10", record, StringComparison.Ordinal);
+        string[] obsoleteSemantics =
+        [
+            "P02 关联/审计",
+            "P03 可靠事件",
+            "P04 跨服务数据",
+            "P05 观测",
+            "P06 弹性",
+            "P07 安全默认值",
+            "P02 首先定义跨服务关联标识与审计契约",
+        ];
+        Assert.All(obsoleteSemantics, item => Assert.DoesNotContain(item, record, StringComparison.Ordinal));
         Assert.Contains("不发布空包", record, StringComparison.Ordinal);
         Assert.Contains("GitHub Pro", record, StringComparison.Ordinal);
     }
