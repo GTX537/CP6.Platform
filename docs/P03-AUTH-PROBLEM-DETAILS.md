@@ -4,12 +4,12 @@
 | --- | --- |
 | 公开里程碑 | `P03` |
 | 仓库交付版本 | `0.3.0.0` / package metadata `0.3.0-alpha.1` |
-| 状态 | Implemented / Publication Pending |
+| 状态 | Frozen / Consumable |
 | 前置 | P01；P02 继续向后兼容 |
 | 生产包 | `CP6.Platform.Contracts`、`CP6.Platform.Abstractions`、`CP6.Platform.AspNetCore` |
-| 消费证明 | 合并及发布后由 `GTX537/CP6.CRM` 固定版本验证 |
+| 消费证明 | `GTX537/CP6.CRM` PR #23 与 main 固定版本验证通过 |
 
-仓库交付版本使用四段 `VERSION`：`0.3.0.0`。NuGet alpha 使用 `0.3.0-alpha.1`，三个包以同一版本发布，禁止 `--skip-duplicate`。P03 不签发 Token、不创建 Identity Provider、不接入真实用户，也不实现 Gateway；C01 负责 RS256 issuer/Discovery/JWKS，P07 负责 Gateway。
+仓库交付版本使用四段 `VERSION`：`0.3.0.0`。NuGet alpha 使用 `0.3.0-alpha.1`，三个包已由 main 固定提交发布，禁止 `--skip-duplicate`。P03 不签发 Token、不创建 Identity Provider、不接入真实用户，也不实现 Gateway；C01 负责 RS256 issuer/Discovery/JWKS，P07 负责 Gateway。
 
 ## 1. 可消费合同
 
@@ -73,7 +73,19 @@ P03 自动测试覆盖：
 - correlation 合法传播与非法输入替换；
 - 三包可重复 pack、NuGet dependency、架构方向和漏洞审计。
 
-P03 以 Platform PR/main 双平台 CI、不可变 `0.3.0-alpha.1` 包 SHA-256、发布 workflow 和 CRM producer/consumer locator 共同关闭。发布前状态不得写成 Consumable。
+P03 已由以下不可变证据共同关闭：
+
+- Platform PR #4 / head `97df4f650847d164923750ce0d0de925731aeac4`，Windows/Linux run 33154975361 通过；
+- Platform `main@1a39711423dbae7d869031b5d8570e649ccee8f4`，Windows/Linux run 33155123120 通过；
+- publish run 33155315173 从该 main 提交发布三个 `0.3.0-alpha.1` 包；
+- `Contracts` SHA-256 `4eb84481db0fc6e30104295f485d7f59c2c1fbde1a45b15cb9f84c8340efa8ca`；
+- `Abstractions` SHA-256 `04d40464f7e9cccaf6288ea97ed715677efa8e76426ad5b5356e60104711ea66`；
+- `AspNetCore` SHA-256 `91e4e24b011dcd2aff4ba985b58e52ceaa6bb12ad3abc495f6bda43c4c2f4202`；
+- CRM PR #23 / head `51f4d4bd6bbf6eebb344f6538c86985cd156fde2` 的 run 33156706503 通过；
+- CRM `main@16e9955b24a5c8c412839301b12d8a9275250746` 的 run 33157212604 通过远端固定包恢复、15/15 .NET、39/39 Web 与 3/3 browser smoke；
+- CRM locator：`docs/delivery/platform-p03-auth-problem-details-locator-v1.json`。
+
+因此 P03 为 `Frozen / Consumable`。这不改变 C01/P07/CRM03 的 Absent 状态，也不授权真实登录。
 
 ## 4. 实施顺序
 

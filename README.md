@@ -4,7 +4,7 @@ CP6 分布式服务的共享契约与基础设施包。本仓库是 Platform 包
 
 本地需要安装 .NET 8 SDK；`global.json` 允许在 .NET 8 内滚动到已安装的最新 feature band，但不会静默改用更高主版本。
 
-P01 已建立可验证的仓库和包边界；P02 已交付只读 RequestContext。P03 进一步交付严格 RS256/JWKS 验证、RFC 9457 Problem Details 和 correlation 边界，候选包版本为 `0.3.0-alpha.1`。
+P01 已建立可验证的仓库和包边界；P02 已交付只读 RequestContext。P03 进一步交付严格 RS256/JWKS 验证、RFC 9457 Problem Details 和 correlation 边界；不可变 `0.3.0-alpha.1` 已发布并通过 CRM PR/main 固定版本消费验证，状态为 `Frozen / Consumable`。
 
 ## 包边界
 
