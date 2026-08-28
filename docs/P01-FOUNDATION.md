@@ -3,8 +3,8 @@
 | 项目 | 内容 |
 | --- | --- |
 | 决策状态 | Accepted |
-| 实现状态 | 在任务分支验证；合并后以远端 `main` CI 为最终证据 |
-| 版本 | `0.1.0.0` / package metadata `0.1.0-alpha.0` |
+| 实现状态 | 已合并并通过远端 `main` Windows/Linux CI；`Frozen / Producer Ready` |
+| 版本 | `0.1.0.1` / package metadata `0.1.0-alpha.0` |
 | 仓库 | `https://github.com/GTX537/CP6.Platform`（Private） |
 | 本地定位 | `D:\CP6\CP6.Platform` |
 | 日期 | 2026-08-27 |
@@ -63,7 +63,7 @@ P01 不完成：
 - 不发布空包；
 - 不创建 GitHub Packages 凭据，不把 PAT 写入仓库；
 - 不配置云环境、部署、Registry、数据库或生产 Secret；
-- 不实现 P02 关联/审计、P03 可靠事件、P04 跨服务数据、P05 观测、P06 弹性、P07 安全默认值；
+- 不实现 P02–P10 的任何运行时能力；能力编号和范围以本文第 8 节为准；
 - 不在 P01 引入正式 NuGet 包签名。
 
 第一个真实 alpha 包必须随 P02 的真实契约、测试和消费说明一起发布。P02 之前，即使项目具备 `IsPackable=true`，也不发布空包。
@@ -93,7 +93,7 @@ GitHub Free 的私有 Packages 配额应按官方账单页持续核对。P01 采
 
 ## 5. 版本、打包与签名
 
-- 仓库交付版本使用四段 `VERSION`：`0.1.0.0`。
+- 仓库交付版本使用四段 `VERSION`：`0.1.0.1`。
 - P01 项目 metadata 使用 `0.1.0-alpha.0`，仅用于验证 pack 可重复性，不发布。
 - 正式包版本从首个真实能力（P02）开始，由当次任务决定并写入变更记录。
 - 每个包包含 repository metadata、portable symbols，并启用 deterministic build。
@@ -133,4 +133,18 @@ CI 在 `ubuntu-latest` 和 `windows-latest` 上使用同一脚本，不维护另
 
 ## 8. 后续顺序
 
-P01 完成后进入 P02。P02 首先定义跨服务关联标识与审计契约，交付第一个真实 alpha 包和最小消费者证明。P02+ 在有代码、测试、包版本和消费证据前继续保持 `Absent`。
+以下路线图与 CP6 权威执行规格 [Platform P01–P10](https://github.com/GTX537/CP6/blob/main/docs/crm/CRM-V1-EXECUTABLE-SPEC.md#181-platform-p01p10) 对齐。编号不得在 Platform 仓库内另行解释：
+
+| ID | 交付 | 前置 | 完成证据 |
+| --- | --- | --- | --- |
+| P02 | Abstractions + 只读 RequestContext + 无默认租户 | P01 | 单元/ASP.NET 集成测试 |
+| P03 | RS256/JWKS 验证、ProblemDetails、correlation | P01 | Token 负向矩阵和轮换测试 |
+| P04 | CloudEvents + JSON Schema + contract bundle | P01 | Schema/兼容测试和示例 |
+| P05 | Dapr service invocation/PubSub + Kafka conventions | P02,P04 | 真 Dapr/Kafka 集成测试 |
+| P06 | EF Outbox/Inbox、lease、retention、DLQ | P02,P04,P05 | kill/replay/duplicate SQL 测试 |
+| P07 | YARP Gateway、路由、header 清理、限流 | P03 | 直连/伪造头/路由 E2E |
+| P08 | OTel、健康、resiliency、Runbook | P03,P05,P06 | Trace 跨服务、故障注入 |
+| P09 | Compose/K8s Dapr 组件、订阅、Topic/ACL provision | P05,P08 | 非生产部署演练 |
+| P10 | NuGet/镜像 release、System Manifest schema、证据 | P01-P09 | 签名候选和消费方验证 |
+
+P01 完成后进入 P02。P02 首先交付 Abstractions、只读 RequestContext 和“无默认租户”约束，并随真实契约、测试和最小消费者证明发布第一个真实 alpha 包。P02–P10 在有代码、测试、包版本和消费证据前继续保持 `Absent`。
