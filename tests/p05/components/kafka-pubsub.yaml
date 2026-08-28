@@ -1,0 +1,25 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: cp6-kafka-pubsub
+spec:
+  type: pubsub.kafka
+  version: v1
+  metadata:
+    - name: brokers
+      value: "kafka:9092"
+    - name: consumerGroup
+      value: "{appID}"
+    - name: clientID
+      value: "{appID}"
+    - name: authType
+      value: "none"
+    - name: disableTls
+      value: "true"
+    - name: initialOffset
+      value: "oldest"
+    - name: maxMessageBytes
+      value: "1048576"
+scopes:
+  - cp6-p05-publisher
+  - cp6-p05-receiver

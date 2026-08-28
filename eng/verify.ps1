@@ -18,7 +18,7 @@ $startedAt = [DateTimeOffset]::UtcNow
 $status = 'Passed'
 $failureMessage = $null
 $checks = [System.Collections.Generic.List[object]]::new()
-$packageVersion = '0.4.0-alpha.1'
+$packageVersion = '0.5.0-alpha.0'
 $runtimePackageProjects = @(
     'src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj',
     'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',
@@ -135,7 +135,7 @@ function Assert-ReproduciblePackages {
     } | Sort-Object)
     $actualNames = @($firstPackages.Name | Sort-Object)
     if (($expectedNames | ConvertTo-Json -Compress) -ne ($actualNames | ConvertTo-Json -Compress)) {
-        throw "Package set differs from the four approved P04-S01 package IDs: $($actualNames -join ', ')."
+        throw "Package set differs from the four approved P05-S01 package IDs: $($actualNames -join ', ')."
     }
 
     $messagingPackage = $firstPackages | Where-Object { $_.Name -eq "CP6.Platform.Messaging.$packageVersion.nupkg" }
@@ -277,10 +277,25 @@ try {
                 'test', 'tests/CP6.Platform.AspNetCoreTests/CP6.Platform.AspNetCoreTests.csproj',
                 '--configuration', 'Release'
             )
+            if ($Profile -eq 'p05-real') {
+                $stepStarted = [DateTimeOffset]::UtcNow
+                $logPath = Join-Path $outputRoot 'dapr-kafka.log'
+                & pwsh (Join-Path $PSScriptRoot 'run-p05-integration.ps1') 2>&1 | Tee-Object -FilePath $logPath
+                $exitCode = $LASTEXITCODE
+                $checks.Add([ordered]@{
+                    name = 'DaprKafkaIntegration'
+                    status = if ($exitCode -eq 0) { 'Passed' } else { 'Failed' }
+                    durationMs = [Math]::Round(([DateTimeOffset]::UtcNow - $stepStarted).TotalMilliseconds)
+                    log = [IO.Path]::GetRelativePath($repositoryRoot, $logPath).Replace('\', '/')
+                })
+                if ($exitCode -ne 0) {
+                    throw "Real Dapr/Kafka integration failed with exit code $exitCode."
+                }
+            }
         }
-        'E2E' { Add-NotApplicableCheck 'CP6.Platform is not an executable application; P04 consumer proof is a separate CRM task.' }
-        'Performance' { Add-NotApplicableCheck 'P04-S01 is a build-time and pre-side-effect contract validator with no standalone latency acceptance threshold.' }
-        'Migration' { Add-NotApplicableCheck 'P04-S01 contains no database schema or migration assets.' }
+        'E2E' { Add-NotApplicableCheck 'CP6.Platform is not an executable application; P05 consumer proof is a separate CRM task.' }
+        'Performance' { Add-NotApplicableCheck 'P05-S01 freezes transport behavior but does not define the P08 performance or resilience threshold.' }
+        'Migration' { Add-NotApplicableCheck 'P05-S01 contains no database schema or migration assets; persistence belongs to P06.' }
     }
 } catch {
     $status = 'Failed'

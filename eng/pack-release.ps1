@@ -3,7 +3,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$OutputDirectory,
 
-    [string]$PackageVersion = '0.4.0-alpha.1'
+    [string]$PackageVersion = '0.5.0-alpha.0'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -46,7 +46,7 @@ $packages = @(Get-ChildItem -LiteralPath $resolvedOutput -Filter '*.nupkg' -File
 $expectedNames = @($packageIds | ForEach-Object { "$($_).$PackageVersion.nupkg" } | Sort-Object)
 
 if (($packages.Name | ConvertTo-Json -Compress) -ne ($expectedNames | ConvertTo-Json -Compress)) {
-    throw "Release package set is not the approved P04 set: $($packages.Name -join ', ')."
+    throw "Release package set is not the approved P05 set: $($packages.Name -join ', ')."
 }
 
 foreach ($package in $packages) {
@@ -91,4 +91,4 @@ $hashes = @($packages | ForEach-Object {
     }
 })
 $hashes | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $resolvedOutput 'sha256.json') -Encoding utf8
-Write-Host "Prepared $($packages.Count) immutable P04 packages in $resolvedOutput."
+Write-Host "Prepared $($packages.Count) immutable P05 packages in $resolvedOutput."
