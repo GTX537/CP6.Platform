@@ -18,11 +18,12 @@ $startedAt = [DateTimeOffset]::UtcNow
 $status = 'Passed'
 $failureMessage = $null
 $checks = [System.Collections.Generic.List[object]]::new()
-$packageVersion = '0.3.0-alpha.1'
+$packageVersion = '0.4.0-alpha.0'
 $runtimePackageProjects = @(
     'src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj',
     'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',
-    'src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj'
+    'src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj',
+    'src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj'
 )
 
 if (-not $outputRoot.StartsWith((Join-Path $repositoryRoot 'artifacts'), [StringComparison]::OrdinalIgnoreCase)) {
@@ -127,15 +128,38 @@ function Assert-ReproduciblePackages {
     $firstPackages = Get-PackageContentManifest -Directory $firstDirectory
     $secondPackages = Get-PackageContentManifest -Directory $secondDirectory
 
-    $expectedPackageIds = @('CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Contracts')
+    $expectedPackageIds = @('CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Contracts', 'CP6.Platform.Messaging')
     $expectedNames = @($expectedPackageIds | ForEach-Object {
         "$($_).$packageVersion.nupkg"
         "$($_).$packageVersion.snupkg"
     } | Sort-Object)
     $actualNames = @($firstPackages.Name | Sort-Object)
     if (($expectedNames | ConvertTo-Json -Compress) -ne ($actualNames | ConvertTo-Json -Compress)) {
-        throw "Package set differs from the three approved P03 package IDs: $($actualNames -join ', ')."
+        throw "Package set differs from the four approved P04-S01 package IDs: $($actualNames -join ', ')."
     }
+
+    $messagingPackage = $firstPackages | Where-Object { $_.Name -eq "CP6.Platform.Messaging.$packageVersion.nupkg" }
+    $requiredContractEntries = @(
+        'contracts/contract-bundle.v1.json',
+        'contracts/events/platform/contract-example-changed/v1/schema.json',
+        'contracts/events/platform/contract-example-changed/v1/examples/valid.json',
+        'contracts/events/platform/contract-example-changed/v1/examples/missing-required.json',
+        'contracts/events/platform/contract-example-changed/v1/examples/unknown-optional.json',
+        'contracts/events/platform/contract-example-changed/v1/examples/wrong-type.json',
+        'contracts/events/platform/contract-example-changed/v1/examples/pii-negative.json'
+    )
+    $messagingEntries = @($messagingPackage.Entries.Name)
+    foreach ($requiredEntry in $requiredContractEntries) {
+        if ($requiredEntry -notin $messagingEntries) {
+            throw "Messaging package is missing required P04 contract asset: $requiredEntry"
+        }
+    }
+    $checks.Add([ordered]@{
+        name = 'ContractBundlePackageContent'
+        status = 'Passed'
+        durationMs = 0
+        assetCount = $requiredContractEntries.Count
+    })
 
     if (($firstPackages | ConvertTo-Json -Depth 8 -Compress) -ne ($secondPackages | ConvertTo-Json -Depth 8 -Compress)) {
         throw 'Package content is not reproducible: the two entry-level SHA-256 manifests differ.'
@@ -254,9 +278,9 @@ try {
                 '--configuration', 'Release'
             )
         }
-        'E2E' { Add-NotApplicableCheck 'CP6.Platform is not an executable application; P03 consumer proof runs in CRM.' }
-        'Performance' { Add-NotApplicableCheck 'P03 authentication and error-contract behavior has no standalone performance acceptance threshold.' }
-        'Migration' { Add-NotApplicableCheck 'P03 contains no database schema or migration assets.' }
+        'E2E' { Add-NotApplicableCheck 'CP6.Platform is not an executable application; P04 consumer proof is a separate CRM task.' }
+        'Performance' { Add-NotApplicableCheck 'P04-S01 is a build-time and pre-side-effect contract validator with no standalone latency acceptance threshold.' }
+        'Migration' { Add-NotApplicableCheck 'P04-S01 contains no database schema or migration assets.' }
     }
 } catch {
     $status = 'Failed'

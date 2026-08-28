@@ -2,6 +2,12 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## 0.4.0.0 - 2026-08-28
+
+- Add the P04-S01 CloudEvents 1.0 structured JSON profile with required tenant, correlation, causation, aggregate, schema and region extensions.
+- Add a content-addressed Draft 2020-12 contract bundle, full positive/negative example matrix, fail-closed validation and same-major compatibility checks.
+- Keep `0.4.0-alpha.0` unpublished; immutable publication and CRM fixed-version consumption remain separate P04-S02/P04-S03 tasks.
+
 ## 0.3.0.0 - 2026-08-28
 
 - Add the P03 RS256-only JwtBearer profile with exact issuer/audience validation, required-claim checks, non-empty tenant enforcement and unknown-kid JWKS refresh.

@@ -1,0 +1,46 @@
+{
+  "bundleVersion": "1.0.0",
+  "cloudEventsSpecVersion": "1.0",
+  "jsonSchemaDialect": "https://json-schema.org/draft/2020-12/schema",
+  "entries": [
+    {
+      "eventType": "com.gtx537.platform.contract-example.changed.v1",
+      "schemaVersion": "1.0.0",
+      "schemaId": "https://contracts.cp6.uk/events/platform/contract-example-changed/v1/schema.json",
+      "schemaPath": "events/platform/contract-example-changed/v1/schema.json",
+      "schemaSha256": "889e3774a6dcfba8735e719dd207d2772372ccece6fefb01f9efe8f921489f76",
+      "examples": [
+        {
+          "name": "valid",
+          "path": "events/platform/contract-example-changed/v1/examples/valid.json",
+          "valid": true,
+          "sha256": "8374408416c217e68a3a0defc71700ce3492cef1d2f96bf87d57b4406904a880"
+        },
+        {
+          "name": "missing-required",
+          "path": "events/platform/contract-example-changed/v1/examples/missing-required.json",
+          "valid": false,
+          "sha256": "3ac54ecf5cd47a8112ab336fd430192f3185490949780f51be2b4a7831f49587"
+        },
+        {
+          "name": "unknown-optional",
+          "path": "events/platform/contract-example-changed/v1/examples/unknown-optional.json",
+          "valid": true,
+          "sha256": "f02bb9b296e32258ee920e846d5d2ee4725ac5e12913ea1d8bd26872be6c644e"
+        },
+        {
+          "name": "wrong-type",
+          "path": "events/platform/contract-example-changed/v1/examples/wrong-type.json",
+          "valid": false,
+          "sha256": "f88878492dc25da8d1bfb3eacf1ea443a61c8bb3e72184694712099f267d789c"
+        },
+        {
+          "name": "pii-negative",
+          "path": "events/platform/contract-example-changed/v1/examples/pii-negative.json",
+          "valid": false,
+          "sha256": "d1f2614d1f7960d72ce27b391b04c3a13975fde97c59b15fb638e3c1c2a52a1c"
+        }
+      ]
+    }
+  ]
+}

@@ -75,6 +75,13 @@ public sealed class RepositoryArchitectureTests
                 Assert.Equal(["Microsoft.AspNetCore.Authentication.JwtBearer"], packageReferences);
                 Assert.Equal(["Microsoft.AspNetCore.App"], frameworkReferences);
             }
+            else if (packageId == "CP6.Platform.Messaging")
+            {
+                Assert.Equal(
+                    ["CloudNative.CloudEvents", "CloudNative.CloudEvents.SystemTextJson", "JsonSchema.Net"],
+                    packageReferences.Order(StringComparer.Ordinal));
+                Assert.Empty(frameworkReferences);
+            }
             else
             {
                 Assert.Empty(packageReferences);
