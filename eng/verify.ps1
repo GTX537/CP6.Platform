@@ -18,8 +18,8 @@ $startedAt = [DateTimeOffset]::UtcNow
 $status = 'Passed'
 $failureMessage = $null
 $checks = [System.Collections.Generic.List[object]]::new()
-$packageVersion = '0.2.0-alpha.1'
-$p02PackageProjects = @(
+$packageVersion = '0.3.0-alpha.1'
+$runtimePackageProjects = @(
     'src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj',
     'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',
     'src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj'
@@ -77,7 +77,7 @@ function Assert-ReproduciblePackages {
     $secondDirectory = Join-Path $outputRoot 'pack-second'
     New-Item -ItemType Directory -Path $firstDirectory, $secondDirectory -Force | Out-Null
 
-    foreach ($project in $p02PackageProjects) {
+    foreach ($project in $runtimePackageProjects) {
         $name = [IO.Path]::GetFileNameWithoutExtension($project)
         Invoke-DotNetStep -Name "PackFirst-$name" -Arguments @(
             'pack', $project, '--configuration', 'Release', '--no-build',
@@ -134,7 +134,7 @@ function Assert-ReproduciblePackages {
     } | Sort-Object)
     $actualNames = @($firstPackages.Name | Sort-Object)
     if (($expectedNames | ConvertTo-Json -Compress) -ne ($actualNames | ConvertTo-Json -Compress)) {
-        throw "Package set differs from the three approved P02 package IDs: $($actualNames -join ', ')."
+        throw "Package set differs from the three approved P03 package IDs: $($actualNames -join ', ')."
     }
 
     if (($firstPackages | ConvertTo-Json -Depth 8 -Compress) -ne ($secondPackages | ConvertTo-Json -Depth 8 -Compress)) {
@@ -254,9 +254,9 @@ try {
                 '--configuration', 'Release'
             )
         }
-        'E2E' { Add-NotApplicableCheck 'CP6.Platform is not an executable application; P02 consumer proof runs in CRM.' }
-        'Performance' { Add-NotApplicableCheck 'P02 request-context behavior has no performance acceptance threshold.' }
-        'Migration' { Add-NotApplicableCheck 'P02 contains no database schema or migration assets.' }
+        'E2E' { Add-NotApplicableCheck 'CP6.Platform is not an executable application; P03 consumer proof runs in CRM.' }
+        'Performance' { Add-NotApplicableCheck 'P03 authentication and error-contract behavior has no standalone performance acceptance threshold.' }
+        'Migration' { Add-NotApplicableCheck 'P03 contains no database schema or migration assets.' }
     }
 } catch {
     $status = 'Failed'

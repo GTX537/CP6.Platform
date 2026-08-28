@@ -2,6 +2,12 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## 0.3.0.0 - 2026-08-28
+
+- Add the P03 RS256-only JwtBearer profile with exact issuer/audience validation, required-claim checks, non-empty tenant enforcement and unknown-kid JWKS refresh.
+- Add the safe RFC 9457 problem-definition/writer contract and correlation middleware without exception, token, request payload or PII disclosure.
+- Upgrade the three runtime packages to immutable `0.3.0-alpha.1` candidates with negative-token, rotation, Problem Details, correlation, architecture and package evidence.
+
 ## 0.2.0.0 - 2026-08-28
 
 - Add the exact read-only P02 request-context contract, immutable snapshot and validated implementation without tenant or user defaults.

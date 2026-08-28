@@ -12,13 +12,18 @@ public sealed class FoundationContractTests
     public void Version_UsesAuditableFourPartFormat()
     {
         var version = File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim();
-        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P02-REQUEST-CONTEXT.md"));
+        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P03-AUTH-PROBLEM-DETAILS.md"));
         var changelog = File.ReadAllText(Path.Combine(RepositoryRoot, "CHANGELOG.md"));
+        var props = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
+        var packageVersion = $"{props.Descendants("VersionPrefix").Single().Value}-{props.Descendants("VersionSuffix").Single().Value}";
+        var automation = File.ReadAllText(Path.Combine(RepositoryRoot, ".github", "workflows", "publish-alpha.yml"));
 
         Assert.Matches(new Regex(@"^\d+\.\d+\.\d+\.\d+$", RegexOptions.CultureInvariant), version);
         Assert.Contains($"`{version}` / package metadata", decisionRecord, StringComparison.Ordinal);
         Assert.Contains($"仓库交付版本使用四段 `VERSION`：`{version}`", decisionRecord, StringComparison.Ordinal);
         Assert.Contains($"## {version} -", changelog, StringComparison.Ordinal);
+        Assert.Contains($"package metadata `{packageVersion}`", decisionRecord, StringComparison.Ordinal);
+        Assert.Contains($"-PackageVersion {packageVersion}", automation, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -50,7 +55,7 @@ public sealed class FoundationContractTests
     }
 
     [Fact]
-    public void ProductionProjects_ArePackable_AndOnlyP02PackagesContainRuntimeSource()
+    public void ProductionProjects_ArePackable_AndOnlyApprovedRuntimePackagesContainSource()
     {
         var projects = Directory.GetFiles(Path.Combine(RepositoryRoot, "src"), "*.csproj", SearchOption.AllDirectories);
 
@@ -119,7 +124,7 @@ public sealed class FoundationContractTests
     }
 
     [Fact]
-    public void P02Automation_PublishesOnlyTheApprovedNonEmptyPackageSet()
+    public void ReleaseAutomation_PublishesOnlyTheApprovedNonEmptyPackageSet()
     {
         var automationFiles = Directory.GetFiles(Path.Combine(RepositoryRoot, ".github", "workflows"), "*.*", SearchOption.AllDirectories)
             .Concat(Directory.GetFiles(Path.Combine(RepositoryRoot, "eng"), "*.ps1", SearchOption.AllDirectories));
