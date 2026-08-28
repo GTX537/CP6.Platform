@@ -3,12 +3,12 @@
 | 项目 | 内容 |
 | --- | --- |
 | 决策状态 | Accepted implementation scope |
-| 实现状态 | Platform main verified；等待不可变发布与 CRM 固定版本消费 |
+| 实现状态 | Frozen / Consumable |
 | 版本 | `0.5.0.0` / package metadata `0.5.0-alpha.1` |
 | 前置 | P02 RequestContext、P04 CloudEvents/JSON Schema bundle |
 | 日期 | 2026-08-28 |
 
-仓库交付版本使用四段 `VERSION`：`0.5.0.0`；S01 候选已经通过 Platform PR 与 main 的 Windows、Linux、真实 Dapr/Kafka 门禁。S02 将从精确 main 一次性发布不可变 package metadata `0.5.0-alpha.1`，发布完成前仍不得声明可消费。
+仓库交付版本使用四段 `VERSION`：`0.5.0.0`；不可变 package metadata `0.5.0-alpha.1` 已从精确 Platform main 发布，并通过 CRM 固定版本 PR/main 消费门禁。
 
 ## 1. 目标
 
@@ -48,4 +48,11 @@ Windows/Linux 常规 CI 继续执行跨平台构建、单元、ASP.NET、契约�
 
 P05 只有在以下全部完成后才可从 `Candidate` 改为 `Frozen / Consumable`：Platform PR/main 双平台与真实 Dapr/Kafka 门禁通过；从精确 main 发布不可变 `0.5.0-alpha.1` 并保存逐包 SHA-256；CRM 固定版本恢复、使用同一约定做无副作用消费验证；Platform、CRM、公共 CP6 三仓 locator/项目记忆全部绑定精确提交和运行证据。
 
-当前 S01 不发布包、不启用 CRM runtime、不创建云资源或部署。
+## 6. 完成证据
+
+- Platform 实现 PR #9 与发布 PR #10 通过；发布基线 `main@7acb658e001e2bea4e567feeb4e0f7fb1e47eae6` 的 Windows、Linux、真实 Dapr/Kafka run 33192565859 成功。
+- exact-main publish run 33192773875 发布四个不可变 `0.5.0-alpha.1` 包；artifact 9694537167 与下载后逐包 SHA-256 已验证。
+- CRM PR #27 固定版本恢复并加入 P04+topic+partition-key 副作用前门禁；PR run 33194075874 与合并后 `main@76cf6e6eef5dd835e5d2005d9d1e22b69654c759` run 33194583713 成功。
+- CRM 证据 PR #28 与最终 `main@75fa59ffd9e31c9bffb3ec4f8dd27b996cb49c0f` run 33195879078 成功，机器 locator 状态为 `Frozen / Consumable`。
+
+P05 closure 不启用 CRM runtime、不创建云资源或部署；P06/P09 和业务事件仍是独立门禁。
