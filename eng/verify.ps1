@@ -18,6 +18,12 @@ $startedAt = [DateTimeOffset]::UtcNow
 $status = 'Passed'
 $failureMessage = $null
 $checks = [System.Collections.Generic.List[object]]::new()
+$packageVersion = '0.2.0-alpha.1'
+$p02PackageProjects = @(
+    'src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj',
+    'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',
+    'src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj'
+)
 
 if (-not $outputRoot.StartsWith((Join-Path $repositoryRoot 'artifacts'), [StringComparison]::OrdinalIgnoreCase)) {
     throw "Refusing to write verification output outside the repository artifacts directory: $outputRoot"
@@ -71,14 +77,17 @@ function Assert-ReproduciblePackages {
     $secondDirectory = Join-Path $outputRoot 'pack-second'
     New-Item -ItemType Directory -Path $firstDirectory, $secondDirectory -Force | Out-Null
 
-    Invoke-DotNetStep -Name 'PackFirst' -Arguments @(
-        'pack', $solutionPath, '--configuration', 'Release', '--no-build',
-        '--output', $firstDirectory, '-p:Version=0.1.0-alpha.0'
-    )
-    Invoke-DotNetStep -Name 'PackSecond' -Arguments @(
-        'pack', $solutionPath, '--configuration', 'Release', '--no-build',
-        '--output', $secondDirectory, '-p:Version=0.1.0-alpha.0'
-    )
+    foreach ($project in $p02PackageProjects) {
+        $name = [IO.Path]::GetFileNameWithoutExtension($project)
+        Invoke-DotNetStep -Name "PackFirst-$name" -Arguments @(
+            'pack', $project, '--configuration', 'Release', '--no-build',
+            '--output', $firstDirectory, "-p:Version=$packageVersion"
+        )
+        Invoke-DotNetStep -Name "PackSecond-$name" -Arguments @(
+            'pack', $project, '--configuration', 'Release', '--no-build',
+            '--output', $secondDirectory, "-p:Version=$packageVersion"
+        )
+    }
 
     function Get-PackageContentManifest {
         param([Parameter(Mandatory = $true)][string]$Directory)
@@ -118,17 +127,14 @@ function Assert-ReproduciblePackages {
     $firstPackages = Get-PackageContentManifest -Directory $firstDirectory
     $secondPackages = Get-PackageContentManifest -Directory $secondDirectory
 
-    $expectedPackageIds = @(
-        'CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Contracts',
-        'CP6.Platform.EntityFramework', 'CP6.Platform.Messaging', 'CP6.Platform.Testing'
-    )
+    $expectedPackageIds = @('CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Contracts')
     $expectedNames = @($expectedPackageIds | ForEach-Object {
-        "$_.0.1.0-alpha.0.nupkg"
-        "$_.0.1.0-alpha.0.snupkg"
+        "$($_).$packageVersion.nupkg"
+        "$($_).$packageVersion.snupkg"
     } | Sort-Object)
     $actualNames = @($firstPackages.Name | Sort-Object)
     if (($expectedNames | ConvertTo-Json -Compress) -ne ($actualNames | ConvertTo-Json -Compress)) {
-        throw "Package set differs from the six approved package IDs: $($actualNames -join ', ')."
+        throw "Package set differs from the three approved P02 package IDs: $($actualNames -join ', ')."
     }
 
     if (($firstPackages | ConvertTo-Json -Depth 8 -Compress) -ne ($secondPackages | ConvertTo-Json -Depth 8 -Compress)) {
@@ -242,10 +248,15 @@ try {
                 '--source', 'https://api.nuget.org/v3/index.json'
             )
         }
-        'Integration' { Add-NotApplicableCheck 'P01 defines repository boundaries only and has no runtime integration.' }
-        'E2E' { Add-NotApplicableCheck 'P01 contains no executable application or end-to-end user path.' }
-        'Performance' { Add-NotApplicableCheck 'P01 contains no runtime behavior to benchmark.' }
-        'Migration' { Add-NotApplicableCheck 'P01 contains no database schema or migration assets.' }
+        'Integration' {
+            Invoke-DotNetStep -Name 'AspNetCoreIntegration' -Arguments @(
+                'test', 'tests/CP6.Platform.AspNetCoreTests/CP6.Platform.AspNetCoreTests.csproj',
+                '--configuration', 'Release'
+            )
+        }
+        'E2E' { Add-NotApplicableCheck 'CP6.Platform is not an executable application; P02 consumer proof runs in CRM.' }
+        'Performance' { Add-NotApplicableCheck 'P02 request-context behavior has no performance acceptance threshold.' }
+        'Migration' { Add-NotApplicableCheck 'P02 contains no database schema or migration assets.' }
     }
 } catch {
     $status = 'Failed'
