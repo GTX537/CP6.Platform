@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.cp6.uk/events/platform/contract-example-changed/v1/schema.json",
+  "title": "CP6 Platform contract example changed CloudEvent",
+  "type": "object",
+  "required": [
+    "specversion",
+    "id",
+    "source",
+    "type",
+    "subject",
+    "time",
+    "datacontenttype",
+    "dataschema",
+    "tenantid",
+    "correlationid",
+    "causationid",
+    "aggregateid",
+    "aggregateversion",
+    "schemaversion",
+    "region",
+    "data"
+  ],
+  "properties": {
+    "specversion": { "const": "1.0" },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "source": { "const": "urn:cp6:platform" },
+    "type": { "const": "com.gtx537.platform.contract-example.changed.v1" },
+    "subject": {
+      "type": "string",
+      "maxLength": 512,
+      "pattern": "^tenants/[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/contract-examples/[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "time": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "datacontenttype": { "const": "application/json" },
+    "dataschema": { "const": "https://contracts.cp6.uk/events/platform/contract-example-changed/v1/schema.json" },
+    "tenantid": {
+      "type": "string",
+      "format": "uuid",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "correlationid": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "causationid": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "aggregateid": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "aggregateversion": { "type": "integer", "minimum": 1 },
+    "schemaversion": { "const": "1.0.0" },
+    "region": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 32,
+      "pattern": "^[a-z][a-z0-9-]{1,31}$"
+    },
+    "data": {
+      "type": "object",
+      "required": ["resourceId", "version"],
+      "properties": {
+        "resourceId": {
+          "type": "string",
+          "format": "uuid",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "version": { "type": "integer", "minimum": 1 }
+      },
+      "propertyNames": {
+        "not": {
+          "enum": ["email", "phone", "fullName", "firstName", "lastName", "address", "ipAddress", "receiptToken"]
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "propertyNames": { "pattern": "^[a-z][a-z0-9]*$" },
+  "additionalProperties": true
+}

@@ -7,4 +7,12 @@
   <ItemGroup>
     <ProjectReference Include="../CP6.Platform.Contracts/CP6.Platform.Contracts.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CloudNative.CloudEvents" />
+    <PackageReference Include="CloudNative.CloudEvents.SystemTextJson" />
+    <PackageReference Include="JsonSchema.Net" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../contracts/**/*" Pack="true" PackagePath="contracts/%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
 </Project>

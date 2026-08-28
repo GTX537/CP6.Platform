@@ -12,18 +12,18 @@ public sealed class FoundationContractTests
     public void Version_UsesAuditableFourPartFormat()
     {
         var version = File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim();
-        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P03-AUTH-PROBLEM-DETAILS.md"));
+        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P04-CLOUD-EVENTS.md"));
         var changelog = File.ReadAllText(Path.Combine(RepositoryRoot, "CHANGELOG.md"));
         var props = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
         var packageVersion = $"{props.Descendants("VersionPrefix").Single().Value}-{props.Descendants("VersionSuffix").Single().Value}";
-        var automation = File.ReadAllText(Path.Combine(RepositoryRoot, ".github", "workflows", "publish-alpha.yml"));
+        var automation = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
 
         Assert.Matches(new Regex(@"^\d+\.\d+\.\d+\.\d+$", RegexOptions.CultureInvariant), version);
         Assert.Contains($"`{version}` / package metadata", decisionRecord, StringComparison.Ordinal);
         Assert.Contains($"仓库交付版本使用四段 `VERSION`：`{version}`", decisionRecord, StringComparison.Ordinal);
         Assert.Contains($"## {version} -", changelog, StringComparison.Ordinal);
         Assert.Contains($"package metadata `{packageVersion}`", decisionRecord, StringComparison.Ordinal);
-        Assert.Contains($"-PackageVersion {packageVersion}", automation, StringComparison.Ordinal);
+        Assert.Contains($"$packageVersion = '{packageVersion}'", automation, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -75,7 +75,7 @@ public sealed class FoundationContractTests
         }
 
         Assert.Equal(
-            ["CP6.Platform.Abstractions", "CP6.Platform.AspNetCore", "CP6.Platform.Contracts"],
+            ["CP6.Platform.Abstractions", "CP6.Platform.AspNetCore", "CP6.Platform.Contracts", "CP6.Platform.Messaging"],
             projectsWithSource.Order(StringComparer.Ordinal));
     }
 
