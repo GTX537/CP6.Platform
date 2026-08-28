@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>CP6.Platform.Contracts</PackageId>
+    <Description>Stable cross-service contracts for CP6 distributed services.</Description>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+</Project>
