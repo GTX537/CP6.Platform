@@ -6,7 +6,7 @@ All notable changes to CP6.Platform are documented here.
 
 - Add the P03 RS256-only JwtBearer profile with exact issuer/audience validation, required-claim checks, non-empty tenant enforcement and unknown-kid JWKS refresh.
 - Add the safe RFC 9457 problem-definition/writer contract and correlation middleware without exception, token, request payload or PII disclosure.
-- Upgrade the three runtime packages to immutable `0.3.0-alpha.1` candidates with negative-token, rotation, Problem Details, correlation, architecture and package evidence.
+- Publish the three immutable `0.3.0-alpha.1` packages and close them as `Frozen / Consumable` with negative-token, rotation, Problem Details, correlation, architecture, package-digest and CRM PR/main consumer evidence.
 
 ## 0.2.0.0 - 2026-08-28
 
