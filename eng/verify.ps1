@@ -1,0 +1,270 @@
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory = $true)]
+    [ValidateSet('Format', 'Build', 'Unit', 'Integration', 'Contract', 'Security', 'E2E', 'Performance', 'Migration')]
+    [string]$Gate,
+
+    [string]$Profile = 'local'
+)
+
+$ErrorActionPreference = 'Stop'
+$repositoryRoot = Split-Path -Parent $PSScriptRoot
+$solutionPath = Join-Path $repositoryRoot 'CP6.Platform.sln'
+$gateName = $Gate.ToLowerInvariant()
+$outputRoot = Join-Path $repositoryRoot "artifacts/verify/$gateName"
+$summaryPath = Join-Path $outputRoot 'summary.json'
+$junitPath = Join-Path $outputRoot 'results.junit.xml'
+$startedAt = [DateTimeOffset]::UtcNow
+$status = 'Passed'
+$failureMessage = $null
+$checks = [System.Collections.Generic.List[object]]::new()
+
+if (-not $outputRoot.StartsWith((Join-Path $repositoryRoot 'artifacts'), [StringComparison]::OrdinalIgnoreCase)) {
+    throw "Refusing to write verification output outside the repository artifacts directory: $outputRoot"
+}
+
+if (Test-Path -LiteralPath $outputRoot) {
+    Remove-Item -LiteralPath $outputRoot -Recurse -Force
+}
+
+New-Item -ItemType Directory -Path $outputRoot -Force | Out-Null
+
+function Invoke-DotNetStep {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$Name,
+
+        [Parameter(Mandatory = $true)]
+        [string[]]$Arguments
+    )
+
+    $stepStarted = [DateTimeOffset]::UtcNow
+    $logPath = Join-Path $outputRoot "$($Name.ToLowerInvariant()).log"
+    & dotnet @Arguments 2>&1 | Tee-Object -FilePath $logPath
+    $exitCode = $LASTEXITCODE
+    $checks.Add([ordered]@{
+        name = $Name
+        status = if ($exitCode -eq 0) { 'Passed' } else { 'Failed' }
+        durationMs = [Math]::Round(([DateTimeOffset]::UtcNow - $stepStarted).TotalMilliseconds)
+        log = [IO.Path]::GetRelativePath($repositoryRoot, $logPath).Replace('\', '/')
+    })
+
+    if ($exitCode -ne 0) {
+        throw "dotnet $($Arguments -join ' ') failed with exit code $exitCode."
+    }
+}
+
+function Add-NotApplicableCheck {
+    param([Parameter(Mandatory = $true)][string]$Reason)
+
+    $script:status = 'NotApplicable'
+    $checks.Add([ordered]@{
+        name = $Gate
+        status = 'NotApplicable'
+        durationMs = 0
+        reason = $Reason
+    })
+}
+
+function Assert-ReproduciblePackages {
+    $firstDirectory = Join-Path $outputRoot 'pack-first'
+    $secondDirectory = Join-Path $outputRoot 'pack-second'
+    New-Item -ItemType Directory -Path $firstDirectory, $secondDirectory -Force | Out-Null
+
+    Invoke-DotNetStep -Name 'PackFirst' -Arguments @(
+        'pack', $solutionPath, '--configuration', 'Release', '--no-build',
+        '--output', $firstDirectory, '-p:Version=0.1.0-alpha.0'
+    )
+    Invoke-DotNetStep -Name 'PackSecond' -Arguments @(
+        'pack', $solutionPath, '--configuration', 'Release', '--no-build',
+        '--output', $secondDirectory, '-p:Version=0.1.0-alpha.0'
+    )
+
+    function Get-PackageContentManifest {
+        param([Parameter(Mandatory = $true)][string]$Directory)
+
+        return @(Get-ChildItem -LiteralPath $Directory -File | Sort-Object Name | ForEach-Object {
+            $package = $_
+            $archive = [IO.Compression.ZipFile]::OpenRead($package.FullName)
+            try {
+                # NuGet assigns random OPC relationship/core-property identifiers on every pack.
+                # Compare the signed/consumed payload and nuspec, not this container bookkeeping.
+                $entries = @($archive.Entries |
+                    Where-Object {
+                        $_.FullName -ne '_rels/.rels' -and
+                        $_.FullName -notlike 'package/services/metadata/core-properties/*'
+                    } |
+                    Sort-Object FullName |
+                    ForEach-Object {
+                        $stream = $_.Open()
+                        $algorithm = [Security.Cryptography.SHA256]::Create()
+                        try {
+                            $hash = [Convert]::ToHexString($algorithm.ComputeHash($stream))
+                        } finally {
+                            $algorithm.Dispose()
+                            $stream.Dispose()
+                        }
+
+                        [ordered]@{ Name = $_.FullName; Hash = $hash }
+                    })
+            } finally {
+                $archive.Dispose()
+            }
+
+            [ordered]@{ Name = $package.Name; Entries = $entries }
+        })
+    }
+
+    $firstPackages = Get-PackageContentManifest -Directory $firstDirectory
+    $secondPackages = Get-PackageContentManifest -Directory $secondDirectory
+
+    $expectedPackageIds = @(
+        'CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Contracts',
+        'CP6.Platform.EntityFramework', 'CP6.Platform.Messaging', 'CP6.Platform.Testing'
+    )
+    $expectedNames = @($expectedPackageIds | ForEach-Object {
+        "$_.0.1.0-alpha.0.nupkg"
+        "$_.0.1.0-alpha.0.snupkg"
+    } | Sort-Object)
+    $actualNames = @($firstPackages.Name | Sort-Object)
+    if (($expectedNames | ConvertTo-Json -Compress) -ne ($actualNames | ConvertTo-Json -Compress)) {
+        throw "Package set differs from the six approved package IDs: $($actualNames -join ', ')."
+    }
+
+    if (($firstPackages | ConvertTo-Json -Depth 8 -Compress) -ne ($secondPackages | ConvertTo-Json -Depth 8 -Compress)) {
+        throw 'Package content is not reproducible: the two entry-level SHA-256 manifests differ.'
+    }
+
+    $manifestPath = Join-Path $outputRoot 'package-hashes.json'
+    @($firstPackages) | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $manifestPath -Encoding utf8
+    $checks.Add([ordered]@{
+        name = 'PackageReproducibility'
+        status = 'Passed'
+        durationMs = 0
+        packageCount = $firstPackages.Count
+        manifest = [IO.Path]::GetRelativePath($repositoryRoot, $manifestPath).Replace('\', '/')
+    })
+}
+
+function Write-Evidence {
+    $completedAt = [DateTimeOffset]::UtcNow
+    $commitSha = (& git -C $repositoryRoot rev-parse HEAD 2>$null)
+    if ($LASTEXITCODE -ne 0) {
+        $commitSha = $null
+    } else {
+        $commitSha = $commitSha.Trim()
+    }
+
+    $summary = [ordered]@{
+        schemaVersion = 1
+        gate = $Gate
+        profile = $Profile
+        status = $status
+        startedAtUtc = $startedAt.ToString('o')
+        completedAtUtc = $completedAt.ToString('o')
+        durationMs = [Math]::Round(($completedAt - $startedAt).TotalMilliseconds)
+        commitSha = $commitSha
+        checks = @($checks)
+    }
+
+    if ($failureMessage) {
+        $summary.error = $failureMessage
+    }
+
+    $summary | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $summaryPath -Encoding utf8
+
+    $escapedGate = [Security.SecurityElement]::Escape($Gate)
+    $durationSeconds = [Math]::Round(($completedAt - $startedAt).TotalSeconds, 3).ToString([Globalization.CultureInfo]::InvariantCulture)
+    if ($status -eq 'Failed') {
+        $escapedFailure = [Security.SecurityElement]::Escape($failureMessage)
+        $resultElement = "<failure message=`"$escapedFailure`" />"
+        $failures = 1
+        $skipped = 0
+    } elseif ($status -eq 'NotApplicable') {
+        $reason = [string]$checks[0].reason
+        $escapedReason = [Security.SecurityElement]::Escape($reason)
+        $resultElement = "<skipped message=`"$escapedReason`" />"
+        $failures = 0
+        $skipped = 1
+    } else {
+        $resultElement = ''
+        $failures = 0
+        $skipped = 0
+    }
+
+    $junit = @"
+<?xml version="1.0" encoding="utf-8"?>
+<testsuite name="CP6.Platform.$escapedGate" tests="1" failures="$failures" skipped="$skipped" time="$durationSeconds">
+  <testcase classname="CP6.Platform.Verify" name="$escapedGate" time="$durationSeconds">$resultElement</testcase>
+</testsuite>
+"@
+    Set-Content -LiteralPath $junitPath -Value $junit -Encoding utf8
+}
+
+Push-Location $repositoryRoot
+try {
+    switch ($Gate) {
+        'Format' {
+            Invoke-DotNetStep -Name 'Format' -Arguments @('format', $solutionPath, '--verify-no-changes')
+        }
+        'Build' {
+            Invoke-DotNetStep -Name 'Restore' -Arguments @('restore', $solutionPath)
+            Invoke-DotNetStep -Name 'Build' -Arguments @('build', $solutionPath, '--configuration', 'Release', '--no-restore')
+        }
+        'Unit' {
+            Invoke-DotNetStep -Name 'Unit' -Arguments @(
+                'test', 'tests/CP6.Platform.UnitTests/CP6.Platform.UnitTests.csproj',
+                '--configuration', 'Release'
+            )
+            & pwsh (Join-Path $PSScriptRoot 'test-verify-failure.ps1')
+            if ($LASTEXITCODE -ne 0) {
+                throw "Verification failure-contract self-test failed with exit code $LASTEXITCODE."
+            }
+            $checks.Add([ordered]@{
+                name = 'FailureContract'
+                status = 'Passed'
+                durationMs = 0
+            })
+        }
+        'Contract' {
+            Invoke-DotNetStep -Name 'Restore' -Arguments @('restore', $solutionPath)
+            Invoke-DotNetStep -Name 'Build' -Arguments @('build', $solutionPath, '--configuration', 'Release', '--no-restore')
+            Invoke-DotNetStep -Name 'Architecture' -Arguments @(
+                'test', 'tests/CP6.Platform.ArchitectureTests/CP6.Platform.ArchitectureTests.csproj',
+                '--configuration', 'Release', '--no-build'
+            )
+            Assert-ReproduciblePackages
+        }
+        'Security' {
+            Invoke-DotNetStep -Name 'Restore' -Arguments @('restore', $solutionPath, '--force-evaluate')
+            Invoke-DotNetStep -Name 'VulnerablePackages' -Arguments @(
+                'list', $solutionPath, 'package', '--vulnerable', '--include-transitive',
+                '--source', 'https://api.nuget.org/v3/index.json'
+            )
+        }
+        'Integration' { Add-NotApplicableCheck 'P01 defines repository boundaries only and has no runtime integration.' }
+        'E2E' { Add-NotApplicableCheck 'P01 contains no executable application or end-to-end user path.' }
+        'Performance' { Add-NotApplicableCheck 'P01 contains no runtime behavior to benchmark.' }
+        'Migration' { Add-NotApplicableCheck 'P01 contains no database schema or migration assets.' }
+    }
+} catch {
+    $status = 'Failed'
+    $failureMessage = $_.Exception.Message
+    if (-not $checks.Exists({ param($check) $check.status -eq 'Failed' })) {
+        $checks.Add([ordered]@{
+            name = $Gate
+            status = 'Failed'
+            durationMs = 0
+            reason = $failureMessage
+        })
+    }
+} finally {
+    Pop-Location
+    Write-Evidence
+}
+
+Write-Host "[$Gate] $status - $summaryPath"
+if ($status -eq 'Failed') {
+    Write-Error $failureMessage
+    exit 1
+}

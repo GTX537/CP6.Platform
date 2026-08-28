@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <PackageId>CP6.Platform.Abstractions</PackageId>
+    <Description>Shared platform abstractions for CP6 distributed services.</Description>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../CP6.Platform.Contracts/CP6.Platform.Contracts.csproj" />
+  </ItemGroup>
+</Project>
