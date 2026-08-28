@@ -2,6 +2,12 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## 0.5.0.0 - 2026-08-28
+
+- Add the P05 candidate Dapr service-invocation and structured CloudEvent Pub/Sub adapters on top of the frozen P04 contract validator.
+- Freeze Kafka topic and tenant/aggregate partition-key conventions, including consumer-side topic/key drift rejection before handlers run.
+- Add a real Dapr 1.18.2 and Apache Kafka 4.3.1 container gate; P06 Outbox/Inbox and P09 deployment assets remain out of scope.
+
 ## 0.4.0.0 - 2026-08-28
 
 - Add the P04-S01 CloudEvents 1.0 structured JSON profile with required tenant, correlation, causation, aggregate, schema and region extensions.

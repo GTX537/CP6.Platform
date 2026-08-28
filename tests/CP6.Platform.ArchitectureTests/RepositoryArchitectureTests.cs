@@ -78,7 +78,7 @@ public sealed class RepositoryArchitectureTests
             else if (packageId == "CP6.Platform.Messaging")
             {
                 Assert.Equal(
-                    ["CloudNative.CloudEvents", "CloudNative.CloudEvents.SystemTextJson", "JsonSchema.Net"],
+                    ["CloudNative.CloudEvents", "CloudNative.CloudEvents.SystemTextJson", "Dapr.Client", "JsonSchema.Net"],
                     packageReferences.Order(StringComparer.Ordinal));
                 Assert.Empty(frameworkReferences);
             }

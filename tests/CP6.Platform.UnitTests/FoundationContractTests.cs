@@ -12,7 +12,7 @@ public sealed class FoundationContractTests
     public void Version_UsesAuditableFourPartFormat()
     {
         var version = File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim();
-        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P04-CLOUD-EVENTS.md"));
+        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P05-DAPR-KAFKA.md"));
         var changelog = File.ReadAllText(Path.Combine(RepositoryRoot, "CHANGELOG.md"));
         var props = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
         var packageVersion = $"{props.Descendants("VersionPrefix").Single().Value}-{props.Descendants("VersionSuffix").Single().Value}";
@@ -121,8 +121,9 @@ public sealed class FoundationContractTests
 
         Assert.Equal(["ubuntu-latest", "windows-latest"], operatingSystems);
         Assert.Equal(
-            new[] { "Build", "Contract", "E2E", "Format", "Integration", "Migration", "Performance", "Security", "Unit" },
+            new[] { "Build", "Contract", "E2E", "Format", "Integration", "Integration", "Migration", "Performance", "Security", "Unit" },
             gates);
+        Assert.Contains("-Profile p05-real", workflow, StringComparison.Ordinal);
         Assert.Contains("actions/upload-artifact@", workflow, StringComparison.Ordinal);
         Assert.Contains("if: always()", workflow, StringComparison.Ordinal);
     }

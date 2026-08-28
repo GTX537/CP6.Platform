@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="CloudNative.CloudEvents" />
     <PackageReference Include="CloudNative.CloudEvents.SystemTextJson" />
+    <PackageReference Include="Dapr.Client" />
     <PackageReference Include="JsonSchema.Net" />
   </ItemGroup>
   <ItemGroup>
