@@ -3,12 +3,12 @@
 | 项目 | 内容 |
 | --- | --- |
 | 决策状态 | Accepted implementation scope |
-| 实现状态 | Candidate；等待 PR/main、不可变发布与 CRM 固定版本消费 |
-| 版本 | `0.5.0.0` / package metadata `0.5.0-alpha.0` |
+| 实现状态 | Platform main verified；等待不可变发布与 CRM 固定版本消费 |
+| 版本 | `0.5.0.0` / package metadata `0.5.0-alpha.1` |
 | 前置 | P02 RequestContext、P04 CloudEvents/JSON Schema bundle |
 | 日期 | 2026-08-28 |
 
-仓库交付版本使用四段 `VERSION`：`0.5.0.0`；本实现候选的 package metadata `0.5.0-alpha.0` 只用于可重复打包和 PR 验证，不在 S01 发布。
+仓库交付版本使用四段 `VERSION`：`0.5.0.0`；S01 候选已经通过 Platform PR 与 main 的 Windows、Linux、真实 Dapr/Kafka 门禁。S02 将从精确 main 一次性发布不可变 package metadata `0.5.0-alpha.1`，发布完成前仍不得声明可消费。
 
 ## 1. 目标
 

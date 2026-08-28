@@ -30,4 +30,4 @@ pwsh ./eng/verify.ps1 -Gate Security
 
 每个 Gate 都在 `artifacts/verify/<gate>/` 输出机器可读的 `summary.json` 和 `results.junit.xml`。当前无适用实现的 Gate 必须返回 `NotApplicable`，不能静默跳过。
 
-更多信息见 [P05 Dapr/Kafka](docs/P05-DAPR-KAFKA.md)、[P04 CloudEvents](docs/P04-CLOUD-EVENTS.md)、[P04 Publication](docs/P04-PUBLICATION.md)、[P03 Authentication and Problem Details](docs/P03-AUTH-PROBLEM-DETAILS.md)、[P02 Request Context](docs/P02-REQUEST-CONTEXT.md)、[P01 Foundation](docs/P01-FOUNDATION.md)、[ADR-P01](docs/adr/ADR-P01-PACKAGE-SOURCE.md)、[Testing](TESTING.md) 和 [Contributing](CONTRIBUTING.md)。
+更多信息见 [P05 Dapr/Kafka](docs/P05-DAPR-KAFKA.md)、[P05 Publication](docs/P05-PUBLICATION.md)、[P04 CloudEvents](docs/P04-CLOUD-EVENTS.md)、[P04 Publication](docs/P04-PUBLICATION.md)、[P03 Authentication and Problem Details](docs/P03-AUTH-PROBLEM-DETAILS.md)、[P02 Request Context](docs/P02-REQUEST-CONTEXT.md)、[P01 Foundation](docs/P01-FOUNDATION.md)、[ADR-P01](docs/adr/ADR-P01-PACKAGE-SOURCE.md)、[Testing](TESTING.md) 和 [Contributing](CONTRIBUTING.md)。
