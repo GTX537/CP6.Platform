@@ -3,7 +3,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$OutputDirectory,
 
-    [string]$PackageVersion = '0.3.0-alpha.1'
+    [string]$PackageVersion = '0.4.0-alpha.1'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -14,7 +14,8 @@ $artifactsPrefix = $artifactsRoot.TrimEnd([IO.Path]::DirectorySeparatorChar) + [
 $projects = @(
     'src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj',
     'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',
-    'src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj'
+    'src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj',
+    'src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj'
 )
 
 if (-not $resolvedOutput.StartsWith($artifactsPrefix, [StringComparison]::OrdinalIgnoreCase)) {
@@ -38,14 +39,14 @@ try {
     Pop-Location
 }
 
-$packageIds = @('CP6.Platform.Contracts', 'CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore')
+$packageIds = @('CP6.Platform.Contracts', 'CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Messaging')
 $packages = @(Get-ChildItem -LiteralPath $resolvedOutput -Filter '*.nupkg' -File |
     Where-Object { $_.Name -notlike '*.snupkg' } |
     Sort-Object Name)
 $expectedNames = @($packageIds | ForEach-Object { "$($_).$PackageVersion.nupkg" } | Sort-Object)
 
 if (($packages.Name | ConvertTo-Json -Compress) -ne ($expectedNames | ConvertTo-Json -Compress)) {
-    throw "Release package set is not the approved P03 set: $($packages.Name -join ', ')."
+    throw "Release package set is not the approved P04 set: $($packages.Name -join ', ')."
 }
 
 foreach ($package in $packages) {
@@ -61,6 +62,28 @@ foreach ($package in $packages) {
     }
 }
 
+$messagingPackage = $packages | Where-Object { $_.Name -eq "CP6.Platform.Messaging.$PackageVersion.nupkg" }
+$requiredContractEntries = @(
+    'contracts/contract-bundle.v1.json',
+    'contracts/events/platform/contract-example-changed/v1/schema.json',
+    'contracts/events/platform/contract-example-changed/v1/examples/valid.json',
+    'contracts/events/platform/contract-example-changed/v1/examples/missing-required.json',
+    'contracts/events/platform/contract-example-changed/v1/examples/unknown-optional.json',
+    'contracts/events/platform/contract-example-changed/v1/examples/wrong-type.json',
+    'contracts/events/platform/contract-example-changed/v1/examples/pii-negative.json'
+)
+$messagingArchive = [IO.Compression.ZipFile]::OpenRead($messagingPackage.FullName)
+try {
+    $messagingEntries = @($messagingArchive.Entries.FullName)
+    foreach ($requiredEntry in $requiredContractEntries) {
+        if ($requiredEntry -notin $messagingEntries) {
+            throw "$($messagingPackage.Name) does not contain required contract asset $requiredEntry."
+        }
+    }
+} finally {
+    $messagingArchive.Dispose()
+}
+
 $hashes = @($packages | ForEach-Object {
     [ordered]@{
         file = $_.Name
@@ -68,4 +91,4 @@ $hashes = @($packages | ForEach-Object {
     }
 })
 $hashes | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $resolvedOutput 'sha256.json') -Encoding utf8
-Write-Host "Prepared $($packages.Count) immutable P03 packages in $resolvedOutput."
+Write-Host "Prepared $($packages.Count) immutable P04 packages in $resolvedOutput."

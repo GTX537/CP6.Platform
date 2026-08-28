@@ -3,15 +3,15 @@
 | 项目 | 值 |
 | --- | --- |
 | 公开里程碑 | `P04-S01` |
-| 仓库交付版本 | `0.4.0.0` / package metadata `0.4.0-alpha.0` |
-| 状态 | Implemented / Awaiting main verification；未发布 |
+| 仓库交付版本 | `0.4.0.0` / package metadata `0.4.0-alpha.1` |
+| 状态 | S01 merged / S02 publication candidate；发布 workflow 成功前仍为未发布 |
 | 前置 | P01；P02/P03 继续向后兼容 |
 | DRI | Platform Owner（BUBAO.GAO） |
 | Reviewer | Security、SRE、CRM Owner；单人流程可由同一 ProgramOwner 承担角色，但不能豁免自动化证据 |
 | 输入 | CP6 SaaS V1 公开工程契约 §5、CRM V1 可执行规格 §9 / §18.1、CloudEvents 1.0、JSON Schema Draft 2020-12 |
 | 输出 | `CP6.Platform.Messaging`、`contracts/contract-bundle.v1.json`、完整 Schema/示例矩阵、兼容性与包内容测试 |
 
-仓库交付版本使用四段 `VERSION`：`0.4.0.0`。当前 package metadata `0.4.0-alpha.0` 只用于本地可重复 pack 和合同验证；不可变候选发布属于后续独立 `P04-S02`，本任务不得改写或冒充已发布的 `0.3.0-alpha.1` P03 包。
+仓库交付版本使用四段 `VERSION`：`0.4.0.0`。package metadata `0.4.0-alpha.1` 是 P04 的唯一不可变候选；只能在 S02 发布自动化合并且双平台门禁通过后，从当前 `main` 的完整 commit 触发。本任务不得改写或冒充已发布的 `0.3.0-alpha.1` P03 包。
 
 ## 1. 可观察行为
 

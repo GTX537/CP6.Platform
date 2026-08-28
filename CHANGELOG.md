@@ -6,7 +6,7 @@ All notable changes to CP6.Platform are documented here.
 
 - Add the P04-S01 CloudEvents 1.0 structured JSON profile with required tenant, correlation, causation, aggregate, schema and region extensions.
 - Add a content-addressed Draft 2020-12 contract bundle, full positive/negative example matrix, fail-closed validation and same-major compatibility checks.
-- Keep `0.4.0-alpha.0` unpublished; immutable publication and CRM fixed-version consumption remain separate P04-S02/P04-S03 tasks.
+- Prepare the four-package `0.4.0-alpha.1` immutable candidate with a main-only exact-commit publication gate; publication evidence and CRM fixed-version consumption remain separate P04-S02/P04-S03 closure steps.
 
 ## 0.3.0.0 - 2026-08-28
 
