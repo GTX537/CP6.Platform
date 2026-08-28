@@ -59,21 +59,25 @@ public sealed class RepositoryArchitectureTests
     }
 
     [Fact]
-    public void ProductionProjects_HaveNoPackageDependency_AndOnlyAspNetCoreUsesSharedFramework()
+    public void ProductionProjects_UseOnlyApprovedExternalDependencies_AndOnlyAspNetCoreUsesSharedFramework()
     {
         foreach (var (packageId, project) in LoadProjects())
         {
-            Assert.Empty(project.Document.Descendants("PackageReference"));
+            var packageReferences = project.Document.Descendants("PackageReference")
+                .Select(reference => reference.Attribute("Include")!.Value)
+                .ToArray();
             var frameworkReferences = project.Document.Descendants("FrameworkReference")
                 .Select(reference => reference.Attribute("Include")!.Value)
                 .ToArray();
 
             if (packageId == "CP6.Platform.AspNetCore")
             {
+                Assert.Equal(["Microsoft.AspNetCore.Authentication.JwtBearer"], packageReferences);
                 Assert.Equal(["Microsoft.AspNetCore.App"], frameworkReferences);
             }
             else
             {
+                Assert.Empty(packageReferences);
                 Assert.Empty(frameworkReferences);
             }
         }

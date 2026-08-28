@@ -44,9 +44,9 @@ jobs:
           ./eng/verify.ps1 -Gate Integration -Profile release
           ./eng/verify.ps1 -Gate Contract -Profile release
           ./eng/verify.ps1 -Gate Security -Profile release
-      - name: Pack approved P02 packages
+      - name: Pack approved P03 packages
         shell: pwsh
-        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.2.0-alpha.1
+        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.3.0-alpha.1
       - name: Publish immutable packages
         shell: pwsh
         env:
@@ -62,7 +62,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: p02-alpha-${{ inputs.expected_commit }}
+          name: p03-alpha-${{ inputs.expected_commit }}
           path: |
             artifacts/release/**
             artifacts/verify/**
