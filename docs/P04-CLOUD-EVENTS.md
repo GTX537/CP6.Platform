@@ -4,14 +4,14 @@
 | --- | --- |
 | 公开里程碑 | `P04-S01` |
 | 仓库交付版本 | `0.4.0.0` / package metadata `0.4.0-alpha.1` |
-| 状态 | S01 merged / S02 publication candidate；发布 workflow 成功前仍为未发布 |
+| 状态 | `Frozen / Consumable`；S01 实现、S02 不可变发布与 S03 CRM 固定版本消费均已通过远端门禁 |
 | 前置 | P01；P02/P03 继续向后兼容 |
 | DRI | Platform Owner（BUBAO.GAO） |
 | Reviewer | Security、SRE、CRM Owner；单人流程可由同一 ProgramOwner 承担角色，但不能豁免自动化证据 |
 | 输入 | CP6 SaaS V1 公开工程契约 §5、CRM V1 可执行规格 §9 / §18.1、CloudEvents 1.0、JSON Schema Draft 2020-12 |
 | 输出 | `CP6.Platform.Messaging`、`contracts/contract-bundle.v1.json`、完整 Schema/示例矩阵、兼容性与包内容测试 |
 
-仓库交付版本使用四段 `VERSION`：`0.4.0.0`。package metadata `0.4.0-alpha.1` 是 P04 的唯一不可变候选；只能在 S02 发布自动化合并且双平台门禁通过后，从当前 `main` 的完整 commit 触发。本任务不得改写或冒充已发布的 `0.3.0-alpha.1` P03 包。
+仓库交付版本使用四段 `VERSION`：`0.4.0.0`。package metadata `0.4.0-alpha.1` 是 P04 的唯一不可变版本；S02 已在发布自动化合并且双平台门禁通过后，从精确 `main@2c4c601228d81b300659b7773748da2e995ce433` 发布。本任务不得改写或冒充已发布的 `0.3.0-alpha.1` P03 包。
 
 ## 1. 可观察行为
 
@@ -90,10 +90,18 @@ DoD：
 
 ## 7. 明确不做
 
-- 不发布 NuGet，不配置 GitHub Packages 凭据；
+- S01 本身不发布 NuGet、不配置 GitHub Packages 凭据；不可变发布由已验证的 S02 workflow 独立完成；
 - 不实现 Dapr、Kafka、Topic/ACL、partition transport binding 或运行时订阅，这些属于 P05/P09；
 - 不实现 Outbox/Inbox、DLQ 或重放 worker，这些属于 P06；
 - 不定义 CRM/ERP/Identity 业务事件语义，不启用 C01、C02、CRM03 或真实登录；
 - 不创建云资源、Secret、数据库、部署或生产配置。
 
-P04 后续严格顺序为：`P04-S02` 从已验证 Platform main 发布不可变候选包；`P04-S03` 在 CRM 独立分支固定版本消费，并证明生产者/消费者对同一 bundle 双向验证。
+## 8. 发布与消费者闭环证据
+
+- S01：实现 PR #6、head `93313f610569b5bfedf74141e9bb4e49f3583f84`；PR run 33167113212 与 `main` run 33167297897 在 Windows/Linux 通过。
+- S02：发布 PR #7、head `4ef525a51d9a3c5cc70183b4a8a5f6fa4e050c59`；PR run 33167566967、`main` run 33167738330 与 exact-main publish run 33167927567 通过。
+- 发布产物：artifact 9684391334，artifact SHA-256 `07eae751d6288cf8f8d81561ae77ac4ab452d62610966a9c69cad995a05bea3e`；四个包级 SHA-256 见 [P04 Publication](P04-PUBLICATION.md)。
+- S03：CRM PR #25、head `df61834d97c00f3b19f6b3079a6ac0e2c79a67d5`；PR run 33169553326 attempt 2 与合并后 `main@bdc298dc38196fefa4613927cb48dfb6c41f1a66` run 33170491020 通过远端精确包恢复与完整门禁。
+- CRM 冻结证据：PR #26、head `77efbe77a3d99070c4bfbb17e1d3add244a788d8` 与 run 33171439705 通过；合并后 `main@2a728411c6becd437bb0e1f7f4ead680a0947c52` run 33171913476 再次通过完整门禁。P04 locator 已升级为 `Frozen / Consumable`；运行时消费者仍因 P05/P06 与业务事件切片缺失而禁用。
+
+P04 严格顺序 `S01 → S02 → S03` 已完成。此状态只证明通用 CloudEvents/Schema bundle 可发布、可固定版本消费，不代表 C02 业务事件、Dapr/Kafka 或 Outbox/Inbox 已实现。

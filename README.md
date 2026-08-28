@@ -4,7 +4,7 @@ CP6 分布式服务的共享契约与基础设施包。本仓库是 Platform 包
 
 本地需要安装 .NET 8 SDK；`global.json` 允许在 .NET 8 内滚动到已安装的最新 feature band，但不会静默改用更高主版本。
 
-P01 已建立可验证的仓库和包边界；P02 已交付只读 RequestContext。P03 进一步交付严格 RS256/JWKS 验证、RFC 9457 Problem Details 和 correlation 边界；不可变 `0.3.0-alpha.1` 已发布并通过 CRM PR/main 固定版本消费验证，状态为 `Frozen / Consumable`。P04-S01 增加 CloudEvents 1.0 structured JSON、Draft 2020-12 验证和内容寻址 contract bundle；`0.4.0-alpha.1` 是只能从已验证 `main` 发布的不可变候选，在发布 workflow 成功前不得描述为已发布。
+P01 已建立可验证的仓库和包边界；P02 已交付只读 RequestContext。P03 进一步交付严格 RS256/JWKS 验证、RFC 9457 Problem Details 和 correlation 边界；不可变 `0.3.0-alpha.1` 已发布并通过 CRM PR/main 固定版本消费验证，状态为 `Frozen / Consumable`。P04 增加 CloudEvents 1.0 structured JSON、Draft 2020-12 验证和内容寻址 contract bundle；四个不可变 `0.4.0-alpha.1` 包已由 exact-main workflow 发布，并通过 CRM PR/main 固定版本恢复、同 bundle 双向验证与副作用前失败关闭门禁，状态为 `Frozen / Consumable`。
 
 ## 包边界
 
@@ -13,7 +13,7 @@ P01 已建立可验证的仓库和包边界；P02 已交付只读 RequestContext
 | `CP6.Platform.Contracts` | 稳定的跨服务契约 | P02 RequestContext snapshot；P03 Problem definition/profile |
 | `CP6.Platform.Abstractions` | 平台抽象接口 | P02：只读 `IRequestContext` / accessor |
 | `CP6.Platform.AspNetCore` | ASP.NET Core 集成 | P02 request context；P03 RS256/JWKS、Problem Details、correlation |
-| `CP6.Platform.Messaging` | 消息基础设施 | P04-S01：CloudEvents、JSON Schema、bundle 与兼容验证；未发布 |
+| `CP6.Platform.Messaging` | 消息基础设施 | P04：CloudEvents、JSON Schema、bundle 与兼容验证；`0.4.0-alpha.1` 已发布并由 CRM 固定消费验证 |
 | `CP6.Platform.EntityFramework` | EF Core 集成 | 边界已建立 |
 | `CP6.Platform.Testing` | 消费方测试支持 | 边界已建立 |
 
