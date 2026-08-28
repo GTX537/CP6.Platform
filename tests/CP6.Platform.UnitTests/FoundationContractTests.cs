@@ -16,14 +16,18 @@ public sealed class FoundationContractTests
         var changelog = File.ReadAllText(Path.Combine(RepositoryRoot, "CHANGELOG.md"));
         var props = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
         var packageVersion = $"{props.Descendants("VersionPrefix").Single().Value}-{props.Descendants("VersionSuffix").Single().Value}";
-        var automation = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
+        var verification = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
+        var releasePack = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "pack-release.ps1"));
+        var publication = File.ReadAllText(Path.Combine(RepositoryRoot, ".github", "workflows", "publish-alpha.yml"));
 
         Assert.Matches(new Regex(@"^\d+\.\d+\.\d+\.\d+$", RegexOptions.CultureInvariant), version);
         Assert.Contains($"`{version}` / package metadata", decisionRecord, StringComparison.Ordinal);
         Assert.Contains($"仓库交付版本使用四段 `VERSION`：`{version}`", decisionRecord, StringComparison.Ordinal);
         Assert.Contains($"## {version} -", changelog, StringComparison.Ordinal);
         Assert.Contains($"package metadata `{packageVersion}`", decisionRecord, StringComparison.Ordinal);
-        Assert.Contains($"$packageVersion = '{packageVersion}'", automation, StringComparison.Ordinal);
+        Assert.Contains($"$packageVersion = '{packageVersion}'", verification, StringComparison.Ordinal);
+        Assert.Contains($"[string]$PackageVersion = '{packageVersion}'", releasePack, StringComparison.Ordinal);
+        Assert.Contains($"-PackageVersion {packageVersion}", publication, StringComparison.Ordinal);
     }
 
     [Fact]
