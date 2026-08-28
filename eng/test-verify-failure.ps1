@@ -51,21 +51,21 @@ try {
         throw 'The failed gate JUnit file does not contain one failure.'
     }
 
-    & pwsh (Join-Path $testEng 'verify.ps1') -Gate Integration -Profile not-applicable-contract 2>&1 | Out-Null
+    & pwsh (Join-Path $testEng 'verify.ps1') -Gate E2E -Profile not-applicable-contract 2>&1 | Out-Null
     if ($LASTEXITCODE -ne 0) {
-        throw 'The NotApplicable Integration gate returned a non-zero exit code.'
+        throw 'The NotApplicable E2E gate returned a non-zero exit code.'
     }
 
-    $notApplicableSummary = Get-Content -LiteralPath (Join-Path $testRoot 'artifacts/verify/integration/summary.json') -Raw |
+    $notApplicableSummary = Get-Content -LiteralPath (Join-Path $testRoot 'artifacts/verify/e2e/summary.json') -Raw |
         ConvertFrom-Json
     if ($notApplicableSummary.schemaVersion -ne 1 -or $notApplicableSummary.status -ne 'NotApplicable' -or
         [string]::IsNullOrWhiteSpace($notApplicableSummary.checks[0].reason)) {
-        throw 'The Integration summary does not match the version 1 NotApplicable contract.'
+        throw 'The E2E summary does not match the version 1 NotApplicable contract.'
     }
 
-    [xml]$notApplicableJunit = Get-Content -LiteralPath (Join-Path $testRoot 'artifacts/verify/integration/results.junit.xml') -Raw
+    [xml]$notApplicableJunit = Get-Content -LiteralPath (Join-Path $testRoot 'artifacts/verify/e2e/results.junit.xml') -Raw
     if ($notApplicableJunit.testsuite.skipped -ne '1' -or $null -eq $notApplicableJunit.testsuite.testcase.skipped) {
-        throw 'The NotApplicable Integration JUnit file does not contain one skipped test and reason.'
+        throw 'The NotApplicable E2E JUnit file does not contain one skipped test and reason.'
     }
 } finally {
     if ($testRoot.StartsWith([IO.Path]::GetTempPath(), [StringComparison]::OrdinalIgnoreCase) -and (Test-Path -LiteralPath $testRoot)) {

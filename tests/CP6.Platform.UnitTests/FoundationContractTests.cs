@@ -12,7 +12,7 @@ public sealed class FoundationContractTests
     public void Version_UsesAuditableFourPartFormat()
     {
         var version = File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim();
-        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P01-FOUNDATION.md"));
+        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P02-REQUEST-CONTEXT.md"));
         var changelog = File.ReadAllText(Path.Combine(RepositoryRoot, "CHANGELOG.md"));
 
         Assert.Matches(new Regex(@"^\d+\.\d+\.\d+\.\d+$", RegexOptions.CultureInvariant), version);
@@ -50,11 +50,12 @@ public sealed class FoundationContractTests
     }
 
     [Fact]
-    public void ProductionProjects_ArePackableButContainNoRuntimeSourceAtP01()
+    public void ProductionProjects_ArePackable_AndOnlyP02PackagesContainRuntimeSource()
     {
         var projects = Directory.GetFiles(Path.Combine(RepositoryRoot, "src"), "*.csproj", SearchOption.AllDirectories);
 
         Assert.Equal(6, projects.Length);
+        var projectsWithSource = new List<string>();
         foreach (var project in projects)
         {
             var document = XDocument.Load(project);
@@ -62,8 +63,15 @@ public sealed class FoundationContractTests
 
             var sourceFiles = Directory.GetFiles(Path.GetDirectoryName(project)!, "*.cs", SearchOption.AllDirectories)
                 .Where(path => !HasDirectorySegment(path, "bin") && !HasDirectorySegment(path, "obj"));
-            Assert.Empty(sourceFiles);
+            if (sourceFiles.Any())
+            {
+                projectsWithSource.Add(Path.GetFileNameWithoutExtension(project));
+            }
         }
+
+        Assert.Equal(
+            ["CP6.Platform.Abstractions", "CP6.Platform.AspNetCore", "CP6.Platform.Contracts"],
+            projectsWithSource.Order(StringComparer.Ordinal));
     }
 
     [Fact]
@@ -111,15 +119,19 @@ public sealed class FoundationContractTests
     }
 
     [Fact]
-    public void P01Automation_CannotPublishAnEmptyPackage()
+    public void P02Automation_PublishesOnlyTheApprovedNonEmptyPackageSet()
     {
         var automationFiles = Directory.GetFiles(Path.Combine(RepositoryRoot, ".github", "workflows"), "*.*", SearchOption.AllDirectories)
             .Concat(Directory.GetFiles(Path.Combine(RepositoryRoot, "eng"), "*.ps1", SearchOption.AllDirectories));
         var automation = string.Join("\n", automationFiles.Select(File.ReadAllText));
 
-        Assert.DoesNotContain("nuget push", automation, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("packages: write", automation, StringComparison.OrdinalIgnoreCase);
-        Assert.DoesNotContain("api-key", automation, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("nuget push", automation, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("packages: write", automation, StringComparison.OrdinalIgnoreCase);
+        Assert.Contains("CP6.Platform.Contracts", automation, StringComparison.Ordinal);
+        Assert.Contains("CP6.Platform.Abstractions", automation, StringComparison.Ordinal);
+        Assert.Contains("CP6.Platform.AspNetCore", automation, StringComparison.Ordinal);
+        Assert.DoesNotContain("CP6.Platform.Messaging.*.nupkg", automation, StringComparison.Ordinal);
+        Assert.DoesNotContain("--skip-duplicate", automation, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]

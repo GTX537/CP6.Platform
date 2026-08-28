@@ -147,4 +147,4 @@ CI 在 `ubuntu-latest` 和 `windows-latest` 上使用同一脚本，不维护另
 | P09 | Compose/K8s Dapr 组件、订阅、Topic/ACL provision | P05,P08 | 非生产部署演练 |
 | P10 | NuGet/镜像 release、System Manifest schema、证据 | P01-P09 | 签名候选和消费方验证 |
 
-P01 完成后进入 P02。P02 首先交付 Abstractions、只读 RequestContext 和“无默认租户”约束，并随真实契约、测试和最小消费者证明发布第一个真实 alpha 包。P02–P10 在有代码、测试、包版本和消费证据前继续保持 `Absent`。
+P01 完成后进入 P02。P02 的实现、测试和候选发布流程见 [P02 Request Context](P02-REQUEST-CONTEXT.md)。P02 只有在不可变包发布并由 CRM 固定版本消费通过后才可宣告完成；P03–P10 在有代码、测试、包版本和消费证据前继续保持 `Absent`。

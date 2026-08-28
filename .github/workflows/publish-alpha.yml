@@ -1,0 +1,70 @@
+name: publish-alpha
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_commit:
+        description: Exact CP6.Platform main commit approved for immutable publication
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out approved commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ inputs.expected_commit }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Assert immutable main source
+        shell: pwsh
+        run: |
+          if ('${{ github.ref }}' -ne 'refs/heads/main') { throw 'Publication must be dispatched from main.' }
+          $actual = (git rev-parse HEAD).Trim()
+          $main = (git rev-parse origin/main).Trim()
+          if ($actual -ne '${{ inputs.expected_commit }}') { throw "Checked out $actual, not the approved commit." }
+          if ($actual -ne $main) { throw "Approved commit is not current origin/main ($main)." }
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Verify release source
+        shell: pwsh
+        run: |
+          ./eng/verify.ps1 -Gate Format -Profile release
+          ./eng/verify.ps1 -Gate Build -Profile release
+          ./eng/verify.ps1 -Gate Unit -Profile release
+          ./eng/verify.ps1 -Gate Integration -Profile release
+          ./eng/verify.ps1 -Gate Contract -Profile release
+          ./eng/verify.ps1 -Gate Security -Profile release
+      - name: Pack approved P02 packages
+        shell: pwsh
+        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.2.0-alpha.1
+      - name: Publish immutable packages
+        shell: pwsh
+        env:
+          NUGET_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          Get-ChildItem artifacts/release -Filter '*.nupkg' |
+            Where-Object { $_.Name -notlike '*.snupkg' } |
+            ForEach-Object {
+              dotnet nuget push $_.FullName --source 'https://nuget.pkg.github.com/GTX537/index.json' --api-key $env:NUGET_AUTH_TOKEN
+              if ($LASTEXITCODE -ne 0) { throw "Publishing $($_.Name) failed." }
+            }
+      - name: Preserve publication evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: p02-alpha-${{ inputs.expected_commit }}
+          path: |
+            artifacts/release/**
+            artifacts/verify/**
+          if-no-files-found: error
+          retention-days: 30

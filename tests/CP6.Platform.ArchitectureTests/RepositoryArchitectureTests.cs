@@ -59,12 +59,23 @@ public sealed class RepositoryArchitectureTests
     }
 
     [Fact]
-    public void ProductionProjects_HaveNoPackageOrFrameworkDependencyAtP01()
+    public void ProductionProjects_HaveNoPackageDependency_AndOnlyAspNetCoreUsesSharedFramework()
     {
-        foreach (var project in LoadProjects().Values)
+        foreach (var (packageId, project) in LoadProjects())
         {
             Assert.Empty(project.Document.Descendants("PackageReference"));
-            Assert.Empty(project.Document.Descendants("FrameworkReference"));
+            var frameworkReferences = project.Document.Descendants("FrameworkReference")
+                .Select(reference => reference.Attribute("Include")!.Value)
+                .ToArray();
+
+            if (packageId == "CP6.Platform.AspNetCore")
+            {
+                Assert.Equal(["Microsoft.AspNetCore.App"], frameworkReferences);
+            }
+            else
+            {
+                Assert.Empty(frameworkReferences);
+            }
         }
     }
 
