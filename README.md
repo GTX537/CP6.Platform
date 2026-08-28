@@ -29,4 +29,4 @@ pwsh ./eng/verify.ps1 -Gate Security
 
 每个 Gate 都在 `artifacts/verify/<gate>/` 输出机器可读的 `summary.json` 和 `results.junit.xml`。当前无适用实现的 Gate 必须返回 `NotApplicable`，不能静默跳过。
 
-更多信息见 [P01 Foundation](docs/P01-FOUNDATION.md)、[Testing](TESTING.md) 和 [Contributing](CONTRIBUTING.md)。
+更多信息见 [P01 Foundation](docs/P01-FOUNDATION.md)、[ADR-P01](docs/adr/ADR-P01-PACKAGE-SOURCE.md)、[Testing](TESTING.md) 和 [Contributing](CONTRIBUTING.md)。
