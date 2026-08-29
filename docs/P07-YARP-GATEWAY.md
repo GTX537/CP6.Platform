@@ -3,7 +3,7 @@
 | 项目 | 内容 |
 | --- | --- |
 | 决策状态 | Accepted implementation scope |
-| 实现状态 | Candidate / Publication Ready |
+| 实现状态 | Frozen / Consumable |
 | 版本 | `0.7.0.0` / package metadata `0.7.0-alpha.1` |
 | 前置 | P03 RS256/JWKS、Problem Details 与 correlation |
 | 生产包 | `CP6.Platform.AspNetCore` 与兼容包族 |
@@ -119,4 +119,11 @@ pwsh ./eng/verify.ps1 -Gate Security -Profile ci
 
 ## 5. 完成定义
 
-S01 代码和跨平台门禁合并后仍是 `Candidate / Producer Implemented`。只有后续独立 P07-S02 从精确 Platform `main` 发布不可变 `0.7.0-alpha.1`、保存包/artifact SHA-256，并由 CRM 固定版本执行 route/header/rate-limit 消费门禁，再同步 Platform、CRM 与公共 CP6 的 locator/项目记忆后，P07 才能标记为 `Frozen / Consumable`。
+S01 代码与跨平台门禁已合并，P07-S02 已从精确 Platform `main@329bf8ee82091de569cb80f1e83fc5d518f74068` 发布不可变 `0.7.0-alpha.1` 并保存包/artifact SHA-256。CRM PR #31 和 #32 已通过固定版本 route/header/rate-limit 消费与 locator 冻结门禁，公共 CP6 PR #71 及合并后五组门禁也已通过，因此 P07 状态为 `Frozen / Consumable`。
+
+## 6. 完成证据
+
+- Platform：实现 PR #15 / run 33260845830、实现 `main@8167deac14bf82b0f576e73bf7c2e202049d1896` / run 33261055327 attempt 2、发布 PR #16 / run 33262266953、发布 `main@329bf8ee82091de569cb80f1e83fc5d518f74068` / run 33262410890 和 exact-main publish run 33262569274 均通过。
+- CRM：消费 PR #31 / run 33264347561、合并后 `main@02f7078de6a67e7f3fded6df6a84b9f6fb712a84` / run 33264676796、冻结 PR #32 / run 33265394681 与最终 `main@467d95e46625d4db0bb7aa0932aff5464f64a01b` / run 33265702772 均通过。
+- 公共同步：`GTX537/CP6` PR #71 的六组 PR runs 全通过，合并为 `main@47263a498caadcb545092ca617e3d86633e9bea5`；exact-main runs 33266594792、33266594799、33266594815、33266594818、33266594824 全部成功。
+- 冻结边界不变：当前证据不创建 Gateway 宿主、不登记真实 CRM route、不实现 C01/C02/CRM03，也不交付 P09 NetworkPolicy 或任何环境部署。
