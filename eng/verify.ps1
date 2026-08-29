@@ -18,12 +18,13 @@ $startedAt = [DateTimeOffset]::UtcNow
 $status = 'Passed'
 $failureMessage = $null
 $checks = [System.Collections.Generic.List[object]]::new()
-$packageVersion = '0.5.0-alpha.1'
+$packageVersion = '0.6.0-alpha.0'
 $runtimePackageProjects = @(
     'src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj',
     'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',
     'src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj',
-    'src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj'
+    'src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj',
+    'src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj'
 )
 
 if (-not $outputRoot.StartsWith((Join-Path $repositoryRoot 'artifacts'), [StringComparison]::OrdinalIgnoreCase)) {
@@ -128,14 +129,14 @@ function Assert-ReproduciblePackages {
     $firstPackages = Get-PackageContentManifest -Directory $firstDirectory
     $secondPackages = Get-PackageContentManifest -Directory $secondDirectory
 
-    $expectedPackageIds = @('CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Contracts', 'CP6.Platform.Messaging')
+    $expectedPackageIds = @('CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Contracts', 'CP6.Platform.EntityFramework', 'CP6.Platform.Messaging')
     $expectedNames = @($expectedPackageIds | ForEach-Object {
         "$($_).$packageVersion.nupkg"
         "$($_).$packageVersion.snupkg"
     } | Sort-Object)
     $actualNames = @($firstPackages.Name | Sort-Object)
     if (($expectedNames | ConvertTo-Json -Compress) -ne ($actualNames | ConvertTo-Json -Compress)) {
-        throw "Package set differs from the four approved P05-S01 package IDs: $($actualNames -join ', ')."
+        throw "Package set differs from the five approved P06-S01 package IDs: $($actualNames -join ', ')."
     }
 
     $messagingPackage = $firstPackages | Where-Object { $_.Name -eq "CP6.Platform.Messaging.$packageVersion.nupkg" }
@@ -292,10 +293,25 @@ try {
                     throw "Real Dapr/Kafka integration failed with exit code $exitCode."
                 }
             }
+            if ($Profile -eq 'p06-real') {
+                $stepStarted = [DateTimeOffset]::UtcNow
+                $logPath = Join-Path $outputRoot 'sql-server.log'
+                & pwsh (Join-Path $PSScriptRoot 'run-p06-sql-integration.ps1') 2>&1 | Tee-Object -FilePath $logPath
+                $exitCode = $LASTEXITCODE
+                $checks.Add([ordered]@{
+                    name = 'SqlServerTransactionalMessagingIntegration'
+                    status = if ($exitCode -eq 0) { 'Passed' } else { 'Failed' }
+                    durationMs = [Math]::Round(([DateTimeOffset]::UtcNow - $stepStarted).TotalMilliseconds)
+                    log = [IO.Path]::GetRelativePath($repositoryRoot, $logPath).Replace('\', '/')
+                })
+                if ($exitCode -ne 0) {
+                    throw "Real SQL Server transactional messaging integration failed with exit code $exitCode."
+                }
+            }
         }
-        'E2E' { Add-NotApplicableCheck 'CP6.Platform is not an executable application; P05 consumer proof is a separate CRM task.' }
-        'Performance' { Add-NotApplicableCheck 'P05-S01 freezes transport behavior but does not define the P08 performance or resilience threshold.' }
-        'Migration' { Add-NotApplicableCheck 'P05-S01 contains no database schema or migration assets; persistence belongs to P06.' }
+        'E2E' { Add-NotApplicableCheck 'CP6.Platform is not an executable application; P06 consumer proof is a separate CRM task.' }
+        'Performance' { Add-NotApplicableCheck 'P06-S01 freezes transactional semantics but does not define the P08 performance or resilience threshold.' }
+        'Migration' { Add-NotApplicableCheck 'Consumers own database migrations; P06 supplies reusable EF mappings exercised against real SQL Server by the p06-real integration profile.' }
     }
 } catch {
     $status = 'Failed'
