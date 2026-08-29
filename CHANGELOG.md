@@ -2,6 +2,13 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## 0.7.0.0 - 2026-08-29
+
+- Add a validated, code-owned YARP route/cluster profile with HTTPS-by-default destinations and mandatory route rate limits.
+- Remove external `X-User-*`, `X-Tenant-*`, `X-Organization-*`, `X-CP6-*`, `Forwarded` and client-certificate identity metadata before proxying while preserving Authorization, Cookie and correlation protocols.
+- Add per-connection-source fixed-window limiting with safe RFC 9457 `429` responses, plus loopback E2E coverage for route allowlisting, forged headers, direct-backend authentication and destination side-effect suppression.
+- Keep P09 NetworkPolicy/port isolation, C01 identity issuance, CRM runtime registration, cloud resources and deployment outside P07-S01.
+
 ## 0.6.0.0 - 2026-08-29
 
 - Add caller-owned atomic EF Outbox enqueueing, conditional lease-token dispatch, bounded retry, outbound DLQ and audited requeue while preserving the original event id.

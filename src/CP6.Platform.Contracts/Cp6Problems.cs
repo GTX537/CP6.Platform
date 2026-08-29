@@ -18,4 +18,11 @@ public static class Cp6Problems
         403,
         "CP6_FORBIDDEN",
         "cp6.error.forbidden");
+
+    public static Cp6ProblemDefinition RateLimitExceeded { get; } = new(
+        "https://errors.cp6.uk/platform/rate-limit-exceeded",
+        "The request rate limit was exceeded",
+        429,
+        "CP6_RATE_LIMIT_EXCEEDED",
+        "cp6.error.rateLimitExceeded");
 }

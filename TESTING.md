@@ -6,13 +6,13 @@
 | --- | --- |
 | `Format` | 校验 `.NET` 格式，不修改源码 |
 | `Build` | restore 后以 Release 构建整个 solution |
-| `Unit` | 运行基础约束及 P02 只读/校验负向矩阵 |
-| `Contract` | 运行依赖/包架构测试，只对三个 P02 非空包执行两次打包并比较消费载荷逐项哈希 |
+| `Unit` | 运行基础约束、P02/P03、P04/P05 和 P06 的纯逻辑及负向矩阵 |
+| `Contract` | 运行依赖/包架构测试，对五个非空运行时包执行两次打包并比较消费载荷逐项哈希，同时核对 P04 bundle 资产 |
 | `Security` | 以 `NuGetAuditMode=all` + warnings-as-errors 失败关闭，并使用 nuget.org 漏洞数据检查直接与传递依赖 |
-| `Integration` | 验证 ASP.NET 中间件建立/清理上下文、缺失/非法租户 403、伪造头无效 |
-| `E2E` | `NotApplicable`，Platform 不是可独立运行应用 |
-| `Performance` | `NotApplicable`，P02 未定义性能阈值 |
-| `Migration` | `NotApplicable`，P02 没有数据库资产 |
+| `Integration` | 验证 ASP.NET 认证/上下文，以及 P07 loopback YARP 路由、伪造身份头清理、后端独立认证和限流；`p05-real`/`p06-real` 另跑真实 Dapr/Kafka/SQL |
+| `E2E` | 运行 P07 loopback Gateway 到独立 Kestrel 目标的路由、header、直连和 429 Problem Details 门禁 |
+| `Performance` | `NotApplicable`，P08 才冻结系统性能和韧性阈值 |
+| `Migration` | `NotApplicable`，P07 不含数据库 Schema；消费方拥有 P06 migrations |
 
 示例：
 

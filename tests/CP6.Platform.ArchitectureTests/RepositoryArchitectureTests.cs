@@ -72,7 +72,9 @@ public sealed class RepositoryArchitectureTests
 
             if (packageId == "CP6.Platform.AspNetCore")
             {
-                Assert.Equal(["Microsoft.AspNetCore.Authentication.JwtBearer"], packageReferences);
+                Assert.Equal(
+                    ["Microsoft.AspNetCore.Authentication.JwtBearer", "Yarp.ReverseProxy"],
+                    packageReferences.Order(StringComparer.Ordinal));
                 Assert.Equal(["Microsoft.AspNetCore.App"], frameworkReferences);
             }
             else if (packageId == "CP6.Platform.Messaging")

@@ -18,7 +18,7 @@ $startedAt = [DateTimeOffset]::UtcNow
 $status = 'Passed'
 $failureMessage = $null
 $checks = [System.Collections.Generic.List[object]]::new()
-$packageVersion = '0.6.0-alpha.1'
+$packageVersion = '0.7.0-alpha.0'
 $runtimePackageProjects = @(
     'src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj',
     'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',
@@ -136,7 +136,7 @@ function Assert-ReproduciblePackages {
     } | Sort-Object)
     $actualNames = @($firstPackages.Name | Sort-Object)
     if (($expectedNames | ConvertTo-Json -Compress) -ne ($actualNames | ConvertTo-Json -Compress)) {
-        throw "Package set differs from the five approved P06-S01 package IDs: $($actualNames -join ', ')."
+        throw "Package set differs from the five approved P07-S01 package IDs: $($actualNames -join ', ')."
     }
 
     $messagingPackage = $firstPackages | Where-Object { $_.Name -eq "CP6.Platform.Messaging.$packageVersion.nupkg" }
@@ -309,9 +309,15 @@ try {
                 }
             }
         }
-        'E2E' { Add-NotApplicableCheck 'CP6.Platform is not an executable application; P06 consumer proof is a separate CRM task.' }
-        'Performance' { Add-NotApplicableCheck 'P06-S01 freezes transactional semantics but does not define the P08 performance or resilience threshold.' }
-        'Migration' { Add-NotApplicableCheck 'Consumers own database migrations; P06 supplies reusable EF mappings exercised against real SQL Server by the p06-real integration profile.' }
+        'E2E' {
+            Invoke-DotNetStep -Name 'GatewayE2E' -Arguments @(
+                'test', 'tests/CP6.Platform.AspNetCoreTests/CP6.Platform.AspNetCoreTests.csproj',
+                '--configuration', 'Release',
+                '--filter', 'FullyQualifiedName~GatewayContractTests'
+            )
+        }
+        'Performance' { Add-NotApplicableCheck 'P07-S01 freezes bounded route-level rate limiting but P08 owns system performance and resilience thresholds.' }
+        'Migration' { Add-NotApplicableCheck 'P07-S01 contains no database schema or migration assets.' }
     }
 } catch {
     $status = 'Failed'
