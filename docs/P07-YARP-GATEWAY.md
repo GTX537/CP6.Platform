@@ -3,13 +3,13 @@
 | 项目 | 内容 |
 | --- | --- |
 | 决策状态 | Accepted implementation scope |
-| 实现状态 | Candidate / Producer Implemented |
-| 版本 | `0.7.0.0` / package metadata `0.7.0-alpha.0` |
+| 实现状态 | Candidate / Publication Ready |
+| 版本 | `0.7.0.0` / package metadata `0.7.0-alpha.1` |
 | 前置 | P03 RS256/JWKS、Problem Details 与 correlation |
 | 生产包 | `CP6.Platform.AspNetCore` 与兼容包族 |
 | 日期 | 2026-08-29 |
 
-仓库交付版本使用四段 `VERSION`：`0.7.0.0`，当前 package metadata `0.7.0-alpha.0`。P07-S01 为 CP6 的外部 HTTP 入口提供可复用 YARP 合同。它固定 allowlist 路由、目标地址验证、外部身份头清理和按连接来源分区的限流。它不签发身份、不把 Gateway 变成最终授权点，也不通过一个可伪造的“已验证”header 让后端跳过 JWT。
+仓库交付版本使用四段 `VERSION`：`0.7.0.0`，不可变候选 package metadata `0.7.0-alpha.1`。P07-S01 为 CP6 的外部 HTTP 入口提供可复用 YARP 合同。它固定 allowlist 路由、目标地址验证、外部身份头清理和按连接来源分区的限流。它不签发身份、不把 Gateway 变成最终授权点，也不通过一个可伪造的“已验证”header 让后端跳过 JWT。
 
 ## 1. 冻结合同
 
