@@ -3,12 +3,12 @@
 | 项目 | 内容 |
 | --- | --- |
 | 决策状态 | Accepted implementation scope |
-| 实现状态 | Candidate |
+| 实现状态 | Frozen / Consumable |
 | 版本 | `0.6.0.0` / package metadata `0.6.0-alpha.1` |
 | 前置 | P02 RequestContext、P04 CloudEvents/JSON Schema、P05 Dapr/Kafka addressing |
 | 日期 | 2026-08-29 |
 
-仓库交付版本使用四段 `VERSION`：`0.6.0.0`；不可变候选 package metadata `0.6.0-alpha.1` 在 Platform main、不可变发布和 CRM 固定版本 SQL 消费闭环完成前不得标记为 `Frozen / Consumable`。
+仓库交付版本使用四段 `VERSION`：`0.6.0.0`；不可变 package metadata `0.6.0-alpha.1` 已从精确 Platform main 发布，并通过 CRM 固定版本、真实 SQL Server PR/main 消费门禁。
 
 ## 1. 目标与事务边界
 
@@ -70,3 +70,13 @@ Windows/Linux 常规 CI 继续运行跨平台门禁；真实 SQL Server 在独�
 ## 6. 完成定义
 
 P06 只有在 Platform PR/main 的 Windows、Linux、真实 Dapr/Kafka 与真实 SQL Server 门禁全部通过，从精确 main 发布五个不可变 `0.6.0-alpha.1` 包并保存逐包 SHA-256，再由 CRM 固定版本恢复并用真实 SQL Server 证明重复/冲突/乱序均无业务副作用后，才可改为 `Frozen / Consumable`。Platform、CRM 和公共 CP6 项目记忆必须绑定精确 commit、run、artifact 与 package digest。
+
+## 7. 完成证据
+
+- Platform 实现 PR #12 与发布 PR #13 通过；实现合并 `main@aa4cce820c2bd0104ed461d92e2ded481ccc8ba1` run 33241821365、发布合并 `main@3b1669a05f9b265f9b3fb14ade4d656018cbf6b5` run 33242125202 以及 exact-main publish run 33242264497 全部成功。
+- publish run 发布五个不可变 `0.6.0-alpha.1` 包；artifact 9711742920 的 SHA-256 为 `44431d7f359ea524ba9dc438f6f70d24bf34be69411729a2fe1953e3039b3b86`，下载后逐包 SHA-256 已验证。
+- CRM PR #29 固定版本恢复并复用 P04/P05 失败关闭；PR run 33243227124 attempt 3 与合并后 `main@910804f5e7fa02569da958ae325997e10c0ffbc0` run 33244344319 通过真实 SQL Server 和完整 CRM 门禁。
+- CRM 证据 PR #30 run 33244749522 与最终 `main@744ca5d9d06db4470d18a4d8ce3ecfbae42f1d2c` run 33245027773 成功，机器 locator 状态为 `Frozen / Consumable`。
+- 公共 `GTX537/CP6` PR #69 将 P06 写入四份项目记忆文件并合并为 `main@d049ed37c5db4dca38bdfb171f9bc8a5e76f61f1`；PR runs 33245427810/33245427816/33245427830/33245427843/33245427854/33245427867 与 exact-main runs 33246016907/33246016908/33246016913/33246016923/33246016953 全部成功。
+
+P06 closure 不创建 CRM-F3-CONTRACT/C02 业务事件，不启用 CRM Worker 或运行时订阅，也不创建 Secret、云资源、迁移或部署。
