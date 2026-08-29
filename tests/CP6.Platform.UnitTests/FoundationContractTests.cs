@@ -12,7 +12,7 @@ public sealed class FoundationContractTests
     public void Version_UsesAuditableFourPartFormat()
     {
         var version = File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim();
-        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P06-OUTBOX-INBOX.md"));
+        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P07-YARP-GATEWAY.md"));
         var changelog = File.ReadAllText(Path.Combine(RepositoryRoot, "CHANGELOG.md"));
         var props = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
         var packageVersion = $"{props.Descendants("VersionPrefix").Single().Value}-{props.Descendants("VersionSuffix").Single().Value}";

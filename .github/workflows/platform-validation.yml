@@ -42,16 +42,18 @@ jobs:
       - name: Verify ASP.NET integration
         shell: pwsh
         run: ./eng/verify.ps1 -Gate Integration -Profile ci
+      - name: Verify P07 gateway E2E
+        shell: pwsh
+        run: ./eng/verify.ps1 -Gate E2E -Profile ci
       - name: Verify package contracts
         shell: pwsh
         run: ./eng/verify.ps1 -Gate Contract -Profile ci
       - name: Verify dependency security
         shell: pwsh
         run: ./eng/verify.ps1 -Gate Security -Profile ci
-      - name: Record non-applicable gates
+      - name: Record remaining non-applicable gates
         shell: pwsh
         run: |
-          ./eng/verify.ps1 -Gate E2E -Profile ci
           ./eng/verify.ps1 -Gate Performance -Profile ci
           ./eng/verify.ps1 -Gate Migration -Profile ci
       - name: Preserve verification evidence
