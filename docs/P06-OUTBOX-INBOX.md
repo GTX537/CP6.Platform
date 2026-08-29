@@ -4,11 +4,11 @@
 | --- | --- |
 | 决策状态 | Accepted implementation scope |
 | 实现状态 | Candidate |
-| 版本 | `0.6.0.0` / package metadata `0.6.0-alpha.0` |
+| 版本 | `0.6.0.0` / package metadata `0.6.0-alpha.1` |
 | 前置 | P02 RequestContext、P04 CloudEvents/JSON Schema、P05 Dapr/Kafka addressing |
 | 日期 | 2026-08-29 |
 
-仓库交付版本使用四段 `VERSION`：`0.6.0.0`；候选 package metadata `0.6.0-alpha.0` 在 Platform main、不可变发布和 CRM 固定版本 SQL 消费闭环完成前不得标记为 `Frozen / Consumable`。
+仓库交付版本使用四段 `VERSION`：`0.6.0.0`；不可变候选 package metadata `0.6.0-alpha.1` 在 Platform main、不可变发布和 CRM 固定版本 SQL 消费闭环完成前不得标记为 `Frozen / Consumable`。
 
 ## 1. 目标与事务边界
 

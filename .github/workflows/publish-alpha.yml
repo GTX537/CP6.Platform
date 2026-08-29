@@ -47,7 +47,7 @@ jobs:
           ./eng/verify.ps1 -Gate Security -Profile release
       - name: Pack approved P06 packages
         shell: pwsh
-        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.6.0-alpha.0
+        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.6.0-alpha.1
       - name: Publish immutable packages
         shell: pwsh
         env:
