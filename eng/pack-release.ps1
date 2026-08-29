@@ -3,7 +3,7 @@ param(
     [Parameter(Mandatory = $true)]
     [string]$OutputDirectory,
 
-    [string]$PackageVersion = '0.5.0-alpha.1'
+    [string]$PackageVersion = '0.6.0-alpha.0'
 )
 
 $ErrorActionPreference = 'Stop'
@@ -15,7 +15,8 @@ $projects = @(
     'src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj',
     'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',
     'src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj',
-    'src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj'
+    'src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj',
+    'src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj'
 )
 
 if (-not $resolvedOutput.StartsWith($artifactsPrefix, [StringComparison]::OrdinalIgnoreCase)) {
@@ -39,14 +40,14 @@ try {
     Pop-Location
 }
 
-$packageIds = @('CP6.Platform.Contracts', 'CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Messaging')
+$packageIds = @('CP6.Platform.Contracts', 'CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Messaging', 'CP6.Platform.EntityFramework')
 $packages = @(Get-ChildItem -LiteralPath $resolvedOutput -Filter '*.nupkg' -File |
     Where-Object { $_.Name -notlike '*.snupkg' } |
     Sort-Object Name)
 $expectedNames = @($packageIds | ForEach-Object { "$($_).$PackageVersion.nupkg" } | Sort-Object)
 
 if (($packages.Name | ConvertTo-Json -Compress) -ne ($expectedNames | ConvertTo-Json -Compress)) {
-    throw "Release package set is not the approved P05 set: $($packages.Name -join ', ')."
+    throw "Release package set is not the approved P06 set: $($packages.Name -join ', ')."
 }
 
 foreach ($package in $packages) {
@@ -91,4 +92,4 @@ $hashes = @($packages | ForEach-Object {
     }
 })
 $hashes | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $resolvedOutput 'sha256.json') -Encoding utf8
-Write-Host "Prepared $($packages.Count) immutable P05 packages in $resolvedOutput."
+Write-Host "Prepared $($packages.Count) immutable P06 packages in $resolvedOutput."

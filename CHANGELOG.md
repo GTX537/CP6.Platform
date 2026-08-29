@@ -2,6 +2,12 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## 0.6.0.0 - 2026-08-29
+
+- Add caller-owned atomic EF Outbox enqueueing, conditional lease-token dispatch, bounded retry, outbound DLQ and audited requeue while preserving the original event id.
+- Add validate-before-database Inbox processing with `(ConsumerName, MessageId)` uniqueness, payload-hash conflict detection, aggregate-version checkpoints, poison-message rollback/DLQ and audited replay.
+- Add published Outbox, processed Inbox and dead-letter retention defaults of 7/30/90 days, plus a pinned real SQL Server gate covering rollback, duplicate, ordering, lease-expiry and replay behavior.
+
 ## 0.5.0.0 - 2026-08-28
 
 - Add the P05 Dapr service-invocation and structured CloudEvent Pub/Sub adapters on top of the frozen P04 contract validator; immutable publication and CRM PR/main fixed-version consumption are verified.

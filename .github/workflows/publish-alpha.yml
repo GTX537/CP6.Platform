@@ -42,11 +42,12 @@ jobs:
           ./eng/verify.ps1 -Gate Build -Profile release
           ./eng/verify.ps1 -Gate Unit -Profile release
           ./eng/verify.ps1 -Gate Integration -Profile p05-real
+          ./eng/verify.ps1 -Gate Integration -Profile p06-real
           ./eng/verify.ps1 -Gate Contract -Profile release
           ./eng/verify.ps1 -Gate Security -Profile release
-      - name: Pack approved P05 packages
+      - name: Pack approved P06 packages
         shell: pwsh
-        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.5.0-alpha.1
+        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.6.0-alpha.0
       - name: Publish immutable packages
         shell: pwsh
         env:
@@ -62,7 +63,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: p05-alpha-${{ inputs.expected_commit }}
+          name: p06-alpha-${{ inputs.expected_commit }}
           path: |
             artifacts/release/**
             artifacts/verify/**

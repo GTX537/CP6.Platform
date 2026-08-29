@@ -82,6 +82,13 @@ public sealed class RepositoryArchitectureTests
                     packageReferences.Order(StringComparer.Ordinal));
                 Assert.Empty(frameworkReferences);
             }
+            else if (packageId == "CP6.Platform.EntityFramework")
+            {
+                Assert.Equal(
+                    ["Microsoft.EntityFrameworkCore", "Microsoft.EntityFrameworkCore.Relational"],
+                    packageReferences.Order(StringComparer.Ordinal));
+                Assert.Empty(frameworkReferences);
+            }
             else
             {
                 Assert.Empty(packageReferences);
