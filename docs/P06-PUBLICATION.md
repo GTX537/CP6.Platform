@@ -3,7 +3,7 @@
 | 项目 | 值 |
 | --- | --- |
 | 公开里程碑 | `P06-S02` |
-| 状态 | Ready for immutable publication |
+| 状态 | Published / immutable evidence verified / CRM fixed-version consumption passed |
 | 前置 | P06-S01 已合并到 Platform `main@aa4cce820c2bd0104ed461d92e2ded481ccc8ba1`；main run 33241821365 全通过 |
 | 输入 | Platform 当前 `main` 完整 SHA、`0.6.0-alpha.1`、P04/P05 contract 与 P06 SQL semantics |
 | 输出 | GitHub Packages 中五个固定版本 NuGet 包、`sha256.json`、全部 verify、Dapr/Kafka 与 SQL Server 证据 |
@@ -45,6 +45,20 @@ gh workflow run publish-alpha.yml --ref main -f expected_commit=<full-main-sha>
 3. 五个普通 `.nupkg` 发布成功，包名、版本、数量和 SHA-256 与 artifact 一致；
 4. CRM 从 GitHub Packages 固定 `0.6.0-alpha.1` 恢复，并用真实 SQL Server 验证重复、冲突、乱序和 handler 失败均无业务副作用；
 5. Platform、CRM 与公共 CP6 记忆均绑定精确 commit、PR 和 run 证据后，P06 才可标为 `Frozen / Consumable`。
+
+## 完成证据
+
+- 发布基线：`CP6.Platform main@3b1669a05f9b265f9b3fb14ade4d656018cbf6b5`；实现 main run 33241821365、发布 main run 33242125202 和 exact-main publish run 33242264497 均成功，后者从精确 SHA 重跑 release、真实 Dapr/Kafka 与真实 SQL Server 门禁。
+- 发布 artifact：ID 9711742920；SHA-256 `44431d7f359ea524ba9dc438f6f70d24bf34be69411729a2fe1953e3039b3b86`。
+- 不可变包：
+  - `CP6.Platform.Contracts 0.6.0-alpha.1`：`acb42d617635ed6ba484edf1281a6c3a049c209d0c861015e5a9e269141722a4`
+  - `CP6.Platform.Abstractions 0.6.0-alpha.1`：`004ff6d528e7d15a2887df51f42035105804988d49e387d87aea6f0555e4b759`
+  - `CP6.Platform.AspNetCore 0.6.0-alpha.1`：`1104e5319195a2ff8a59a4cf3893766fa959e8733a10486cf260998c61c020fb`
+  - `CP6.Platform.EntityFramework 0.6.0-alpha.1`：`63491b51b6c0302b0ec662341764181665952c36788f1ef4dcd1424ef75777e7`
+  - `CP6.Platform.Messaging 0.6.0-alpha.1`：`5bcbb2bec969ac463876b84c87c36d6a93b316642943ab5f3ded2103d8c6c410`
+- CRM 消费：PR #29 run 33243227124 attempt 3 和合并后 `main@910804f5e7fa02569da958ae325997e10c0ffbc0` run 33244344319 通过固定版本恢复、真实 SQL Server、28/28 .NET、39/39 Web、production build 与 3/3 Chromium smoke。
+- 冻结边界：CRM PR #30 run 33244749522 与最终 `main@744ca5d9d06db4470d18a4d8ce3ecfbae42f1d2c` run 33245027773 通过，把机器 locator 固定为 `Frozen / Consumable`；不启用 Worker、运行时订阅或业务事件。
+- 公共同步：`GTX537/CP6` PR #69 的六组 PR runs 全通过并合并为 `main@d049ed37c5db4dca38bdfb171f9bc8a5e76f61f1`；exact-main runs 33246016907、33246016908、33246016913、33246016923、33246016953 全部成功。
 
 ## 失败与前向修复
 
