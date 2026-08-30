@@ -29,6 +29,7 @@
 | `src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs` | Install the CP6 BCL propagator together with the existing OTel propagator |
 | `tests/CP6.Platform.ArchitectureTests/RepositoryArchitectureTests.cs` | Pin alpha.2 release-source and remediation-status invariants |
 | `Directory.Build.props` | Set default package suffix to `alpha.2` |
+| `docs/superpowers/specs/2026-08-30-p08-observability-resilience-design.md` | Amend the current candidate decision from disqualified alpha.1 to forward-only alpha.2 |
 | `eng/verify.ps1` | Verify and reproduce exact alpha.2 packages |
 | `eng/pack-release.ps1` | Default release pack to alpha.2 |
 | `.github/workflows/publish-alpha.yml` | Publish alpha.2 only from an exact current main commit |
@@ -205,6 +206,7 @@ git commit -m "fix(observability): block outbound HTTP baggage"
 **Files:**
 - Modify: `tests/CP6.Platform.ArchitectureTests/RepositoryArchitectureTests.cs`
 - Modify: `Directory.Build.props`
+- Modify: `docs/superpowers/specs/2026-08-30-p08-observability-resilience-design.md`
 - Modify: `eng/verify.ps1`
 - Modify: `eng/pack-release.ps1`
 - Modify: `.github/workflows/publish-alpha.yml`
@@ -245,6 +247,7 @@ Expected: failure because current release source is alpha.1.
 - [ ] **Step 3: Change exactly four release-source values**
 
 - `Directory.Build.props`: `<VersionSuffix>alpha.2</VersionSuffix>`
+- `docs/superpowers/specs/2026-08-30-p08-observability-resilience-design.md`: change the current candidate, immutable publication, Testing exclusion, and S02 version references to `0.8.0-alpha.2`, and record that alpha.1 remains immutable historical evidence but is disqualified for consumption
 - `eng/verify.ps1`: `$packageVersion = '0.8.0-alpha.2'`
 - `eng/pack-release.ps1`: `[string]$PackageVersion = '0.8.0-alpha.2'`
 - `.github/workflows/publish-alpha.yml`: `-PackageVersion 0.8.0-alpha.2`

@@ -6,8 +6,10 @@
 | 设计状态 | Approved design / implementation not started |
 | 日期 | 2026-08-30 |
 | 权威前置 | P03、P05、P06 均为 `Frozen / Consumable`；P07 已完成但不是 P08 前置 |
-| 候选版本 | repository `0.8.0.0` / package `0.8.0-alpha.1` |
+| 候选版本 | repository `0.8.0.0` / package `0.8.0-alpha.2` |
 | 完成证据 | 跨两个独立服务的 Trace、故障注入、不可变包发布与 CRM 固定版本消费 |
+
+修订说明：不可变 `0.8.0-alpha.1` 保留为历史发布证据，但 CRM 黑盒测试证明其 BCL `HttpClient` 仍转发 baggage，因此不得消费；唯一前向替代候选为 `0.8.0-alpha.2`，禁止覆盖或删除 alpha.1。
 
 ## 1. 背景与目标
 
@@ -20,7 +22,7 @@ P08 的目标是提供 exporter-neutral 的可复用 SDK 合同，并用确定�
 3. timeout、circuit breaker 和显式幂等 retry 具有失败关闭边界；
 4. Outbox/Inbox、Dapr/Kafka 与 HTTP 具有稳定 Trace/Metric，而 instrumentation 不改变既有事务和副作用语义；
 5. SLO 证据可被版本化、内容寻址、判定完整性并绑定不可变发布身份；
-6. Platform 从精确 `main` 发布不可变 `0.8.0-alpha.1` 后，由 CRM 固定版本完成消费验证。
+6. Platform 从精确 `main` 发布不可变 `0.8.0-alpha.2` 后，由 CRM 固定版本完成消费验证。
 
 ## 2. 明确不做
 
@@ -107,7 +109,7 @@ Instrumentation 必须在现有事务边界外观察或在同一调用栈记录�
 
 Testing 包不得成为五个生产包的运行时依赖。非 Test/CI 环境尝试注册故障注入必须启动失败。
 
-Testing 继续是仓库内测试支持项目，不进入 `0.8.0-alpha.1` 发布集合。CRM 固定版本消费只引用五个生产包，并用 CRM 自有黑盒测试 host/handler 验证公开行为；不得通过跨仓 ProjectReference 或复制 Testing 源码建立消费证据。
+Testing 继续是仓库内测试支持项目，不进入 `0.8.0-alpha.2` 发布集合。CRM 固定版本消费只引用五个生产包，并用 CRM 自有黑盒测试 host/handler 验证公开行为；不得通过跨仓 ProjectReference 或复制 Testing 源码建立消费证据。
 
 ## 5. Trace 与 correlation 数据流
 
@@ -255,7 +257,7 @@ P08 提供模板和测试环境示例，至少覆盖：
 
 1. `P08-S00`：本设计经批准并提交；
 2. `P08-S01`：Platform 实现、测试和文档，PR/main 的 Windows、Linux、真实 Dapr/Kafka、真实 SQL Server 门禁通过；
-3. `P08-S02`：从精确 Platform `main` 发布五个不可变 `0.8.0-alpha.1` 包和 hash artifact；
+3. `P08-S02`：从精确 Platform `main` 发布五个不可变 `0.8.0-alpha.2` 包和 hash artifact；
 4. `P08-S03`：CRM 只固定引用五个生产包，并用自有黑盒测试 host/handler 证明跨服务 Trace、health redaction、release identity、resilience 与故障注入；不引用 Platform Testing、不注册真实 exporter/策略；
 5. `P08-S04`：CRM locator 冻结为 `Frozen / Consumable`；
 6. `P08-S05`：公共 CP6 项目记忆绑定 producer/package/consumer PR/main/run；
