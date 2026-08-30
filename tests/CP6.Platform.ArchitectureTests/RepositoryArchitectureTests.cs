@@ -293,7 +293,7 @@ public sealed class RepositoryArchitectureTests
             var text = File.ReadAllText(path);
             content.Add(relativePath, text);
             Assert.Contains(
-                "P08 status: S00-S01 complete; S02-S06 pending.",
+                "P08 status: S00-S02 complete; S03-S06 pending.",
                 text,
                 StringComparison.Ordinal);
             foreach (var forbidden in new[] { "TODO", "TBD", "FIXME" })
@@ -360,13 +360,18 @@ public sealed class RepositoryArchitectureTests
             }
         }
 
-        var safetyText = combined.Replace(
+        var safetyText = combined;
+        foreach (var allowedUrl in new[]
+        {
             "https://contracts.cp6.uk/observability/slo-evidence/v1/schema.json",
-            string.Empty,
-            StringComparison.Ordinal).Replace(
-                "https://github.com/GTX537/CP6.Platform/actions/runs/33303723733",
-                string.Empty,
-                StringComparison.Ordinal);
+            "https://github.com/GTX537/CP6.Platform/actions/runs/33303723733",
+            "https://github.com/GTX537/CP6.Platform/pull/21",
+            "https://github.com/GTX537/CP6.Platform/actions/runs/33305166884",
+            "https://github.com/GTX537/CP6.Platform/actions/runs/33305345694"
+        })
+        {
+            safetyText = safetyText.Replace(allowedUrl, string.Empty, StringComparison.Ordinal);
+        }
         foreach (var forbidden in new[]
         {
             "http://",
