@@ -12,7 +12,12 @@ public sealed class FoundationContractTests
     public void Version_UsesAuditableFourPartFormat()
     {
         var version = File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim();
-        var decisionRecord = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P07-YARP-GATEWAY.md"));
+        var decisionRecord = File.ReadAllText(Path.Combine(
+            RepositoryRoot,
+            "docs",
+            "superpowers",
+            "specs",
+            "2026-08-30-p08-observability-resilience-design.md"));
         var changelog = File.ReadAllText(Path.Combine(RepositoryRoot, "CHANGELOG.md"));
         var props = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
         var packageVersion = $"{props.Descendants("VersionPrefix").Single().Value}-{props.Descendants("VersionSuffix").Single().Value}";
@@ -21,10 +26,8 @@ public sealed class FoundationContractTests
         var publication = File.ReadAllText(Path.Combine(RepositoryRoot, ".github", "workflows", "publish-alpha.yml"));
 
         Assert.Matches(new Regex(@"^\d+\.\d+\.\d+\.\d+$", RegexOptions.CultureInvariant), version);
-        Assert.Contains($"`{version}` / package metadata", decisionRecord, StringComparison.Ordinal);
-        Assert.Contains($"仓库交付版本使用四段 `VERSION`：`{version}`", decisionRecord, StringComparison.Ordinal);
+        Assert.Contains($"repository `{version}` / package `{packageVersion}`", decisionRecord, StringComparison.Ordinal);
         Assert.Contains($"## {version} -", changelog, StringComparison.Ordinal);
-        Assert.Contains($"package metadata `{packageVersion}`", decisionRecord, StringComparison.Ordinal);
         Assert.Contains($"$packageVersion = '{packageVersion}'", verification, StringComparison.Ordinal);
         Assert.Contains($"[string]$PackageVersion = '{packageVersion}'", releasePack, StringComparison.Ordinal);
         Assert.Contains($"-PackageVersion {packageVersion}", publication, StringComparison.Ordinal);

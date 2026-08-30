@@ -2,6 +2,12 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## 0.8.0.0 - 2026-08-30
+
+- Begin P08-S01 from the approved observability, health, resilience, and SLO evidence design.
+- Freeze the exporter-neutral OpenTelemetry and HTTP resilience dependency baseline for `0.8.0-alpha.1` while keeping collectors, dashboards, environment routes, deployment, immutable publication, and CRM consumption outside this implementation stage.
+- Add validated immutable release identity and low-cardinality telemetry naming contracts; P08 remains in progress until S01–S06 evidence closes.
+
 ## 0.7.0.0 - 2026-08-29
 
 - Add a validated, code-owned YARP route/cluster profile with HTTPS-by-default destinations and mandatory route rate limits.

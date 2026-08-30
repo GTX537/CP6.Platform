@@ -18,7 +18,7 @@ $startedAt = [DateTimeOffset]::UtcNow
 $status = 'Passed'
 $failureMessage = $null
 $checks = [System.Collections.Generic.List[object]]::new()
-$packageVersion = '0.7.0-alpha.1'
+$packageVersion = '0.8.0-alpha.1'
 $runtimePackageProjects = @(
     'src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj',
     'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',
@@ -136,7 +136,7 @@ function Assert-ReproduciblePackages {
     } | Sort-Object)
     $actualNames = @($firstPackages.Name | Sort-Object)
     if (($expectedNames | ConvertTo-Json -Compress) -ne ($actualNames | ConvertTo-Json -Compress)) {
-        throw "Package set differs from the five approved P07-S01 package IDs: $($actualNames -join ', ')."
+        throw "Package set differs from the five approved P08-S01 package IDs: $($actualNames -join ', ')."
     }
 
     $messagingPackage = $firstPackages | Where-Object { $_.Name -eq "CP6.Platform.Messaging.$packageVersion.nupkg" }
@@ -316,8 +316,8 @@ try {
                 '--filter', 'FullyQualifiedName~GatewayContractTests'
             )
         }
-        'Performance' { Add-NotApplicableCheck 'P07-S01 freezes bounded route-level rate limiting but P08 owns system performance and resilience thresholds.' }
-        'Migration' { Add-NotApplicableCheck 'P07-S01 contains no database schema or migration assets.' }
+        'Performance' { Add-NotApplicableCheck 'P08-S01 freezes evidence contracts but does not claim production performance or SLO thresholds.' }
+        'Migration' { Add-NotApplicableCheck 'P08-S01 contains no database schema or migration assets.' }
     }
 } catch {
     $status = 'Failed'

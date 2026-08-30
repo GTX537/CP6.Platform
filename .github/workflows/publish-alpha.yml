@@ -46,9 +46,9 @@ jobs:
           ./eng/verify.ps1 -Gate E2E -Profile release
           ./eng/verify.ps1 -Gate Contract -Profile release
           ./eng/verify.ps1 -Gate Security -Profile release
-      - name: Pack approved P07 packages
+      - name: Pack approved P08 packages
         shell: pwsh
-        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.7.0-alpha.1
+        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.8.0-alpha.1
       - name: Publish immutable packages
         shell: pwsh
         env:
@@ -64,7 +64,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
-          name: p07-alpha-${{ inputs.expected_commit }}
+          name: p08-alpha-${{ inputs.expected_commit }}
           path: |
             artifacts/release/**
             artifacts/verify/**
