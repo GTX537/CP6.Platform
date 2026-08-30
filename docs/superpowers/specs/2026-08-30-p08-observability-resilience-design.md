@@ -3,13 +3,15 @@
 | 项目 | 值 |
 | --- | --- |
 | 里程碑 | `P08` |
-| 设计状态 | Remediation implemented / alpha.2 publication pending |
+| 设计状态 | Accepted historical design / alpha.2 published / stage-state interpretation forward-corrected |
 | 日期 | 2026-08-30 |
 | 权威前置 | P03、P05、P06 均为 `Frozen / Consumable`；P07 已完成但不是 P08 前置 |
 | 候选版本 | repository `0.8.0.0` / package `0.8.0-alpha.2` |
 | 完成证据 | 跨两个独立服务的 Trace、故障注入、不可变包发布与 CRM 固定版本消费 |
 
 修订说明：不可变 `0.8.0-alpha.1` 保留为历史发布证据，但 CRM 黑盒测试证明其 BCL `HttpClient` 仍转发 baggage，因此不得消费；唯一前向替代候选为 `0.8.0-alpha.2`，禁止覆盖或删除 alpha.1。
+
+> **权威前向纠正（2026-08-30）：** 以下原始设计正文保留为历史记录，但阶段状态解释由本注记与 `docs/P08-PUBLICATION.md` 取代。`0.8.0-alpha.2` 已完成不可变发布；`P08-S04` 只完成 CRM consumer evidence 与 locator reconciliation，当前全局状态仍为 `Published / Consumer Candidate`；`P08-S05` 负责公共项目记忆同步；`P08-S06` Platform 最终审计及其 exact-main 门禁成功后，才首次允许全局声明 `Frozen / Consumable`。
 
 ## 1. 背景与目标
 
@@ -262,6 +264,8 @@ P08 提供模板和测试环境示例，至少覆盖：
 5. `P08-S04`：CRM locator 冻结为 `Frozen / Consumable`；
 6. `P08-S05`：公共 CP6 项目记忆绑定 producer/package/consumer PR/main/run；
 7. `P08-S06`：Platform 最终证据文档冻结并通过 PR/main 门禁。
+
+> 上述原始第 5 项中的“冻结”措辞已被本文件开头的权威前向纠正取代，不得用来提前关闭 P08。
 
 只有七步全部完成，P08 才可标记为 `Frozen / Consumable`。任何单仓测试、候选实现、包已上传或示例 Trace 都不能提前关闭 P08。
 

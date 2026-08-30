@@ -1,10 +1,10 @@
-# P08-S02 immutable package publication evidence
+# P08 immutable package and CRM consumer evidence
 
-P08 status: S00-S02 complete; S03-S06 pending.
+P08 status: S00-S04 complete; S05-S06 pending. Current decision: `Published / Consumer Candidate`.
 
 ## Remediation decision
 
-The immutable `0.8.0-alpha.1` packages remain historical publication evidence but are disqualified as the CRM consumer candidate: the real downstream request still received baggage because only the OpenTelemetry propagator, not the BCL `HttpClient` propagator, was constrained. The forward-only replacement `0.8.0-alpha.2` was published from exact Platform main and independently verified without overwriting or deleting alpha.1. S02 is complete again; CRM fixed-version consumption remains S03.
+The immutable `0.8.0-alpha.1` packages remain historical publication evidence but are disqualified as the CRM consumer candidate: the real downstream request still received baggage because only the OpenTelemetry propagator, not the BCL `HttpClient` propagator, was constrained. The forward-only replacement `0.8.0-alpha.2` was published from exact Platform main and independently verified without overwriting or deleting alpha.1. CRM then completed fixed-version black-box consumption and evidence reconciliation on alpha.2. S00-S04 are complete; public S05 synchronization and the Platform S06 final audit remain mandatory before the first global `Frozen / Consumable` decision.
 
 ## Prior alpha.1 publication decision
 
@@ -60,10 +60,30 @@ The two-host fixture proves one W3C server/client/server trace with distinct spa
 | S00 | Complete | Approved design and implementation plan merged to Platform main |
 | S01 | Complete | Platform PR #19 merged; Windows/Linux, real Dapr/Kafka, and real SQL main jobs green |
 | S02 | Complete | Exact-main `0.8.0-alpha.2` published and independently verified without altering alpha.1 |
-| S03 | Pending | CRM fixed-version consumption through CRM PR and main CI |
-| S04 | Pending | Package locator and source-of-truth reconciliation |
+| S03 | Complete | CRM PR #33 and exact post-merge main passed fixed-version black-box and retained SQL gates |
+| S04 | Complete | CRM PR #34 evidence snapshot plus PR #35 forward correction reconciled the machine locator and source-of-truth boundary |
 | S05 | Pending | Public project-memory and changelog reconciliation |
 | S06 | Pending | Final evidence audit and `Frozen / Consumable` decision |
+
+## CRM S03 fixed-version consumer evidence
+
+- Consumer PR: [CRM PR #33](https://github.com/GTX537/CP6.CRM/pull/33), head `e6358ad776facc4e13b313b960b650e7b1845d83`.
+- PR workflow: [crm-validation run 33329003327](https://github.com/GTX537/CP6.CRM/actions/runs/33329003327), with both `crm-validation` and `platform-p06-sql-consumer` successful.
+- PR SQL artifact: ID `9737092867`, API digest `sha256:acfa2382c9878f2f4608de14cd09ab6f9620ab4171040a60c920446df835e73b`.
+- Consumer merge and main: `78577658159d4270c87c0d275259aeee47224711`; [main run 33329320097](https://github.com/GTX537/CP6.CRM/actions/runs/33329320097) passed both jobs.
+- Main SQL artifact: ID `9737180305`, API digest `sha256:91f68ddb0cd67f102ca8c9795631fd3d009e7f85767915aff2a4abc4a51660fd`.
+- The complete gate restored only the five exact `0.8.0-alpha.2` production packages, passed 24/24 CRM-owned P08 black-box cases and 63/63 .NET tests, retained the real SQL regression, and passed 40/40 M0, 39/39 Web, production build, and 3/3 Chromium smoke.
+
+## CRM S04 evidence reconciliation and forward correction
+
+- Evidence PR: [CRM PR #34](https://github.com/GTX537/CP6.CRM/pull/34), head `f0b22c7415ed51b19375664d7cac83024af92986`; [PR run 33330377723](https://github.com/GTX537/CP6.CRM/actions/runs/33330377723) passed both jobs.
+- Evidence merge and main: `45d0418884b3e21e62d87315ea7ef5f595f1819a`; [main run 33330705446](https://github.com/GTX537/CP6.CRM/actions/runs/33330705446) passed both jobs.
+- PR/main SQL artifacts: ID `9737472407`, digest `sha256:62e27a980c8ed2e7f1abab95332e4ca689eedc88c80381a8879eb5bbff199cc8`; ID `9737563354`, digest `sha256:02485cb11308b9d142e73c58de056a6c43c02cc48e0d0a677bbc9fcdb72df340`.
+- PR #34's package, test, run, and artifact identities remain authoritative S04 evidence, but its global `Frozen / Consumable` wording was premature because this ledger assigns that decision to S06.
+- Forward-correction PR: [CRM PR #35](https://github.com/GTX537/CP6.CRM/pull/35), head `8bd521860396b81d235ae6887b58ebd5718b85ad`; [PR run 33332328534](https://github.com/GTX537/CP6.CRM/actions/runs/33332328534) passed both jobs and bound every PR #34 identity in the machine locator and verifier.
+- Correction merge and main: `bc565fce5bf84904eb1bbe11e7ab13cf6a1e016a`; [main run 33332741550](https://github.com/GTX537/CP6.CRM/actions/runs/33332741550) passed both jobs.
+- Correction PR/main SQL artifacts: ID `9738014861`, digest `sha256:f28d757928959d1c4e4b06f41be773b89b618afcd650cd10cd87dbef7218a4e5`; ID `9738124159`, digest `sha256:9b360a9f2e05b6c376acea5e2308c05f787315c4d059f005cf114c3ccc8b98bc`.
+- Current CRM machine status is therefore `Published / Consumer Candidate`. The correction changed no package, runtime registration, exporter, production SLO, or deployment boundary and rewrote no history.
 
 ## Alpha.2 remediation PR and exact-main evidence
 
@@ -222,9 +242,9 @@ The downloaded `sha256.json` contained exactly these ten filenames and hashes. A
 - The `verify` root retained 56 non-empty files for Format, Build, Unit, Integration, E2E, Contract, Security, two independent packs, summaries, logs, JUnit results, and package entry hashes.
 - Independent archive inspection proved one non-empty `lib/net8.0` runtime assembly per ordinary package, P08 assets only in Contracts, P04 event assets only in Messaging, and no Testing assets, machine paths, or unsafe text content.
 
-## S02 boundary
+## Current boundary
 
-The retained alpha.1 evidence proves its immutable historical publication only; CRM must not consume it as the P08 candidate. Alpha.2 is the sole forward consumer candidate. CRM fixed-version consumption, machine locator reconciliation, public project-memory synchronization, and the final evidence audit remain S03-S06. P08 is not `Frozen / Consumable` at this stage.
+The retained alpha.1 evidence proves its immutable historical publication only; CRM must not consume it as the P08 candidate. Alpha.2 is the sole forward consumer candidate. CRM fixed-version consumption and machine locator reconciliation are complete. Public project-memory synchronization remains S05 and the Platform final evidence audit remains S06. P08 is not `Frozen / Consumable` at this stage.
 
 ## Stable contract identifiers
 

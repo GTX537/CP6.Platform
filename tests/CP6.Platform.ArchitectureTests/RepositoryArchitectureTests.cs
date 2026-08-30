@@ -300,7 +300,7 @@ public sealed class RepositoryArchitectureTests
             var text = File.ReadAllText(path);
             content.Add(relativePath, text);
             Assert.Contains(
-                "P08 status: S00-S02 complete; S03-S06 pending.",
+                "P08 status: S00-S04 complete; S05-S06 pending. Current decision: `Published / Consumer Candidate`.",
                 text,
                 StringComparison.Ordinal);
             foreach (var forbidden in new[] { "TODO", "TBD", "FIXME" })
@@ -379,6 +379,15 @@ public sealed class RepositoryArchitectureTests
             "https://github.com/GTX537/CP6.Platform/actions/runs/33320438234",
             "https://github.com/GTX537/CP6.Platform/actions/runs/33320608737",
             "https://github.com/GTX537/CP6.Platform/actions/runs/33320840180",
+            "https://github.com/GTX537/CP6.CRM/pull/33",
+            "https://github.com/GTX537/CP6.CRM/actions/runs/33329003327",
+            "https://github.com/GTX537/CP6.CRM/actions/runs/33329320097",
+            "https://github.com/GTX537/CP6.CRM/pull/34",
+            "https://github.com/GTX537/CP6.CRM/actions/runs/33330377723",
+            "https://github.com/GTX537/CP6.CRM/actions/runs/33330705446",
+            "https://github.com/GTX537/CP6.CRM/pull/35",
+            "https://github.com/GTX537/CP6.CRM/actions/runs/33332328534",
+            "https://github.com/GTX537/CP6.CRM/actions/runs/33332741550",
             "https://github.com/users/GTX537/packages/nuget/CP6.Platform.Abstractions/1188299233",
             "https://github.com/users/GTX537/packages/nuget/CP6.Platform.AspNetCore/1188299259",
             "https://github.com/users/GTX537/packages/nuget/CP6.Platform.Contracts/1188299302",

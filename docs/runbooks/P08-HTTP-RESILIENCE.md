@@ -1,6 +1,6 @@
 # Outbound HTTP resilience incident
 
-P08 status: S00-S02 complete; S03-S06 pending.
+P08 status: S00-S04 complete; S05-S06 pending. Current decision: `Published / Consumer Candidate`.
 
 Runbook ID: `CP6-P08-RESILIENCE-001`
 
