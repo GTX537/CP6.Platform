@@ -1,8 +1,8 @@
 # P08 observability, health, resilience, and SLO evidence
 
-P08 status: S00-S01 complete; S02 remediation pending; S03-S06 pending.
+P08 status: S00-S02 complete; S03-S06 pending.
 
-This guide is the consumer contract target for the immutable `0.8.0-alpha.2` replacement packages. The published alpha.1 artifacts remain historical evidence but are disqualified as the CRM consumer candidate because their BCL HTTP propagation still forwarded baggage. Alpha.2 defines exporter-neutral telemetry, safe operational endpoints, fail-closed outbound HTTP resilience, trace-only W3C propagation, and immutable SLO evidence. CRM consumption, locator updates, public memory, and final freeze remain separate stages.
+This guide is the consumer contract for the published immutable `0.8.0-alpha.2` replacement packages. The published alpha.1 artifacts remain historical evidence but are disqualified as the CRM consumer candidate because their BCL HTTP propagation still forwarded baggage. Alpha.2 defines exporter-neutral telemetry, safe operational endpoints, fail-closed outbound HTTP resilience, trace-only W3C propagation, and immutable SLO evidence. CRM consumption, locator updates, public memory, and final freeze remain separate stages.
 
 ## Install and package boundary
 
