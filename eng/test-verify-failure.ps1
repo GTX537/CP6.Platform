@@ -25,30 +25,32 @@ try {
     $originalPath = $env:PATH
     $env:PATH = "$fakeBin$([IO.Path]::PathSeparator)$originalPath"
     try {
-        & pwsh (Join-Path $testEng 'verify.ps1') -Gate Build -Profile failure-contract 2>&1 | Out-Null
-        $verifyExitCode = $LASTEXITCODE
+        foreach ($gate in @('Build', 'E2E', 'Contract')) {
+            & pwsh (Join-Path $testEng 'verify.ps1') -Gate $gate -Profile failure-contract 2>&1 | Out-Null
+            $verifyExitCode = $LASTEXITCODE
+            if ($verifyExitCode -eq 0) {
+                throw "The $gate gate unexpectedly succeeded when dotnet returned exit code 23."
+            }
+
+            $gateDirectory = $gate.ToLowerInvariant()
+            $summaryPath = Join-Path $testRoot "artifacts/verify/$gateDirectory/summary.json"
+            $junitPath = Join-Path $testRoot "artifacts/verify/$gateDirectory/results.junit.xml"
+            if (-not (Test-Path -LiteralPath $summaryPath) -or -not (Test-Path -LiteralPath $junitPath)) {
+                throw "The failed $gate gate did not create both summary.json and results.junit.xml."
+            }
+
+            $summary = Get-Content -LiteralPath $summaryPath -Raw | ConvertFrom-Json
+            if ($summary.schemaVersion -ne 1 -or $summary.gate -ne $gate -or $summary.status -ne 'Failed') {
+                throw "The failed $gate summary does not match the version 1 failure contract."
+            }
+
+            [xml]$junit = Get-Content -LiteralPath $junitPath -Raw
+            if ($junit.testsuite.failures -ne '1' -or $null -eq $junit.testsuite.testcase.failure) {
+                throw "The failed $gate JUnit file does not contain one failure."
+            }
+        }
     } finally {
         $env:PATH = $originalPath
-    }
-
-    if ($verifyExitCode -eq 0) {
-        throw 'The Build gate unexpectedly succeeded when dotnet returned exit code 23.'
-    }
-
-    $summaryPath = Join-Path $testRoot 'artifacts/verify/build/summary.json'
-    $junitPath = Join-Path $testRoot 'artifacts/verify/build/results.junit.xml'
-    if (-not (Test-Path -LiteralPath $summaryPath) -or -not (Test-Path -LiteralPath $junitPath)) {
-        throw 'A failed gate did not create both summary.json and results.junit.xml.'
-    }
-
-    $summary = Get-Content -LiteralPath $summaryPath -Raw | ConvertFrom-Json
-    if ($summary.schemaVersion -ne 1 -or $summary.gate -ne 'Build' -or $summary.status -ne 'Failed') {
-        throw 'The failed gate summary does not match the version 1 failure contract.'
-    }
-
-    [xml]$junit = Get-Content -LiteralPath $junitPath -Raw
-    if ($junit.testsuite.failures -ne '1' -or $null -eq $junit.testsuite.testcase.failure) {
-        throw 'The failed gate JUnit file does not contain one failure.'
     }
 
     & pwsh (Join-Path $testEng 'verify.ps1') -Gate Performance -Profile not-applicable-contract 2>&1 | Out-Null

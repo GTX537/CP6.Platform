@@ -116,7 +116,7 @@ function Assert-ReproduciblePackages {
                             $stream.Dispose()
                         }
 
-                        [ordered]@{ Name = $_.FullName; Hash = $hash }
+                        [ordered]@{ Name = $_.FullName; Length = $_.Length; Hash = $hash }
                     })
             } finally {
                 $archive.Dispose()
@@ -137,6 +137,17 @@ function Assert-ReproduciblePackages {
     $actualNames = @($firstPackages.Name | Sort-Object)
     if (($expectedNames | ConvertTo-Json -Compress) -ne ($actualNames | ConvertTo-Json -Compress)) {
         throw "Package set differs from the five approved P08-S01 package IDs: $($actualNames -join ', ')."
+    }
+    if ($actualNames -match 'CP6\.Platform\.Testing') {
+        throw 'CP6.Platform.Testing is repository-only and must not be packaged.'
+    }
+
+    foreach ($packageId in $expectedPackageIds) {
+        $runtimePackage = $firstPackages | Where-Object { $_.Name -eq "$packageId.$packageVersion.nupkg" }
+        $assemblyPath = "lib/net8.0/$packageId.dll"
+        if (-not ($runtimePackage.Entries | Where-Object { $_.Name -eq $assemblyPath -and $_.Length -gt 0 })) {
+            throw "$($runtimePackage.Name) does not contain the expected non-empty $assemblyPath runtime assembly."
+        }
     }
 
     $messagingPackage = $firstPackages | Where-Object { $_.Name -eq "CP6.Platform.Messaging.$packageVersion.nupkg" }
@@ -160,6 +171,87 @@ function Assert-ReproduciblePackages {
         status = 'Passed'
         durationMs = 0
         assetCount = $requiredContractEntries.Count
+    })
+
+    $contractsPackage = $firstPackages | Where-Object { $_.Name -eq "CP6.Platform.Contracts.$packageVersion.nupkg" }
+    $requiredSloEntries = @(
+        'contracts/observability/slo-evidence/v1/assets.v1.json',
+        'contracts/observability/slo-evidence/v1/schema.json',
+        'contracts/observability/slo-evidence/v1/examples/non-candidate-indeterminate.json',
+        'contracts/observability/slo-evidence/v1/examples/partial-indeterminate.json',
+        'contracts/observability/slo-evidence/v1/examples/pii-negative.json',
+        'contracts/observability/slo-evidence/v1/examples/valid-pass.json'
+    )
+    $contractsEntries = @($contractsPackage.Entries.Name)
+    foreach ($requiredEntry in $requiredSloEntries) {
+        if ($requiredEntry -notin $contractsEntries) {
+            throw "Contracts package is missing required P08 SLO evidence asset: $requiredEntry"
+        }
+    }
+
+    $runtimePackages = @($firstPackages | Where-Object { $_.Name.EndsWith('.nupkg', [StringComparison]::Ordinal) -and -not $_.Name.EndsWith('.snupkg', [StringComparison]::Ordinal) })
+    foreach ($package in $runtimePackages) {
+        if ($package.Name -ne $contractsPackage.Name -and
+            ($package.Entries.Name | Where-Object { $_.StartsWith('contracts/observability/', [StringComparison]::Ordinal) })) {
+            throw "$($package.Name) contains SLO evidence assets owned only by CP6.Platform.Contracts."
+        }
+
+        if ($package.Name -ne $messagingPackage.Name -and
+            ($package.Entries.Name | Where-Object {
+                $_ -eq 'contracts/contract-bundle.v1.json' -or
+                $_.StartsWith('contracts/events/', [StringComparison]::Ordinal)
+            })) {
+            throw "$($package.Name) contains P04 event assets owned only by CP6.Platform.Messaging."
+        }
+    }
+    $checks.Add([ordered]@{
+        name = 'SloEvidencePackageContent'
+        status = 'Passed'
+        durationMs = 0
+        assetCount = $requiredSloEntries.Count
+    })
+
+    $textExtensions = @('.cs', '.json', '.md', '.nuspec', '.props', '.targets', '.txt', '.xml')
+    foreach ($packageFile in Get-ChildItem -LiteralPath $firstDirectory -File) {
+        $archive = [IO.Compression.ZipFile]::OpenRead($packageFile.FullName)
+        try {
+            foreach ($entry in $archive.Entries) {
+                if ($entry.FullName -match '(^|/)(tests?|CP6\.Platform\.Testing)(/|$)' -or
+                    $entry.FullName -match '\.Tests(?:\.|/)') {
+                    throw "$($packageFile.Name) contains a test namespace or asset: $($entry.FullName)"
+                }
+
+                if ($entry.FullName -match '^[A-Za-z]:[\\/]' -or
+                    $entry.FullName -match '^/(home|Users)/') {
+                    throw "$($packageFile.Name) contains a machine-specific entry path: $($entry.FullName)"
+                }
+
+                if ($textExtensions -contains [IO.Path]::GetExtension($entry.FullName)) {
+                    $stream = $entry.Open()
+                    $reader = [IO.StreamReader]::new($stream, [Text.Encoding]::UTF8, $true)
+                    try {
+                        $text = $reader.ReadToEnd()
+                    } finally {
+                        $reader.Dispose()
+                        $stream.Dispose()
+                    }
+
+                    if ($text -match '(?i)[A-Z]:[\\/]Users[\\/]' -or
+                        $text -match '(?i)/(home|Users)/[^/\s]+/' -or
+                        $text.Contains($repositoryRoot, [StringComparison]::OrdinalIgnoreCase)) {
+                        throw "$($packageFile.Name) contains machine-specific content in $($entry.FullName)."
+                    }
+                }
+            }
+        } finally {
+            $archive.Dispose()
+        }
+    }
+    $checks.Add([ordered]@{
+        name = 'PackageContentSafety'
+        status = 'Passed'
+        durationMs = 0
+        packageCount = $firstPackages.Count
     })
 
     if (($firstPackages | ConvertTo-Json -Depth 8 -Compress) -ne ($secondPackages | ConvertTo-Json -Depth 8 -Compress)) {

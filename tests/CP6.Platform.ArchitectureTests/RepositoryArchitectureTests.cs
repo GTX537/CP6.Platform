@@ -167,6 +167,74 @@ public sealed class RepositoryArchitectureTests
     }
 
     [Fact]
+    public void P08_PackageEvidenceAndProductionSafetyGuards_AreEncoded()
+    {
+        var productionProjects = LoadProjects()
+            .Where(project => project.Key != "CP6.Platform.Testing")
+            .ToArray();
+        foreach (var (packageId, project) in productionProjects)
+        {
+            var packedAssets = project.Document.Descendants("None")
+                .Where(item => string.Equals(item.Attribute("Pack")?.Value, "true", StringComparison.OrdinalIgnoreCase))
+                .Select(item => item.Attribute("PackagePath")?.Value ?? string.Empty)
+                .ToArray();
+            if (packageId == "CP6.Platform.Contracts")
+            {
+                Assert.Equal(["contracts/observability/%(RecursiveDir)%(Filename)%(Extension)"], packedAssets);
+            }
+            else if (packageId == "CP6.Platform.Messaging")
+            {
+                Assert.Equal(
+                    [
+                        "contracts/contract-bundle.v1.json",
+                        "contracts/events/%(RecursiveDir)%(Filename)%(Extension)"
+                    ],
+                    packedAssets);
+            }
+            else
+            {
+                Assert.Empty(packedAssets);
+            }
+
+            var sourceRoot = Path.GetDirectoryName(project.Path)!;
+            var productionText = string.Join(
+                '\n',
+                Directory.GetFiles(sourceRoot, "*.cs", SearchOption.AllDirectories)
+                    .Where(path => !HasDirectorySegment(path, "bin") && !HasDirectorySegment(path, "obj"))
+                    .Select(File.ReadAllText));
+            Assert.DoesNotContain("CP6.Platform.Testing", productionText, StringComparison.Ordinal);
+            foreach (var forbidden in new[]
+            {
+                "AddOtlpExporter",
+                "OTEL_EXPORTER_OTLP_ENDPOINT",
+                "http://localhost:4317",
+                "http://localhost:4318",
+                "collector:4317",
+                "Grafana",
+                "Tempo",
+                "Prometheus",
+                "BEGIN PRIVATE KEY",
+                "password=",
+                "MapGet(\"/deploy",
+                "MapPost(\"/deploy"
+            })
+            {
+                Assert.DoesNotContain(forbidden, productionText, StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
+        var verify = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
+        var pack = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "pack-release.ps1"));
+        Assert.Contains("SloEvidencePackageContent", verify, StringComparison.Ordinal);
+        Assert.Contains("PackageContentSafety", verify, StringComparison.Ordinal);
+        Assert.Contains("CP6.Platform.Testing", verify, StringComparison.Ordinal);
+        Assert.Contains("lib/net8.0/", verify, StringComparison.Ordinal);
+        Assert.Contains("*.snupkg", pack, StringComparison.Ordinal);
+        Assert.Contains("contracts/observability", pack, StringComparison.Ordinal);
+        Assert.Contains("CP6.Platform.Testing", pack, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void ProjectReferences_StayInsideSourceTree_AndGraphIsAcyclic()
     {
         var sourceRoot = Path.GetFullPath(Path.Combine(RepositoryRoot, "src")) + Path.DirectorySeparatorChar;
@@ -224,6 +292,10 @@ public sealed class RepositoryArchitectureTests
         var hasCycle = ExpectedDependencies[current].Any(dependency => HasCycle(origin, dependency, new HashSet<string>(path, StringComparer.Ordinal)));
         return hasCycle;
     }
+
+    private static bool HasDirectorySegment(string path, string segment) =>
+        path.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
+            .Contains(segment, StringComparer.OrdinalIgnoreCase);
 
     private static IReadOnlyDictionary<string, ProjectInfo> LoadProjects()
     {
