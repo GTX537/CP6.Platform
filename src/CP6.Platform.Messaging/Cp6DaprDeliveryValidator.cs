@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using CloudNative.CloudEvents;
 
 namespace CP6.Platform.Messaging;
@@ -27,6 +28,8 @@ public sealed record Cp6DaprDeliveryValidationResult(
     CloudEvent? CloudEvent)
 {
     public const string ErrorCode = "CP6_DAPR_MESSAGE_INVALID";
+
+    public ActivityContext? ParentContext { get; init; }
 }
 
 /// <summary>
@@ -47,6 +50,7 @@ public sealed class Cp6DaprDeliveryValidator
         string topicName,
         string partitionKey)
     {
+        var parentContext = Cp6TraceContextCodec.TryExtract(structuredEvent);
         var eventResult = validator.Validate(structuredEvent);
         if (!eventResult.IsValid || eventResult.CloudEvent is null)
         {
@@ -66,6 +70,9 @@ public sealed class Cp6DaprDeliveryValidator
             return new(false, Cp6DaprContractFailure.PartitionKeyMismatch, null);
         }
 
-        return new(true, Cp6DaprContractFailure.None, cloudEvent);
+        return new(true, Cp6DaprContractFailure.None, cloudEvent)
+        {
+            ParentContext = parentContext
+        };
     }
 }

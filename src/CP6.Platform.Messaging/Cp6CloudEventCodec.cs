@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Net.Mime;
 using System.Text.Json;
 using CloudNative.CloudEvents;
@@ -16,6 +17,12 @@ public static class Cp6CloudEventCodec
     private static readonly JsonEventFormatter Formatter = new();
 
     public static CloudEvent Create(Cp6CloudEventDescriptor descriptor, JsonElement data)
+        => Create(descriptor, data, Activity.Current?.Context);
+
+    public static CloudEvent Create(
+        Cp6CloudEventDescriptor descriptor,
+        JsonElement data,
+        ActivityContext? activityContext)
     {
         ArgumentNullException.ThrowIfNull(descriptor);
         if (data.ValueKind != JsonValueKind.Object)
@@ -43,6 +50,7 @@ public static class Cp6CloudEventCodec
         cloudEvent[Cp6CloudEventAttributes.AggregateVersion] = descriptor.AggregateVersion;
         cloudEvent[Cp6CloudEventAttributes.SchemaVersion] = descriptor.SchemaVersion;
         cloudEvent[Cp6CloudEventAttributes.Region] = descriptor.Region;
+        InjectTraceContext(cloudEvent, activityContext);
 
         ValidateEnvelope(cloudEvent, identity);
         return cloudEvent;
@@ -157,12 +165,39 @@ public static class Cp6CloudEventCodec
             throw new ArgumentException("subject must be scoped to the event tenantid.", nameof(cloudEvent));
         }
 
-        foreach (var attribute in Cp6CloudEventAttributes.All)
+        foreach (var attribute in Cp6CloudEventAttributes.Required)
         {
             if (cloudEvent[attribute] is null)
             {
                 throw new ArgumentException($"Required CP6 extension attribute '{attribute.Name}' is missing.", nameof(cloudEvent));
             }
+        }
+    }
+
+    private static void InjectTraceContext(CloudEvent cloudEvent, ActivityContext? activityContext)
+    {
+        if (activityContext is not { } context ||
+            context.TraceId == default ||
+            context.SpanId == default)
+        {
+            return;
+        }
+
+        var flags = (context.TraceFlags & ActivityTraceFlags.Recorded) != 0 ? "01" : "00";
+        var traceParent = $"00-{context.TraceId}-{context.SpanId}-{flags}";
+        var traceState = string.IsNullOrEmpty(context.TraceState) ? null : context.TraceState;
+        if (traceParent.Length > 55 ||
+            traceState?.Length > 512 ||
+            (traceState is not null && !Cp6TraceContextCodec.IsValidTraceState(traceState)) ||
+            !ActivityContext.TryParse(traceParent, traceState, isRemote: false, out _))
+        {
+            throw new ArgumentException("Activity context is not a valid bounded W3C trace context.", nameof(activityContext));
+        }
+
+        cloudEvent[Cp6CloudEventAttributes.TraceParent] = traceParent;
+        if (traceState is not null)
+        {
+            cloudEvent[Cp6CloudEventAttributes.TraceState] = traceState;
         }
     }
 }
