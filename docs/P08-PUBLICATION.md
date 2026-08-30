@@ -34,7 +34,7 @@ Candidate package version is `0.8.0-alpha.1`. The approved runtime set is Contra
 
 - Format: Passed.
 - Build: Passed with zero warnings and zero errors.
-- Unit: Passed, 123 tests; the failure-evidence self-test also passed.
+- Unit: Passed, 124 tests; the failure-evidence self-test also passed.
 - Integration: Passed, 136 ASP.NET Core tests including nine two-host observability/resilience cases.
 - E2E: Passed, 31 gateway and P08 observability tests.
 - Contract: Passed, including Architecture 9/9, two independently packed sets, exact ten package files, non-empty runtime assemblies, P04/P08 asset ownership, content safety, and entry SHA comparison.
