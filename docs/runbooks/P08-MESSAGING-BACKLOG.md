@@ -1,6 +1,6 @@
 # Messaging backlog, retry, or DLQ incident
 
-P08 status: S00-S04 complete; S05-S06 pending. Current decision: `Published / Consumer Candidate`.
+P08 final decision: `Frozen / Consumable`. Effective condition: the S06 change containing this declaration is merged to `main` and its exact-main `platform-validation` passes `ubuntu-latest`, `windows-latest`, `ubuntu-dapr-kafka`, and `ubuntu-sql-server`; until then the PR head is only a final-audit candidate.
 
 Runbook ID: `CP6-P08-MESSAGING-001`
 

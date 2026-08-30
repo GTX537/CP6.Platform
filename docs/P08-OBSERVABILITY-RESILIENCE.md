@@ -1,8 +1,8 @@
 # P08 observability, health, resilience, and SLO evidence
 
-P08 status: S00-S04 complete; S05-S06 pending. Current decision: `Published / Consumer Candidate`.
+P08 final decision: `Frozen / Consumable`. Effective condition: the S06 change containing this declaration is merged to `main` and its exact-main `platform-validation` passes `ubuntu-latest`, `windows-latest`, `ubuntu-dapr-kafka`, and `ubuntu-sql-server`; until then the PR head is only a final-audit candidate.
 
-This guide is the consumer contract for the published immutable `0.8.0-alpha.2` replacement packages. The published alpha.1 artifacts remain historical evidence but are disqualified as the CRM consumer candidate because their BCL HTTP propagation still forwarded baggage. Alpha.2 defines exporter-neutral telemetry, safe operational endpoints, fail-closed outbound HTTP resilience, trace-only W3C propagation, and immutable SLO evidence. CRM PR #33 completed fixed-version black-box consumption; CRM PR #34 preserved the S04 evidence and PR #35 forward-corrected its premature global status wording. Public S05 synchronization and the Platform S06 final audit remain separate mandatory stages.
+This guide is the consumer contract for the published immutable `0.8.0-alpha.2` replacement packages. The published alpha.1 artifacts remain historical evidence but are disqualified as the CRM consumer candidate because their BCL HTTP propagation still forwarded baggage. Alpha.2 defines exporter-neutral telemetry, safe operational endpoints, fail-closed outbound HTTP resilience, trace-only W3C propagation, and immutable SLO evidence. CRM PR #33 completed fixed-version black-box consumption; CRM PR #34 preserved the S04 evidence and PR #35 forward-corrected its premature global status wording. Platform PR #25 reconciled producer and consumer evidence, and public CP6 PR #72 completed S05 with exact post-merge contract, PRD, Space GA, real SQL, Windows/Web, and Android workflows. This S06 change performs the final audit without changing runtime behavior, package bytes, or deployment scope.
 
 ## Install and package boundary
 

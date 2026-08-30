@@ -1,10 +1,10 @@
 # P08 immutable package and CRM consumer evidence
 
-P08 status: S00-S04 complete; S05-S06 pending. Current decision: `Published / Consumer Candidate`.
+P08 final decision: `Frozen / Consumable`. Effective condition: the S06 change containing this declaration is merged to `main` and its exact-main `platform-validation` passes `ubuntu-latest`, `windows-latest`, `ubuntu-dapr-kafka`, and `ubuntu-sql-server`; until then the PR head is only a final-audit candidate.
 
 ## Remediation decision
 
-The immutable `0.8.0-alpha.1` packages remain historical publication evidence but are disqualified as the CRM consumer candidate: the real downstream request still received baggage because only the OpenTelemetry propagator, not the BCL `HttpClient` propagator, was constrained. The forward-only replacement `0.8.0-alpha.2` was published from exact Platform main and independently verified without overwriting or deleting alpha.1. CRM then completed fixed-version black-box consumption and evidence reconciliation on alpha.2. S00-S04 are complete; public S05 synchronization and the Platform S06 final audit remain mandatory before the first global `Frozen / Consumable` decision.
+The immutable `0.8.0-alpha.1` packages remain historical publication evidence but are disqualified as the CRM consumer candidate: the real downstream request still received baggage because only the OpenTelemetry propagator, not the BCL `HttpClient` propagator, was constrained. The forward-only replacement `0.8.0-alpha.2` was published from exact Platform main and independently verified without overwriting or deleting alpha.1. CRM then completed fixed-version black-box consumption and evidence reconciliation on alpha.2, Platform reconciled the cross-repository identities, and public CP6 project memory completed S05. S00-S05 are complete; this S06 audit proposes the first global `Frozen / Consumable` decision, which is effective only under the exact-main condition stated above.
 
 ## Prior alpha.1 publication decision
 
@@ -62,8 +62,8 @@ The two-host fixture proves one W3C server/client/server trace with distinct spa
 | S02 | Complete | Exact-main `0.8.0-alpha.2` published and independently verified without altering alpha.1 |
 | S03 | Complete | CRM PR #33 and exact post-merge main passed fixed-version black-box and retained SQL gates |
 | S04 | Complete | CRM PR #34 evidence snapshot plus PR #35 forward correction reconciled the machine locator and source-of-truth boundary |
-| S05 | Pending | Public project-memory and changelog reconciliation |
-| S06 | Pending | Final evidence audit and `Frozen / Consumable` decision |
+| S05 | Complete | Public CP6 PR #72 and its exact post-merge main workflows reconciled project memory and changelog |
+| S06 | Final decision | This change audits all evidence and declares `Frozen / Consumable`; the PR head remains a candidate until the exact-main condition above succeeds |
 
 ## CRM S03 fixed-version consumer evidence
 
@@ -84,6 +84,14 @@ The two-host fixture proves one W3C server/client/server trace with distinct spa
 - Correction merge and main: `bc565fce5bf84904eb1bbe11e7ab13cf6a1e016a`; [main run 33332741550](https://github.com/GTX537/CP6.CRM/actions/runs/33332741550) passed both jobs.
 - Correction PR/main SQL artifacts: ID `9738014861`, digest `sha256:f28d757928959d1c4e4b06f41be773b89b618afcd650cd10cd87dbef7218a4e5`; ID `9738124159`, digest `sha256:9b360a9f2e05b6c376acea5e2308c05f787315c4d059f005cf114c3ccc8b98bc`.
 - Current CRM machine status is therefore `Published / Consumer Candidate`. The correction changed no package, runtime registration, exporter, production SLO, or deployment boundary and rewrote no history.
+
+## Platform reconciliation and public S05 evidence
+
+- Platform consumer-evidence PR #25 used head `e9657cb55bed6230a7ee0aec33603379c4535775`; PR run `33333573931` passed `ubuntu-latest`, `windows-latest`, `ubuntu-dapr-kafka`, and `ubuntu-sql-server`.
+- PR #25 merged as `3bee7abe00e6f79be41bbc6af6dc2290261cb317`; exact-main run `33333782732` passed the same four jobs and made the S03/S04 source-of-truth reconciliation authoritative.
+- Public CP6 S05 PR #72 used head `7f6b7ace98453c3662113d3eba1be5d324ba863e`. PR runs `33334634419`, `33334634445`, `33334634398`, `33334634592`, `33334634404`, and `33334634438` passed the public CRM contract, protected-base PRD, PR-head PRD, Space GA evidence, real WMS SQL, Windows/Web, and Android checks.
+- Public PR #72 merged as `7ebaa3e573f45cc928994ec9967ff5b5a678819e`. Exact-main runs `33335246418`, `33335246277`, `33335246234`, `33335246226`, and `33335246236` all succeeded, proving the public status remained `Published / Consumer Candidate` with `S00-S05 complete; S06 pending` until this final audit.
+- S06 rechecked producer, immutable package, Registry, CRM PR/main/SQL artifact, Platform reconciliation, and public PR/main identities. It changes no package, public API, runtime registration, exporter, resilience policy, production SLO, infrastructure, or deployment asset.
 
 ## Alpha.2 remediation PR and exact-main evidence
 
@@ -244,7 +252,7 @@ The downloaded `sha256.json` contained exactly these ten filenames and hashes. A
 
 ## Current boundary
 
-The retained alpha.1 evidence proves its immutable historical publication only; CRM must not consume it as the P08 candidate. Alpha.2 is the sole forward consumer candidate. CRM fixed-version consumption and machine locator reconciliation are complete. Public project-memory synchronization remains S05 and the Platform final evidence audit remains S06. P08 is not `Frozen / Consumable` at this stage.
+The retained alpha.1 evidence proves its immutable historical publication only and CRM must not consume it. Alpha.2 is the sole immutable P08 consumption baseline. CRM fixed-version consumption, machine locator reconciliation, Platform cross-repository reconciliation, and public project-memory synchronization are complete. The S06 PR head is only a final-audit candidate; once the exact-main condition at the top of this document is satisfied, P08 is `Frozen / Consumable`. This decision still does not register a runtime exporter or resilience policy, claim a production SLO, create infrastructure, or authorize deployment.
 
 ## Stable contract identifiers
 

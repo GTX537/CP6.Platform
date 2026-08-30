@@ -11,7 +11,7 @@
 
 修订说明：不可变 `0.8.0-alpha.1` 保留为历史发布证据，但 CRM 黑盒测试证明其 BCL `HttpClient` 仍转发 baggage，因此不得消费；唯一前向替代候选为 `0.8.0-alpha.2`，禁止覆盖或删除 alpha.1。
 
-> **权威前向纠正（2026-08-30）：** 以下原始设计正文保留为历史记录，但阶段状态解释由本注记与 `docs/P08-PUBLICATION.md` 取代。`0.8.0-alpha.2` 已完成不可变发布；`P08-S04` 只完成 CRM consumer evidence 与 locator reconciliation，当前全局状态仍为 `Published / Consumer Candidate`；`P08-S05` 负责公共项目记忆同步；`P08-S06` Platform 最终审计及其 exact-main 门禁成功后，才首次允许全局声明 `Frozen / Consumable`。
+> **权威前向纠正（2026-08-30）：** 以下原始设计正文保留为历史记录，但阶段状态解释由本注记与 `docs/P08-PUBLICATION.md` 取代。`0.8.0-alpha.2` 已完成不可变发布；`P08-S04` 只完成 CRM consumer evidence 与 locator reconciliation；Platform PR #25 完成跨仓对账，公共 CP6 PR #72 及其 exact-main 工作流完成 `P08-S05`。本 `P08-S06` 变更给出首次 `Frozen / Consumable` 最终决定，但 PR head 仍仅是 final-audit candidate；只有该变更合并且 exact-main Platform Windows/Linux/真实 Dapr-Kafka/真实 SQL 四项门禁成功后，决定才正式生效。
 
 ## 1. 背景与目标
 
