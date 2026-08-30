@@ -22,7 +22,6 @@
 
 | File | Responsibility |
 | --- | --- |
-| `src/CP6.Platform.Testing/Cp6TelemetryRecorder.cs` | Sample both `ActivityContext` and raw parent-ID activity creation so the producer fixture matches an external consumer listener |
 | `tests/CP6.Platform.AspNetCoreTests/TwoServiceObservabilityFixture.cs` | Return downstream trace/baggage header observations from the real Service B request |
 | `tests/CP6.Platform.AspNetCoreTests/ObservabilityEndToEndTests.cs` | Prove one W3C chain reaches Service B while baggage does not |
 | `tests/CP6.Platform.AspNetCoreTests/ObservabilityRegistrationTests.cs` | Prove both OTel and BCL global propagators advertise only `traceparent`/`tracestate` |
@@ -41,23 +40,11 @@
 ### Task 1: Preserve the consumer-discovered producer failure as a real two-host RED test
 
 **Files:**
-- Modify: `src/CP6.Platform.Testing/Cp6TelemetryRecorder.cs`
 - Modify: `tests/CP6.Platform.AspNetCoreTests/TwoServiceObservabilityFixture.cs`
 - Modify: `tests/CP6.Platform.AspNetCoreTests/ObservabilityEndToEndTests.cs`
 - Modify: `tests/CP6.Platform.AspNetCoreTests/ObservabilityRegistrationTests.cs`
 
-- [ ] **Step 1: Make the repository recorder sample raw parent-ID activities like a consumer listener**
-
-Add the callback that the CRM-owned recorder already proved is required for the raw-parent request path:
-
-```csharp
-SampleUsingParentId = static (ref ActivityCreationOptions<string> _) =>
-    ActivitySamplingResult.AllDataAndRecorded,
-```
-
-Keep the existing `Sample` callback. This is repository-only test support and does not enter any runtime package.
-
-- [ ] **Step 2: Expose only boolean downstream header observations**
+- [ ] **Step 1: Expose only boolean downstream header observations**
 
 Change Service B's successful response to include whether it received `traceparent` and `baggage`, without echoing either value:
 
@@ -81,17 +68,17 @@ internal sealed record ProxyResponse(
     bool HasBaggageHeader = false);
 ```
 
-- [ ] **Step 3: Strengthen the two-host test before production changes**
+- [ ] **Step 2: Strengthen the two-host test before production changes**
 
 Send a secret sentinel as incoming baggage and assert the actual Service B request received W3C trace context but no baggage:
 
 ```csharp
-var response = await fixture.SendRawAsync(
-    HttpMethod.Get,
-    "/proxy/read",
-    ("X-Correlation-Id", "business-correlation"),
-    ("baggage", "unsafe=secret-baggage"));
-var body = JsonSerializer.Deserialize<ProxyResponse>(response.Body, JsonOptions());
+using var request = new HttpRequestMessage(HttpMethod.Get, "/proxy/read");
+request.Headers.TryAddWithoutValidation("X-Correlation-Id", "business-correlation");
+request.Headers.TryAddWithoutValidation("baggage", "unsafe=secret-baggage");
+using var response = await fixture.Client.SendAsync(request);
+var responseBody = await response.Content.ReadAsStringAsync();
+var body = JsonSerializer.Deserialize<ProxyResponse>(responseBody, JsonOptions());
 
 Assert.NotNull(body);
 Assert.True(body.HasTraceParentHeader);
@@ -100,7 +87,7 @@ Assert.False(body.HasBaggageHeader);
 
 Keep the existing server/client/server parent assertions and empty recorded baggage assertions unchanged.
 
-- [ ] **Step 4: Pin both global propagation surfaces in the registration test**
+- [ ] **Step 3: Pin both global propagation surfaces in the registration test**
 
 After calling `AddCp6Observability`, retain the existing OpenTelemetry assertion and add:
 
@@ -110,7 +97,7 @@ Assert.Equal(
     DistributedContextPropagator.Current.Fields.OrderBy(field => field, StringComparer.Ordinal));
 ```
 
-- [ ] **Step 5: Run RED and retain the exact failure**
+- [ ] **Step 4: Run RED and retain the exact failure**
 
 Run:
 
