@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0.0",
+  "evidenceId": "evidence-20260830-004",
+  "generatedAtUtc": "2026-08-30T07:00:00Z",
+  "release": {
+    "service": "crm-api",
+    "version": "0.8.0-alpha.1",
+    "gitSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "artifactDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "contractBundleDigest": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "candidate": true
+  },
+  "sli": {
+    "id": "http-availability",
+    "definitionVersion": "1.0.0",
+    "definitionDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "unit": "ratio",
+    "aggregation": "Ratio",
+    "comparator": "GreaterThanOrEqual",
+    "threshold": 0.99
+  },
+  "window": {
+    "startUtc": "2026-08-30T06:00:00Z",
+    "endUtc": "2026-08-30T07:00:00Z",
+    "expectedCoverage": 1,
+    "observedCoverage": 1
+  },
+  "measurement": {
+    "sampleCount": 100,
+    "value": 1,
+    "numerator": 100,
+    "denominator": 100,
+    "excludedCount": 0
+  },
+  "sources": [
+    {
+      "sourceType": "synthetic-test",
+      "sourceId": "service-a-to-b",
+      "definitionDigest": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "releaseArtifactDigest": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "queryDefinitionDigest": "sha256:eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "evidenceArtifactDigest": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "exclusionsVerified": true
+    }
+  ],
+  "completeness": "Complete",
+  "result": "Pass",
+  "productionSloClaimed": false,
+  "customerEmail": "must-not-appear@example.invalid"
+}

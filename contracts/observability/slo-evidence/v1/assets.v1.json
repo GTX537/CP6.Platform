@@ -1,0 +1,25 @@
+{
+  "schemaVersion": "1.0.0",
+  "assets": [
+    {
+      "path": "schema.json",
+      "sha256": "d07a9963c26277e09561d5afec2668bb6aa25b9c53124709c786d53af82262cb"
+    },
+    {
+      "path": "examples/valid-pass.json",
+      "sha256": "089d08442f54942bbcc696865e4556a2ed2bcaf699bae69cdb334d1316bf0695"
+    },
+    {
+      "path": "examples/partial-indeterminate.json",
+      "sha256": "a5a407fb4ba6453ae609434ac091f84c67234fd6bd893395c8b983c88fba8c9a"
+    },
+    {
+      "path": "examples/non-candidate-indeterminate.json",
+      "sha256": "1c9ede47cc017c632873c9e458766c21010ef6767c37eb88168d87db119435b0"
+    },
+    {
+      "path": "examples/pii-negative.json",
+      "sha256": "011c5dfa8b1bc10a59cce2a734a3f69b365c7b52cbdc7d06c8f2eff7d53176d2"
+    }
+  ]
+}

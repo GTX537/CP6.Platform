@@ -1,4 +1,5 @@
 using System.Text.RegularExpressions;
+using System.Text.Json.Serialization;
 
 namespace CP6.Platform.Contracts;
 
@@ -14,14 +15,61 @@ public enum Cp6ReleaseMode
 /// <summary>
 /// Immutable release identity exposed by CP6 operational and evidence contracts.
 /// </summary>
-public sealed partial record Cp6ReleaseIdentity(
-    string Service,
-    string Version,
-    string GitSha,
-    string ArtifactDigest,
-    string ContractBundleDigest,
-    Cp6ReleaseMode Mode)
+public sealed partial record Cp6ReleaseIdentity
 {
+    public Cp6ReleaseIdentity(
+        string service,
+        string version,
+        string gitSha,
+        string artifactDigest,
+        string contractBundleDigest,
+        Cp6ReleaseMode mode)
+    {
+        Service = service;
+        Version = version;
+        GitSha = gitSha;
+        ArtifactDigest = artifactDigest;
+        ContractBundleDigest = contractBundleDigest;
+        Mode = mode;
+    }
+
+    [JsonConstructor]
+    public Cp6ReleaseIdentity(
+        string service,
+        string version,
+        string gitSha,
+        string artifactDigest,
+        string contractBundleDigest,
+        bool candidate)
+        : this(
+            service,
+            version,
+            gitSha,
+            artifactDigest,
+            contractBundleDigest,
+            candidate ? Cp6ReleaseMode.Candidate : Cp6ReleaseMode.NonCandidate)
+    {
+    }
+
+    [JsonPropertyName("service")]
+    public string Service { get; init; }
+
+    [JsonPropertyName("version")]
+    public string Version { get; init; }
+
+    [JsonPropertyName("gitSha")]
+    public string GitSha { get; init; }
+
+    [JsonPropertyName("artifactDigest")]
+    public string ArtifactDigest { get; init; }
+
+    [JsonPropertyName("contractBundleDigest")]
+    public string ContractBundleDigest { get; init; }
+
+    [JsonIgnore]
+    public Cp6ReleaseMode Mode { get; init; }
+
+    [JsonPropertyName("candidate")]
     public bool Candidate => Mode == Cp6ReleaseMode.Candidate;
 
     public void Validate()

@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contracts.cp6.uk/observability/slo-evidence/v1/schema.json",
+  "title": "CP6 SLO evidence document",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "evidenceId",
+    "generatedAtUtc",
+    "release",
+    "sli",
+    "window",
+    "measurement",
+    "sources",
+    "completeness",
+    "result",
+    "productionSloClaimed"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "evidenceId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "generatedAtUtc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "release": { "$ref": "#/$defs/release" },
+    "sli": { "$ref": "#/$defs/sli" },
+    "window": { "$ref": "#/$defs/window" },
+    "measurement": { "$ref": "#/$defs/measurement" },
+    "sources": {
+      "type": "array",
+      "maxItems": 128,
+      "items": { "$ref": "#/$defs/source" }
+    },
+    "completeness": {
+      "enum": ["Complete", "Partial", "Missing"]
+    },
+    "result": {
+      "enum": ["Pass", "Fail", "Indeterminate"]
+    },
+    "productionSloClaimed": { "type": "boolean" }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": { "result": { "const": "Pass" } },
+        "required": ["result"]
+      },
+      "then": {
+        "properties": {
+          "release": {
+            "properties": { "candidate": { "const": true } },
+            "required": ["candidate"]
+          },
+          "completeness": { "const": "Complete" },
+          "window": {
+            "properties": {
+              "expectedCoverage": { "const": 1 },
+              "observedCoverage": { "const": 1 }
+            },
+            "required": ["expectedCoverage", "observedCoverage"]
+          },
+          "measurement": {
+            "properties": { "sampleCount": { "minimum": 1 } },
+            "required": ["sampleCount"]
+          },
+          "sources": { "minItems": 1 }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "optionalDigest": {
+      "type": "string",
+      "pattern": "^(?:|sha256:[0-9a-f]{64})$"
+    },
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$"
+    },
+    "release": {
+      "type": "object",
+      "required": [
+        "service",
+        "version",
+        "gitSha",
+        "artifactDigest",
+        "contractBundleDigest",
+        "candidate"
+      ],
+      "properties": {
+        "service": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64,
+          "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)*$"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "gitSha": {
+          "type": "string",
+          "pattern": "^(?:|[0-9a-f]{40})$"
+        },
+        "artifactDigest": { "$ref": "#/$defs/optionalDigest" },
+        "contractBundleDigest": { "$ref": "#/$defs/optionalDigest" },
+        "candidate": { "type": "boolean" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "candidate": { "const": true } },
+            "required": ["candidate"]
+          },
+          "then": {
+            "properties": {
+              "version": {
+                "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-((?:0|[1-9][0-9]*|[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9A-Za-z-]*[A-Za-z-][0-9A-Za-z-]*))*))?$"
+              },
+              "gitSha": { "pattern": "^[0-9a-f]{40}$" },
+              "artifactDigest": { "$ref": "#/$defs/digest" },
+              "contractBundleDigest": { "$ref": "#/$defs/digest" }
+            }
+          }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "sli": {
+      "type": "object",
+      "required": [
+        "id",
+        "definitionVersion",
+        "definitionDigest",
+        "unit",
+        "aggregation",
+        "comparator",
+        "threshold"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/stableId" },
+        "definitionVersion": {
+          "type": "string",
+          "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)$"
+        },
+        "definitionDigest": { "$ref": "#/$defs/digest" },
+        "unit": { "$ref": "#/$defs/stableId" },
+        "aggregation": { "enum": ["Ratio", "Percentile", "Gauge"] },
+        "comparator": { "enum": ["GreaterThanOrEqual", "LessThanOrEqual"] },
+        "threshold": { "type": "number" }
+      },
+      "additionalProperties": false
+    },
+    "window": {
+      "type": "object",
+      "required": ["startUtc", "endUtc", "expectedCoverage", "observedCoverage"],
+      "properties": {
+        "startUtc": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "endUtc": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "Z$"
+        },
+        "expectedCoverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "observedCoverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "measurement": {
+      "type": "object",
+      "required": ["sampleCount", "value", "excludedCount"],
+      "properties": {
+        "sampleCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "value": { "type": "number" },
+        "numerator": {
+          "type": "number",
+          "minimum": 0
+        },
+        "denominator": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "percentile": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "excludedCount": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "sourceType",
+        "sourceId",
+        "definitionDigest",
+        "releaseArtifactDigest",
+        "queryDefinitionDigest",
+        "evidenceArtifactDigest",
+        "exclusionsVerified"
+      ],
+      "properties": {
+        "sourceType": { "$ref": "#/$defs/stableId" },
+        "sourceId": { "$ref": "#/$defs/stableId" },
+        "definitionDigest": { "$ref": "#/$defs/digest" },
+        "releaseArtifactDigest": { "$ref": "#/$defs/digest" },
+        "queryDefinitionDigest": { "$ref": "#/$defs/digest" },
+        "evidenceArtifactDigest": { "$ref": "#/$defs/digest" },
+        "exclusionsVerified": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
