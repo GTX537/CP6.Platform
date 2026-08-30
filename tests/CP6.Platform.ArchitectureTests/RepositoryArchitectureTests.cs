@@ -255,7 +255,7 @@ public sealed class RepositoryArchitectureTests
             var text = File.ReadAllText(path);
             content.Add(relativePath, text);
             Assert.Contains(
-                "P08 status: S00 complete; S01 implementation candidate; S02-S06 pending.",
+                "P08 status: S00-S01 complete; S02-S06 pending.",
                 text,
                 StringComparison.Ordinal);
             foreach (var forbidden in new[] { "TODO", "TBD", "FIXME" })
@@ -325,7 +325,10 @@ public sealed class RepositoryArchitectureTests
         var safetyText = combined.Replace(
             "https://contracts.cp6.uk/observability/slo-evidence/v1/schema.json",
             string.Empty,
-            StringComparison.Ordinal);
+            StringComparison.Ordinal).Replace(
+                "https://github.com/GTX537/CP6.Platform/actions/runs/33303723733",
+                string.Empty,
+                StringComparison.Ordinal);
         foreach (var forbidden in new[]
         {
             "http://",
