@@ -310,10 +310,10 @@ try {
             }
         }
         'E2E' {
-            Invoke-DotNetStep -Name 'GatewayE2E' -Arguments @(
+            Invoke-DotNetStep -Name 'PlatformE2E' -Arguments @(
                 'test', 'tests/CP6.Platform.AspNetCoreTests/CP6.Platform.AspNetCoreTests.csproj',
                 '--configuration', 'Release',
-                '--filter', 'FullyQualifiedName~GatewayContractTests'
+                '--filter', 'FullyQualifiedName~GatewayContractTests|FullyQualifiedName~ObservabilityEndToEndTests'
             )
         }
         'Performance' { Add-NotApplicableCheck 'P08-S01 freezes evidence contracts but does not claim production performance or SLO thresholds.' }
