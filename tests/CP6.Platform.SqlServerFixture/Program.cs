@@ -1,4 +1,8 @@
+using System.Collections.Concurrent;
 using System.Data;
+using System.Diagnostics;
+using System.Diagnostics.Metrics;
+using CP6.Platform.Abstractions;
 using CP6.Platform.EntityFramework;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +14,7 @@ if (string.IsNullOrWhiteSpace(serverConnection))
 }
 
 var databaseName = $"cp6_p06_{Guid.NewGuid():N}";
+using var telemetry = new FixtureTelemetryCapture();
 var serverBuilder = new SqlConnectionStringBuilder(serverConnection)
 {
     InitialCatalog = "master",
@@ -48,13 +53,15 @@ try
     };
     var tenantId = Guid.Parse("11111111-1111-4111-8111-111111111111");
 
+    await VerifyOutboxDispatcherAsync(factory, validator, clock, tenantId);
     await VerifyAtomicOutboxAsync(factory, validator, clock, tenantId);
     await VerifyLeaseAndAtLeastOnceAsync(factory, validator, clock, options, tenantId);
     await VerifyOutboxDeadLetterReplayAsync(factory, validator, clock, options, tenantId);
     await VerifyInboxAsync(factory, validator, clock, options, tenantId);
     await VerifyRetentionAsync(factory, clock, options);
+    telemetry.AssertContract();
 
-    Console.WriteLine("P06 SQL Server fixture passed: atomic Outbox, lease/replay, Inbox idempotency/order, DLQ, and retention.");
+    Console.WriteLine("P06 SQL Server fixture passed: atomic Outbox, lease/replay, Inbox idempotency/order, DLQ, retention, and P08 telemetry.");
 }
 finally
 {
@@ -64,6 +71,39 @@ finally
     await using var command = connection.CreateCommand();
     command.CommandText = $"ALTER DATABASE [{databaseName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE; DROP DATABASE [{databaseName}]";
     await command.ExecuteNonQueryAsync();
+}
+
+static async Task VerifyOutboxDispatcherAsync(
+    FixtureContextFactory factory,
+    AcceptingValidator validator,
+    TimeProvider clock,
+    Guid tenantId)
+{
+    await EnqueueAndSaveAsync(factory, validator, clock, Envelope("telemetry-published", tenantId, "aggregate-telemetry", 1));
+    await EnqueueAndSaveAsync(factory, validator, clock, Envelope("telemetry-retry", tenantId, "aggregate-telemetry", 2));
+    await EnqueueAndSaveAsync(factory, validator, clock, Envelope("telemetry-dead-letter", tenantId, "aggregate-telemetry", 3));
+    var options = new Cp6TransactionalMessagingOptions
+    {
+        InitialOutboxRetryDelay = TimeSpan.FromHours(1),
+        MaximumOutboxRetryDelay = TimeSpan.FromHours(1),
+        MaxOutboxAttempts = 2
+    };
+    var dispatcher = new Cp6OutboxDispatcher<FixtureDbContext>(
+        factory,
+        validator,
+        new FixturePublisher(),
+        options,
+        clock);
+
+    var result = await dispatcher.DispatchBatchAsync("worker-telemetry");
+
+    Ensure(result == new Cp6OutboxDispatchResult(3, 1, 1, 1), "Outbox dispatcher outcomes changed while adding telemetry.");
+    await using var check = factory.CreateDbContext();
+    var states = await check.Set<Cp6OutboxMessage>()
+        .ToDictionaryAsync(message => message.MessageId, message => message.Status);
+    Ensure(states["telemetry-published"] == Cp6OutboxStatus.Published, "Successful publish was not persisted.");
+    Ensure(states["telemetry-retry"] == Cp6OutboxStatus.Pending, "Retryable publish failure was not scheduled.");
+    Ensure(states["telemetry-dead-letter"] == Cp6OutboxStatus.DeadLettered, "Permanent publish failure was not dead-lettered.");
 }
 
 static async Task VerifyAtomicOutboxAsync(
@@ -187,6 +227,11 @@ static async Task VerifyInboxAsync(
     Guid tenantId)
 {
     var processor = new Cp6InboxProcessor<FixtureDbContext>(factory, validator, options, clock);
+    var invalid = await new Cp6InboxProcessor<FixtureDbContext>(factory, new RejectingInboxValidator(), options, clock)
+        .ProcessAsync(
+            Delivery("inbox-invalid", tenantId, "aggregate-invalid", 1, "invalid"),
+            (_, _) => throw new InvalidOperationException("Invalid Inbox delivery reached the handler."));
+    Ensure(invalid.Disposition == Cp6InboxDisposition.Invalid, "Invalid Inbox delivery was not rejected before the transaction.");
     var appliedCalls = 0;
     var firstDelivery = Delivery("inbox-applied", tenantId, "aggregate-inbox", 1, "payload-v1");
     var first = await processor.ProcessAsync(firstDelivery, async (context, cancellationToken) =>
@@ -424,6 +469,113 @@ internal sealed class AcceptingValidator : ICp6OutboxEnvelopeValidator, ICp6Inbo
 
     public Cp6MessageValidationResult Validate(Cp6InboxDelivery delivery) => Cp6MessageValidationResult.Valid;
 }
+
+internal sealed class RejectingInboxValidator : ICp6InboxDeliveryValidator
+{
+    public Cp6MessageValidationResult Validate(Cp6InboxDelivery delivery) => Cp6MessageValidationResult.Invalid();
+}
+
+internal sealed class FixturePublisher : ICp6OutboxPublisher
+{
+    public Task PublishAsync(Cp6OutboxDispatchMessage message, CancellationToken cancellationToken = default) =>
+        message.MessageId switch
+        {
+            "telemetry-published" => Task.CompletedTask,
+            "telemetry-retry" => Task.FromException(
+                new Cp6OutboxPublishException("CP6_TEST_RETRYABLE", true, "fixture")),
+            "telemetry-dead-letter" => Task.FromException(
+                new Cp6OutboxPublishException("CP6_TEST_PERMANENT", false, "fixture")),
+            _ => throw new InvalidOperationException("Unexpected Outbox message reached the telemetry publisher.")
+        };
+}
+
+internal sealed class FixtureTelemetryCapture : IDisposable
+{
+    private readonly ActivityListener activityListener;
+    private readonly MeterListener meterListener;
+
+    public FixtureTelemetryCapture()
+    {
+        activityListener = new ActivityListener
+        {
+            ShouldListenTo = source => source.Name == Cp6TelemetrySources.EntityFramework,
+            Sample = (ref ActivityCreationOptions<ActivityContext> _) => ActivitySamplingResult.AllDataAndRecorded,
+            ActivityStopped = activity => Activities.Enqueue(activity)
+        };
+        ActivitySource.AddActivityListener(activityListener);
+
+        meterListener = new MeterListener
+        {
+            InstrumentPublished = (instrument, listener) =>
+            {
+                if (instrument.Meter.Name == Cp6TelemetryMeters.EntityFramework)
+                {
+                    listener.EnableMeasurementEvents(instrument);
+                }
+            }
+        };
+        meterListener.SetMeasurementEventCallback<long>((instrument, value, tags, _) =>
+            Measurements.Enqueue(new FixtureMeasurement(instrument.Name, value, tags.ToArray())));
+        meterListener.SetMeasurementEventCallback<double>((instrument, value, tags, _) =>
+            Measurements.Enqueue(new FixtureMeasurement(instrument.Name, value, tags.ToArray())));
+        meterListener.Start();
+    }
+
+    private ConcurrentQueue<Activity> Activities { get; } = [];
+
+    private ConcurrentQueue<FixtureMeasurement> Measurements { get; } = [];
+
+    public void AssertContract()
+    {
+        var dispositions = Activities
+            .Select(activity => activity.GetTagItem(Cp6TelemetryConventions.MessagingDispositionTag)?.ToString())
+            .Where(disposition => disposition is not null)
+            .ToHashSet(StringComparer.Ordinal);
+        foreach (var required in new[]
+        {
+            "enqueue", "claim", "published", "retry_scheduled", "dead_lettered", "replayed", "retained",
+            "invalid", "duplicate", "payload_conflict", "applied", "ignored_out_of_order"
+        })
+        {
+            Require(dispositions.Contains(required), $"P08 telemetry disposition '{required}' was not observed through the real SQL fixture.");
+        }
+
+        Require(Activities.All(activity =>
+                activity.OperationName is Cp6TelemetryConventions.OutboxDispatchOperation or Cp6TelemetryConventions.InboxProcessOperation),
+            "An unapproved Entity Framework activity name was emitted.");
+        Require(Activities.SelectMany(activity => activity.TagObjects).All(tag => Cp6TelemetryConventions.AllowedMetricTags.Contains(tag.Key)),
+            "An Entity Framework activity emitted a non-allowlisted tag.");
+        Require(Measurements.SelectMany(measurement => measurement.Tags).All(tag => Cp6TelemetryConventions.AllowedMetricTags.Contains(tag.Key)),
+            "An Entity Framework metric emitted a non-allowlisted tag.");
+        Require(Measurements.Any(measurement => measurement.InstrumentName == "cp6.outbox.oldest_available.age" && measurement.Value >= 0),
+            "Oldest available Outbox age was not recorded as a measurement.");
+        Require(Measurements.Any(measurement => measurement.InstrumentName == "cp6.messaging.attempts" && measurement.Value >= 1),
+            "Messaging attempt count was not recorded as a measurement.");
+        Require(Measurements.SelectMany(measurement => measurement.Tags).All(tag =>
+                !tag.Key.Contains("age", StringComparison.OrdinalIgnoreCase) &&
+                !tag.Key.Contains("attempt", StringComparison.OrdinalIgnoreCase)),
+            "Age or attempt cardinality leaked into metric labels.");
+    }
+
+    public void Dispose()
+    {
+        meterListener.Dispose();
+        activityListener.Dispose();
+    }
+
+    private static void Require(bool condition, string message)
+    {
+        if (!condition)
+        {
+            throw new InvalidOperationException(message);
+        }
+    }
+}
+
+internal sealed record FixtureMeasurement(
+    string InstrumentName,
+    double Value,
+    KeyValuePair<string, object?>[] Tags);
 
 internal sealed class MutableTimeProvider(DateTimeOffset utcNow) : TimeProvider
 {

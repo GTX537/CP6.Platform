@@ -1,3 +1,4 @@
+using CP6.Platform.Abstractions;
 using CP6.Platform.EntityFramework;
 
 namespace CP6.Platform.UnitTests;
@@ -41,5 +42,14 @@ public sealed class TransactionalMessagingContractTests
         Assert.Equal("support-18", process.SupportReference);
         Assert.Throws<ArgumentException>(() => new Cp6OutboxPublishException("unsafe payload value", true));
         Assert.Throws<ArgumentOutOfRangeException>(() => new Cp6InboxProcessingException("CP6_VALID", true, new string('x', 129)));
+    }
+
+    [Fact]
+    public void TelemetryContract_FreezesEntityFrameworkSourceMeterAndOperations()
+    {
+        Assert.Equal("CP6.Platform.EntityFramework", Cp6TelemetrySources.EntityFramework);
+        Assert.Equal("CP6.Platform.EntityFramework", Cp6TelemetryMeters.EntityFramework);
+        Assert.Equal("cp6.outbox.dispatch", Cp6TelemetryConventions.OutboxDispatchOperation);
+        Assert.Equal("cp6.inbox.process", Cp6TelemetryConventions.InboxProcessOperation);
     }
 }

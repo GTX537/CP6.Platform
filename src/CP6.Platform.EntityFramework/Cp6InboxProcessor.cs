@@ -1,4 +1,6 @@
 using System.Data;
+using System.Diagnostics;
+using CP6.Platform.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
 namespace CP6.Platform.EntityFramework;
@@ -34,31 +36,39 @@ public sealed class Cp6InboxProcessor<TContext>
         Cp6TransactionalMessagingGuard.Delivery(delivery);
         ArgumentNullException.ThrowIfNull(applyDatabaseChangesAsync);
         var payloadSha256 = Cp6TransactionalMessagingGuard.Sha256(delivery.Payload);
+        using var telemetry = Cp6EntityFrameworkTelemetry.StartInbox(ActivityKind.Consumer);
         var validation = validator.Validate(delivery);
         ArgumentNullException.ThrowIfNull(validation);
         if (!validation.IsValid)
         {
             Cp6TransactionalMessagingGuard.ContentSafeCode(validation.ErrorCode, nameof(validation.ErrorCode));
-            return new Cp6InboxProcessingResult(Cp6InboxDisposition.Invalid, validation.ErrorCode, payloadSha256);
+            return CompleteTelemetry(
+                telemetry,
+                new Cp6InboxProcessingResult(Cp6InboxDisposition.Invalid, validation.ErrorCode, payloadSha256));
         }
 
         try
         {
-            return await ProcessValidatedAsync(delivery, payloadSha256, applyDatabaseChangesAsync, cancellationToken);
+            return CompleteTelemetry(
+                telemetry,
+                await ProcessValidatedAsync(delivery, payloadSha256, applyDatabaseChangesAsync, cancellationToken));
         }
         catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
         {
+            telemetry.Cancelled("cancelled");
             throw;
         }
         catch (Cp6InboxProcessingException exception)
         {
-            return await RecordProcessingFailureAsync(
-                delivery,
-                payloadSha256,
-                exception.ErrorCode,
-                exception.Retryable,
-                exception.SupportReference,
-                cancellationToken);
+            return CompleteTelemetry(
+                telemetry,
+                await RecordProcessingFailureAsync(
+                    delivery,
+                    payloadSha256,
+                    exception.ErrorCode,
+                    exception.Retryable,
+                    exception.SupportReference,
+                    cancellationToken));
         }
         catch (DbUpdateException exception)
         {
@@ -70,42 +80,52 @@ public sealed class Cp6InboxProcessor<TContext>
                     cancellationToken);
             if (existing is null)
             {
-                return await RecordProcessingFailureAsync(
-                    delivery,
-                    payloadSha256,
-                    UnexpectedProcessingErrorCode,
-                    true,
-                    exception.GetType().Name,
-                    cancellationToken);
+                return CompleteTelemetry(
+                    telemetry,
+                    await RecordProcessingFailureAsync(
+                        delivery,
+                        payloadSha256,
+                        UnexpectedProcessingErrorCode,
+                        true,
+                        exception.GetType().Name,
+                        cancellationToken));
             }
 
             if (existing.PayloadSha256 == payloadSha256 && existing.Status == Cp6InboxStatus.Processed)
             {
-                return new Cp6InboxProcessingResult(Cp6InboxDisposition.Duplicate, string.Empty, payloadSha256);
+                return CompleteTelemetry(
+                    telemetry,
+                    new Cp6InboxProcessingResult(Cp6InboxDisposition.Duplicate, string.Empty, payloadSha256));
             }
 
             if (existing.PayloadSha256 == payloadSha256)
             {
-                return await RecordProcessingFailureAsync(
+                return CompleteTelemetry(
+                    telemetry,
+                    await RecordProcessingFailureAsync(
+                        delivery,
+                        payloadSha256,
+                        UnexpectedProcessingErrorCode,
+                        true,
+                        exception.GetType().Name,
+                        cancellationToken));
+            }
+
+            return CompleteTelemetry(
+                telemetry,
+                await RecordPayloadConflictAsync(delivery, payloadSha256, cancellationToken));
+        }
+        catch (Exception exception)
+        {
+            return CompleteTelemetry(
+                telemetry,
+                await RecordProcessingFailureAsync(
                     delivery,
                     payloadSha256,
                     UnexpectedProcessingErrorCode,
                     true,
                     exception.GetType().Name,
-                    cancellationToken);
-            }
-
-            return await RecordPayloadConflictAsync(delivery, payloadSha256, cancellationToken);
-        }
-        catch (Exception exception)
-        {
-            return await RecordProcessingFailureAsync(
-                delivery,
-                payloadSha256,
-                UnexpectedProcessingErrorCode,
-                true,
-                exception.GetType().Name,
-                cancellationToken);
+                    cancellationToken));
         }
     }
 
@@ -213,24 +233,39 @@ public sealed class Cp6InboxProcessor<TContext>
         Cp6TransactionalMessagingGuard.Identifier(messageId, nameof(messageId), 128);
         Cp6TransactionalMessagingGuard.ContentSafeCode(replayReasonCode, nameof(replayReasonCode));
 
-        await using var context = await contextFactory.CreateDbContextAsync(cancellationToken);
-        await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
-        var inbox = await context.Set<Cp6InboxMessage>().SingleAsync(
-            message => message.ConsumerName == consumerName && message.MessageId == messageId,
-            cancellationToken);
-        var deadLetter = await context.Set<Cp6DeadLetterRecord>()
-            .Where(record =>
-                record.Direction == Cp6DeadLetterDirection.Inbound &&
-                record.ConsumerName == consumerName &&
-                record.MessageId == messageId &&
-                record.ReplayedAtUtc == null)
-            .OrderByDescending(record => record.CreatedAtUtc)
-            .FirstAsync(cancellationToken);
-        var now = timeProvider.GetUtcNow();
-        inbox.Requeue();
-        deadLetter.RecordReplay(replayReasonCode, now);
-        await context.SaveChangesAsync(cancellationToken);
-        await transaction.CommitAsync(cancellationToken);
+        using var telemetry = Cp6EntityFrameworkTelemetry.StartInbox();
+        try
+        {
+            await using var context = await contextFactory.CreateDbContextAsync(cancellationToken);
+            await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
+            var inbox = await context.Set<Cp6InboxMessage>().SingleAsync(
+                message => message.ConsumerName == consumerName && message.MessageId == messageId,
+                cancellationToken);
+            var deadLetter = await context.Set<Cp6DeadLetterRecord>()
+                .Where(record =>
+                    record.Direction == Cp6DeadLetterDirection.Inbound &&
+                    record.ConsumerName == consumerName &&
+                    record.MessageId == messageId &&
+                    record.ReplayedAtUtc == null)
+                .OrderByDescending(record => record.CreatedAtUtc)
+                .FirstAsync(cancellationToken);
+            var now = timeProvider.GetUtcNow();
+            inbox.Requeue();
+            deadLetter.RecordReplay(replayReasonCode, now);
+            await context.SaveChangesAsync(cancellationToken);
+            await transaction.CommitAsync(cancellationToken);
+            telemetry.Success("replayed");
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            telemetry.Cancelled("replayed");
+            throw;
+        }
+        catch (Exception)
+        {
+            telemetry.Failure("processing_failure", "failed");
+            throw;
+        }
     }
 
     private async Task<Cp6InboxProcessingResult> RecordProcessingFailureAsync(
@@ -285,6 +320,10 @@ public sealed class Cp6InboxProcessor<TContext>
 
         await context.SaveChangesAsync(cancellationToken);
         await transaction.CommitAsync(cancellationToken);
+        Cp6EntityFrameworkTelemetry.RecordAttemptCount(
+            inbox.AttemptCount,
+            Cp6TelemetryConventions.InboxProcessOperation,
+            deadLettered ? "dead_lettered" : "retry_scheduled");
         return new Cp6InboxProcessingResult(
             deadLettered ? Cp6InboxDisposition.DeadLettered : Cp6InboxDisposition.RetryScheduled,
             errorCode,
@@ -305,4 +344,38 @@ public sealed class Cp6InboxProcessor<TContext>
             errorCode,
             supportReference,
             timeProvider.GetUtcNow());
+
+    private static Cp6InboxProcessingResult CompleteTelemetry(
+        Cp6EntityFrameworkTelemetry.OperationScope telemetry,
+        Cp6InboxProcessingResult result)
+    {
+        switch (result.Disposition)
+        {
+            case Cp6InboxDisposition.Applied:
+                telemetry.Success("applied");
+                break;
+            case Cp6InboxDisposition.Duplicate:
+                telemetry.Success("duplicate");
+                break;
+            case Cp6InboxDisposition.IgnoredOutOfOrder:
+                telemetry.Rejected("out_of_order", "ignored_out_of_order");
+                break;
+            case Cp6InboxDisposition.PayloadConflict:
+                telemetry.Rejected("payload_conflict", "payload_conflict");
+                break;
+            case Cp6InboxDisposition.Invalid:
+                telemetry.Rejected("validation_failed", "invalid");
+                break;
+            case Cp6InboxDisposition.RetryScheduled:
+                telemetry.Failure("processing_failure", "retry_scheduled");
+                break;
+            case Cp6InboxDisposition.DeadLettered:
+                telemetry.Failure("processing_failure", "dead_lettered");
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(result), "Inbox disposition is not supported.");
+        }
+
+        return result;
+    }
 }
