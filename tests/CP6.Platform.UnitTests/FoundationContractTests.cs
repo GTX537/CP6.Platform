@@ -62,28 +62,27 @@ public sealed class FoundationContractTests
     }
 
     [Fact]
-    public void ProductionProjects_ArePackable_AndOnlyApprovedRuntimePackagesContainSource()
+    public void SourceProjects_FreezeFivePackableRuntimePackagesAndRepositoryOnlyTesting()
     {
         var projects = Directory.GetFiles(Path.Combine(RepositoryRoot, "src"), "*.csproj", SearchOption.AllDirectories);
 
         Assert.Equal(6, projects.Length);
-        var projectsWithSource = new List<string>();
+        var packageStates = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var project in projects)
         {
             var document = XDocument.Load(project);
-            Assert.Equal("true", document.Descendants("IsPackable").Single().Value);
+            var packageId = document.Descendants("PackageId").Single().Value;
+            packageStates.Add(packageId, document.Descendants("IsPackable").Single().Value);
 
             var sourceFiles = Directory.GetFiles(Path.GetDirectoryName(project)!, "*.cs", SearchOption.AllDirectories)
                 .Where(path => !HasDirectorySegment(path, "bin") && !HasDirectorySegment(path, "obj"));
-            if (sourceFiles.Any())
-            {
-                projectsWithSource.Add(Path.GetFileNameWithoutExtension(project));
-            }
+            Assert.NotEmpty(sourceFiles);
         }
 
-        Assert.Equal(
-            ["CP6.Platform.Abstractions", "CP6.Platform.AspNetCore", "CP6.Platform.Contracts", "CP6.Platform.EntityFramework", "CP6.Platform.Messaging"],
-            projectsWithSource.Order(StringComparer.Ordinal));
+        Assert.Equal("false", packageStates["CP6.Platform.Testing"]);
+        Assert.All(
+            packageStates.Where(project => project.Key != "CP6.Platform.Testing"),
+            project => Assert.Equal("true", project.Value));
     }
 
     [Fact]

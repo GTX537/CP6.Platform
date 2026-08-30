@@ -25,7 +25,7 @@ public sealed class RepositoryArchitectureTests
         };
 
     [Fact]
-    public void ProductionProjects_ExactlyMatchApprovedPackageSet()
+    public void SourceProjects_ExactlyMatchApprovedRuntimeAndTestingSet()
     {
         var actual = LoadProjects().Keys.Order(StringComparer.Ordinal).ToArray();
         var expected = ExpectedDependencies.Keys.Order(StringComparer.Ordinal).ToArray();
@@ -59,7 +59,7 @@ public sealed class RepositoryArchitectureTests
     }
 
     [Fact]
-    public void ProductionProjects_UseOnlyApprovedExternalDependencies_AndOnlyAspNetCoreUsesSharedFramework()
+    public void SourceProjects_UseOnlyApprovedExternalDependenciesAndFrameworks()
     {
         foreach (var (packageId, project) in LoadProjects())
         {
@@ -97,6 +97,11 @@ public sealed class RepositoryArchitectureTests
                     ["Microsoft.EntityFrameworkCore", "Microsoft.EntityFrameworkCore.Relational"],
                     packageReferences.Order(StringComparer.Ordinal));
                 Assert.Empty(frameworkReferences);
+            }
+            else if (packageId == "CP6.Platform.Testing")
+            {
+                Assert.Empty(packageReferences);
+                Assert.Equal(["Microsoft.AspNetCore.App"], frameworkReferences);
             }
             else
             {
@@ -144,6 +149,11 @@ public sealed class RepositoryArchitectureTests
             .Order(StringComparer.Ordinal)
             .ToArray();
         Assert.Equal(["CP6.Platform.Abstractions", "CP6.Platform.Contracts"], messagingReferences);
+
+        Assert.Equal("false", projects["CP6.Platform.Testing"].Document.Descendants("IsPackable").Single().Value);
+        Assert.All(
+            projects.Where(project => project.Key != "CP6.Platform.Testing"),
+            project => Assert.Equal("true", project.Value.Document.Descendants("IsPackable").Single().Value));
 
         foreach (var project in projects.Where(project => project.Key != "CP6.Platform.Testing"))
         {

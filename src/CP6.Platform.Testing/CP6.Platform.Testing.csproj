@@ -2,8 +2,11 @@
   <PropertyGroup>
     <PackageId>CP6.Platform.Testing</PackageId>
     <Description>Consumer test support for CP6 platform integrations.</Description>
-    <IsPackable>true</IsPackable>
+    <IsPackable>false</IsPackable>
   </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="../CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj" />
     <ProjectReference Include="../CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj" />

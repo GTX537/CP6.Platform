@@ -16,5 +16,6 @@
     <ProjectReference Include="../../src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj" />
     <ProjectReference Include="../../src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj" />
     <ProjectReference Include="../../src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj" />
+    <ProjectReference Include="../../src/CP6.Platform.Testing/CP6.Platform.Testing.csproj" />
   </ItemGroup>
 </Project>
