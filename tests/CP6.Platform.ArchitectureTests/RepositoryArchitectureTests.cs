@@ -235,6 +235,118 @@ public sealed class RepositoryArchitectureTests
     }
 
     [Fact]
+    public void P08_Documentation_IsCompleteAndSafe()
+    {
+        var documents = new[]
+        {
+            "docs/P08-OBSERVABILITY-RESILIENCE.md",
+            "docs/P08-PUBLICATION.md",
+            "docs/runbooks/P08-TRACE-EXPORTER.md",
+            "docs/runbooks/P08-HEALTH-READINESS.md",
+            "docs/runbooks/P08-HTTP-RESILIENCE.md",
+            "docs/runbooks/P08-MESSAGING-BACKLOG.md",
+            "docs/runbooks/P08-RELEASE-EVIDENCE-DRIFT.md"
+        };
+        var content = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var relativePath in documents)
+        {
+            var path = Path.Combine(RepositoryRoot, relativePath.Replace('/', Path.DirectorySeparatorChar));
+            Assert.True(File.Exists(path), $"Missing required P08 document: {relativePath}");
+            var text = File.ReadAllText(path);
+            content.Add(relativePath, text);
+            Assert.Contains(
+                "P08 status: S00 complete; S01 implementation candidate; S02-S06 pending.",
+                text,
+                StringComparison.Ordinal);
+            foreach (var forbidden in new[] { "TODO", "TBD", "FIXME" })
+            {
+                Assert.DoesNotContain(forbidden, text, StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
+        var combined = string.Join('\n', content.Values);
+        foreach (var required in new[]
+        {
+            "/health/live",
+            "/health/startup",
+            "/health/ready",
+            "/health/release",
+            "cp6.http.outbound",
+            "cp6.messaging.dapr.invoke",
+            "cp6.messaging.publish",
+            "cp6.messaging.consume",
+            "cp6.outbox.dispatch",
+            "cp6.inbox.process",
+            "OperationNotAllowed",
+            "IdempotencyRequired",
+            "AttemptTimeout",
+            "TotalTimeout",
+            "CircuitOpen",
+            "https://contracts.cp6.uk/observability/slo-evidence/v1/schema.json",
+            "OpenTelemetry Collector",
+            "host-owned exporter",
+            "CRM Worker",
+            "productionSloClaimed=false"
+        })
+        {
+            Assert.Contains(required, combined, StringComparison.Ordinal);
+        }
+
+        var runbooks = documents.Skip(2).ToArray();
+        var runbookIds = new[]
+        {
+            "CP6-P08-TRACE-001",
+            "CP6-P08-HEALTH-001",
+            "CP6-P08-RESILIENCE-001",
+            "CP6-P08-MESSAGING-001",
+            "CP6-P08-RELEASE-001"
+        };
+        for (var index = 0; index < runbooks.Length; index++)
+        {
+            var runbook = content[runbooks[index]];
+            Assert.Contains(runbookIds[index], runbook, StringComparison.Ordinal);
+            foreach (var heading in new[]
+            {
+                "## Symptoms",
+                "## Impact",
+                "## Stable query ID",
+                "## Safe diagnosis",
+                "## Containment",
+                "## Recovery",
+                "## Validation",
+                "## Escalation",
+                "## Evidence retention"
+            })
+            {
+                Assert.Contains(heading, runbook, StringComparison.Ordinal);
+            }
+        }
+
+        var safetyText = combined.Replace(
+            "https://contracts.cp6.uk/observability/slo-evidence/v1/schema.json",
+            string.Empty,
+            StringComparison.Ordinal);
+        foreach (var forbidden in new[]
+        {
+            "http://",
+            "https://",
+            "password=",
+            "Bearer ",
+            "BEGIN PRIVATE KEY",
+            "Owner:",
+            "负责人：",
+            "@",
+            "kubectl ",
+            "helm ",
+            "docker compose",
+            "az deployment"
+        })
+        {
+            Assert.DoesNotContain(forbidden, safetyText, StringComparison.OrdinalIgnoreCase);
+        }
+    }
+
+    [Fact]
     public void ProjectReferences_StayInsideSourceTree_AndGraphIsAcyclic()
     {
         var sourceRoot = Path.GetFullPath(Path.Combine(RepositoryRoot, "src")) + Path.DirectorySeparatorChar;
