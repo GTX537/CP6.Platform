@@ -1,10 +1,14 @@
 # P08-S02 immutable package publication evidence
 
-P08 status: S00-S02 complete; S03-S06 pending.
+P08 status: S00-S01 complete; S02 remediation pending; S03-S06 pending.
 
-## Decision
+## Remediation decision
 
-S02 is complete on Platform `main`. Five immutable `0.8.0-alpha.1` runtime packages were published from one exact, validated main commit and their complete artifact evidence was independently verified. This is not CRM consumption evidence and not a `Frozen / Consumable` declaration. S03-S06 remain required.
+The immutable `0.8.0-alpha.1` packages remain historical publication evidence but are disqualified as the CRM consumer candidate: the real downstream request still received baggage because only the OpenTelemetry propagator, not the BCL `HttpClient` propagator, was constrained. The forward-only replacement is `0.8.0-alpha.2`. No alpha.1 artifact is overwritten or deleted. S02 is reopened until alpha.2 is published from exact Platform main and its artifact evidence is independently verified.
+
+## Prior alpha.1 publication decision
+
+Five immutable `0.8.0-alpha.1` runtime packages were published from one exact, validated main commit and their complete artifact evidence was independently verified. That evidence remains valid for what was published, but alpha.1 is not eligible for CRM consumption and does not support a `Frozen / Consumable` declaration.
 
 ## Scope
 
@@ -28,7 +32,7 @@ The candidate does not provision OpenTelemetry Collector, exporter backends, das
 | `OpenTelemetry.Instrumentation.Http` | `1.18.0` |
 | `Microsoft.Extensions.Http.Resilience` | `10.9.0` |
 
-Candidate package version is `0.8.0-alpha.1`. The approved runtime set is Contracts, Abstractions, AspNetCore, Messaging, and EntityFramework. `CP6.Platform.Testing` is repository-only and excluded from pack/publish evidence.
+The superseded published version is `0.8.0-alpha.1`; the forward remediation candidate is `0.8.0-alpha.2`. The approved runtime set remains Contracts, Abstractions, AspNetCore, Messaging, and EntityFramework. `CP6.Platform.Testing` is repository-only and excluded from pack/publish evidence.
 
 ## Local evidence at PR checkpoint
 
@@ -55,7 +59,7 @@ The two-host fixture proves one W3C server/client/server trace with distinct spa
 | --- | --- | --- |
 | S00 | Complete | Approved design and implementation plan merged to Platform main |
 | S01 | Complete | Platform PR #19 merged; Windows/Linux, real Dapr/Kafka, and real SQL main jobs green |
-| S02 | Complete | Exact-main immutable package publication and artifact/digest evidence verified |
+| S02 | Remediation pending | Publish and independently verify exact-main `0.8.0-alpha.2` without altering alpha.1 |
 | S03 | Pending | CRM fixed-version consumption through CRM PR and main CI |
 | S04 | Pending | Package locator and source-of-truth reconciliation |
 | S05 | Pending | Public project-memory and changelog reconciliation |
@@ -142,7 +146,7 @@ The downloaded `sha256.json` contained exactly these ten filenames and hashes. A
 
 ## S02 boundary
 
-S02 evidence proves immutable Platform publication only. CRM has not yet restored and exercised `0.8.0-alpha.1`; machine locator reconciliation, public project-memory synchronization, and the final evidence audit remain S03-S06. P08 is not `Frozen / Consumable` at this stage.
+The retained alpha.1 evidence proves its immutable Platform publication only; CRM must not consume it as the P08 candidate. Alpha.2 publication, machine locator reconciliation, public project-memory synchronization, and the final evidence audit remain S02-S06. P08 is not `Frozen / Consumable` at this stage.
 
 ## Stable contract identifiers
 

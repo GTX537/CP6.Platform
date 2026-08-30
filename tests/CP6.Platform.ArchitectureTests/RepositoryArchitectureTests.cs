@@ -124,6 +124,7 @@ public sealed class RepositoryArchitectureTests
         var projects = LoadProjects();
 
         Assert.Equal("0.8.0", buildProperties.Descendants("VersionPrefix").Single().Value);
+        Assert.Equal("alpha.2", buildProperties.Descendants("VersionSuffix").Single().Value);
         Assert.Equal("1.18.0", versions["OpenTelemetry.Extensions.Hosting"]);
         Assert.Equal("1.18.0", versions["OpenTelemetry.Instrumentation.AspNetCore"]);
         Assert.Equal("1.18.0", versions["OpenTelemetry.Instrumentation.Http"]);
@@ -232,6 +233,8 @@ public sealed class RepositoryArchitectureTests
         Assert.Contains("*.snupkg", pack, StringComparison.Ordinal);
         Assert.Contains("contracts/observability", pack, StringComparison.Ordinal);
         Assert.Contains("CP6.Platform.Testing", pack, StringComparison.Ordinal);
+        Assert.Contains("$packageVersion = '0.8.0-alpha.2'", verify, StringComparison.Ordinal);
+        Assert.Contains("[string]$PackageVersion = '0.8.0-alpha.2'", pack, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -270,6 +273,10 @@ public sealed class RepositoryArchitectureTests
         {
             Assert.Contains(required, evidenceStep, StringComparison.Ordinal);
         }
+        Assert.Contains(
+            "./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.8.0-alpha.2",
+            workflow,
+            StringComparison.Ordinal);
     }
 
     [Fact]
@@ -293,7 +300,7 @@ public sealed class RepositoryArchitectureTests
             var text = File.ReadAllText(path);
             content.Add(relativePath, text);
             Assert.Contains(
-                "P08 status: S00-S02 complete; S03-S06 pending.",
+                "P08 status: S00-S01 complete; S02 remediation pending; S03-S06 pending.",
                 text,
                 StringComparison.Ordinal);
             foreach (var forbidden in new[] { "TODO", "TBD", "FIXME" })

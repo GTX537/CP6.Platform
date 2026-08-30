@@ -1,19 +1,19 @@
 # P08 observability, health, resilience, and SLO evidence
 
-P08 status: S00-S02 complete; S03-S06 pending.
+P08 status: S00-S01 complete; S02 remediation pending; S03-S06 pending.
 
-This guide is the consumer contract for the published immutable `0.8.0-alpha.1` packages. It defines exporter-neutral telemetry, safe operational endpoints, fail-closed outbound HTTP resilience, W3C messaging propagation, and immutable SLO evidence. CRM consumption, locator updates, public memory, and final freeze remain separate stages.
+This guide is the consumer contract target for the immutable `0.8.0-alpha.2` replacement packages. The published alpha.1 artifacts remain historical evidence but are disqualified as the CRM consumer candidate because their BCL HTTP propagation still forwarded baggage. Alpha.2 defines exporter-neutral telemetry, safe operational endpoints, fail-closed outbound HTTP resilience, trace-only W3C propagation, and immutable SLO evidence. CRM consumption, locator updates, public memory, and final freeze remain separate stages.
 
 ## Install and package boundary
 
 Consumers reference only the production packages they use, all at the same exact version:
 
 ```xml
-<PackageReference Include="CP6.Platform.Contracts" Version="0.8.0-alpha.1" />
-<PackageReference Include="CP6.Platform.Abstractions" Version="0.8.0-alpha.1" />
-<PackageReference Include="CP6.Platform.AspNetCore" Version="0.8.0-alpha.1" />
-<PackageReference Include="CP6.Platform.Messaging" Version="0.8.0-alpha.1" />
-<PackageReference Include="CP6.Platform.EntityFramework" Version="0.8.0-alpha.1" />
+<PackageReference Include="CP6.Platform.Contracts" Version="0.8.0-alpha.2" />
+<PackageReference Include="CP6.Platform.Abstractions" Version="0.8.0-alpha.2" />
+<PackageReference Include="CP6.Platform.AspNetCore" Version="0.8.0-alpha.2" />
+<PackageReference Include="CP6.Platform.Messaging" Version="0.8.0-alpha.2" />
+<PackageReference Include="CP6.Platform.EntityFramework" Version="0.8.0-alpha.2" />
 ```
 
 `CP6.Platform.Testing` is repository-only, non-packable test support. Production projects must not reference it.
@@ -55,7 +55,7 @@ services.AddCp6Observability(new Cp6ObservabilityProfile(
     ReleaseIdentity: release));
 ```
 
-Platform registers sources, meters, W3C propagation, resource identity, and instrumentation. The exporter is a **host-owned exporter**: the host selects bounded processors, exporter implementation, sampling, endpoint, and authentication outside this package. An unavailable or throwing exporter must not change the application response.
+Platform registers sources, meters, W3C propagation, resource identity, and instrumentation. `AddCp6Observability` constrains both the OpenTelemetry text-map propagator and the BCL `DistributedContextPropagator` used by `HttpClient` to `traceparent` and `tracestate`; it does not extract or inject baggage, `Correlation-Context`, or legacy `Request-Id`. Both propagator selections are process-wide, last-writer-wins state: register CP6 observability before constructing HTTP handlers or telemetry providers, and do not replace either global propagator later in host startup. The exporter is a **host-owned exporter**: the host selects bounded processors, exporter implementation, sampling, endpoint, and authentication outside this package. An unavailable or throwing exporter must not change the application response.
 
 Stable ActivitySource and Meter names are `CP6.Platform.AspNetCore`, `CP6.Platform.Messaging`, and `CP6.Platform.EntityFramework`. Stable operations are:
 

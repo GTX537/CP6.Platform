@@ -15,14 +15,17 @@ public sealed class ObservabilityEndToEndTests
     {
         await using var fixture = await TwoServiceObservabilityFixture.StartAsync();
 
-        var response = await fixture.SendRawAsync(
-            HttpMethod.Get,
-            "/proxy/read",
-            ("X-Correlation-Id", "business-correlation"));
-        var body = JsonSerializer.Deserialize<ProxyResponse>(response.Body, JsonOptions());
+        using var request = new HttpRequestMessage(HttpMethod.Get, "/proxy/read");
+        request.Headers.TryAddWithoutValidation("X-Correlation-Id", "business-correlation");
+        request.Headers.TryAddWithoutValidation("baggage", "unsafe=secret-baggage");
+        using var response = await fixture.Client.SendAsync(request);
+        var responseBody = await response.Content.ReadAsStringAsync();
+        var body = JsonSerializer.Deserialize<ProxyResponse>(responseBody, JsonOptions());
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.NotNull(body);
+        Assert.True(body.HasTraceParentHeader);
+        Assert.False(body.HasBaggageHeader);
         Assert.Equal("business-correlation", body.CorrelationId);
         var chain = TraceChain(fixture.Recorder);
         Assert.Equal(chain.ServerA.TraceId, chain.ClientA.TraceId);
@@ -56,7 +59,8 @@ public sealed class ObservabilityEndToEndTests
                 ("traceparent", $"00-{knownTraceIds[0]}-2222222222222222-01"),
                 ("traceparent", $"00-{knownTraceIds[1]}-4444444444444444-01")
             },
-            new[] { ("traceparent", $"00-{knownTraceIds[0]}-2222222222222222-01-extra") }
+            new[] { ("traceparent", $"00-{knownTraceIds[0]}-2222222222222222-01-extra") },
+            new[] { ("Request-Id", "|legacy-root.1.") }
         };
 
         foreach (var headers in cases)
@@ -64,10 +68,23 @@ public sealed class ObservabilityEndToEndTests
             var before = fixture.Recorder.GetActivities().Select(activity => activity.Sequence).DefaultIfEmpty().Max();
             var response = await fixture.SendRawAsync(HttpMethod.Get, "/proxy/read", headers);
             var server = FindServer(fixture.Recorder, "/proxy/read", before);
+            var client = Assert.Single(fixture.Recorder.GetActivities(), activity =>
+                activity.Sequence > before &&
+                activity.Kind == ActivityKind.Client &&
+                activity.ParentSpanId == server.SpanId);
+            var downstream = Assert.Single(fixture.Recorder.GetActivities(), activity =>
+                activity.Sequence > before &&
+                activity.Kind == ActivityKind.Server &&
+                activity.ParentSpanId == client.SpanId);
+            var body = JsonSerializer.Deserialize<ProxyResponse>(response.Body, JsonOptions());
 
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+            Assert.NotNull(body);
+            Assert.True(body.HasTraceParentHeader);
             Assert.DoesNotContain(server.TraceId.ToString(), knownTraceIds);
             Assert.Equal(default, server.ParentSpanId);
+            Assert.Equal(server.TraceId, client.TraceId);
+            Assert.Equal(server.TraceId, downstream.TraceId);
         }
     }
 

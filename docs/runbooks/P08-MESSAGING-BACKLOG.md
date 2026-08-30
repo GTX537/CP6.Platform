@@ -1,6 +1,6 @@
 # Messaging backlog, retry, or DLQ incident
 
-P08 status: S00-S02 complete; S03-S06 pending.
+P08 status: S00-S01 complete; S02 remediation pending; S03-S06 pending.
 
 Runbook ID: `CP6-P08-MESSAGING-001`
 

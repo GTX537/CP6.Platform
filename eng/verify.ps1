@@ -18,7 +18,7 @@ $startedAt = [DateTimeOffset]::UtcNow
 $status = 'Passed'
 $failureMessage = $null
 $checks = [System.Collections.Generic.List[object]]::new()
-$packageVersion = '0.8.0-alpha.1'
+$packageVersion = '0.8.0-alpha.2'
 $runtimePackageProjects = @(
     'src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj',
     'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',

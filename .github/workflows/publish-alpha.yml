@@ -48,7 +48,7 @@ jobs:
           ./eng/verify.ps1 -Gate Security -Profile release
       - name: Pack approved P08 packages
         shell: pwsh
-        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.8.0-alpha.1
+        run: ./eng/pack-release.ps1 -OutputDirectory artifacts/release -PackageVersion 0.8.0-alpha.2
       - name: Publish immutable packages
         shell: pwsh
         env:
