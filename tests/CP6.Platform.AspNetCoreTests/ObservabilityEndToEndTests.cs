@@ -15,14 +15,17 @@ public sealed class ObservabilityEndToEndTests
     {
         await using var fixture = await TwoServiceObservabilityFixture.StartAsync();
 
-        var response = await fixture.SendRawAsync(
-            HttpMethod.Get,
-            "/proxy/read",
-            ("X-Correlation-Id", "business-correlation"));
-        var body = JsonSerializer.Deserialize<ProxyResponse>(response.Body, JsonOptions());
+        using var request = new HttpRequestMessage(HttpMethod.Get, "/proxy/read");
+        request.Headers.TryAddWithoutValidation("X-Correlation-Id", "business-correlation");
+        request.Headers.TryAddWithoutValidation("baggage", "unsafe=secret-baggage");
+        using var response = await fixture.Client.SendAsync(request);
+        var responseBody = await response.Content.ReadAsStringAsync();
+        var body = JsonSerializer.Deserialize<ProxyResponse>(responseBody, JsonOptions());
 
         Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         Assert.NotNull(body);
+        Assert.True(body.HasTraceParentHeader);
+        Assert.False(body.HasBaggageHeader);
         Assert.Equal("business-correlation", body.CorrelationId);
         var chain = TraceChain(fixture.Recorder);
         Assert.Equal(chain.ServerA.TraceId, chain.ClientA.TraceId);

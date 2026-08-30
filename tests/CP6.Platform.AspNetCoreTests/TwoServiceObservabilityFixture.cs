@@ -165,7 +165,9 @@ internal sealed class TwoServiceObservabilityFixture : IAsyncDisposable
             return Results.Json(new ProxyResponse(
                 true,
                 context.TraceIdentifier,
-                string.Empty));
+                string.Empty,
+                context.Request.Headers.ContainsKey("traceparent"),
+                context.Request.Headers.ContainsKey("baggage")));
         });
         await application.StartAsync();
         return application;
@@ -468,4 +470,9 @@ internal sealed class ManualTimeProvider : TimeProvider
 
 internal sealed record RawHttpResponse(HttpStatusCode StatusCode, string Body);
 
-internal sealed record ProxyResponse(bool Success, string CorrelationId, string ErrorCode);
+internal sealed record ProxyResponse(
+    bool Success,
+    string CorrelationId,
+    string ErrorCode,
+    bool HasTraceParentHeader = false,
+    bool HasBaggageHeader = false);

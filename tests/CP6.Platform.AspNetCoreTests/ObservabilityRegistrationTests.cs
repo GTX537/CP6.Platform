@@ -216,6 +216,9 @@ public sealed class ObservabilityRegistrationTests
         Assert.Equal(
             new[] { "traceparent", "tracestate" },
             propagator.Fields.OrderBy(field => field, StringComparer.Ordinal));
+        Assert.Equal(
+            new[] { "traceparent", "tracestate" },
+            DistributedContextPropagator.Current.Fields.OrderBy(field => field, StringComparer.Ordinal));
     }
 
     [Fact]

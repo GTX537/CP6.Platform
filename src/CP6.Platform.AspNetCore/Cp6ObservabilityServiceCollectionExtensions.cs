@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using CP6.Platform.Abstractions;
 using CP6.Platform.AspNetCore;
 using OpenTelemetry;
@@ -42,6 +43,7 @@ public static class Cp6ObservabilityServiceCollectionExtensions
         services.AddSingleton<ICp6ReleaseIdentityAccessor>(
             new Cp6ReleaseIdentityAccessor(profile.ReleaseIdentity));
 
+        DistributedContextPropagator.Current = Cp6TraceContextDistributedPropagator.Instance;
         Sdk.SetDefaultTextMapPropagator(new TraceContextPropagator());
 
         var resourceAttributes = BuildResourceAttributes(profile);
