@@ -77,8 +77,7 @@ internal sealed class TwoServiceObservabilityFixture : IAsyncDisposable
             var requests = new RequestCounter();
             serviceB = await StartServiceBAsync(requests);
             var exporter = options.UseThrowingExporter ? new ThrowingActivityExporter() : null;
-            var destination = options.UseUnavailableDestination ? UnavailableAddress() : Address(serviceB);
-            serviceA = await StartServiceAAsync(destination, options, exporter);
+            serviceA = await StartServiceAAsync(Address(serviceB), options, exporter);
             return new TwoServiceObservabilityFixture(
                 serviceA,
                 serviceB,
@@ -296,15 +295,6 @@ internal sealed class TwoServiceObservabilityFixture : IAsyncDisposable
         return new Uri(Assert.Single(addresses ?? []));
     }
 
-    private static Uri UnavailableAddress()
-    {
-        var listener = new TcpListener(IPAddress.Loopback, 0);
-        listener.Start();
-        var port = ((IPEndPoint)listener.LocalEndpoint).Port;
-        listener.Stop();
-        return new Uri($"http://127.0.0.1:{port}", UriKind.Absolute);
-    }
-
     private static IReadOnlyDictionary<string, object> Resource(IServiceProvider services) =>
         services.GetRequiredService<TracerProvider>()
             .GetResource()
@@ -440,7 +430,6 @@ internal sealed record TwoServiceObservabilityOptions
 
     internal bool UseThrowingExporter { get; init; }
 
-    internal bool UseUnavailableDestination { get; init; }
 }
 
 internal sealed class ManualTimeProvider : TimeProvider

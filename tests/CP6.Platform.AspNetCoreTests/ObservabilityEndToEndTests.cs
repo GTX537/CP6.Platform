@@ -90,9 +90,13 @@ public sealed class ObservabilityEndToEndTests
     }
 
     [Fact]
-    public async Task UnavailableServiceB_ReturnsFailureWithoutFallbackSuccess()
+    public async Task TransportFailure_ReturnsFailureWithoutFallbackSuccess()
     {
-        await using var fixture = await TwoServiceObservabilityFixture.StartAsync(new() { UseUnavailableDestination = true });
+        var script = new Cp6HttpFaultScript(
+            Cp6HttpFaultOutcome.Throw(new HttpRequestException("dependency unavailable 1")),
+            Cp6HttpFaultOutcome.Throw(new HttpRequestException("dependency unavailable 2")),
+            Cp6HttpFaultOutcome.Throw(new HttpRequestException("dependency unavailable 3")));
+        await using var fixture = await TwoServiceObservabilityFixture.StartAsync(new() { FaultScript = script });
 
         var response = await fixture.SendRawAsync(HttpMethod.Get, "/proxy/read");
         var body = JsonSerializer.Deserialize<ProxyResponse>(response.Body, JsonOptions());
@@ -100,7 +104,8 @@ public sealed class ObservabilityEndToEndTests
         Assert.Equal(HttpStatusCode.ServiceUnavailable, response.StatusCode);
         Assert.NotNull(body);
         Assert.False(body.Success);
-        Assert.Equal("AttemptTimeout", body.ErrorCode);
+        Assert.Equal("downstream_unavailable", body.ErrorCode);
+        Assert.Equal(3, script.AttemptCount);
         Assert.Equal(0, fixture.ServiceBRequestCount);
     }
 
