@@ -143,6 +143,32 @@ public sealed class MessagingTelemetryTests
         Assert.Equal("cancelled", activity.GetTagItem(Cp6TelemetryConventions.ErrorCodeTag));
     }
 
+    [Fact]
+    public async Task ThrowingMetricObserver_CannotChangeSuccessfulPublish()
+    {
+        using var listener = new MeterListener
+        {
+            InstrumentPublished = (instrument, meterListener) =>
+            {
+                if (instrument.Meter.Name == Cp6TelemetryMeters.Messaging)
+                {
+                    meterListener.EnableMeasurementEvents(instrument);
+                }
+            }
+        };
+        listener.SetMeasurementEventCallback<long>((_, _, _, _) =>
+            throw new InvalidOperationException("Synthetic metric observer failure."));
+        listener.SetMeasurementEventCallback<double>((_, _, _, _) =>
+            throw new InvalidOperationException("Synthetic metric observer failure."));
+        listener.Start();
+        var transport = new RecordingTransport();
+
+        var receipt = await Publisher(transport).PublishAsync(LoadExample("valid"));
+
+        Assert.Equal(1, transport.PublishAttempts);
+        Assert.Equal("evt-0001", receipt.EventId);
+    }
+
     private static void AssertStableActivity(Activity activity, string expectedOutcome, string expectedDisposition)
     {
         Assert.Equal(activity.OperationName, activity.GetTagItem(Cp6TelemetryConventions.OperationTag));

@@ -33,11 +33,12 @@ internal static class Cp6MessagingTelemetry
         ActivityKind.Consumer,
         parentContext ?? default(ActivityContext));
 
-    internal static void RecordTraceContextRejected() => TraceContextRejectedCounter.Add(
-        1,
-        new KeyValuePair<string, object?>(
-            Cp6TelemetryConventions.ErrorCodeTag,
-            "invalid_trace_context"));
+    internal static void RecordTraceContextRejected() => TryRecord(() =>
+        TraceContextRejectedCounter.Add(
+            1,
+            new KeyValuePair<string, object?>(
+                Cp6TelemetryConventions.ErrorCodeTag,
+                "invalid_trace_context")));
 
     internal sealed class OperationScope : IDisposable
     {
@@ -51,11 +52,12 @@ internal static class Cp6MessagingTelemetry
             EnsureOperation(operation);
             this.operation = operation;
             startedAt = Stopwatch.GetTimestamp();
-            activity = parentContext.HasValue
-                ? ActivitySource.StartActivity(operation, kind, parentContext.Value)
-                : ActivitySource.StartActivity(operation, kind);
-            activity?.SetTag(Cp6TelemetryConventions.OperationTag, operation);
-            activity?.SetTag(Cp6TelemetryConventions.MessagingTransportTag, Transport);
+            activity = TryStartActivity(operation, kind, parentContext);
+            TryRecord(() =>
+            {
+                activity?.SetTag(Cp6TelemetryConventions.OperationTag, operation);
+                activity?.SetTag(Cp6TelemetryConventions.MessagingTransportTag, Transport);
+            });
         }
 
         internal void Success(string disposition, MeasurementKind measurementKind) =>
@@ -77,7 +79,7 @@ internal static class Cp6MessagingTelemetry
                 Failure("operation_incomplete");
             }
 
-            activity?.Dispose();
+            TryRecord(() => activity?.Dispose());
         }
 
         private void Complete(
@@ -89,24 +91,27 @@ internal static class Cp6MessagingTelemetry
         {
             if (completed)
             {
-                throw new InvalidOperationException("Messaging telemetry operation is already complete.");
+                return;
             }
 
             EnsureOutcome(outcome);
             EnsureErrorCode(errorCode);
             EnsureDisposition(disposition);
             completed = true;
-            activity?.SetTag(Cp6TelemetryConventions.OutcomeTag, outcome);
-            activity?.SetTag(Cp6TelemetryConventions.MessagingDispositionTag, disposition);
-            if (errorCode is not null)
+            TryRecord(() =>
             {
-                activity?.SetTag(Cp6TelemetryConventions.ErrorCodeTag, errorCode);
-            }
+                activity?.SetTag(Cp6TelemetryConventions.OutcomeTag, outcome);
+                activity?.SetTag(Cp6TelemetryConventions.MessagingDispositionTag, disposition);
+                if (errorCode is not null)
+                {
+                    activity?.SetTag(Cp6TelemetryConventions.ErrorCodeTag, errorCode);
+                }
 
-            activity?.SetStatus(activityStatus);
+                activity?.SetStatus(activityStatus);
+            });
             var tags = Tags(outcome, errorCode, disposition);
-            Counter(measurementKind)?.Add(1, tags);
-            Duration.Record(Stopwatch.GetElapsedTime(startedAt).TotalMilliseconds, tags);
+            TryRecord(() => Counter(measurementKind)?.Add(1, tags));
+            TryRecord(() => Duration.Record(Stopwatch.GetElapsedTime(startedAt).TotalMilliseconds, tags));
         }
 
         private KeyValuePair<string, object?>[] Tags(
@@ -146,6 +151,35 @@ internal static class Cp6MessagingTelemetry
         MeasurementKind.Rejected => RejectedCounter,
         _ => throw new ArgumentOutOfRangeException(nameof(kind), "Messaging measurement kind is not supported.")
     };
+
+    private static Activity? TryStartActivity(
+        string operation,
+        ActivityKind kind,
+        ActivityContext? parentContext)
+    {
+        try
+        {
+            return parentContext.HasValue
+                ? ActivitySource.StartActivity(operation, kind, parentContext.Value)
+                : ActivitySource.StartActivity(operation, kind);
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
+
+    private static void TryRecord(Action record)
+    {
+        try
+        {
+            record();
+        }
+        catch (Exception)
+        {
+            // Messaging telemetry is observer-only and cannot change transport behavior.
+        }
+    }
 
     private static void EnsureOperation(string operation)
     {
