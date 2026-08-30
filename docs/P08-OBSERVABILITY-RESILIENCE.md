@@ -55,7 +55,7 @@ services.AddCp6Observability(new Cp6ObservabilityProfile(
     ReleaseIdentity: release));
 ```
 
-Platform registers sources, meters, W3C propagation, resource identity, and instrumentation. `AddCp6Observability` constrains both the OpenTelemetry text-map propagator and the BCL `DistributedContextPropagator` used by `HttpClient` to `traceparent` and `tracestate`; it does not extract or inject baggage. The exporter is a **host-owned exporter**: the host selects bounded processors, exporter implementation, sampling, endpoint, and authentication outside this package. An unavailable or throwing exporter must not change the application response.
+Platform registers sources, meters, W3C propagation, resource identity, and instrumentation. `AddCp6Observability` constrains both the OpenTelemetry text-map propagator and the BCL `DistributedContextPropagator` used by `HttpClient` to `traceparent` and `tracestate`; it does not extract or inject baggage, `Correlation-Context`, or legacy `Request-Id`. Both propagator selections are process-wide, last-writer-wins state: register CP6 observability before constructing HTTP handlers or telemetry providers, and do not replace either global propagator later in host startup. The exporter is a **host-owned exporter**: the host selects bounded processors, exporter implementation, sampling, endpoint, and authentication outside this package. An unavailable or throwing exporter must not change the application response.
 
 Stable ActivitySource and Meter names are `CP6.Platform.AspNetCore`, `CP6.Platform.Messaging`, and `CP6.Platform.EntityFramework`. Stable operations are:
 

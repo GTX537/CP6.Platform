@@ -4,7 +4,7 @@
 
 **Goal:** Close the published `0.8.0-alpha.1` HTTP baggage leak with a real two-host regression, ship an immutable `0.8.0-alpha.2` replacement, preserve exact publication evidence, and unblock CRM S03 without a consumer workaround.
 
-**Architecture:** `AddCp6Observability` must align both propagation layers used by a real ASP.NET Core-to-HttpClient call: OpenTelemetry continues to use `TraceContextPropagator`, while `DistributedContextPropagator.Current` uses a CP6-owned trace-only wrapper around the BCL default propagator. The wrapper delegates W3C trace extraction/injection, filters all non-trace fields, and extracts no baggage. A two-Kestrel-host test observes actual downstream request headers, not only Activity state. The already-published alpha.1 artifacts remain immutable evidence but are disqualified as the CRM consumer candidate; alpha.2 is built, validated, published, and recorded from exact Platform main.
+**Architecture:** `AddCp6Observability` must align both propagation layers used by a real ASP.NET Core-to-HttpClient call: OpenTelemetry continues to use `TraceContextPropagator`, while `DistributedContextPropagator.Current` uses a CP6-owned trace-only wrapper around the BCL default propagator. The wrapper exposes an immutable `traceparent`/`tracestate` field set, filters both delegated getters and setters so legacy `Request-Id`, `baggage`, and `Correlation-Context` cannot cross the boundary, and extracts no baggage. A two-Kestrel-host test observes actual downstream request headers, not only Activity state. The already-published alpha.1 artifacts remain immutable evidence but are disqualified as the CRM consumer candidate; alpha.2 is built, validated, published, and recorded from exact Platform main.
 
 **Tech Stack:** .NET 8, ASP.NET Core Kestrel, `System.Diagnostics.DistributedContextPropagator`, OpenTelemetry 1.18.0, xUnit, PowerShell, GitHub Actions, GitHub Packages.
 
@@ -18,6 +18,8 @@
 - The fix belongs in Platform production composition. CRM must not carry a custom propagator, reference `CP6.Platform.Testing`, or weaken its downstream no-baggage assertion.
 - `0.8.0-alpha.1` is immutable and must never be overwritten or pushed with duplicate skipping. The replacement version is exactly `0.8.0-alpha.2`.
 
+Independent review amendment: the resolved `System.Diagnostics.DiagnosticSource` `10.0.8` default is `W3CPropagator`, which rejects legacy `Request-Id` but still handles baggage. The CP6 wrapper nevertheless filters delegated extraction as well as injection so its contract remains safe if a compatible inner propagator requests legacy fields. Direct adapter tests use a legacy-compatible fake to prove that boundary independently of the currently resolved transitive implementation; the two-host test also proves a `Request-Id` input creates a fresh W3C root and still forwards downstream `traceparent`.
+
 ## File map
 
 | File | Responsibility |
@@ -25,6 +27,8 @@
 | `tests/CP6.Platform.AspNetCoreTests/TwoServiceObservabilityFixture.cs` | Return downstream trace/baggage header observations from the real Service B request |
 | `tests/CP6.Platform.AspNetCoreTests/ObservabilityEndToEndTests.cs` | Prove one W3C chain reaches Service B while baggage does not |
 | `tests/CP6.Platform.AspNetCoreTests/ObservabilityRegistrationTests.cs` | Prove both OTel and BCL global propagators advertise only `traceparent`/`tracestate` |
+| `tests/CP6.Platform.AspNetCoreTests/TraceContextDistributedPropagatorTests.cs` | Prove the adapter blocks legacy extraction and both baggage header forms independently of the resolved inner implementation |
+| `src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj` | Expose internals only to the ASP.NET Core contract test assembly |
 | `src/CP6.Platform.AspNetCore/Cp6TraceContextDistributedPropagator.cs` | Adapt the BCL default propagator to trace-only inject/extract behavior |
 | `src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs` | Install the CP6 BCL propagator together with the existing OTel propagator |
 | `tests/CP6.Platform.ArchitectureTests/RepositoryArchitectureTests.cs` | Pin alpha.2 release-source and remediation-status invariants |
@@ -112,9 +116,11 @@ Expected: the downstream header assertion reports `HasBaggageHeader == true` and
 
 **Files:**
 - Create: `src/CP6.Platform.AspNetCore/Cp6TraceContextDistributedPropagator.cs`
+- Modify: `src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj`
 - Modify: `src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs`
 - Test: `tests/CP6.Platform.AspNetCoreTests/ObservabilityRegistrationTests.cs`
 - Test: `tests/CP6.Platform.AspNetCoreTests/ObservabilityEndToEndTests.cs`
+- Create: `tests/CP6.Platform.AspNetCoreTests/TraceContextDistributedPropagatorTests.cs`
 
 - [ ] **Step 1: Add the internal trace-only BCL adapter**
 
@@ -127,10 +133,18 @@ namespace CP6.Platform.AspNetCore;
 
 internal sealed class Cp6TraceContextDistributedPropagator : DistributedContextPropagator
 {
-    private static readonly DistributedContextPropagator Inner = CreateDefaultPropagator();
-    private static readonly string[] TraceFields = ["traceparent", "tracestate"];
+    private static readonly IReadOnlyCollection<string> TraceFields =
+        Array.AsReadOnly(["traceparent", "tracestate"]);
+    private readonly DistributedContextPropagator inner;
 
-    internal static Cp6TraceContextDistributedPropagator Instance { get; } = new();
+    internal static Cp6TraceContextDistributedPropagator Instance { get; } =
+        new(CreateDefaultPropagator());
+
+    internal Cp6TraceContextDistributedPropagator(DistributedContextPropagator inner)
+    {
+        ArgumentNullException.ThrowIfNull(inner);
+        this.inner = inner;
+    }
 
     public override IReadOnlyCollection<string> Fields => TraceFields;
 
@@ -144,7 +158,7 @@ internal sealed class Cp6TraceContextDistributedPropagator : DistributedContextP
             return;
         }
 
-        Inner.Inject(activity, carrier, (target, fieldName, fieldValue) =>
+        inner.Inject(activity, carrier, (target, fieldName, fieldValue) =>
         {
             if (TraceFields.Contains(fieldName, StringComparer.OrdinalIgnoreCase))
             {
@@ -157,8 +171,34 @@ internal sealed class Cp6TraceContextDistributedPropagator : DistributedContextP
         object? carrier,
         PropagatorGetterCallback? getter,
         out string? traceParent,
-        out string? traceState) =>
-        Inner.ExtractTraceIdAndState(carrier, getter, out traceParent, out traceState);
+        out string? traceState)
+    {
+        if (getter is null)
+        {
+            traceParent = null;
+            traceState = null;
+            return;
+        }
+
+        inner.ExtractTraceIdAndState(
+            carrier,
+            (object? target,
+                string fieldName,
+                out string? fieldValue,
+                out IEnumerable<string>? fieldValues) =>
+            {
+                if (!TraceFields.Contains(fieldName, StringComparer.OrdinalIgnoreCase))
+                {
+                    fieldValue = null;
+                    fieldValues = null;
+                    return;
+                }
+
+                getter(target, fieldName, out fieldValue, out fieldValues);
+            },
+            out traceParent,
+            out traceState);
+    }
 
     public override IEnumerable<KeyValuePair<string, string?>>? ExtractBaggage(
         object? carrier,
@@ -196,7 +236,7 @@ Expected: all tests pass with no warning or error output.
 ```powershell
 git diff --check
 git diff -- src/CP6.Platform.AspNetCore tests/CP6.Platform.AspNetCoreTests
-git add -- src/CP6.Platform.AspNetCore/Cp6TraceContextDistributedPropagator.cs src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs tests/CP6.Platform.AspNetCoreTests/TwoServiceObservabilityFixture.cs tests/CP6.Platform.AspNetCoreTests/ObservabilityEndToEndTests.cs tests/CP6.Platform.AspNetCoreTests/ObservabilityRegistrationTests.cs
+git add -- src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj src/CP6.Platform.AspNetCore/Cp6TraceContextDistributedPropagator.cs src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs tests/CP6.Platform.AspNetCoreTests/TwoServiceObservabilityFixture.cs tests/CP6.Platform.AspNetCoreTests/ObservabilityEndToEndTests.cs tests/CP6.Platform.AspNetCoreTests/ObservabilityRegistrationTests.cs tests/CP6.Platform.AspNetCoreTests/TraceContextDistributedPropagatorTests.cs
 git diff --cached --check
 git commit -m "fix(observability): block outbound HTTP baggage"
 ```

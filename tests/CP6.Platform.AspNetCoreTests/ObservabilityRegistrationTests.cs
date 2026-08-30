@@ -222,6 +222,50 @@ public sealed class ObservabilityRegistrationTests
     }
 
     [Fact]
+    public void AddCp6Observability_DoesNotExtractLegacyRequestId()
+    {
+        new ServiceCollection().AddCp6Observability(CandidateProfile("crm-api"));
+        var carrier = new Dictionary<string, string[]>(StringComparer.OrdinalIgnoreCase)
+        {
+            ["Request-Id"] = ["|legacy-root.1."]
+        };
+
+        Assert.Equal(
+            "Cp6TraceContextDistributedPropagator",
+            DistributedContextPropagator.Current.GetType().Name);
+
+        DistributedContextPropagator.Current.ExtractTraceIdAndState(
+            carrier,
+            GetHeaderValues,
+            out var traceParent,
+            out var traceState);
+
+        Assert.Null(traceParent);
+        Assert.Null(traceState);
+    }
+
+    [Fact]
+    public void AddCp6Observability_InjectsOnlyW3cTraceFields()
+    {
+        new ServiceCollection().AddCp6Observability(CandidateProfile("crm-api"));
+        using var activity = new Activity("outbound")
+            .SetIdFormat(ActivityIdFormat.W3C)
+            .Start();
+        activity.AddBaggage("unsafe", "secret-baggage");
+        var carrier = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+        DistributedContextPropagator.Current.Inject(
+            activity,
+            carrier,
+            static (target, fieldName, fieldValue) =>
+                ((IDictionary<string, string>)target!)[fieldName] = fieldValue);
+
+        Assert.Contains("traceparent", carrier.Keys, StringComparer.OrdinalIgnoreCase);
+        Assert.DoesNotContain("baggage", carrier.Keys, StringComparer.OrdinalIgnoreCase);
+        Assert.DoesNotContain("Correlation-Context", carrier.Keys, StringComparer.OrdinalIgnoreCase);
+    }
+
+    [Fact]
     public void AddCp6Observability_DoesNotRegisterAnExporter()
     {
         var services = new ServiceCollection();
@@ -258,6 +302,24 @@ public sealed class ObservabilityRegistrationTests
 
     private static bool ContainsExporterName(Type? type) =>
         type?.FullName?.Contains("Exporter", StringComparison.Ordinal) == true;
+
+    private static void GetHeaderValues(
+        object? target,
+        string fieldName,
+        out string? fieldValue,
+        out IEnumerable<string>? fieldValues)
+    {
+        var carrier = (IReadOnlyDictionary<string, string[]>)target!;
+        if (!carrier.TryGetValue(fieldName, out var values) || values.Length == 0)
+        {
+            fieldValue = null;
+            fieldValues = null;
+            return;
+        }
+
+        fieldValue = values.Length == 1 ? values[0] : null;
+        fieldValues = values.Length > 1 ? values : null;
+    }
 
     private static Cp6ObservabilityProfile CandidateProfile(string serviceName)
     {

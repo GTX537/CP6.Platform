@@ -4,10 +4,18 @@ namespace CP6.Platform.AspNetCore;
 
 internal sealed class Cp6TraceContextDistributedPropagator : DistributedContextPropagator
 {
-    private static readonly DistributedContextPropagator Inner = CreateDefaultPropagator();
-    private static readonly string[] TraceFields = ["traceparent", "tracestate"];
+    private static readonly IReadOnlyCollection<string> TraceFields =
+        Array.AsReadOnly(["traceparent", "tracestate"]);
+    private readonly DistributedContextPropagator inner;
 
-    internal static Cp6TraceContextDistributedPropagator Instance { get; } = new();
+    internal static Cp6TraceContextDistributedPropagator Instance { get; } =
+        new(CreateDefaultPropagator());
+
+    internal Cp6TraceContextDistributedPropagator(DistributedContextPropagator inner)
+    {
+        ArgumentNullException.ThrowIfNull(inner);
+        this.inner = inner;
+    }
 
     public override IReadOnlyCollection<string> Fields => TraceFields;
 
@@ -21,7 +29,7 @@ internal sealed class Cp6TraceContextDistributedPropagator : DistributedContextP
             return;
         }
 
-        Inner.Inject(activity, carrier, (target, fieldName, fieldValue) =>
+        inner.Inject(activity, carrier, (target, fieldName, fieldValue) =>
         {
             if (TraceFields.Contains(fieldName, StringComparer.OrdinalIgnoreCase))
             {
@@ -34,8 +42,34 @@ internal sealed class Cp6TraceContextDistributedPropagator : DistributedContextP
         object? carrier,
         PropagatorGetterCallback? getter,
         out string? traceParent,
-        out string? traceState) =>
-        Inner.ExtractTraceIdAndState(carrier, getter, out traceParent, out traceState);
+        out string? traceState)
+    {
+        if (getter is null)
+        {
+            traceParent = null;
+            traceState = null;
+            return;
+        }
+
+        inner.ExtractTraceIdAndState(
+            carrier,
+            (object? target,
+                string fieldName,
+                out string? fieldValue,
+                out IEnumerable<string>? fieldValues) =>
+            {
+                if (!TraceFields.Contains(fieldName, StringComparer.OrdinalIgnoreCase))
+                {
+                    fieldValue = null;
+                    fieldValues = null;
+                    return;
+                }
+
+                getter(target, fieldName, out fieldValue, out fieldValues);
+            },
+            out traceParent,
+            out traceState);
+    }
 
     public override IEnumerable<KeyValuePair<string, string?>>? ExtractBaggage(
         object? carrier,

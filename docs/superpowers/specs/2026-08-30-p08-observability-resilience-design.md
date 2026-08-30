@@ -3,7 +3,7 @@
 | 项目 | 值 |
 | --- | --- |
 | 里程碑 | `P08` |
-| 设计状态 | Approved design / implementation not started |
+| 设计状态 | Remediation implemented / alpha.2 publication pending |
 | 日期 | 2026-08-30 |
 | 权威前置 | P03、P05、P06 均为 `Frozen / Consumable`；P07 已完成但不是 P08 前置 |
 | 候选版本 | repository `0.8.0.0` / package `0.8.0-alpha.2` |
