@@ -13,7 +13,7 @@
 
 P08-S01 is complete. Producer PR #19 and evidence PR #20 are merged, and Platform main run `33304109635` passed Windows, Linux, real Dapr/Kafka, and real SQL Server validation at the planning baseline above.
 
-S02 publishes the already reviewed S01 implementation without changing its runtime surface. The source of the packages is the exact Platform `main` commit produced after this S02 design and implementation plan are merged and that exact commit passes all required main jobs. The publication must bind that source commit to five immutable `0.8.0-alpha.1` packages, package hashes, the workflow run, and its GitHub Actions artifact.
+S02 publishes the already reviewed S01 implementation without changing its runtime surface. The source of the packages is the exact Platform `main` commit produced after this S02 design, implementation plan, and evidence-retention correction are merged and that exact commit passes all required main jobs. The publication must bind that source commit to five immutable `0.8.0-alpha.1` packages, package hashes, the workflow run, and its GitHub Actions artifact.
 
 S02 alone does not prove CRM consumption and does not make P08 `Frozen / Consumable`. Its terminal status is `S00-S02 complete; S03-S06 pending`.
 
@@ -27,7 +27,8 @@ S02 must:
 4. produce exactly five ordinary packages, five symbol packages, and `sha256.json` from the same build output;
 5. publish only the five ordinary packages and retain all ten package files in evidence;
 6. preserve immutable run, job, artifact, artifact digest, package-name, and package-hash evidence;
-7. close S02 through a separate evidence PR and green post-merge main validation.
+7. retain both real-profile evidence directories in the same publication artifact;
+8. close S02 through a separate evidence PR and green post-merge main validation.
 
 ## 3. Non-goals
 
@@ -81,7 +82,9 @@ Each ordinary package has one same-version `.snupkg`. `sha256.json` contains the
 
 ### 5.1 `.github/workflows/publish-alpha.yml`
 
-The existing workflow is the sole publisher. It owns exact-main validation, release verification, package preparation, authenticated upload, and evidence retention. S02 reuses it without adding a second publication path.
+The existing workflow remains the sole publisher. It owns exact-main validation, release verification, package preparation, authenticated upload, and evidence retention. S02 does not add a second publication path.
+
+One evidence-only correction is required before publication. Consecutive `p05-real` and `p06-real` verification calls reuse `artifacts/verify/integration`, so the later call replaces the earlier integration summary and log. The publication artifact must therefore include the independent `artifacts/p05-integration/**` and `artifacts/p06-sql-integration/**` directories in addition to `artifacts/release/**` and `artifacts/verify/**`. A repository architecture test must lock these four upload roots and `if: always()` before the workflow may be dispatched.
 
 The workflow token has only repository read and package write permissions. `NUGET_AUTH_TOKEN` exists only for the upload step and must not be echoed, stored in an artifact, copied into repository configuration, or exposed to a consumer process.
 
@@ -95,7 +98,7 @@ The existing packer owns the exact package set, runtime assembly checks, asset o
 
 ### 5.4 GitHub Actions artifact
 
-The artifact name is the fixed prefix `p08-alpha-` followed by the exact 40-character approved commit. It is uploaded with `if: always()` and 30-day retention. It contains `artifacts/release/**` and `artifacts/verify/**`. The artifact ID and GitHub-computed digest are immutable evidence inputs alongside `sha256.json`.
+The artifact name is the fixed prefix `p08-alpha-` followed by the exact 40-character approved commit. It is uploaded with `if: always()` and 30-day retention. It contains `artifacts/release/**`, `artifacts/verify/**`, `artifacts/p05-integration/**`, and `artifacts/p06-sql-integration/**`. The artifact ID and GitHub-computed digest are immutable evidence inputs alongside `sha256.json`.
 
 ### 5.5 `docs/P08-PUBLICATION.md`
 
@@ -112,18 +115,19 @@ After a successful publication, a separate evidence branch records:
 
 ## 6. Publication data flow
 
-1. Merge the reviewed S02 design and implementation plan through a Platform PR.
-2. Wait for that merge commit's Windows, Linux, real Dapr/Kafka, and real SQL Server main jobs to succeed.
-3. Fetch Platform `origin/main`, record its full SHA, and confirm it equals the successful main run head.
-4. Dispatch `publish-alpha.yml` from `main` with that SHA as `expected_commit`.
-5. The workflow checks exact-main authority and runs all release gates.
-6. The packer creates the ten package files and `sha256.json` once in `artifacts/release`.
-7. The workflow uploads only the five ordinary `.nupkg` files with its short-lived GitHub token.
-8. The workflow always uploads the package and verification evidence artifact.
-9. The operator waits for the terminal run, rechecks that Platform main did not move, and reads run/job conclusions plus artifact metadata through GitHub APIs.
-10. The operator downloads the artifact into an ignored workspace directory, verifies its GitHub digest, exact filenames, non-empty files, and SHA-256 manifest, and independently recomputes every listed hash.
-11. A separate evidence PR updates P08 status and the immutable ledger, then passes PR and post-merge main validation.
-12. S03 consumes only version `0.8.0-alpha.1` from GitHub Packages and binds its black-box results to the S02 evidence.
+1. Add a failing architecture assertion for the two missing real-profile artifact roots, then make it pass by extending only the existing publication artifact path list.
+2. Merge the reviewed S02 design, implementation plan, architecture assertion, and evidence-retention correction through one Platform PR.
+3. Wait for that merge commit's Windows, Linux, real Dapr/Kafka, and real SQL Server main jobs to succeed.
+4. Fetch Platform `origin/main`, record its full SHA, and confirm it equals the successful main run head.
+5. Dispatch `publish-alpha.yml` from `main` with that SHA as `expected_commit`.
+6. The workflow checks exact-main authority and runs all release gates.
+7. The packer creates the ten package files and `sha256.json` once in `artifacts/release`.
+8. The workflow uploads only the five ordinary `.nupkg` files with its short-lived GitHub token.
+9. The workflow always uploads the package and verification evidence artifact, including both independent real-profile directories.
+10. The operator waits for the terminal run, rechecks that Platform main did not move, and reads run/job conclusions plus artifact metadata through GitHub APIs.
+11. The operator downloads the artifact into an ignored workspace directory, records and validates the API-reported GitHub artifact digest and identity, verifies exact filenames, non-empty files, and the SHA-256 manifest, and independently recomputes every listed package hash.
+12. A separate evidence PR updates P08 status and the immutable ledger, then passes PR and post-merge main validation.
+13. S03 consumes only version `0.8.0-alpha.1` from GitHub Packages and binds its black-box results to the S02 evidence.
 
 ## 7. Failure semantics
 
@@ -176,6 +180,8 @@ The downloaded artifact must contain:
 - exactly five approved `.nupkg` files;
 - exactly five corresponding `.snupkg` files;
 - exactly one `sha256.json` covering all ten packages;
+- P05 `result.json` and Docker Compose log from `artifacts/p05-integration`;
+- P06 `result.json` and SQL Server log from `artifacts/p06-sql-integration`;
 - non-empty runtime assemblies in every ordinary package;
 - P04 event assets only in Messaging;
 - P08 SLO assets only in Contracts;
@@ -206,4 +212,4 @@ S02 is complete only after all of the following are true:
 
 ## 10. Approved decision
 
-S02 uses the audit-first reuse approach: merge a design/plan PR, publish through the already validated exact-main workflow, verify its immutable output, and merge a separate evidence PR. No second feed, manual upload path, or speculative release feature is introduced.
+S02 uses the audit-first reuse approach: lock the existing publisher's complete evidence roots with one architecture test, merge the design/plan and evidence-retention correction, publish through that exact-main workflow, verify its immutable output, and merge a separate evidence PR. No second publisher, feed, manual upload path, runtime behavior, or speculative release feature is introduced.
