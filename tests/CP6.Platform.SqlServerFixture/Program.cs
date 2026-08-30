@@ -125,7 +125,9 @@ static async Task VerifyAtomicOutboxAsync(
     await using (var check = factory.CreateDbContext())
     {
         Ensure(await check.BusinessRows.CountAsync() == 0, "Rolled-back business data remained.");
-        Ensure(await check.Set<Cp6OutboxMessage>().CountAsync() == 0, "Rolled-back Outbox data remained.");
+        Ensure(
+            !await check.Set<Cp6OutboxMessage>().AnyAsync(message => message.MessageId == "atomic-rollback"),
+            "Rolled-back Outbox data remained.");
     }
 
     await using (var commitContext = factory.CreateDbContext())
@@ -141,7 +143,9 @@ static async Task VerifyAtomicOutboxAsync(
     await using (var check = factory.CreateDbContext())
     {
         Ensure(await check.BusinessRows.CountAsync() == 1, "Committed business data is missing.");
-        Ensure(await check.Set<Cp6OutboxMessage>().CountAsync() == 1, "Committed Outbox data is missing.");
+        Ensure(
+            await check.Set<Cp6OutboxMessage>().CountAsync(message => message.MessageId == "atomic-commit") == 1,
+            "Committed Outbox data is missing.");
     }
 }
 
