@@ -15,6 +15,7 @@ All notable changes to CP6.Platform are documented here.
 - Publish the five immutable `0.8.0-alpha.1` runtime packages from exact Platform main with independently matched package hashes, artifact digest, and complete real Dapr/Kafka and SQL Server evidence; CRM consumption and freeze remain S03-S06.
 - Disqualify alpha.1 as the CRM candidate after external black-box testing proved BCL `HttpClient` still forwarded baggage; align BCL and OpenTelemetry propagation to trace-only fields and advance the forward-only replacement to `0.8.0-alpha.2` without overwriting alpha.1.
 - Publish the immutable `0.8.0-alpha.2` replacement from exact validated Platform main, independently match all ten package hashes and Registry version identities, and re-close S02 while CRM consumption remains S03.
+- Reconcile CRM S03/S04 fixed-version evidence from PR #33/#34 and the PR #35 forward correction, including exact PR/main and SQL artifact identities; keep P08 at `Published / Consumer Candidate` until public S05 synchronization and the Platform S06 final audit.
 
 ## 0.7.0.0 - 2026-08-29
 
