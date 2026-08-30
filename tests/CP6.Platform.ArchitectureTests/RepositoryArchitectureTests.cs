@@ -300,13 +300,36 @@ public sealed class RepositoryArchitectureTests
             var text = File.ReadAllText(path);
             content.Add(relativePath, text);
             Assert.Contains(
-                "P08 status: S00-S04 complete; S05-S06 pending. Current decision: `Published / Consumer Candidate`.",
+                "P08 final decision: `Frozen / Consumable`. Effective condition: the S06 change containing this declaration is merged to `main` and its exact-main `platform-validation` passes `ubuntu-latest`, `windows-latest`, `ubuntu-dapr-kafka`, and `ubuntu-sql-server`; until then the PR head is only a final-audit candidate.",
                 text,
                 StringComparison.Ordinal);
             foreach (var forbidden in new[] { "TODO", "TBD", "FIXME" })
             {
                 Assert.DoesNotContain(forbidden, text, StringComparison.OrdinalIgnoreCase);
             }
+        }
+
+        var readme = File.ReadAllText(Path.Combine(RepositoryRoot, "README.md"));
+        foreach (var required in new[]
+        {
+            "P08 release/SLO evidence frozen in `0.8.0-alpha.2`",
+            "P08 telemetry/release abstractions frozen in `0.8.0-alpha.2`",
+            "P08 observability/health/resilience contract frozen in `0.8.0-alpha.2`",
+            "P08 trace/metric contract frozen in `0.8.0-alpha.2`",
+            "P08 observer-only telemetry contract frozen in `0.8.0-alpha.2`"
+        })
+        {
+            Assert.Contains(required, readme, StringComparison.Ordinal);
+        }
+        foreach (var forbidden in new[]
+        {
+            "P08 release/SLO evidence candidate",
+            "P08 observability/health/resilience candidate",
+            "P08 trace/metric candidate",
+            "P08 observer-only telemetry candidate"
+        })
+        {
+            Assert.DoesNotContain(forbidden, readme, StringComparison.Ordinal);
         }
 
         var combined = string.Join('\n', content.Values);
