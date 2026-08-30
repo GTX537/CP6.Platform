@@ -1,12 +1,12 @@
 using CP6.Platform.Abstractions;
-using Microsoft.Extensions.DependencyInjection;
+using CP6.Platform.AspNetCore;
 using OpenTelemetry;
 using OpenTelemetry.Context.Propagation;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 
-namespace CP6.Platform.AspNetCore;
+namespace Microsoft.Extensions.DependencyInjection;
 
 public static class Cp6ObservabilityServiceCollectionExtensions
 {
@@ -84,5 +84,4 @@ public static class Cp6ObservabilityServiceCollectionExtensions
         }
     }
 
-    private sealed record Cp6ObservabilityRegistration(Cp6ObservabilityProfile Profile);
 }

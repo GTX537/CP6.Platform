@@ -7,3 +7,5 @@ internal sealed class Cp6ReleaseIdentityAccessor(Cp6ReleaseIdentity current) : I
 {
     public Cp6ReleaseIdentity Current { get; } = current;
 }
+
+internal sealed record Cp6ObservabilityRegistration(Cp6ObservabilityProfile Profile);
