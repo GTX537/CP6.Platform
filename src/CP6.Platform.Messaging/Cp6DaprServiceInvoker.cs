@@ -24,8 +24,23 @@ public sealed class Cp6DaprServiceInvoker
         Cp6DaprKafkaConventions.ValidateAppId(appId);
         Cp6DaprKafkaConventions.ValidateMethodName(methodName);
 
-        var response = await transport.InvokeAsync(method, appId, methodName, content, cancellationToken);
-        response.EnsureSuccessStatusCode();
-        return response;
+        using var operation = Cp6MessagingTelemetry.StartInvoke();
+        try
+        {
+            var response = await transport.InvokeAsync(method, appId, methodName, content, cancellationToken);
+            response.EnsureSuccessStatusCode();
+            operation.Success("invoked", Cp6MessagingTelemetry.MeasurementKind.None);
+            return response;
+        }
+        catch (OperationCanceledException)
+        {
+            operation.Cancelled();
+            throw;
+        }
+        catch (Exception)
+        {
+            operation.Failure("invocation_failure");
+            throw;
+        }
     }
 }

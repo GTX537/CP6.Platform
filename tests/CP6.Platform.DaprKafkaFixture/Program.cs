@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Net.Http.Json;
 using System.Text.Json;
 using CP6.Platform.Messaging;
@@ -5,6 +6,12 @@ using Dapr.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
+var activityListener = new ActivityListener
+{
+    ShouldListenTo = source => source.Name == "CP6.Platform.Messaging",
+    Sample = (ref ActivityCreationOptions<ActivityContext> _) => ActivitySamplingResult.AllDataAndRecorded
+};
+ActivitySource.AddActivityListener(activityListener);
 
 var role = Environment.GetEnvironmentVariable("CP6_P05_ROLE") ?? "receiver";
 var contractRoot = Environment.GetEnvironmentVariable("CP6_CONTRACT_ROOT") ?? "/contracts";
@@ -21,6 +28,7 @@ var received = new ReceivedEventStore();
 
 app.Lifetime.ApplicationStopped.Register(() =>
 {
+    activityListener.Dispose();
     invocationClient.Dispose();
     daprClient.Dispose();
 });

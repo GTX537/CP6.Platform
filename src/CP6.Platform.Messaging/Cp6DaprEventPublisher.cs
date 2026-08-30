@@ -38,13 +38,30 @@ public sealed class Cp6DaprEventPublisher
             [Cp6DaprKafkaConventions.PartitionKeyMetadata] = partitionKey
         };
 
-        await transport.PublishAsync(
-            Cp6DaprKafkaConventions.PubSubName,
-            topicName,
-            structuredEvent,
-            Cp6CloudEventCodec.StructuredContentType,
-            metadata,
-            cancellationToken);
+        using var operation = Cp6MessagingTelemetry.StartPublish();
+        try
+        {
+            await transport.PublishAsync(
+                Cp6DaprKafkaConventions.PubSubName,
+                topicName,
+                structuredEvent,
+                Cp6CloudEventCodec.StructuredContentType,
+                metadata,
+                cancellationToken);
+            operation.Success(
+                "published",
+                Cp6MessagingTelemetry.MeasurementKind.Published);
+        }
+        catch (OperationCanceledException)
+        {
+            operation.Cancelled();
+            throw;
+        }
+        catch (Exception)
+        {
+            operation.Failure("transport_failure");
+            throw;
+        }
 
         return new Cp6DaprPublishReceipt(
             Cp6DaprKafkaConventions.PubSubName,

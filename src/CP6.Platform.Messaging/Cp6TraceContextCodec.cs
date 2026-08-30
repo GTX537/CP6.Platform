@@ -1,17 +1,10 @@
 using System.Diagnostics;
-using System.Diagnostics.Metrics;
 using System.Text.Json;
-using CP6.Platform.Abstractions;
 
 namespace CP6.Platform.Messaging;
 
 internal static class Cp6TraceContextCodec
 {
-    private const string InvalidTraceContext = "invalid_trace_context";
-    private static readonly Meter Meter = new(Cp6TelemetryMeters.Messaging);
-    private static readonly Counter<long> RejectedCounter = Meter.CreateCounter<long>(
-        "cp6.messaging.trace_context.rejected");
-
     internal static ActivityContext? TryExtract(ReadOnlyMemory<byte> structuredEvent)
     {
         try
@@ -174,11 +167,7 @@ internal static class Cp6TraceContextCodec
 
     private static ActivityContext? Reject()
     {
-        RejectedCounter.Add(
-            1,
-            new KeyValuePair<string, object?>(
-                Cp6TelemetryConventions.ErrorCodeTag,
-                InvalidTraceContext));
+        Cp6MessagingTelemetry.RecordTraceContextRejected();
         return null;
     }
 }
