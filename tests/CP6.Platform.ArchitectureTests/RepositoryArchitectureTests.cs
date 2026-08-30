@@ -12,7 +12,7 @@ public sealed class RepositoryArchitectureTests
             ["CP6.Platform.Contracts"] = [],
             ["CP6.Platform.Abstractions"] = ["CP6.Platform.Contracts"],
             ["CP6.Platform.AspNetCore"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
-            ["CP6.Platform.Messaging"] = ["CP6.Platform.Contracts"],
+            ["CP6.Platform.Messaging"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
             ["CP6.Platform.EntityFramework"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
             ["CP6.Platform.Testing"] =
             [
@@ -25,7 +25,7 @@ public sealed class RepositoryArchitectureTests
         };
 
     [Fact]
-    public void ProductionProjects_ExactlyMatchApprovedPackageSet()
+    public void SourceProjects_ExactlyMatchApprovedRuntimeAndTestingSet()
     {
         var actual = LoadProjects().Keys.Order(StringComparer.Ordinal).ToArray();
         var expected = ExpectedDependencies.Keys.Order(StringComparer.Ordinal).ToArray();
@@ -59,7 +59,7 @@ public sealed class RepositoryArchitectureTests
     }
 
     [Fact]
-    public void ProductionProjects_UseOnlyApprovedExternalDependencies_AndOnlyAspNetCoreUsesSharedFramework()
+    public void SourceProjects_UseOnlyApprovedExternalDependenciesAndFrameworks()
     {
         foreach (var (packageId, project) in LoadProjects())
         {
@@ -73,7 +73,14 @@ public sealed class RepositoryArchitectureTests
             if (packageId == "CP6.Platform.AspNetCore")
             {
                 Assert.Equal(
-                    ["Microsoft.AspNetCore.Authentication.JwtBearer", "Yarp.ReverseProxy"],
+                    [
+                        "Microsoft.AspNetCore.Authentication.JwtBearer",
+                        "Microsoft.Extensions.Http.Resilience",
+                        "OpenTelemetry.Extensions.Hosting",
+                        "OpenTelemetry.Instrumentation.AspNetCore",
+                        "OpenTelemetry.Instrumentation.Http",
+                        "Yarp.ReverseProxy"
+                    ],
                     packageReferences.Order(StringComparer.Ordinal));
                 Assert.Equal(["Microsoft.AspNetCore.App"], frameworkReferences);
             }
@@ -91,11 +98,251 @@ public sealed class RepositoryArchitectureTests
                     packageReferences.Order(StringComparer.Ordinal));
                 Assert.Empty(frameworkReferences);
             }
+            else if (packageId == "CP6.Platform.Testing")
+            {
+                Assert.Empty(packageReferences);
+                Assert.Equal(["Microsoft.AspNetCore.App"], frameworkReferences);
+            }
             else
             {
                 Assert.Empty(packageReferences);
                 Assert.Empty(frameworkReferences);
             }
+        }
+    }
+
+    [Fact]
+    public void P08_DependencyAndPackageBoundary_IsExact()
+    {
+        var buildProperties = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
+        var centralPackages = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Packages.props"));
+        var versions = centralPackages.Descendants("PackageVersion")
+            .ToDictionary(
+                package => package.Attribute("Include")!.Value,
+                package => package.Attribute("Version")!.Value,
+                StringComparer.Ordinal);
+        var projects = LoadProjects();
+
+        Assert.Equal("0.8.0", buildProperties.Descendants("VersionPrefix").Single().Value);
+        Assert.Equal("1.18.0", versions["OpenTelemetry.Extensions.Hosting"]);
+        Assert.Equal("1.18.0", versions["OpenTelemetry.Instrumentation.AspNetCore"]);
+        Assert.Equal("1.18.0", versions["OpenTelemetry.Instrumentation.Http"]);
+        Assert.Equal("10.9.0", versions["Microsoft.Extensions.Http.Resilience"]);
+
+        var aspNetCorePackages = projects["CP6.Platform.AspNetCore"].Document.Descendants("PackageReference")
+            .Select(reference => reference.Attribute("Include")!.Value)
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+        Assert.Equal(
+            [
+                "Microsoft.AspNetCore.Authentication.JwtBearer",
+                "Microsoft.Extensions.Http.Resilience",
+                "OpenTelemetry.Extensions.Hosting",
+                "OpenTelemetry.Instrumentation.AspNetCore",
+                "OpenTelemetry.Instrumentation.Http",
+                "Yarp.ReverseProxy"
+            ],
+            aspNetCorePackages);
+
+        var messagingReferences = projects["CP6.Platform.Messaging"].Document.Descendants("ProjectReference")
+            .Select(reference => Path.GetFileNameWithoutExtension(reference.Attribute("Include")!.Value))
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+        Assert.Equal(["CP6.Platform.Abstractions", "CP6.Platform.Contracts"], messagingReferences);
+
+        Assert.Equal("false", projects["CP6.Platform.Testing"].Document.Descendants("IsPackable").Single().Value);
+        Assert.All(
+            projects.Where(project => project.Key != "CP6.Platform.Testing"),
+            project => Assert.Equal("true", project.Value.Document.Descendants("IsPackable").Single().Value));
+
+        foreach (var project in projects.Where(project => project.Key != "CP6.Platform.Testing"))
+        {
+            Assert.DoesNotContain(
+                project.Value.Document.Descendants("ProjectReference"),
+                reference => string.Equals(
+                    Path.GetFileNameWithoutExtension(reference.Attribute("Include")!.Value),
+                    "CP6.Platform.Testing",
+                    StringComparison.Ordinal));
+        }
+    }
+
+    [Fact]
+    public void P08_PackageEvidenceAndProductionSafetyGuards_AreEncoded()
+    {
+        var productionProjects = LoadProjects()
+            .Where(project => project.Key != "CP6.Platform.Testing")
+            .ToArray();
+        foreach (var (packageId, project) in productionProjects)
+        {
+            var packedAssets = project.Document.Descendants("None")
+                .Where(item => string.Equals(item.Attribute("Pack")?.Value, "true", StringComparison.OrdinalIgnoreCase))
+                .Select(item => item.Attribute("PackagePath")?.Value ?? string.Empty)
+                .ToArray();
+            if (packageId == "CP6.Platform.Contracts")
+            {
+                Assert.Equal(["contracts/observability/%(RecursiveDir)%(Filename)%(Extension)"], packedAssets);
+            }
+            else if (packageId == "CP6.Platform.Messaging")
+            {
+                Assert.Equal(
+                    [
+                        "contracts/contract-bundle.v1.json",
+                        "contracts/events/%(RecursiveDir)%(Filename)%(Extension)"
+                    ],
+                    packedAssets);
+            }
+            else
+            {
+                Assert.Empty(packedAssets);
+            }
+
+            var sourceRoot = Path.GetDirectoryName(project.Path)!;
+            var productionText = string.Join(
+                '\n',
+                Directory.GetFiles(sourceRoot, "*.cs", SearchOption.AllDirectories)
+                    .Where(path => !HasDirectorySegment(path, "bin") && !HasDirectorySegment(path, "obj"))
+                    .Select(File.ReadAllText));
+            Assert.DoesNotContain("CP6.Platform.Testing", productionText, StringComparison.Ordinal);
+            foreach (var forbidden in new[]
+            {
+                "AddOtlpExporter",
+                "OTEL_EXPORTER_OTLP_ENDPOINT",
+                "http://localhost:4317",
+                "http://localhost:4318",
+                "collector:4317",
+                "Grafana",
+                "Tempo",
+                "Prometheus",
+                "BEGIN PRIVATE KEY",
+                "password=",
+                "MapGet(\"/deploy",
+                "MapPost(\"/deploy"
+            })
+            {
+                Assert.DoesNotContain(forbidden, productionText, StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
+        var verify = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
+        var pack = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "pack-release.ps1"));
+        Assert.Contains("SloEvidencePackageContent", verify, StringComparison.Ordinal);
+        Assert.Contains("PackageContentSafety", verify, StringComparison.Ordinal);
+        Assert.Contains("CP6.Platform.Testing", verify, StringComparison.Ordinal);
+        Assert.Contains("lib/net8.0/", verify, StringComparison.Ordinal);
+        Assert.Contains("*.snupkg", pack, StringComparison.Ordinal);
+        Assert.Contains("contracts/observability", pack, StringComparison.Ordinal);
+        Assert.Contains("CP6.Platform.Testing", pack, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void P08_Documentation_IsCompleteAndSafe()
+    {
+        var documents = new[]
+        {
+            "docs/P08-OBSERVABILITY-RESILIENCE.md",
+            "docs/P08-PUBLICATION.md",
+            "docs/runbooks/P08-TRACE-EXPORTER.md",
+            "docs/runbooks/P08-HEALTH-READINESS.md",
+            "docs/runbooks/P08-HTTP-RESILIENCE.md",
+            "docs/runbooks/P08-MESSAGING-BACKLOG.md",
+            "docs/runbooks/P08-RELEASE-EVIDENCE-DRIFT.md"
+        };
+        var content = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var relativePath in documents)
+        {
+            var path = Path.Combine(RepositoryRoot, relativePath.Replace('/', Path.DirectorySeparatorChar));
+            Assert.True(File.Exists(path), $"Missing required P08 document: {relativePath}");
+            var text = File.ReadAllText(path);
+            content.Add(relativePath, text);
+            Assert.Contains(
+                "P08 status: S00 complete; S01 implementation candidate; S02-S06 pending.",
+                text,
+                StringComparison.Ordinal);
+            foreach (var forbidden in new[] { "TODO", "TBD", "FIXME" })
+            {
+                Assert.DoesNotContain(forbidden, text, StringComparison.OrdinalIgnoreCase);
+            }
+        }
+
+        var combined = string.Join('\n', content.Values);
+        foreach (var required in new[]
+        {
+            "/health/live",
+            "/health/startup",
+            "/health/ready",
+            "/health/release",
+            "cp6.http.outbound",
+            "cp6.messaging.dapr.invoke",
+            "cp6.messaging.publish",
+            "cp6.messaging.consume",
+            "cp6.outbox.dispatch",
+            "cp6.inbox.process",
+            "OperationNotAllowed",
+            "IdempotencyRequired",
+            "AttemptTimeout",
+            "TotalTimeout",
+            "CircuitOpen",
+            "https://contracts.cp6.uk/observability/slo-evidence/v1/schema.json",
+            "OpenTelemetry Collector",
+            "host-owned exporter",
+            "CRM Worker",
+            "productionSloClaimed=false"
+        })
+        {
+            Assert.Contains(required, combined, StringComparison.Ordinal);
+        }
+
+        var runbooks = documents.Skip(2).ToArray();
+        var runbookIds = new[]
+        {
+            "CP6-P08-TRACE-001",
+            "CP6-P08-HEALTH-001",
+            "CP6-P08-RESILIENCE-001",
+            "CP6-P08-MESSAGING-001",
+            "CP6-P08-RELEASE-001"
+        };
+        for (var index = 0; index < runbooks.Length; index++)
+        {
+            var runbook = content[runbooks[index]];
+            Assert.Contains(runbookIds[index], runbook, StringComparison.Ordinal);
+            foreach (var heading in new[]
+            {
+                "## Symptoms",
+                "## Impact",
+                "## Stable query ID",
+                "## Safe diagnosis",
+                "## Containment",
+                "## Recovery",
+                "## Validation",
+                "## Escalation",
+                "## Evidence retention"
+            })
+            {
+                Assert.Contains(heading, runbook, StringComparison.Ordinal);
+            }
+        }
+
+        var safetyText = combined.Replace(
+            "https://contracts.cp6.uk/observability/slo-evidence/v1/schema.json",
+            string.Empty,
+            StringComparison.Ordinal);
+        foreach (var forbidden in new[]
+        {
+            "http://",
+            "https://",
+            "password=",
+            "Bearer ",
+            "BEGIN PRIVATE KEY",
+            "Owner:",
+            "负责人：",
+            "@",
+            "kubectl ",
+            "helm ",
+            "docker compose",
+            "az deployment"
+        })
+        {
+            Assert.DoesNotContain(forbidden, safetyText, StringComparison.OrdinalIgnoreCase);
         }
     }
 
@@ -157,6 +404,10 @@ public sealed class RepositoryArchitectureTests
         var hasCycle = ExpectedDependencies[current].Any(dependency => HasCycle(origin, dependency, new HashSet<string>(path, StringComparer.Ordinal)));
         return hasCycle;
     }
+
+    private static bool HasDirectorySegment(string path, string segment) =>
+        path.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
+            .Contains(segment, StringComparer.OrdinalIgnoreCase);
 
     private static IReadOnlyDictionary<string, ProjectInfo> LoadProjects()
     {

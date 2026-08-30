@@ -5,6 +5,7 @@
     <IsPackable>true</IsPackable>
   </PropertyGroup>
   <ItemGroup>
+    <ProjectReference Include="../CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj" />
     <ProjectReference Include="../CP6.Platform.Contracts/CP6.Platform.Contracts.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -14,6 +15,7 @@
     <PackageReference Include="JsonSchema.Net" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="../../contracts/**/*" Pack="true" PackagePath="contracts/%(RecursiveDir)%(Filename)%(Extension)" />
+    <None Include="../../contracts/contract-bundle.v1.json" Pack="true" PackagePath="contracts/contract-bundle.v1.json" />
+    <None Include="../../contracts/events/**/*" Pack="true" PackagePath="contracts/events/%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 </Project>

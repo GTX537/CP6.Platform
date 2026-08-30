@@ -13,6 +13,7 @@
     <ProjectReference Include="../../src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj" />
     <ProjectReference Include="../../src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj" />
     <ProjectReference Include="../../src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj" />
+    <ProjectReference Include="../../src/CP6.Platform.Testing/CP6.Platform.Testing.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Using Include="Xunit" />

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 
 namespace CP6.Platform.EntityFramework;
@@ -44,6 +45,7 @@ public sealed class Cp6OutboxDispatcher<TContext>
         var deadLettered = 0;
         foreach (var claim in claims)
         {
+            using var telemetry = Cp6EntityFrameworkTelemetry.StartOutbox(ActivityKind.Producer);
             try
             {
                 await publisher.PublishAsync(claim.Message, cancellationToken);
@@ -51,9 +53,11 @@ public sealed class Cp6OutboxDispatcher<TContext>
                 var successStore = new Cp6OutboxStore<TContext>(successContext, validator, timeProvider);
                 await successStore.MarkPublishedAsync(claim, cancellationToken);
                 published++;
+                telemetry.Success("published");
             }
             catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
             {
+                telemetry.Cancelled("cancelled");
                 throw;
             }
             catch (Cp6OutboxPublishException exception)
@@ -61,6 +65,7 @@ public sealed class Cp6OutboxDispatcher<TContext>
                 var wasDeadLettered = await MarkFailedAsync(claim, exception.ErrorCode, exception.Retryable, exception.SupportReference, cancellationToken);
                 deadLettered += wasDeadLettered ? 1 : 0;
                 retryScheduled += wasDeadLettered ? 0 : 1;
+                telemetry.Failure("publish_failure", wasDeadLettered ? "dead_lettered" : "retry_scheduled");
             }
             catch (Exception exception)
             {
@@ -68,6 +73,7 @@ public sealed class Cp6OutboxDispatcher<TContext>
                 var wasDeadLettered = await MarkFailedAsync(claim, UnexpectedPublishErrorCode, true, supportReference, cancellationToken);
                 deadLettered += wasDeadLettered ? 1 : 0;
                 retryScheduled += wasDeadLettered ? 0 : 1;
+                telemetry.Failure("publish_failure", wasDeadLettered ? "dead_lettered" : "retry_scheduled");
             }
         }
 

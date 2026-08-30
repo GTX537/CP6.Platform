@@ -44,8 +44,19 @@ public static partial class Cp6CloudEventAttributes
 
     public static readonly CloudEventAttribute Region = CreateProfiledString("region", RegionPattern());
 
-    public static IReadOnlyList<CloudEventAttribute> All { get; } = new ReadOnlyCollection<CloudEventAttribute>(
+    public static readonly CloudEventAttribute TraceParent = CloudEventAttribute.CreateExtension(
+        "traceparent",
+        CloudEventAttributeType.String);
+
+    public static readonly CloudEventAttribute TraceState = CloudEventAttribute.CreateExtension(
+        "tracestate",
+        CloudEventAttributeType.String);
+
+    public static IReadOnlyList<CloudEventAttribute> Required { get; } = new ReadOnlyCollection<CloudEventAttribute>(
         [TenantId, CorrelationId, CausationId, AggregateId, AggregateVersion, SchemaVersion, Region]);
+
+    public static IReadOnlyList<CloudEventAttribute> All { get; } = new ReadOnlyCollection<CloudEventAttribute>(
+        [TenantId, CorrelationId, CausationId, AggregateId, AggregateVersion, SchemaVersion, Region, TraceParent, TraceState]);
 
     private static CloudEventAttribute CreateProfiledString(string name, Regex pattern) =>
         CloudEventAttribute.CreateExtension(

@@ -1,3 +1,5 @@
+using System.Diagnostics;
+using CP6.Platform.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
 namespace CP6.Platform.EntityFramework;
@@ -30,8 +32,10 @@ public sealed class Cp6OutboxStore<TContext>
             throw new ArgumentException($"The Outbox envelope failed validation with code '{validation.ErrorCode}'.", nameof(envelope));
         }
 
+        using var telemetry = Cp6EntityFrameworkTelemetry.StartOutbox(ActivityKind.Producer);
         var message = new Cp6OutboxMessage(envelope, timeProvider.GetUtcNow());
         context.Set<Cp6OutboxMessage>().Add(message);
+        telemetry.Success("enqueue");
         return message;
     }
 
@@ -44,51 +48,81 @@ public sealed class Cp6OutboxStore<TContext>
         ArgumentNullException.ThrowIfNull(options);
         options.Validate();
 
-        var now = timeProvider.GetUtcNow();
-        var leaseExpiresAt = now.Add(options.OutboxLeaseDuration);
-        var leaseToken = Guid.NewGuid().ToString("N");
-        var candidateIds = await context.Set<Cp6OutboxMessage>()
-            .AsNoTracking()
-            .Where(message =>
-                (message.Status == Cp6OutboxStatus.Pending && message.AvailableAtUtc <= now) ||
-                (message.Status == Cp6OutboxStatus.Dispatching && message.LeaseExpiresAtUtc <= now))
-            .OrderBy(message => message.AvailableAtUtc)
-            .ThenBy(message => message.CreatedAtUtc)
-            .Select(message => message.Id)
-            .Take(options.DispatchBatchSize)
-            .ToArrayAsync(cancellationToken);
-
-        if (candidateIds.Length == 0)
+        using var telemetry = Cp6EntityFrameworkTelemetry.StartOutbox();
+        try
         {
-            return [];
+            var now = timeProvider.GetUtcNow();
+            var leaseExpiresAt = now.Add(options.OutboxLeaseDuration);
+            var leaseToken = Guid.NewGuid().ToString("N");
+            var candidateIds = await context.Set<Cp6OutboxMessage>()
+                .AsNoTracking()
+                .Where(message =>
+                    (message.Status == Cp6OutboxStatus.Pending && message.AvailableAtUtc <= now) ||
+                    (message.Status == Cp6OutboxStatus.Dispatching && message.LeaseExpiresAtUtc <= now))
+                .OrderBy(message => message.AvailableAtUtc)
+                .ThenBy(message => message.CreatedAtUtc)
+                .Select(message => message.Id)
+                .Take(options.DispatchBatchSize)
+                .ToArrayAsync(cancellationToken);
+
+            if (candidateIds.Length == 0)
+            {
+                telemetry.Success("claim");
+                return [];
+            }
+
+            await context.Set<Cp6OutboxMessage>()
+                .Where(message => candidateIds.Contains(message.Id) &&
+                    ((message.Status == Cp6OutboxStatus.Pending && message.AvailableAtUtc <= now) ||
+                     (message.Status == Cp6OutboxStatus.Dispatching && message.LeaseExpiresAtUtc <= now)))
+                .ExecuteUpdateAsync(
+                    setters => setters
+                        .SetProperty(message => message.Status, Cp6OutboxStatus.Dispatching)
+                        .SetProperty(message => message.LeaseOwner, workerId)
+                        .SetProperty(message => message.LeaseToken, leaseToken)
+                        .SetProperty(message => message.LeaseExpiresAtUtc, leaseExpiresAt)
+                        .SetProperty(message => message.AttemptCount, message => message.AttemptCount + 1),
+                    cancellationToken);
+
+            var claimedMessages = await context.Set<Cp6OutboxMessage>()
+                .AsNoTracking()
+                .Where(message => candidateIds.Contains(message.Id) && message.LeaseToken == leaseToken)
+                .OrderBy(message => message.CreatedAtUtc)
+                .ToArrayAsync(cancellationToken);
+
+            var claims = claimedMessages
+                .Select(message => new Cp6ClaimedOutboxMessage(
+                    message.ToDispatchMessage(),
+                    workerId,
+                    leaseToken,
+                    leaseExpiresAt))
+                .ToArray();
+            if (claimedMessages.Length > 0)
+            {
+                Cp6EntityFrameworkTelemetry.RecordOldestAvailableAge(
+                    now - claimedMessages.Min(message => message.AvailableAtUtc));
+                foreach (var message in claimedMessages)
+                {
+                    Cp6EntityFrameworkTelemetry.RecordAttemptCount(
+                        message.AttemptCount,
+                        Cp6TelemetryConventions.OutboxDispatchOperation,
+                        "claim");
+                }
+            }
+
+            telemetry.Success("claim");
+            return claims;
         }
-
-        await context.Set<Cp6OutboxMessage>()
-            .Where(message => candidateIds.Contains(message.Id) &&
-                ((message.Status == Cp6OutboxStatus.Pending && message.AvailableAtUtc <= now) ||
-                 (message.Status == Cp6OutboxStatus.Dispatching && message.LeaseExpiresAtUtc <= now)))
-            .ExecuteUpdateAsync(
-                setters => setters
-                    .SetProperty(message => message.Status, Cp6OutboxStatus.Dispatching)
-                    .SetProperty(message => message.LeaseOwner, workerId)
-                    .SetProperty(message => message.LeaseToken, leaseToken)
-                    .SetProperty(message => message.LeaseExpiresAtUtc, leaseExpiresAt)
-                    .SetProperty(message => message.AttemptCount, message => message.AttemptCount + 1),
-                cancellationToken);
-
-        var claimedMessages = await context.Set<Cp6OutboxMessage>()
-            .AsNoTracking()
-            .Where(message => candidateIds.Contains(message.Id) && message.LeaseToken == leaseToken)
-            .OrderBy(message => message.CreatedAtUtc)
-            .ToArrayAsync(cancellationToken);
-
-        return claimedMessages
-            .Select(message => new Cp6ClaimedOutboxMessage(
-                message.ToDispatchMessage(),
-                workerId,
-                leaseToken,
-                leaseExpiresAt))
-            .ToArray();
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            telemetry.Cancelled("claim");
+            throw;
+        }
+        catch (Exception)
+        {
+            telemetry.Failure("processing_failure", "failed");
+            throw;
+        }
     }
 
     public async Task MarkPublishedAsync(
@@ -155,21 +189,36 @@ public sealed class Cp6OutboxStore<TContext>
         }
 
         Cp6TransactionalMessagingGuard.ContentSafeCode(replayReasonCode, nameof(replayReasonCode));
+        using var telemetry = Cp6EntityFrameworkTelemetry.StartOutbox();
         var now = timeProvider.GetUtcNow();
-        await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
-        var message = await context.Set<Cp6OutboxMessage>().SingleAsync(item => item.Id == outboxId, cancellationToken);
-        var deadLetter = await context.Set<Cp6DeadLetterRecord>()
-            .Where(record =>
-                record.Direction == Cp6DeadLetterDirection.Outbound &&
-                record.MessageId == message.MessageId &&
-                record.ReplayedAtUtc == null)
-            .OrderByDescending(record => record.CreatedAtUtc)
-            .FirstAsync(cancellationToken);
+        try
+        {
+            await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
+            var message = await context.Set<Cp6OutboxMessage>().SingleAsync(item => item.Id == outboxId, cancellationToken);
+            var deadLetter = await context.Set<Cp6DeadLetterRecord>()
+                .Where(record =>
+                    record.Direction == Cp6DeadLetterDirection.Outbound &&
+                    record.MessageId == message.MessageId &&
+                    record.ReplayedAtUtc == null)
+                .OrderByDescending(record => record.CreatedAtUtc)
+                .FirstAsync(cancellationToken);
 
-        message.Requeue(now);
-        deadLetter.RecordReplay(replayReasonCode, now);
-        await context.SaveChangesAsync(cancellationToken);
-        await transaction.CommitAsync(cancellationToken);
+            message.Requeue(now);
+            deadLetter.RecordReplay(replayReasonCode, now);
+            await context.SaveChangesAsync(cancellationToken);
+            await transaction.CommitAsync(cancellationToken);
+            telemetry.Success("replayed");
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            telemetry.Cancelled("replayed");
+            throw;
+        }
+        catch (Exception)
+        {
+            telemetry.Failure("processing_failure", "failed");
+            throw;
+        }
     }
 
     private async Task<Cp6OutboxMessage> LoadOwnedClaimAsync(

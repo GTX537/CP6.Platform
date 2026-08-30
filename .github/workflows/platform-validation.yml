@@ -42,7 +42,7 @@ jobs:
       - name: Verify ASP.NET integration
         shell: pwsh
         run: ./eng/verify.ps1 -Gate Integration -Profile ci
-      - name: Verify P07 gateway E2E
+      - name: Verify P08 platform E2E
         shell: pwsh
         run: ./eng/verify.ps1 -Gate E2E -Profile ci
       - name: Verify package contracts

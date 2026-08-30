@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using CloudNative.CloudEvents;
 
 namespace CP6.Platform.Messaging;
@@ -27,6 +28,8 @@ public sealed record Cp6DaprDeliveryValidationResult(
     CloudEvent? CloudEvent)
 {
     public const string ErrorCode = "CP6_DAPR_MESSAGE_INVALID";
+
+    public ActivityContext? ParentContext { get; init; }
 }
 
 /// <summary>
@@ -47,9 +50,12 @@ public sealed class Cp6DaprDeliveryValidator
         string topicName,
         string partitionKey)
     {
+        var parentContext = Cp6TraceContextCodec.TryExtract(structuredEvent);
         var eventResult = validator.Validate(structuredEvent);
         if (!eventResult.IsValid || eventResult.CloudEvent is null)
         {
+            using var operation = Cp6MessagingTelemetry.StartConsume(parentContext: null);
+            operation.Rejected("event_contract_invalid");
             return new(false, Cp6DaprContractFailure.EventContractInvalid, null);
         }
 
@@ -57,15 +63,27 @@ public sealed class Cp6DaprDeliveryValidator
         var expectedTopic = Cp6DaprKafkaConventions.GetTopic(Cp6EventContractIdentity.Parse(cloudEvent.Type!));
         if (!string.Equals(topicName, expectedTopic, StringComparison.Ordinal))
         {
+            using var operation = Cp6MessagingTelemetry.StartConsume(parentContext: null);
+            operation.Rejected("topic_mismatch");
             return new(false, Cp6DaprContractFailure.TopicMismatch, null);
         }
 
         var expectedPartitionKey = Cp6DaprEventPublisher.GetExpectedPartitionKey(cloudEvent);
         if (!string.Equals(partitionKey, expectedPartitionKey, StringComparison.Ordinal))
         {
+            using var operation = Cp6MessagingTelemetry.StartConsume(parentContext: null);
+            operation.Rejected("partition_key_mismatch");
             return new(false, Cp6DaprContractFailure.PartitionKeyMismatch, null);
         }
 
-        return new(true, Cp6DaprContractFailure.None, cloudEvent);
+        using (var operation = Cp6MessagingTelemetry.StartConsume(parentContext))
+        {
+            operation.Success("consumed", Cp6MessagingTelemetry.MeasurementKind.Consumed);
+        }
+
+        return new(true, Cp6DaprContractFailure.None, cloudEvent)
+        {
+            ParentContext = parentContext
+        };
     }
 }

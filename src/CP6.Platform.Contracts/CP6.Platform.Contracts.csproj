@@ -4,4 +4,7 @@
     <Description>Stable cross-service contracts for CP6 distributed services.</Description>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../contracts/observability/**/*" Pack="true" PackagePath="contracts/observability/%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
 </Project>

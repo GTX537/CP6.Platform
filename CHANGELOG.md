@@ -2,6 +2,17 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## 0.8.0.0 - 2026-08-30
+
+- Begin P08-S01 from the approved observability, health, resilience, and SLO evidence design.
+- Freeze the exporter-neutral OpenTelemetry and HTTP resilience dependency baseline for `0.8.0-alpha.1` while keeping collectors, dashboards, environment routes, deployment, immutable publication, and CRM consumption outside this implementation stage.
+- Add validated immutable release identity and low-cardinality telemetry naming contracts; P08 remains in progress until S01–S06 evidence closes.
+- Add safe live/startup/ready/release endpoints, explicit idempotency-aware outbound HTTP resilience, and independent correlation/W3C propagation.
+- Instrument Dapr/Kafka and transactional Outbox/Inbox paths without changing P04-P06 validation, topic/key, lease, transaction, idempotency, retention, or DLQ semantics.
+- Add a strict Draft 2020-12 SLO evidence contract/evaluator, deterministic repository-only telemetry/fault fixtures, and two-host trace/failure E2E coverage.
+- Strengthen package evidence to exactly five runtime plus five symbol packages with reproducible entry hashes, asset ownership, non-empty assemblies, and content-safety enforcement.
+- Record S01 as an implementation candidate only; package publication, CRM consumption, locator/public-memory reconciliation, and final freeze remain S02-S06.
+
 ## 0.7.0.0 - 2026-08-29
 
 - Add a validated, code-owned YARP route/cluster profile with HTTPS-by-default destinations and mandatory route rate limits.

@@ -9,6 +9,20 @@ public sealed class CloudEventContractTests
     private static readonly string ContractRoot = FindContractRoot();
 
     [Fact]
+    public void RequiredAttributes_RemainTheOriginalSeven()
+    {
+        Assert.Equal(
+            new[]
+            {
+                "tenantid", "correlationid", "causationid", "aggregateid", "aggregateversion", "schemaversion", "region"
+            },
+            Cp6CloudEventAttributes.Required.Select(attribute => attribute.Name));
+        Assert.Equal(9, Cp6CloudEventAttributes.All.Count);
+        Assert.Equal("traceparent", Cp6CloudEventAttributes.All[7].Name);
+        Assert.Equal("tracestate", Cp6CloudEventAttributes.All[8].Name);
+    }
+
+    [Fact]
     public void ContractIdentity_MapsTypeToCanonicalSchemaId()
     {
         var identity = Cp6EventContractIdentity.Parse("com.gtx537.crm.opportunity.order-requested.v1");

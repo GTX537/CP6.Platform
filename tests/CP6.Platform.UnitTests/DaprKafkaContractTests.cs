@@ -88,6 +88,7 @@ public sealed class DaprKafkaContractTests
 
         Assert.True(valid.IsValid);
         Assert.Equal("evt-0001", valid.CloudEvent!.Id);
+        Assert.Null(valid.ParentContext);
         Assert.Equal(Cp6DaprContractFailure.TopicMismatch, wrongTopic.Failure);
         Assert.Null(wrongTopic.CloudEvent);
         Assert.Equal(Cp6DaprContractFailure.PartitionKeyMismatch, wrongKey.Failure);

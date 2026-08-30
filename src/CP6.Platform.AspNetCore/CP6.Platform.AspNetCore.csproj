@@ -7,6 +7,10 @@
   <ItemGroup>
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <PackageReference Include="Microsoft.Extensions.Http.Resilience" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" />
     <PackageReference Include="Yarp.ReverseProxy" />
     <ProjectReference Include="../CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj" />
     <ProjectReference Include="../CP6.Platform.Contracts/CP6.Platform.Contracts.csproj" />
