@@ -30,17 +30,20 @@ The candidate does not provision OpenTelemetry Collector, exporter backends, das
 
 Candidate package version is `0.8.0-alpha.1`. The approved runtime set is Contracts, Abstractions, AspNetCore, Messaging, and EntityFramework. `CP6.Platform.Testing` is repository-only and excluded from pack/publish evidence.
 
-## Local evidence at documentation checkpoint
+## Local evidence at PR checkpoint
 
-- Unit suites: Platform Unit 123 passed; Architecture 8 passed before the documentation test was added.
-- ASP.NET Core suite: 136 passed, including nine two-host observability/resilience E2E tests.
-- E2E gate: 31 passed across gateway and P08 observability filters.
-- Contract gate: passed with two independently packed sets, exact ten package files, non-empty runtime assemblies, P04/P08 asset ownership, and entry SHA comparison.
-- Security gate: passed with direct and transitive dependency audit across all projects.
-- Verification failure contract: Build, E2E, and Contract failure artifacts plus Performance not-applicable evidence passed.
-- Format and diff checks: passed at the package-evidence checkpoint.
+- Format: Passed.
+- Build: Passed with zero warnings and zero errors.
+- Unit: Passed, 123 tests; the failure-evidence self-test also passed.
+- Integration: Passed, 136 ASP.NET Core tests including nine two-host observability/resilience cases.
+- E2E: Passed, 31 gateway and P08 observability tests.
+- Contract: Passed, including Architecture 9/9, two independently packed sets, exact ten package files, non-empty runtime assemblies, P04/P08 asset ownership, content safety, and entry SHA comparison.
+- Security: Passed with direct and transitive dependency audit across all projects.
+- Performance: NotApplicable with explicit P08-S01 reason and machine evidence.
+- Migration: NotApplicable with explicit P08-S01 reason and machine evidence.
+- Diff/format/failure contracts: Passed.
 
-The local container engine was unavailable when the P05 Dapr/Kafka and P06 SQL profiles were retried. Those profiles remain mandatory remote jobs and must be green before merge; a skipped, cancelled, stale, or red result is not acceptable evidence.
+The local Docker Desktop backend crashes before its Linux engine becomes available because a stale inference runtime socket cannot be accessed. Therefore the P05 Dapr/Kafka and P06 SQL scripts cannot produce valid local test results. No Docker image, volume, or repository data was reset or removed. Both profiles remain mandatory remote Ubuntu jobs and must be green before merge; a skipped, cancelled, stale, or red result is not acceptable evidence.
 
 ## Cross-service and regression evidence
 
