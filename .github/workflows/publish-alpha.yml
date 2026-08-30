@@ -68,5 +68,7 @@ jobs:
           path: |
             artifacts/release/**
             artifacts/verify/**
+            artifacts/p05-integration/**
+            artifacts/p06-sql-integration/**
           if-no-files-found: error
           retention-days: 30

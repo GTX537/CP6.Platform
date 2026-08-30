@@ -235,6 +235,44 @@ public sealed class RepositoryArchitectureTests
     }
 
     [Fact]
+    public void P08_PublicationWorkflow_AlwaysPreservesCompleteEvidence()
+    {
+        var workflow = File.ReadAllText(Path.Combine(
+            RepositoryRoot,
+            ".github",
+            "workflows",
+            "publish-alpha.yml"));
+        const string evidenceStepMarker = "      - name: Preserve publication evidence";
+        var evidenceStepStart = workflow.IndexOf(evidenceStepMarker, StringComparison.Ordinal);
+
+        Assert.True(evidenceStepStart >= 0, "Missing publication evidence upload step.");
+        var evidenceStep = workflow[evidenceStepStart..];
+        var uploadPaths = evidenceStep.Split('\n', StringSplitOptions.TrimEntries)
+            .Where(line => line.StartsWith("artifacts/", StringComparison.Ordinal))
+            .ToArray();
+
+        Assert.Equal(
+            [
+                "artifacts/release/**",
+                "artifacts/verify/**",
+                "artifacts/p05-integration/**",
+                "artifacts/p06-sql-integration/**"
+            ],
+            uploadPaths);
+        foreach (var required in new[]
+        {
+            "if: always()",
+            "uses: actions/upload-artifact@",
+            "name: p08-alpha-${{ inputs.expected_commit }}",
+            "if-no-files-found: error",
+            "retention-days: 30"
+        })
+        {
+            Assert.Contains(required, evidenceStep, StringComparison.Ordinal);
+        }
+    }
+
+    [Fact]
     public void P08_Documentation_IsCompleteAndSafe()
     {
         var documents = new[]
