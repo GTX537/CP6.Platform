@@ -12,7 +12,7 @@ public sealed class RepositoryArchitectureTests
             ["CP6.Platform.Contracts"] = [],
             ["CP6.Platform.Abstractions"] = ["CP6.Platform.Contracts"],
             ["CP6.Platform.AspNetCore"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
-            ["CP6.Platform.Messaging"] = ["CP6.Platform.Contracts"],
+            ["CP6.Platform.Messaging"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
             ["CP6.Platform.EntityFramework"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
             ["CP6.Platform.Testing"] =
             [
@@ -73,7 +73,14 @@ public sealed class RepositoryArchitectureTests
             if (packageId == "CP6.Platform.AspNetCore")
             {
                 Assert.Equal(
-                    ["Microsoft.AspNetCore.Authentication.JwtBearer", "Yarp.ReverseProxy"],
+                    [
+                        "Microsoft.AspNetCore.Authentication.JwtBearer",
+                        "Microsoft.Extensions.Http.Resilience",
+                        "OpenTelemetry.Extensions.Hosting",
+                        "OpenTelemetry.Instrumentation.AspNetCore",
+                        "OpenTelemetry.Instrumentation.Http",
+                        "Yarp.ReverseProxy"
+                    ],
                     packageReferences.Order(StringComparer.Ordinal));
                 Assert.Equal(["Microsoft.AspNetCore.App"], frameworkReferences);
             }
@@ -96,6 +103,56 @@ public sealed class RepositoryArchitectureTests
                 Assert.Empty(packageReferences);
                 Assert.Empty(frameworkReferences);
             }
+        }
+    }
+
+    [Fact]
+    public void P08_DependencyAndPackageBoundary_IsExact()
+    {
+        var buildProperties = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
+        var centralPackages = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Packages.props"));
+        var versions = centralPackages.Descendants("PackageVersion")
+            .ToDictionary(
+                package => package.Attribute("Include")!.Value,
+                package => package.Attribute("Version")!.Value,
+                StringComparer.Ordinal);
+        var projects = LoadProjects();
+
+        Assert.Equal("0.8.0", buildProperties.Descendants("VersionPrefix").Single().Value);
+        Assert.Equal("1.18.0", versions["OpenTelemetry.Extensions.Hosting"]);
+        Assert.Equal("1.18.0", versions["OpenTelemetry.Instrumentation.AspNetCore"]);
+        Assert.Equal("1.18.0", versions["OpenTelemetry.Instrumentation.Http"]);
+        Assert.Equal("10.9.0", versions["Microsoft.Extensions.Http.Resilience"]);
+
+        var aspNetCorePackages = projects["CP6.Platform.AspNetCore"].Document.Descendants("PackageReference")
+            .Select(reference => reference.Attribute("Include")!.Value)
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+        Assert.Equal(
+            [
+                "Microsoft.AspNetCore.Authentication.JwtBearer",
+                "Microsoft.Extensions.Http.Resilience",
+                "OpenTelemetry.Extensions.Hosting",
+                "OpenTelemetry.Instrumentation.AspNetCore",
+                "OpenTelemetry.Instrumentation.Http",
+                "Yarp.ReverseProxy"
+            ],
+            aspNetCorePackages);
+
+        var messagingReferences = projects["CP6.Platform.Messaging"].Document.Descendants("ProjectReference")
+            .Select(reference => Path.GetFileNameWithoutExtension(reference.Attribute("Include")!.Value))
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+        Assert.Equal(["CP6.Platform.Abstractions", "CP6.Platform.Contracts"], messagingReferences);
+
+        foreach (var project in projects.Where(project => project.Key != "CP6.Platform.Testing"))
+        {
+            Assert.DoesNotContain(
+                project.Value.Document.Descendants("ProjectReference"),
+                reference => string.Equals(
+                    Path.GetFileNameWithoutExtension(reference.Attribute("Include")!.Value),
+                    "CP6.Platform.Testing",
+                    StringComparison.Ordinal));
         }
     }
 
