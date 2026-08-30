@@ -1,6 +1,6 @@
 # Release identity or SLO evidence drift
 
-P08 status: S00 complete; S01 implementation candidate; S02-S06 pending.
+P08 status: S00-S01 complete; S02-S06 pending.
 
 Runbook ID: `CP6-P08-RELEASE-001`
 

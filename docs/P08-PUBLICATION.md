@@ -1,10 +1,10 @@
-# P08-S01 publication readiness
+# P08-S01 completion and publication readiness
 
-P08 status: S00 complete; S01 implementation candidate; S02-S06 pending.
+P08 status: S00-S01 complete; S02-S06 pending.
 
 ## Decision
 
-This branch is an implementation candidate for Platform review. It is not package-publication evidence, not CRM consumption evidence, and not a `Frozen / Consumable` declaration. S01 becomes complete only after its Platform PR is merged and the exact `main` commit passes every required remote job.
+S01 is complete on Platform `main`. This is not package-publication evidence, not CRM consumption evidence, and not a `Frozen / Consumable` declaration. S02-S06 remain required.
 
 ## Scope
 
@@ -43,7 +43,7 @@ Candidate package version is `0.8.0-alpha.1`. The approved runtime set is Contra
 - Migration: NotApplicable with explicit P08-S01 reason and machine evidence.
 - Diff/format/failure contracts: Passed.
 
-The local Docker Desktop backend crashes before its Linux engine becomes available because a stale inference runtime socket cannot be accessed. Therefore the P05 Dapr/Kafka and P06 SQL scripts cannot produce valid local test results. No Docker image, volume, or repository data was reset or removed. Both profiles remain mandatory remote Ubuntu jobs and must be green before merge; a skipped, cancelled, stale, or red result is not acceptable evidence.
+The local Docker Desktop backend crashed before its Linux engine became available because a stale inference runtime socket could not be accessed. Therefore the P05 Dapr/Kafka and P06 SQL scripts could not produce valid local test results. No Docker image, volume, or repository data was reset or removed. The required remote Ubuntu jobs supplied the authoritative real-profile evidence recorded below.
 
 ## Cross-service and regression evidence
 
@@ -54,16 +54,25 @@ The two-host fixture proves one W3C server/client/server trace with distinct spa
 | Stage | Status | Exit condition |
 | --- | --- | --- |
 | S00 | Complete | Approved design and implementation plan merged to Platform main |
-| S01 | Implementation candidate | Platform PR merged; Windows/Linux, real Dapr/Kafka, and real SQL main jobs green |
+| S01 | Complete | Platform PR #19 merged; Windows/Linux, real Dapr/Kafka, and real SQL main jobs green |
 | S02 | Pending | Exact-main immutable package publication and artifact/digest evidence |
 | S03 | Pending | CRM fixed-version consumption through CRM PR and main CI |
 | S04 | Pending | Package locator and source-of-truth reconciliation |
 | S05 | Pending | Public project-memory and changelog reconciliation |
 | S06 | Pending | Final evidence audit and `Frozen / Consumable` decision |
 
-## PR and main evidence policy
+## Immutable PR and main evidence
 
-At this candidate checkpoint, S01 PR number, merge SHA, and main workflow run are intentionally absent because they do not yet exist. After merge, record those immutable identifiers on a separate evidence branch when repository history requires it. Package publication cannot begin until that record proves all required jobs concluded successfully.
+- Producer PR: #19, merged.
+- Producer head: `c13e1f2a2e7efcd48c999592b01ece7686036473`.
+- Platform merge SHA: `8b8598a1d24f3d465e83c83f5c44353c951856c7`.
+- Main workflow: [platform-validation run 33303723733](https://github.com/GTX537/CP6.Platform/actions/runs/33303723733), exact head `8b8598a1d24f3d465e83c83f5c44353c951856c7`.
+- `ubuntu-latest` job `99236432505`: Success.
+- `windows-latest` job `99236432580`: Success.
+- `ubuntu-sql-server` job `99236432586`: Success.
+- `ubuntu-dapr-kafka` job `99236432626`: Success.
+
+All required S01 jobs concluded successfully. S02 package publication may now begin from this exact Platform main baseline; no later commit may be substituted without rerunning the S02 authority checks.
 
 ## Stable contract identifiers
 

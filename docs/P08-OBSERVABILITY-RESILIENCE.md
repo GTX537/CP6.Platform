@@ -1,8 +1,8 @@
 # P08 observability, health, resilience, and SLO evidence
 
-P08 status: S00 complete; S01 implementation candidate; S02-S06 pending.
+P08 status: S00-S01 complete; S02-S06 pending.
 
-This guide is the consumer contract for the `0.8.0-alpha.1` implementation candidate. It defines exporter-neutral telemetry, safe operational endpoints, fail-closed outbound HTTP resilience, W3C messaging propagation, and immutable SLO evidence. Publication, CRM consumption, locator updates, public memory, and final freeze remain separate stages.
+This guide is the consumer contract for the merged `0.8.0-alpha.1` S01 implementation. It defines exporter-neutral telemetry, safe operational endpoints, fail-closed outbound HTTP resilience, W3C messaging propagation, and immutable SLO evidence. Publication, CRM consumption, locator updates, public memory, and final freeze remain separate stages.
 
 ## Install and package boundary
 
