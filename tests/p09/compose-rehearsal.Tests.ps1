@@ -645,8 +645,8 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     }
     & $module { param($context,$values) Initialize-Cp6P09RuntimeFiles -Context $context -Credentials $values } $populationContext $credentials
     $populationCalls = @(Get-Content -LiteralPath $populationLog | ForEach-Object { $_ | ConvertFrom-Json })
-    Assert-Equal 26 $populationCalls.Count 'Runtime ownership preflight must use 17 writes plus 9 directory-group readability calls.'
-    Assert-Equal 17 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match ':/out(?:\s|$)' }).Count 'Target-UID STDIN write call count drifted.'
+    Assert-Equal 29 $populationCalls.Count 'Runtime ownership preflight must use 20 writes plus 9 directory-group readability calls.'
+    Assert-Equal 20 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match ':/out(?:\s|$)' }).Count 'Target-UID STDIN write call count drifted.'
     Assert-Equal 9 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match ':/input:ro(?:\s|$)' }).Count 'Directory-group readability call count drifted.'
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''

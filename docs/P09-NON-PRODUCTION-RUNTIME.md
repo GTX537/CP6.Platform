@@ -16,7 +16,7 @@ P09-S01 through P09-S03 provide:
 
 - a strict Draft 2020-12 non-production Profile and rehearsal Evidence contract;
 - the dependency-free `CP6.Platform.Deployment` validation package candidate;
-- a real Docker Compose rehearsal using Dapr `1.18.2`, Kafka `4.3.1`, generated one-run credentials, exact Topic/ACL rules, positive invocation/PubSub checks, and four negative boundaries;
+- a real Docker Compose rehearsal using Dapr `1.18.2`, Kafka `4.3.1`, generated one-run credentials, exact Topic/ACL rules, deterministic `nameformat` resolution through Docker DNS, positive invocation/PubSub checks, and four negative boundaries;
 - Kubernetes base and CI overlay assets with deterministic Kustomize render, cross-object policy validation, client dry-run, and no Kubernetes Secret object;
 - canonical, content-addressed execution evidence plus exact-project teardown and zero-residue checks.
 
@@ -31,6 +31,8 @@ The probe reuses the existing P04 synthetic event type. It does not add a busine
 - Enough local resources to start one Kafka broker, three Dapr sidecars, and bounded one-off helper containers.
 
 No host `kubectl`, cloud account, kubeconfig, external Kafka, Registry credential, or committed secret value is required.
+
+The three Dapr sidecars keep the isolated dual-network topology, fixed interfaces, and runtime gateway priority. Service invocation does not depend on self-hosted mDNS: the Dapr `nameformat` resolver maps each AppId to its exact runtime-network Docker DNS alias on the pinned internal gRPC port `50002`. This adds no discovery service, static IP, host network, or application access to the Kafka runtime network, and remains deterministic on hosted Azure runners where mDNS may be unavailable.
 
 ## Exact local commands
 
@@ -93,9 +95,10 @@ The CI overlay uses nondeployable `example.invalid` image identities and `cp6.io
 1. Read `artifacts/verify/p09real/summary.json` and the named bounded log to identify the first failed check.
 2. Inspect `run-log.v1.jsonl` for stable stages such as `kubernetes-policy`, `provision`, `runtime-matrix`, `image-digest`, and `zero-residue`.
 3. If the result is `NotRun`, confirm Docker Engine is reachable, `docker version --format '{{.Server.APIVersion}}'` is at least `1.49`, and `docker compose version --short` is at least `2.36.0`; do not bypass either version check.
-4. If an exact-SHA check fails, commit or deliberately discard only the task's own P09 changes, then rerun with the new `HEAD`; do not weaken the check.
-5. If cleanup fails, inspect only resources carrying the exact run's P09 project labels. Do not use global prune commands.
-6. Reproduce failures with the same command and preserve the bounded artifact directory. Never add credentials or raw environment data to diagnostics.
+4. If service invocation fails, confirm each runtime network alias equals its Dapr AppId, each sidecar loads `name-resolution.yaml`, and internal gRPC port `50002` is unchanged; do not fall back to mDNS in hosted Azure CI.
+5. If an exact-SHA check fails, commit or deliberately discard only the task's own P09 changes, then rerun with the new `HEAD`; do not weaken the check.
+6. If cleanup fails, inspect only resources carrying the exact run's P09 project labels. Do not use global prune commands.
+7. Reproduce failures with the same command and preserve the bounded artifact directory. Never add credentials or raw environment data to diagnostics.
 
 ## Stage ledger
 

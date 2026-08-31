@@ -712,6 +712,7 @@ function Initialize-Cp6P09RuntimeFiles {
     $publishComponent = & $read 'kafka-publish.yaml'
     $subscribeComponent = & $read 'kafka-subscribe.yaml'
     $subscription = & $read 'subscription.yaml'
+    $nameResolution = & $read 'name-resolution.yaml'
     $publisherSecrets = ConvertTo-Cp6P09CanonicalJson ([ordered]@{ 'publisher-username'='cp6-p09-probe-publisher'; 'publisher-password'=$Credentials.Publisher })
     $receiverSecrets = ConvertTo-Cp6P09CanonicalJson ([ordered]@{ 'receiver-username'='cp6-p09-probe-receiver'; 'receiver-password'=$Credentials.Receiver })
     $unauthorizedSecrets = ConvertTo-Cp6P09CanonicalJson ([ordered]@{ 'publisher-username'='cp6-p09-unauthorized-probe'; 'publisher-password'=$Credentials.Unauthorized })
@@ -726,13 +727,16 @@ function Initialize-Cp6P09RuntimeFiles {
         @('dapr/publisher/components','secret-store.yaml','65532:65532',$secretStore),
         @('dapr/publisher/components','kafka-publish.yaml','65532:65532',$publishComponent),
         @('dapr/publisher/secrets','secrets.json','65532:65532',$publisherSecrets),
+        @('dapr/publisher/secrets','name-resolution.yaml','65532:65532',$nameResolution),
         @('dapr/receiver/components','secret-store.yaml','65532:65532',$secretStore),
         @('dapr/receiver/components','kafka-subscribe.yaml','65532:65532',$subscribeComponent),
         @('dapr/receiver/components','subscription.yaml','65532:65532',$subscription),
         @('dapr/receiver/secrets','secrets.json','65532:65532',$receiverSecrets),
+        @('dapr/receiver/secrets','name-resolution.yaml','65532:65532',$nameResolution),
         @('dapr/unauthorized/components','secret-store.yaml','65532:65532',$secretStore),
         @('dapr/unauthorized/components','kafka-publish.yaml','65532:65532',$publishComponent),
-        @('dapr/unauthorized/secrets','secrets.json','65532:65532',$unauthorizedSecrets)
+        @('dapr/unauthorized/secrets','secrets.json','65532:65532',$unauthorizedSecrets),
+        @('dapr/unauthorized/secrets','name-resolution.yaml','65532:65532',$nameResolution)
     )
     $Context.PopulationFailureId = 'runtime-population'
     foreach ($file in $files) {

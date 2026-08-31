@@ -22,6 +22,8 @@ public sealed class P09DocumentationContractTests
             "eng/pack-p09.ps1 -VerifyReproducible",
             "Docker Engine API `1.49`",
             "Docker Compose `2.36.0`",
+            "nameformat",
+            "Docker DNS",
             "Passed",
             "NotRun",
             "Failed",

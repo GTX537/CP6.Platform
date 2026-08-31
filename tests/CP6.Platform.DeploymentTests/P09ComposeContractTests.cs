@@ -131,6 +131,7 @@ public sealed class P09ComposeContractTests
         Assert.Equal(new[] { "runtime", "unauthorized-app" }, ServiceNetworks(compose, "unauthorized-dapr"));
         Assert.Equal(new[] { "runtime" }, ServiceNetworks(compose, "kafka-admin"));
         AssertExactDaprNetworkAttachments(compose);
+        AssertExactDaprCommands(compose);
 
         var images = new[] { "kafka", "kafka-admin", "publisher-dapr", "receiver-dapr", "unauthorized-dapr" }.ToDictionary(
             service => service,
@@ -223,6 +224,7 @@ public sealed class P09ComposeContractTests
             "kafka-publish.yaml",
             "kafka-server.properties",
             "kafka-subscribe.yaml",
+            "name-resolution.yaml",
             "secret-store.yaml",
             "subscription.yaml"
         };
@@ -232,6 +234,9 @@ public sealed class P09ComposeContractTests
 
         var secretStore = ReadTemplate("secret-store.yaml");
         AssertExactSecretStore(secretStore);
+
+        var nameResolution = ReadTemplate("name-resolution.yaml");
+        AssertExactNameResolution(nameResolution);
 
         var publisher = ReadTemplate("kafka-publish.yaml");
         AssertKafkaComponent(
@@ -401,6 +406,19 @@ public sealed class P09ComposeContractTests
             "gw_priority: 0",
             "gw_priority: 2");
         Assert.ThrowsAny<Exception>(() => AssertExactDaprNetworkAttachments(wrongAppGateway));
+
+        var wrongRuntimeAlias = ReplaceFirst(
+            compose,
+            "        aliases:\n          - cp6-p09-probe-publisher",
+            "        aliases:\n          - cp6-p09-wrong-publisher");
+        Assert.ThrowsAny<Exception>(() => AssertExactDaprNetworkAttachments(wrongRuntimeAlias));
+
+        var wrongInternalPort = ReplaceFirst(compose, "      - \"50002\"", "      - \"50003\"");
+        Assert.ThrowsAny<Exception>(() => AssertExactDaprCommands(wrongInternalPort));
+
+        var wrongNameResolution = ReadTemplate("name-resolution.yaml")
+            .Replace("{appid}:50002", "{appid}:50003", StringComparison.Ordinal);
+        Assert.ThrowsAny<Exception>(() => AssertExactNameResolution(wrongNameResolution));
     }
 
     [Fact]
@@ -437,12 +455,13 @@ public sealed class P09ComposeContractTests
         AssertJsonNetworks(services, "direct-probe", "unauthorized-app");
         AssertJsonNetworks(services, "unauthorized-dapr", "runtime", "unauthorized-app");
         AssertJsonNetworks(services, "kafka-admin", "runtime");
-        AssertJsonNetworkAttachment(services, "publisher-dapr", "runtime", "eth0", 1);
+        AssertJsonNetworkAttachment(services, "publisher-dapr", "runtime", "eth0", 1, "cp6-p09-probe-publisher");
         AssertJsonNetworkAttachment(services, "publisher-dapr", "publisher-app", "eth1", 0);
-        AssertJsonNetworkAttachment(services, "receiver-dapr", "runtime", "eth0", 1);
+        AssertJsonNetworkAttachment(services, "receiver-dapr", "runtime", "eth0", 1, "cp6-p09-probe-receiver");
         AssertJsonNetworkAttachment(services, "receiver-dapr", "receiver-app", "eth1", 0);
-        AssertJsonNetworkAttachment(services, "unauthorized-dapr", "runtime", "eth0", 1);
+        AssertJsonNetworkAttachment(services, "unauthorized-dapr", "runtime", "eth0", 1, "cp6-p09-unauthorized-probe");
         AssertJsonNetworkAttachment(services, "unauthorized-dapr", "unauthorized-app", "eth1", 0);
+        AssertJsonDaprCommands(services);
         AssertJsonRuntimeFields(services);
 
         foreach (var service in new[] { "publisher", "receiver", "direct-probe" })
@@ -659,6 +678,27 @@ public sealed class P09ComposeContractTests
         });
     }
 
+    private static void AssertExactNameResolution(string yaml)
+    {
+        var lines = NormalizeLines(yaml);
+        Assert.Equal(new[] { "apiVersion", "kind", "metadata", "spec" }, DirectMapKeys(lines, 0));
+        Assert.Equal("dapr.io/v1alpha1", RequiredScalar(lines, 0, "apiVersion"));
+        Assert.Equal("Configuration", RequiredScalar(lines, 0, "kind"));
+
+        var metadata = RequiredBlock(lines, 0, "metadata");
+        Assert.Equal(new[] { "name" }, DirectMapKeys(metadata, 2));
+        Assert.Equal("cp6-p09-docker-dns", RequiredScalar(metadata, 2, "name"));
+
+        var spec = RequiredBlock(lines, 0, "spec");
+        Assert.Equal(new[] { "nameResolution" }, DirectMapKeys(spec, 2));
+        var nameResolution = RequiredBlock(spec, 2, "nameResolution");
+        Assert.Equal(new[] { "component", "configuration" }, DirectMapKeys(nameResolution, 4));
+        Assert.Equal("nameformat", RequiredScalar(nameResolution, 4, "component"));
+        var configuration = RequiredBlock(nameResolution, 4, "configuration");
+        Assert.Equal(new[] { "format" }, DirectMapKeys(configuration, 6));
+        Assert.Equal("{appid}:50002", RequiredScalar(configuration, 6, "format"));
+    }
+
     private static void AssertExactSubscription(string yaml)
     {
         var lines = NormalizeLines(yaml);
@@ -771,10 +811,21 @@ public sealed class P09ComposeContractTests
         string service,
         string network,
         string interfaceName,
-        int gatewayPriority)
+        int gatewayPriority,
+        params string[] aliases)
     {
         var attachment = services.GetProperty(service).GetProperty("networks").GetProperty(network);
         Assert.Equal(interfaceName, attachment.GetProperty("interface_name").GetString());
+        if (aliases.Length == 0)
+        {
+            Assert.False(attachment.TryGetProperty("aliases", out _));
+        }
+        else
+        {
+            Assert.Equal(
+                aliases,
+                attachment.GetProperty("aliases").EnumerateArray().Select(value => value.GetString()).ToArray());
+        }
         if (gatewayPriority == 0)
         {
             Assert.Equal(new[] { "interface_name" }, PropertyNames(attachment));
@@ -782,8 +833,28 @@ public sealed class P09ComposeContractTests
             return;
         }
 
-        Assert.Equal(new[] { "gw_priority", "interface_name" }, PropertyNames(attachment));
+        Assert.Equal(
+            aliases.Length == 0
+                ? new[] { "gw_priority", "interface_name" }
+                : new[] { "aliases", "gw_priority", "interface_name" },
+            PropertyNames(attachment));
         Assert.Equal(gatewayPriority, attachment.GetProperty("gw_priority").GetInt32());
+    }
+
+    private static void AssertJsonDaprCommands(JsonElement services)
+    {
+        AssertDaprCommand(
+            services.GetProperty("publisher-dapr").GetProperty("command").EnumerateArray().Select(value => value.GetString()).ToArray(),
+            "cp6-p09-probe-publisher",
+            "publisher");
+        AssertDaprCommand(
+            services.GetProperty("receiver-dapr").GetProperty("command").EnumerateArray().Select(value => value.GetString()).ToArray(),
+            "cp6-p09-probe-receiver",
+            "receiver");
+        AssertDaprCommand(
+            services.GetProperty("unauthorized-dapr").GetProperty("command").EnumerateArray().Select(value => value.GetString()).ToArray(),
+            "cp6-p09-unauthorized-probe",
+            "direct-probe");
     }
 
     private static void AssertJsonRuntimeFields(JsonElement services)
@@ -1194,12 +1265,37 @@ public sealed class P09ComposeContractTests
 
     private static void AssertExactDaprNetworkAttachments(string compose)
     {
-        AssertServiceNetworkAttachment(compose, "publisher-dapr", "runtime", "eth0", "1");
+        AssertServiceNetworkAttachment(compose, "publisher-dapr", "runtime", "eth0", "1", "cp6-p09-probe-publisher");
         AssertServiceNetworkAttachment(compose, "publisher-dapr", "publisher-app", "eth1", "0");
-        AssertServiceNetworkAttachment(compose, "receiver-dapr", "runtime", "eth0", "1");
+        AssertServiceNetworkAttachment(compose, "receiver-dapr", "runtime", "eth0", "1", "cp6-p09-probe-receiver");
         AssertServiceNetworkAttachment(compose, "receiver-dapr", "receiver-app", "eth1", "0");
-        AssertServiceNetworkAttachment(compose, "unauthorized-dapr", "runtime", "eth0", "1");
+        AssertServiceNetworkAttachment(compose, "unauthorized-dapr", "runtime", "eth0", "1", "cp6-p09-unauthorized-probe");
         AssertServiceNetworkAttachment(compose, "unauthorized-dapr", "unauthorized-app", "eth1", "0");
+    }
+
+    private static void AssertExactDaprCommands(string compose)
+    {
+        AssertDaprCommand(ParseDirectList(RequiredBlock(NormalizeLines(ServiceBlock(compose, "publisher-dapr")), 4, "command"), 6), "cp6-p09-probe-publisher", "publisher");
+        AssertDaprCommand(ParseDirectList(RequiredBlock(NormalizeLines(ServiceBlock(compose, "receiver-dapr")), 4, "command"), 6), "cp6-p09-probe-receiver", "receiver");
+        AssertDaprCommand(ParseDirectList(RequiredBlock(NormalizeLines(ServiceBlock(compose, "unauthorized-dapr")), 4, "command"), 6), "cp6-p09-unauthorized-probe", "direct-probe");
+    }
+
+    private static void AssertDaprCommand(string?[] command, string appId, string appChannelAddress)
+    {
+        Assert.Equal(
+            new string?[]
+            {
+                "--app-id", appId,
+                "--app-port", "8080",
+                "--app-channel-address", appChannelAddress,
+                "--dapr-http-port", "3500",
+                "--dapr-grpc-port", "50001",
+                "--dapr-internal-grpc-port", "50002",
+                "--config", "/run/cp6-p09/secrets/name-resolution.yaml",
+                "--resources-path", "/components",
+                "--log-level", "warn"
+            },
+            command);
     }
 
     private static void AssertServiceNetworkAttachment(
@@ -1207,13 +1303,26 @@ public sealed class P09ComposeContractTests
         string service,
         string network,
         string interfaceName,
-        string gatewayPriority)
+        string gatewayPriority,
+        params string[] aliases)
     {
         var networks = RequiredBlock(NormalizeLines(ServiceBlock(compose, service)), 4, "networks");
         var attachment = RequiredBlock(networks, 6, network);
-        Assert.Equal(new[] { "gw_priority", "interface_name" }, DirectMapKeys(attachment, 8));
+        Assert.Equal(
+            aliases.Length == 0
+                ? new[] { "gw_priority", "interface_name" }
+                : new[] { "aliases", "gw_priority", "interface_name" },
+            DirectMapKeys(attachment, 8));
         Assert.Equal(gatewayPriority, RequiredScalar(attachment, 8, "gw_priority"));
         Assert.Equal(interfaceName, RequiredScalar(attachment, 8, "interface_name"));
+        if (aliases.Length == 0)
+        {
+            Assert.Empty(OptionalBlock(attachment, 8, "aliases"));
+        }
+        else
+        {
+            Assert.Equal(aliases, ParseDirectList(RequiredBlock(attachment, 8, "aliases"), 10));
+        }
     }
 
     private static string ServiceScalar(string compose, string service, string key)

@@ -109,6 +109,10 @@ services:
       - "3500"
       - --dapr-grpc-port
       - "50001"
+      - --dapr-internal-grpc-port
+      - "50002"
+      - --config
+      - /run/cp6-p09/secrets/name-resolution.yaml
       - --resources-path
       - /components
       - --log-level
@@ -124,6 +128,8 @@ services:
         read_only: true
     networks:
       runtime:
+        aliases:
+          - cp6-p09-probe-publisher
         interface_name: eth0
         gw_priority: 1
       publisher-app:
@@ -160,6 +166,10 @@ services:
       - "3500"
       - --dapr-grpc-port
       - "50001"
+      - --dapr-internal-grpc-port
+      - "50002"
+      - --config
+      - /run/cp6-p09/secrets/name-resolution.yaml
       - --resources-path
       - /components
       - --log-level
@@ -175,6 +185,8 @@ services:
         read_only: true
     networks:
       runtime:
+        aliases:
+          - cp6-p09-probe-receiver
         interface_name: eth0
         gw_priority: 1
       receiver-app:
@@ -212,6 +224,10 @@ services:
       - "3500"
       - --dapr-grpc-port
       - "50001"
+      - --dapr-internal-grpc-port
+      - "50002"
+      - --config
+      - /run/cp6-p09/secrets/name-resolution.yaml
       - --resources-path
       - /components
       - --log-level
@@ -228,6 +244,8 @@ services:
         read_only: true
     networks:
       runtime:
+        aliases:
+          - cp6-p09-unauthorized-probe
         interface_name: eth0
         gw_priority: 1
       unauthorized-app:
