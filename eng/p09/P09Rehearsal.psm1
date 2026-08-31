@@ -760,6 +760,22 @@ function Get-Cp6P09AclBatchFailureId {
     return "acl-add-$Phase-batch"
 }
 
+function Get-Cp6P09KafkaFailureCategory {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][AllowEmptyString()][string]$StandardOutput,
+        [Parameter(Mandatory)][AllowEmptyString()][string]$StandardError
+    )
+
+    $text = $StandardOutput + "`n" + $StandardError
+    if ($text -match '(?i)(?:authorization(?:exception| failed)|not authorized|_AUTHORIZATION_FAILED)') { return 'authorization' }
+    if ($text -match '(?i)(?:TimeoutException|timed out|timeout expired|deadline exceeded)') { return 'timeout' }
+    if ($text -match '(?i)(?:UnknownTopicOrPartitionException|LeaderNotAvailable|NotControllerException|CoordinatorNotAvailable)') { return 'metadata' }
+    if ($text -match '(?i)(?:DisconnectException|node\s+\d+\s+disconnected|connection to node.+(?:failed|closed))') { return 'disconnected' }
+    if ($text -match '(?i)(?:OutOfMemoryError|cannot allocate memory|unable to create native thread)') { return 'resource' }
+    return 'unknown'
+}
+
 function Invoke-Cp6P09AclBatch {
     param(
         [Parameter(Mandatory)]$Context,
@@ -769,6 +785,7 @@ function Invoke-Cp6P09AclBatch {
     $arguments = Get-Cp6P09AclBatchDockerArguments -ProjectName $Context.ProjectName -ComposeFile $Context.ComposeFile
     $result = Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -Arguments $arguments -WorkingDirectory $Context.RepositoryRoot -TimeoutSeconds 120 -EnvironmentVariables $Context.Environment
     if ($result.ExitCode -ne 0) {
+        $Context.ProvisionFailureCategory = Get-Cp6P09KafkaFailureCategory -StandardOutput $result.StandardOutput -StandardError $result.StandardError
         $failureId = Get-Cp6P09AclBatchFailureId -Phase $Phase -ExitCode $result.ExitCode
         Assert-Cp6P09CommandSucceeded $result $failureId
     }
@@ -1205,6 +1222,7 @@ function Invoke-Cp6P09Rehearsal {
         KubernetesManifestSha=$null
         MatrixFailureId='runtime-start'
         ProvisionFailureId='topic-create-first'
+        ProvisionFailureCategory=$null
         PopulationFailureId='runtime-population'
     }
     $config = Invoke-Cp6P09Compose $context @('--profile','negative','--profile','provision','config','--quiet') 30
@@ -1306,7 +1324,7 @@ function Invoke-Cp6P09Rehearsal {
         [IO.File]::WriteAllText($resultPath,(ConvertTo-Cp6P09CanonicalJson $composeResult)+"`n",[Text.UTF8Encoding]::new($false))
         return [pscustomobject]@{ Status='Failed'; RunId=$layout.RunId; Reason='kubernetes-assets-pending'; ArtifactsDirectory=$layout.ArtifactReference; ZeroResidue=$true }
     }
-    return [pscustomobject]@{ Status='Failed'; RunId=$layout.RunId; Reason=$(if ($null -ne $cleanupFailure) {$cleanupFailure} else {$originalFailure}); ArtifactsDirectory=$layout.ArtifactReference; ZeroResidue=$zeroResidue; OriginalFailureId=$originalFailure; CleanupFailureId=$cleanupFailure }
+    return [pscustomobject]@{ Status='Failed'; RunId=$layout.RunId; Reason=$(if ($null -ne $cleanupFailure) {$cleanupFailure} else {$originalFailure}); ArtifactsDirectory=$layout.ArtifactReference; ZeroResidue=$zeroResidue; OriginalFailureId=$originalFailure; CleanupFailureId=$cleanupFailure; FailureCategory=$context.ProvisionFailureCategory }
 }
 
 Export-ModuleMember -Function @(
@@ -1326,6 +1344,7 @@ Export-ModuleMember -Function @(
     'Wait-Cp6P09KafkaDataPlane',
     'Get-Cp6P09AclBatchDockerArguments',
     'Get-Cp6P09AclBatchFailureId',
+    'Get-Cp6P09KafkaFailureCategory',
     'Get-Cp6P09StableFailureId',
     'Assert-Cp6P09TraceTopology',
     'Assert-Cp6P09ExpectedGitState',

@@ -144,6 +144,12 @@ try {
         Assert-Equal ('acl-add-first-{0:d2}' -f $ordinal) (Get-Cp6P09AclBatchFailureId -Phase first -ExitCode (10 + $ordinal)) 'First-pass ACL exit mapping drifted.'
         Assert-Equal ('acl-add-replay-{0:d2}' -f $ordinal) (Get-Cp6P09AclBatchFailureId -Phase replay -ExitCode (10 + $ordinal)) 'Replay ACL exit mapping drifted.'
     }
+    Assert-Equal 'timeout' (Get-Cp6P09KafkaFailureCategory -StandardOutput '' -StandardError 'org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment') 'Kafka timeout failure did not map to the closed diagnostic category.'
+    Assert-Equal 'authorization' (Get-Cp6P09KafkaFailureCategory -StandardOutput 'TOPIC_AUTHORIZATION_FAILED' -StandardError '') 'Kafka authorization failure did not map to the closed diagnostic category.'
+    Assert-Equal 'disconnected' (Get-Cp6P09KafkaFailureCategory -StandardOutput '' -StandardError 'Node 1 disconnected before response') 'Kafka disconnect failure did not map to the closed diagnostic category.'
+    Assert-Equal 'metadata' (Get-Cp6P09KafkaFailureCategory -StandardOutput '' -StandardError 'UnknownTopicOrPartitionException') 'Kafka metadata failure did not map to the closed diagnostic category.'
+    Assert-Equal 'resource' (Get-Cp6P09KafkaFailureCategory -StandardOutput '' -StandardError 'unable to create native thread') 'Kafka resource failure did not map to the closed diagnostic category.'
+    Assert-Equal 'unknown' (Get-Cp6P09KafkaFailureCategory -StandardOutput 'arbitrary bounded text' -StandardError '') 'Unknown Kafka output escaped the closed diagnostic category.'
     Assert-True ($aclBatchShell -notmatch '(?i)password|token|secret') 'ACL batch shell contains secret material.'
     foreach ($fragment in @(
         "'User:cp6-p09-probe-publisher' '--operation' 'Write' '--topic' 'cp6.platform.deployment-probe.v1'",
@@ -165,7 +171,7 @@ try {
         RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
         ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
         Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$testRoot; CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
-        ProvisionFailureId='provision-first'
+        ProvisionFailureId='provision-first'; ProvisionFailureCategory=$null
     }
     $module = Get-Module P09Rehearsal
     & $module { param($context) Invoke-Cp6P09AclBatch -Context $context -Phase first; Invoke-Cp6P09AclBatch -Context $context -Phase replay } $aclBatchContext
@@ -173,6 +179,17 @@ try {
     Assert-Equal 2 $aclBatchCalls.Count 'Provision must use exactly one ACL batch for first pass and one for replay.'
     Assert-Equal @($aclBatchCalls[0].argv) @($aclBatchCalls[1].argv) 'First and replay ACL batch commands differ.'
     Assert-Equal @(0,0) @($aclBatchCalls.stdinBytes) 'ACL batch unexpectedly received secret STDIN.'
+
+    $aclFailureResponses = Join-Path $testRoot 'acl-failure-responses.jsonl'
+    @{ exitCode = 13; stdout = ''; stderr = 'org.apache.kafka.common.errors.TimeoutException: Timed out waiting for a node assignment' } |
+        ConvertTo-Json -Compress | Set-Content -LiteralPath $aclFailureResponses -Encoding utf8NoBOM
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $aclFailureResponses
+    Remove-Item -LiteralPath "$aclBatchLog.index" -Force -ErrorAction SilentlyContinue
+    $aclBatchContext.ProvisionFailureCategory = $null
+    Assert-Throws {
+        & $module { param($context) Invoke-Cp6P09AclBatch -Context $context -Phase first } $aclBatchContext
+    } 'acl-add-first-03'
+    Assert-Equal 'timeout' $aclBatchContext.ProvisionFailureCategory 'ACL failure did not retain only its closed diagnostic category.'
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
 
