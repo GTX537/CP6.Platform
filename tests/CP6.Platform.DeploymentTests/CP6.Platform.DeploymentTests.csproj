@@ -16,4 +16,7 @@
   <ItemGroup>
     <Using Include="Xunit" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="P09Validator/**/*.cs" />
+  </ItemGroup>
 </Project>
