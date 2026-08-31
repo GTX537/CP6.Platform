@@ -94,6 +94,43 @@ public sealed class P09FixtureRuntimeTests
     }
 
     [Fact]
+    public async Task ReceivedEvidenceProxy_DisposesResponseWhenContentReadThrows()
+    {
+        var stream = new TrackingReadStream(_ =>
+            ValueTask.FromException<int>(new IOException("sensitive read detail")));
+        var content = new TrackingStreamContent(stream);
+        var transport = new RecordingDaprTransport((_, _, _, _, _) => Task.FromResult(
+            new HttpResponseMessage(HttpStatusCode.OK) { Content = content }));
+        var proxy = CreateReceivedEvidenceProxy(transport);
+
+        var result = await proxy.GetAsync(Expectation());
+
+        Assert.Equal(Cp6P09ReceivedEvidenceProxyOutcome.BadGateway, result.Outcome);
+        Assert.Null(result.Evidence);
+        Assert.True(content.IsDisposed);
+    }
+
+    [Fact]
+    public async Task ReceivedEvidenceProxy_DisposesResponseWhenContentReadIsCallerCancelled()
+    {
+        using var cancellation = new CancellationTokenSource();
+        var stream = new TrackingReadStream(token =>
+        {
+            cancellation.Cancel();
+            return ValueTask.FromCanceled<int>(token);
+        });
+        var content = new TrackingStreamContent(stream);
+        var transport = new RecordingDaprTransport((_, _, _, _, _) => Task.FromResult(
+            new HttpResponseMessage(HttpStatusCode.OK) { Content = content }));
+        var proxy = CreateReceivedEvidenceProxy(transport);
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>
+            proxy.GetAsync(Expectation(), cancellation.Token));
+
+        Assert.True(content.IsDisposed);
+    }
+
+    [Fact]
     public async Task ReceivedEvidenceProxy_MapsTransportMalformedAndOversizedFailuresWithoutDetails()
     {
         var contents = new[]
@@ -620,6 +657,76 @@ public sealed class P09FixtureRuntimeTests
         protected override void Dispose(bool disposing)
         {
             IsDisposed = true;
+            base.Dispose(disposing);
+        }
+    }
+
+    private sealed class TrackingReadStream : Stream
+    {
+        private readonly Func<CancellationToken, ValueTask<int>> read;
+
+        internal TrackingReadStream(Func<CancellationToken, ValueTask<int>> read) => this.read = read;
+
+        public override bool CanRead => true;
+
+        public override bool CanSeek => false;
+
+        public override bool CanWrite => false;
+
+        public override long Length => throw new NotSupportedException();
+
+        public override long Position
+        {
+            get => throw new NotSupportedException();
+            set => throw new NotSupportedException();
+        }
+
+        public override void Flush() => throw new NotSupportedException();
+
+        public override int Read(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+
+        public override ValueTask<int> ReadAsync(
+            Memory<byte> buffer,
+            CancellationToken cancellationToken = default) => read(cancellationToken);
+
+        public override long Seek(long offset, SeekOrigin origin) => throw new NotSupportedException();
+
+        public override void SetLength(long value) => throw new NotSupportedException();
+
+        public override void Write(byte[] buffer, int offset, int count) => throw new NotSupportedException();
+
+    }
+
+    private sealed class TrackingStreamContent : HttpContent
+    {
+        private readonly Stream stream;
+
+        internal TrackingStreamContent(Stream stream) => this.stream = stream;
+
+        internal bool IsDisposed { get; private set; }
+
+        protected override Task<Stream> CreateContentReadStreamAsync() => Task.FromResult(stream);
+
+        protected override Task<Stream> CreateContentReadStreamAsync(CancellationToken cancellationToken) =>
+            Task.FromResult(stream);
+
+        protected override Task SerializeToStreamAsync(Stream target, TransportContext? context) =>
+            stream.CopyToAsync(target);
+
+        protected override bool TryComputeLength(out long length)
+        {
+            length = 0;
+            return false;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            IsDisposed = true;
+            if (disposing)
+            {
+                stream.Dispose();
+            }
+
             base.Dispose(disposing);
         }
     }
