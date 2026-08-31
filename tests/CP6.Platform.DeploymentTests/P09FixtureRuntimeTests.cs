@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Text;
 using System.Text.Json;
 using Dapr;
 using Google.Protobuf;
@@ -9,6 +10,9 @@ namespace CP6.Platform.DeploymentTests;
 
 public sealed class P09FixtureRuntimeTests
 {
+    private const string ValidReceivedEvidenceJson =
+        "{\"eventId\":\"p09-event-0001\",\"eventType\":\"com.gtx537.platform.contract-example.changed.v1\",\"topicName\":\"cp6.platform.deployment-probe.v1\",\"partitionKey\":\"cp6-p09-entity-0001\",\"region\":\"TEST\",\"traceId\":\"11111111111111111111111111111111\",\"publisherSpanId\":\"2222222222222222\",\"receiverSpanId\":\"3333333333333333\",\"receiverParentSpanId\":\"2222222222222222\",\"contractValid\":true}";
+
     [Theory]
     [InlineData("publisher", "Http", "http://127.0.0.1:3500")]
     [InlineData("publisher", "Http", "http://publisher-dapr:3500")]
@@ -226,6 +230,87 @@ public sealed class P09FixtureRuntimeTests
         Assert.Equal(
             new[] { "component", "eventId", "partitionKey", "region", "topic" },
             JsonPropertyNames(receipt));
+    }
+
+    [Fact]
+    public void ReceivedEvidenceValidator_AcceptsOnlyTheExpectedCanonicalObservation()
+    {
+        var utf8 = Encoding.UTF8.GetBytes(
+            ValidReceivedEvidenceJson);
+
+        Assert.True(Cp6P09ReceivedEvidenceValidator.TryValidate(
+            utf8,
+            "p09-event-0001",
+            "cp6-p09-entity-0001",
+            "com.gtx537.platform.contract-example.changed.v1",
+            "cp6.platform.deployment-probe.v1",
+            out var evidence));
+        Assert.NotNull(evidence);
+        Assert.Equal("p09-event-0001", evidence.EventId);
+        Assert.Equal("2222222222222222", evidence.ReceiverParentSpanId);
+        Assert.True(evidence.ContractValid);
+    }
+
+    [Theory]
+    [MemberData(nameof(InvalidReceivedEvidenceJson))]
+    public void ReceivedEvidenceValidator_RejectsMismatchMalformedAndAmbiguousPayloads(string json)
+    {
+        Assert.False(Cp6P09ReceivedEvidenceValidator.TryValidate(
+            Encoding.UTF8.GetBytes(json),
+            "p09-event-0001",
+            "cp6-p09-entity-0001",
+            "com.gtx537.platform.contract-example.changed.v1",
+            "cp6.platform.deployment-probe.v1",
+            out var evidence));
+        Assert.Null(evidence);
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData(".hidden")]
+    [InlineData("../escape")]
+    [InlineData("event/child")]
+    [InlineData("event%2fchild")]
+    [InlineData("event?query")]
+    [InlineData("event#fragment")]
+    [InlineData("event\\child")]
+    [InlineData("event:child")]
+    [InlineData("Event-child")]
+    [InlineData(" event")]
+    [InlineData("évent")]
+    public void ProbeIdentifier_RejectsUnsafeMethodPathSegments(string value) =>
+        Assert.False(Cp6P09ProbeIdentifier.IsMethodSegment(value));
+
+    [Theory]
+    [InlineData("p09-event-0001")]
+    [InlineData("a")]
+    [InlineData("a_1.two-three")]
+    public void ProbeIdentifier_AllowsOnlyCanonicalAsciiMethodPathSegments(string value) =>
+        Assert.True(Cp6P09ProbeIdentifier.IsMethodSegment(value));
+
+    public static TheoryData<string> InvalidReceivedEvidenceJson()
+    {
+        var values = new TheoryData<string>
+        {
+            "not-json",
+            "{}",
+            ValidReceivedEvidenceJson.Replace("p09-event-0001", "p09-event-9999", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("cp6-p09-entity-0001", "cp6-p09-entity-9999", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("com.gtx537.platform.contract-example.changed.v1", "com.gtx537.platform.other.v1", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("cp6.platform.deployment-probe.v1", "cp6.platform.other.v1", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("\"TEST\"", "\"test\"", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("\"contractValid\":true", "\"contractValid\":false", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("11111111111111111111111111111111", "00000000000000000000000000000000", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("11111111111111111111111111111111", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("3333333333333333", "2222222222222222", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("\"receiverParentSpanId\":\"2222222222222222\"", "\"receiverParentSpanId\":\"4444444444444444\"", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("\"contractValid\":true", "\"contractValid\":true,\"extra\":true", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("{\"eventId\":", "{\"eventId\":\"p09-event-0001\",\"eventId\":", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("\"topicName\":\"cp6.platform.deployment-probe.v1\",", string.Empty, StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("\"contractValid\":true", "\"contractValid\":\"true\"", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("\"eventId\"", "\"EventId\"", StringComparison.Ordinal)
+        };
+        return values;
     }
 
     [Fact]

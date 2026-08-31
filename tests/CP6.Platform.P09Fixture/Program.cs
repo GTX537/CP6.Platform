@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Net;
 using System.Net.Http.Json;
@@ -11,6 +10,7 @@ using Dapr.Client;
 
 const int UnknownRoleExitCode = 64;
 const int MaximumEventBytes = 1_048_576;
+const int MaximumEvidenceResponseBytes = 16_384;
 const string PublisherRole = "publisher";
 const string ReceiverRole = "receiver";
 const string ProbeRole = "probe";
@@ -78,6 +78,7 @@ Cp6DaprServiceInvoker? serviceInvoker = role == PublisherRole
     ? new Cp6DaprServiceInvoker(new Cp6DaprTransport(daprClient!, invocationClient!))
     : null;
 var received = new ReceivedEventStore();
+var published = new PublishedProbeStore();
 var app = builder.Build();
 app.Lifetime.ApplicationStopped.Register(() =>
 {
@@ -142,7 +143,8 @@ if (role == PublisherRole)
         PublishProbeRequest request,
         CancellationToken cancellationToken) =>
     {
-        if (!IsIdentifier(request.EventId) || !IsIdentifier(request.PartitionKey))
+        if (!Cp6P09ProbeIdentifier.IsMethodSegment(request.EventId) ||
+            !Cp6P09ProbeIdentifier.IsValid(request.PartitionKey))
         {
             return Results.BadRequest(new { code = "publish-input-invalid" });
         }
@@ -171,6 +173,7 @@ if (role == PublisherRole)
                 [Cp6DaprKafkaConventions.PartitionKeyMetadata] = request.PartitionKey
             },
             cancellationToken);
+        published.Set(new PublishedProbeExpectation(request.EventId, request.PartitionKey));
 
         return Results.Json(new PublishProbeReceipt(
             request.EventId,
@@ -178,6 +181,71 @@ if (role == PublisherRole)
             ProbeRegionLabel,
             profile.TopicName,
             profile.PublishComponentName));
+    });
+
+    app.MapGet("/received/{eventId}", async (
+        string eventId,
+        CancellationToken cancellationToken) =>
+    {
+        if (!Cp6P09ProbeIdentifier.IsMethodSegment(eventId))
+        {
+            return Results.NotFound();
+        }
+
+        var expectation = published.Get(eventId);
+        if (expectation is null)
+        {
+            return Results.NotFound();
+        }
+
+        try
+        {
+            using var response = await serviceInvoker!.InvokeAsync(
+                HttpMethod.Get,
+                profile.ReceiverAppId,
+                $"received/{eventId}",
+                content: null,
+                cancellationToken);
+            if (response.StatusCode == HttpStatusCode.NotFound)
+            {
+                return Results.NotFound();
+            }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                return ReceivedProxyBadGateway();
+            }
+
+            var body = await ReadBoundedHttpContentAsync(
+                response.Content,
+                MaximumEvidenceResponseBytes,
+                cancellationToken);
+            if (body is null ||
+                !Cp6P09ReceivedEvidenceValidator.TryValidate(
+                    body,
+                    expectation.EventId,
+                    expectation.PartitionKey,
+                    profile.EventType,
+                    profile.TopicName,
+                    out var evidence))
+            {
+                return ReceivedProxyBadGateway();
+            }
+
+            return Results.Json(evidence);
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
+        }
+        catch (HttpRequestException exception) when (exception.StatusCode == HttpStatusCode.NotFound)
+        {
+            return Results.NotFound();
+        }
+        catch
+        {
+            return ReceivedProxyBadGateway();
+        }
     });
 }
 else if (role == ReceiverRole)
@@ -219,7 +287,7 @@ else if (role == ReceiverRole)
         if (!string.Equals(cloudEvent.Type, profile.EventType, StringComparison.Ordinal) ||
             !string.Equals(region, ProbeRegion, StringComparison.Ordinal) ||
             !string.Equals(topic, profile.TopicName, StringComparison.Ordinal) ||
-            !IsIdentifier(partitionKey) ||
+            !Cp6P09ProbeIdentifier.IsValid(partitionKey) ||
             !string.Equals(partitionKey, aggregateId, StringComparison.Ordinal) ||
             !TryParseTrace(traceParent, out var publisherTrace) ||
             !Cp6P09TraceTopology.TryCreateDelivery(
@@ -247,7 +315,7 @@ else if (role == ReceiverRole)
 
     app.MapPost("/invoked", (InvocationProbeRequest request) =>
     {
-        if (!IsIdentifier(request.CorrelationId))
+        if (!Cp6P09ProbeIdentifier.IsValid(request.CorrelationId))
         {
             return Results.BadRequest(new { code = "correlation-invalid" });
         }
@@ -263,7 +331,7 @@ else if (role == ReceiverRole)
 
     app.MapGet("/received/{eventId}", (string eventId) =>
     {
-        if (!IsIdentifier(eventId))
+        if (!Cp6P09ProbeIdentifier.IsMethodSegment(eventId))
         {
             return Results.NotFound();
         }
@@ -433,17 +501,6 @@ static ActivitySpanId RequireCurrentParentSpanId()
     return parentSpanId;
 }
 
-static bool IsIdentifier([NotNullWhen(true)] string? value)
-{
-    if (value is not { Length: >= 1 and <= 128 } || !char.IsAsciiLetterOrDigit(value[0]))
-    {
-        return false;
-    }
-
-    return value.AsSpan(1).IndexOfAnyExcept(
-        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789._:-") < 0;
-}
-
 static async Task<byte[]?> ReadBoundedBodyAsync(
     HttpRequest request,
     int maximumBytes,
@@ -473,6 +530,41 @@ static async Task<byte[]?> ReadBoundedBodyAsync(
     }
 }
 
+static async Task<byte[]?> ReadBoundedHttpContentAsync(
+    HttpContent content,
+    int maximumBytes,
+    CancellationToken cancellationToken)
+{
+    if (content.Headers.ContentLength is < 0 ||
+        content.Headers.ContentLength > maximumBytes)
+    {
+        return null;
+    }
+
+    await using var input = await content.ReadAsStreamAsync(cancellationToken);
+    using var output = new MemoryStream(Math.Min(maximumBytes, (int)(content.Headers.ContentLength ?? 0)));
+    var buffer = new byte[4 * 1024];
+    while (true)
+    {
+        var read = await input.ReadAsync(buffer, cancellationToken);
+        if (read == 0)
+        {
+            return output.ToArray();
+        }
+
+        if (output.Length + read > maximumBytes)
+        {
+            return null;
+        }
+
+        await output.WriteAsync(buffer.AsMemory(0, read), cancellationToken);
+    }
+}
+
+static IResult ReceivedProxyBadGateway() => Results.Json(
+    new { code = "received-response-invalid" },
+    statusCode: StatusCodes.Status502BadGateway);
+
 internal sealed class ReceivedEventStore
 {
     private ReceivedEventEvidence? value;
@@ -487,6 +579,23 @@ internal sealed class ReceivedEventStore
 
     public void Set(ReceivedEventEvidence evidence) => Volatile.Write(ref value, evidence);
 }
+
+internal sealed class PublishedProbeStore
+{
+    private PublishedProbeExpectation? value;
+
+    public PublishedProbeExpectation? Get(string eventId)
+    {
+        var current = Volatile.Read(ref value);
+        return current is not null && string.Equals(current.EventId, eventId, StringComparison.Ordinal)
+            ? current
+            : null;
+    }
+
+    public void Set(PublishedProbeExpectation expectation) => Volatile.Write(ref value, expectation);
+}
+
+internal sealed record PublishedProbeExpectation(string EventId, string PartitionKey);
 
 internal sealed record PublishProbeRequest(string? EventId, string? PartitionKey);
 

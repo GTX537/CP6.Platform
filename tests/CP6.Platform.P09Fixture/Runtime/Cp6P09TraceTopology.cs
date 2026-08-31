@@ -102,7 +102,8 @@ internal static class Cp6P09TraceTopology
     private static bool IsLowerHex(string? value, int length) =>
         value is not null &&
         value.Length == length &&
-        value.All(character => character is >= '0' and <= '9' or >= 'a' and <= 'f');
+        value.All(character => character is >= '0' and <= '9' or >= 'a' and <= 'f') &&
+        value.Any(character => character != '0');
 }
 
 internal sealed record Cp6P09DeliveryTrace(

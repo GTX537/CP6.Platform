@@ -124,6 +124,27 @@ public sealed class P09FixtureBoundaryTests
     }
 
     [Fact]
+    public void PublisherSource_HasOnlyTheFixedBoundedReceivedEvidenceProxy()
+    {
+        var source = File.ReadAllText(Path.Combine(FixtureRoot, "Program.cs"));
+
+        Assert.Equal(
+            2,
+            Regex.Matches(
+                source,
+                Regex.Escape("app.MapGet(\"/received/{eventId}\""),
+                RegexOptions.CultureInvariant).Count);
+        Assert.Contains("Cp6P09ReceivedEvidenceValidator.TryValidate", source, StringComparison.Ordinal);
+        Assert.Contains("ReadBoundedHttpContentAsync", source, StringComparison.Ordinal);
+        Assert.Contains("profile.ReceiverAppId", source, StringComparison.Ordinal);
+        Assert.Contains("HttpRequestException exception", source, StringComparison.Ordinal);
+        Assert.Contains("exception.StatusCode == HttpStatusCode.NotFound", source, StringComparison.Ordinal);
+        Assert.Contains("received-response-invalid", source, StringComparison.Ordinal);
+        Assert.DoesNotContain("MapFallback", source, StringComparison.Ordinal);
+        Assert.DoesNotContain("{**path}", source, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public async Task DirectKafkaProbe_ContinuesAfterSocketFailureAndFindsLaterReachableAddress()
     {
         var first = IPAddress.Parse("192.0.2.1");
