@@ -308,7 +308,7 @@ public sealed class P09ComposeContractTests
     [Fact]
     public void ContractValidators_RejectCredentialPropertyAndTopologyMutations()
     {
-        var publisher = ReadTemplate("kafka-publish.yaml");
+        var publisher = ReadTemplate("kafka-publish.yaml").ReplaceLineEndings("\r\n");
         var swappedSecrets = publisher
             .Replace("publisher-username", "receiver-username", StringComparison.Ordinal)
             .Replace("publisher-password", "receiver-password", StringComparison.Ordinal);
@@ -319,10 +319,10 @@ public sealed class P09ComposeContractTests
             "publisher-username",
             "publisher-password"));
 
-        var literalCredential = publisher.Replace(
+        var literalCredential = ReplaceFirst(
+            publisher.ReplaceLineEndings("\n"),
             "      secretKeyRef:\n        name: publisher-password\n        key: publisher-password",
-            "      value: \"literal-password\"",
-            StringComparison.Ordinal);
+            "      value: \"literal-password\"");
         Assert.ThrowsAny<Exception>(() => AssertKafkaComponent(
             literalCredential,
             "cp6-p09-kafka-publish",
