@@ -17,20 +17,28 @@ public sealed class FoundationContractTests
             "docs",
             "superpowers",
             "specs",
-            "2026-08-30-p08-observability-resilience-design.md"));
+            "2026-08-30-p09-non-production-runtime-design.md"));
         var changelog = File.ReadAllText(Path.Combine(RepositoryRoot, "CHANGELOG.md"));
         var props = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
         var packageVersion = $"{props.Descendants("VersionPrefix").Single().Value}-{props.Descendants("VersionSuffix").Single().Value}";
+        var deploymentProject = XDocument.Load(Path.Combine(
+            RepositoryRoot,
+            "src",
+            "CP6.Platform.Deployment",
+            "CP6.Platform.Deployment.csproj"));
+        var deploymentPackageVersion = $"{deploymentProject.Descendants("VersionPrefix").Single().Value}-{deploymentProject.Descendants("VersionSuffix").Single().Value}";
         var verification = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
         var releasePack = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "pack-release.ps1"));
+        var deploymentPack = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "pack-p09.ps1"));
         var publication = File.ReadAllText(Path.Combine(RepositoryRoot, ".github", "workflows", "publish-alpha.yml"));
 
         Assert.Matches(new Regex(@"^\d+\.\d+\.\d+\.\d+$", RegexOptions.CultureInvariant), version);
-        Assert.Contains($"repository `{version}` / package `{packageVersion}`", decisionRecord, StringComparison.Ordinal);
+        Assert.Contains($"repository `{version}` / package `{deploymentPackageVersion}`", decisionRecord, StringComparison.Ordinal);
         Assert.Contains($"## {version} -", changelog, StringComparison.Ordinal);
         Assert.Contains($"$packageVersion = '{packageVersion}'", verification, StringComparison.Ordinal);
         Assert.Contains($"[string]$PackageVersion = '{packageVersion}'", releasePack, StringComparison.Ordinal);
         Assert.Contains($"-PackageVersion {packageVersion}", publication, StringComparison.Ordinal);
+        Assert.Contains($"[string]$Version = '{deploymentPackageVersion}'", deploymentPack, StringComparison.Ordinal);
     }
 
     [Fact]
