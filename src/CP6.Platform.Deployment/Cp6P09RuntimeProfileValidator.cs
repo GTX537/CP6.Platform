@@ -127,6 +127,8 @@ internal static class Cp6P09RuntimeProfileValidator
         "zero-residue"
     ];
 
+    internal static IReadOnlyList<string> ExpectedRequiredChecks => RequiredChecks;
+
     private static readonly ExpectedAcl[] ExpectedAcls =
     [
         new(PublisherAppId, "Topic", Cp6P09RuntimeProfile.ExpectedTopic, "Write"),

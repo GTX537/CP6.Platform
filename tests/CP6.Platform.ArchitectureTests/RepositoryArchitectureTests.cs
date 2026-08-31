@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace CP6.Platform.ArchitectureTests;
@@ -5,6 +6,9 @@ namespace CP6.Platform.ArchitectureTests;
 public sealed class RepositoryArchitectureTests
 {
     private static readonly string RepositoryRoot = FindRepositoryRoot();
+    private static readonly Regex ForbiddenBackendNames = new(
+        @"\b(?:Grafana|Tempo|Prometheus)\b",
+        RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
     private static readonly IReadOnlyDictionary<string, string[]> ExpectedDependencies =
         new Dictionary<string, string[]>(StringComparer.Ordinal)
@@ -302,9 +306,6 @@ public sealed class RepositoryArchitectureTests
                 "http://localhost:4317",
                 "http://localhost:4318",
                 "collector:4317",
-                "Grafana",
-                "Tempo",
-                "Prometheus",
                 "BEGIN PRIVATE KEY",
                 "password=",
                 "MapGet(\"/deploy",
@@ -313,6 +314,8 @@ public sealed class RepositoryArchitectureTests
             {
                 Assert.DoesNotContain(forbidden, productionText, StringComparison.OrdinalIgnoreCase);
             }
+
+            Assert.DoesNotMatch(ForbiddenBackendNames, productionText);
         }
 
         var verify = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
@@ -326,6 +329,15 @@ public sealed class RepositoryArchitectureTests
         Assert.Contains("CP6.Platform.Testing", pack, StringComparison.Ordinal);
         Assert.Contains("$packageVersion = '0.8.0-alpha.2'", verify, StringComparison.Ordinal);
         Assert.Contains("[string]$PackageVersion = '0.8.0-alpha.2'", pack, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void ProductionBackendGuard_MatchesWholeNamesWithoutRejectingTemporaryDirectoryVocabulary()
+    {
+        Assert.Matches(ForbiddenBackendNames, "Tempo");
+        Assert.Matches(ForbiddenBackendNames, "Grafana.Exporter");
+        Assert.Matches(ForbiddenBackendNames, "Prometheus backend");
+        Assert.DoesNotMatch(ForbiddenBackendNames, "temporaryDirectoryRemoved");
     }
 
     [Fact]
