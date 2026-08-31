@@ -445,8 +445,9 @@ function Test-Cp6P09SupportedComposeVersion {
         return $false
     }
 
+    $candidate = $VersionOutput.Trim()
     $match = [regex]::Match(
-        $VersionOutput,
+        $candidate,
         '^(?:v)?(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?:[-+][0-9A-Za-z.-]+)?$',
         [Text.RegularExpressions.RegexOptions]::CultureInvariant
     )
@@ -1325,16 +1326,21 @@ function Invoke-Cp6P09Rehearsal {
     }
     try {
         $version = Invoke-Cp6P09DockerCommand -DockerCommand $DockerCommand -WorkingDirectory $repository -Arguments @('version','--format','{{.Server.Version}}') -TimeoutSeconds 30
-        if ($version.ExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($version.StandardOutput)) {
-            return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='docker-unavailable' }
-        }
-        $composeVersion = Invoke-Cp6P09DockerCommand -DockerCommand $DockerCommand -WorkingDirectory $repository -Arguments @('compose','version','--short') -TimeoutSeconds 30
-        if ($composeVersion.ExitCode -ne 0 -or -not (Test-Cp6P09SupportedComposeVersion -VersionOutput $composeVersion.StandardOutput)) {
-            return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='unsupported-compose-version' }
-        }
     }
     catch [System.ComponentModel.Win32Exception] {
         return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='docker-unavailable' }
+    }
+    if ($version.ExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($version.StandardOutput)) {
+        return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='docker-unavailable' }
+    }
+    try {
+        $composeVersion = Invoke-Cp6P09DockerCommand -DockerCommand $DockerCommand -WorkingDirectory $repository -Arguments @('compose','version','--short') -TimeoutSeconds 30
+    }
+    catch {
+        return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='unsupported-compose-version' }
+    }
+    if ($composeVersion.ExitCode -ne 0 -or -not (Test-Cp6P09SupportedComposeVersion -VersionOutput $composeVersion.StandardOutput)) {
+        return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='unsupported-compose-version' }
     }
 
     $clusterBytes = [Security.Cryptography.RandomNumberGenerator]::GetBytes(16)

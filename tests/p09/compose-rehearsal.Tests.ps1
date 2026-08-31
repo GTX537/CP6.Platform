@@ -41,10 +41,10 @@ Assert-True ($runnerText -match '(?s)param\(\s*\[string\]\$ProfilePath\s*=\s*"co
 $testRoot = Join-Path ([IO.Path]::GetTempPath()) ("cp6-p09-tests-" + [Guid]::NewGuid().ToString('N'))
 [IO.Directory]::CreateDirectory($testRoot) | Out-Null
 try {
-    foreach ($supported in @('2.36.0', 'v2.36.0', '2.36.0-desktop.1', '2.40.3', '5.1.1')) {
+    foreach ($supported in @('2.36.0', 'v2.36.0', '2.36.0-desktop.1', '2.40.3', '5.1.1', "2.36.0`n", "v2.40.3`r`n")) {
         Assert-True (Test-Cp6P09SupportedComposeVersion -VersionOutput $supported) "Expected Compose version '$supported' to be supported."
     }
-    foreach ($unsupported in @($null, '', '2.35.9', 'v2.35.9', '1.99.99', '2.36', 'garbage', '2.36.0 unexpected text')) {
+    foreach ($unsupported in @($null, '', '2.35.9', 'v2.35.9', '1.99.99', '2.36', 'garbage', '2.36.0 unexpected text', '2147483648.36.0', '2.2147483648.0', '2.36.2147483648')) {
         Assert-True (-not (Test-Cp6P09SupportedComposeVersion -VersionOutput $unsupported)) "Expected Compose version '$unsupported' to be unsupported."
     }
 
@@ -263,6 +263,30 @@ try {
     $unsupportedComposeTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('cp6-p09-' + $unsupportedCompose.RunId)
     Assert-True (-not (Test-Path -LiteralPath $unsupportedComposeTempRoot)) 'Unsupported Compose version created a runtime temp root.'
 
+    $supportedComposeConfigFailureResponses = Join-Path $testRoot 'supported-compose-config-failure-responses.jsonl'
+    @(
+        @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
+        @{ exitCode = 0; stdout = "2.36.0`r`n"; stderr = '' }
+        @{ exitCode = 1; stdout = ''; stderr = 'config validation failed' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $supportedComposeConfigFailureResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath "$fakeLog.index" -Force -ErrorAction SilentlyContinue
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $supportedComposeConfigFailureResponses
+    Assert-Throws {
+        Invoke-Cp6P09Rehearsal -RepositoryRoot $repositoryRoot -ProfilePath (Join-Path $repositoryRoot 'contracts\p09\examples\non-production-runtime-profile.valid.json') -ArtifactsRoot $notRunArtifacts -DockerCommand $fakeDocker -SkipDotnetPreflight
+    } 'compose-contract'
+    $supportedComposeConfigFailureCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 3 $supportedComposeConfigFailureCalls.Count 'Supported Compose probe should reach the config preflight as a third Docker call.'
+    Assert-Equal @('version','--format','{{.Server.Version}}') @($supportedComposeConfigFailureCalls[0].argv) 'Supported Compose probe first Docker call drifted.'
+    Assert-Equal @('compose','version','--short') @($supportedComposeConfigFailureCalls[1].argv) 'Supported Compose probe second Docker call drifted.'
+    Assert-Equal 11 @($supportedComposeConfigFailureCalls[2].argv).Count 'Supported Compose preflight third Docker call did not keep the canonical arity.'
+    Assert-Equal 'compose' $supportedComposeConfigFailureCalls[2].argv[0] 'Supported Compose preflight third Docker call lost the compose verb.'
+    Assert-Equal '--project-name' $supportedComposeConfigFailureCalls[2].argv[1] 'Supported Compose preflight third Docker call lost the project-name flag.'
+    Assert-True ([string]$supportedComposeConfigFailureCalls[2].argv[2] -cmatch '^cp6-p09-[a-f0-9]{16}$') 'Supported Compose preflight third Docker call project name drifted.'
+    Assert-Equal '--file' $supportedComposeConfigFailureCalls[2].argv[3] 'Supported Compose preflight third Docker call lost the compose file flag.'
+    Assert-Equal (Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml') $supportedComposeConfigFailureCalls[2].argv[4] 'Supported Compose preflight third Docker call lost the canonical compose path.'
+    Assert-Equal @('--profile','negative','--profile','provision','config','--quiet') @($supportedComposeConfigFailureCalls[2].argv[5..10]) 'Supported Compose preflight third Docker call drifted from the canonical config probe.'
+
     $composeProbeFailureResponses = Join-Path $testRoot 'compose-probe-failure-responses.jsonl'
     @(
         @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
@@ -285,6 +309,52 @@ try {
     Assert-True (-not (Test-Path -LiteralPath $composeProbeFailureArtifactDirectory)) 'Compose probe failure created a per-run artifact directory.'
     $composeProbeFailureTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('cp6-p09-' + $composeProbeFailure.RunId)
     Assert-True (-not (Test-Path -LiteralPath $composeProbeFailureTempRoot)) 'Compose probe failure created a runtime temp root.'
+
+    $malformedComposeResponses = Join-Path $testRoot 'malformed-compose-responses.jsonl'
+    @(
+        @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
+        @{ exitCode = 0; stdout = 'garbage'; stderr = '' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $malformedComposeResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath "$fakeLog.index" -Force -ErrorAction SilentlyContinue
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $malformedComposeResponses
+    $beforeMalformedEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
+    $malformedCompose = Invoke-Cp6P09Rehearsal -RepositoryRoot $repositoryRoot -ProfilePath (Join-Path $repositoryRoot 'contracts\p09\examples\non-production-runtime-profile.valid.json') -ArtifactsRoot $notRunArtifacts -DockerCommand $fakeDocker -SkipDotnetPreflight
+    Assert-Equal 'NotRun' $malformedCompose.Status 'Malformed Compose version must fail closed.'
+    Assert-Equal 'unsupported-compose-version' $malformedCompose.Reason 'Malformed Compose version did not return the stable closed reason.'
+    $malformedComposeCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 2 $malformedComposeCalls.Count 'Malformed Compose version should issue exactly two Docker calls.'
+    Assert-Equal @('version','--format','{{.Server.Version}}') @($malformedComposeCalls[0].argv) 'Malformed Compose version first Docker call drifted.'
+    Assert-Equal @('compose','version','--short') @($malformedComposeCalls[1].argv) 'Malformed Compose version second Docker call drifted.'
+    $afterMalformedEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
+    Assert-Equal $beforeMalformedEvidence $afterMalformedEvidence 'Malformed Compose version wrote rehearsal evidence.'
+    $malformedComposeArtifactDirectory = Join-Path $notRunArtifacts $malformedCompose.RunId
+    Assert-True (-not (Test-Path -LiteralPath $malformedComposeArtifactDirectory)) 'Malformed Compose version created a per-run artifact directory.'
+    $malformedComposeTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('cp6-p09-' + $malformedCompose.RunId)
+    Assert-True (-not (Test-Path -LiteralPath $malformedComposeTempRoot)) 'Malformed Compose version created a runtime temp root.'
+
+    $composeProbeExceptionResponses = Join-Path $testRoot 'compose-probe-exception-responses.jsonl'
+    @(
+        @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
+        @{ exitCode = 0; stdout = ('x' * 70000); stderr = '' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $composeProbeExceptionResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath "$fakeLog.index" -Force -ErrorAction SilentlyContinue
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $composeProbeExceptionResponses
+    $beforeComposeProbeExceptionEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
+    $composeProbeException = Invoke-Cp6P09Rehearsal -RepositoryRoot $repositoryRoot -ProfilePath (Join-Path $repositoryRoot 'contracts\p09\examples\non-production-runtime-profile.valid.json') -ArtifactsRoot $notRunArtifacts -DockerCommand $fakeDocker -SkipDotnetPreflight
+    Assert-Equal 'NotRun' $composeProbeException.Status 'Exceptional Compose probe must fail closed.'
+    Assert-Equal 'unsupported-compose-version' $composeProbeException.Reason 'Exceptional Compose probe did not return the stable closed reason.'
+    $composeProbeExceptionCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 2 $composeProbeExceptionCalls.Count 'Exceptional Compose probe should issue exactly two Docker calls.'
+    Assert-Equal @('version','--format','{{.Server.Version}}') @($composeProbeExceptionCalls[0].argv) 'Exceptional Compose probe first Docker call drifted.'
+    Assert-Equal @('compose','version','--short') @($composeProbeExceptionCalls[1].argv) 'Exceptional Compose probe second Docker call drifted.'
+    $afterComposeProbeExceptionEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
+    Assert-Equal $beforeComposeProbeExceptionEvidence $afterComposeProbeExceptionEvidence 'Exceptional Compose probe wrote rehearsal evidence.'
+    $composeProbeExceptionArtifactDirectory = Join-Path $notRunArtifacts $composeProbeException.RunId
+    Assert-True (-not (Test-Path -LiteralPath $composeProbeExceptionArtifactDirectory)) 'Exceptional Compose probe created a per-run artifact directory.'
+    $composeProbeExceptionTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('cp6-p09-' + $composeProbeException.RunId)
+    Assert-True (-not (Test-Path -LiteralPath $composeProbeExceptionTempRoot)) 'Exceptional Compose probe created a runtime temp root.'
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
 
     Assert-Throws {
