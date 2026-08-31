@@ -448,7 +448,7 @@ function Get-Cp6P09StableFailureId {
     param([AllowEmptyString()][string]$Candidate, [Parameter(Mandatory)][string]$Fallback)
     $allowed = @(
         'compose-contract','contract-tests','runtime-acl','runtime-mode','runtime-population','runtime-readability',
-        'image-pull','kafka-start','provision-first','provision-idempotent','topic-drift','acl-drift','acl-list',
+        'image-pull','kafka-start','kafka-health','provision-first','provision-idempotent','topic-drift','acl-drift','acl-list',
         'runtime-start','publisher-port','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied',
         'principal-denied','appid-scope-denied','foreign-topic-denied','topic-list','image-digest','http-status','http-output-limit'
     )
@@ -585,6 +585,8 @@ function New-Cp6P09ClientProperties {
 security.protocol=SASL_PLAINTEXT
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$Username" password="$Password";
+request.timeout.ms=5000
+default.api.timeout.ms=5000
 "@.Replace("`r`n", "`n")
 }
 
@@ -632,12 +634,44 @@ function Initialize-Cp6P09RuntimeFiles {
 }
 
 function Invoke-Cp6P09KafkaTool {
-    param([Parameter(Mandatory)]$Context, [Parameter(Mandatory)][string]$Tool, [Parameter(Mandatory)][string[]]$Arguments, [AllowEmptyString()][string]$StandardInput)
+    param(
+        [Parameter(Mandatory)]$Context,
+        [Parameter(Mandatory)][string]$Tool,
+        [Parameter(Mandatory)][string[]]$Arguments,
+        [AllowEmptyString()][string]$StandardInput,
+        [ValidateRange(1, 120)][int]$TimeoutSeconds = 120
+    )
     if ($Tool -notmatch '^kafka-(?:topics|configs|acls|console-producer|console-consumer)\.sh$') { throw 'kafka-tool' }
     $command = @('--profile','provision','run','--no-TTY','--rm','--no-deps','--entrypoint',"/opt/kafka/bin/$Tool",'kafka-admin') + $Arguments
-    $parameters = @{ Context=$Context; Arguments=$command; TimeoutSeconds=120 }
+    $parameters = @{ Context=$Context; Arguments=$command; TimeoutSeconds=$TimeoutSeconds }
     if ($PSBoundParameters.ContainsKey('StandardInput')) { $parameters.StandardInput=$StandardInput }
     return Invoke-Cp6P09Compose @parameters
+}
+
+function Wait-Cp6P09KafkaDataPlane {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]$Context,
+        [Parameter(Mandatory)][DateTimeOffset]$Deadline
+    )
+
+    do {
+        $remainingSeconds = ($Deadline - [DateTimeOffset]::UtcNow).TotalSeconds
+        if ($remainingSeconds -le 0) { break }
+        $processTimeout = [Math]::Max(1, [Math]::Min(30, [Math]::Ceiling($remainingSeconds)))
+        try {
+            $probe = Invoke-Cp6P09KafkaTool -Context $Context -Tool 'kafka-topics.sh' -Arguments @(
+                '--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list'
+            ) -TimeoutSeconds $processTimeout
+            if ($probe.ExitCode -eq 0) { return }
+        }
+        catch { }
+        $remainingMilliseconds = ($Deadline - [DateTimeOffset]::UtcNow).TotalMilliseconds
+        if ($remainingMilliseconds -gt 0) {
+            Start-Sleep -Milliseconds ([int][Math]::Min(1000, $remainingMilliseconds))
+        }
+    } while ([DateTimeOffset]::UtcNow -lt $Deadline)
+    throw 'kafka-health'
 }
 
 function Get-Cp6P09NormalizedAcls {
@@ -1094,8 +1128,11 @@ function Invoke-Cp6P09Rehearsal {
         Initialize-Cp6P09RuntimeFiles $context $credentials
         Add-Cp6P09RunLog $logPath 'runtime-population' 'Passed'
         $stage = 'kafka-start'
+        $kafkaDeadline = [DateTimeOffset]::UtcNow.AddSeconds(120)
         $startKafka = Invoke-Cp6P09Compose $context @('up','--detach','--no-build','--wait','--wait-timeout','120','kafka') 180
         Assert-Cp6P09CommandSucceeded $startKafka 'kafka-start'
+        $stage = 'kafka-health'
+        Wait-Cp6P09KafkaDataPlane -Context $context -Deadline $kafkaDeadline
         Add-Cp6P09RunLog $logPath 'kafka-start' 'Passed'
         $stage = 'provision-first'
         Invoke-Cp6P09Provision $context
@@ -1175,6 +1212,7 @@ Export-ModuleMember -Function @(
     'ConvertTo-Cp6P09CanonicalJson',
     'Test-Cp6P09Evidence',
     'Get-Cp6P09OwnedFileDockerArguments',
+    'Wait-Cp6P09KafkaDataPlane',
     'Get-Cp6P09StableFailureId',
     'Assert-Cp6P09TraceTopology',
     'Assert-Cp6P09ExpectedGitState',

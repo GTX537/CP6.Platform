@@ -101,6 +101,34 @@ try {
     foreach ($credential in $credentialValues) {
         Assert-True ($credential -cmatch '^[A-Za-z0-9_-]{43}$') 'Credential is not 32-byte Base64URL without padding.'
     }
+    Assert-True ($moduleText.Contains('request.timeout.ms=5000')) 'Kafka client requests are not bounded to five seconds.'
+    Assert-True ($moduleText.Contains('default.api.timeout.ms=5000')) 'Kafka client API calls are not bounded to five seconds.'
+
+    $readinessLog = Join-Path $testRoot 'readiness.jsonl'
+    $readinessResponses = Join-Path $testRoot 'readiness-responses.jsonl'
+    @(
+        @{ exitCode = 1; stdout = ''; stderr = 'broker-not-ready' }
+        @{ exitCode = 0; stdout = ''; stderr = '' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $readinessResponses -Encoding utf8NoBOM
+    $env:CP6_P09_FAKE_DOCKER_LOG = $readinessLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $readinessResponses
+    $readinessContext = [pscustomobject]@{
+        RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
+        ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
+        Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$testRoot; CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
+    }
+    Wait-Cp6P09KafkaDataPlane -Context $readinessContext -Deadline ([DateTimeOffset]::UtcNow.AddSeconds(10))
+    $readinessCalls = @(Get-Content -LiteralPath $readinessLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 2 $readinessCalls.Count 'Kafka data-plane readiness did not retry a bounded first failure.'
+    foreach ($call in $readinessCalls) {
+        Assert-Equal @(
+            'compose','--project-name','cp6-p09-abcdef0123456789','--file',(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'),
+            '--profile','provision','run','--no-TTY','--rm','--no-deps','--entrypoint','/opt/kafka/bin/kafka-topics.sh','kafka-admin',
+            '--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list'
+        ) @($call.argv) 'Kafka data-plane readiness command drifted.'
+    }
+    $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
 
     Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
     Remove-Item -LiteralPath "$fakeLog.index" -Force -ErrorAction SilentlyContinue
@@ -174,6 +202,7 @@ try {
     $invalidDeliveryTrace.receiverParentSpanId = $invalidDeliveryTrace.receiverSpanId
     Assert-Throws { Assert-Cp6P09TraceTopology -Invocation $validInvocationTrace -Delivery $invalidDeliveryTrace } 'pubsub-positive'
 
+    Assert-Equal 'kafka-health' (Get-Cp6P09StableFailureId -Candidate 'kafka-health' -Fallback 'kafka-start') 'Stable Kafka health failure id was lost.'
     foreach ($stableFailure in @('runtime-start','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied','principal-denied','appid-scope-denied','foreign-topic-denied')) {
         Assert-Equal $stableFailure (Get-Cp6P09StableFailureId -Candidate $stableFailure -Fallback 'runtime-matrix') 'Stable runtime failure id was lost.'
         Assert-True ($moduleText.Contains("`$Context.MatrixFailureId = '$stableFailure'")) "Runtime matrix does not checkpoint $stableFailure before its side effect."
