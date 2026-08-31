@@ -117,7 +117,9 @@ Profile 使用 Draft 2020-12 JSON Schema，关闭未知属性，至少包含：
 
 Compose 演练使用 `apache/kafka:4.3.1` 和 `daprio/daprd:1.18.2`，实现阶段还必须记录解析后的镜像 digest。不得使用 `latest`、浮动 major/minor 或本机预存镜像身份代替证据。
 
-Kafka 启用 SASL password 认证；演练开始时生成一次性高熵凭据并通过临时只读文件/Compose secret 传入。仓库不保存 secret value，证据不保存 value、可逆编码或 password hash。运行结束必须删除临时凭据目录。
+Kafka 启用 SASL password 认证；演练开始时在操作系统临时目录下的唯一、边界校验目录生成一次性高熵凭据，并通过只读 Compose secret mount 传入。仓库不保存 secret value，证据不保存 value、可逆编码或 password hash，CI artifact 也不得包含临时凭据目录。
+
+Self-hosted Dapr sidecar 使用运行时生成的 `secretstores.local.file` component 读取该临时凭据文件，再由 Kafka component 的 `secretKeyRef` 取值。local file secret store 只允许出现在 Compose 演练生成目录，不能进入发布包的 canonical Profile/Kubernetes assets，也不能被描述为生产 Secret 方案。运行结束必须在停止全部使用者后删除 component、凭据文件和整个临时目录。
 
 为避免一个共享 Dapr component 凭据同时拥有读写权限，使用两个 component：
 
@@ -330,7 +332,7 @@ P09 只授权仓库内合同、真实本地/CI Compose 演练、Kubernetes 离�
 ## 18. 权威技术参考
 
 - Dapr Apache Kafka component metadata、SASL password 和 `secretKeyRef`：<https://docs.dapr.io/reference/components-reference/supported-pubsub/setup-apache-kafka/>
+- Dapr self-hosted local file secret store（仅限开发演练）：<https://docs.dapr.io/reference/components-reference/supported-secret-stores/file-secret-store/>
 - Kubernetes NetworkPolicy v1：<https://kubernetes.io/docs/reference/kubernetes-api/networking/network-policy-v1/>
 - `kubectl kustomize` 离线渲染入口：<https://kubernetes.io/docs/reference/kubectl/generated/kubectl_kustomize/>
 - `kubectl apply --dry-run=client`：<https://kubernetes.io/docs/reference/kubectl/generated/kubectl_apply/>
-
