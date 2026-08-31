@@ -1,0 +1,36 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: cp6-p09-kafka-subscribe
+auth:
+  secretStore: cp6-p09-local-secret-store
+spec:
+  type: pubsub.kafka
+  version: v1
+  metadata:
+    - name: brokers
+      value: "kafka:9092"
+    - name: consumerGroup
+      value: "cp6-p09-probe-receiver-v1"
+    - name: clientID
+      value: "cp6-p09-probe-receiver"
+    - name: authType
+      value: "password"
+    - name: saslUsername
+      secretKeyRef:
+        name: receiver-username
+        key: receiver-username
+    - name: saslPassword
+      secretKeyRef:
+        name: receiver-password
+        key: receiver-password
+    - name: saslMechanism
+      value: "PLAIN"
+    - name: disableTls
+      value: "true"
+    - name: initialOffset
+      value: "oldest"
+    - name: maxMessageBytes
+      value: "1048576"
+scopes:
+  - cp6-p09-probe-receiver

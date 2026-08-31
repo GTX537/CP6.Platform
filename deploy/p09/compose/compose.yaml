@@ -1,0 +1,207 @@
+services:
+  kafka:
+    image: apache/kafka:4.3.1
+    environment:
+      CLUSTER_ID: ${CP6_P09_CLUSTER_ID:?CP6_P09_CLUSTER_ID must be set}
+      KAFKA_OPTS: -Djava.security.auth.login.config=/etc/kafka/secrets/kafka-jaas.conf
+    volumes:
+      - type: bind
+        source: ${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}/kafka/config
+        target: /mnt/shared/config
+        read_only: true
+      - type: bind
+        source: ${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}/kafka/secrets
+        target: /etc/kafka/secrets
+        read_only: true
+      - type: bind
+        source: ${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}/kafka/clients
+        target: /etc/kafka/clients
+        read_only: true
+      - type: volume
+        source: kafka-data
+        target: /var/lib/kafka/data
+    networks:
+      runtime: {}
+    healthcheck:
+      test:
+        - CMD
+        - /opt/kafka/bin/kafka-metadata-quorum.sh
+        - --bootstrap-controller
+        - localhost:9093
+        - --command-config
+        - /etc/kafka/clients/provisioner.properties
+        - describe
+        - --status
+      interval: 5s
+      timeout: 5s
+      retries: 24
+      start_period: 10s
+
+  publisher:
+    image: cp6-platform-p09-fixture:0.9.0-alpha.1
+    build:
+      context: ../../..
+      dockerfile: tests/CP6.Platform.P09Fixture/Dockerfile
+    command: ["publisher"]
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      DAPR_HTTP_ENDPOINT: http://publisher-dapr:3500
+      DAPR_GRPC_ENDPOINT: http://publisher-dapr:50001
+    ports:
+      - "127.0.0.1:${CP6_P09_HOST_PORT:-0}:8080"
+    networks:
+      publisher-app: {}
+
+  publisher-dapr:
+    image: daprio/daprd:1.18.2
+    entrypoint: ["/daprd"]
+    command:
+      - --app-id
+      - cp6-p09-probe-publisher
+      - --app-port
+      - "8080"
+      - --app-channel-address
+      - publisher
+      - --dapr-http-port
+      - "3500"
+      - --dapr-grpc-port
+      - "50001"
+      - --resources-path
+      - /components
+      - --log-level
+      - warn
+    volumes:
+      - type: bind
+        source: ${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}/dapr/publisher/components
+        target: /components
+        read_only: true
+      - type: bind
+        source: ${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}/dapr/publisher/secrets
+        target: /run/cp6-p09/secrets
+        read_only: true
+    networks:
+      publisher-app: {}
+      runtime: {}
+    depends_on:
+      kafka:
+        condition: service_healthy
+      publisher:
+        condition: service_started
+
+  receiver:
+    image: cp6-platform-p09-fixture:0.9.0-alpha.1
+    command: ["receiver"]
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      DAPR_HTTP_ENDPOINT: http://receiver-dapr:3500
+      DAPR_GRPC_ENDPOINT: http://receiver-dapr:50001
+    networks:
+      receiver-app: {}
+
+  receiver-dapr:
+    image: daprio/daprd:1.18.2
+    entrypoint: ["/daprd"]
+    command:
+      - --app-id
+      - cp6-p09-probe-receiver
+      - --app-port
+      - "8080"
+      - --app-channel-address
+      - receiver
+      - --dapr-http-port
+      - "3500"
+      - --dapr-grpc-port
+      - "50001"
+      - --resources-path
+      - /components
+      - --log-level
+      - warn
+    volumes:
+      - type: bind
+        source: ${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}/dapr/receiver/components
+        target: /components
+        read_only: true
+      - type: bind
+        source: ${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}/dapr/receiver/secrets
+        target: /run/cp6-p09/secrets
+        read_only: true
+    networks:
+      receiver-app: {}
+      runtime: {}
+    depends_on:
+      kafka:
+        condition: service_healthy
+      receiver:
+        condition: service_started
+
+  direct-probe:
+    image: cp6-platform-p09-fixture:0.9.0-alpha.1
+    command: ["${CP6_P09_NEGATIVE_ROLE:-probe}"]
+    profiles: ["negative"]
+    environment:
+      ASPNETCORE_URLS: http://+:8080
+      DAPR_HTTP_ENDPOINT: http://unauthorized-dapr:3500
+      DAPR_GRPC_ENDPOINT: http://unauthorized-dapr:50001
+    networks:
+      unauthorized-app: {}
+
+  unauthorized-dapr:
+    image: daprio/daprd:1.18.2
+    entrypoint: ["/daprd"]
+    command:
+      - --app-id
+      - cp6-p09-unauthorized-probe
+      - --app-port
+      - "8080"
+      - --app-channel-address
+      - direct-probe
+      - --dapr-http-port
+      - "3500"
+      - --dapr-grpc-port
+      - "50001"
+      - --resources-path
+      - /components
+      - --log-level
+      - warn
+    profiles: ["negative"]
+    volumes:
+      - type: bind
+        source: ${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}/dapr/unauthorized/components
+        target: /components
+        read_only: true
+      - type: bind
+        source: ${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}/dapr/unauthorized/secrets
+        target: /run/cp6-p09/secrets
+        read_only: true
+    networks:
+      runtime: {}
+      unauthorized-app: {}
+    depends_on:
+      kafka:
+        condition: service_healthy
+      direct-probe:
+        condition: service_started
+
+  kafka-admin:
+    image: apache/kafka:4.3.1
+    command: ["/bin/true"]
+    profiles: ["provision"]
+    volumes:
+      - type: bind
+        source: ${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}/kafka/clients
+        target: /etc/kafka/clients
+        read_only: true
+    networks:
+      runtime: {}
+    depends_on:
+      kafka:
+        condition: service_healthy
+
+networks:
+  publisher-app:
+  receiver-app:
+  unauthorized-app:
+  runtime:
+
+volumes:
+  kafka-data:
