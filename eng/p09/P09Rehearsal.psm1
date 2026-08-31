@@ -1018,7 +1018,7 @@ function Invoke-Cp6P09BoundedRetry {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)][DateTimeOffset]$Deadline,
-        [Parameter(Mandatory)][ValidateSet('invoke-positive')][string]$FailureId,
+        [Parameter(Mandatory)][ValidateSet('invoke-positive','direct-kafka-denied','appid-scope-denied')][string]$FailureId,
         [Parameter(Mandatory)][scriptblock]$Action
     )
 
@@ -1240,16 +1240,22 @@ function Invoke-Cp6P09RuntimeMatrix {
         $Context.MatrixFailureId = 'direct-kafka-denied'
         $Context.Environment['CP6_P09_NEGATIVE_ROLE'] = 'probe'
         Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('--profile','negative','up','--detach','--build','--force-recreate','direct-probe','unauthorized-dapr') 600) 'direct-kafka-denied'
-        Start-Sleep -Seconds 3
-        $direct = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'negative/direct-kafka')) '{}'
-        if (-not $direct.denied -or $direct.code -cne 'direct-kafka-denied') { throw 'direct-kafka-denied' }
+        $directDeadline = [DateTimeOffset]::UtcNow.AddSeconds(60)
+        $direct = Invoke-Cp6P09BoundedRetry -Deadline $directDeadline -FailureId 'direct-kafka-denied' -Action {
+            $candidate = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'negative/direct-kafka')) '{}'
+            if (-not $candidate.denied -or $candidate.code -cne 'direct-kafka-denied') { throw 'direct-kafka-denied' }
+            return $candidate
+        }
 
         $Context.MatrixFailureId = 'appid-scope-denied'
         $Context.Environment['CP6_P09_NEGATIVE_ROLE'] = 'unauthorized'
         Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('--profile','negative','up','--detach','--build','--force-recreate','direct-probe','unauthorized-dapr') 600) 'appid-scope-denied'
-        Start-Sleep -Seconds 3
-        $appid = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'negative/appid-scope')) '{}'
-        if (-not $appid.denied -or $appid.code -cne 'appid-scope-denied') { throw 'appid-scope-denied' }
+        $appidDeadline = [DateTimeOffset]::UtcNow.AddSeconds(60)
+        $appid = Invoke-Cp6P09BoundedRetry -Deadline $appidDeadline -FailureId 'appid-scope-denied' -Action {
+            $candidate = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'negative/appid-scope')) '{}'
+            if (-not $candidate.denied -or $candidate.code -cne 'appid-scope-denied') { throw 'appid-scope-denied' }
+            return $candidate
+        }
         $Context.MatrixFailureId = 'principal-denied'
         Invoke-Cp6P09PrincipalNegative $Context
         $Context.MatrixFailureId = 'foreign-topic-denied'

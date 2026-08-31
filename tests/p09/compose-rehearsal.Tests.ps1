@@ -576,12 +576,23 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     }
     Assert-Equal 'ready' $retryResult 'Bounded invocation retry did not return the first successful result.'
     Assert-Equal 2 $retryState.Attempts 'Bounded invocation retry did not retry exactly once.'
+    $negativeRetryState = [pscustomobject]@{ Attempts=0 }
+    $negativeRetryResult = Invoke-Cp6P09BoundedRetry -Deadline ([DateTimeOffset]::UtcNow.AddSeconds(5)) -FailureId 'appid-scope-denied' -Action {
+        $negativeRetryState.Attempts++
+        if ($negativeRetryState.Attempts -eq 1) { throw 'transient-negative-probe' }
+        return 'denied'
+    }
+    Assert-Equal 'denied' $negativeRetryResult 'Bounded negative retry did not return the first verified denial.'
+    Assert-Equal 2 $negativeRetryState.Attempts 'Bounded negative retry did not retry exactly once.'
     Assert-Throws {
         Invoke-Cp6P09BoundedRetry -Deadline ([DateTimeOffset]::UtcNow.AddMilliseconds(-1)) -FailureId 'invoke-positive' -Action { 'unexpected' }
     } 'invoke-positive'
     Assert-True ($moduleText.Contains('$matrixDeadline = [DateTimeOffset]::UtcNow.AddSeconds(60)')) 'Runtime matrix does not create a 60-second shared deadline.'
     Assert-True ($moduleText.Contains("Invoke-Cp6P09BoundedRetry -Deadline `$matrixDeadline -FailureId 'invoke-positive'")) 'Invocation does not use the shared matrix deadline.'
     Assert-True ($moduleText.Contains('} while ([DateTimeOffset]::UtcNow -lt $matrixDeadline)')) 'Publish polling does not reuse the shared matrix deadline.'
+    Assert-True (-not $moduleText.Contains('Start-Sleep -Seconds 3')) 'Negative probes still depend on a fixed readiness sleep.'
+    Assert-True ($moduleText.Contains("Invoke-Cp6P09BoundedRetry -Deadline `$directDeadline -FailureId 'direct-kafka-denied'")) 'Direct Kafka denial does not use a bounded readiness retry.'
+    Assert-True ($moduleText.Contains("Invoke-Cp6P09BoundedRetry -Deadline `$appidDeadline -FailureId 'appid-scope-denied'")) 'AppId-scope denial does not use a bounded readiness retry.'
 
     $diagnosticSpec = Get-Cp6P09DaprDiagnosticProcessSpec `
         -ProjectName 'cp6-p09-abcdef0123456789' `
