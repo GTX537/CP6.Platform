@@ -130,6 +130,7 @@ public sealed class P09ComposeContractTests
         Assert.Equal(new[] { "unauthorized-app" }, ServiceNetworks(compose, "direct-probe"));
         Assert.Equal(new[] { "runtime", "unauthorized-app" }, ServiceNetworks(compose, "unauthorized-dapr"));
         Assert.Equal(new[] { "runtime" }, ServiceNetworks(compose, "kafka-admin"));
+        AssertExactDaprNetworkAttachments(compose);
 
         var images = new[] { "kafka", "kafka-admin", "publisher-dapr", "receiver-dapr", "unauthorized-dapr" }.ToDictionary(
             service => service,
@@ -195,7 +196,11 @@ public sealed class P09ComposeContractTests
                      "external:",
                      "/var/run/docker.sock",
                      "host.docker.internal",
-                     "authType: none"
+                     "authType: none",
+                     "ipv4_address:",
+                     "ipv6_address:",
+                     "link_local_ips:",
+                     "DAPR_HOST_IP"
                  })
         {
             Assert.DoesNotContain(forbidden, compose, StringComparison.OrdinalIgnoreCase);
@@ -375,6 +380,30 @@ public sealed class P09ComposeContractTests
     }
 
     [Fact]
+    public void ComposeNetworkValidator_RejectsInterfaceAndGatewayMutations()
+    {
+        var compose = ReadRequired(ComposePath);
+
+        var wrongRuntimeInterface = ReplaceFirst(
+            compose,
+            "interface_name: eth0",
+            "interface_name: eth9");
+        Assert.ThrowsAny<Exception>(() => AssertExactDaprNetworkAttachments(wrongRuntimeInterface));
+
+        var wrongRuntimeGateway = ReplaceFirst(
+            compose,
+            "gw_priority: 1",
+            "gw_priority: 0");
+        Assert.ThrowsAny<Exception>(() => AssertExactDaprNetworkAttachments(wrongRuntimeGateway));
+
+        var wrongAppGateway = ReplaceFirst(
+            compose,
+            "gw_priority: 0",
+            "gw_priority: 2");
+        Assert.ThrowsAny<Exception>(() => AssertExactDaprNetworkAttachments(wrongAppGateway));
+    }
+
+    [Fact]
     public void RuntimePathContainment_RejectsSiblingPrefixEscape()
     {
         var root = Path.GetFullPath(ComposeRuntimeRoot);
@@ -408,6 +437,12 @@ public sealed class P09ComposeContractTests
         AssertJsonNetworks(services, "direct-probe", "unauthorized-app");
         AssertJsonNetworks(services, "unauthorized-dapr", "runtime", "unauthorized-app");
         AssertJsonNetworks(services, "kafka-admin", "runtime");
+        AssertJsonNetworkAttachment(services, "publisher-dapr", "runtime", "eth0", 1);
+        AssertJsonNetworkAttachment(services, "publisher-dapr", "publisher-app", "eth1", 0);
+        AssertJsonNetworkAttachment(services, "receiver-dapr", "runtime", "eth0", 1);
+        AssertJsonNetworkAttachment(services, "receiver-dapr", "receiver-app", "eth1", 0);
+        AssertJsonNetworkAttachment(services, "unauthorized-dapr", "runtime", "eth0", 1);
+        AssertJsonNetworkAttachment(services, "unauthorized-dapr", "unauthorized-app", "eth1", 0);
         AssertJsonRuntimeFields(services);
 
         foreach (var service in new[] { "publisher", "receiver", "direct-probe" })
@@ -730,6 +765,26 @@ public sealed class P09ComposeContractTests
         Assert.Equal(
             expected.Order(StringComparer.Ordinal).ToArray(),
             PropertyNames(services.GetProperty(service).GetProperty("networks")));
+
+    private static void AssertJsonNetworkAttachment(
+        JsonElement services,
+        string service,
+        string network,
+        string interfaceName,
+        int gatewayPriority)
+    {
+        var attachment = services.GetProperty(service).GetProperty("networks").GetProperty(network);
+        Assert.Equal(interfaceName, attachment.GetProperty("interface_name").GetString());
+        if (gatewayPriority == 0)
+        {
+            Assert.Equal(new[] { "interface_name" }, PropertyNames(attachment));
+            Assert.False(attachment.TryGetProperty("gw_priority", out _));
+            return;
+        }
+
+        Assert.Equal(new[] { "gw_priority", "interface_name" }, PropertyNames(attachment));
+        Assert.Equal(gatewayPriority, attachment.GetProperty("gw_priority").GetInt32());
+    }
 
     private static void AssertJsonRuntimeFields(JsonElement services)
     {
@@ -1133,13 +1188,32 @@ public sealed class P09ComposeContractTests
 
     private static string[] ServiceNetworks(string compose, string service)
     {
-        var block = ServiceBlock(compose, service).Replace("\r\n", "\n", StringComparison.Ordinal);
-        var match = Regex.Match(block, @"(?m)^    networks:\s*\n(?<body>(?:^      [^\n]*\n?)+)");
-        Assert.True(match.Success, $"Service '{service}' has no networks map.");
-        return Regex.Matches(match.Groups["body"].Value, @"(?m)^      (?<network>[a-z][a-z0-9-]*):")
-            .Select(value => value.Groups["network"].Value)
-            .Order(StringComparer.Ordinal)
-            .ToArray();
+        var networks = RequiredBlock(NormalizeLines(ServiceBlock(compose, service)), 4, "networks");
+        return DirectMapKeys(networks, 6);
+    }
+
+    private static void AssertExactDaprNetworkAttachments(string compose)
+    {
+        AssertServiceNetworkAttachment(compose, "publisher-dapr", "runtime", "eth0", "1");
+        AssertServiceNetworkAttachment(compose, "publisher-dapr", "publisher-app", "eth1", "0");
+        AssertServiceNetworkAttachment(compose, "receiver-dapr", "runtime", "eth0", "1");
+        AssertServiceNetworkAttachment(compose, "receiver-dapr", "receiver-app", "eth1", "0");
+        AssertServiceNetworkAttachment(compose, "unauthorized-dapr", "runtime", "eth0", "1");
+        AssertServiceNetworkAttachment(compose, "unauthorized-dapr", "unauthorized-app", "eth1", "0");
+    }
+
+    private static void AssertServiceNetworkAttachment(
+        string compose,
+        string service,
+        string network,
+        string interfaceName,
+        string gatewayPriority)
+    {
+        var networks = RequiredBlock(NormalizeLines(ServiceBlock(compose, service)), 4, "networks");
+        var attachment = RequiredBlock(networks, 6, network);
+        Assert.Equal(new[] { "gw_priority", "interface_name" }, DirectMapKeys(attachment, 8));
+        Assert.Equal(gatewayPriority, RequiredScalar(attachment, 8, "gw_priority"));
+        Assert.Equal(interfaceName, RequiredScalar(attachment, 8, "interface_name"));
     }
 
     private static string ServiceScalar(string compose, string service, string key)

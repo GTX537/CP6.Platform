@@ -123,8 +123,12 @@ services:
         target: /run/cp6-p09/secrets
         read_only: true
     networks:
-      publisher-app: {}
-      runtime: {}
+      runtime:
+        interface_name: eth0
+        gw_priority: 1
+      publisher-app:
+        interface_name: eth1
+        gw_priority: 0
     depends_on:
       kafka:
         condition: service_healthy
@@ -170,8 +174,12 @@ services:
         target: /run/cp6-p09/secrets
         read_only: true
     networks:
-      receiver-app: {}
-      runtime: {}
+      runtime:
+        interface_name: eth0
+        gw_priority: 1
+      receiver-app:
+        interface_name: eth1
+        gw_priority: 0
     depends_on:
       kafka:
         condition: service_healthy
@@ -219,8 +227,12 @@ services:
         target: /run/cp6-p09/secrets
         read_only: true
     networks:
-      runtime: {}
-      unauthorized-app: {}
+      runtime:
+        interface_name: eth0
+        gw_priority: 1
+      unauthorized-app:
+        interface_name: eth1
+        gw_priority: 0
     depends_on:
       kafka:
         condition: service_healthy
