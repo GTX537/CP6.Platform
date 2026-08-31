@@ -350,11 +350,24 @@ try {
     Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
     Assert-Equal 'target-unavailable' (Invoke-Cp6P09DaprDiagnostic -Context $diagnosticContext) 'A valid bounded HTTP response was discarded only because the inner reader reached its timeout.'
 
+    $missingAppPayload = "HTTP/1.1 500 Internal Server Error`r`nContent-Type: application/json`r`n`r`n{`"errorCode`":`"ERR_DIRECT_INVOKE`",`"message`":`"failed to invoke, id: cp6-p09-probe-receiver, err: couldn't find service: cp6-p09-probe-receiver`"}"
+    @{ exitCode=124; stdout=$missingAppPayload; stderr='' } |
+        ConvertTo-Json -Compress | Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
+    Assert-Equal 'service-discovery-unavailable' (Invoke-Cp6P09DaprDiagnostic -Context $diagnosticContext) 'The exact Dapr self-hosted missing-app response escaped its closed category.'
+
+    $addressTimeoutPayload = "HTTP/1.1 500 Internal Server Error`r`nContent-Type: application/json`r`n`r`n{`"errorCode`":`"ERR_DIRECT_INVOKE`",`"message`":`"failed to invoke, id: cp6-p09-probe-receiver, err: timeout waiting for address for app id cp6-p09-probe-receiver`"}"
+    @{ exitCode=124; stdout=$addressTimeoutPayload; stderr='' } |
+        ConvertTo-Json -Compress | Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
+    Assert-Equal 'service-discovery-unavailable' (Invoke-Cp6P09DaprDiagnostic -Context $diagnosticContext) 'The exact Dapr self-hosted address-timeout response escaped its closed category.'
+
     $invalidDiagnosticResponses = @(
         @{ exitCode=124; stdout=''; stderr='bounded diagnostic failure'; name='missing status' }
         @{ exitCode=124; stdout=($diagnosticPayload + "`r`nHTTP/1.1 500 Internal Server Error"); stderr=''; name='multiple status lines' }
         @{ exitCode=124; stdout="HTTP/1.1 500 Internal Server Error`r`n`r`n{`"errorCode`":`"ERR_DIRECT_INVOKE`""; stderr=''; name='truncated body' }
         @{ exitCode=124; stdout="HTTP/1.1 500 Internal Server Error`r`n`r`n{`"errorCode`":`"ERR_DIRECT_INVOKE`",`"message`":`"unclassified`"}"; stderr=''; name='unknown body' }
+        @{ exitCode=124; stdout=($missingAppPayload.Replace('cp6-p09-probe-receiver','cp6-p09-foreign-app')); stderr=''; name='foreign app id' }
         @{ exitCode=124; stdout=($diagnosticPayload + ('x' * (3073 - $diagnosticPayload.Length))); stderr=''; name='oversized stdout' }
         @{ exitCode=1; stdout=$diagnosticPayload; stderr=''; name='unexpected nonzero exit' }
     )

@@ -1131,6 +1131,9 @@ function Invoke-Cp6P09DaprDiagnostic {
         if (-not $errorCode.Success) { return 'diagnostic-unavailable' }
         if ($errorCode.Groups['code'].Value -ceq 'DAPR_APP_ID_NOT_FOUND') { return 'target-app-id-not-found' }
         if ($errorCode.Groups['code'].Value -cne 'ERR_DIRECT_INVOKE') { return 'diagnostic-unavailable' }
+        if ($result.StandardOutput -cmatch '"message"\s*:\s*"failed to invoke, id: cp6-p09-probe-receiver, err: (?:couldn''t find service: cp6-p09-probe-receiver|timeout waiting for address for app id cp6-p09-probe-receiver)"') {
+            return 'service-discovery-unavailable'
+        }
         $networkClasses = @(Get-Cp6P09ReceiverEndpointNetworkClasses -Context $Context -Text $text)
         if ($networkClasses -ccontains 'receiver-app') { return 'target-receiver-app-network' }
         if ($networkClasses -ccontains 'runtime') { return 'target-runtime-network' }
