@@ -127,6 +127,9 @@ public sealed class P09SchemaTests
         "unicode-unix-path",
         "lookalike-http-path",
         "malformed-http-path",
+        "uri-userinfo-password",
+        "uri-userinfo-username",
+        "uri-userinfo-percent-encoded",
         "password-assignment",
         "password-tab-assignment",
         "password-nbsp-assignment",
@@ -156,6 +159,7 @@ public sealed class P09SchemaTests
         "contract https://cp6.example/contracts/p09/rehearsal-evidence.v1.schema.json accepted",
         "endpoint http://example.test/p09 accepted",
         "endpoint=https://example.test/p09 accepted",
+        "endpoint https://publisher.example.test/p09 accepted",
         "urn urn:cp6:p09:evidence accepted",
         "image registry.k8s.io/kubectl:v1.34.1 accepted",
         $"digest sha256:{new string('a', 64)} accepted",
@@ -556,6 +560,9 @@ public sealed class P09SchemaTests
             case "unicode-unix-path": checks[0]!["summary"] = "artifact=/用户/路径"; break;
             case "lookalike-http-path": checks[0]!["summary"] = "artifact=xhttp://server/share"; break;
             case "malformed-http-path": checks[0]!["summary"] = "artifact=http:///var/lib/docker"; break;
+            case "uri-userinfo-password": checks[0]!["summary"] = "endpoint https://publisher:obvious-fake-secret@example.test/p09 accepted"; break;
+            case "uri-userinfo-username": checks[0]!["summary"] = "endpoint https://publisher@example.test/p09 accepted"; break;
+            case "uri-userinfo-percent-encoded": checks[0]!["summary"] = "endpoint https://publisher%3Aobvious-fake-secret@example.test/p09 accepted"; break;
             case "password-assignment": checks[0]!["summary"] = "password=obvious-fake-value"; break;
             case "password-tab-assignment": checks[0]!["summary"] = "password\t=\tobvious-fake-value"; break;
             case "password-nbsp-assignment": checks[0]!["summary"] = "password\u00a0=\u00a0obvious-fake-value"; break;

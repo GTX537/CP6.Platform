@@ -28,6 +28,9 @@ public sealed class P09EvidenceTests
         { "unicode-unix-path", "unsafe-evidence" },
         { "lookalike-http-path", "unsafe-evidence" },
         { "malformed-http-path", "unsafe-evidence" },
+        { "uri-userinfo-password", "unsafe-evidence" },
+        { "uri-userinfo-username", "unsafe-evidence" },
+        { "uri-userinfo-percent-encoded", "unsafe-evidence" },
         { "password-assignment", "unsafe-evidence" },
         { "password-tab-assignment", "unsafe-evidence" },
         { "password-nbsp-assignment", "unsafe-evidence" },
@@ -150,6 +153,17 @@ public sealed class P09EvidenceTests
             Cp6P09RehearsalEvidence.Parse(MutateCanonical(mutation)));
 
         Assert.Equal(expectedCheckId, exception.CheckId);
+    }
+
+    [Fact]
+    public void Parse_UriUserInfo_DoesNotEchoCredentialBearingEvidenceInExceptionMessage()
+    {
+        var exception = Assert.Throws<Cp6P09ContractException>(() =>
+            Cp6P09RehearsalEvidence.Parse(MutateCanonical("uri-userinfo-password")));
+
+        Assert.Equal("unsafe-evidence", exception.CheckId);
+        Assert.DoesNotContain("publisher", exception.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("obvious-fake-secret", exception.Message, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]
@@ -304,6 +318,9 @@ public sealed class P09EvidenceTests
             case "unicode-unix-path": checks[0]!["summary"] = "artifact=/用户/路径"; break;
             case "lookalike-http-path": checks[0]!["summary"] = "artifact=xhttp://server/share"; break;
             case "malformed-http-path": checks[0]!["summary"] = "artifact=http:///var/lib/docker"; break;
+            case "uri-userinfo-password": checks[0]!["summary"] = "endpoint https://publisher:obvious-fake-secret@example.test/p09 accepted"; break;
+            case "uri-userinfo-username": checks[0]!["summary"] = "endpoint https://publisher@example.test/p09 accepted"; break;
+            case "uri-userinfo-percent-encoded": checks[0]!["summary"] = "endpoint https://publisher%3Aobvious-fake-secret@example.test/p09 accepted"; break;
             case "password-assignment": checks[0]!["summary"] = "password=obvious-fake-value"; break;
             case "password-tab-assignment": checks[0]!["summary"] = "password\t=\tobvious-fake-value"; break;
             case "password-nbsp-assignment": checks[0]!["summary"] = "password\u00a0=\u00a0obvious-fake-value"; break;

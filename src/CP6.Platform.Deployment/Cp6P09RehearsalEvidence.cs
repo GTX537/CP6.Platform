@@ -517,6 +517,7 @@ public sealed class Cp6P09RehearsalEvidence
         return Uri.TryCreate(candidate, UriKind.Absolute, out var uri) &&
             (uri.Scheme.Equals(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) ||
              uri.Scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase)) &&
+            string.IsNullOrEmpty(uri.UserInfo) &&
             !string.IsNullOrEmpty(uri.Host);
     }
 
