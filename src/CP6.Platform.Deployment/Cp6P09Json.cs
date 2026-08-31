@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
@@ -120,7 +121,7 @@ public static class Cp6P09Json
     }
 
     private static Cp6P09ContractException InvalidJson(Exception exception) =>
-        new("invalid-json", "The runtime profile is not valid strict UTF-8 JSON.", exception);
+        new("invalid-json", "The P09 contract JSON is not valid strict UTF-8 JSON.", exception);
 
     private static void WriteCanonical(Utf8JsonWriter writer, JsonElement element)
     {
@@ -148,9 +149,9 @@ public static class Cp6P09Json
                 break;
 
             case JsonValueKind.Number:
-                if (IsNegativeZero(element.GetRawText()))
+                if (TryCanonicalizeIntegralNumber(element.GetRawText(), out var canonicalInteger))
                 {
-                    writer.WriteNumberValue(0);
+                    writer.WriteRawValue(canonicalInteger, skipInputValidation: true);
                 }
                 else
                 {
@@ -165,23 +166,83 @@ public static class Cp6P09Json
         }
     }
 
-    private static bool IsNegativeZero(string rawNumber)
+    private static bool TryCanonicalizeIntegralNumber(string rawNumber, out string canonicalInteger)
     {
-        if (!rawNumber.StartsWith("-0", StringComparison.Ordinal))
+        const int maxCanonicalDigits = 128;
+        canonicalInteger = string.Empty;
+        var negative = rawNumber[0] == '-';
+        var numberStart = negative ? 1 : 0;
+        var exponentIndex = rawNumber.IndexOfAny(['e', 'E']);
+        var significandEnd = exponentIndex < 0 ? rawNumber.Length : exponentIndex;
+        var significand = rawNumber.AsSpan(numberStart, significandEnd - numberStart);
+        var decimalIndex = significand.IndexOf('.');
+        var fractionalDigits = decimalIndex < 0 ? 0 : significand.Length - decimalIndex - 1;
+        var digits = decimalIndex < 0
+            ? significand.ToString()
+            : string.Concat(significand[..decimalIndex], significand[(decimalIndex + 1)..]);
+
+        var firstNonzero = 0;
+        while (firstNonzero < digits.Length && digits[firstNonzero] == '0')
+        {
+            firstNonzero++;
+        }
+
+        if (firstNonzero == digits.Length)
+        {
+            canonicalInteger = "0";
+            return true;
+        }
+
+        var exponent = 0;
+        if (exponentIndex >= 0 &&
+            !int.TryParse(
+                rawNumber.AsSpan(exponentIndex + 1),
+                NumberStyles.AllowLeadingSign,
+                CultureInfo.InvariantCulture,
+                out exponent))
         {
             return false;
         }
 
-        var exponentIndex = rawNumber.IndexOfAny(['e', 'E']);
-        var significandEnd = exponentIndex < 0 ? rawNumber.Length : exponentIndex;
-        for (var index = 1; index < significandEnd; index++)
+        var decimalPower = (long)exponent - fractionalDigits;
+        var digitEnd = digits.Length;
+        var appendedZeros = 0;
+        if (decimalPower < 0)
         {
-            if (rawNumber[index] is not ('0' or '.'))
+            var requiredTrailingZeros = -decimalPower;
+            var availableTrailingZeros = 0;
+            for (var index = digits.Length - 1; index >= firstNonzero && digits[index] == '0'; index--)
+            {
+                availableTrailingZeros++;
+            }
+
+            if (requiredTrailingZeros > availableTrailingZeros)
             {
                 return false;
             }
+
+            digitEnd -= (int)requiredTrailingZeros;
+        }
+        else
+        {
+            if (decimalPower > maxCanonicalDigits)
+            {
+                return false;
+            }
+
+            appendedZeros = (int)decimalPower;
         }
 
+        var magnitudeLength = digitEnd - firstNonzero + appendedZeros;
+        if (magnitudeLength is <= 0 or > maxCanonicalDigits)
+        {
+            return false;
+        }
+
+        var magnitude = string.Concat(
+            digits.AsSpan(firstNonzero, digitEnd - firstNonzero),
+            new string('0', appendedZeros));
+        canonicalInteger = negative ? $"-{magnitude}" : magnitude;
         return true;
     }
 }

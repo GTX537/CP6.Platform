@@ -160,11 +160,22 @@ public sealed class P09SchemaTests
         "reordered"
     };
 
-    public static IEnumerable<object[]> UnsafeSummaryCorpus =>
-        P09ContractTestData.UnsafeSummaries.Select(value => new object[] { value });
+    public static IEnumerable<object[]> ClosedSummaryRejectionCorpus =>
+        P09ContractTestData.ClosedSummaryRejections.Select(value => new object[] { value });
 
-    public static IEnumerable<object[]> SafeSummaryCorpus =>
-        P09ContractTestData.SafeSummaries.Select(value => new object[] { value });
+    public static TheoryData<string, string> EvidenceIntegralNumberAliases => new()
+    {
+        { "\"partitions\":3", "\"partitions\":3.0" },
+        { "\"retentionMs\":3600000", "\"retentionMs\":3600000e0" },
+        { "\"commandExitCode\":0", "\"commandExitCode\":0.0" }
+    };
+
+    public static TheoryData<string, string> ProfileIntegralNumberAliases => new()
+    {
+        { "\"partitions\": 3", "\"partitions\": 3.0" },
+        { "\"retentionMs\": 3600000", "\"retentionMs\": 3600000e0" },
+        { "\"maxMessageBytes\": 1048576", "\"maxMessageBytes\": 1048576.0" }
+    };
 
     public static TheoryData<string, string> EvidenceRuntimeOnlyCrossValueMutations => new()
     {
@@ -253,6 +264,9 @@ public sealed class P09SchemaTests
 
         Assert.True(Evaluate(P09ContractTestData.EvidenceSchemaPath, valid).IsValid);
         Assert.False(Evaluate(P09ContractTestData.EvidenceSchemaPath, secret).IsValid);
+
+        var evidence = Cp6P09RehearsalEvidence.Parse(valid);
+        Assert.All(evidence.Checks, check => Assert.Equal(check.Id, check.Summary));
     }
 
     [Theory]
@@ -318,7 +332,7 @@ public sealed class P09SchemaTests
                 {
                     ["id"] = "additional-diagnostic",
                     ["result"] = "Failed",
-                    ["summary"] = "additional failure recorded"
+                    ["summary"] = "additional-diagnostic"
                 });
                 break;
             case "missing":
@@ -340,8 +354,8 @@ public sealed class P09SchemaTests
     }
 
     [Theory]
-    [MemberData(nameof(UnsafeSummaryCorpus))]
-    public void AdversarialSummaryCorpus_FailsSchemaAndRuntime(string summary)
+    [MemberData(nameof(ClosedSummaryRejectionCorpus))]
+    public void AnySummaryOtherThanItsStableCheckCode_FailsSchemaAndRuntime(string summary)
     {
         var root = P09ContractTestData.ParseValidEvidence();
         root["checks"]![0]!["summary"] = summary;
@@ -349,20 +363,68 @@ public sealed class P09SchemaTests
 
         Assert.False(Evaluate(P09ContractTestData.EvidenceSchemaPath, json).IsValid);
         Assert.Equal(
-            "unsafe-evidence",
+            "check-summary",
             Assert.Throws<Cp6P09ContractException>(() => Cp6P09RehearsalEvidence.Parse(json)).CheckId);
     }
 
     [Theory]
-    [MemberData(nameof(SafeSummaryCorpus))]
-    public void SimpleAsciiSummaryCorpus_PassesSchemaAndRuntime(string summary)
+    [InlineData("Passed")]
+    [InlineData("Failed")]
+    public void ExactStableCheckCodeSummaries_PassSchemaAndRuntimeForBothResults(string overall)
     {
         var root = P09ContractTestData.ParseValidEvidence();
-        root["checks"]![0]!["summary"] = summary;
+        var checks = root["checks"]!.AsArray();
+        foreach (var checkNode in checks)
+        {
+            var check = checkNode!.AsObject();
+            check["summary"] = check["id"]!.GetValue<string>();
+        }
+
+        root["overall"] = overall;
+        if (overall == "Failed")
+        {
+            checks[0]!["result"] = "Failed";
+        }
+
         var json = Cp6P09Json.Canonicalize(root.ToJsonString());
 
         Assert.True(Evaluate(P09ContractTestData.EvidenceSchemaPath, json).IsValid);
-        Assert.Equal("Passed", Cp6P09RehearsalEvidence.Parse(json).Overall);
+        Assert.Equal(overall, Cp6P09RehearsalEvidence.Parse(json).Overall);
+    }
+
+    [Theory]
+    [MemberData(nameof(EvidenceIntegralNumberAliases))]
+    public void EvidenceIntegralAliases_AreSchemaValidButRuntimeRequiresCanonicalIntegerLexemes(
+        string canonicalLexeme,
+        string aliasLexeme)
+    {
+        var canonical = P09ContractTestData.ReadExample("rehearsal-evidence.valid.json");
+        var alias = canonical.Replace(canonicalLexeme, aliasLexeme, StringComparison.Ordinal);
+
+        Assert.NotEqual(canonical, alias);
+        Assert.True(Evaluate(P09ContractTestData.EvidenceSchemaPath, alias).IsValid);
+        Assert.Equal(canonical, Cp6P09Json.Canonicalize(alias));
+        Assert.Equal(
+            Cp6P09Json.Sha256Hex(System.Text.Encoding.UTF8.GetBytes(canonical)),
+            Cp6P09Json.Sha256Hex(System.Text.Encoding.UTF8.GetBytes(Cp6P09Json.Canonicalize(alias))));
+        Assert.Equal(
+            "non-canonical-evidence",
+            Assert.Throws<Cp6P09ContractException>(() => Cp6P09RehearsalEvidence.Parse(alias)).CheckId);
+    }
+
+    [Theory]
+    [MemberData(nameof(ProfileIntegralNumberAliases))]
+    public void ProfileIntegralAliases_PassSchemaAndNormalizeBeforeRuntimeValidation(
+        string canonicalLexeme,
+        string aliasLexeme)
+    {
+        var canonical = P09ContractTestData.ReadExample("non-production-runtime-profile.valid.json");
+        var alias = canonical.Replace(canonicalLexeme, aliasLexeme, StringComparison.Ordinal);
+
+        Assert.NotEqual(canonical, alias);
+        Assert.True(Evaluate(P09ContractTestData.ProfileSchemaPath, alias).IsValid);
+        var profile = Cp6P09RuntimeProfile.Parse(alias);
+        Assert.Equal(Cp6P09Json.Canonicalize(canonical), System.Text.Encoding.UTF8.GetString(profile.ToCanonicalUtf8()));
     }
 
     [Theory]
@@ -701,38 +763,25 @@ public sealed class P09SchemaTests
 
 internal static class P09ContractTestData
 {
-    internal static readonly IReadOnlyList<string> UnsafeSummaries =
+    internal static readonly IReadOnlyList<string> ClosedSummaryRejections =
     [
-        "password: obvious fake value",
-        "PASSWORD obvious fake value",
-        "token obvious fake value",
-        "Bearer obvious fake value",
-        "apiKey=obvious-fake-value",
-        "API-KEY obvious fake value",
-        "secret=obvious-fake-value",
-        "clientSecret obvious fake value",
-        "client-secret obvious fake value",
-        "credential obvious fake value",
-        "password\uFEFF=\uFEFFobvious-fake-value",
-        "line\u0085break",
-        "line\u2028break",
-        "line\u2029break",
-        "artifact/path",
-        "artifact\\path",
-        "label:value",
-        "name=value",
-        "user@example",
-        "café accepted",
-        "tab\tseparated"
+        "connectionString",
+        "accessKey",
+        "privateKey",
+        "authorization",
+        "benign phrase",
+        "profile accepted",
+        "zero-residue"
     ];
 
-    internal static readonly IReadOnlyList<string> SafeSummaries =
+    internal static readonly IReadOnlyList<string> AdversarialUnknownPropertyNames =
     [
-        "profile accepted",
-        "check_01 passed",
-        "zero-residue confirmed",
-        "summary.v1 accepted",
-        "ABC 123"
+        "unexpected-password-field",
+        "unexpected-apiKey-field",
+        "unexpected-clientSecret-field",
+        "unexpected\uFEFFfield",
+        "unexpected\nfield",
+        "unexpected\rfield"
     ];
 
     internal static readonly string RepositoryRoot = FindRepositoryRoot();

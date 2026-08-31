@@ -7,11 +7,11 @@ namespace CP6.Platform.DeploymentTests;
 
 public sealed class P09EvidenceTests
 {
-    public static IEnumerable<object[]> UnsafeSummaryCorpus =>
-        P09ContractTestData.UnsafeSummaries.Select(value => new object[] { value });
+    public static IEnumerable<object[]> ClosedSummaryRejectionCorpus =>
+        P09ContractTestData.ClosedSummaryRejections.Select(value => new object[] { value });
 
-    public static IEnumerable<object[]> SafeSummaryCorpus =>
-        P09ContractTestData.SafeSummaries.Select(value => new object[] { value });
+    public static IEnumerable<object[]> AdversarialUnknownPropertyNames =>
+        P09ContractTestData.AdversarialUnknownPropertyNames.Select(value => new object[] { value });
 
     public static TheoryData<string, string> UnsafeEvidenceMutations => new()
     {
@@ -79,8 +79,8 @@ public sealed class P09EvidenceTests
         { "zero-invoked-span-id", "trace" },
         { "negative-teardown-count", "invalid-count" },
         { "empty-summary", "invalid-string" },
-        { "long-summary", "unsafe-evidence" },
-        { "multiline-summary", "unsafe-evidence" },
+        { "long-summary", "check-summary" },
+        { "multiline-summary", "check-summary" },
         { "invalid-check-id", "invalid-check" },
         { "too-precise-timestamp", "invalid-time" },
         { "oversized-teardown-count", "wrong-type" }
@@ -128,6 +128,7 @@ public sealed class P09EvidenceTests
         Assert.Equal(DateTimeOffset.Parse("2026-08-30T00:01:00Z"), evidence.CompletedUtc);
         Assert.Equal(12, evidence.Checks.Count);
         Assert.All(evidence.Checks, check => Assert.Equal("Passed", check.Result));
+        Assert.All(evidence.Checks, check => Assert.Equal(check.Id, check.Summary));
         Assert.Equal(0, evidence.Teardown.ResourceCount);
         Assert.True(evidence.Teardown.TemporaryDirectoryRemoved);
         Assert.Matches("^[0-9a-f]{64}$", evidence.Sha256);
@@ -188,8 +189,8 @@ public sealed class P09EvidenceTests
     }
 
     [Theory]
-    [MemberData(nameof(UnsafeSummaryCorpus))]
-    public void Parse_AdversarialSummaryCorpus_RejectsUnsafeEvidence(string summary)
+    [MemberData(nameof(ClosedSummaryRejectionCorpus))]
+    public void Parse_AnySummaryOtherThanItsStableCheckCode_IsRejected(string summary)
     {
         var root = P09ContractTestData.ParseValidEvidence();
         root["checks"]![0]!["summary"] = summary;
@@ -197,19 +198,51 @@ public sealed class P09EvidenceTests
         var exception = Assert.Throws<Cp6P09ContractException>(() =>
             Cp6P09RehearsalEvidence.Parse(Cp6P09Json.Canonicalize(root.ToJsonString())));
 
-        Assert.Equal("unsafe-evidence", exception.CheckId);
+        Assert.Equal("check-summary", exception.CheckId);
     }
 
     [Theory]
-    [MemberData(nameof(SafeSummaryCorpus))]
-    public void Parse_SimpleAsciiSummaryCorpus_Accepts(string summary)
+    [InlineData("Passed")]
+    [InlineData("Failed")]
+    public void Parse_ExactStableCheckCodeSummaries_AcceptsPassedAndFailedResults(string overall)
     {
         var root = P09ContractTestData.ParseValidEvidence();
-        root["checks"]![0]!["summary"] = summary;
+        var checks = root["checks"]!.AsArray();
+        foreach (var checkNode in checks)
+        {
+            var check = checkNode!.AsObject();
+            check["summary"] = check["id"]!.GetValue<string>();
+        }
 
-        Assert.Equal(
-            "Passed",
-            Cp6P09RehearsalEvidence.Parse(Cp6P09Json.Canonicalize(root.ToJsonString())).Overall);
+        root["overall"] = overall;
+        if (overall == "Failed")
+        {
+            checks[0]!["result"] = "Failed";
+        }
+
+        var evidence = Cp6P09RehearsalEvidence.Parse(Cp6P09Json.Canonicalize(root.ToJsonString()));
+
+        Assert.Equal(overall, evidence.Overall);
+        Assert.All(evidence.Checks, check => Assert.Equal(check.Id, check.Summary));
+    }
+
+    [Theory]
+    [MemberData(nameof(AdversarialUnknownPropertyNames))]
+    public void Parse_UnknownProperty_DoesNotEchoAttackerControlledName(string propertyName)
+    {
+        var root = P09ContractTestData.ParseValidEvidence();
+        root[propertyName] = true;
+        var json = Cp6P09Json.Canonicalize(root.ToJsonString());
+
+        var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09RehearsalEvidence.Parse(json));
+
+        Assert.Equal("unknown-property", exception.CheckId);
+        Assert.DoesNotContain(propertyName, exception.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("password", exception.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("apiKey", exception.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("clientSecret", exception.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain('\r', exception.Message);
+        Assert.DoesNotContain('\n', exception.Message);
     }
 
     [Fact]
@@ -274,6 +307,16 @@ public sealed class P09EvidenceTests
         var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09RehearsalEvidence.Parse(invalidUtf8));
 
         Assert.Equal("invalid-json", exception.CheckId);
+    }
+
+    [Fact]
+    public void Parse_InvalidJson_UsesNeutralContractMessage()
+    {
+        var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09RehearsalEvidence.Parse("{"));
+
+        Assert.Equal("invalid-json", exception.CheckId);
+        Assert.Equal("The P09 contract JSON is not valid strict UTF-8 JSON.", exception.Message);
+        Assert.DoesNotContain("profile", exception.Message, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]

@@ -102,6 +102,27 @@ public sealed class P09RuntimeProfileTests
         "duplicated"
     };
 
+    public static TheoryData<string, string> IntegralNumberAliases => new()
+    {
+        { "0.0", "0" },
+        { "0e0", "0" },
+        { "-0.0", "0" },
+        { "3.0", "3" },
+        { "3600000e0", "3600000" },
+        { "1.5e1", "15" },
+        { "-3.00e0", "-3" }
+    };
+
+    public static TheoryData<string, string> ProfileIntegralNumberAliases => new()
+    {
+        { "\"partitions\": 3", "\"partitions\": 3.0" },
+        { "\"retentionMs\": 3600000", "\"retentionMs\": 3600000e0" },
+        { "\"maxMessageBytes\": 1048576", "\"maxMessageBytes\": 1048576.0" }
+    };
+
+    public static IEnumerable<object[]> AdversarialUnknownPropertyNames =>
+        P09ContractTestData.AdversarialUnknownPropertyNames.Select(value => new object[] { value });
+
     [Fact]
     public void Parse_ValidProfile_ExposesCanonicalReadOnlyView()
     {
@@ -193,6 +214,36 @@ public sealed class P09RuntimeProfileTests
             Cp6P09Json.Sha256Hex(Encoding.UTF8.GetBytes(normalized)));
     }
 
+    [Theory]
+    [MemberData(nameof(IntegralNumberAliases))]
+    public void Canonicalize_NormalizesMathematicallyIntegralAliasesWithoutChangingIdentity(
+        string alias,
+        string expectedInteger)
+    {
+        var canonicalInteger = $"{{\"value\":{expectedInteger}}}";
+        var normalized = Cp6P09Json.Canonicalize($"{{\"value\":{alias}}}");
+
+        Assert.Equal(canonicalInteger, normalized);
+        Assert.Equal(
+            Cp6P09Json.Sha256Hex(Encoding.UTF8.GetBytes(canonicalInteger)),
+            Cp6P09Json.Sha256Hex(Encoding.UTF8.GetBytes(normalized)));
+    }
+
+    [Theory]
+    [MemberData(nameof(ProfileIntegralNumberAliases))]
+    public void Parse_MathematicallyIntegralProfileAliases_AcceptsAndEmitsFrozenCanonicalIntegers(
+        string canonicalLexeme,
+        string aliasLexeme)
+    {
+        var aliasProfile = ValidProfileJson.Replace(canonicalLexeme, aliasLexeme, StringComparison.Ordinal);
+
+        Assert.NotEqual(ValidProfileJson, aliasProfile);
+        var profile = Cp6P09RuntimeProfile.Parse(aliasProfile);
+
+        Assert.Equal(Cp6P09RuntimeProfile.ExpectedSha256, profile.Sha256);
+        Assert.Equal(Cp6P09Json.Canonicalize(ValidProfileJson), Encoding.UTF8.GetString(profile.ToCanonicalUtf8()));
+    }
+
     [Fact]
     public void Canonicalize_InvalidLeadingZeroNumber_RemainsInvalidJson()
     {
@@ -255,12 +306,41 @@ public sealed class P09RuntimeProfileTests
     }
 
     [Theory]
+    [MemberData(nameof(AdversarialUnknownPropertyNames))]
+    public void Parse_UnknownProperty_DoesNotEchoAttackerControlledName(string propertyName)
+    {
+        var root = ParseValidRoot();
+        root[propertyName] = true;
+
+        var exception = Assert.Throws<Cp6P09ContractException>(() =>
+            Cp6P09RuntimeProfile.Parse(root.ToJsonString()));
+
+        Assert.Equal("unknown-property", exception.CheckId);
+        Assert.DoesNotContain(propertyName, exception.Message, StringComparison.Ordinal);
+        Assert.DoesNotContain("password", exception.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("apiKey", exception.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("clientSecret", exception.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain('\r', exception.Message);
+        Assert.DoesNotContain('\n', exception.Message);
+    }
+
+    [Theory]
     [MemberData(nameof(InvalidJsonCases))]
     public void Parse_MalformedTrailingCommentOrDeepJson_ThrowsInvalidJson(string json)
     {
         var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09RuntimeProfile.Parse(json));
 
         Assert.Equal("invalid-json", exception.CheckId);
+    }
+
+    [Fact]
+    public void Parse_InvalidJson_UsesNeutralContractMessage()
+    {
+        var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09RuntimeProfile.Parse("{"));
+
+        Assert.Equal("invalid-json", exception.CheckId);
+        Assert.Equal("The P09 contract JSON is not valid strict UTF-8 JSON.", exception.Message);
+        Assert.DoesNotContain("profile", exception.Message, StringComparison.OrdinalIgnoreCase);
     }
 
     [Fact]

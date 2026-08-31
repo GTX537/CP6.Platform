@@ -244,7 +244,11 @@ public sealed partial class Cp6P09RehearsalEvidence
             }
 
             var summary = RequireString(check, "summary");
-            ValidateSummary(summary);
+            if (!string.Equals(summary, id, StringComparison.Ordinal))
+            {
+                Fail("check-summary", "Each Evidence check summary must equal its stable check identifier.");
+            }
+
             values.Add(new Cp6P09EvidenceCheck(id, result, summary));
         }
 
@@ -297,7 +301,7 @@ public sealed partial class Cp6P09RehearsalEvidence
         {
             if (!allowed.Contains(property.Name))
             {
-                Fail("unknown-property", $"Property '{property.Name}' is not allowed in this evidence object.");
+                Fail("unknown-property", "The P09 Evidence contains an unknown property.");
             }
         }
 

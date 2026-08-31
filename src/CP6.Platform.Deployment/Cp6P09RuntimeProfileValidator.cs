@@ -337,13 +337,12 @@ internal static class Cp6P09RuntimeProfileValidator
             case JsonValueKind.Object:
                 foreach (var property in element.EnumerateObject())
                 {
-                    ValidateString(property.Name);
                     if (property.Name.Equals("password", StringComparison.OrdinalIgnoreCase) ||
                         property.Name.Equals("token", StringComparison.OrdinalIgnoreCase) ||
                         property.Name.Equals("connectionString", StringComparison.OrdinalIgnoreCase) ||
                         property.Name.Equals("secretValue", StringComparison.OrdinalIgnoreCase))
                     {
-                        Fail("plaintext-secret", $"Property '{property.Name}' is a forbidden plaintext secret field.");
+                        Fail("plaintext-secret", "The Profile contains a forbidden plaintext secret field.");
                     }
 
                     ValidateStringsAndSecretFields(property.Value);
@@ -383,7 +382,7 @@ internal static class Cp6P09RuntimeProfileValidator
         {
             if (!allowed.Contains(property.Name))
             {
-                Fail("unknown-property", $"Property '{property.Name}' is not allowed in this object.");
+                Fail("unknown-property", "The P09 Profile contains an unknown property.");
             }
         }
 

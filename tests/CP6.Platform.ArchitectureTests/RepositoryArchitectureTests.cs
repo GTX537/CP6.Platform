@@ -7,8 +7,11 @@ public sealed class RepositoryArchitectureTests
 {
     private static readonly string RepositoryRoot = FindRepositoryRoot();
     private static readonly Regex ForbiddenBackendNames = new(
-        @"Grafana|Prometheus|Tempo(?!rary)",
+        @"Grafana|Prometheus",
         RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+    private static readonly Regex ForbiddenTempoNames = new(
+        @"Tempo(?!rary)|TEMPO(?!RARY)",
+        RegexOptions.CultureInvariant);
 
     private static readonly IReadOnlyDictionary<string, string[]> ExpectedDependencies =
         new Dictionary<string, string[]>(StringComparer.Ordinal)
@@ -316,6 +319,7 @@ public sealed class RepositoryArchitectureTests
             }
 
             Assert.DoesNotMatch(ForbiddenBackendNames, productionText);
+            Assert.DoesNotMatch(ForbiddenTempoNames, productionText);
         }
 
         var verify = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
@@ -332,34 +336,39 @@ public sealed class RepositoryArchitectureTests
     }
 
     [Fact]
-    public void ProductionBackendGuard_MatchesWholeNamesWithoutRejectingTemporaryDirectoryVocabulary()
+    public void ProductionBackendGuard_UsesCaseAwareTempoRulesWithoutTemporaryFalsePositives()
     {
-        Assert.Matches(ForbiddenBackendNames, "Tempo");
-        Assert.Matches(ForbiddenBackendNames, "TempoExporter");
-        Assert.Matches(ForbiddenBackendNames, "TempoBackend");
-        Assert.Matches(ForbiddenBackendNames, "AddTempoExporter");
-        Assert.Matches(ForbiddenBackendNames, "TempoEndpoint");
-        Assert.Matches(ForbiddenBackendNames, "TempoConfig");
-        Assert.Matches(ForbiddenBackendNames, "TempoExporterOptions");
-        Assert.Matches(ForbiddenBackendNames, "OpenTelemetryTempoExporter");
-        Assert.Matches(ForbiddenBackendNames, "TEMPO_ENDPOINT");
-        Assert.Matches(ForbiddenBackendNames, "TempoClient");
-        Assert.Matches(ForbiddenBackendNames, "AddTempoClient");
-        Assert.Matches(ForbiddenBackendNames, "TempoService");
-        Assert.Matches(ForbiddenBackendNames, "TempoCollector");
-        Assert.Matches(ForbiddenBackendNames, "TempoSink");
-        Assert.Matches(ForbiddenBackendNames, "TempoSettings");
-        Assert.Matches(ForbiddenBackendNames, "temporaryTempoDirectory");
+        Assert.Matches(ForbiddenTempoNames, "Tempo");
+        Assert.Matches(ForbiddenTempoNames, "TempoExporter");
+        Assert.Matches(ForbiddenTempoNames, "TempoBackend");
+        Assert.Matches(ForbiddenTempoNames, "AddTempoExporter");
+        Assert.Matches(ForbiddenTempoNames, "TempoEndpoint");
+        Assert.Matches(ForbiddenTempoNames, "TempoConfig");
+        Assert.Matches(ForbiddenTempoNames, "TempoExporterOptions");
+        Assert.Matches(ForbiddenTempoNames, "OpenTelemetryTempoExporter");
+        Assert.Matches(ForbiddenTempoNames, "TEMPO_ENDPOINT");
+        Assert.Matches(ForbiddenTempoNames, "TempoClient");
+        Assert.Matches(ForbiddenTempoNames, "AddTempoClient");
+        Assert.Matches(ForbiddenTempoNames, "TempoService");
+        Assert.Matches(ForbiddenTempoNames, "TempoCollector");
+        Assert.Matches(ForbiddenTempoNames, "TempoSink");
+        Assert.Matches(ForbiddenTempoNames, "TempoSettings");
+        Assert.Matches(ForbiddenTempoNames, "temporaryTempoDirectory");
         Assert.Matches(ForbiddenBackendNames, "Grafana.Exporter");
         Assert.Matches(ForbiddenBackendNames, "Prometheus backend");
         Assert.Matches(ForbiddenBackendNames, "AddPrometheusExporter");
         Assert.Matches(ForbiddenBackendNames, "OpenTelemetryPrometheusExporter");
         Assert.Matches(ForbiddenBackendNames, "GrafanaClient");
         Assert.Matches(ForbiddenBackendNames, "GRAFANA_ENDPOINT");
-        Assert.DoesNotMatch(ForbiddenBackendNames, "temporaryDirectoryRemoved");
-        Assert.DoesNotMatch(ForbiddenBackendNames, "TemporaryFileRemoved");
-        Assert.DoesNotMatch(ForbiddenBackendNames, "temporaryFileRemoved");
-        Assert.DoesNotMatch(ForbiddenBackendNames, "contemporaryOperation");
+        Assert.DoesNotMatch(ForbiddenTempoNames, "temporaryDirectoryRemoved");
+        Assert.DoesNotMatch(ForbiddenTempoNames, "TemporaryFileRemoved");
+        Assert.DoesNotMatch(ForbiddenTempoNames, "temporaryFileRemoved");
+        Assert.DoesNotMatch(ForbiddenTempoNames, "contemporaryOperation");
+        Assert.DoesNotMatch(ForbiddenTempoNames, "tempOutput");
+        Assert.DoesNotMatch(ForbiddenTempoNames, "tempOffset");
+        Assert.DoesNotMatch(ForbiddenTempoNames, "temporalWindow");
+        Assert.DoesNotMatch(ForbiddenTempoNames, "temporallyConsistent");
+        Assert.DoesNotMatch(ForbiddenTempoNames, "contemporaneousOperation");
     }
 
     [Fact]

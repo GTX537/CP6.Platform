@@ -6,11 +6,6 @@ namespace CP6.Platform.Deployment;
 
 public sealed partial class Cp6P09RehearsalEvidence
 {
-    private static readonly Regex SummaryPattern = SafeRegex("^[A-Za-z0-9 ._-]{1,160}$");
-    private static readonly Regex CredentialVocabularyPattern = new(
-        "password|token|bearer|api-?key|secret|client-?secret|credential",
-        RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
-        TimeSpan.FromSeconds(1));
     private static readonly Regex CredentialPattern = new(
         "(?:password|token|connectionString)\\s*=\\s*\\S+|\\bBearer\\s+\\S{8,}",
         RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
@@ -31,7 +26,6 @@ public sealed partial class Cp6P09RehearsalEvidence
             case JsonValueKind.Object:
                 foreach (var property in element.EnumerateObject())
                 {
-                    ValidateSafeString(property.Name);
                     if (property.Name.Equals("password", StringComparison.OrdinalIgnoreCase) ||
                         property.Name.Equals("token", StringComparison.OrdinalIgnoreCase) ||
                         property.Name.Equals("connectionString", StringComparison.OrdinalIgnoreCase) ||
@@ -54,14 +48,6 @@ public sealed partial class Cp6P09RehearsalEvidence
             case JsonValueKind.String:
                 ValidateSafeString(element.GetString()!);
                 break;
-        }
-    }
-
-    private static void ValidateSummary(string value)
-    {
-        if (!SummaryPattern.IsMatch(value) || CredentialVocabularyPattern.IsMatch(value))
-        {
-            Fail("unsafe-evidence", "Evidence summaries must use approved simple ASCII text without credential vocabulary.");
         }
     }
 

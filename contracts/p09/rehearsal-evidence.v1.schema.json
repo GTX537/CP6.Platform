@@ -22,18 +22,18 @@
       "maxItems":12,
       "uniqueItems":true,
       "prefixItems":[
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"profile-valid"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"provision-first"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"provision-idempotent"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"invoke-positive"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"pubsub-positive"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"direct-kafka-denied"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"principal-denied"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"appid-scope-denied"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"foreign-topic-denied"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"kubernetes-render"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"kubernetes-policy"}}}]},
-        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"zero-residue"}}}]}
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"profile-valid"},"summary":{"const":"profile-valid"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"provision-first"},"summary":{"const":"provision-first"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"provision-idempotent"},"summary":{"const":"provision-idempotent"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"invoke-positive"},"summary":{"const":"invoke-positive"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"pubsub-positive"},"summary":{"const":"pubsub-positive"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"direct-kafka-denied"},"summary":{"const":"direct-kafka-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"principal-denied"},"summary":{"const":"principal-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"appid-scope-denied"},"summary":{"const":"appid-scope-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"foreign-topic-denied"},"summary":{"const":"foreign-topic-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"kubernetes-render"},"summary":{"const":"kubernetes-render"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"kubernetes-policy"},"summary":{"const":"kubernetes-policy"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"zero-residue"},"summary":{"const":"zero-residue"}}}]}
       ],
       "items":false
     },
@@ -90,7 +90,6 @@
     "digest": {"type":"string","pattern":"^sha256:[0-9a-f]{64}$"},
     "utcTimestamp": {"type":"string","format":"date-time","pattern":"^(?:(?:(?!0000)[0-9]{4})-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](?:\\.[0-9]{1,7})?Z$"},
     "safeIdentifier": {"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
-    "safeSummary": {"type":"string","pattern":"^(?!.*(?:[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]|[Tt][Oo][Kk][Ee][Nn]|[Bb][Ee][Aa][Rr][Ee][Rr]|[Aa][Pp][Ii]-?[Kk][Ee][Yy]|[Ss][Ee][Cc][Rr][Ee][Tt]|[Cc][Ll][Ii][Ee][Nn][Tt]-?[Ss][Ee][Cc][Rr][Ee][Tt]|[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll]))[A-Za-z0-9 ._-]{1,160}$"},
     "runtime": {
       "type":"object",
       "required":["daprImage","daprImageDigest","kafkaImage","kafkaImageDigest","kubectlImage","kubectlImageDigest","kubectlVersion"],
@@ -174,7 +173,7 @@
       "properties":{
         "id":{"$ref":"#/$defs/safeIdentifier"},
         "result":{"type":"string","enum":["Passed","Failed"]},
-        "summary":{"$ref":"#/$defs/safeSummary"}
+        "summary":{"type":"string"}
       },
       "additionalProperties":false
     },
@@ -193,7 +192,7 @@
     "passedCheck": {
       "type":"object",
       "required":["id","result","summary"],
-      "properties":{"id":{"$ref":"#/$defs/safeIdentifier"},"result":{"type":"string","const":"Passed"},"summary":{"$ref":"#/$defs/safeSummary"}},
+      "properties":{"id":{"$ref":"#/$defs/safeIdentifier"},"result":{"type":"string","const":"Passed"},"summary":{"type":"string"}},
       "additionalProperties":false
     },
     "trace": {
