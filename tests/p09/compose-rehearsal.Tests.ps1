@@ -254,8 +254,12 @@ try {
     Assert-Equal 'unsupported-compose-version' $unsupportedCompose.Reason 'Unsupported Compose version did not return the stable closed reason.'
     $unsupportedComposeCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
     Assert-Equal 2 $unsupportedComposeCalls.Count 'Unsupported Compose version should issue exactly two Docker calls.'
+    Assert-Equal @('version','--format','{{.Server.Version}}') @($unsupportedComposeCalls[0].argv) 'Unsupported Compose version first Docker call drifted.'
+    Assert-Equal @('compose','version','--short') @($unsupportedComposeCalls[1].argv) 'Unsupported Compose version second Docker call drifted.'
     $afterUnsupportedEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
     Assert-Equal $beforeUnsupportedEvidence $afterUnsupportedEvidence 'Unsupported Compose version wrote rehearsal evidence.'
+    $unsupportedArtifactDirectory = Join-Path $notRunArtifacts $unsupportedCompose.RunId
+    Assert-True (-not (Test-Path -LiteralPath $unsupportedArtifactDirectory)) 'Unsupported Compose version created a per-run artifact directory.'
     $unsupportedComposeTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('cp6-p09-' + $unsupportedCompose.RunId)
     Assert-True (-not (Test-Path -LiteralPath $unsupportedComposeTempRoot)) 'Unsupported Compose version created a runtime temp root.'
 
@@ -273,8 +277,12 @@ try {
     Assert-Equal 'unsupported-compose-version' $composeProbeFailure.Reason 'Compose probe failure did not return the stable closed reason.'
     $composeProbeFailureCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
     Assert-Equal 2 $composeProbeFailureCalls.Count 'Compose probe failure should issue exactly two Docker calls.'
+    Assert-Equal @('version','--format','{{.Server.Version}}') @($composeProbeFailureCalls[0].argv) 'Compose probe failure first Docker call drifted.'
+    Assert-Equal @('compose','version','--short') @($composeProbeFailureCalls[1].argv) 'Compose probe failure second Docker call drifted.'
     $afterProbeFailureEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
     Assert-Equal $beforeProbeFailureEvidence $afterProbeFailureEvidence 'Compose probe failure wrote rehearsal evidence.'
+    $composeProbeFailureArtifactDirectory = Join-Path $notRunArtifacts $composeProbeFailure.RunId
+    Assert-True (-not (Test-Path -LiteralPath $composeProbeFailureArtifactDirectory)) 'Compose probe failure created a per-run artifact directory.'
     $composeProbeFailureTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('cp6-p09-' + $composeProbeFailure.RunId)
     Assert-True (-not (Test-Path -LiteralPath $composeProbeFailureTempRoot)) 'Compose probe failure created a runtime temp root.'
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
