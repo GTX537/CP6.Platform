@@ -1247,6 +1247,62 @@ function Get-Cp6P09RuntimeStartFailureCategory {
     return "$Phase-diagnostic-unavailable"
 }
 
+function Get-Cp6P09RuntimeStartStateCategory {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][ValidateSet('receiver','publisher')][string]$Phase,
+        [Parameter(Mandatory)][AllowEmptyString()][string]$PsOutput
+    )
+
+    try {
+        $containers = @()
+        if (-not [string]::IsNullOrWhiteSpace($PsOutput)) {
+            $containers = @($PsOutput | ConvertFrom-Json)
+        }
+        if ($containers.Count -eq 0) { return "$Phase-containers-missing" }
+        $app = @($containers | Where-Object { [string]$_.Service -ceq $Phase })
+        $sidecar = @($containers | Where-Object { [string]$_.Service -ceq "$Phase-dapr" })
+        if ($app.Count -ne 1 -or $sidecar.Count -ne 1) { return "$Phase-containers-missing" }
+
+        foreach ($candidate in @(
+            [pscustomobject]@{ Role='app'; Value=$app[0] },
+            [pscustomobject]@{ Role='sidecar'; Value=$sidecar[0] }
+        )) {
+            $state = [string]$candidate.Value.State
+            $healthProperty = $candidate.Value.PSObject.Properties['Health']
+            $health = if ($null -eq $healthProperty) { '' } else { [string]$healthProperty.Value }
+            if ($health -ceq 'unhealthy') { return "$Phase-$($candidate.Role)-unhealthy" }
+            if ($state -in @('exited','dead')) { return "$Phase-$($candidate.Role)-exited" }
+            if ($state -ceq 'restarting') { return "$Phase-$($candidate.Role)-restarting" }
+            if ($state -in @('created','paused')) { return "$Phase-$($candidate.Role)-not-running" }
+        }
+        if ([string]$app[0].State -ceq 'running' -and [string]$sidecar[0].State -ceq 'running') {
+            return "$Phase-compose-wait-failed"
+        }
+        return "$Phase-state-diagnostic-unavailable"
+    }
+    catch {
+        return "$Phase-state-diagnostic-unavailable"
+    }
+}
+
+function Invoke-Cp6P09RuntimeStartStateDiagnostic {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]$Context,
+        [Parameter(Mandatory)][ValidateSet('receiver','publisher')][string]$Phase
+    )
+
+    try {
+        $result = Invoke-Cp6P09Compose $Context @('ps','--all','--format','json',$Phase,"$Phase-dapr") 30
+        if ($result.ExitCode -ne 0) { return "$Phase-state-diagnostic-unavailable" }
+        return Get-Cp6P09RuntimeStartStateCategory -Phase $Phase -PsOutput $result.StandardOutput
+    }
+    catch {
+        return "$Phase-state-diagnostic-unavailable"
+    }
+}
+
 function Invoke-Cp6P09RuntimeMatrix {
     param([Parameter(Mandatory)]$Context)
     $Context.MatrixFailureId = 'runtime-start'
@@ -1254,12 +1310,18 @@ function Invoke-Cp6P09RuntimeMatrix {
         $receiverStart = Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','receiver','receiver-dapr') 600
         if ($receiverStart.ExitCode -ne 0) {
             $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage '' -StandardOutput $receiverStart.StandardOutput -StandardError $receiverStart.StandardError
+            if ($Context.MatrixDiagnosticCategory -ceq 'receiver-diagnostic-unavailable') {
+                $Context.MatrixDiagnosticCategory = Invoke-Cp6P09RuntimeStartStateDiagnostic -Context $Context -Phase receiver
+            }
         }
         Assert-Cp6P09CommandSucceeded $receiverStart 'runtime-start'
     }
     catch {
         if ([string]::IsNullOrWhiteSpace([string]$Context.MatrixDiagnosticCategory)) {
             $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage $_.Exception.Message -StandardOutput '' -StandardError ''
+            if ($Context.MatrixDiagnosticCategory -ceq 'receiver-diagnostic-unavailable') {
+                $Context.MatrixDiagnosticCategory = Invoke-Cp6P09RuntimeStartStateDiagnostic -Context $Context -Phase receiver
+            }
         }
         throw
     }
@@ -1267,12 +1329,18 @@ function Invoke-Cp6P09RuntimeMatrix {
         $publisherStart = Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','publisher','publisher-dapr') 600
         if ($publisherStart.ExitCode -ne 0) {
             $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage '' -StandardOutput $publisherStart.StandardOutput -StandardError $publisherStart.StandardError
+            if ($Context.MatrixDiagnosticCategory -ceq 'publisher-diagnostic-unavailable') {
+                $Context.MatrixDiagnosticCategory = Invoke-Cp6P09RuntimeStartStateDiagnostic -Context $Context -Phase publisher
+            }
         }
         Assert-Cp6P09CommandSucceeded $publisherStart 'runtime-start'
     }
     catch {
         if ([string]::IsNullOrWhiteSpace([string]$Context.MatrixDiagnosticCategory)) {
             $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage $_.Exception.Message -StandardOutput '' -StandardError ''
+            if ($Context.MatrixDiagnosticCategory -ceq 'publisher-diagnostic-unavailable') {
+                $Context.MatrixDiagnosticCategory = Invoke-Cp6P09RuntimeStartStateDiagnostic -Context $Context -Phase publisher
+            }
         }
         throw
     }
@@ -1599,6 +1667,8 @@ Export-ModuleMember -Function @(
     'Get-Cp6P09AclBatchFailureId',
     'Get-Cp6P09KafkaFailureCategory',
     'Get-Cp6P09RuntimeStartFailureCategory',
+    'Get-Cp6P09RuntimeStartStateCategory',
+    'Invoke-Cp6P09RuntimeStartStateDiagnostic',
     'Get-Cp6P09DaprDiagnosticProcessSpec',
     'Invoke-Cp6P09DaprDiagnostic',
     'Get-Cp6P09StableFailureId',

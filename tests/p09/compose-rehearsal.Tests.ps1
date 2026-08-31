@@ -635,6 +635,28 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     Assert-Equal 'receiver-service-exited' (Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage '' -StandardOutput '' -StandardError 'service receiver-dapr exited (1)') 'Receiver exited service was not mapped to a closed diagnostic category.'
     Assert-Equal 'publisher-resource' (Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage '' -StandardOutput '' -StandardError 'no space left on device') 'Publisher resource failure was not mapped to a closed diagnostic category.'
     Assert-Equal 'receiver-diagnostic-unavailable' (Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage 'runtime-start' -StandardOutput 'bounded unknown text' -StandardError '') 'Unknown runtime-start output escaped the closed diagnostic category.'
+    $receiverRunningState = @(
+        [ordered]@{ Service='receiver'; State='running'; Health=''; ExitCode=0 },
+        [ordered]@{ Service='receiver-dapr'; State='running'; Health=''; ExitCode=0 }
+    ) | ConvertTo-Json -Compress
+    Assert-Equal 'receiver-compose-wait-failed' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput $receiverRunningState) 'Running receiver services did not identify a Compose wait failure.'
+    $receiverAppExitedState = @(
+        [ordered]@{ Service='receiver'; State='exited'; Health=''; ExitCode=137 },
+        [ordered]@{ Service='receiver-dapr'; State='running'; Health=''; ExitCode=0 }
+    ) | ConvertTo-Json -Compress
+    Assert-Equal 'receiver-app-exited' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput $receiverAppExitedState) 'Exited receiver app did not map to a closed state category.'
+    $receiverSidecarExitedState = @(
+        [ordered]@{ Service='receiver'; State='running'; Health=''; ExitCode=0 },
+        [ordered]@{ Service='receiver-dapr'; State='exited'; Health=''; ExitCode=1 }
+    ) | ConvertTo-Json -Compress
+    Assert-Equal 'receiver-sidecar-exited' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput $receiverSidecarExitedState) 'Exited receiver sidecar did not map to a closed state category.'
+    $publisherUnhealthyState = @(
+        [ordered]@{ Service='publisher'; State='running'; Health=''; ExitCode=0 },
+        [ordered]@{ Service='publisher-dapr'; State='running'; Health='unhealthy'; ExitCode=0 }
+    ) | ConvertTo-Json -Compress
+    Assert-Equal 'publisher-sidecar-unhealthy' (Get-Cp6P09RuntimeStartStateCategory -Phase publisher -PsOutput $publisherUnhealthyState) 'Unhealthy publisher sidecar did not map to a closed state category.'
+    Assert-Equal 'receiver-containers-missing' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput '[]') 'Missing receiver containers did not map to a closed state category.'
+    Assert-Equal 'publisher-state-diagnostic-unavailable' (Get-Cp6P09RuntimeStartStateCategory -Phase publisher -PsOutput 'not-json') 'Invalid Compose state output escaped the closed category.'
 
     $validInvocationTrace = [pscustomobject]@{
         invocationTraceId='44444444444444444444444444444444'; invokerSpanId='5555555555555555'
