@@ -329,7 +329,8 @@ try {
 
     $diagnosticLog = Join-Path $testRoot 'dapr-diagnostic.jsonl'
     $diagnosticResponses = Join-Path $testRoot 'dapr-diagnostic-responses.jsonl'
-    @{ exitCode=0; stdout="HTTP/1.1 500 Internal Server Error`r`nContent-Type: application/json`r`n`r`n{`"errorCode`":`"ERR_DIRECT_INVOKE`",`"message`":`"rpc error: code = Unavailable desc = connection error`"}"; stderr='' } |
+    $diagnosticPayload = "HTTP/1.1 500 Internal Server Error`r`nContent-Type: application/json`r`n`r`n{`"errorCode`":`"ERR_DIRECT_INVOKE`",`"message`":`"rpc error: code = Unavailable desc = connection error`"}"
+    @{ exitCode=0; stdout=$diagnosticPayload; stderr='' } |
         ConvertTo-Json -Compress | Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
     $env:CP6_P09_FAKE_DOCKER_LOG = $diagnosticLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = $diagnosticResponses
@@ -344,10 +345,25 @@ try {
     Assert-Equal @($diagnosticSpec.Arguments) @($diagnosticCalls[0].argv) 'Dapr diagnostic fake argv drifted.'
     Assert-Equal 0 $diagnosticCalls[0].stdinBytes 'Dapr diagnostic unexpectedly received secret STDIN.'
 
-    @{ exitCode=1; stdout=''; stderr='bounded diagnostic failure' } |
+    @{ exitCode=124; stdout=$diagnosticPayload; stderr='' } |
         ConvertTo-Json -Compress | Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
     Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
-    Assert-Equal 'diagnostic-unavailable' (Invoke-Cp6P09DaprDiagnostic -Context $diagnosticContext) 'Dapr diagnostic failure escaped its closed fallback category.'
+    Assert-Equal 'target-unavailable' (Invoke-Cp6P09DaprDiagnostic -Context $diagnosticContext) 'A valid bounded HTTP response was discarded only because the inner reader reached its timeout.'
+
+    $invalidDiagnosticResponses = @(
+        @{ exitCode=124; stdout=''; stderr='bounded diagnostic failure'; name='missing status' }
+        @{ exitCode=124; stdout=($diagnosticPayload + "`r`nHTTP/1.1 500 Internal Server Error"); stderr=''; name='multiple status lines' }
+        @{ exitCode=124; stdout="HTTP/1.1 500 Internal Server Error`r`n`r`n{`"errorCode`":`"ERR_DIRECT_INVOKE`""; stderr=''; name='truncated body' }
+        @{ exitCode=124; stdout="HTTP/1.1 500 Internal Server Error`r`n`r`n{`"errorCode`":`"ERR_DIRECT_INVOKE`",`"message`":`"unclassified`"}"; stderr=''; name='unknown body' }
+        @{ exitCode=124; stdout=($diagnosticPayload + ('x' * (3073 - $diagnosticPayload.Length))); stderr=''; name='oversized stdout' }
+        @{ exitCode=1; stdout=$diagnosticPayload; stderr=''; name='unexpected nonzero exit' }
+    )
+    foreach ($invalidDiagnostic in $invalidDiagnosticResponses) {
+        $invalidDiagnostic | Select-Object exitCode,stdout,stderr | ConvertTo-Json -Compress |
+            Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
+        Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
+        Assert-Equal 'diagnostic-unavailable' (Invoke-Cp6P09DaprDiagnostic -Context $diagnosticContext) "Dapr diagnostic accepted $($invalidDiagnostic.name)."
+    }
     Assert-True ($moduleText -match '(?s)catch\s*\{\s*\$Context\.MatrixDiagnosticCategory\s*=\s*Invoke-Cp6P09DaprDiagnostic.+?throw\s*\}') 'Dapr diagnostic is not synchronized after final invoke-positive failure while preserving the original exception.'
     Assert-True ($moduleText.Contains('DiagnosticCategory=$context.MatrixDiagnosticCategory')) 'Runner result does not expose only the closed Dapr diagnostic category.'
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog

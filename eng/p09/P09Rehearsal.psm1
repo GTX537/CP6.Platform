@@ -1121,12 +1121,16 @@ function Invoke-Cp6P09DaprDiagnostic {
         $result = Invoke-Cp6P09Process -FilePath $Context.DockerCommand -ArgumentList $spec.Arguments `
             -TimeoutSeconds $spec.TimeoutSeconds -MaximumOutputBytes $spec.MaximumOutputBytes `
             -WorkingDirectory $Context.RepositoryRoot -EnvironmentVariables $Context.Environment
-        if ($result.ExitCode -ne 0) { return 'diagnostic-unavailable' }
         $text = $result.StandardOutput + $result.StandardError
         Assert-Cp6P09SafeText -Text $text
-        $status = [regex]::Match($result.StandardOutput,'HTTP/1\.[01]\s+(?<status>[1-5][0-9]{2})')
-        if (-not $status.Success) { return 'diagnostic-unavailable' }
-        if ($text -match '"errorCode"\s*:\s*"DAPR_APP_ID_NOT_FOUND"') { return 'target-app-id-not-found' }
+        if ([Text.Encoding]::UTF8.GetByteCount($result.StandardOutput) -gt 3072) { return 'diagnostic-unavailable' }
+        if ($result.ExitCode -ne 0 -and $result.ExitCode -ne 124) { return 'diagnostic-unavailable' }
+        $status = [regex]::Matches($result.StandardOutput,'(?m)^HTTP/1\.1 (?<status>[1-5][0-9]{2})(?: [\x20-\x7e]{0,64})?\r?$')
+        if ($status.Count -ne 1) { return 'diagnostic-unavailable' }
+        $errorCode = [regex]::Match($result.StandardOutput,'"errorCode"\s*:\s*"(?<code>[A-Z][A-Z0-9_]{2,63})"')
+        if (-not $errorCode.Success) { return 'diagnostic-unavailable' }
+        if ($errorCode.Groups['code'].Value -ceq 'DAPR_APP_ID_NOT_FOUND') { return 'target-app-id-not-found' }
+        if ($errorCode.Groups['code'].Value -cne 'ERR_DIRECT_INVOKE') { return 'diagnostic-unavailable' }
         $networkClasses = @(Get-Cp6P09ReceiverEndpointNetworkClasses -Context $Context -Text $text)
         if ($networkClasses -ccontains 'receiver-app') { return 'target-receiver-app-network' }
         if ($networkClasses -ccontains 'runtime') { return 'target-runtime-network' }
@@ -1135,7 +1139,7 @@ function Invoke-Cp6P09DaprDiagnostic {
         if ($text -match '(?i)error while dialing|failed to connect') { return 'target-dial' }
         if ($text -match '(?i)(?:code\s*=\s*Unavailable|\bUnavailable\b)') { return 'target-unavailable' }
         if ($text -match '(?i)timeout|timed out|deadline exceeded') { return 'target-timeout' }
-        return 'target-unknown'
+        return 'diagnostic-unavailable'
     }
     catch {
         return 'diagnostic-unavailable'
