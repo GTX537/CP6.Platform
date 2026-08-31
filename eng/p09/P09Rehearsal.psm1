@@ -642,8 +642,18 @@ function Assert-Cp6P09TargetReadableFiles {
     )
     $directory = Resolve-Cp6P09ContainedPath -Root $Context.RuntimeRoot -Candidate (Join-Path $Context.RuntimeRoot $RelativeDirectory) -RequireChild
     $arguments = Get-Cp6P09ReadabilityDockerArguments -ProjectName $Context.ProjectName -ComposeFile $Context.ComposeFile -Directory $directory -FileNames $FileNames -User $User
-    $result = Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -Arguments $arguments -WorkingDirectory $Context.RepositoryRoot -TimeoutSeconds 120 -EnvironmentVariables $Context.Environment
-    Assert-Cp6P09CommandSucceeded $result 'runtime-readability'
+    for ($attempt = 1; $attempt -le 2; $attempt++) {
+        try {
+            $result = Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -Arguments $arguments -WorkingDirectory $Context.RepositoryRoot -TimeoutSeconds 120 -EnvironmentVariables $Context.Environment
+            if ($result.ExitCode -eq 0) { return }
+            if ($attempt -eq 2) { Assert-Cp6P09CommandSucceeded $result 'runtime-readability' }
+        }
+        catch {
+            if ($attempt -eq 2) { throw 'runtime-readability' }
+        }
+        Start-Sleep -Milliseconds 250
+    }
+    throw 'runtime-readability'
 }
 
 function New-Cp6P09ClientProperties {

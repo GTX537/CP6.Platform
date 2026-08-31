@@ -570,6 +570,25 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     ) $readabilityArgs 'Target-UID directory-group readability command drifted.'
     Assert-True ($moduleText -match "(?s)function Get-Cp6P09ReadabilityDockerArguments.+?'--profile','provision','run','--no-TTY','--rm','--no-deps','--user'") 'Target-UID readability probes must disable Compose TTY allocation.'
     Assert-True ($moduleText.Contains("`$Context.PopulationFailureId = 'runtime-readability'")) 'Generic readability timeouts are not mapped to the stable runtime-readability id.'
+    $readabilityRetryLog = Join-Path $testRoot 'readability-retry.jsonl'
+    $readabilityRetryResponses = Join-Path $testRoot 'readability-retry-responses.jsonl'
+    @(
+        @{ exitCode=1; stdout=''; stderr='transient Docker readability failure' }
+        @{ exitCode=0; stdout=''; stderr='' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $readabilityRetryResponses -Encoding utf8NoBOM
+    $env:CP6_P09_FAKE_DOCKER_LOG = $readabilityRetryLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $readabilityRetryResponses
+    $readabilityRetryContext = [pscustomobject]@{
+        RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
+        ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
+        RuntimeRoot=$testRoot
+        Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$testRoot; CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
+    }
+    & $module {
+        param($context,$directory)
+        Assert-Cp6P09TargetReadableFiles -Context $context -RelativeDirectory $directory -FileNames @('secret-store.yaml','subscription.yaml') -User '65532:65532'
+    } $readabilityRetryContext ([IO.Path]::GetFileName($populationDirectory))
+    Assert-Equal 2 @(Get-Content -LiteralPath $readabilityRetryLog).Count 'Target readability did not retry exactly once after a transient Docker failure.'
     $populationRetryLog = Join-Path $testRoot 'population-retry.jsonl'
     $populationRetryResponses = Join-Path $testRoot 'population-retry-responses.jsonl'
     @(
