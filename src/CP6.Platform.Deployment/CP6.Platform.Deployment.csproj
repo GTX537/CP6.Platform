@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>CP6.Platform.Deployment</AssemblyName>
+    <RootNamespace>CP6.Platform.Deployment</RootNamespace>
+    <Description>Versioned non-production runtime contracts for CP6 Platform.</Description>
+    <PackageId>CP6.Platform.Deployment</PackageId>
+    <IsPackable>true</IsPackable>
+    <VersionPrefix>0.9.0</VersionPrefix>
+    <VersionSuffix>alpha.1</VersionSuffix>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../contracts/p09/**/*" Pack="true" PackagePath="contracts/p09/%(RecursiveDir)%(Filename)%(Extension)" />
+    <None Include="../../deploy/p09/**/*" Pack="true" PackagePath="deploy/p09/%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>

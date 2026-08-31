@@ -10,6 +10,7 @@ public sealed class RepositoryArchitectureTests
         new Dictionary<string, string[]>(StringComparer.Ordinal)
         {
             ["CP6.Platform.Contracts"] = [],
+            ["CP6.Platform.Deployment"] = [],
             ["CP6.Platform.Abstractions"] = ["CP6.Platform.Contracts"],
             ["CP6.Platform.AspNetCore"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
             ["CP6.Platform.Messaging"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
@@ -56,6 +57,60 @@ public sealed class RepositoryArchitectureTests
         Assert.Empty(contracts.Descendants("ProjectReference"));
         Assert.Empty(contracts.Descendants("PackageReference"));
         Assert.Empty(contracts.Descendants("FrameworkReference"));
+    }
+
+    [Fact]
+    public void Deployment_HasNoExternalInternalOrFrameworkDependencies()
+    {
+        var deployment = LoadProjects()["CP6.Platform.Deployment"].Document;
+
+        Assert.Empty(deployment.Descendants("ProjectReference"));
+        Assert.Empty(deployment.Descendants("PackageReference"));
+        Assert.Empty(deployment.Descendants("FrameworkReference"));
+    }
+
+    [Fact]
+    public void OtherSourceProjects_DoNotReferenceDeployment()
+    {
+        foreach (var (_, project) in LoadProjects()
+                     .Where(project => project.Key != "CP6.Platform.Deployment"))
+        {
+            Assert.DoesNotContain(
+                project.Document.Descendants("ProjectReference"),
+                reference => string.Equals(
+                    Path.GetFileNameWithoutExtension(reference.Attribute("Include")!.Value),
+                    "CP6.Platform.Deployment",
+                    StringComparison.Ordinal));
+        }
+    }
+
+    [Fact]
+    public void Deployment_IsOnlyProjectPackingP09ContractsAndDeploymentAssets()
+    {
+        var projects = LoadProjects();
+        var deploymentAssets = projects["CP6.Platform.Deployment"].Document.Descendants("None")
+            .Where(item => string.Equals(item.Attribute("Pack")?.Value, "true", StringComparison.OrdinalIgnoreCase))
+            .Select(item => item.Attribute("PackagePath")?.Value ?? string.Empty)
+            .ToArray();
+
+        Assert.Equal(
+            [
+                "contracts/p09/%(RecursiveDir)%(Filename)%(Extension)",
+                "deploy/p09/%(RecursiveDir)%(Filename)%(Extension)"
+            ],
+            deploymentAssets);
+
+        foreach (var (_, project) in projects.Where(project => project.Key != "CP6.Platform.Deployment"))
+        {
+            var packedAssets = project.Document.Descendants("None")
+                .Where(item => string.Equals(item.Attribute("Pack")?.Value, "true", StringComparison.OrdinalIgnoreCase))
+                .Select(item => item.Attribute("PackagePath")?.Value ?? string.Empty);
+
+            Assert.DoesNotContain(
+                packedAssets,
+                path => path.StartsWith("contracts/p09", StringComparison.Ordinal)
+                        || path.StartsWith("deploy/p09", StringComparison.Ordinal));
+        }
     }
 
     [Fact]
@@ -189,6 +244,15 @@ public sealed class RepositoryArchitectureTests
                     [
                         "contracts/contract-bundle.v1.json",
                         "contracts/events/%(RecursiveDir)%(Filename)%(Extension)"
+                    ],
+                    packedAssets);
+            }
+            else if (packageId == "CP6.Platform.Deployment")
+            {
+                Assert.Equal(
+                    [
+                        "contracts/p09/%(RecursiveDir)%(Filename)%(Extension)",
+                        "deploy/p09/%(RecursiveDir)%(Filename)%(Extension)"
                     ],
                     packedAssets);
             }
