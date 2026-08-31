@@ -7,8 +7,11 @@ public sealed class RepositoryArchitectureTests
 {
     private static readonly string RepositoryRoot = FindRepositoryRoot();
     private static readonly Regex ForbiddenBackendNames = new(
-        @"\b(?:Grafana|Prometheus)\b|\b(?:[A-Za-z0-9_-]*(?:Tempo[A-Za-z0-9_-]*(?:Exporter|Backend|Endpoint|Config(?:uration)?|Options|Url|Uri)|(?:Exporter|Backend|Endpoint|Config(?:uration)?|Options|Url|Uri)[A-Za-z0-9_-]*Tempo)[A-Za-z0-9_-]*|Tempo)\b",
+        @"\b(?:Grafana|Prometheus)\b|Tempo",
         RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+    private static readonly Regex ApprovedP09TempoVocabulary = new(
+        @"(?<![A-Za-z0-9_])(?:temporaryDirectoryRemoved|TemporaryDirectoryRemoved)(?![A-Za-z0-9_])",
+        RegexOptions.CultureInvariant);
 
     private static readonly IReadOnlyDictionary<string, string[]> ExpectedDependencies =
         new Dictionary<string, string[]>(StringComparer.Ordinal)
@@ -315,7 +318,7 @@ public sealed class RepositoryArchitectureTests
                 Assert.DoesNotContain(forbidden, productionText, StringComparison.OrdinalIgnoreCase);
             }
 
-            Assert.DoesNotMatch(ForbiddenBackendNames, productionText);
+            Assert.DoesNotMatch(ForbiddenBackendNames, RemoveApprovedP09TempoVocabulary(productionText));
         }
 
         var verify = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
@@ -343,10 +346,28 @@ public sealed class RepositoryArchitectureTests
         Assert.Matches(ForbiddenBackendNames, "TempoExporterOptions");
         Assert.Matches(ForbiddenBackendNames, "OpenTelemetryTempoExporter");
         Assert.Matches(ForbiddenBackendNames, "TEMPO_ENDPOINT");
+        Assert.Matches(ForbiddenBackendNames, "TempoClient");
+        Assert.Matches(ForbiddenBackendNames, "AddTempoClient");
+        Assert.Matches(ForbiddenBackendNames, "TempoService");
+        Assert.Matches(ForbiddenBackendNames, "TempoCollector");
+        Assert.Matches(ForbiddenBackendNames, "TempoSink");
+        Assert.Matches(ForbiddenBackendNames, "TempoSettings");
+        Assert.Matches(ForbiddenBackendNames, "temporaryTempoDirectory");
         Assert.Matches(ForbiddenBackendNames, "Grafana.Exporter");
         Assert.Matches(ForbiddenBackendNames, "Prometheus backend");
-        Assert.DoesNotMatch(ForbiddenBackendNames, "temporaryDirectoryRemoved");
+        Assert.Matches(ForbiddenBackendNames, "temporaryDirectoryRemoved");
+        Assert.Matches(ForbiddenBackendNames, "TemporaryDirectoryRemoved");
+
+        Assert.DoesNotMatch(
+            ForbiddenBackendNames,
+            RemoveApprovedP09TempoVocabulary("temporaryDirectoryRemoved TemporaryDirectoryRemoved"));
+        Assert.Matches(
+            ForbiddenBackendNames,
+            RemoveApprovedP09TempoVocabulary("prefixTemporaryDirectoryRemovedSuffix"));
     }
+
+    private static string RemoveApprovedP09TempoVocabulary(string value) =>
+        ApprovedP09TempoVocabulary.Replace(value, string.Empty);
 
     [Fact]
     public void P08_PublicationWorkflow_AlwaysPreservesCompleteEvidence()

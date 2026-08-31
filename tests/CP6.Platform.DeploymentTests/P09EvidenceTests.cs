@@ -20,14 +20,24 @@ public sealed class P09EvidenceTests
         { "unix-var-path", "unsafe-evidence" },
         { "unix-etc-path", "unsafe-evidence" },
         { "unix-opt-path", "unsafe-evidence" },
+        { "unix-srv-path", "unsafe-evidence" },
+        { "unix-workspace-path", "unsafe-evidence" },
+        { "colon-unix-path", "unsafe-evidence" },
+        { "file-uri-path", "unsafe-evidence" },
+        { "forward-unc-path", "unsafe-evidence" },
+        { "unicode-unix-path", "unsafe-evidence" },
+        { "lookalike-http-path", "unsafe-evidence" },
+        { "malformed-http-path", "unsafe-evidence" },
         { "password-assignment", "unsafe-evidence" },
         { "password-tab-assignment", "unsafe-evidence" },
         { "password-nbsp-assignment", "unsafe-evidence" },
+        { "password-next-line-assignment", "unsafe-evidence" },
         { "token-assignment", "unsafe-evidence" },
         { "connection-string-assignment", "unsafe-evidence" },
         { "bearer-credential", "unsafe-evidence" },
         { "bearer-tab-credential", "unsafe-evidence" },
         { "bearer-nbsp-credential", "unsafe-evidence" },
+        { "bearer-next-line-credential", "unsafe-evidence" },
         { "secret-field-password", "unsafe-evidence" },
         { "secret-field-token", "unsafe-evidence" },
         { "secret-field-connection-string", "unsafe-evidence" },
@@ -286,14 +296,24 @@ public sealed class P09EvidenceTests
             case "unix-var-path": checks[0]!["summary"] = "artifact=/var/lib/docker"; break;
             case "unix-etc-path": checks[0]!["summary"] = "artifact=/etc/kafka/config"; break;
             case "unix-opt-path": checks[0]!["summary"] = "artifact=/opt/cp6/runtime"; break;
+            case "unix-srv-path": checks[0]!["summary"] = "artifact=/srv/cp6/runtime"; break;
+            case "unix-workspace-path": checks[0]!["summary"] = "artifact=/workspace/cp6/runtime"; break;
+            case "colon-unix-path": checks[0]!["summary"] = "artifact:/var/lib/docker"; break;
+            case "file-uri-path": checks[0]!["summary"] = "artifact file:///var/lib/docker"; break;
+            case "forward-unc-path": checks[0]!["summary"] = "artifact=//server/share"; break;
+            case "unicode-unix-path": checks[0]!["summary"] = "artifact=/用户/路径"; break;
+            case "lookalike-http-path": checks[0]!["summary"] = "artifact=xhttp://server/share"; break;
+            case "malformed-http-path": checks[0]!["summary"] = "artifact=http:///var/lib/docker"; break;
             case "password-assignment": checks[0]!["summary"] = "password=obvious-fake-value"; break;
             case "password-tab-assignment": checks[0]!["summary"] = "password\t=\tobvious-fake-value"; break;
             case "password-nbsp-assignment": checks[0]!["summary"] = "password\u00a0=\u00a0obvious-fake-value"; break;
+            case "password-next-line-assignment": checks[0]!["summary"] = "password\u0085=\u0085obvious-fake-value"; break;
             case "token-assignment": checks[0]!["summary"] = "token=obvious-fake-value"; break;
             case "connection-string-assignment": checks[0]!["summary"] = "connectionString=obvious-fake-value"; break;
             case "bearer-credential": checks[0]!["summary"] = "Bearer obvious-fake-credential"; break;
             case "bearer-tab-credential": checks[0]!["summary"] = "Bearer\tobvious-fake-credential"; break;
             case "bearer-nbsp-credential": checks[0]!["summary"] = "Bearer\u00a0obvious-fake-credential"; break;
+            case "bearer-next-line-credential": checks[0]!["summary"] = "Bearer\u0085obvious-fake-credential"; break;
             case "secret-field-password": trace["PASSWORD"] = "obvious-fake-value"; break;
             case "secret-field-token": trace["Token"] = "obvious-fake-value"; break;
             case "secret-field-connection-string": trace["connectionString"] = "obvious-fake-value"; break;

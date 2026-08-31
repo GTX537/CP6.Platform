@@ -119,12 +119,22 @@ public sealed class P09SchemaTests
         "unix-var-path",
         "unix-etc-path",
         "unix-opt-path",
+        "unix-srv-path",
+        "unix-workspace-path",
+        "colon-unix-path",
+        "file-uri-path",
+        "forward-unc-path",
+        "unicode-unix-path",
+        "lookalike-http-path",
+        "malformed-http-path",
         "password-assignment",
         "password-tab-assignment",
         "password-nbsp-assignment",
+        "password-next-line-assignment",
         "bearer-credential",
         "bearer-tab-credential",
         "bearer-nbsp-credential",
+        "bearer-next-line-credential",
         "negative-teardown-count",
         "empty-summary",
         "long-summary",
@@ -144,6 +154,8 @@ public sealed class P09SchemaTests
     public static TheoryData<string> SafeEvidenceSummaryControls => new()
     {
         "contract https://cp6.example/contracts/p09/rehearsal-evidence.v1.schema.json accepted",
+        "endpoint http://example.test/p09 accepted",
+        "endpoint=https://example.test/p09 accepted",
         "urn urn:cp6:p09:evidence accepted",
         "image registry.k8s.io/kubectl:v1.34.1 accepted",
         $"digest sha256:{new string('a', 64)} accepted",
@@ -536,12 +548,22 @@ public sealed class P09SchemaTests
             case "unix-var-path": checks[0]!["summary"] = "artifact=/var/lib/docker"; break;
             case "unix-etc-path": checks[0]!["summary"] = "artifact=/etc/kafka/config"; break;
             case "unix-opt-path": checks[0]!["summary"] = "artifact=/opt/cp6/runtime"; break;
+            case "unix-srv-path": checks[0]!["summary"] = "artifact=/srv/cp6/runtime"; break;
+            case "unix-workspace-path": checks[0]!["summary"] = "artifact=/workspace/cp6/runtime"; break;
+            case "colon-unix-path": checks[0]!["summary"] = "artifact:/var/lib/docker"; break;
+            case "file-uri-path": checks[0]!["summary"] = "artifact file:///var/lib/docker"; break;
+            case "forward-unc-path": checks[0]!["summary"] = "artifact=//server/share"; break;
+            case "unicode-unix-path": checks[0]!["summary"] = "artifact=/用户/路径"; break;
+            case "lookalike-http-path": checks[0]!["summary"] = "artifact=xhttp://server/share"; break;
+            case "malformed-http-path": checks[0]!["summary"] = "artifact=http:///var/lib/docker"; break;
             case "password-assignment": checks[0]!["summary"] = "password=obvious-fake-value"; break;
             case "password-tab-assignment": checks[0]!["summary"] = "password\t=\tobvious-fake-value"; break;
             case "password-nbsp-assignment": checks[0]!["summary"] = "password\u00a0=\u00a0obvious-fake-value"; break;
+            case "password-next-line-assignment": checks[0]!["summary"] = "password\u0085=\u0085obvious-fake-value"; break;
             case "bearer-credential": checks[0]!["summary"] = "Bearer obvious-fake-credential"; break;
             case "bearer-tab-credential": checks[0]!["summary"] = "Bearer\tobvious-fake-credential"; break;
             case "bearer-nbsp-credential": checks[0]!["summary"] = "Bearer\u00a0obvious-fake-credential"; break;
+            case "bearer-next-line-credential": checks[0]!["summary"] = "Bearer\u0085obvious-fake-credential"; break;
             case "negative-teardown-count": teardown["containerCount"] = -1; break;
             case "empty-summary": checks[0]!["summary"] = string.Empty; break;
             case "long-summary": checks[0]!["summary"] = new string('a', 161); break;

@@ -37,10 +37,6 @@ public sealed class Cp6P09RehearsalEvidence
         @"\\\\[^\\/\s]+[\\/][^\\/\s]+",
         RegexOptions.Compiled | RegexOptions.CultureInvariant,
         TimeSpan.FromSeconds(1));
-    private static readonly Regex UnixAbsolutePathPattern = new(
-        @"(?<![:/A-Za-z0-9._-])/(?!/)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*",
-        RegexOptions.Compiled | RegexOptions.CultureInvariant,
-        TimeSpan.FromSeconds(1));
 
     private static readonly string[] RootProperties =
     [
@@ -461,10 +457,67 @@ public sealed class Cp6P09RehearsalEvidence
         if (CredentialPattern.IsMatch(value) ||
             WindowsDrivePathPattern.IsMatch(value) ||
             UncPathPattern.IsMatch(value) ||
-            UnixAbsolutePathPattern.IsMatch(value))
+            ContainsAbsolutePathToken(value))
         {
             Fail("unsafe-evidence", "Evidence contains credential-like text or a machine-specific absolute path.");
         }
+    }
+
+    private static bool ContainsAbsolutePathToken(string value)
+    {
+        for (var index = 0; index < value.Length; index++)
+        {
+            if (value[index] != '/' ||
+                (index > 0 && !IsAbsolutePathDelimiter(value[index - 1])))
+            {
+                continue;
+            }
+
+            if (TryGetAllowedHttpUriEnd(value, index, out var uriEnd))
+            {
+                index = uriEnd - 1;
+                continue;
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    private static bool IsAbsolutePathDelimiter(char value) =>
+        !char.IsLetterOrDigit(value) && value is not '.' and not '_' and not '/' and not '\\';
+
+    private static bool TryGetAllowedHttpUriEnd(string value, int slashIndex, out int uriEnd)
+    {
+        uriEnd = slashIndex;
+        if (slashIndex + 1 >= value.Length || value[slashIndex + 1] != '/')
+        {
+            return false;
+        }
+
+        var schemeStart = value.AsSpan(0, slashIndex).EndsWith("https:", StringComparison.OrdinalIgnoreCase)
+            ? slashIndex - "https:".Length
+            : value.AsSpan(0, slashIndex).EndsWith("http:", StringComparison.OrdinalIgnoreCase)
+                ? slashIndex - "http:".Length
+                : -1;
+        if (schemeStart < 0 ||
+            (schemeStart > 0 && !IsAbsolutePathDelimiter(value[schemeStart - 1])))
+        {
+            return false;
+        }
+
+        uriEnd = slashIndex + 2;
+        while (uriEnd < value.Length && !char.IsWhiteSpace(value[uriEnd]))
+        {
+            uriEnd++;
+        }
+
+        var candidate = value[schemeStart..uriEnd];
+        return Uri.TryCreate(candidate, UriKind.Absolute, out var uri) &&
+            (uri.Scheme.Equals(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase) ||
+             uri.Scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase)) &&
+            !string.IsNullOrEmpty(uri.Host);
     }
 
     private static void RequireExactObject(JsonElement element, IReadOnlyCollection<string> expectedProperties)
