@@ -1481,7 +1481,7 @@ function Invoke-Cp6P09Rehearsal {
     if ($null -eq $originalFailure -and $null -eq $cleanupFailure -and $null -ne $matrix) {
         $evidence = Get-Cp6P09EvidenceObject -Context $context -Profile $profile -Matrix $matrix -Digests $digests -Teardown $teardown -GitSha $gitSha -Started $started -Overall 'Passed'
         $evidencePath = Join-Path $layout.ArtifactsDirectory 'rehearsal-evidence.v1.json'
-        [IO.File]::WriteAllText($evidencePath,(ConvertTo-Cp6P09CanonicalJson $evidence)+"`n",[Text.UTF8Encoding]::new($false))
+        [IO.File]::WriteAllText($evidencePath,(ConvertTo-Cp6P09CanonicalJson $evidence),[Text.UTF8Encoding]::new($false))
         $evidenceSha = Test-Cp6P09Evidence -RepositoryRoot $repository -EvidencePath $evidencePath
         return [pscustomobject]@{
             Status='Passed'

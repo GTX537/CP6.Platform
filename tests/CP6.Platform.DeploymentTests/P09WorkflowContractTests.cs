@@ -112,6 +112,25 @@ public sealed class P09WorkflowContractTests
         }
     }
 
+    [Fact]
+    public void RehearsalRunner_WritesStrictCanonicalEvidenceWithoutTrailingWhitespace()
+    {
+        var runner = File.ReadAllText(Path.Combine(
+            RepositoryRoot,
+            "eng",
+            "p09",
+            "P09Rehearsal.psm1"));
+
+        Assert.Contains(
+            "[IO.File]::WriteAllText($evidencePath,(ConvertTo-Cp6P09CanonicalJson $evidence),",
+            runner,
+            StringComparison.Ordinal);
+        Assert.DoesNotContain(
+            "(ConvertTo-Cp6P09CanonicalJson $evidence)+\"`n\"",
+            runner,
+            StringComparison.Ordinal);
+    }
+
     private static string Job(string name)
     {
         var marker = $"  {name}:";
