@@ -308,18 +308,42 @@ Assert-Cp6P09ContainedPath -Root $artifactRoot -Candidate $runRoot
 Write-Cp6P09OfflineDiscoveryCache
 $extractContainerName = "cp6-p09-kubectl-$($runId.ToLowerInvariant().Replace('-', ''))"
 $extractContainerCreated = $false
+$runContainerIdentity = $runId.ToLowerInvariant().Replace('-', '')
+$runContainerNames = @(
+    "cp6-p09-kustomize-one-$runContainerIdentity",
+    "cp6-p09-kustomize-two-$runContainerIdentity",
+    "cp6-p09-offline-apply-$runContainerIdentity",
+    "cp6-p09-kubectl-version-$runContainerIdentity"
+)
 
 try {
     $sourceMount = "${repositoryRoot}:/workspace:ro"
     $artifactMount = "${runRoot}:/artifacts"
-    $dockerPrefix = @('run', '--rm', '--network', 'none', '-v', $sourceMount, '-v', $artifactMount, $kubectlImage)
 
-    $renderArguments = $dockerPrefix + @(
+    function New-Cp6P09DockerRunArguments {
+        param(
+            [Parameter(Mandatory)][string]$ContainerName,
+            [string]$Image = $kubectlImage,
+            [string]$EntryPoint
+        )
+
+        $arguments = @('run', '--rm', '--name', $ContainerName, '--network', 'none', '-v', $sourceMount, '-v', $artifactMount)
+        if (-not [string]::IsNullOrWhiteSpace($EntryPoint)) {
+            $arguments += @('--entrypoint', $EntryPoint)
+        }
+        $arguments + @($Image)
+    }
+
+    $renderOneArguments = (New-Cp6P09DockerRunArguments -ContainerName $runContainerNames[0]) + @(
         'kustomize',
         '/workspace/deploy/p09/kubernetes/overlays/ci'
     )
-    $renderOne = Invoke-Cp6P09CheckedNative -CheckId 'k8s-render-one' -FileName 'docker' -Arguments $renderArguments
-    $renderTwo = Invoke-Cp6P09CheckedNative -CheckId 'k8s-render-two' -FileName 'docker' -Arguments $renderArguments
+    $renderTwoArguments = (New-Cp6P09DockerRunArguments -ContainerName $runContainerNames[1]) + @(
+        'kustomize',
+        '/workspace/deploy/p09/kubernetes/overlays/ci'
+    )
+    $renderOne = Invoke-Cp6P09CheckedNative -CheckId 'k8s-render-one' -FileName 'docker' -Arguments $renderOneArguments
+    $renderTwo = Invoke-Cp6P09CheckedNative -CheckId 'k8s-render-two' -FileName 'docker' -Arguments $renderTwoArguments
     [System.IO.File]::WriteAllText($renderOnePath, $renderOne.Stdout, $utf8NoBom)
     [System.IO.File]::WriteAllText($renderTwoPath, $renderTwo.Stdout, $utf8NoBom)
 
@@ -384,12 +408,7 @@ kill "$sentinel_pid" 2>/dev/null || true
 wait "$sentinel_pid" 2>/dev/null || true
 exit "$status"
 '@
-    $applyArguments = @(
-        'run', '--rm', '--network', 'none',
-        '-v', $sourceMount,
-        '-v', $artifactMount,
-        '--entrypoint', 'sh',
-        $offlineHelperImage,
+    $applyArguments = (New-Cp6P09DockerRunArguments -ContainerName $runContainerNames[2] -Image $offlineHelperImage -EntryPoint 'sh') + @(
         '-c', $offlineApply,
         'cp6-offline-apply',
         '--kubeconfig=/artifacts/unreachable.kubeconfig',
@@ -402,7 +421,7 @@ exit "$status"
         throw 'k8s-client-dry-run-write: kubectl attempted a mutating API request.'
     }
 
-    $versionArguments = $dockerPrefix + @('version', '--client=true', '--output=json')
+    $versionArguments = (New-Cp6P09DockerRunArguments -ContainerName $runContainerNames[3]) + @('version', '--client=true', '--output=json')
     $versionResult = Invoke-Cp6P09CheckedNative -CheckId 'k8s-kubectl-version' -FileName 'docker' -Arguments $versionArguments
     try {
         $kubectlVersion = ($versionResult.Stdout | ConvertFrom-Json -Depth 10).clientVersion.gitVersion
@@ -439,6 +458,12 @@ exit "$status"
     } | ConvertTo-Json -Compress
 }
 finally {
+    foreach ($runContainerName in $runContainerNames) {
+        [void](Invoke-Cp6P09Native `
+            -FileName 'docker' `
+            -Arguments @('rm', '--force', $runContainerName) `
+            -TimeoutSeconds 15)
+    }
     if ($extractContainerCreated) {
         [void](Invoke-Cp6P09Native `
             -FileName 'docker' `

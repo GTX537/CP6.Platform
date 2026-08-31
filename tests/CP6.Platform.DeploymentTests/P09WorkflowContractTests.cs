@@ -131,6 +131,27 @@ public sealed class P09WorkflowContractTests
             StringComparison.Ordinal);
     }
 
+    [Fact]
+    public void KubernetesGate_NamesAndFinallyRemovesEveryRunContainer()
+    {
+        var gate = File.ReadAllText(Path.Combine(
+            RepositoryRoot,
+            "eng",
+            "test-p09-kubernetes.ps1"));
+
+        Assert.Contains("$runContainerNames = @(", gate, StringComparison.Ordinal);
+        Assert.Contains(
+            "@('run', '--rm', '--name', $ContainerName, '--network', 'none'",
+            gate,
+            StringComparison.Ordinal);
+        Assert.Contains("foreach ($runContainerName in $runContainerNames)", gate, StringComparison.Ordinal);
+        Assert.Contains("@('rm', '--force', $runContainerName)", gate, StringComparison.Ordinal);
+        Assert.DoesNotContain(
+            "$dockerPrefix = @('run', '--rm', '--network', 'none'",
+            gate,
+            StringComparison.Ordinal);
+    }
+
     private static string Job(string name)
     {
         var marker = $"  {name}:";
