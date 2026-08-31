@@ -202,6 +202,21 @@ try {
     $invalidDeliveryTrace.receiverParentSpanId = $invalidDeliveryTrace.receiverSpanId
     Assert-Throws { Assert-Cp6P09TraceTopology -Invocation $validInvocationTrace -Delivery $invalidDeliveryTrace } 'pubsub-positive'
 
+    $retryState = [pscustomobject]@{ Attempts=0 }
+    $retryResult = Invoke-Cp6P09BoundedRetry -Deadline ([DateTimeOffset]::UtcNow.AddSeconds(5)) -FailureId 'invoke-positive' -Action {
+        $retryState.Attempts++
+        if ($retryState.Attempts -eq 1) { throw 'transient-status' }
+        return 'ready'
+    }
+    Assert-Equal 'ready' $retryResult 'Bounded invocation retry did not return the first successful result.'
+    Assert-Equal 2 $retryState.Attempts 'Bounded invocation retry did not retry exactly once.'
+    Assert-Throws {
+        Invoke-Cp6P09BoundedRetry -Deadline ([DateTimeOffset]::UtcNow.AddMilliseconds(-1)) -FailureId 'invoke-positive' -Action { 'unexpected' }
+    } 'invoke-positive'
+    Assert-True ($moduleText.Contains('$matrixDeadline = [DateTimeOffset]::UtcNow.AddSeconds(60)')) 'Runtime matrix does not create a 60-second shared deadline.'
+    Assert-True ($moduleText.Contains("Invoke-Cp6P09BoundedRetry -Deadline `$matrixDeadline -FailureId 'invoke-positive'")) 'Invocation does not use the shared matrix deadline.'
+    Assert-True ($moduleText.Contains('} while ([DateTimeOffset]::UtcNow -lt $matrixDeadline)')) 'Publish polling does not reuse the shared matrix deadline.'
+
     Assert-Equal 'kafka-health' (Get-Cp6P09StableFailureId -Candidate 'kafka-health' -Fallback 'kafka-start') 'Stable Kafka health failure id was lost.'
     foreach ($stableFailure in @('runtime-start','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied','principal-denied','appid-scope-denied','foreign-topic-denied')) {
         Assert-Equal $stableFailure (Get-Cp6P09StableFailureId -Candidate $stableFailure -Fallback 'runtime-matrix') 'Stable runtime failure id was lost.'

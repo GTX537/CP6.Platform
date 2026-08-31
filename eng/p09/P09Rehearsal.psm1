@@ -878,6 +878,32 @@ function Invoke-Cp6P09GuardedDockerFailure {
     }
 }
 
+function Invoke-Cp6P09BoundedRetry {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][DateTimeOffset]$Deadline,
+        [Parameter(Mandatory)][ValidateSet('invoke-positive')][string]$FailureId,
+        [Parameter(Mandatory)][scriptblock]$Action
+    )
+
+    do {
+        if ([DateTimeOffset]::UtcNow -ge $Deadline) { throw $FailureId }
+        try {
+            $result = & $Action
+            if ([DateTimeOffset]::UtcNow -gt $Deadline) { throw $FailureId }
+            return $result
+        }
+        catch {
+            if ([DateTimeOffset]::UtcNow -ge $Deadline) { throw $FailureId }
+        }
+        $remainingMilliseconds = ($Deadline - [DateTimeOffset]::UtcNow).TotalMilliseconds
+        if ($remainingMilliseconds -gt 0) {
+            Start-Sleep -Milliseconds ([int][Math]::Min(250, $remainingMilliseconds))
+        }
+    } while ([DateTimeOffset]::UtcNow -lt $Deadline)
+    throw $FailureId
+}
+
 function Invoke-Cp6P09HttpJson {
     param(
         [Parameter(Mandatory)][Net.Http.HttpClient]$Client,
@@ -961,26 +987,29 @@ function Invoke-Cp6P09RuntimeMatrix {
     $handler = [Net.Http.SocketsHttpHandler]::new()
     $handler.AllowAutoRedirect = $false
     $client = [Net.Http.HttpClient]::new($handler)
-    $client.Timeout = [TimeSpan]::FromSeconds(15)
+    $client.Timeout = [TimeSpan]::FromSeconds(5)
     try {
         $Context.MatrixFailureId = 'publisher-health'
         Wait-Cp6P09Publisher $client $baseUri
         $Context.MatrixFailureId = 'invoke-positive'
-        $invocation = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'invoke-positive')) '{}'
+        $matrixDeadline = [DateTimeOffset]::UtcNow.AddSeconds(60)
+        $invocation = Invoke-Cp6P09BoundedRetry -Deadline $matrixDeadline -FailureId 'invoke-positive' -Action {
+            Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'invoke-positive')) '{}'
+        }
         if ($invocation.appId -cne 'cp6-p09-probe-receiver' -or $invocation.invocationTraceId -cnotmatch '^[0-9a-f]{32}$') { throw 'invoke-positive' }
         $Context.MatrixFailureId = 'pubsub-positive'
+        if ([DateTimeOffset]::UtcNow -ge $matrixDeadline) { throw 'pubsub-positive' }
         $eventId = 'p09-event-' + [Guid]::NewGuid().ToString('N')
         $partitionKey = 'cp6-p09-entity-' + [Guid]::NewGuid().ToString('N')
         $publishJson = ConvertTo-Cp6P09CanonicalJson ([ordered]@{ eventId=$eventId; partitionKey=$partitionKey })
         $receipt = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'publish-positive')) $publishJson
         if ($receipt.eventId -cne $eventId -or $receipt.partitionKey -cne $partitionKey -or $receipt.topic -cne 'cp6.platform.deployment-probe.v1' -or $receipt.region -cne 'TEST') { throw 'pubsub-positive' }
         $received = $null
-        $deadline = [DateTimeOffset]::UtcNow.AddSeconds(60)
         do {
             $received = Invoke-Cp6P09HttpJson -Client $client -Method ([Net.Http.HttpMethod]::Get) -Uri ([Uri]::new($baseUri,"received/$eventId")) -AllowNotFound
             if ($null -ne $received) { break }
             Start-Sleep -Milliseconds 500
-        } while ([DateTimeOffset]::UtcNow -lt $deadline)
+        } while ([DateTimeOffset]::UtcNow -lt $matrixDeadline)
         if ($null -eq $received -or -not $received.contractValid -or $received.eventId -cne $eventId -or $received.partitionKey -cne $partitionKey -or $received.topicName -cne 'cp6.platform.deployment-probe.v1') { throw 'pubsub-positive' }
         Assert-Cp6P09TraceTopology -Invocation $invocation -Delivery $received
 
@@ -1218,5 +1247,6 @@ Export-ModuleMember -Function @(
     'Assert-Cp6P09ExpectedGitState',
     'Invoke-Cp6P09Teardown',
     'Invoke-Cp6P09GuardedDockerFailure',
+    'Invoke-Cp6P09BoundedRetry',
     'Invoke-Cp6P09Rehearsal'
 )
