@@ -40,6 +40,13 @@ $runtimePackageProjects = @(
     'src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj',
     'src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj'
 )
+$dotnetCommand = if (-not [string]::IsNullOrWhiteSpace($env:DOTNET_HOST_PATH)) {
+    $env:DOTNET_HOST_PATH
+}
+else {
+    (Get-Command -Name 'dotnet' -CommandType Application -ErrorAction Stop | Select-Object -First 1).Source
+}
+$env:DOTNET_HOST_PATH = $dotnetCommand
 
 if (-not $outputRoot.StartsWith((Join-Path $repositoryRoot 'artifacts'), [StringComparison]::OrdinalIgnoreCase)) {
     throw "Refusing to write verification output outside the repository artifacts directory: $outputRoot"
@@ -62,11 +69,6 @@ function Invoke-DotNetStep {
 
     $stepStarted = [DateTimeOffset]::UtcNow
     $logPath = Join-Path $outputRoot "$($Name.ToLowerInvariant()).log"
-    $dotnetCommand = if (-not [string]::IsNullOrWhiteSpace($env:DOTNET_HOST_PATH)) {
-        $env:DOTNET_HOST_PATH
-    } else {
-        'dotnet'
-    }
     & $dotnetCommand @Arguments 2>&1 | Tee-Object -FilePath $logPath
     $exitCode = $LASTEXITCODE
     $checks.Add([ordered]@{

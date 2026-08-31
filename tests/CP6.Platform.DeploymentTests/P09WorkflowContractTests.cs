@@ -113,6 +113,19 @@ public sealed class P09WorkflowContractTests
     }
 
     [Fact]
+    public void VerificationEntryPoint_ExportsResolvedDotNetHostPathForChildTools()
+    {
+        var verify = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
+
+        Assert.Contains(
+            "(Get-Command -Name 'dotnet' -CommandType Application -ErrorAction Stop | Select-Object -First 1).Source",
+            verify,
+            StringComparison.Ordinal);
+        Assert.Contains("$env:DOTNET_HOST_PATH = $dotnetCommand", verify, StringComparison.Ordinal);
+        Assert.Contains("& $dotnetCommand @Arguments", verify, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void RehearsalRunner_WritesStrictCanonicalEvidenceWithoutTrailingWhitespace()
     {
         var runner = File.ReadAllText(Path.Combine(
