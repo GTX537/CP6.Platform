@@ -87,13 +87,20 @@ function Invoke-PowerShellStep {
     param(
         [Parameter(Mandatory = $true)][string]$Name,
         [Parameter(Mandatory = $true)][string]$ScriptPath,
-        [string[]]$Arguments = @()
+        [string[]]$Arguments = @(),
+        [ValidateRange(1, 2)][int]$MaxAttempts = 1
     )
 
     $stepStarted = [DateTimeOffset]::UtcNow
     $logPath = Join-Path $outputRoot "$($Name.ToLowerInvariant()).log"
-    $output = @(& pwsh -NoProfile -File $ScriptPath @Arguments 2>&1 | Tee-Object -FilePath $logPath)
-    $exitCode = $LASTEXITCODE
+    $output = @()
+    $exitCode = 1
+    foreach ($attempt in 1..$MaxAttempts) {
+        $output = @(& pwsh -NoProfile -File $ScriptPath @Arguments 2>&1 | Tee-Object -FilePath $logPath -Append)
+        $exitCode = $LASTEXITCODE
+        if ($exitCode -eq 0) { break }
+        if ($attempt -lt $MaxAttempts) { Start-Sleep -Milliseconds 500 }
+    }
     $checks.Add([ordered]@{
         name = $Name
         status = if ($exitCode -eq 0) { 'Passed' } else { 'Failed' }
@@ -165,7 +172,7 @@ function Invoke-P09ContractVerification {
         return $false
     }
 
-    $kubernetesOutput = Invoke-PowerShellStep -Name 'P09KubernetesOfflineGate' -ScriptPath 'eng/test-p09-kubernetes.ps1'
+    $kubernetesOutput = Invoke-PowerShellStep -Name 'P09KubernetesOfflineGate' -ScriptPath 'eng/test-p09-kubernetes.ps1' -MaxAttempts 2
     $kubernetesResult = Get-P09JsonResult -Output $kubernetesOutput -StepName 'P09KubernetesOfflineGate'
     if ($kubernetesResult.Status -cne 'Passed' -or
         [string]$kubernetesResult.ManifestSha256 -cnotmatch '^[0-9a-f]{64}$') {

@@ -126,6 +126,19 @@ public sealed class P09WorkflowContractTests
     }
 
     [Fact]
+    public void VerificationEntryPoint_RetriesOfflineKubernetesGateExactlyOnce()
+    {
+        var verify = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
+
+        Assert.Contains("[ValidateRange(1, 2)][int]$MaxAttempts = 1", verify, StringComparison.Ordinal);
+        Assert.Contains("foreach ($attempt in 1..$MaxAttempts)", verify, StringComparison.Ordinal);
+        Assert.Contains(
+            "-ScriptPath 'eng/test-p09-kubernetes.ps1' -MaxAttempts 2",
+            verify,
+            StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void RehearsalRunner_WritesStrictCanonicalEvidenceWithoutTrailingWhitespace()
     {
         var runner = File.ReadAllText(Path.Combine(
