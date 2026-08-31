@@ -88,19 +88,31 @@ public sealed class RepositoryArchitectureTests
     public void Deployment_IsOnlyProjectPackingP09ContractsAndDeploymentAssets()
     {
         var projects = LoadProjects();
-        var deploymentAssets = projects["CP6.Platform.Deployment"].Document.Descendants("None")
-            .Where(item => string.Equals(item.Attribute("Pack")?.Value, "true", StringComparison.OrdinalIgnoreCase))
+        var deploymentAssets = GetProjectItems(projects["CP6.Platform.Deployment"].Document)
+            .Where(item => !string.IsNullOrWhiteSpace(GetItemValue(item, "Pack")))
             .Select(item => (
+                ItemType: item.Name.LocalName,
                 Include: item.Attribute("Include")?.Value ?? string.Empty,
-                PackagePath: item.Attribute("PackagePath")?.Value ?? string.Empty))
+                Update: item.Attribute("Update")?.Value ?? string.Empty,
+                Remove: item.Attribute("Remove")?.Value ?? string.Empty,
+                Pack: GetItemValue(item, "Pack"),
+                PackagePath: GetItemValue(item, "PackagePath")))
             .ToArray();
         var expectedDeploymentAssets = new[]
         {
             (
+                ItemType: "None",
                 Include: "../../contracts/p09/**/*",
+                Update: string.Empty,
+                Remove: string.Empty,
+                Pack: "true",
                 PackagePath: "contracts/p09/%(RecursiveDir)%(Filename)%(Extension)"),
             (
+                ItemType: "None",
                 Include: "../../deploy/p09/**/*",
+                Update: string.Empty,
+                Remove: string.Empty,
+                Pack: "true",
                 PackagePath: "deploy/p09/%(RecursiveDir)%(Filename)%(Extension)")
         };
 
@@ -108,22 +120,23 @@ public sealed class RepositoryArchitectureTests
 
         foreach (var (_, project) in projects.Where(project => project.Key != "CP6.Platform.Deployment"))
         {
-            var sourcePaths = project.Document.Descendants("None")
-                .Select(item => item.Attribute("Include")?.Value ?? string.Empty);
-            var packedAssets = project.Document.Descendants("None")
-                .Where(item => string.Equals(item.Attribute("Pack")?.Value, "true", StringComparison.OrdinalIgnoreCase))
-                .Select(item => item.Attribute("PackagePath")?.Value ?? string.Empty);
+            var ownershipValues = GetProjectItems(project.Document)
+                .SelectMany(item => new[]
+                {
+                    item.Attribute("Include")?.Value,
+                    item.Attribute("Update")?.Value,
+                    item.Attribute("Remove")?.Value,
+                    GetItemValue(item, "PackagePath")
+                })
+                .Where(value => !string.IsNullOrWhiteSpace(value))
+                .Select(value => value!)
+                .ToArray();
+            var projectText = File.ReadAllText(project.Path);
 
             Assert.DoesNotContain(
-                sourcePaths,
-                path => path.Contains("contracts/p09", StringComparison.OrdinalIgnoreCase)
-                        || path.Contains(@"contracts\p09", StringComparison.OrdinalIgnoreCase)
-                        || path.Contains("deploy/p09", StringComparison.OrdinalIgnoreCase)
-                        || path.Contains(@"deploy\p09", StringComparison.OrdinalIgnoreCase));
-            Assert.DoesNotContain(
-                packedAssets,
-                path => path.StartsWith("contracts/p09", StringComparison.Ordinal)
-                        || path.StartsWith("deploy/p09", StringComparison.Ordinal));
+                ownershipValues,
+                value => value.Contains("p09", StringComparison.OrdinalIgnoreCase));
+            Assert.DoesNotContain("p09", projectText, StringComparison.OrdinalIgnoreCase);
         }
     }
 
@@ -580,6 +593,15 @@ public sealed class RepositoryArchitectureTests
     private static bool HasDirectorySegment(string path, string segment) =>
         path.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
             .Contains(segment, StringComparer.OrdinalIgnoreCase);
+
+    private static IEnumerable<XElement> GetProjectItems(XDocument document) =>
+        document.Descendants()
+            .Where(element => string.Equals(element.Parent?.Name.LocalName, "ItemGroup", StringComparison.Ordinal));
+
+    private static string GetItemValue(XElement item, string name) =>
+        item.Attribute(name)?.Value
+        ?? item.Elements().SingleOrDefault(element => string.Equals(element.Name.LocalName, name, StringComparison.Ordinal))?.Value
+        ?? string.Empty;
 
     private static IReadOnlyDictionary<string, ProjectInfo> LoadProjects()
     {
