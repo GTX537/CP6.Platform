@@ -10,14 +10,24 @@ public sealed class P09EvidenceTests
     public static TheoryData<string, string> UnsafeEvidenceMutations => new()
     {
         { "windows-path", "unsafe-evidence" },
+        { "embedded-windows-backslash-path", "unsafe-evidence" },
+        { "embedded-windows-forward-slash-path", "unsafe-evidence" },
         { "unc-path", "unsafe-evidence" },
+        { "embedded-unc-path", "unsafe-evidence" },
         { "unix-home-path", "unsafe-evidence" },
         { "unix-users-path", "unsafe-evidence" },
         { "unix-temp-path", "unsafe-evidence" },
+        { "unix-var-path", "unsafe-evidence" },
+        { "unix-etc-path", "unsafe-evidence" },
+        { "unix-opt-path", "unsafe-evidence" },
         { "password-assignment", "unsafe-evidence" },
+        { "password-tab-assignment", "unsafe-evidence" },
+        { "password-nbsp-assignment", "unsafe-evidence" },
         { "token-assignment", "unsafe-evidence" },
         { "connection-string-assignment", "unsafe-evidence" },
         { "bearer-credential", "unsafe-evidence" },
+        { "bearer-tab-credential", "unsafe-evidence" },
+        { "bearer-nbsp-credential", "unsafe-evidence" },
         { "secret-field-password", "unsafe-evidence" },
         { "secret-field-token", "unsafe-evidence" },
         { "secret-field-connection-string", "unsafe-evidence" },
@@ -266,14 +276,24 @@ public sealed class P09EvidenceTests
             case "teardown-image": teardown["imageCount"] = 1; break;
             case "teardown-directory": teardown["temporaryDirectoryRemoved"] = false; break;
             case "windows-path": checks[0]!["summary"] = "artifact at C:\\agent\\work"; break;
+            case "embedded-windows-backslash-path": checks[0]!["summary"] = "artifact=C:\\agent\\work"; break;
+            case "embedded-windows-forward-slash-path": checks[0]!["summary"] = "artifact=C:/agent/work"; break;
             case "unc-path": checks[0]!["summary"] = "artifact at \\\\server\\share"; break;
+            case "embedded-unc-path": checks[0]!["summary"] = "artifact=\\\\server\\share"; break;
             case "unix-home-path": checks[0]!["summary"] = "artifact under /home/runner/work"; break;
             case "unix-users-path": checks[0]!["summary"] = "artifact under /Users/runner/work"; break;
             case "unix-temp-path": checks[0]!["summary"] = "artifact under /tmp/p09"; break;
+            case "unix-var-path": checks[0]!["summary"] = "artifact=/var/lib/docker"; break;
+            case "unix-etc-path": checks[0]!["summary"] = "artifact=/etc/kafka/config"; break;
+            case "unix-opt-path": checks[0]!["summary"] = "artifact=/opt/cp6/runtime"; break;
             case "password-assignment": checks[0]!["summary"] = "password=obvious-fake-value"; break;
+            case "password-tab-assignment": checks[0]!["summary"] = "password\t=\tobvious-fake-value"; break;
+            case "password-nbsp-assignment": checks[0]!["summary"] = "password\u00a0=\u00a0obvious-fake-value"; break;
             case "token-assignment": checks[0]!["summary"] = "token=obvious-fake-value"; break;
             case "connection-string-assignment": checks[0]!["summary"] = "connectionString=obvious-fake-value"; break;
             case "bearer-credential": checks[0]!["summary"] = "Bearer obvious-fake-credential"; break;
+            case "bearer-tab-credential": checks[0]!["summary"] = "Bearer\tobvious-fake-credential"; break;
+            case "bearer-nbsp-credential": checks[0]!["summary"] = "Bearer\u00a0obvious-fake-credential"; break;
             case "secret-field-password": trace["PASSWORD"] = "obvious-fake-value"; break;
             case "secret-field-token": trace["Token"] = "obvious-fake-value"; break;
             case "secret-field-connection-string": trace["connectionString"] = "obvious-fake-value"; break;

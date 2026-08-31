@@ -7,7 +7,7 @@ public sealed class RepositoryArchitectureTests
 {
     private static readonly string RepositoryRoot = FindRepositoryRoot();
     private static readonly Regex ForbiddenBackendNames = new(
-        @"\b(?:Grafana|Tempo|Prometheus)\b",
+        @"\b(?:Grafana|Prometheus)\b|\b(?:[A-Za-z0-9_-]*(?:Tempo[A-Za-z0-9_-]*(?:Exporter|Backend|Endpoint|Config(?:uration)?|Options|Url|Uri)|(?:Exporter|Backend|Endpoint|Config(?:uration)?|Options|Url|Uri)[A-Za-z0-9_-]*Tempo)[A-Za-z0-9_-]*|Tempo)\b",
         RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
 
     private static readonly IReadOnlyDictionary<string, string[]> ExpectedDependencies =
@@ -335,6 +335,14 @@ public sealed class RepositoryArchitectureTests
     public void ProductionBackendGuard_MatchesWholeNamesWithoutRejectingTemporaryDirectoryVocabulary()
     {
         Assert.Matches(ForbiddenBackendNames, "Tempo");
+        Assert.Matches(ForbiddenBackendNames, "TempoExporter");
+        Assert.Matches(ForbiddenBackendNames, "TempoBackend");
+        Assert.Matches(ForbiddenBackendNames, "AddTempoExporter");
+        Assert.Matches(ForbiddenBackendNames, "TempoEndpoint");
+        Assert.Matches(ForbiddenBackendNames, "TempoConfig");
+        Assert.Matches(ForbiddenBackendNames, "TempoExporterOptions");
+        Assert.Matches(ForbiddenBackendNames, "OpenTelemetryTempoExporter");
+        Assert.Matches(ForbiddenBackendNames, "TEMPO_ENDPOINT");
         Assert.Matches(ForbiddenBackendNames, "Grafana.Exporter");
         Assert.Matches(ForbiddenBackendNames, "Prometheus backend");
         Assert.DoesNotMatch(ForbiddenBackendNames, "temporaryDirectoryRemoved");

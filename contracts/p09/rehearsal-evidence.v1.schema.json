@@ -18,9 +18,24 @@
     "acls": {"$ref":"#/$defs/acls"},
     "checks": {
       "type":"array",
-      "minItems":1,
+      "minItems":12,
+      "maxItems":12,
       "uniqueItems":true,
-      "items":{"$ref":"#/$defs/check"}
+      "prefixItems":[
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"profile-valid"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"provision-first"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"provision-idempotent"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"invoke-positive"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"pubsub-positive"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"direct-kafka-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"principal-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"appid-scope-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"foreign-topic-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"kubernetes-render"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"kubernetes-policy"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"zero-residue"}}}]}
+      ],
+      "items":false
     },
     "trace": {"$ref":"#/$defs/trace"},
     "startedUtc": {"$ref":"#/$defs/utcTimestamp"},
@@ -75,7 +90,7 @@
     "digest": {"type":"string","pattern":"^sha256:[0-9a-f]{64}$"},
     "utcTimestamp": {"type":"string","format":"date-time","pattern":"^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,7})?Z$"},
     "safeIdentifier": {"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
-    "safeSummary": {"type":"string","minLength":1,"maxLength":160,"pattern":"^(?!.*(?:[A-Za-z]:\\\\|\\\\\\\\|/home/|/Users/|/tmp/|[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd] *=|[Tt][Oo][Kk][Ee][Nn] *=|[Cc][Oo][Nn][Nn][Ee][Cc][Tt][Ii][Oo][Nn][Ss][Tt][Rr][Ii][Nn][Gg] *=|[Bb][Ee][Aa][Rr][Ee][Rr] +[^ ]{8,}))[^\\r\\n]{1,160}$"},
+    "safeSummary": {"type":"string","minLength":1,"maxLength":160,"pattern":"^(?!.*(?:(?:^|[^A-Za-z0-9])[A-Za-z]:[\\\\/]|\\\\\\\\[^\\\\/\\s]+[\\\\/][^\\\\/\\s]+|(?:^|[^:/A-Za-z0-9._-])/(?!/)[A-Za-z0-9._-]+|[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd][\\s\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*=[\\s\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*\\S+|[Tt][Oo][Kk][Ee][Nn][\\s\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*=[\\s\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*\\S+|[Cc][Oo][Nn][Nn][Ee][Cc][Tt][Ii][Oo][Nn][Ss][Tt][Rr][Ii][Nn][Gg][\\s\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*=[\\s\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*\\S+|[Bb][Ee][Aa][Rr][Ee][Rr][\\s\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+\\S{8,}))[^\\r\\n]{1,160}$"},
     "runtime": {
       "type":"object",
       "required":["daprImage","daprImageDigest","kafkaImage","kafkaImageDigest","kubectlImage","kubectlImageDigest","kubectlVersion"],

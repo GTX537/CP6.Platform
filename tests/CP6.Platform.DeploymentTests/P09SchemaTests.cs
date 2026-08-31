@@ -112,9 +112,19 @@ public sealed class P09SchemaTests
         "teardown-image",
         "teardown-directory",
         "windows-path",
+        "embedded-windows-backslash-path",
+        "embedded-windows-forward-slash-path",
+        "embedded-unc-path",
         "unix-path",
+        "unix-var-path",
+        "unix-etc-path",
+        "unix-opt-path",
         "password-assignment",
+        "password-tab-assignment",
+        "password-nbsp-assignment",
         "bearer-credential",
+        "bearer-tab-credential",
+        "bearer-nbsp-credential",
         "negative-teardown-count",
         "empty-summary",
         "long-summary",
@@ -124,12 +134,28 @@ public sealed class P09SchemaTests
         "oversized-teardown-count"
     };
 
+    public static TheoryData<string> FailedEvidenceCheckSetMutations => new()
+    {
+        "extra",
+        "missing",
+        "reordered"
+    };
+
+    public static TheoryData<string> SafeEvidenceSummaryControls => new()
+    {
+        "contract https://cp6.example/contracts/p09/rehearsal-evidence.v1.schema.json accepted",
+        "urn urn:cp6:p09:evidence accepted",
+        "image registry.k8s.io/kubectl:v1.34.1 accepted",
+        $"digest sha256:{new string('a', 64)} accepted",
+        "timestamp 2026-08-30T00:00:00Z accepted",
+        "topic cp6.platform.deployment-probe.v1 accepted"
+    };
+
     public static TheoryData<string, string> EvidenceRuntimeOnlyCrossValueMutations => new()
     {
         { "completed-before-start", "invalid-time" },
         { "publisher-receiver-span-equality", "trace-span" },
-        { "invoker-invoked-span-equality", "trace-span" },
-        { "duplicate-failed-check-id-with-distinct-object", "duplicate-check" }
+        { "invoker-invoked-span-equality", "trace-span" }
     };
 
     [Fact]
@@ -203,23 +229,52 @@ public sealed class P09SchemaTests
         Assert.False(Evaluate(P09ContractTestData.EvidenceSchemaPath, root.ToJsonString()).IsValid);
     }
 
-    [Fact]
-    public void FailedEvidence_AllowsAdditionalDistinctSafeDiagnosticChecksInSchemaAndRuntime()
+    [Theory]
+    [MemberData(nameof(FailedEvidenceCheckSetMutations))]
+    public void FailedEvidence_RejectsExtraMissingOrReorderedContractCheckIds(string mutation)
     {
         var root = P09ContractTestData.ParseValidEvidence();
         root["overall"] = "Failed";
-        root["checks"]!.AsArray().Add(new JsonObject
+        root["checks"]![0]!["result"] = "Failed";
+        var checks = root["checks"]!.AsArray();
+        switch (mutation)
         {
-            ["id"] = "additional-diagnostic",
-            ["result"] = "Failed",
-            ["summary"] = "additional failure recorded"
-        });
+            case "extra":
+                checks.Add(new JsonObject
+                {
+                    ["id"] = "additional-diagnostic",
+                    ["result"] = "Failed",
+                    ["summary"] = "additional failure recorded"
+                });
+                break;
+            case "missing":
+                checks.RemoveAt(1);
+                break;
+            case "reordered":
+                SwapFirstTwo(checks);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(mutation));
+        }
+
+        var json = Cp6P09Json.Canonicalize(root.ToJsonString());
+
+        Assert.False(Evaluate(P09ContractTestData.EvidenceSchemaPath, json).IsValid);
+        Assert.Equal(
+            "required-checks",
+            Assert.Throws<Cp6P09ContractException>(() => Cp6P09RehearsalEvidence.Parse(json)).CheckId);
+    }
+
+    [Theory]
+    [MemberData(nameof(SafeEvidenceSummaryControls))]
+    public void SafeUrlsUrnsImagesDigestsTimestampsAndTopics_PassSchemaAndRuntime(string summary)
+    {
+        var root = P09ContractTestData.ParseValidEvidence();
+        root["checks"]![0]!["summary"] = summary;
         var json = Cp6P09Json.Canonicalize(root.ToJsonString());
 
         Assert.True(Evaluate(P09ContractTestData.EvidenceSchemaPath, json).IsValid);
-        var evidence = Cp6P09RehearsalEvidence.Parse(json);
-        Assert.Equal(13, evidence.Checks.Count);
-        Assert.Equal("Failed", evidence.Overall);
+        Assert.Equal("Passed", Cp6P09RehearsalEvidence.Parse(json).Overall);
     }
 
     [Theory]
@@ -237,11 +292,6 @@ public sealed class P09SchemaTests
                 break;
             case "invoker-invoked-span-equality":
                 root["trace"]!["invokedSpanId"] = root["trace"]!["invokerSpanId"]!.DeepClone();
-                break;
-            case "duplicate-failed-check-id-with-distinct-object":
-                root["overall"] = "Failed";
-                root["checks"]![1]!["id"] = root["checks"]![0]!["id"]!.DeepClone();
-                root["checks"]![1]!["result"] = "Failed";
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(mutation));
@@ -479,9 +529,19 @@ public sealed class P09SchemaTests
             case "teardown-image": teardown["imageCount"] = 1; break;
             case "teardown-directory": teardown["temporaryDirectoryRemoved"] = false; break;
             case "windows-path": checks[0]!["summary"] = "artifact at C:\\agent\\work"; break;
+            case "embedded-windows-backslash-path": checks[0]!["summary"] = "artifact=C:\\agent\\work"; break;
+            case "embedded-windows-forward-slash-path": checks[0]!["summary"] = "artifact=C:/agent/work"; break;
+            case "embedded-unc-path": checks[0]!["summary"] = "artifact=\\\\server\\share"; break;
             case "unix-path": checks[0]!["summary"] = "artifact under /home/runner/work"; break;
+            case "unix-var-path": checks[0]!["summary"] = "artifact=/var/lib/docker"; break;
+            case "unix-etc-path": checks[0]!["summary"] = "artifact=/etc/kafka/config"; break;
+            case "unix-opt-path": checks[0]!["summary"] = "artifact=/opt/cp6/runtime"; break;
             case "password-assignment": checks[0]!["summary"] = "password=obvious-fake-value"; break;
+            case "password-tab-assignment": checks[0]!["summary"] = "password\t=\tobvious-fake-value"; break;
+            case "password-nbsp-assignment": checks[0]!["summary"] = "password\u00a0=\u00a0obvious-fake-value"; break;
             case "bearer-credential": checks[0]!["summary"] = "Bearer obvious-fake-credential"; break;
+            case "bearer-tab-credential": checks[0]!["summary"] = "Bearer\tobvious-fake-credential"; break;
+            case "bearer-nbsp-credential": checks[0]!["summary"] = "Bearer\u00a0obvious-fake-credential"; break;
             case "negative-teardown-count": teardown["containerCount"] = -1; break;
             case "empty-summary": checks[0]!["summary"] = string.Empty; break;
             case "long-summary": checks[0]!["summary"] = new string('a', 161); break;

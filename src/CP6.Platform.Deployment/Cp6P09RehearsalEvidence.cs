@@ -29,12 +29,16 @@ public sealed class Cp6P09RehearsalEvidence
         "(?:password|token|connectionString)\\s*=\\s*\\S+|\\bBearer\\s+\\S{8,}",
         RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.IgnoreCase,
         TimeSpan.FromSeconds(1));
-    private static readonly Regex WindowsPathPattern = new(
-        "(?:^|[\\s\\\"'(])(?:[A-Za-z]:[\\\\/]|\\\\\\\\[^\\\\\\s]+\\\\)",
+    private static readonly Regex WindowsDrivePathPattern = new(
+        "(?<![A-Za-z0-9])[A-Za-z]:[\\\\/]",
         RegexOptions.Compiled | RegexOptions.CultureInvariant,
         TimeSpan.FromSeconds(1));
-    private static readonly Regex UnixMachinePathPattern = new(
-        "/(?:home|Users|tmp)/",
+    private static readonly Regex UncPathPattern = new(
+        @"\\\\[^\\/\s]+[\\/][^\\/\s]+",
+        RegexOptions.Compiled | RegexOptions.CultureInvariant,
+        TimeSpan.FromSeconds(1));
+    private static readonly Regex UnixAbsolutePathPattern = new(
+        @"(?<![:/A-Za-z0-9._-])/(?!/)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*",
         RegexOptions.Compiled | RegexOptions.CultureInvariant,
         TimeSpan.FromSeconds(1));
 
@@ -267,10 +271,9 @@ public sealed class Cp6P09RehearsalEvidence
         }
 
         var checkIds = checks.Select(check => check.Id).ToArray();
-        if (overall == "Passed" &&
-            !checkIds.SequenceEqual(Cp6P09RuntimeProfileValidator.ExpectedRequiredChecks, StringComparer.Ordinal))
+        if (!checkIds.SequenceEqual(Cp6P09RuntimeProfileValidator.ExpectedRequiredChecks, StringComparer.Ordinal))
         {
-            Fail("required-checks", "Passed evidence must contain the exact ordered Profile checks.");
+            Fail("required-checks", "Evidence must contain the exact ordered Profile checks.");
         }
 
         if (overall == "Passed" &&
@@ -456,8 +459,9 @@ public sealed class Cp6P09RehearsalEvidence
         }
 
         if (CredentialPattern.IsMatch(value) ||
-            WindowsPathPattern.IsMatch(value) ||
-            UnixMachinePathPattern.IsMatch(value))
+            WindowsDrivePathPattern.IsMatch(value) ||
+            UncPathPattern.IsMatch(value) ||
+            UnixAbsolutePathPattern.IsMatch(value))
         {
             Fail("unsafe-evidence", "Evidence contains credential-like text or a machine-specific absolute path.");
         }
