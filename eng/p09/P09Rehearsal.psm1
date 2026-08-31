@@ -1260,6 +1260,16 @@ function Get-Cp6P09RuntimeStartStateCategory {
             $containers = @($PsOutput | ConvertFrom-Json)
         }
         if ($containers.Count -eq 0) { return "$Phase-containers-missing" }
+        $kafka = @($containers | Where-Object { [string]$_.Service -ceq 'kafka' })
+        if ($kafka.Count -eq 1) {
+            $kafkaState = [string]$kafka[0].State
+            $kafkaHealthProperty = $kafka[0].PSObject.Properties['Health']
+            $kafkaHealth = if ($null -eq $kafkaHealthProperty) { '' } else { [string]$kafkaHealthProperty.Value }
+            if ($kafkaHealth -ceq 'unhealthy') { return "$Phase-kafka-unhealthy" }
+            if ($kafkaState -in @('exited','dead')) { return "$Phase-kafka-exited" }
+            if ($kafkaState -ceq 'restarting') { return "$Phase-kafka-restarting" }
+            if ($kafkaState -in @('created','paused')) { return "$Phase-kafka-not-running" }
+        }
         $app = @($containers | Where-Object { [string]$_.Service -ceq $Phase })
         $sidecar = @($containers | Where-Object { [string]$_.Service -ceq "$Phase-dapr" })
         if ($app.Count -ne 1 -or $sidecar.Count -ne 1) { return "$Phase-containers-missing" }
@@ -1294,7 +1304,7 @@ function Invoke-Cp6P09RuntimeStartStateDiagnostic {
     )
 
     try {
-        $result = Invoke-Cp6P09Compose $Context @('ps','--all','--format','json',$Phase,"$Phase-dapr") 30
+        $result = Invoke-Cp6P09Compose $Context @('ps','--all','--format','json',$Phase,"$Phase-dapr",'kafka') 30
         if ($result.ExitCode -ne 0) { return "$Phase-state-diagnostic-unavailable" }
         return Get-Cp6P09RuntimeStartStateCategory -Phase $Phase -PsOutput $result.StandardOutput
     }

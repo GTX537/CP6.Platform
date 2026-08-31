@@ -657,8 +657,17 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
         [ordered]@{ Service='publisher-dapr'; State='running'; Health='unhealthy'; ExitCode=0 }
     ) | ConvertTo-Json -Compress
     Assert-Equal 'publisher-sidecar-unhealthy' (Get-Cp6P09RuntimeStartStateCategory -Phase publisher -PsOutput $publisherUnhealthyState) 'Unhealthy publisher sidecar did not map to a closed state category.'
+    $receiverKafkaUnhealthyState = @(
+        [ordered]@{ Service='kafka'; State='running'; Health='unhealthy'; ExitCode=0 }
+    ) | ConvertTo-Json -Compress
+    Assert-Equal 'receiver-kafka-unhealthy' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput $receiverKafkaUnhealthyState) 'Unhealthy Kafka dependency was hidden by missing receiver containers.'
+    $publisherKafkaExitedState = @(
+        [ordered]@{ Service='kafka'; State='exited'; Health=''; ExitCode=137 }
+    ) | ConvertTo-Json -Compress
+    Assert-Equal 'publisher-kafka-exited' (Get-Cp6P09RuntimeStartStateCategory -Phase publisher -PsOutput $publisherKafkaExitedState) 'Exited Kafka dependency was hidden by missing publisher containers.'
     Assert-Equal 'receiver-containers-missing' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput '[]') 'Missing receiver containers did not map to a closed state category.'
     Assert-Equal 'publisher-state-diagnostic-unavailable' (Get-Cp6P09RuntimeStartStateCategory -Phase publisher -PsOutput 'not-json') 'Invalid Compose state output escaped the closed category.'
+    Assert-True ($moduleText.Contains("@('ps','--all','--format','json',`$Phase,`"`$Phase-dapr`",'kafka')")) 'Runtime-start state diagnostic does not include the Kafka dependency.'
 
     $validInvocationTrace = [pscustomobject]@{
         invocationTraceId='44444444444444444444444444444444'; invokerSpanId='5555555555555555'
