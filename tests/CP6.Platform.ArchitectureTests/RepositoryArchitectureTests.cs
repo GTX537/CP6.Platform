@@ -10,7 +10,7 @@ public sealed class RepositoryArchitectureTests
         @"Grafana|Prometheus",
         RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
     private static readonly Regex ForbiddenTempoNames = new(
-        @"(?:Tempo|tempo)(?=$|_|[A-Z])|TEMPO(?=$|_)",
+        @"(?<![A-Za-z0-9])(?i:tempo)(?![A-Za-z0-9])|(?:Tempo|tempo|TEMPO)(?=[A-Z0-9])",
         RegexOptions.CultureInvariant);
 
     public static TheoryData<string> ForbiddenTempoCases => new()
@@ -35,7 +35,15 @@ public sealed class RepositoryArchitectureTests
         "tempo_endpoint",
         "TEMPO_ENDPOINT",
         "addTempoExporter",
-        "temporaryTempoDirectory"
+        "temporaryTempoDirectory",
+        "tempo:4317",
+        "http://tempo:4317",
+        "tempo backend",
+        "Tempo backend",
+        "tempo-client",
+        "Tempo.Endpoint",
+        "Tempo/Exporter",
+        "TEMPO-ENDPOINT"
     };
 
     public static TheoryData<string> AllowedTemporaryCases => new()
