@@ -99,6 +99,59 @@ public sealed class P09RuntimeProfileTests
         { "write-on-receiver", "write-on-receiver" }
     };
 
+    public static TheoryData<string, string> FixedInvariantRejectionCases => new()
+    {
+        { "schema-version", "schema-version" },
+        { "profile-id", "profile-id" },
+        { "orchestration-image", "kubectl-image" },
+        { "receiver-app-id", "crm-app-id" },
+        { "provisioner-principal", "crm-app-id" },
+        { "unauthorized-app-id", "crm-app-id" },
+        { "consumer-group", "consumer-group" },
+        { "publish-name", "component-mismatch" },
+        { "publish-direction", "component-mismatch" },
+        { "publish-scope", "component-scope" },
+        { "publish-username-ref", "component-mismatch" },
+        { "publish-password-ref", "component-mismatch" },
+        { "subscribe-name", "component-mismatch" },
+        { "subscribe-direction", "component-mismatch" },
+        { "subscribe-scope", "component-scope" },
+        { "subscribe-username-ref", "component-mismatch" },
+        { "subscribe-password-ref", "component-mismatch" },
+        { "component-count", "component-mismatch" },
+        { "event-type", "event-type" },
+        { "retention", "topic-retention" },
+        { "max-message-bytes", "topic-message-size" },
+        { "app-network", "compose-network" },
+        { "runtime-network", "compose-network" },
+        { "kafka-host-port", "kafka-host-port" },
+        { "host-network", "host-network" },
+        { "privileged", "privileged-runtime" },
+        { "docker-socket", "container-socket" },
+        { "host-path", "host-path" },
+        { "kubernetes-namespace", "cluster-namespace" },
+        { "kubernetes-label", "nondeployable-label" },
+        { "default-deny", "cluster-policy" },
+        { "dns-egress", "cluster-policy" },
+        { "probe-ingress", "cluster-policy" },
+        { "kafka-egress", "cluster-policy" },
+        { "forbidden-kinds-order", "forbidden-kinds" },
+        { "forbidden-kinds-content", "forbidden-kinds" },
+        { "evidence-schema", "evidence-schema" },
+        { "required-check-removed", "required-checks" },
+        { "required-check-reordered", "required-checks" },
+        { "required-check-duplicated", "required-checks" },
+        { "nested-missing", "missing-property" },
+        { "nested-unknown", "unknown-property" },
+        { "nested-wrong-type", "wrong-type" }
+    };
+
+    public static TheoryData<string> EscapedLoneSurrogateJson => new()
+    {
+        "{\"x\":\"\\uD800\"}",
+        "{\"\\uD800\":\"x\"}"
+    };
+
     public static TheoryData<string> InvalidJsonCases => new()
     {
         "{",
@@ -194,6 +247,16 @@ public sealed class P09RuntimeProfileTests
         Assert.Equal(expectedCheckId, exception.CheckId);
     }
 
+    [Theory]
+    [MemberData(nameof(FixedInvariantRejectionCases))]
+    public void Parse_FixedInvariantMutation_ThrowsStableCheckId(string mutation, string expectedCheckId)
+    {
+        var exception = Assert.Throws<Cp6P09ContractException>(
+            () => Cp6P09RuntimeProfile.Parse(BuildFixedInvariantMutation(mutation)));
+
+        Assert.Equal(expectedCheckId, exception.CheckId);
+    }
+
     [Fact]
     public void Parse_MissingProperty_ThrowsStableCheckId()
     {
@@ -242,6 +305,24 @@ public sealed class P09RuntimeProfileTests
         byte[] invalidUtf8 = [(byte)'{', (byte)'\"', (byte)'x', (byte)'\"', (byte)':', (byte)'\"', 0xFF, (byte)'\"', (byte)'}'];
 
         var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09RuntimeProfile.Parse(invalidUtf8));
+
+        Assert.Equal("invalid-json", exception.CheckId);
+    }
+
+    [Theory]
+    [MemberData(nameof(EscapedLoneSurrogateJson))]
+    public void Parse_EscapedLoneSurrogate_ThrowsInvalidJson(string json)
+    {
+        var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09RuntimeProfile.Parse(json));
+
+        Assert.Equal("invalid-json", exception.CheckId);
+    }
+
+    [Theory]
+    [MemberData(nameof(EscapedLoneSurrogateJson))]
+    public void Canonicalize_EscapedLoneSurrogate_ThrowsInvalidJson(string json)
+    {
+        var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09Json.Canonicalize(json));
 
         Assert.Equal("invalid-json", exception.CheckId);
     }
@@ -344,6 +425,76 @@ public sealed class P09RuntimeProfileTests
     }
 
     private static JsonObject ParseValidRoot() => JsonNode.Parse(ValidProfileJson)!.AsObject();
+
+    private static string BuildFixedInvariantMutation(string mutation)
+    {
+        var root = ParseValidRoot();
+        var runtime = root["runtime"]!.AsObject();
+        var identities = root["identities"]!.AsObject();
+        var components = root["components"]!.AsArray();
+        var topic = root["topic"]!.AsObject();
+        var compose = root["compose"]!.AsObject();
+        var cluster = root["kubernetes"]!.AsObject();
+        var evidence = root["evidence"]!.AsObject();
+
+        switch (mutation)
+        {
+            case "schema-version": root["schemaVersion"] = "2"; break;
+            case "profile-id": root["profileId"] = "cp6-platform-p09-other"; break;
+            case "orchestration-image": runtime["kubectlImage"] = "registry.k8s.io/kubectl:latest"; break;
+            case "receiver-app-id": identities["receiverAppId"] = "cp6-p09-other-receiver"; break;
+            case "provisioner-principal": identities["provisionerPrincipal"] = "cp6-p09-other-provisioner"; break;
+            case "unauthorized-app-id": identities["unauthorizedAppId"] = "cp6-p09-other-unauthorized"; break;
+            case "consumer-group": identities["consumerGroup"] = "cp6-p09-other-group"; break;
+            case "publish-name": components[0]!["name"] = "cp6-p09-other-publish"; break;
+            case "publish-direction": components[0]!["direction"] = "Subscribe"; break;
+            case "publish-scope": components[0]!["scope"]![0] = "cp6-p09-probe-receiver"; break;
+            case "publish-username-ref": components[0]!["usernameSecretRef"] = "other-username"; break;
+            case "publish-password-ref": components[0]!["passwordSecretRef"] = "other-password"; break;
+            case "subscribe-name": components[1]!["name"] = "cp6-p09-other-subscribe"; break;
+            case "subscribe-direction": components[1]!["direction"] = "Publish"; break;
+            case "subscribe-scope": components[1]!["scope"]![0] = "cp6-p09-probe-publisher"; break;
+            case "subscribe-username-ref": components[1]!["usernameSecretRef"] = "other-username"; break;
+            case "subscribe-password-ref": components[1]!["passwordSecretRef"] = "other-password"; break;
+            case "component-count": components.RemoveAt(components.Count - 1); break;
+            case "event-type": topic["eventType"] = "com.gtx537.platform.other.v1"; break;
+            case "retention": topic["retentionMs"] = 7_200_000; break;
+            case "max-message-bytes": topic["maxMessageBytes"] = 2_097_152; break;
+            case "app-network": compose["appNetwork"] = "other-app"; break;
+            case "runtime-network": compose["runtimeNetwork"] = "other-runtime"; break;
+            case "kafka-host-port": compose["kafkaHostPort"] = true; break;
+            case "host-network": compose["hostNetwork"] = true; break;
+            case "privileged": compose["privileged"] = true; break;
+            case "docker-socket": compose["dockerSocket"] = true; break;
+            case "host-path": compose["hostPath"] = true; break;
+            case "kubernetes-namespace": cluster["namespace"] = "other"; break;
+            case "kubernetes-label": cluster["nonDeployableLabel"] = "cp6.io/nondeployable=false"; break;
+            case "default-deny": cluster["defaultDeny"] = false; break;
+            case "dns-egress": cluster["dnsEgress"] = false; break;
+            case "probe-ingress": cluster["minimalProbeIngress"] = false; break;
+            case "kafka-egress": cluster["minimalKafkaEgress"] = false; break;
+            case "forbidden-kinds-order": SwapFirstTwo(cluster["forbiddenKinds"]!.AsArray()); break;
+            case "forbidden-kinds-content": cluster["forbiddenKinds"]![0] = "ConfigMap"; break;
+            case "evidence-schema": evidence["schemaId"] = "https://cp6.example/contracts/other.json"; break;
+            case "required-check-removed": evidence["requiredChecks"]!.AsArray().RemoveAt(0); break;
+            case "required-check-reordered": SwapFirstTwo(evidence["requiredChecks"]!.AsArray()); break;
+            case "required-check-duplicated": evidence["requiredChecks"]!.AsArray().Add("profile-valid"); break;
+            case "nested-missing": runtime.Remove("daprImage"); break;
+            case "nested-unknown": runtime["unexpected"] = true; break;
+            case "nested-wrong-type": runtime["daprImage"] = 1; break;
+            default: throw new ArgumentOutOfRangeException(nameof(mutation));
+        }
+
+        return root.ToJsonString();
+    }
+
+    private static void SwapFirstTwo(JsonArray values)
+    {
+        var first = values[0]!.DeepClone();
+        var second = values[1]!.DeepClone();
+        values[0] = second;
+        values[1] = first;
+    }
 
     private static string BuildInvalidProfile(string mutation)
     {

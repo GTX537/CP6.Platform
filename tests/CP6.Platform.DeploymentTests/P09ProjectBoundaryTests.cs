@@ -13,6 +13,15 @@ namespace CP6.Platform.DeploymentTests;
 public sealed class P09ProjectBoundaryTests
 {
     private static readonly string RepositoryRoot = FindRepositoryRoot();
+    private static readonly Regex[] ForbiddenSourceOperationPatterns =
+    [
+        new(
+            @"(?:(?:global::)?System\s*\.\s*Diagnostics\s*\.\s*)?Process\s*\.\s*Start\s*\(",
+            RegexOptions.CultureInvariant),
+        new(
+            @"(?:(?:global::)?System\s*\.\s*)?Environment\s*\.\s*GetEnvironmentVariable\s*\(",
+            RegexOptions.CultureInvariant)
+    ];
 
     [Fact]
     public void ProjectPackageIdentityAndEvaluatedLocalVersion_AreExact()
@@ -48,7 +57,7 @@ public sealed class P09ProjectBoundaryTests
     }
 
     [Fact]
-    public void ProductionSourcesAndUserStrings_DoNotContainRuntimeOperations()
+    public void ProductionSourcesAndAssembly_DoNotContainRuntimeOperationApis()
     {
         var sourceRoot = Path.Combine(RepositoryRoot, "src", "CP6.Platform.Deployment");
         var sourceText = string.Join(
@@ -61,9 +70,7 @@ public sealed class P09ProjectBoundaryTests
         foreach (var forbidden in new[]
                  {
                      "System.Diagnostics.Process",
-                     "GetEnvironmentVariable",
-                     "Docker",
-                     "kubectl"
+                     "GetEnvironmentVariable"
                  })
         {
             Assert.False(
@@ -72,8 +79,32 @@ public sealed class P09ProjectBoundaryTests
             Assert.False(
                 ContainsBytesIgnoringAsciiCase(assemblyBytes, Encoding.Unicode.GetBytes(forbidden)),
                 $"Production assembly contains UTF-16 text matching '{forbidden}' without regard to case.");
-            Assert.DoesNotContain(forbidden, sourceText, StringComparison.OrdinalIgnoreCase);
         }
+
+        Assert.Empty(FindForbiddenSourceOperations(sourceText));
+    }
+
+    [Fact]
+    public void SourceOperationScan_RejectsLowercaseDockerProcessInvocationMutation()
+    {
+        const string mutatedSource = "global::System.Diagnostics.Process.Start(\"docker\", \"run probe\");";
+
+        Assert.NotEmpty(FindForbiddenSourceOperations(mutatedSource));
+    }
+
+    [Fact]
+    public void ProductionSource_StoresCanonicalRuntimeVocabularyAsLiterals()
+    {
+        var source = File.ReadAllText(Path.Combine(
+            RepositoryRoot,
+            "src",
+            "CP6.Platform.Deployment",
+            "Cp6P09RuntimeProfileValidator.cs"));
+
+        Assert.Contains("\"kubectlImage\"", source, StringComparison.Ordinal);
+        Assert.Contains("\"registry.k8s.io/kubectl:v1.34.1\"", source, StringComparison.Ordinal);
+        Assert.Contains("\"kubectl-image\"", source, StringComparison.Ordinal);
+        Assert.Contains("\"dockerSocket\"", source, StringComparison.Ordinal);
     }
 
     [Fact]
@@ -128,6 +159,12 @@ public sealed class P09ProjectBoundaryTests
 
     private static byte ToLowerAscii(byte value) =>
         value is >= (byte)'A' and <= (byte)'Z' ? (byte)(value + ('a' - 'A')) : value;
+
+    private static string[] FindForbiddenSourceOperations(string sourceText) =>
+        ForbiddenSourceOperationPatterns
+            .Where(pattern => pattern.IsMatch(sourceText))
+            .Select(pattern => pattern.ToString())
+            .ToArray();
 
     private static bool HasDirectorySegment(string path, string segment) =>
         path.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)

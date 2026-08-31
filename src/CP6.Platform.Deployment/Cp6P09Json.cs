@@ -50,7 +50,7 @@ public static class Cp6P09Json
 
             return stream.ToArray();
         }
-        catch (JsonException exception)
+        catch (Exception exception) when (exception is JsonException or InvalidOperationException)
         {
             throw InvalidJson(exception);
         }
@@ -90,6 +90,9 @@ public static class Cp6P09Json
                         }
 
                         break;
+                    case JsonTokenType.String:
+                        _ = reader.GetString();
+                        break;
                     case JsonTokenType.EndObject:
                         if (objectProperties.Count == 0)
                         {
@@ -110,7 +113,7 @@ public static class Cp6P09Json
         {
             throw;
         }
-        catch (Exception exception) when (exception is JsonException or DecoderFallbackException)
+        catch (Exception exception) when (exception is JsonException or DecoderFallbackException or InvalidOperationException)
         {
             throw InvalidJson(exception);
         }

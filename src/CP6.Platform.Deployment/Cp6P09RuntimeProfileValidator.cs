@@ -10,10 +10,10 @@ internal static class Cp6P09RuntimeProfileValidator
     private const string ProvisionerPrincipal = "cp6-p09-provisioner";
     private const string UnauthorizedAppId = "cp6-p09-unauthorized-probe";
     private const string ExpectedEventType = "com.gtx537.platform.contract-example.changed.v1";
-    private static readonly string OrchestrationImageProperty = string.Concat("kube", "ctlImage");
-    private static readonly string ExpectedOrchestrationImage = string.Concat("registry.k8s.io/kube", "ctl:v1.34.1");
-    private static readonly string OrchestrationImageCheck = string.Concat("kube", "ctl-image");
-    private static readonly string ContainerSocketProperty = string.Concat("dock", "erSocket");
+    private const string OrchestrationImageProperty = "kubectlImage";
+    private const string ExpectedOrchestrationImage = "registry.k8s.io/kubectl:v1.34.1";
+    private const string OrchestrationImageCheck = "kubectl-image";
+    private const string ContainerSocketProperty = "dockerSocket";
 
     private static readonly string[] RootProperties =
     [
