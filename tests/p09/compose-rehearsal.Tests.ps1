@@ -130,6 +130,52 @@ try {
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
 
+    $aclBatchArgs = Get-Cp6P09AclBatchDockerArguments `
+        -ProjectName 'cp6-p09-abcdef0123456789' `
+        -ComposeFile (Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml')
+    Assert-Equal @(
+        'compose','--project-name','cp6-p09-abcdef0123456789','--file',(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'),
+        '--profile','provision','run','--no-TTY','--rm','--no-deps','--entrypoint','/bin/sh','kafka-admin','-c'
+    ) @($aclBatchArgs[0..14]) 'ACL batch command drifted from exact canonical Compose ordering.'
+    $aclBatchShell = [string]$aclBatchArgs[15]
+    Assert-Equal 9 ([regex]::Matches($aclBatchShell,'/opt/kafka/bin/kafka-acls\.sh')).Count 'ACL batch does not contain exactly nine fixed add commands.'
+    foreach ($ordinal in 1..9) {
+        Assert-True ($aclBatchShell.Contains(('|| exit {0}' -f (10 + $ordinal)))) "ACL batch does not map tuple $ordinal to a fixed exit ordinal."
+        Assert-Equal ('acl-add-first-{0:d2}' -f $ordinal) (Get-Cp6P09AclBatchFailureId -Phase first -ExitCode (10 + $ordinal)) 'First-pass ACL exit mapping drifted.'
+        Assert-Equal ('acl-add-replay-{0:d2}' -f $ordinal) (Get-Cp6P09AclBatchFailureId -Phase replay -ExitCode (10 + $ordinal)) 'Replay ACL exit mapping drifted.'
+    }
+    Assert-True ($aclBatchShell -notmatch '(?i)password|token|secret') 'ACL batch shell contains secret material.'
+    foreach ($fragment in @(
+        "'User:cp6-p09-probe-publisher' '--operation' 'Write' '--topic' 'cp6.platform.deployment-probe.v1'",
+        "'User:cp6-p09-probe-publisher' '--operation' 'Describe' '--topic' 'cp6.platform.deployment-probe.v1'",
+        "'User:cp6-p09-probe-receiver' '--operation' 'Read' '--topic' 'cp6.platform.deployment-probe.v1'",
+        "'User:cp6-p09-probe-receiver' '--operation' 'Describe' '--topic' 'cp6.platform.deployment-probe.v1'",
+        "'User:cp6-p09-probe-receiver' '--operation' 'Read' '--group' 'cp6-p09-probe-receiver-v1'",
+        "'User:cp6-p09-provisioner' '--operation' 'Create' '--topic' 'cp6.platform.deployment-probe.v1'",
+        "'User:cp6-p09-provisioner' '--operation' 'Alter' '--topic' 'cp6.platform.deployment-probe.v1'",
+        "'User:cp6-p09-provisioner' '--operation' 'Describe' '--topic' 'cp6.platform.deployment-probe.v1'",
+        "'User:cp6-p09-provisioner' '--operation' 'Describe' '--cluster'"
+    )) {
+        Assert-True ($aclBatchShell.Contains($fragment)) "ACL batch omitted exact tuple fragment: $fragment"
+    }
+    $aclBatchLog = Join-Path $testRoot 'acl-batch.jsonl'
+    $env:CP6_P09_FAKE_DOCKER_LOG = $aclBatchLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
+    $aclBatchContext = [pscustomobject]@{
+        RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
+        ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
+        Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$testRoot; CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
+        ProvisionFailureId='provision-first'
+    }
+    $module = Get-Module P09Rehearsal
+    & $module { param($context) Invoke-Cp6P09AclBatch -Context $context -Phase first; Invoke-Cp6P09AclBatch -Context $context -Phase replay } $aclBatchContext
+    $aclBatchCalls = @(Get-Content -LiteralPath $aclBatchLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 2 $aclBatchCalls.Count 'Provision must use exactly one ACL batch for first pass and one for replay.'
+    Assert-Equal @($aclBatchCalls[0].argv) @($aclBatchCalls[1].argv) 'First and replay ACL batch commands differ.'
+    Assert-Equal @(0,0) @($aclBatchCalls.stdinBytes) 'ACL batch unexpectedly received secret STDIN.'
+    $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
+
     Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
     Remove-Item -LiteralPath "$fakeLog.index" -Force -ErrorAction SilentlyContinue
     Test-Cp6P09ForeignTopic -Topic 'cp6.platform.deployment-probe.v1' -DockerCommand $fakeDocker | Out-Null

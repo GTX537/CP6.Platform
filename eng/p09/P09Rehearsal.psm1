@@ -453,6 +453,7 @@ function Get-Cp6P09StableFailureId {
         'principal-denied','appid-scope-denied','foreign-topic-denied','topic-list','image-digest','http-status','http-output-limit'
     )
     $allowed += @('topic-create-first','topic-describe-first','acl-list-first','topic-create-replay','acl-list-replay')
+    $allowed += @('acl-add-first-batch','acl-add-replay-batch')
     $allowed += @(1..9 | ForEach-Object { 'acl-add-first-{0:d2}' -f $_ })
     $allowed += @(1..9 | ForEach-Object { 'acl-add-replay-{0:d2}' -f $_ })
     if ($allowed -ccontains $Candidate) { return $Candidate }
@@ -703,6 +704,76 @@ function Wait-Cp6P09KafkaDataPlane {
     throw 'kafka-health'
 }
 
+function Get-Cp6P09AclSpecifications {
+    return @(
+        [pscustomobject]@{ Principal='cp6-p09-probe-publisher'; Operation='Write'; ResourceFlag='--topic'; ResourceName='cp6.platform.deployment-probe.v1' },
+        [pscustomobject]@{ Principal='cp6-p09-probe-publisher'; Operation='Describe'; ResourceFlag='--topic'; ResourceName='cp6.platform.deployment-probe.v1' },
+        [pscustomobject]@{ Principal='cp6-p09-probe-receiver'; Operation='Read'; ResourceFlag='--topic'; ResourceName='cp6.platform.deployment-probe.v1' },
+        [pscustomobject]@{ Principal='cp6-p09-probe-receiver'; Operation='Describe'; ResourceFlag='--topic'; ResourceName='cp6.platform.deployment-probe.v1' },
+        [pscustomobject]@{ Principal='cp6-p09-probe-receiver'; Operation='Read'; ResourceFlag='--group'; ResourceName='cp6-p09-probe-receiver-v1' },
+        [pscustomobject]@{ Principal='cp6-p09-provisioner'; Operation='Create'; ResourceFlag='--topic'; ResourceName='cp6.platform.deployment-probe.v1' },
+        [pscustomobject]@{ Principal='cp6-p09-provisioner'; Operation='Alter'; ResourceFlag='--topic'; ResourceName='cp6.platform.deployment-probe.v1' },
+        [pscustomobject]@{ Principal='cp6-p09-provisioner'; Operation='Describe'; ResourceFlag='--topic'; ResourceName='cp6.platform.deployment-probe.v1' },
+        [pscustomobject]@{ Principal='cp6-p09-provisioner'; Operation='Describe'; ResourceFlag='--cluster'; ResourceName=$null }
+    )
+}
+
+function Get-Cp6P09AclBatchDockerArguments {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][ValidatePattern('^cp6-p09-[a-f0-9]{16}$')][string]$ProjectName,
+        [Parameter(Mandatory)][string]$ComposeFile
+    )
+
+    $commands = [Collections.Generic.List[string]]::new()
+    $ordinal = 0
+    foreach ($acl in @(Get-Cp6P09AclSpecifications)) {
+        $ordinal++
+        $tokens = @(
+            '/opt/kafka/bin/kafka-acls.sh','--bootstrap-server','kafka:9092',
+            '--command-config','/etc/kafka/clients/provisioner.properties','--add',
+            '--allow-principal',"User:$($acl.Principal)",'--operation',$acl.Operation,$acl.ResourceFlag
+        )
+        if ($null -ne $acl.ResourceName) { $tokens += $acl.ResourceName }
+        foreach ($token in $tokens) {
+            if ($token -cnotmatch '^[A-Za-z0-9_./:@-]+$') { throw 'acl-add-first-batch' }
+        }
+        $quoted = @($tokens | ForEach-Object { "'$_'" }) -join ' '
+        $commands.Add("$quoted || exit $(10 + $ordinal)")
+    }
+    $shell = 'set -eu; ' + ($commands -join '; ')
+    return @(
+        'compose','--project-name',$ProjectName,'--file',([IO.Path]::GetFullPath($ComposeFile)),
+        '--profile','provision','run','--no-TTY','--rm','--no-deps','--entrypoint','/bin/sh','kafka-admin','-c',$shell
+    )
+}
+
+function Get-Cp6P09AclBatchFailureId {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][ValidateSet('first','replay')][string]$Phase,
+        [Parameter(Mandatory)][int]$ExitCode
+    )
+    if ($ExitCode -ge 11 -and $ExitCode -le 19) {
+        return 'acl-add-{0}-{1:d2}' -f $Phase, ($ExitCode - 10)
+    }
+    return "acl-add-$Phase-batch"
+}
+
+function Invoke-Cp6P09AclBatch {
+    param(
+        [Parameter(Mandatory)]$Context,
+        [Parameter(Mandatory)][ValidateSet('first','replay')][string]$Phase
+    )
+    $Context.ProvisionFailureId = "acl-add-$Phase-batch"
+    $arguments = Get-Cp6P09AclBatchDockerArguments -ProjectName $Context.ProjectName -ComposeFile $Context.ComposeFile
+    $result = Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -Arguments $arguments -WorkingDirectory $Context.RepositoryRoot -TimeoutSeconds 120 -EnvironmentVariables $Context.Environment
+    if ($result.ExitCode -ne 0) {
+        $failureId = Get-Cp6P09AclBatchFailureId -Phase $Phase -ExitCode $result.ExitCode
+        Assert-Cp6P09CommandSucceeded $result $failureId
+    }
+}
+
 function Get-Cp6P09NormalizedAcls {
     param([Parameter(Mandatory)]$Context, [string]$CheckId = 'acl-list')
     $result = Invoke-Cp6P09KafkaTool -Context $Context -Tool 'kafka-acls.sh' -Arguments @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list')
@@ -732,24 +803,7 @@ function Invoke-Cp6P09Provision {
     $describe = Invoke-Cp6P09KafkaTool $Context 'kafka-topics.sh' @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--describe','--topic',$topic)
     Assert-Cp6P09CommandSucceeded $describe $Context.ProvisionFailureId
     if ($describe.StandardOutput -notmatch 'PartitionCount:\s*3' -or $describe.StandardOutput -notmatch 'retention\.ms=3600000' -or $describe.StandardOutput -notmatch 'max\.message\.bytes=1048576') { throw 'topic-drift' }
-    $acls = @(
-        @('cp6-p09-probe-publisher','Write','--topic',$topic),
-        @('cp6-p09-probe-publisher','Describe','--topic',$topic),
-        @('cp6-p09-probe-receiver','Read','--topic',$topic),
-        @('cp6-p09-probe-receiver','Describe','--topic',$topic),
-        @('cp6-p09-probe-receiver','Read','--group','cp6-p09-probe-receiver-v1'),
-        @('cp6-p09-provisioner','Create','--topic',$topic),
-        @('cp6-p09-provisioner','Alter','--topic',$topic),
-        @('cp6-p09-provisioner','Describe','--topic',$topic),
-        @('cp6-p09-provisioner','Describe','--cluster',$null)
-    )
-    for ($aclIndex = 0; $aclIndex -lt $acls.Count; $aclIndex++) {
-        $acl = $acls[$aclIndex]
-        $Context.ProvisionFailureId = 'acl-add-first-{0:d2}' -f ($aclIndex + 1)
-        $args = @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--add','--allow-principal',"User:$($acl[0])",'--operation',$acl[1],$acl[2])
-        if ($null -ne $acl[3]) { $args += $acl[3] }
-        Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-acls.sh' $args) $Context.ProvisionFailureId
-    }
+    Invoke-Cp6P09AclBatch -Context $Context -Phase first
     $expected = @(
         'cp6-p09-probe-publisher|Topic|cp6.platform.deployment-probe.v1|Describe',
         'cp6-p09-probe-publisher|Topic|cp6.platform.deployment-probe.v1|Write',
@@ -766,13 +820,7 @@ function Invoke-Cp6P09Provision {
     if (($expected -join "`n") -cne ($first -join "`n")) { throw 'acl-drift' }
     $Context.ProvisionFailureId = 'topic-create-replay'
     Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-topics.sh' $topicArgs) $Context.ProvisionFailureId
-    for ($aclIndex = 0; $aclIndex -lt $acls.Count; $aclIndex++) {
-        $acl = $acls[$aclIndex]
-        $Context.ProvisionFailureId = 'acl-add-replay-{0:d2}' -f ($aclIndex + 1)
-        $args = @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--add','--allow-principal',"User:$($acl[0])",'--operation',$acl[1],$acl[2])
-        if ($null -ne $acl[3]) { $args += $acl[3] }
-        Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-acls.sh' $args) $Context.ProvisionFailureId
-    }
+    Invoke-Cp6P09AclBatch -Context $Context -Phase replay
     $Context.ProvisionFailureId = 'acl-list-replay'
     $second = Get-Cp6P09NormalizedAcls $Context $Context.ProvisionFailureId
     if (($first -join "`n") -cne ($second -join "`n")) { throw 'provision-idempotent' }
@@ -1276,6 +1324,8 @@ Export-ModuleMember -Function @(
     'Get-Cp6P09OwnedFileDockerArguments',
     'Get-Cp6P09ReadabilityDockerArguments',
     'Wait-Cp6P09KafkaDataPlane',
+    'Get-Cp6P09AclBatchDockerArguments',
+    'Get-Cp6P09AclBatchFailureId',
     'Get-Cp6P09StableFailureId',
     'Assert-Cp6P09TraceTopology',
     'Assert-Cp6P09ExpectedGitState',
