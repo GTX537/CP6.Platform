@@ -845,8 +845,13 @@ function Invoke-Cp6P09AclBatch {
 
 function Get-Cp6P09NormalizedAcls {
     param([Parameter(Mandatory)]$Context, [string]$CheckId = 'acl-list')
-    $result = Invoke-Cp6P09KafkaTool -Context $Context -Tool 'kafka-acls.sh' -Arguments @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list')
-    Assert-Cp6P09CommandSucceeded $result $CheckId
+    $result = $null
+    foreach ($attempt in 1..2) {
+        $result = Invoke-Cp6P09KafkaTool -Context $Context -Tool 'kafka-acls.sh' -Arguments @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list')
+        if ($result.ExitCode -eq 0) { break }
+        if ($attempt -eq 2) { Assert-Cp6P09CommandSucceeded $result $CheckId }
+        Start-Sleep -Milliseconds 250
+    }
     $current = $null
     $tuples = [Collections.Generic.List[string]]::new()
     foreach ($line in $result.StandardOutput.Replace("`r`n","`n").Split("`n")) {

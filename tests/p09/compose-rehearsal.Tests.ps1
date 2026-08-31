@@ -287,6 +287,23 @@ principal=User:cp6-p09-probe-receiver, host=*, operation=READ, permissionType=AL
 resourceType=CLUSTER, name=kafka-cluster, patternType=LITERAL)
 principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=ALLOW
 "@
+    $aclListRetryLog = Join-Path $testRoot 'acl-list-retry.jsonl'
+    $aclListRetryResponses = Join-Path $testRoot 'acl-list-retry-responses.jsonl'
+    @(
+        @{ exitCode=1; stdout=''; stderr='transient Docker ACL read failure' },
+        @{ exitCode=0; stdout=$aclDescription; stderr='' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $aclListRetryResponses -Encoding utf8NoBOM
+    $env:CP6_P09_FAKE_DOCKER_LOG = $aclListRetryLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $aclListRetryResponses
+    $aclListRetryContext = [pscustomobject]@{
+        RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
+        ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
+        Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$testRoot; CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
+    }
+    $retriedAcls = & $module { param($context) Get-Cp6P09NormalizedAcls -Context $context -CheckId 'acl-list-replay' } $aclListRetryContext
+    Assert-Equal 9 @($retriedAcls).Count 'ACL list retry did not return the normalized tuples from its successful attempt.'
+    Assert-Equal 2 @(Get-Content -LiteralPath $aclListRetryLog).Count 'ACL list did not retry exactly once after a transient command failure.'
+
     @(
         @{ exitCode=0; stdout=''; stderr='' },
         @{ exitCode=0; stdout=$topicDescription; stderr='' },
