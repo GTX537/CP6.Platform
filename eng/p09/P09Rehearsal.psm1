@@ -1314,6 +1314,25 @@ function Add-Cp6P09RunLog {
     [IO.File]::AppendAllText($LogPath,$line+"`n",[Text.UTF8Encoding]::new($false))
 }
 
+function Invoke-Cp6P09KubernetesPolicy {
+    param([Parameter(Mandatory)][string]$RepositoryRoot)
+
+    for ($attempt = 1; $attempt -le 2; $attempt++) {
+        try {
+            $result = Invoke-Cp6P09Process -FilePath 'pwsh' -ArgumentList @(
+                '-NoProfile', '-File', 'eng/test-p09-kubernetes.ps1'
+            ) -TimeoutSeconds 300 -MaximumOutputBytes 32768 -WorkingDirectory $RepositoryRoot
+            if ($result.ExitCode -eq 0) { return $result }
+        }
+        catch {
+            if ($attempt -eq 2) { throw 'kubernetes-policy' }
+        }
+        if ($attempt -lt 2) { Start-Sleep -Milliseconds 500 }
+    }
+
+    throw 'kubernetes-policy'
+}
+
 function Get-Cp6P09EvidenceObject {
     param([Parameter(Mandatory)]$Context,[Parameter(Mandatory)]$Profile,[Parameter(Mandatory)]$Matrix,[Parameter(Mandatory)]$Digests,[Parameter(Mandatory)]$Teardown,[Parameter(Mandatory)][string]$GitSha,[Parameter(Mandatory)][DateTimeOffset]$Started,[Parameter(Mandatory)][string]$Overall)
     $checks = @($script:RequiredChecks | ForEach-Object { [ordered]@{ id=$_; result=if ($Overall -ceq 'Passed') {'Passed'} else {'Failed'}; summary=$_ } })
@@ -1401,10 +1420,7 @@ function Invoke-Cp6P09Rehearsal {
     $config = Invoke-Cp6P09Compose $context @('--profile','negative','--profile','provision','config','--quiet') 30
     Assert-Cp6P09CommandSucceeded $config 'compose-contract'
     $profile = [IO.File]::ReadAllText($resolvedProfile,[Text.Encoding]::UTF8) | ConvertFrom-Json
-    $kubernetesGate = Invoke-Cp6P09Process -FilePath 'pwsh' -ArgumentList @(
-        '-NoProfile', '-File', 'eng/test-p09-kubernetes.ps1'
-    ) -TimeoutSeconds 300 -MaximumOutputBytes 32768 -WorkingDirectory $repository
-    Assert-Cp6P09CommandSucceeded $kubernetesGate 'kubernetes-policy'
+    $kubernetesGate = Invoke-Cp6P09KubernetesPolicy -RepositoryRoot $repository
     try {
         $kubernetesResult = $kubernetesGate.StandardOutput | ConvertFrom-Json
     }

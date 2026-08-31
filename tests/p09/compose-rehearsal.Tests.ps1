@@ -760,6 +760,8 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
         Assert-Equal $stableFailure (Get-Cp6P09StableFailureId -Candidate $stableFailure -Fallback 'provision-first') 'Stable provision failure id was lost.'
     }
     Assert-Equal 'runtime-matrix' (Get-Cp6P09StableFailureId -Candidate 'password=do-not-log C:\private\file' -Fallback 'runtime-matrix') 'Unsafe exception detail escaped the stable failure allowlist.'
+    Assert-True ($moduleText -match '(?s)function Invoke-Cp6P09KubernetesPolicy.+?for \(\$attempt = 1; \$attempt -le 2; \$attempt\+\+\).+?throw ''kubernetes-policy''') 'The inner Kubernetes policy gate does not have exactly one bounded whole-gate retry with a stable failure id.'
+    Assert-True ($moduleText.Contains('$kubernetesGate = Invoke-Cp6P09KubernetesPolicy -RepositoryRoot $repository')) 'The rehearsal bypasses the bounded inner Kubernetes policy helper.'
 
     $head = (& git -C $repositoryRoot rev-parse HEAD).Trim()
     $auditPaths = @(
