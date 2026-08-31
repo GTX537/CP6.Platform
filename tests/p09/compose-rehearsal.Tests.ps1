@@ -27,6 +27,36 @@ function Assert-Throws([scriptblock]$Action, [string]$MessagePattern) {
     throw "Expected exception matching '$MessagePattern'."
 }
 
+function Assert-Cp6P09ClientSourceMapping {
+    param(
+        [Parameter(Mandatory)][string]$Source,
+        [Parameter(Mandatory)][string]$FileName,
+        [Parameter(Mandatory)][string]$Username,
+        [Parameter(Mandatory)][string]$CredentialProperty,
+        [Parameter(Mandatory)][int]$TimeoutMilliseconds
+    )
+
+    $pattern = "(?s)@\(\s*'kafka/clients'\s*,\s*" +
+        [regex]::Escape("'$FileName'") +
+        "\s*,\s*'1000:1000'\s*,\s*\(New-Cp6P09ClientProperties\s+-Username\s+" +
+        [regex]::Escape("'$Username'") +
+        "\s+-Password\s+" +
+        [regex]::Escape('$Credentials.' + $CredentialProperty) +
+        "\s+-TimeoutMilliseconds\s+$TimeoutMilliseconds\)\s*\)"
+    Assert-True ($Source -match $pattern) "Runtime client source mapping drifted for $FileName."
+}
+
+function Assert-Cp6P09ProvisionerConfigOnly {
+    param(
+        [Parameter(Mandatory)][string]$Text,
+        [Parameter(Mandatory)][int]$ExpectedProvisionerCount,
+        [Parameter(Mandatory)][string]$Description
+    )
+
+    Assert-Equal $ExpectedProvisionerCount ([regex]::Matches($Text, [regex]::Escape('/etc/kafka/clients/provisioner.properties'))).Count "$Description provisioner config count drifted."
+    Assert-Equal 0 ([regex]::Matches($Text, [regex]::Escape('/etc/kafka/clients/readiness.properties'))).Count "$Description unexpectedly uses readiness.properties."
+}
+
 Assert-True (Test-Path -LiteralPath $modulePath -PathType Leaf) 'P09 rehearsal module is missing.'
 Assert-True (Test-Path -LiteralPath $runnerPath -PathType Leaf) 'P09 rehearsal runner is missing.'
 Import-Module $modulePath -Force
@@ -125,10 +155,28 @@ try {
     $normalizedProvisionerProperties = $provisionerProperties.Replace("`r`n", "`n")
     Assert-True ($normalizedReadinessProperties.Contains('request.timeout.ms=5000' + "`n" + 'default.api.timeout.ms=5000')) 'Readiness client properties do not retain the adjacent five-second Kafka timeouts.'
     Assert-True ($normalizedProvisionerProperties.Contains('request.timeout.ms=30000' + "`n" + 'default.api.timeout.ms=30000')) 'Provisioner client properties do not retain the adjacent thirty-second Kafka timeouts.'
-    $readinessClientSource = '(?s)@\(\s*''kafka/clients''\s*,\s*''readiness\.properties''\s*,\s*''1000:1000''\s*,\s*\(New-Cp6P09ClientProperties\s+-Username\s+''cp6-p09-provisioner''\s+-Password\s+\$Credentials\.Provisioner\s+-TimeoutMilliseconds\s+5000\)\s*\)'
-    $provisionerClientSource = '(?s)@\(\s*''kafka/clients''\s*,\s*''provisioner\.properties''\s*,\s*''1000:1000''\s*,\s*\(New-Cp6P09ClientProperties\s+-Username\s+''cp6-p09-provisioner''\s+-Password\s+\$Credentials\.Provisioner\s+-TimeoutMilliseconds\s+30000\)\s*\)'
-    Assert-True ($moduleText -match $readinessClientSource) 'Runtime population does not generate the provisioner readiness client file with a five-second deadline.'
-    Assert-True ($moduleText -match $provisionerClientSource) 'Runtime population does not generate the provisioner client file with a thirty-second deadline.'
+    $clientSourceMappings = @(
+        [pscustomobject]@{ FileName='readiness.properties'; Username='cp6-p09-provisioner'; CredentialProperty='Provisioner'; TimeoutMilliseconds=5000 },
+        [pscustomobject]@{ FileName='provisioner.properties'; Username='cp6-p09-provisioner'; CredentialProperty='Provisioner'; TimeoutMilliseconds=30000 },
+        [pscustomobject]@{ FileName='publisher.properties'; Username='cp6-p09-probe-publisher'; CredentialProperty='Publisher'; TimeoutMilliseconds=30000 },
+        [pscustomobject]@{ FileName='receiver.properties'; Username='cp6-p09-probe-receiver'; CredentialProperty='Receiver'; TimeoutMilliseconds=30000 },
+        [pscustomobject]@{ FileName='unauthorized.properties'; Username='cp6-p09-unauthorized-probe'; CredentialProperty='Unauthorized'; TimeoutMilliseconds=30000 }
+    )
+    foreach ($mapping in $clientSourceMappings) {
+        Assert-Cp6P09ClientSourceMapping -Source $moduleText -FileName $mapping.FileName -Username $mapping.Username -CredentialProperty $mapping.CredentialProperty -TimeoutMilliseconds $mapping.TimeoutMilliseconds
+    }
+    $publisherTimeoutMutation = $moduleText.Replace(
+        "-Username 'cp6-p09-probe-publisher' -Password `$Credentials.Publisher -TimeoutMilliseconds 30000",
+        "-Username 'cp6-p09-probe-publisher' -Password `$Credentials.Publisher -TimeoutMilliseconds 5000")
+    Assert-Throws {
+        Assert-Cp6P09ClientSourceMapping -Source $publisherTimeoutMutation -FileName 'publisher.properties' -Username 'cp6-p09-probe-publisher' -CredentialProperty 'Publisher' -TimeoutMilliseconds 30000
+    } 'publisher.properties|mapping'
+    Assert-Throws {
+        & $module { New-Cp6P09ClientProperties -Username 'cp6-p09-provisioner' -Password 'redacted-test-value' }
+    } 'mandatory|MissingMandatoryParameter'
+    Assert-Throws {
+        & $module { New-Cp6P09ClientProperties -Username 'cp6-p09-provisioner' -Password 'redacted-test-value' -TimeoutMilliseconds 6000 }
+    } 'ValidateSet|validation|accepted values'
 
     $readinessLog = Join-Path $testRoot 'readiness.jsonl'
     $readinessResponses = Join-Path $testRoot 'readiness-responses.jsonl'
@@ -165,6 +213,11 @@ try {
     ) @($aclBatchArgs[0..14]) 'ACL batch command drifted from exact canonical Compose ordering.'
     $aclBatchShell = [string]$aclBatchArgs[15]
     Assert-Equal 9 ([regex]::Matches($aclBatchShell,'/opt/kafka/bin/kafka-acls\.sh')).Count 'ACL batch does not contain exactly nine fixed add commands.'
+    Assert-Cp6P09ProvisionerConfigOnly -Text $aclBatchShell -ExpectedProvisionerCount 9 -Description 'ACL batch'
+    $aclReadinessMutation = $aclBatchShell.Replace('/etc/kafka/clients/provisioner.properties','/etc/kafka/clients/readiness.properties')
+    Assert-Throws {
+        Assert-Cp6P09ProvisionerConfigOnly -Text $aclReadinessMutation -ExpectedProvisionerCount 9 -Description 'Mutated ACL batch'
+    } 'provisioner config count|readiness.properties'
     foreach ($ordinal in 1..9) {
         Assert-True ($aclBatchShell.Contains(('|| exit {0}' -f (10 + $ordinal)))) "ACL batch does not map tuple $ordinal to a fixed exit ordinal."
         Assert-Equal ('acl-add-first-{0:d2}' -f $ordinal) (Get-Cp6P09AclBatchFailureId -Phase first -ExitCode (10 + $ordinal)) 'First-pass ACL exit mapping drifted.'
@@ -216,6 +269,84 @@ try {
         & $module { param($context) Invoke-Cp6P09AclBatch -Context $context -Phase first } $aclBatchContext
     } 'acl-add-first-03'
     Assert-Equal 'timeout' $aclBatchContext.ProvisionFailureCategory 'ACL failure did not retain only its closed diagnostic category.'
+
+    $provisionLog = Join-Path $testRoot 'provision.jsonl'
+    $provisionResponses = Join-Path $testRoot 'provision-responses.jsonl'
+    $topicDescription = 'Topic: cp6.platform.deployment-probe.v1 PartitionCount: 3 ReplicationFactor: 1 Configs: retention.ms=3600000,max.message.bytes=1048576'
+    $aclDescription = @"
+resourceType=TOPIC, name=cp6.platform.deployment-probe.v1, patternType=LITERAL)
+principal=User:cp6-p09-probe-publisher, host=*, operation=WRITE, permissionType=ALLOW
+principal=User:cp6-p09-probe-publisher, host=*, operation=DESCRIBE, permissionType=ALLOW
+principal=User:cp6-p09-probe-receiver, host=*, operation=READ, permissionType=ALLOW
+principal=User:cp6-p09-probe-receiver, host=*, operation=DESCRIBE, permissionType=ALLOW
+principal=User:cp6-p09-provisioner, host=*, operation=CREATE, permissionType=ALLOW
+principal=User:cp6-p09-provisioner, host=*, operation=ALTER, permissionType=ALLOW
+principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=ALLOW
+resourceType=GROUP, name=cp6-p09-probe-receiver-v1, patternType=LITERAL)
+principal=User:cp6-p09-probe-receiver, host=*, operation=READ, permissionType=ALLOW
+resourceType=CLUSTER, name=kafka-cluster, patternType=LITERAL)
+principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=ALLOW
+"@
+    @(
+        @{ exitCode=0; stdout=''; stderr='' },
+        @{ exitCode=0; stdout=$topicDescription; stderr='' },
+        @{ exitCode=0; stdout=''; stderr='' },
+        @{ exitCode=0; stdout=$aclDescription; stderr='' },
+        @{ exitCode=0; stdout=''; stderr='' },
+        @{ exitCode=0; stdout=''; stderr='' },
+        @{ exitCode=0; stdout=$aclDescription; stderr='' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $provisionResponses -Encoding utf8NoBOM
+    $env:CP6_P09_FAKE_DOCKER_LOG = $provisionLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $provisionResponses
+    $provisionContext = [pscustomobject]@{
+        RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
+        ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
+        Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$testRoot; CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
+        ProvisionFailureId='provision-first'; ProvisionFailureCategory=$null
+    }
+    & $module { param($context) Invoke-Cp6P09Provision -Context $context } $provisionContext
+    $provisionCalls = @(Get-Content -LiteralPath $provisionLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 7 $provisionCalls.Count 'Provision command count drifted.'
+    $kafkaToolPrefix = @(
+        'compose','--project-name','cp6-p09-abcdef0123456789','--file',(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'),
+        '--profile','provision','run','--no-TTY','--rm','--no-deps','--entrypoint'
+    )
+    $topicCreateArguments = @(
+        '/opt/kafka/bin/kafka-topics.sh','kafka-admin','--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties',
+        '--create','--if-not-exists','--topic','cp6.platform.deployment-probe.v1','--partitions','3','--replication-factor','1',
+        '--config','retention.ms=3600000','--config','max.message.bytes=1048576'
+    )
+    $topicDescribeArguments = @(
+        '/opt/kafka/bin/kafka-topics.sh','kafka-admin','--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties',
+        '--describe','--topic','cp6.platform.deployment-probe.v1'
+    )
+    $aclListArguments = @(
+        '/opt/kafka/bin/kafka-acls.sh','kafka-admin','--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list'
+    )
+    Assert-Equal ($kafkaToolPrefix + $topicCreateArguments) @($provisionCalls[0].argv) 'First Topic create command drifted from provisioner.properties.'
+    Assert-Equal ($kafkaToolPrefix + $topicDescribeArguments) @($provisionCalls[1].argv) 'Topic describe command drifted from provisioner.properties.'
+    Assert-Equal $aclBatchArgs @($provisionCalls[2].argv) 'First ACL batch drifted from the canonical provisioner command.'
+    Assert-Equal ($kafkaToolPrefix + $aclListArguments) @($provisionCalls[3].argv) 'First ACL list command drifted from provisioner.properties.'
+    Assert-Equal ($kafkaToolPrefix + $topicCreateArguments) @($provisionCalls[4].argv) 'Replay Topic create command drifted from provisioner.properties.'
+    Assert-Equal $aclBatchArgs @($provisionCalls[5].argv) 'Replay ACL batch drifted from the canonical provisioner command.'
+    Assert-Equal ($kafkaToolPrefix + $aclListArguments) @($provisionCalls[6].argv) 'Replay ACL list command drifted from provisioner.properties.'
+    foreach ($call in $provisionCalls) {
+        Assert-Cp6P09ProvisionerConfigOnly -Text (@($call.argv) -join ' ') -ExpectedProvisionerCount $(if (($call.argv -join ' ') -match '/bin/sh') { 9 } else { 1 }) -Description 'Provision fake-Docker argv'
+    }
+
+    $topicListLog = Join-Path $testRoot 'topic-list.jsonl'
+    $topicListResponses = Join-Path $testRoot 'topic-list-responses.jsonl'
+    @{ exitCode=0; stdout="cp6.platform.deployment-probe.v1`n"; stderr='' } | ConvertTo-Json -Compress | Set-Content -LiteralPath $topicListResponses -Encoding utf8NoBOM
+    $env:CP6_P09_FAKE_DOCKER_LOG = $topicListLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $topicListResponses
+    $topicList = & $module { param($context) Get-Cp6P09TopicList -Context $context } $provisionContext
+    Assert-Equal @('cp6.platform.deployment-probe.v1') @($topicList) 'Topic list parsing drifted.'
+    $topicListCall = (Get-Content -LiteralPath $topicListLog | ConvertFrom-Json)
+    Assert-Equal ($kafkaToolPrefix + @(
+        '/opt/kafka/bin/kafka-topics.sh','kafka-admin','--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list'
+    )) @($topicListCall.argv) 'Topic list command drifted from provisioner.properties.'
+    Assert-Cp6P09ProvisionerConfigOnly -Text (@($topicListCall.argv) -join ' ') -ExpectedProvisionerCount 1 -Description 'Topic list fake-Docker argv'
+
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
 
