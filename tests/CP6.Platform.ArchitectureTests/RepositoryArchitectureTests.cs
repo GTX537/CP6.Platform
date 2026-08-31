@@ -90,22 +90,36 @@ public sealed class RepositoryArchitectureTests
         var projects = LoadProjects();
         var deploymentAssets = projects["CP6.Platform.Deployment"].Document.Descendants("None")
             .Where(item => string.Equals(item.Attribute("Pack")?.Value, "true", StringComparison.OrdinalIgnoreCase))
-            .Select(item => item.Attribute("PackagePath")?.Value ?? string.Empty)
+            .Select(item => (
+                Include: item.Attribute("Include")?.Value ?? string.Empty,
+                PackagePath: item.Attribute("PackagePath")?.Value ?? string.Empty))
             .ToArray();
+        var expectedDeploymentAssets = new[]
+        {
+            (
+                Include: "../../contracts/p09/**/*",
+                PackagePath: "contracts/p09/%(RecursiveDir)%(Filename)%(Extension)"),
+            (
+                Include: "../../deploy/p09/**/*",
+                PackagePath: "deploy/p09/%(RecursiveDir)%(Filename)%(Extension)")
+        };
 
-        Assert.Equal(
-            [
-                "contracts/p09/%(RecursiveDir)%(Filename)%(Extension)",
-                "deploy/p09/%(RecursiveDir)%(Filename)%(Extension)"
-            ],
-            deploymentAssets);
+        Assert.Equal(expectedDeploymentAssets, deploymentAssets);
 
         foreach (var (_, project) in projects.Where(project => project.Key != "CP6.Platform.Deployment"))
         {
+            var sourcePaths = project.Document.Descendants("None")
+                .Select(item => item.Attribute("Include")?.Value ?? string.Empty);
             var packedAssets = project.Document.Descendants("None")
                 .Where(item => string.Equals(item.Attribute("Pack")?.Value, "true", StringComparison.OrdinalIgnoreCase))
                 .Select(item => item.Attribute("PackagePath")?.Value ?? string.Empty);
 
+            Assert.DoesNotContain(
+                sourcePaths,
+                path => path.Contains("contracts/p09", StringComparison.OrdinalIgnoreCase)
+                        || path.Contains(@"contracts\p09", StringComparison.OrdinalIgnoreCase)
+                        || path.Contains("deploy/p09", StringComparison.OrdinalIgnoreCase)
+                        || path.Contains(@"deploy\p09", StringComparison.OrdinalIgnoreCase));
             Assert.DoesNotContain(
                 packedAssets,
                 path => path.StartsWith("contracts/p09", StringComparison.Ordinal)
