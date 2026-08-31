@@ -553,6 +553,26 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     ) $readabilityArgs 'Target-UID directory-group readability command drifted.'
     Assert-True ($moduleText -match "(?s)function Get-Cp6P09ReadabilityDockerArguments.+?'--profile','provision','run','--no-TTY','--rm','--no-deps','--user'") 'Target-UID readability probes must disable Compose TTY allocation.'
     Assert-True ($moduleText.Contains("`$Context.PopulationFailureId = 'runtime-readability'")) 'Generic readability timeouts are not mapped to the stable runtime-readability id.'
+    $populationRetryLog = Join-Path $testRoot 'population-retry.jsonl'
+    $populationRetryResponses = Join-Path $testRoot 'population-retry-responses.jsonl'
+    @(
+        @{ exitCode=1; stdout=''; stderr='transient Docker write failure' }
+        @{ exitCode=0; stdout=''; stderr='' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $populationRetryResponses -Encoding utf8NoBOM
+    $env:CP6_P09_FAKE_DOCKER_LOG = $populationRetryLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $populationRetryResponses
+    $populationRetryContext = [pscustomobject]@{
+        RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
+        ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
+        RuntimeRoot=$testRoot
+        Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$testRoot; CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
+    }
+    & $module {
+        param($context,$directory)
+        Write-Cp6P09TargetOwnedFile -Context $context -RelativeDirectory $directory -FileName 'secrets.json' -User '65532:65532' -Content 'redacted-test-value'
+    } $populationRetryContext ([IO.Path]::GetFileName($populationDirectory))
+    $populationRetryCalls = @(Get-Content -LiteralPath $populationRetryLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 2 $populationRetryCalls.Count 'Target-owned file population did not make exactly one bounded retry after a transient Docker failure.'
     $populationLog = Join-Path $testRoot 'population.jsonl'
     $env:CP6_P09_FAKE_DOCKER_LOG = $populationLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''

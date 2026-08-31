@@ -577,8 +577,18 @@ function Write-Cp6P09TargetOwnedFile {
     )
     $directory = Resolve-Cp6P09ContainedPath -Root $Context.RuntimeRoot -Candidate (Join-Path $Context.RuntimeRoot $RelativeDirectory) -RequireChild
     $allArguments = Get-Cp6P09OwnedFileDockerArguments -ProjectName $Context.ProjectName -ComposeFile $Context.ComposeFile -Directory $directory -FileName $FileName -User $User
-    $result = Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -Arguments $allArguments -WorkingDirectory $Context.RepositoryRoot -TimeoutSeconds 120 -EnvironmentVariables $Context.Environment -StandardInput $Content
-    Assert-Cp6P09CommandSucceeded $result 'runtime-population'
+    for ($attempt = 1; $attempt -le 2; $attempt++) {
+        try {
+            $result = Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -Arguments $allArguments -WorkingDirectory $Context.RepositoryRoot -TimeoutSeconds 120 -EnvironmentVariables $Context.Environment -StandardInput $Content
+            if ($result.ExitCode -eq 0) { return }
+            if ($attempt -eq 2) { Assert-Cp6P09CommandSucceeded $result 'runtime-population' }
+        }
+        catch {
+            if ($attempt -eq 2) { throw 'runtime-population' }
+        }
+        Start-Sleep -Milliseconds 250
+    }
+    throw 'runtime-population'
 }
 
 function Get-Cp6P09OwnedFileDockerArguments {
