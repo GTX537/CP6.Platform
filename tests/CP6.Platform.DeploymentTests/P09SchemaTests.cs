@@ -138,6 +138,12 @@ public sealed class P09SchemaTests
         "bearer-tab-credential",
         "bearer-nbsp-credential",
         "bearer-next-line-credential",
+        "zero-trace-id",
+        "zero-invocation-trace-id",
+        "zero-publisher-span-id",
+        "zero-receiver-span-id",
+        "zero-invoker-span-id",
+        "zero-invoked-span-id",
         "negative-teardown-count",
         "empty-summary",
         "long-summary",
@@ -154,24 +160,38 @@ public sealed class P09SchemaTests
         "reordered"
     };
 
-    public static TheoryData<string> SafeEvidenceSummaryControls => new()
-    {
-        "contract https://cp6.example/contracts/p09/rehearsal-evidence.v1.schema.json accepted",
-        "endpoint http://example.test/p09 accepted",
-        "endpoint=https://example.test/p09 accepted",
-        "endpoint https://publisher.example.test/p09 accepted",
-        "urn urn:cp6:p09:evidence accepted",
-        "image registry.k8s.io/kubectl:v1.34.1 accepted",
-        $"digest sha256:{new string('a', 64)} accepted",
-        "timestamp 2026-08-30T00:00:00Z accepted",
-        "topic cp6.platform.deployment-probe.v1 accepted"
-    };
+    public static IEnumerable<object[]> UnsafeSummaryCorpus =>
+        P09ContractTestData.UnsafeSummaries.Select(value => new object[] { value });
+
+    public static IEnumerable<object[]> SafeSummaryCorpus =>
+        P09ContractTestData.SafeSummaries.Select(value => new object[] { value });
 
     public static TheoryData<string, string> EvidenceRuntimeOnlyCrossValueMutations => new()
     {
         { "completed-before-start", "invalid-time" },
         { "publisher-receiver-span-equality", "trace-span" },
         { "invoker-invoked-span-equality", "trace-span" }
+    };
+
+    public static TheoryData<string> InvalidUtcTimestampsUnderDefaultSchemaOptions => new()
+    {
+        "2026-00-01T00:00:00Z",
+        "2026-13-01T00:00:00Z",
+        "2026-01-00T00:00:00Z",
+        "2026-02-30T00:00:00Z",
+        "2025-02-29T00:00:00Z",
+        "2026-04-31T00:00:00Z",
+        "2026-08-30T25:00:00Z",
+        "2026-08-30T00:60:00Z",
+        "2026-08-30T00:00:60Z"
+    };
+
+    public static TheoryData<string> ValidUtcTimestampsUnderDefaultSchemaOptions => new()
+    {
+        "2024-02-29T23:59:59Z",
+        "2025-02-28T00:00:00.1234567Z",
+        "2026-08-30T00:00:00Z",
+        "2026-12-31T23:59:59Z"
     };
 
     [Fact]
@@ -236,6 +256,26 @@ public sealed class P09SchemaTests
     }
 
     [Theory]
+    [MemberData(nameof(InvalidUtcTimestampsUnderDefaultSchemaOptions))]
+    public void EvidenceTimestampPattern_RejectsInvalidCalendarValuesWithoutFormatAssertion(string timestamp)
+    {
+        var root = P09ContractTestData.ParseValidEvidence();
+        root["startedUtc"] = timestamp;
+
+        Assert.False(EvaluateWithDefaultOptions(P09ContractTestData.EvidenceSchemaPath, root.ToJsonString()).IsValid);
+    }
+
+    [Theory]
+    [MemberData(nameof(ValidUtcTimestampsUnderDefaultSchemaOptions))]
+    public void EvidenceTimestampPattern_AcceptsValidUtcCalendarValuesWithDefaultOptions(string timestamp)
+    {
+        var root = P09ContractTestData.ParseValidEvidence();
+        root["startedUtc"] = timestamp;
+
+        Assert.True(EvaluateWithDefaultOptions(P09ContractTestData.EvidenceSchemaPath, root.ToJsonString()).IsValid);
+    }
+
+    [Theory]
     [MemberData(nameof(EvidenceSchemaMutations))]
     public void EvidenceSchema_RejectsStructurallyExpressibleMutations(string mutation)
     {
@@ -243,6 +283,24 @@ public sealed class P09SchemaTests
         ApplyEvidenceSchemaMutation(root, mutation);
 
         Assert.False(Evaluate(P09ContractTestData.EvidenceSchemaPath, root.ToJsonString()).IsValid);
+    }
+
+    [Fact]
+    public void EvidenceTraceIdentifiers_NonzeroControlsPassSchemaAndRuntime()
+    {
+        var root = P09ContractTestData.ParseValidEvidence();
+        var trace = root["trace"]!.AsObject();
+        foreach (var propertyName in new[]
+                 {
+                     "traceId", "invocationTraceId", "publisherSpanId", "receiverSpanId", "invokerSpanId", "invokedSpanId"
+                 })
+        {
+            Assert.Contains(trace[propertyName]!.GetValue<string>(), value => value != '0');
+        }
+
+        var json = Cp6P09Json.Canonicalize(root.ToJsonString());
+        Assert.True(Evaluate(P09ContractTestData.EvidenceSchemaPath, json).IsValid);
+        Assert.Equal("Passed", Cp6P09RehearsalEvidence.Parse(json).Overall);
     }
 
     [Theory]
@@ -282,8 +340,22 @@ public sealed class P09SchemaTests
     }
 
     [Theory]
-    [MemberData(nameof(SafeEvidenceSummaryControls))]
-    public void SafeUrlsUrnsImagesDigestsTimestampsAndTopics_PassSchemaAndRuntime(string summary)
+    [MemberData(nameof(UnsafeSummaryCorpus))]
+    public void AdversarialSummaryCorpus_FailsSchemaAndRuntime(string summary)
+    {
+        var root = P09ContractTestData.ParseValidEvidence();
+        root["checks"]![0]!["summary"] = summary;
+        var json = Cp6P09Json.Canonicalize(root.ToJsonString());
+
+        Assert.False(Evaluate(P09ContractTestData.EvidenceSchemaPath, json).IsValid);
+        Assert.Equal(
+            "unsafe-evidence",
+            Assert.Throws<Cp6P09ContractException>(() => Cp6P09RehearsalEvidence.Parse(json)).CheckId);
+    }
+
+    [Theory]
+    [MemberData(nameof(SafeSummaryCorpus))]
+    public void SimpleAsciiSummaryCorpus_PassesSchemaAndRuntime(string summary)
     {
         var root = P09ContractTestData.ParseValidEvidence();
         root["checks"]![0]!["summary"] = summary;
@@ -321,20 +393,39 @@ public sealed class P09SchemaTests
             Assert.Throws<Cp6P09ContractException>(() => Cp6P09RehearsalEvidence.Parse(json)).CheckId);
     }
 
-    [Fact]
-    public void EvidenceProfileHashBinding_IsExplicitlyRuntimeOnly()
+    [Theory]
+    [InlineData("Passed")]
+    [InlineData("Failed")]
+    public void EvidenceProfileHashBinding_IsMandatoryInSchemaAndOrdinaryParse(string overall)
     {
         var root = P09ContractTestData.ParseValidEvidence();
         root["profileSha256"] = new string('9', 64);
-        var json = Cp6P09Json.Canonicalize(root.ToJsonString());
-        var profile = Cp6P09RuntimeProfile.Parse(
-            P09ContractTestData.ReadExample("non-production-runtime-profile.valid.json"));
+        root["overall"] = overall;
+        if (overall == "Failed")
+        {
+            root["checks"]![0]!["result"] = "Failed";
+        }
 
-        Assert.True(Evaluate(P09ContractTestData.EvidenceSchemaPath, json).IsValid);
-        var evidence = Cp6P09RehearsalEvidence.Parse(json);
+        var json = Cp6P09Json.Canonicalize(root.ToJsonString());
+
+        Assert.False(Evaluate(P09ContractTestData.EvidenceSchemaPath, json).IsValid);
         Assert.Equal(
             "profile-mismatch",
-            Assert.Throws<Cp6P09ContractException>(() => evidence.ValidateAgainst(profile)).CheckId);
+            Assert.Throws<Cp6P09ContractException>(() => Cp6P09RehearsalEvidence.Parse(json)).CheckId);
+    }
+
+    [Fact]
+    public void ProfileSha256ConstantSchemaAndExamples_CannotDrift()
+    {
+        const string expected = "94addf0349ff895f21eca3e0d660c8d5159198267080df9109ff6493c1063681";
+        var profile = Cp6P09RuntimeProfile.Parse(
+            P09ContractTestData.ReadExample("non-production-runtime-profile.valid.json"));
+        var evidence = P09ContractTestData.ParseValidEvidence();
+        var schema = JsonNode.Parse(File.ReadAllText(P09ContractTestData.EvidenceSchemaPath))!.AsObject();
+
+        Assert.Equal(expected, profile.Sha256);
+        Assert.Equal(expected, evidence["profileSha256"]!.GetValue<string>());
+        Assert.Equal(expected, schema["properties"]!["profileSha256"]!["const"]?.GetValue<string>());
     }
 
     [Fact]
@@ -406,6 +497,17 @@ public sealed class P09SchemaTests
                 OutputFormat = OutputFormat.List,
                 RequireFormatValidation = true
             });
+    }
+
+    private static EvaluationResults EvaluateWithDefaultOptions(string schemaPath, string json)
+    {
+        var schema = string.Equals(schemaPath, P09ContractTestData.ProfileSchemaPath, StringComparison.Ordinal)
+            ? ProfileSchema.Value
+            : EvidenceSchema.Value;
+        using var document = JsonDocument.Parse(json);
+
+        // Format assertion remains defense-in-depth; structural correctness cannot depend on opting into it.
+        return schema.Evaluate(document.RootElement, new EvaluationOptions { OutputFormat = OutputFormat.List });
     }
 
     private static JsonSchema LoadSchema(string path) => JsonSchema.FromText(
@@ -571,6 +673,12 @@ public sealed class P09SchemaTests
             case "bearer-tab-credential": checks[0]!["summary"] = "Bearer\tobvious-fake-credential"; break;
             case "bearer-nbsp-credential": checks[0]!["summary"] = "Bearer\u00a0obvious-fake-credential"; break;
             case "bearer-next-line-credential": checks[0]!["summary"] = "Bearer\u0085obvious-fake-credential"; break;
+            case "zero-trace-id": root["trace"]!["traceId"] = new string('0', 32); break;
+            case "zero-invocation-trace-id": root["trace"]!["invocationTraceId"] = new string('0', 32); break;
+            case "zero-publisher-span-id": root["trace"]!["publisherSpanId"] = new string('0', 16); break;
+            case "zero-receiver-span-id": root["trace"]!["receiverSpanId"] = new string('0', 16); break;
+            case "zero-invoker-span-id": root["trace"]!["invokerSpanId"] = new string('0', 16); break;
+            case "zero-invoked-span-id": root["trace"]!["invokedSpanId"] = new string('0', 16); break;
             case "negative-teardown-count": teardown["containerCount"] = -1; break;
             case "empty-summary": checks[0]!["summary"] = string.Empty; break;
             case "long-summary": checks[0]!["summary"] = new string('a', 161); break;
@@ -593,6 +701,40 @@ public sealed class P09SchemaTests
 
 internal static class P09ContractTestData
 {
+    internal static readonly IReadOnlyList<string> UnsafeSummaries =
+    [
+        "password: obvious fake value",
+        "PASSWORD obvious fake value",
+        "token obvious fake value",
+        "Bearer obvious fake value",
+        "apiKey=obvious-fake-value",
+        "API-KEY obvious fake value",
+        "secret=obvious-fake-value",
+        "clientSecret obvious fake value",
+        "client-secret obvious fake value",
+        "credential obvious fake value",
+        "password\uFEFF=\uFEFFobvious-fake-value",
+        "line\u0085break",
+        "line\u2028break",
+        "line\u2029break",
+        "artifact/path",
+        "artifact\\path",
+        "label:value",
+        "name=value",
+        "user@example",
+        "café accepted",
+        "tab\tseparated"
+    ];
+
+    internal static readonly IReadOnlyList<string> SafeSummaries =
+    [
+        "profile accepted",
+        "check_01 passed",
+        "zero-residue confirmed",
+        "summary.v1 accepted",
+        "ABC 123"
+    ];
+
     internal static readonly string RepositoryRoot = FindRepositoryRoot();
     private static readonly string ContractRoot = Path.Combine(RepositoryRoot, "contracts", "p09");
 

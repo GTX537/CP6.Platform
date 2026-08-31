@@ -6,6 +6,7 @@ namespace CP6.Platform.Deployment;
 public sealed class Cp6P09RuntimeProfile
 {
     public const string ExpectedProfileId = "cp6-platform-p09-ci-v1";
+    public const string ExpectedSha256 = "94addf0349ff895f21eca3e0d660c8d5159198267080df9109ff6493c1063681";
     public const string ExpectedTopic = "cp6.platform.deployment-probe.v1";
     public const string ExpectedConsumerGroup = "cp6-p09-probe-receiver-v1";
 
@@ -84,6 +85,12 @@ public sealed class Cp6P09RuntimeProfile
         using var document = JsonDocument.Parse(canonicalUtf8);
         var root = document.RootElement;
         Cp6P09RuntimeProfileValidator.Validate(root);
+        if (!string.Equals(Cp6P09Json.Sha256Hex(canonicalUtf8), ExpectedSha256, StringComparison.Ordinal))
+        {
+            throw new Cp6P09ContractException(
+                "profile-sha256",
+                "The canonical runtime Profile does not match the frozen v1 identity.");
+        }
 
         var identities = root.GetProperty("identities");
         var components = root.GetProperty("components");

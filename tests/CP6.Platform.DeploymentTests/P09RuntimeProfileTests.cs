@@ -1,4 +1,5 @@
 using System.Text;
+using System.Text.Json;
 using System.Text.Json.Nodes;
 using CP6.Platform.Deployment;
 
@@ -134,6 +135,19 @@ public sealed class P09RuntimeProfileTests
     }
 
     [Fact]
+    public void CanonicalProfileSha256_IsFrozenAsPublicV1Constant()
+    {
+        const string expected = "94addf0349ff895f21eca3e0d660c8d5159198267080df9109ff6493c1063681";
+        var field = typeof(Cp6P09RuntimeProfile).GetField("ExpectedSha256");
+        var profile = Cp6P09RuntimeProfile.Parse(ValidProfileJson);
+
+        Assert.NotNull(field);
+        Assert.True(field.IsLiteral);
+        Assert.Equal(expected, field.GetRawConstantValue());
+        Assert.Equal(expected, profile.Sha256);
+    }
+
+    [Fact]
     public void Parse_StringSchemaVersion_AcceptsAndExposesString()
     {
         var profile = Cp6P09RuntimeProfile.Parse(ValidProfileJson);
@@ -161,6 +175,31 @@ public sealed class P09RuntimeProfileTests
 
         Assert.Equal("{\"a\":{\"x\":null,\"y\":true},\"items\":[3,1,2],\"z\":2.50}", canonical);
         Assert.Equal("ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad", Cp6P09Json.Sha256Hex("abc"u8));
+    }
+
+    [Theory]
+    [InlineData("-0")]
+    [InlineData("-0.0")]
+    [InlineData("-0e0")]
+    [InlineData("-0E+10")]
+    public void Canonicalize_NormalizesEveryValidNegativeZeroLexemeAndHash(string negativeZero)
+    {
+        var zero = Cp6P09Json.Canonicalize("{\"value\":0}");
+        var normalized = Cp6P09Json.Canonicalize($"{{\"value\":{negativeZero}}}");
+
+        Assert.Equal(zero, normalized);
+        Assert.Equal(
+            Cp6P09Json.Sha256Hex(Encoding.UTF8.GetBytes(zero)),
+            Cp6P09Json.Sha256Hex(Encoding.UTF8.GetBytes(normalized)));
+    }
+
+    [Fact]
+    public void Canonicalize_InvalidLeadingZeroNumber_RemainsInvalidJson()
+    {
+        var exception = Assert.Throws<Cp6P09ContractException>(() =>
+            Cp6P09Json.Canonicalize("{\"value\":-00}"));
+
+        Assert.Equal("invalid-json", exception.CheckId);
     }
 
     [Theory]
@@ -282,6 +321,24 @@ public sealed class P09RuntimeProfileTests
         var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09RuntimeProfile.Parse(json));
 
         Assert.Equal("duplicate-property", exception.CheckId);
+    }
+
+    [Theory]
+    [InlineData("password=obvious-fake-secret")]
+    [InlineData("line\r\nsecret-value")]
+    public void Canonicalize_DuplicateProperty_DoesNotEchoAttackerControlledName(string propertyName)
+    {
+        var encodedName = JsonSerializer.Serialize(propertyName);
+        var json = $"{{{encodedName}:1,{encodedName}:2}}";
+
+        var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09Json.Canonicalize(json));
+
+        Assert.Equal("duplicate-property", exception.CheckId);
+        Assert.DoesNotContain("password", exception.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain("secret", exception.Message, StringComparison.OrdinalIgnoreCase);
+        Assert.DoesNotContain('\r', exception.Message);
+        Assert.DoesNotContain('\n', exception.Message);
+        Assert.DoesNotContain(propertyName, exception.Message, StringComparison.Ordinal);
     }
 
     [Fact]

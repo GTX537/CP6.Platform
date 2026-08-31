@@ -7,7 +7,7 @@
   "properties": {
     "schemaVersion": {"type":"string","const":"1"},
     "profileId": {"type":"string","const":"cp6-platform-p09-ci-v1"},
-    "profileSha256": {"$ref":"#/$defs/sha256"},
+    "profileSha256": {"type":"string","const":"94addf0349ff895f21eca3e0d660c8d5159198267080df9109ff6493c1063681"},
     "platformGitSha": {"type":"string","pattern":"^[0-9a-f]{40}$"},
     "repositoryVersion": {"type":"string","const":"0.9.0.0"},
     "packageVersion": {"type":"string","const":"0.9.0-alpha.1"},
@@ -88,9 +88,9 @@
   "$defs": {
     "sha256": {"type":"string","pattern":"^[0-9a-f]{64}$"},
     "digest": {"type":"string","pattern":"^sha256:[0-9a-f]{64}$"},
-    "utcTimestamp": {"type":"string","format":"date-time","pattern":"^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}(?:\\.\\d{1,7})?Z$"},
+    "utcTimestamp": {"type":"string","format":"date-time","pattern":"^(?:(?:(?!0000)[0-9]{4})-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](?:\\.[0-9]{1,7})?Z$"},
     "safeIdentifier": {"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
-    "safeSummary": {"type":"string","minLength":1,"maxLength":160,"pattern":"^(?!.*(?:\\\\|[Ff][Ii][Ll][Ee]:/{2,}|(?:^|[\\s=])/{1,2}|(?:^|[\\s=])(?!(?:[Hh][Tt][Tt][Pp][Ss]?://[A-Za-z0-9](?:[A-Za-z0-9.-]*[A-Za-z0-9])?(?::[0-9]{1,5})?(?:/[^\\s\\\\]*)?(?:\\s|$)))[^\\s=]*:/{1,}|[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd][\\s\\u0085\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*=[\\s\\u0085\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*\\S+|[Tt][Oo][Kk][Ee][Nn][\\s\\u0085\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*=[\\s\\u0085\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*\\S+|[Cc][Oo][Nn][Nn][Ee][Cc][Tt][Ii][Oo][Nn][Ss][Tt][Rr][Ii][Nn][Gg][\\s\\u0085\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*=[\\s\\u0085\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]*\\S+|[Bb][Ee][Aa][Rr][Ee][Rr][\\s\\u0085\\u00a0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000\\ufeff]+\\S{8,}))[^\\r\\n]{1,160}$"},
+    "safeSummary": {"type":"string","pattern":"^(?!.*(?:[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]|[Tt][Oo][Kk][Ee][Nn]|[Bb][Ee][Aa][Rr][Ee][Rr]|[Aa][Pp][Ii]-?[Kk][Ee][Yy]|[Ss][Ee][Cc][Rr][Ee][Tt]|[Cc][Ll][Ii][Ee][Nn][Tt]-?[Ss][Ee][Cc][Rr][Ee][Tt]|[Cc][Rr][Ee][Dd][Ee][Nn][Tt][Ii][Aa][Ll]))[A-Za-z0-9 ._-]{1,160}$"},
     "runtime": {
       "type":"object",
       "required":["daprImage","daprImageDigest","kafkaImage","kafkaImageDigest","kubectlImage","kubectlImageDigest","kubectlVersion"],
@@ -204,12 +204,12 @@
         "eventType":{"type":"string","const":"com.gtx537.platform.contract-example.changed.v1"},
         "topic":{"type":"string","const":"cp6.platform.deployment-probe.v1"},
         "partitionKey":{"$ref":"#/$defs/safeIdentifier"},
-        "traceId":{"type":"string","pattern":"^[0-9a-f]{32}$"},
-        "publisherSpanId":{"type":"string","pattern":"^[0-9a-f]{16}$"},
-        "receiverSpanId":{"type":"string","pattern":"^[0-9a-f]{16}$"},
-        "invocationTraceId":{"type":"string","pattern":"^[0-9a-f]{32}$"},
-        "invokerSpanId":{"type":"string","pattern":"^[0-9a-f]{16}$"},
-        "invokedSpanId":{"type":"string","pattern":"^[0-9a-f]{16}$"}
+        "traceId":{"type":"string","pattern":"^(?!0{32}$)[0-9a-f]{32}$"},
+        "publisherSpanId":{"type":"string","pattern":"^(?!0{16}$)[0-9a-f]{16}$"},
+        "receiverSpanId":{"type":"string","pattern":"^(?!0{16}$)[0-9a-f]{16}$"},
+        "invocationTraceId":{"type":"string","pattern":"^(?!0{32}$)[0-9a-f]{32}$"},
+        "invokerSpanId":{"type":"string","pattern":"^(?!0{16}$)[0-9a-f]{16}$"},
+        "invokedSpanId":{"type":"string","pattern":"^(?!0{16}$)[0-9a-f]{16}$"}
       },
       "additionalProperties":false
     },

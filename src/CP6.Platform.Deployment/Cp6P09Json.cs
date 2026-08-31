@@ -86,7 +86,7 @@ public static class Cp6P09Json
                         {
                             throw new Cp6P09ContractException(
                                 "duplicate-property",
-                                $"JSON property '{propertyName}' occurs more than once in the same object.");
+                                "A JSON object contains a duplicate property name.");
                         }
 
                         break;
@@ -147,9 +147,41 @@ public static class Cp6P09Json
                 writer.WriteEndArray();
                 break;
 
+            case JsonValueKind.Number:
+                if (IsNegativeZero(element.GetRawText()))
+                {
+                    writer.WriteNumberValue(0);
+                }
+                else
+                {
+                    element.WriteTo(writer);
+                }
+
+                break;
+
             default:
                 element.WriteTo(writer);
                 break;
         }
+    }
+
+    private static bool IsNegativeZero(string rawNumber)
+    {
+        if (!rawNumber.StartsWith("-0", StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        var exponentIndex = rawNumber.IndexOfAny(['e', 'E']);
+        var significandEnd = exponentIndex < 0 ? rawNumber.Length : exponentIndex;
+        for (var index = 1; index < significandEnd; index++)
+        {
+            if (rawNumber[index] is not ('0' or '.'))
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

@@ -7,6 +7,12 @@ namespace CP6.Platform.DeploymentTests;
 
 public sealed class P09EvidenceTests
 {
+    public static IEnumerable<object[]> UnsafeSummaryCorpus =>
+        P09ContractTestData.UnsafeSummaries.Select(value => new object[] { value });
+
+    public static IEnumerable<object[]> SafeSummaryCorpus =>
+        P09ContractTestData.SafeSummaries.Select(value => new object[] { value });
+
     public static TheoryData<string, string> UnsafeEvidenceMutations => new()
     {
         { "windows-path", "unsafe-evidence" },
@@ -65,6 +71,12 @@ public sealed class P09EvidenceTests
         { "completed-before-start", "invalid-time" },
         { "trace-publisher-equals-receiver", "trace-span" },
         { "trace-invoke-parent-equals-child", "trace-span" },
+        { "zero-trace-id", "trace" },
+        { "zero-invocation-trace-id", "trace" },
+        { "zero-publisher-span-id", "trace" },
+        { "zero-receiver-span-id", "trace" },
+        { "zero-invoker-span-id", "trace" },
+        { "zero-invoked-span-id", "trace" },
         { "negative-teardown-count", "invalid-count" },
         { "empty-summary", "invalid-string" },
         { "long-summary", "unsafe-evidence" },
@@ -83,6 +95,15 @@ public sealed class P09EvidenceTests
         "teardown-volume",
         "teardown-image",
         "teardown-directory"
+    };
+
+    public static TheoryData<string> TeardownNumericProperties => new()
+    {
+        "commandExitCode",
+        "containerCount",
+        "networkCount",
+        "volumeCount",
+        "imageCount"
     };
 
     [Fact]
@@ -166,6 +187,31 @@ public sealed class P09EvidenceTests
         Assert.DoesNotContain("obvious-fake-secret", exception.Message, StringComparison.OrdinalIgnoreCase);
     }
 
+    [Theory]
+    [MemberData(nameof(UnsafeSummaryCorpus))]
+    public void Parse_AdversarialSummaryCorpus_RejectsUnsafeEvidence(string summary)
+    {
+        var root = P09ContractTestData.ParseValidEvidence();
+        root["checks"]![0]!["summary"] = summary;
+
+        var exception = Assert.Throws<Cp6P09ContractException>(() =>
+            Cp6P09RehearsalEvidence.Parse(Cp6P09Json.Canonicalize(root.ToJsonString())));
+
+        Assert.Equal("unsafe-evidence", exception.CheckId);
+    }
+
+    [Theory]
+    [MemberData(nameof(SafeSummaryCorpus))]
+    public void Parse_SimpleAsciiSummaryCorpus_Accepts(string summary)
+    {
+        var root = P09ContractTestData.ParseValidEvidence();
+        root["checks"]![0]!["summary"] = summary;
+
+        Assert.Equal(
+            "Passed",
+            Cp6P09RehearsalEvidence.Parse(Cp6P09Json.Canonicalize(root.ToJsonString())).Overall);
+    }
+
     [Fact]
     public void Parse_DuplicateJsonProperty_RejectsBeforeMaterialization()
     {
@@ -199,6 +245,27 @@ public sealed class P09EvidenceTests
                 Cp6P09RehearsalEvidence.Parse(reordered.ToJsonString())).CheckId);
     }
 
+    [Theory]
+    [MemberData(nameof(TeardownNumericProperties))]
+    public void Parse_NegativeZeroTeardownNumber_HasZeroCanonicalIdentityAndIsRejectedAsNoncanonical(
+        string propertyName)
+    {
+        var valid = P09ContractTestData.ReadExample("rehearsal-evidence.valid.json");
+        var negativeZero = valid.Replace(
+            $"\"{propertyName}\":0",
+            $"\"{propertyName}\":-0.0",
+            StringComparison.Ordinal);
+
+        Assert.NotEqual(valid, negativeZero);
+        Assert.Equal(valid, Cp6P09Json.Canonicalize(negativeZero));
+        Assert.Equal(
+            Cp6P09Json.Sha256Hex(Encoding.UTF8.GetBytes(valid)),
+            Cp6P09Json.Sha256Hex(Encoding.UTF8.GetBytes(Cp6P09Json.Canonicalize(negativeZero))));
+        Assert.Equal(
+            "non-canonical-evidence",
+            Assert.Throws<Cp6P09ContractException>(() => Cp6P09RehearsalEvidence.Parse(negativeZero)).CheckId);
+    }
+
     [Fact]
     public void Parse_InvalidUtf8_ThrowsInvalidJson()
     {
@@ -210,7 +277,7 @@ public sealed class P09EvidenceTests
     }
 
     [Fact]
-    public void ValidateAgainst_RejectsWrongProfileHashAndIdAndAcceptsParseOverload()
+    public void Parse_RejectsWrongProfileHashBeforeValidateAgainstAndAcceptsBoundOverload()
     {
         var profile = Cp6P09RuntimeProfile.Parse(
             P09ContractTestData.ReadExample("non-production-runtime-profile.valid.json"));
@@ -219,8 +286,8 @@ public sealed class P09EvidenceTests
         wrongHash["profileSha256"] = new string('f', 64);
 
         Cp6P09RehearsalEvidence.Parse(valid, profile);
-        var evidence = Cp6P09RehearsalEvidence.Parse(Cp6P09Json.Canonicalize(wrongHash.ToJsonString()));
-        var exception = Assert.Throws<Cp6P09ContractException>(() => evidence.ValidateAgainst(profile));
+        var exception = Assert.Throws<Cp6P09ContractException>(() =>
+            Cp6P09RehearsalEvidence.Parse(Cp6P09Json.Canonicalize(wrongHash.ToJsonString())));
 
         Assert.Equal("profile-mismatch", exception.CheckId);
     }
@@ -285,6 +352,12 @@ public sealed class P09EvidenceTests
             case "completed-before-start": root["completedUtc"] = "2026-08-29T23:59:59Z"; break;
             case "trace-publisher-equals-receiver": trace["receiverSpanId"] = trace["publisherSpanId"]!.DeepClone(); break;
             case "trace-invoke-parent-equals-child": trace["invokedSpanId"] = trace["invokerSpanId"]!.DeepClone(); break;
+            case "zero-trace-id": trace["traceId"] = new string('0', 32); break;
+            case "zero-invocation-trace-id": trace["invocationTraceId"] = new string('0', 32); break;
+            case "zero-publisher-span-id": trace["publisherSpanId"] = new string('0', 16); break;
+            case "zero-receiver-span-id": trace["receiverSpanId"] = new string('0', 16); break;
+            case "zero-invoker-span-id": trace["invokerSpanId"] = new string('0', 16); break;
+            case "zero-invoked-span-id": trace["invokedSpanId"] = new string('0', 16); break;
             case "negative-teardown-count": teardown["containerCount"] = -1; break;
             case "empty-summary": checks[0]!["summary"] = string.Empty; break;
             case "long-summary": checks[0]!["summary"] = new string('a', 161); break;
