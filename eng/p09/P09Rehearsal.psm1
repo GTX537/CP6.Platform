@@ -433,6 +433,42 @@ function Invoke-Cp6P09Compose {
     return Invoke-Cp6P09DockerCommand @parameters
 }
 
+function Test-Cp6P09SupportedComposeVersion {
+    [CmdletBinding()]
+    param(
+        [AllowNull()]
+        [AllowEmptyString()]
+        [string]$VersionOutput
+    )
+
+    if ([string]::IsNullOrWhiteSpace($VersionOutput)) {
+        return $false
+    }
+
+    $match = [regex]::Match(
+        $VersionOutput,
+        '^(?:v)?(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?:[-+][0-9A-Za-z.-]+)?$',
+        [Text.RegularExpressions.RegexOptions]::CultureInvariant
+    )
+    if (-not $match.Success) {
+        return $false
+    }
+
+    try {
+        $version = [Version]::Parse((
+            '{0}.{1}.{2}' -f
+            $match.Groups['major'].Value,
+            $match.Groups['minor'].Value,
+            $match.Groups['patch'].Value
+        ))
+    }
+    catch {
+        return $false
+    }
+
+    return $version -ge [Version]'2.36.0'
+}
+
 function Assert-Cp6P09CommandSucceeded {
     param([Parameter(Mandatory)]$Result, [Parameter(Mandatory)][string]$CheckId)
     if ($Result.ExitCode -ne 0) {
@@ -1293,8 +1329,8 @@ function Invoke-Cp6P09Rehearsal {
             return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='docker-unavailable' }
         }
         $composeVersion = Invoke-Cp6P09DockerCommand -DockerCommand $DockerCommand -WorkingDirectory $repository -Arguments @('compose','version','--short') -TimeoutSeconds 30
-        if ($composeVersion.ExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($composeVersion.StandardOutput)) {
-            return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='compose-unavailable' }
+        if ($composeVersion.ExitCode -ne 0 -or -not (Test-Cp6P09SupportedComposeVersion -VersionOutput $composeVersion.StandardOutput)) {
+            return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='unsupported-compose-version' }
         }
     }
     catch [System.ComponentModel.Win32Exception] {
@@ -1439,6 +1475,7 @@ Export-ModuleMember -Function @(
     'Get-Cp6P09StableFailureId',
     'Assert-Cp6P09TraceTopology',
     'Assert-Cp6P09ExpectedGitState',
+    'Test-Cp6P09SupportedComposeVersion',
     'Invoke-Cp6P09Teardown',
     'Invoke-Cp6P09GuardedDockerFailure',
     'Invoke-Cp6P09BoundedRetry',

@@ -30,6 +30,7 @@ function Assert-Throws([scriptblock]$Action, [string]$MessagePattern) {
 Assert-True (Test-Path -LiteralPath $modulePath -PathType Leaf) 'P09 rehearsal module is missing.'
 Assert-True (Test-Path -LiteralPath $runnerPath -PathType Leaf) 'P09 rehearsal runner is missing.'
 Import-Module $modulePath -Force
+$module = Get-Module P09Rehearsal
 
 $runnerText = [IO.File]::ReadAllText($runnerPath, [Text.Encoding]::UTF8)
 $moduleText = [IO.File]::ReadAllText($modulePath, [Text.Encoding]::UTF8)
@@ -40,6 +41,13 @@ Assert-True ($runnerText -match '(?s)param\(\s*\[string\]\$ProfilePath\s*=\s*"co
 $testRoot = Join-Path ([IO.Path]::GetTempPath()) ("cp6-p09-tests-" + [Guid]::NewGuid().ToString('N'))
 [IO.Directory]::CreateDirectory($testRoot) | Out-Null
 try {
+    foreach ($supported in @('2.36.0', 'v2.36.0', '2.36.0-desktop.1', '2.40.3', '5.1.1')) {
+        Assert-True (Test-Cp6P09SupportedComposeVersion -VersionOutput $supported) "Expected Compose version '$supported' to be supported."
+    }
+    foreach ($unsupported in @($null, '', '2.35.9', 'v2.35.9', '1.99.99', '2.36', 'garbage', '2.36.0 unexpected text')) {
+        Assert-True (-not (Test-Cp6P09SupportedComposeVersion -VersionOutput $unsupported)) "Expected Compose version '$unsupported' to be unsupported."
+    }
+
     $layout = New-Cp6P09RunLayout -RepositoryRoot $repositoryRoot -ArtifactsRoot 'artifacts/p09-rehearsal'
     $tempRoot = [IO.Path]::GetFullPath([IO.Path]::GetTempPath()).TrimEnd([IO.Path]::DirectorySeparatorChar, [IO.Path]::AltDirectorySeparatorChar)
     $resolvedRuntime = [IO.Path]::GetFullPath($layout.RuntimeRoot)
@@ -232,6 +240,45 @@ try {
     $afterEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
     Assert-Equal $beforeEvidence $afterEvidence 'NotRun wrote rehearsal evidence.'
 
+    $unsupportedComposeResponses = Join-Path $testRoot 'unsupported-compose-responses.jsonl'
+    @(
+        @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
+        @{ exitCode = 0; stdout = '2.35.9'; stderr = '' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $unsupportedComposeResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath "$fakeLog.index" -Force -ErrorAction SilentlyContinue
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $unsupportedComposeResponses
+    $beforeUnsupportedEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
+    $unsupportedCompose = Invoke-Cp6P09Rehearsal -RepositoryRoot $repositoryRoot -ProfilePath (Join-Path $repositoryRoot 'contracts\p09\examples\non-production-runtime-profile.valid.json') -ArtifactsRoot $notRunArtifacts -DockerCommand $fakeDocker -SkipDotnetPreflight
+    Assert-Equal 'NotRun' $unsupportedCompose.Status 'Unsupported Compose version must fail closed.'
+    Assert-Equal 'unsupported-compose-version' $unsupportedCompose.Reason 'Unsupported Compose version did not return the stable closed reason.'
+    $unsupportedComposeCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 2 $unsupportedComposeCalls.Count 'Unsupported Compose version should issue exactly two Docker calls.'
+    $afterUnsupportedEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
+    Assert-Equal $beforeUnsupportedEvidence $afterUnsupportedEvidence 'Unsupported Compose version wrote rehearsal evidence.'
+    $unsupportedComposeTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('cp6-p09-' + $unsupportedCompose.RunId)
+    Assert-True (-not (Test-Path -LiteralPath $unsupportedComposeTempRoot)) 'Unsupported Compose version created a runtime temp root.'
+
+    $composeProbeFailureResponses = Join-Path $testRoot 'compose-probe-failure-responses.jsonl'
+    @(
+        @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
+        @{ exitCode = 1; stdout = ''; stderr = 'compose version failed' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $composeProbeFailureResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath "$fakeLog.index" -Force -ErrorAction SilentlyContinue
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $composeProbeFailureResponses
+    $beforeProbeFailureEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
+    $composeProbeFailure = Invoke-Cp6P09Rehearsal -RepositoryRoot $repositoryRoot -ProfilePath (Join-Path $repositoryRoot 'contracts\p09\examples\non-production-runtime-profile.valid.json') -ArtifactsRoot $notRunArtifacts -DockerCommand $fakeDocker -SkipDotnetPreflight
+    Assert-Equal 'NotRun' $composeProbeFailure.Status 'Compose probe failure must fail closed.'
+    Assert-Equal 'unsupported-compose-version' $composeProbeFailure.Reason 'Compose probe failure did not return the stable closed reason.'
+    $composeProbeFailureCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 2 $composeProbeFailureCalls.Count 'Compose probe failure should issue exactly two Docker calls.'
+    $afterProbeFailureEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
+    Assert-Equal $beforeProbeFailureEvidence $afterProbeFailureEvidence 'Compose probe failure wrote rehearsal evidence.'
+    $composeProbeFailureTempRoot = Join-Path ([IO.Path]::GetTempPath()) ('cp6-p09-' + $composeProbeFailure.RunId)
+    Assert-True (-not (Test-Path -LiteralPath $composeProbeFailureTempRoot)) 'Compose probe failure created a runtime temp root.'
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
+
     Assert-Throws {
         New-Cp6P09RunLayout -RepositoryRoot $repositoryRoot -ArtifactsRoot (Join-Path $testRoot 'outside-artifacts')
     } 'artifact|outside|contained'
@@ -268,7 +315,6 @@ try {
         Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=(Join-Path $testRoot 'runtime-population'); CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
         PopulationFailureId='runtime-population'
     }
-    $module = Get-Module P09Rehearsal
     & $module { param($context,$values) Initialize-Cp6P09RuntimeFiles -Context $context -Credentials $values } $populationContext $credentials
     $populationCalls = @(Get-Content -LiteralPath $populationLog | ForEach-Object { $_ | ConvertFrom-Json })
     Assert-Equal 25 $populationCalls.Count 'Runtime ownership preflight must use 16 writes plus 9 directory-group readability calls.'
