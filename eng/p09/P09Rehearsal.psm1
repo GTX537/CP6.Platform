@@ -452,6 +452,9 @@ function Get-Cp6P09StableFailureId {
         'runtime-start','publisher-port','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied',
         'principal-denied','appid-scope-denied','foreign-topic-denied','topic-list','image-digest','http-status','http-output-limit'
     )
+    $allowed += @('topic-create-first','topic-describe-first','acl-list-first','topic-create-replay','acl-list-replay')
+    $allowed += @(1..9 | ForEach-Object { 'acl-add-first-{0:d2}' -f $_ })
+    $allowed += @(1..9 | ForEach-Object { 'acl-add-replay-{0:d2}' -f $_ })
     if ($allowed -ccontains $Candidate) { return $Candidate }
     return $Fallback
 }
@@ -638,9 +641,9 @@ function Invoke-Cp6P09KafkaTool {
 }
 
 function Get-Cp6P09NormalizedAcls {
-    param([Parameter(Mandatory)]$Context)
+    param([Parameter(Mandatory)]$Context, [string]$CheckId = 'acl-list')
     $result = Invoke-Cp6P09KafkaTool -Context $Context -Tool 'kafka-acls.sh' -Arguments @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list')
-    Assert-Cp6P09CommandSucceeded $result 'acl-list'
+    Assert-Cp6P09CommandSucceeded $result $CheckId
     $current = $null
     $tuples = [Collections.Generic.List[string]]::new()
     foreach ($line in $result.StandardOutput.Replace("`r`n","`n").Split("`n")) {
@@ -660,9 +663,11 @@ function Invoke-Cp6P09Provision {
     param([Parameter(Mandatory)]$Context)
     $topic = 'cp6.platform.deployment-probe.v1'
     $topicArgs = @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--create','--if-not-exists','--topic',$topic,'--partitions','3','--replication-factor','1','--config','retention.ms=3600000','--config','max.message.bytes=1048576')
-    Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-topics.sh' $topicArgs) 'provision-first'
+    $Context.ProvisionFailureId = 'topic-create-first'
+    Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-topics.sh' $topicArgs) $Context.ProvisionFailureId
+    $Context.ProvisionFailureId = 'topic-describe-first'
     $describe = Invoke-Cp6P09KafkaTool $Context 'kafka-topics.sh' @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--describe','--topic',$topic)
-    Assert-Cp6P09CommandSucceeded $describe 'provision-first'
+    Assert-Cp6P09CommandSucceeded $describe $Context.ProvisionFailureId
     if ($describe.StandardOutput -notmatch 'PartitionCount:\s*3' -or $describe.StandardOutput -notmatch 'retention\.ms=3600000' -or $describe.StandardOutput -notmatch 'max\.message\.bytes=1048576') { throw 'topic-drift' }
     $acls = @(
         @('cp6-p09-probe-publisher','Write','--topic',$topic),
@@ -675,10 +680,12 @@ function Invoke-Cp6P09Provision {
         @('cp6-p09-provisioner','Describe','--topic',$topic),
         @('cp6-p09-provisioner','Describe','--cluster',$null)
     )
-    foreach ($acl in $acls) {
+    for ($aclIndex = 0; $aclIndex -lt $acls.Count; $aclIndex++) {
+        $acl = $acls[$aclIndex]
+        $Context.ProvisionFailureId = 'acl-add-first-{0:d2}' -f ($aclIndex + 1)
         $args = @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--add','--allow-principal',"User:$($acl[0])",'--operation',$acl[1],$acl[2])
         if ($null -ne $acl[3]) { $args += $acl[3] }
-        Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-acls.sh' $args) 'provision-first'
+        Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-acls.sh' $args) $Context.ProvisionFailureId
     }
     $expected = @(
         'cp6-p09-probe-publisher|Topic|cp6.platform.deployment-probe.v1|Describe',
@@ -691,15 +698,20 @@ function Invoke-Cp6P09Provision {
         'cp6-p09-provisioner|Topic|cp6.platform.deployment-probe.v1|Create',
         'cp6-p09-provisioner|Topic|cp6.platform.deployment-probe.v1|Describe'
     ) | Sort-Object -CaseSensitive
-    $first = Get-Cp6P09NormalizedAcls $Context
+    $Context.ProvisionFailureId = 'acl-list-first'
+    $first = Get-Cp6P09NormalizedAcls $Context $Context.ProvisionFailureId
     if (($expected -join "`n") -cne ($first -join "`n")) { throw 'acl-drift' }
-    Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-topics.sh' $topicArgs) 'provision-idempotent'
-    foreach ($acl in $acls) {
+    $Context.ProvisionFailureId = 'topic-create-replay'
+    Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-topics.sh' $topicArgs) $Context.ProvisionFailureId
+    for ($aclIndex = 0; $aclIndex -lt $acls.Count; $aclIndex++) {
+        $acl = $acls[$aclIndex]
+        $Context.ProvisionFailureId = 'acl-add-replay-{0:d2}' -f ($aclIndex + 1)
         $args = @('--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--add','--allow-principal',"User:$($acl[0])",'--operation',$acl[1],$acl[2])
         if ($null -ne $acl[3]) { $args += $acl[3] }
-        Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-acls.sh' $args) 'provision-idempotent'
+        Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09KafkaTool $Context 'kafka-acls.sh' $args) $Context.ProvisionFailureId
     }
-    $second = Get-Cp6P09NormalizedAcls $Context
+    $Context.ProvisionFailureId = 'acl-list-replay'
+    $second = Get-Cp6P09NormalizedAcls $Context $Context.ProvisionFailureId
     if (($first -join "`n") -cne ($second -join "`n")) { throw 'provision-idempotent' }
 }
 
@@ -1052,6 +1064,7 @@ function Invoke-Cp6P09Rehearsal {
         Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$layout.RuntimeRoot; CP6_P09_CLUSTER_ID=$clusterId; CP6_P09_NEGATIVE_ROLE='probe' }
         KubernetesManifestSha=$null
         MatrixFailureId='runtime-start'
+        ProvisionFailureId='topic-create-first'
     }
     $config = Invoke-Cp6P09Compose $context @('--profile','negative','--profile','provision','config','--quiet') 30
     Assert-Cp6P09CommandSucceeded $config 'compose-contract'
@@ -1095,7 +1108,15 @@ function Invoke-Cp6P09Rehearsal {
         Add-Cp6P09RunLog $logPath 'image-digest' 'Passed'
     }
     catch {
-        $fallback = if ($stage -ceq 'runtime-matrix') { [string]$context.MatrixFailureId } else { $stage }
+        $fallback = if ($stage -ceq 'runtime-matrix') {
+            [string]$context.MatrixFailureId
+        }
+        elseif ($stage -ceq 'provision-first') {
+            [string]$context.ProvisionFailureId
+        }
+        else {
+            $stage
+        }
         $originalFailure = Get-Cp6P09StableFailureId -Candidate $_.Exception.Message -Fallback $fallback
         Add-Cp6P09RunLog $logPath $originalFailure 'Failed'
     }

@@ -181,6 +181,12 @@ try {
     foreach ($stableFailure in @('topic-list','publisher-port')) {
         Assert-True ($moduleText.Contains("`$Context.MatrixFailureId = '$stableFailure'")) "Runtime matrix does not checkpoint $stableFailure before its side effect."
     }
+    $provisionFailureIds = @('topic-create-first','topic-describe-first','acl-list-first','topic-create-replay','acl-list-replay') +
+        @(1..9 | ForEach-Object { 'acl-add-first-{0:d2}' -f $_ }) +
+        @(1..9 | ForEach-Object { 'acl-add-replay-{0:d2}' -f $_ })
+    foreach ($stableFailure in $provisionFailureIds) {
+        Assert-Equal $stableFailure (Get-Cp6P09StableFailureId -Candidate $stableFailure -Fallback 'provision-first') 'Stable provision failure id was lost.'
+    }
     Assert-Equal 'runtime-matrix' (Get-Cp6P09StableFailureId -Candidate 'password=do-not-log C:\private\file' -Fallback 'runtime-matrix') 'Unsafe exception detail escaped the stable failure allowlist.'
 
     $head = (& git -C $repositoryRoot rev-parse HEAD).Trim()
