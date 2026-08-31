@@ -13,7 +13,7 @@ public sealed class Cp6P09RuntimeProfile
 
     private Cp6P09RuntimeProfile(
         byte[] canonicalUtf8,
-        int schemaVersion,
+        string schemaVersion,
         string environmentClass,
         string profileId,
         string topicName,
@@ -40,7 +40,7 @@ public sealed class Cp6P09RuntimeProfile
         Sha256 = Cp6P09Json.Sha256Hex(canonicalUtf8);
     }
 
-    public int SchemaVersion { get; }
+    public string SchemaVersion { get; }
 
     public string EnvironmentClass { get; }
 
@@ -91,7 +91,7 @@ public sealed class Cp6P09RuntimeProfile
 
         return new Cp6P09RuntimeProfile(
             canonicalUtf8,
-            root.GetProperty("schemaVersion").GetInt32(),
+            root.GetProperty("schemaVersion").GetString()!,
             root.GetProperty("environmentClass").GetString()!,
             root.GetProperty("profileId").GetString()!,
             topic.GetProperty("name").GetString()!,

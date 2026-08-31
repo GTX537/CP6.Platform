@@ -8,7 +8,7 @@ public sealed class P09RuntimeProfileTests
 {
     private const string ValidProfileJson = """
         {
-          "schemaVersion": 1,
+          "schemaVersion": "1",
           "environmentClass": "NonProduction",
           "profileId": "cp6-platform-p09-ci-v1",
           "runtime": {
@@ -133,7 +133,6 @@ public sealed class P09RuntimeProfileTests
         Assert.Equal("cp6-platform-p09-ci-v1", Cp6P09RuntimeProfile.ExpectedProfileId);
         Assert.Equal("cp6.platform.deployment-probe.v1", Cp6P09RuntimeProfile.ExpectedTopic);
         Assert.Equal("cp6-p09-probe-receiver-v1", Cp6P09RuntimeProfile.ExpectedConsumerGroup);
-        Assert.Equal(1, profile.SchemaVersion);
         Assert.Equal("NonProduction", profile.EnvironmentClass);
         Assert.Equal(Cp6P09RuntimeProfile.ExpectedProfileId, profile.ProfileId);
         Assert.Equal(Cp6P09RuntimeProfile.ExpectedTopic, profile.TopicName);
@@ -154,6 +153,15 @@ public sealed class P09RuntimeProfileTests
         Assert.DoesNotContain((byte)'\n', canonical);
         Assert.DoesNotContain((byte)'\r', canonical);
         Assert.False(canonical.AsSpan().StartsWith(new byte[] { 0xEF, 0xBB, 0xBF }));
+    }
+
+    [Fact]
+    public void Parse_StringSchemaVersion_AcceptsAndExposesString()
+    {
+        var profile = Cp6P09RuntimeProfile.Parse(ValidProfileJson);
+
+        string schemaVersion = profile.SchemaVersion;
+        Assert.Equal("1", schemaVersion);
     }
 
     [Fact]
@@ -198,10 +206,10 @@ public sealed class P09RuntimeProfileTests
     }
 
     [Fact]
-    public void Parse_WrongType_ThrowsStableCheckId()
+    public void Parse_NumericSchemaVersion_ThrowsWrongType()
     {
         var root = ParseValidRoot();
-        root["schemaVersion"] = "1";
+        root["schemaVersion"] = 1;
 
         var exception = Assert.Throws<Cp6P09ContractException>(() => Cp6P09RuntimeProfile.Parse(root.ToJsonString()));
 

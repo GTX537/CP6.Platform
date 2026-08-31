@@ -145,7 +145,7 @@ internal static class Cp6P09RuntimeProfileValidator
         ValidateStringsAndSecretFields(root);
         RequireExactObject(root, RootProperties);
 
-        ExpectInteger(root, "schemaVersion", 1, "schema-version");
+        ExpectString(root, "schemaVersion", "1", "schema-version");
         ExpectString(root, "environmentClass", "NonProduction", "production-environment");
         ExpectString(root, "profileId", Cp6P09RuntimeProfile.ExpectedProfileId, "profile-id");
 
