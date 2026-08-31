@@ -1283,9 +1283,18 @@ function Get-Cp6P09RuntimeStartStateCategory {
         $app = @($containers | Where-Object { [string]$_.Service -ceq $Phase })
         $sidecar = @($containers | Where-Object { [string]$_.Service -ceq "$Phase-dapr" })
         if ($app.Count -ne 1 -or $sidecar.Count -ne 1) {
-            if ($kafkaReadiness -ceq 'healthy') { return "$Phase-containers-missing-kafka-healthy" }
-            if ($kafkaReadiness -ceq 'health-unknown') { return "$Phase-containers-missing-kafka-health-unknown" }
-            return "$Phase-containers-missing"
+            $missingRole = if ($app.Count -eq 1) {
+                'sidecar-container-missing'
+            }
+            elseif ($sidecar.Count -eq 1) {
+                'app-container-missing'
+            }
+            else {
+                'containers-missing'
+            }
+            if ($kafkaReadiness -ceq 'healthy') { return "$Phase-$missingRole-kafka-healthy" }
+            if ($kafkaReadiness -ceq 'health-unknown') { return "$Phase-$missingRole-kafka-health-unknown" }
+            return "$Phase-$missingRole"
         }
 
         foreach ($candidate in @(
@@ -1321,8 +1330,13 @@ function Invoke-Cp6P09RuntimeStartStateDiagnostic {
         $result = Invoke-Cp6P09Compose $Context @('ps','--all','--format','json',$Phase,"$Phase-dapr",'kafka') 30
         if ($result.ExitCode -ne 0) { return "$Phase-state-diagnostic-unavailable" }
         $category = Get-Cp6P09RuntimeStartStateCategory -Phase $Phase -PsOutput $result.StandardOutput
-        if ($category -notmatch 'containers-missing') { return $category }
-        $imageResult = Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -WorkingDirectory $Context.RepositoryRoot -Arguments @('image','inspect',($Context.ProjectName + '-' + $Phase + ':latest'),'--format','{{.Id}}') -TimeoutSeconds 30
+        if ($category -notmatch 'container(?:s)?-missing') { return $category }
+        $imageResult = if ($category -match '-sidecar-container-missing') {
+            Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -WorkingDirectory $Context.RepositoryRoot -Arguments @('image','inspect','daprio/daprd:1.18.2','--format','{{.Id}}') -TimeoutSeconds 30
+        }
+        else {
+            Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -WorkingDirectory $Context.RepositoryRoot -Arguments @('image','inspect',($Context.ProjectName + '-' + $Phase + ':latest'),'--format','{{.Id}}') -TimeoutSeconds 30
+        }
         if ($imageResult.ExitCode -ne 0) { return "$category-image-missing" }
         if ($imageResult.StandardOutput.Trim() -match '^sha256:[0-9a-f]{64}$') { return "$category-image-present" }
         return "$category-image-diagnostic-unavailable"
