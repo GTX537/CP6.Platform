@@ -7,7 +7,7 @@ namespace CP6.Platform.DeploymentTests;
 
 public sealed class P09ComposeContractTests
 {
-    private const string FixtureImage = "cp6-platform-p09-fixture:0.9.0-alpha.1";
+    private const string RuntimeRootExpression = "${CP6_P09_RUNTIME_ROOT:?CP6_P09_RUNTIME_ROOT must be set}";
     private static readonly string RepositoryRoot = FindRepositoryRoot();
     private static readonly string ComposeRoot = Path.Combine(RepositoryRoot, "deploy", "p09", "compose");
     private static readonly string ComposePath = Path.Combine(ComposeRoot, "compose.yaml");
@@ -23,6 +23,93 @@ public sealed class P09ComposeContractTests
         "receiver-dapr",
         "unauthorized-dapr"
     ];
+
+    [Fact]
+    public void FixtureServices_AreProjectOwnedBuildsWithoutImageFallback()
+    {
+        var compose = ReadRequired(ComposePath);
+        var build = TopLevelSection(compose, "x-cp6-p09-fixture-build");
+
+        Assert.Contains("context: ../../..", build, StringComparison.Ordinal);
+        Assert.Contains(
+            "dockerfile: tests/CP6.Platform.P09Fixture/Dockerfile",
+            build,
+            StringComparison.Ordinal);
+
+        foreach (var service in new[] { "publisher", "receiver", "direct-probe" })
+        {
+            var block = ServiceBlock(compose, service);
+            Assert.Contains("build: *cp6-p09-fixture-build", block, StringComparison.Ordinal);
+            Assert.DoesNotContain("image:", block, StringComparison.Ordinal);
+            Assert.DoesNotContain("pull_policy:", block, StringComparison.Ordinal);
+        }
+
+        Assert.DoesNotContain("cp6-platform-p09-fixture:", compose, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void RuntimeOwnershipContract_FreezesNonRootUsersAndSplitBindRoots()
+    {
+        var compose = ReadRequired(ComposePath);
+        var ownership = TopLevelSection(compose, "x-cp6-p09-runtime-ownership");
+
+        Assert.Equal(
+            NormalizeBlock(
+                """
+                  schema-version: "1"
+                  outer-directory-mode: "0700"
+                  population-directory-mode: "0733"
+                  bind-directory-mode: "0711"
+                  file-mode: "0600"
+                  population-method: target-uid-stdin
+                  population-image: apache/kafka:4.3.1
+                  targets:
+                    kafka:
+                      uid: "1000"
+                      gid: "1000"
+                      mount-sources:
+                        - kafka/config
+                        - kafka/secrets
+                        - kafka/clients
+                    kafka-admin:
+                      uid: "1000"
+                      gid: "1000"
+                      mount-sources:
+                        - kafka/clients
+                    publisher-dapr:
+                      uid: "65532"
+                      gid: "65532"
+                      mount-sources:
+                        - dapr/publisher/components
+                        - dapr/publisher/secrets
+                    receiver-dapr:
+                      uid: "65532"
+                      gid: "65532"
+                      mount-sources:
+                        - dapr/receiver/components
+                        - dapr/receiver/secrets
+                    unauthorized-dapr:
+                      uid: "65532"
+                      gid: "65532"
+                      mount-sources:
+                        - dapr/unauthorized/components
+                        - dapr/unauthorized/secrets
+                """),
+            NormalizeBlock(ownership));
+
+        AssertNoGroupOrOtherReadBits("0700");
+        AssertNoGroupOrOtherReadBits("0733");
+        AssertNoGroupOrOtherReadBits("0711");
+        Assert.Equal(0, Convert.ToInt32("0600", 8) & Convert.ToInt32("0077", 8));
+
+        Assert.Equal("1000:1000", ServiceScalar(compose, "kafka", "user"));
+        Assert.Equal("1000:1000", ServiceScalar(compose, "kafka-admin", "user"));
+        Assert.Equal("65532:65532", ServiceScalar(compose, "publisher-dapr", "user"));
+        Assert.Equal("65532:65532", ServiceScalar(compose, "receiver-dapr", "user"));
+        Assert.Equal("65532:65532", ServiceScalar(compose, "unauthorized-dapr", "user"));
+
+        AssertExactComposeMountsAndDependencies(compose);
+    }
 
     [Fact]
     public void ComposeText_FreezesTheExactIsolatedTopology()
@@ -44,7 +131,7 @@ public sealed class P09ComposeContractTests
         Assert.Equal(new[] { "runtime", "unauthorized-app" }, ServiceNetworks(compose, "unauthorized-dapr"));
         Assert.Equal(new[] { "runtime" }, ServiceNetworks(compose, "kafka-admin"));
 
-        var images = ExpectedServices.ToDictionary(
+        var images = new[] { "kafka", "kafka-admin", "publisher-dapr", "receiver-dapr", "unauthorized-dapr" }.ToDictionary(
             service => service,
             service => ServiceScalar(compose, service, "image"),
             StringComparer.Ordinal);
@@ -53,15 +140,7 @@ public sealed class P09ComposeContractTests
         Assert.Equal("daprio/daprd:1.18.2", images["publisher-dapr"]);
         Assert.Equal("daprio/daprd:1.18.2", images["receiver-dapr"]);
         Assert.Equal("daprio/daprd:1.18.2", images["unauthorized-dapr"]);
-        Assert.Equal(FixtureImage, images["publisher"]);
-        Assert.Equal(FixtureImage, images["receiver"]);
-        Assert.Equal(FixtureImage, images["direct-probe"]);
-        Assert.Single(Regex.Matches(compose, @"(?m)^\s{4}build:\s*$").Cast<Match>());
-        Assert.Contains("context: ../../..", ServiceBlock(compose, "publisher"), StringComparison.Ordinal);
-        Assert.Contains(
-            "dockerfile: tests/CP6.Platform.P09Fixture/Dockerfile",
-            ServiceBlock(compose, "publisher"),
-            StringComparison.Ordinal);
+        Assert.Equal(3, Regex.Matches(compose, @"(?m)^\s{4}build:\s*\*cp6-p09-fixture-build\s*$").Count);
 
         Assert.DoesNotContain("ports:", ServiceBlock(compose, "kafka"), StringComparison.Ordinal);
         Assert.Single(Regex.Matches(compose, @"(?m)^\s{4}ports:\s*$").Cast<Match>());
@@ -100,6 +179,8 @@ public sealed class P09ComposeContractTests
         Assert.Equal(
             Regex.Matches(compose, @"(?m)^\s+-\s+type:\s*bind\s*$").Count,
             Regex.Matches(compose, @"(?m)^\s+read_only:\s*true\s*$").Count);
+
+        AssertExactComposeMountsAndDependencies(compose);
     }
 
     [Fact]
@@ -197,29 +278,7 @@ public sealed class P09ComposeContractTests
         Assert.DoesNotContain("cp6-p09-kafka-publish", subscription, StringComparison.Ordinal);
 
         var server = ReadTemplate("kafka-server.properties");
-        foreach (var required in new[]
-                 {
-                     "process.roles=broker,controller",
-                     "node.id=1",
-                     "controller.quorum.voters=1@kafka:9093",
-                     "listeners=CLIENT://:9092,CONTROLLER://:9093",
-                     "advertised.listeners=CLIENT://kafka:9092",
-                     "controller.listener.names=CONTROLLER",
-                     "inter.broker.listener.name=CLIENT",
-                     "listener.security.protocol.map=CLIENT:SASL_PLAINTEXT,CONTROLLER:SASL_PLAINTEXT",
-                     "sasl.enabled.mechanisms=PLAIN",
-                     "sasl.mechanism.inter.broker.protocol=PLAIN",
-                     "sasl.mechanism.controller.protocol=PLAIN",
-                     "authorizer.class.name=org.apache.kafka.metadata.authorizer.StandardAuthorizer",
-                     "allow.everyone.if.no.acl.found=false",
-                     "super.users=User:@@CP6_P09_PROVISIONER_USERNAME@@",
-                     "log.dirs=/var/lib/kafka/data"
-                 })
-        {
-            Assert.Contains(required, server, StringComparison.Ordinal);
-        }
-        Assert.DoesNotContain("User:ANONYMOUS", server, StringComparison.OrdinalIgnoreCase);
-        Assert.Single(Regex.Matches(server, @"(?m)^super\.users=").Cast<Match>());
+        AssertKafkaServerProperties(server);
 
         var jaas = ReadTemplate("kafka-jaas.conf");
         foreach (var token in new[]
@@ -255,6 +314,72 @@ public sealed class P09ComposeContractTests
     }
 
     [Fact]
+    public void KafkaComponentValidator_RejectsExternalBrokerMutation()
+    {
+        var mutated = ReadTemplate("kafka-publish.yaml")
+            .Replace("value: \"kafka:9092\"", "value: \"external.example:9092\"", StringComparison.Ordinal);
+
+        Assert.ThrowsAny<Exception>(() => AssertKafkaComponent(
+            mutated,
+            "cp6-p09-kafka-publish",
+            "cp6-p09-probe-publisher",
+            "publisher-username",
+            "publisher-password"));
+    }
+
+    [Fact]
+    public void ContractValidators_RejectCredentialPropertyAndTopologyMutations()
+    {
+        var publisher = ReadTemplate("kafka-publish.yaml");
+        var swappedSecrets = publisher
+            .Replace("publisher-username", "receiver-username", StringComparison.Ordinal)
+            .Replace("publisher-password", "receiver-password", StringComparison.Ordinal);
+        Assert.ThrowsAny<Exception>(() => AssertKafkaComponent(
+            swappedSecrets,
+            "cp6-p09-kafka-publish",
+            "cp6-p09-probe-publisher",
+            "publisher-username",
+            "publisher-password"));
+
+        var literalCredential = publisher.Replace(
+            "      secretKeyRef:\n        name: publisher-password\n        key: publisher-password",
+            "      value: \"literal-password\"",
+            StringComparison.Ordinal);
+        Assert.ThrowsAny<Exception>(() => AssertKafkaComponent(
+            literalCredential,
+            "cp6-p09-kafka-publish",
+            "cp6-p09-probe-publisher",
+            "publisher-username",
+            "publisher-password"));
+
+        var duplicateOverride = ReadTemplate("kafka-server.properties") +
+            "allow.everyone.if.no.acl.found=true\n";
+        Assert.ThrowsAny<Exception>(() => AssertKafkaServerProperties(duplicateOverride));
+
+        var compose = ReadRequired(ComposePath);
+        var swappedMount = compose.Replace(
+            $"{RuntimeRootExpression}/dapr/publisher/secrets",
+            $"{RuntimeRootExpression}/dapr/receiver/secrets",
+            StringComparison.Ordinal);
+        Assert.ThrowsAny<Exception>(() => AssertExactComposeMountsAndDependencies(swappedMount));
+
+        var missingHealthDependency = ReplaceFirst(
+            compose,
+            "condition: service_healthy",
+            "condition: service_started");
+        Assert.ThrowsAny<Exception>(() => AssertExactComposeMountsAndDependencies(missingHealthDependency));
+    }
+
+    [Fact]
+    public void RuntimePathContainment_RejectsSiblingPrefixEscape()
+    {
+        var root = Path.GetFullPath(ComposeRuntimeRoot);
+        var sibling = Path.GetFullPath(ComposeRuntimeRoot + "-escape");
+
+        Assert.False(IsPathWithin(root, sibling));
+    }
+
+    [Fact]
     public void DockerComposeConfig_WhenAvailable_PreservesTheStaticSecurityContract()
     {
         if (!DockerComposeIsAvailable())
@@ -279,6 +404,28 @@ public sealed class P09ComposeContractTests
         AssertJsonNetworks(services, "direct-probe", "unauthorized-app");
         AssertJsonNetworks(services, "unauthorized-dapr", "runtime", "unauthorized-app");
         AssertJsonNetworks(services, "kafka-admin", "runtime");
+
+        foreach (var service in new[] { "publisher", "receiver", "direct-probe" })
+        {
+            var fixture = services.GetProperty(service);
+            Assert.False(fixture.TryGetProperty("image", out _));
+            Assert.False(fixture.TryGetProperty("pull_policy", out _));
+            var build = fixture.GetProperty("build");
+            Assert.Equal(Path.GetFullPath(RepositoryRoot), Path.GetFullPath(build.GetProperty("context").GetString()!));
+            Assert.Equal(
+                "tests/CP6.Platform.P09Fixture/Dockerfile",
+                build.GetProperty("dockerfile").GetString());
+        }
+
+        Assert.Equal("apache/kafka:4.3.1", services.GetProperty("kafka").GetProperty("image").GetString());
+        Assert.Equal("apache/kafka:4.3.1", services.GetProperty("kafka-admin").GetProperty("image").GetString());
+        Assert.Equal("1000:1000", services.GetProperty("kafka").GetProperty("user").GetString());
+        Assert.Equal("1000:1000", services.GetProperty("kafka-admin").GetProperty("user").GetString());
+        foreach (var service in new[] { "publisher-dapr", "receiver-dapr", "unauthorized-dapr" })
+        {
+            Assert.Equal("daprio/daprd:1.18.2", services.GetProperty(service).GetProperty("image").GetString());
+            Assert.Equal("65532:65532", services.GetProperty(service).GetProperty("user").GetString());
+        }
 
         Assert.False(services.GetProperty("kafka").TryGetProperty("ports", out _));
         foreach (var service in ExpectedServices.Where(service => service != "publisher"))
@@ -307,10 +454,9 @@ public sealed class P09ComposeContractTests
                          string.Equals(value.GetProperty("type").GetString(), "bind", StringComparison.Ordinal)))
             {
                 Assert.True(mount.GetProperty("read_only").GetBoolean());
-                Assert.StartsWith(
-                    Path.GetFullPath(ComposeRuntimeRoot),
-                    Path.GetFullPath(mount.GetProperty("source").GetString()!),
-                    StringComparison.OrdinalIgnoreCase);
+                Assert.True(
+                    IsPathWithin(ComposeRuntimeRoot, mount.GetProperty("source").GetString()!),
+                    $"Bind source escapes the runtime root: {mount.GetProperty("source").GetString()}");
             }
         }
     }
@@ -324,18 +470,123 @@ public sealed class P09ComposeContractTests
         string usernameSecret,
         string passwordSecret)
     {
-        Assert.Contains($"name: {component}", text, StringComparison.Ordinal);
-        Assert.Contains("type: pubsub.kafka", text, StringComparison.Ordinal);
-        Assert.Contains("name: authType", text, StringComparison.Ordinal);
-        Assert.Contains("value: \"password\"", text, StringComparison.Ordinal);
-        Assert.Contains("name: saslMechanism", text, StringComparison.Ordinal);
-        Assert.Contains("value: \"PLAIN\"", text, StringComparison.Ordinal);
-        Assert.Contains("secretStore: cp6-p09-local-secret-store", text, StringComparison.Ordinal);
-        Assert.Contains($"name: {usernameSecret}", text, StringComparison.Ordinal);
-        Assert.Contains($"key: {usernameSecret}", text, StringComparison.Ordinal);
-        Assert.Contains($"name: {passwordSecret}", text, StringComparison.Ordinal);
-        Assert.Contains($"key: {passwordSecret}", text, StringComparison.Ordinal);
-        Assert.Equal(new[] { scope }, ListValues(text, "scopes"));
+        var parsed = ParseDaprComponent(text);
+
+        Assert.Equal("dapr.io/v1alpha1", parsed.ApiVersion);
+        Assert.Equal("Component", parsed.Kind);
+        Assert.Equal(component, parsed.Name);
+        Assert.Equal("cp6-p09-local-secret-store", parsed.SecretStore);
+        Assert.Equal("pubsub.kafka", parsed.Type);
+        Assert.Equal("v1", parsed.Version);
+        Assert.Equal(new[] { scope }, parsed.Scopes);
+
+        var expectedValues = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["authType"] = "password",
+            ["brokers"] = "kafka:9092",
+            ["clientID"] = scope,
+            ["disableTls"] = "true",
+            ["maxMessageBytes"] = "1048576",
+            ["saslMechanism"] = "PLAIN"
+        };
+        if (string.Equals(component, "cp6-p09-kafka-subscribe", StringComparison.Ordinal))
+        {
+            expectedValues["consumerGroup"] = "cp6-p09-probe-receiver-v1";
+            expectedValues["initialOffset"] = "oldest";
+        }
+
+        var expectedKeys = expectedValues.Keys
+            .Concat(new[] { "saslPassword", "saslUsername" })
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+        Assert.Equal(expectedKeys, parsed.Metadata.Keys.Order(StringComparer.Ordinal).ToArray());
+
+        foreach (var expected in expectedValues)
+        {
+            var entry = parsed.Metadata[expected.Key];
+            Assert.Equal(expected.Value, entry.Value);
+            Assert.Null(entry.SecretName);
+            Assert.Null(entry.SecretKey);
+        }
+
+        AssertSecretReference(parsed.Metadata["saslUsername"], usernameSecret);
+        AssertSecretReference(parsed.Metadata["saslPassword"], passwordSecret);
+    }
+
+    private static void AssertSecretReference(DaprMetadataEntry entry, string expected)
+    {
+        Assert.Null(entry.Value);
+        Assert.Equal(expected, entry.SecretName);
+        Assert.Equal(expected, entry.SecretKey);
+    }
+
+    private static DaprComponent ParseDaprComponent(string yaml)
+    {
+        var lines = NormalizeLines(yaml);
+        Assert.Equal(
+            new[] { "apiVersion", "auth", "kind", "metadata", "scopes", "spec" },
+            DirectMapKeys(lines, 0));
+
+        var metadata = RequiredBlock(lines, 0, "metadata");
+        Assert.Equal(new[] { "name" }, DirectMapKeys(metadata, 2));
+        var auth = RequiredBlock(lines, 0, "auth");
+        Assert.Equal(new[] { "secretStore" }, DirectMapKeys(auth, 2));
+        var spec = RequiredBlock(lines, 0, "spec");
+        Assert.Equal(new[] { "metadata", "type", "version" }, DirectMapKeys(spec, 2));
+        var specMetadata = RequiredBlock(spec, 2, "metadata");
+
+        var entries = new Dictionary<string, DaprMetadataEntry>(StringComparer.Ordinal);
+        for (var index = 0; index < specMetadata.Length;)
+        {
+            var header = Regex.Match(specMetadata[index], @"^    - name:\s*(?<name>[^\s#]+)\s*$");
+            Assert.True(header.Success, $"Unexpected Dapr metadata line: {specMetadata[index]}");
+            var name = Unquote(header.Groups["name"].Value);
+            Assert.False(entries.ContainsKey(name), $"Duplicate Dapr metadata name '{name}'.");
+
+            var bodyStart = ++index;
+            while (index < specMetadata.Length && LeadingSpaces(specMetadata[index]) > 4)
+            {
+                index++;
+            }
+
+            var body = specMetadata[bodyStart..index];
+            var valueMatches = body
+                .Select(line => Regex.Match(line, @"^      value:\s*(?<value>.+?)\s*$"))
+                .Where(match => match.Success)
+                .ToArray();
+            var secretMarkerCount = body.Count(line => string.Equals(line, "      secretKeyRef:", StringComparison.Ordinal));
+            Assert.True(
+                (valueMatches.Length == 1 && secretMarkerCount == 0) ||
+                (valueMatches.Length == 0 && secretMarkerCount == 1),
+                $"Dapr metadata '{name}' must have exactly one value or secretKeyRef.");
+
+            if (valueMatches.Length == 1)
+            {
+                Assert.Single(body);
+                entries.Add(name, new DaprMetadataEntry(Unquote(valueMatches[0].Groups["value"].Value), null, null));
+                continue;
+            }
+
+            Assert.Equal(3, body.Length);
+            Assert.Equal("      secretKeyRef:", body[0]);
+            Assert.Equal(new[] { "key", "name" }, DirectMapKeys(body[1..], 8));
+            entries.Add(
+                name,
+                new DaprMetadataEntry(
+                    null,
+                    RequiredScalar(body[1..], 8, "name"),
+                    RequiredScalar(body[1..], 8, "key")));
+        }
+
+        return new DaprComponent(
+            RequiredScalar(lines, 0, "apiVersion"),
+            RequiredScalar(lines, 0, "kind"),
+            RequiredScalar(metadata, 2, "name"),
+            RequiredScalar(auth, 2, "secretStore"),
+            RequiredScalar(spec, 2, "type"),
+            RequiredScalar(spec, 2, "version"),
+            entries,
+            ParseDirectList(RequiredBlock(lines, 0, "scopes"), 2));
     }
 
     private static void AssertJsonNetworks(JsonElement services, string service, params string[] expected) =>
@@ -343,14 +594,208 @@ public sealed class P09ComposeContractTests
             expected.Order(StringComparer.Ordinal).ToArray(),
             PropertyNames(services.GetProperty(service).GetProperty("networks")));
 
+    private static void AssertKafkaServerProperties(string text)
+    {
+        var actual = ParseUniqueProperties(text);
+        var expected = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            ["advertised.listeners"] = "CLIENT://kafka:9092",
+            ["allow.everyone.if.no.acl.found"] = "false",
+            ["authorizer.class.name"] = "org.apache.kafka.metadata.authorizer.StandardAuthorizer",
+            ["auto.create.topics.enable"] = "false",
+            ["controller.listener.names"] = "CONTROLLER",
+            ["controller.quorum.voters"] = "1@kafka:9093",
+            ["early.start.listeners"] = "CONTROLLER",
+            ["group.initial.rebalance.delay.ms"] = "0",
+            ["inter.broker.listener.name"] = "CLIENT",
+            ["listener.security.protocol.map"] = "CLIENT:SASL_PLAINTEXT,CONTROLLER:SASL_PLAINTEXT",
+            ["listeners"] = "CLIENT://:9092,CONTROLLER://:9093",
+            ["log.dirs"] = "/var/lib/kafka/data",
+            ["message.max.bytes"] = "1048576",
+            ["node.id"] = "1",
+            ["num.partitions"] = "3",
+            ["offsets.topic.replication.factor"] = "1",
+            ["process.roles"] = "broker,controller",
+            ["sasl.enabled.mechanisms"] = "PLAIN",
+            ["sasl.mechanism.controller.protocol"] = "PLAIN",
+            ["sasl.mechanism.inter.broker.protocol"] = "PLAIN",
+            ["share.coordinator.state.topic.min.isr"] = "1",
+            ["share.coordinator.state.topic.replication.factor"] = "1",
+            ["super.users"] = "User:@@CP6_P09_PROVISIONER_USERNAME@@",
+            ["transaction.state.log.min.isr"] = "1",
+            ["transaction.state.log.replication.factor"] = "1"
+        };
+
+        Assert.Equal(expected.Keys.Order(StringComparer.Ordinal), actual.Keys.Order(StringComparer.Ordinal));
+        foreach (var property in expected)
+        {
+            Assert.Equal(property.Value, actual[property.Key]);
+        }
+
+        Assert.DoesNotContain("User:ANONYMOUS", actual["super.users"], StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static IReadOnlyDictionary<string, string> ParseUniqueProperties(string text)
+    {
+        var properties = new Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var rawLine in text.Replace("\r\n", "\n", StringComparison.Ordinal).Split('\n'))
+        {
+            var line = rawLine.Trim();
+            if (line.Length == 0 || line.StartsWith('#'))
+            {
+                continue;
+            }
+
+            var separator = line.IndexOf('=');
+            Assert.True(separator > 0, $"Malformed Kafka property line: {line}");
+            var key = line[..separator].Trim();
+            var value = line[(separator + 1)..].Trim();
+            Assert.False(properties.ContainsKey(key), $"Duplicate Kafka property '{key}'.");
+            properties.Add(key, value);
+        }
+
+        return properties;
+    }
+
+    private static void AssertExactComposeMountsAndDependencies(string compose)
+    {
+        var root = RuntimeRootExpression;
+        var expectedMounts = new Dictionary<string, ComposeMount[]>(StringComparer.Ordinal)
+        {
+            ["direct-probe"] = [],
+            ["kafka"] =
+            [
+                new("bind", $"{root}/kafka/config", "/mnt/shared/config", true),
+                new("bind", $"{root}/kafka/secrets", "/etc/kafka/secrets", true),
+                new("bind", $"{root}/kafka/clients", "/etc/kafka/clients", true),
+                new("volume", "kafka-data", "/var/lib/kafka/data", false)
+            ],
+            ["kafka-admin"] =
+            [
+                new("bind", $"{root}/kafka/clients", "/etc/kafka/clients", true)
+            ],
+            ["publisher"] = [],
+            ["publisher-dapr"] =
+            [
+                new("bind", $"{root}/dapr/publisher/components", "/components", true),
+                new("bind", $"{root}/dapr/publisher/secrets", "/run/cp6-p09/secrets", true)
+            ],
+            ["receiver"] = [],
+            ["receiver-dapr"] =
+            [
+                new("bind", $"{root}/dapr/receiver/components", "/components", true),
+                new("bind", $"{root}/dapr/receiver/secrets", "/run/cp6-p09/secrets", true)
+            ],
+            ["unauthorized-dapr"] =
+            [
+                new("bind", $"{root}/dapr/unauthorized/components", "/components", true),
+                new("bind", $"{root}/dapr/unauthorized/secrets", "/run/cp6-p09/secrets", true)
+            ]
+        };
+
+        var expectedDependencies = new Dictionary<string, IReadOnlyDictionary<string, string>>(StringComparer.Ordinal)
+        {
+            ["direct-probe"] = EmptyMap(),
+            ["kafka"] = EmptyMap(),
+            ["kafka-admin"] = Map(("kafka", "service_healthy")),
+            ["publisher"] = EmptyMap(),
+            ["publisher-dapr"] = Map(("kafka", "service_healthy"), ("publisher", "service_started")),
+            ["receiver"] = EmptyMap(),
+            ["receiver-dapr"] = Map(("kafka", "service_healthy"), ("receiver", "service_started")),
+            ["unauthorized-dapr"] = Map(("direct-probe", "service_started"), ("kafka", "service_healthy"))
+        };
+
+        foreach (var service in ExpectedServices)
+        {
+            Assert.Equal(expectedMounts[service], ParseServiceMounts(compose, service));
+            var actualDependencies = ParseServiceDependencies(compose, service);
+            Assert.Equal(
+                expectedDependencies[service].OrderBy(pair => pair.Key, StringComparer.Ordinal),
+                actualDependencies.OrderBy(pair => pair.Key, StringComparer.Ordinal));
+        }
+    }
+
+    private static ComposeMount[] ParseServiceMounts(string compose, string service)
+    {
+        var lines = NormalizeLines(ServiceBlock(compose, service));
+        var volumes = OptionalBlock(lines, 4, "volumes");
+        if (volumes.Length == 0)
+        {
+            return [];
+        }
+
+        var result = new List<ComposeMount>();
+        for (var index = 0; index < volumes.Length;)
+        {
+            var header = Regex.Match(volumes[index], @"^      - type:\s*(?<type>[^\s#]+)\s*$");
+            Assert.True(header.Success, $"Unexpected mount line for service '{service}': {volumes[index]}");
+            var type = Unquote(header.Groups["type"].Value);
+            var bodyStart = ++index;
+            while (index < volumes.Length && LeadingSpaces(volumes[index]) > 6)
+            {
+                index++;
+            }
+
+            var body = volumes[bodyStart..index];
+            var expectedKeys = string.Equals(type, "bind", StringComparison.Ordinal)
+                ? new[] { "read_only", "source", "target" }
+                : new[] { "source", "target" };
+            Assert.Equal(expectedKeys, DirectMapKeys(body, 8));
+            Assert.Contains(type, new[] { "bind", "volume" });
+            var readOnly = string.Equals(type, "bind", StringComparison.Ordinal) &&
+                bool.Parse(RequiredScalar(body, 8, "read_only"));
+            result.Add(new ComposeMount(
+                type,
+                RequiredScalar(body, 8, "source"),
+                RequiredScalar(body, 8, "target"),
+                readOnly));
+        }
+
+        return result.ToArray();
+    }
+
+    private static IReadOnlyDictionary<string, string> ParseServiceDependencies(string compose, string service)
+    {
+        var lines = NormalizeLines(ServiceBlock(compose, service));
+        var dependencyLines = OptionalBlock(lines, 4, "depends_on");
+        var dependencies = new Dictionary<string, string>(StringComparer.Ordinal);
+        for (var index = 0; index < dependencyLines.Length;)
+        {
+            var header = Regex.Match(dependencyLines[index], @"^      (?<service>[a-z][a-z0-9-]*):\s*$");
+            Assert.True(header.Success, $"Unexpected dependency line for service '{service}': {dependencyLines[index]}");
+            var dependency = header.Groups["service"].Value;
+            Assert.False(dependencies.ContainsKey(dependency), $"Duplicate dependency '{dependency}' for '{service}'.");
+            var bodyStart = ++index;
+            while (index < dependencyLines.Length && LeadingSpaces(dependencyLines[index]) > 6)
+            {
+                index++;
+            }
+
+            var body = dependencyLines[bodyStart..index];
+            Assert.Equal(new[] { "condition" }, DirectMapKeys(body, 8));
+            dependencies.Add(dependency, RequiredScalar(body, 8, "condition"));
+        }
+
+        return dependencies;
+    }
+
+    private static IReadOnlyDictionary<string, string> EmptyMap() =>
+        new Dictionary<string, string>(StringComparer.Ordinal);
+
+    private static IReadOnlyDictionary<string, string> Map(params (string Key, string Value)[] values) =>
+        values.ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal);
+
     private static bool DockerComposeIsAvailable()
     {
         try
         {
             var result = RunProcess("docker", "compose", "version");
-            return result.ExitCode == 0;
+            Assert.True(
+                result.ExitCode == 0,
+                $"docker compose is installed but failed:{Environment.NewLine}{result.Error}");
+            return true;
         }
-        catch (Win32Exception)
+        catch (Win32Exception exception) when (exception.NativeErrorCode is 2 or 3)
         {
             return false;
         }
@@ -391,9 +836,25 @@ public sealed class P09ComposeContractTests
         startInfo.Environment["CP6_P09_RUNTIME_ROOT"] = ComposeRuntimeRoot;
         startInfo.Environment["CP6_P09_CLUSTER_ID"] = "MkU3OEVBNTcwNTJENDM2Qk";
         using var process = Process.Start(startInfo) ?? throw new InvalidOperationException("Could not start docker compose.");
-        var output = process.StandardOutput.ReadToEnd();
-        var error = process.StandardError.ReadToEnd();
-        process.WaitForExit();
+        var outputTask = process.StandardOutput.ReadToEndAsync();
+        var errorTask = process.StandardError.ReadToEndAsync();
+        if (!process.WaitForExit(30_000))
+        {
+            try
+            {
+                process.Kill(entireProcessTree: true);
+                process.WaitForExit(5_000);
+            }
+            catch (InvalidOperationException)
+            {
+                // The process exited between the timeout check and the kill request.
+            }
+
+            throw new TimeoutException($"Process '{fileName}' exceeded the 30 second contract-test timeout.");
+        }
+
+        var output = outputTask.GetAwaiter().GetResult();
+        var error = errorTask.GetAwaiter().GetResult();
         return new ProcessResult(process.ExitCode, output, error);
     }
 
@@ -422,7 +883,9 @@ public sealed class P09ComposeContractTests
     private static string TopLevelSection(string text, string section)
     {
         var normalized = text.Replace("\r\n", "\n", StringComparison.Ordinal);
-        var marker = Regex.Match(normalized, $@"(?m)^{Regex.Escape(section)}:\s*\n");
+        var marker = Regex.Match(
+            normalized,
+            $@"(?m)^{Regex.Escape(section)}:(?:\s+&[a-z][a-z0-9-]*)?\s*\n");
         Assert.True(marker.Success, $"Top-level section '{section}' is missing.");
         var contentStart = marker.Index + marker.Length;
         var next = Regex.Match(normalized[contentStart..], @"(?m)^[a-z][a-z0-9-]*:\s*$");
@@ -477,6 +940,131 @@ public sealed class P09ComposeContractTests
         return scalarMatch.Groups["value"].Value.Trim('\'', '"');
     }
 
+    private static string[] NormalizeLines(string text) =>
+        text.Replace("\r\n", "\n", StringComparison.Ordinal)
+            .Split('\n')
+            .Where(line => line.Trim().Length > 0 && !line.TrimStart().StartsWith('#'))
+            .ToArray();
+
+    private static string[] DirectMapKeys(string[] lines, int indent)
+    {
+        var prefix = new string(' ', indent);
+        var regex = new Regex(
+            $@"^{Regex.Escape(prefix)}(?<key>[A-Za-z][A-Za-z0-9._-]*):(?:\s.*)?$",
+            RegexOptions.CultureInvariant);
+        var keys = lines
+            .Select(line => regex.Match(line))
+            .Where(match => match.Success)
+            .Select(match => match.Groups["key"].Value)
+            .ToArray();
+        Assert.Equal(keys.Length, keys.Distinct(StringComparer.Ordinal).Count());
+        return keys.Order(StringComparer.Ordinal).ToArray();
+    }
+
+    private static string[] RequiredBlock(string[] lines, int indent, string key)
+    {
+        var markers = FindBlockMarkers(lines, indent, key);
+        Assert.Single(markers);
+        return LinesAfterMarker(lines, markers[0], indent);
+    }
+
+    private static string[] OptionalBlock(string[] lines, int indent, string key)
+    {
+        var markers = FindBlockMarkers(lines, indent, key);
+        Assert.True(markers.Length <= 1, $"YAML block '{key}' is duplicated.");
+        return markers.Length == 0 ? [] : LinesAfterMarker(lines, markers[0], indent);
+    }
+
+    private static int[] FindBlockMarkers(string[] lines, int indent, string key)
+    {
+        var marker = $"{new string(' ', indent)}{key}:";
+        return lines
+            .Select((line, index) => (line, index))
+            .Where(value => string.Equals(value.line, marker, StringComparison.Ordinal))
+            .Select(value => value.index)
+            .ToArray();
+    }
+
+    private static string[] LinesAfterMarker(string[] lines, int markerIndex, int indent)
+    {
+        var end = markerIndex + 1;
+        while (end < lines.Length && LeadingSpaces(lines[end]) > indent)
+        {
+            end++;
+        }
+
+        return lines[(markerIndex + 1)..end];
+    }
+
+    private static string RequiredScalar(string[] lines, int indent, string key)
+    {
+        var regex = new Regex(
+            $@"^{new string(' ', indent)}{Regex.Escape(key)}:\s*(?<value>.+?)\s*$",
+            RegexOptions.CultureInvariant);
+        var matches = lines.Select(line => regex.Match(line)).Where(match => match.Success).ToArray();
+        Assert.Single(matches);
+        return Unquote(matches[0].Groups["value"].Value);
+    }
+
+    private static string[] ParseDirectList(string[] lines, int indent)
+    {
+        var regex = new Regex(
+            $@"^{new string(' ', indent)}-\s+(?<value>[^\s#]+)\s*$",
+            RegexOptions.CultureInvariant);
+        var values = new List<string>();
+        foreach (var line in lines)
+        {
+            var match = regex.Match(line);
+            Assert.True(match.Success, $"Unexpected YAML list line: {line}");
+            values.Add(Unquote(match.Groups["value"].Value));
+        }
+
+        Assert.Equal(values.Count, values.Distinct(StringComparer.Ordinal).Count());
+        return values.ToArray();
+    }
+
+    private static int LeadingSpaces(string value)
+    {
+        var count = 0;
+        while (count < value.Length && value[count] == ' ')
+        {
+            count++;
+        }
+
+        return count;
+    }
+
+    private static string Unquote(string value) => value.Trim().Trim('\'', '"');
+
+    private static string NormalizeBlock(string value) =>
+        value.Replace("\r\n", "\n", StringComparison.Ordinal).Trim('\r', '\n');
+
+    private static string ReplaceFirst(string value, string oldValue, string newValue)
+    {
+        var index = value.IndexOf(oldValue, StringComparison.Ordinal);
+        Assert.True(index >= 0, $"Mutation source '{oldValue}' is missing.");
+        return string.Concat(value.AsSpan(0, index), newValue, value.AsSpan(index + oldValue.Length));
+    }
+
+    private static bool IsPathWithin(string root, string candidate)
+    {
+        var separator = Path.DirectorySeparatorChar;
+        var normalizedRoot = Path.GetFullPath(root)
+            .Replace(Path.AltDirectorySeparatorChar, separator)
+            .TrimEnd(separator);
+        var normalizedCandidate = Path.GetFullPath(candidate)
+            .Replace(Path.AltDirectorySeparatorChar, separator)
+            .TrimEnd(separator);
+        var comparison = OperatingSystem.IsWindows()
+            ? StringComparison.OrdinalIgnoreCase
+            : StringComparison.Ordinal;
+        return string.Equals(normalizedRoot, normalizedCandidate, comparison) ||
+            normalizedCandidate.StartsWith(normalizedRoot + separator, comparison);
+    }
+
+    private static void AssertNoGroupOrOtherReadBits(string mode) =>
+        Assert.Equal(0, Convert.ToInt32(mode, 8) & Convert.ToInt32("0044", 8));
+
     private static string ReadTemplate(string name) => ReadRequired(Path.Combine(TemplateRoot, name));
 
     private static string ReadRequired(string path)
@@ -503,6 +1091,20 @@ public sealed class P09ComposeContractTests
 
         throw new DirectoryNotFoundException("Could not locate the CP6.Platform repository root.");
     }
+
+    private sealed record ComposeMount(string Type, string Source, string Target, bool ReadOnly);
+
+    private sealed record DaprMetadataEntry(string? Value, string? SecretName, string? SecretKey);
+
+    private sealed record DaprComponent(
+        string ApiVersion,
+        string Kind,
+        string Name,
+        string SecretStore,
+        string Type,
+        string Version,
+        IReadOnlyDictionary<string, DaprMetadataEntry> Metadata,
+        string[] Scopes);
 
     private sealed record ProcessResult(int ExitCode, string Output, string Error);
 }
