@@ -1,3 +1,5 @@
+using System.Net;
+using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
@@ -45,7 +47,11 @@ public sealed class P09FixtureBoundaryTests
     [Fact]
     public void FixtureSource_ContainsOnlySyntheticP09RuntimeVocabulary()
     {
-        var source = File.ReadAllText(Path.Combine(FixtureRoot, "Program.cs"));
+        var source = string.Join(
+            '\n',
+            Directory.GetFiles(FixtureRoot, "*.cs", SearchOption.TopDirectoryOnly)
+                .Order(StringComparer.Ordinal)
+                .Select(File.ReadAllText));
 
         foreach (var role in new[] { "publisher", "receiver", "probe", "unauthorized" })
         {
@@ -113,6 +119,113 @@ public sealed class P09FixtureBoundaryTests
             new Regex(@"(?im)^\s*RUN\s+(?:apt|apt-get|apk|dnf|yum|zypper|pacman|curl|wget|bash|sh|pwsh|powershell)\b", RegexOptions.CultureInvariant),
             dockerfile);
         Assert.DoesNotContain(":latest", dockerfile, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public async Task DirectKafkaProbe_ContinuesAfterSocketFailureAndFindsLaterReachableAddress()
+    {
+        var first = IPAddress.Parse("192.0.2.1");
+        var second = IPAddress.Parse("192.0.2.2");
+        var attempted = new List<IPAddress>();
+        Task ConnectAsync(IPAddress address, CancellationToken _)
+        {
+            attempted.Add(address);
+            return address.Equals(first)
+                ? Task.FromException(new SocketException((int)SocketError.HostUnreachable))
+                : Task.CompletedTask;
+        }
+
+        var reachable = await Cp6P09DirectKafkaProbe.CanConnectAnyAsync(
+            [first, second],
+            ConnectAsync,
+            CancellationToken.None,
+            TimeSpan.FromSeconds(1));
+
+        Assert.True(reachable);
+        Assert.Equal(new[] { first, second }, attempted);
+    }
+
+    [Fact]
+    public async Task DirectKafkaProbe_ContinuesAfterLocalTimeoutAndFindsLaterReachableAddress()
+    {
+        var first = IPAddress.Parse("192.0.2.1");
+        var second = IPAddress.Parse("192.0.2.2");
+        var attempted = new List<IPAddress>();
+        async Task ConnectAsync(IPAddress address, CancellationToken cancellationToken)
+        {
+            attempted.Add(address);
+            if (address.Equals(first))
+            {
+                await Task.Delay(Timeout.InfiniteTimeSpan, cancellationToken);
+            }
+        }
+
+        var reachable = await Cp6P09DirectKafkaProbe.CanConnectAnyAsync(
+            [first, second],
+            ConnectAsync,
+            CancellationToken.None,
+            TimeSpan.FromMilliseconds(20));
+
+        Assert.True(reachable);
+        Assert.Equal(new[] { first, second }, attempted);
+    }
+
+    [Fact]
+    public async Task DirectKafkaProbe_PropagatesCallerCancellation()
+    {
+        using var cancellation = new CancellationTokenSource();
+        cancellation.Cancel();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => Cp6P09DirectKafkaProbe.CanConnectAnyAsync(
+            [IPAddress.Loopback],
+            (_, _) => Task.CompletedTask,
+            cancellation.Token,
+            TimeSpan.FromSeconds(1)));
+    }
+
+    [Fact]
+    public async Task DirectKafkaProbe_PropagatesCallerCancellationRaisedDuringConnect()
+    {
+        using var cancellation = new CancellationTokenSource();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => Cp6P09DirectKafkaProbe.CanConnectAnyAsync(
+            [IPAddress.Loopback],
+            (_, _) =>
+            {
+                cancellation.Cancel();
+                return Task.CompletedTask;
+            },
+            cancellation.Token,
+            TimeSpan.FromSeconds(1)));
+    }
+
+    [Fact]
+    public async Task DirectKafkaProbe_DoesNotTreatUnrelatedCancellationAsLocalTimeout()
+    {
+        using var unrelated = new CancellationTokenSource();
+        unrelated.Cancel();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => Cp6P09DirectKafkaProbe.CanConnectAnyAsync(
+            [IPAddress.Loopback],
+            (_, _) => Task.FromCanceled(unrelated.Token),
+            CancellationToken.None,
+            TimeSpan.FromSeconds(1)));
+    }
+
+    [Fact]
+    public async Task DirectKafkaProbe_PropagatesCallerCancellationWhenConnectAlsoFails()
+    {
+        using var cancellation = new CancellationTokenSource();
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() => Cp6P09DirectKafkaProbe.CanConnectAnyAsync(
+            [IPAddress.Loopback],
+            (_, _) =>
+            {
+                cancellation.Cancel();
+                return Task.FromException(new SocketException((int)SocketError.OperationAborted));
+            },
+            cancellation.Token,
+            TimeSpan.FromSeconds(1)));
     }
 
     private static string FindRepositoryRoot()

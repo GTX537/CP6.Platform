@@ -23,6 +23,7 @@ const string DefaultDaprEndpoint = "http://127.0.0.1:3500";
 const int DaprSidecarPort = 3500;
 const string DirectKafkaHost = "kafka";
 const int DirectKafkaPort = 9092;
+const int MaximumDirectKafkaAddresses = 8;
 
 if (args.Length != 1 ||
     args[0] is not (PublisherRole or ReceiverRole or ProbeRole or UnauthorizedRole))
@@ -241,22 +242,15 @@ else if (role == ProbeRole)
 {
     app.MapGet("/direct-kafka", async (HttpContext context) =>
     {
-        using var timeout = CancellationTokenSource.CreateLinkedTokenSource(context.RequestAborted);
-        timeout.CancelAfter(TimeSpan.FromSeconds(3));
+        IPAddress[] addresses;
         try
         {
-            var addresses = await Dns.GetHostAddressesAsync(DirectKafkaHost, timeout.Token);
-            foreach (var address in addresses)
-            {
-                using var client = new TcpClient(address.AddressFamily);
-                await client.ConnectAsync(address, DirectKafkaPort, timeout.Token);
-                if (client.Connected)
-                {
-                    return Results.Json(
-                        new { denied = false, code = "direct-kafka-reachable" },
-                        statusCode: StatusCodes.Status500InternalServerError);
-                }
-            }
+            using var dnsTimeout = CancellationTokenSource.CreateLinkedTokenSource(context.RequestAborted);
+            dnsTimeout.CancelAfter(TimeSpan.FromSeconds(3));
+            addresses = (await Dns.GetHostAddressesAsync(DirectKafkaHost, dnsTimeout.Token))
+                .Distinct()
+                .Take(MaximumDirectKafkaAddresses)
+                .ToArray();
         }
         catch (SocketException)
         {
@@ -265,6 +259,26 @@ else if (role == ProbeRole)
         catch (OperationCanceledException) when (!context.RequestAborted.IsCancellationRequested)
         {
             return Results.Json(new { denied = true, code = "direct-kafka-denied" });
+        }
+
+        var reachable = await Cp6P09DirectKafkaProbe.CanConnectAnyAsync(
+            addresses,
+            async (address, cancellationToken) =>
+            {
+                using var client = new TcpClient(address.AddressFamily);
+                await client.ConnectAsync(address, DirectKafkaPort, cancellationToken);
+                if (!client.Connected)
+                {
+                    throw new SocketException((int)SocketError.NotConnected);
+                }
+            },
+            context.RequestAborted,
+            TimeSpan.FromSeconds(1));
+        if (reachable)
+        {
+            return Results.Json(
+                new { denied = false, code = "direct-kafka-reachable" },
+                statusCode: StatusCodes.Status500InternalServerError);
         }
 
         return Results.Json(new { denied = true, code = "direct-kafka-denied" });

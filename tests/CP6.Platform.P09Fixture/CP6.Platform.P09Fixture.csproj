@@ -11,6 +11,9 @@
     <PackageReference Include="Dapr.Client" />
   </ItemGroup>
   <ItemGroup>
+    <InternalsVisibleTo Include="CP6.Platform.DeploymentTests" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="../../contracts/contract-bundle.v1.json"
              Link="contracts/contract-bundle.v1.json"
              CopyToOutputDirectory="PreserveNewest"
