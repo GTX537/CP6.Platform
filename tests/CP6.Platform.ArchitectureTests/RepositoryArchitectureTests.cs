@@ -10,7 +10,7 @@ public sealed class RepositoryArchitectureTests
         @"Grafana|Prometheus",
         RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
     private static readonly Regex ForbiddenTempoNames = new(
-        @"(?<![A-Za-z0-9])(?i:tempo)(?![A-Za-z0-9])|(?:Tempo|tempo|TEMPO)(?![a-z])",
+        @"(?<![A-Za-z0-9])(?i:tempo)(?![A-Za-z0-9])|(?:Tempo|tempo|TEMPO)(?![a-z])|(?i:tempo(?:exporteroptions?|exporters?|backends?|clients?|services?|collectors?|sinks?|settings?|endpoints?|configs?))",
         RegexOptions.CultureInvariant);
 
     public static TheoryData<string> ForbiddenTempoCases => new()
@@ -51,7 +51,37 @@ public sealed class RepositoryArchitectureTests
         "AddTempo_Exporter",
         "AddTempo backend",
         "UseTempo:4317",
-        "OpenTelemetryTempo:4317"
+        "OpenTelemetryTempo:4317",
+        "tempoexporter",
+        "tempobackend",
+        "tempoclient",
+        "temposervice",
+        "tempocollector",
+        "temposink",
+        "temposettings",
+        "tempoendpoint",
+        "tempoconfig",
+        "tempoexporteroptions",
+        "Tempoexporter",
+        "Tempobackend",
+        "Tempoclient",
+        "Temposervice",
+        "Tempocollector",
+        "Temposink",
+        "Temposettings",
+        "Tempoendpoint",
+        "Tempoconfig",
+        "Tempoexporteroptions",
+        "TeMpOExporter",
+        "TeMpOBackend",
+        "TeMpOClient",
+        "TeMpOService",
+        "TeMpOCollector",
+        "TeMpOSink",
+        "TeMpOSettings",
+        "TeMpOEndpoint",
+        "TeMpOConfig",
+        "TeMpOExporterOptions"
     };
 
     public static TheoryData<string> AllowedTemporaryCases => new()
