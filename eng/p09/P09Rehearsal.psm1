@@ -637,13 +637,17 @@ function Assert-Cp6P09TargetReadableFiles {
 }
 
 function New-Cp6P09ClientProperties {
-    param([string]$Username, [string]$Password)
+    param(
+        [Parameter(Mandatory)][string]$Username,
+        [Parameter(Mandatory)][string]$Password,
+        [Parameter(Mandatory)][ValidateSet(5000, 30000)][int]$TimeoutMilliseconds
+    )
     return @"
 security.protocol=SASL_PLAINTEXT
 sasl.mechanism=PLAIN
 sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="$Username" password="$Password";
-request.timeout.ms=5000
-default.api.timeout.ms=5000
+request.timeout.ms=$TimeoutMilliseconds
+default.api.timeout.ms=$TimeoutMilliseconds
 "@.Replace("`r`n", "`n")
 }
 
@@ -664,10 +668,11 @@ function Initialize-Cp6P09RuntimeFiles {
     $files = @(
         @('kafka/config','server.properties','1000:1000',$server),
         @('kafka/secrets','kafka-jaas.conf','1000:1000',$jaas),
-        @('kafka/clients','provisioner.properties','1000:1000',(New-Cp6P09ClientProperties 'cp6-p09-provisioner' $Credentials.Provisioner)),
-        @('kafka/clients','publisher.properties','1000:1000',(New-Cp6P09ClientProperties 'cp6-p09-probe-publisher' $Credentials.Publisher)),
-        @('kafka/clients','receiver.properties','1000:1000',(New-Cp6P09ClientProperties 'cp6-p09-probe-receiver' $Credentials.Receiver)),
-        @('kafka/clients','unauthorized.properties','1000:1000',(New-Cp6P09ClientProperties 'cp6-p09-unauthorized-probe' $Credentials.Unauthorized)),
+        @('kafka/clients','readiness.properties','1000:1000',(New-Cp6P09ClientProperties -Username 'cp6-p09-provisioner' -Password $Credentials.Provisioner -TimeoutMilliseconds 5000)),
+        @('kafka/clients','provisioner.properties','1000:1000',(New-Cp6P09ClientProperties -Username 'cp6-p09-provisioner' -Password $Credentials.Provisioner -TimeoutMilliseconds 30000)),
+        @('kafka/clients','publisher.properties','1000:1000',(New-Cp6P09ClientProperties -Username 'cp6-p09-probe-publisher' -Password $Credentials.Publisher -TimeoutMilliseconds 30000)),
+        @('kafka/clients','receiver.properties','1000:1000',(New-Cp6P09ClientProperties -Username 'cp6-p09-probe-receiver' -Password $Credentials.Receiver -TimeoutMilliseconds 30000)),
+        @('kafka/clients','unauthorized.properties','1000:1000',(New-Cp6P09ClientProperties -Username 'cp6-p09-unauthorized-probe' -Password $Credentials.Unauthorized -TimeoutMilliseconds 30000)),
         @('dapr/publisher/components','secret-store.yaml','65532:65532',$secretStore),
         @('dapr/publisher/components','kafka-publish.yaml','65532:65532',$publishComponent),
         @('dapr/publisher/secrets','secrets.json','65532:65532',$publisherSecrets),
@@ -728,7 +733,7 @@ function Wait-Cp6P09KafkaDataPlane {
         $processTimeout = [Math]::Max(1, [Math]::Min(30, [Math]::Ceiling($remainingSeconds)))
         try {
             $probe = Invoke-Cp6P09KafkaTool -Context $Context -Tool 'kafka-topics.sh' -Arguments @(
-                '--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list'
+                '--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/readiness.properties','--list'
             ) -TimeoutSeconds $processTimeout
             if ($probe.ExitCode -eq 0) { return }
         }

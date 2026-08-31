@@ -109,8 +109,26 @@ try {
     foreach ($credential in $credentialValues) {
         Assert-True ($credential -cmatch '^[A-Za-z0-9_-]{43}$') 'Credential is not 32-byte Base64URL without padding.'
     }
-    Assert-True ($moduleText.Contains('request.timeout.ms=5000')) 'Kafka client requests are not bounded to five seconds.'
-    Assert-True ($moduleText.Contains('default.api.timeout.ms=5000')) 'Kafka client API calls are not bounded to five seconds.'
+    $readinessProperties = & $module {
+        New-Cp6P09ClientProperties -Username 'cp6-p09-provisioner' -Password 'redacted-test-value' -TimeoutMilliseconds 5000
+    }
+    $provisionerProperties = & $module {
+        New-Cp6P09ClientProperties -Username 'cp6-p09-provisioner' -Password 'redacted-test-value' -TimeoutMilliseconds 30000
+    }
+    foreach ($properties in @($readinessProperties, $provisionerProperties)) {
+        $normalizedProperties = $properties.Replace("`r`n", "`n")
+        Assert-True ($normalizedProperties.Contains('security.protocol=SASL_PLAINTEXT' + "`n" + 'sasl.mechanism=PLAIN')) 'Kafka client properties changed fixed SASL lines.'
+        Assert-True ($normalizedProperties.Contains('sasl.jaas.config=org.apache.kafka.common.security.plain.PlainLoginModule required username="cp6-p09-provisioner" password="redacted-test-value";')) 'Kafka client properties changed the provisioner SASL configuration.'
+        Assert-Equal @('redacted-test-value') @([regex]::Matches($normalizedProperties, 'password="(?<value>[^"]*)"') | ForEach-Object { $_.Groups['value'].Value }) 'Kafka client properties leaked a password beyond the supplied redacted test value.'
+    }
+    $normalizedReadinessProperties = $readinessProperties.Replace("`r`n", "`n")
+    $normalizedProvisionerProperties = $provisionerProperties.Replace("`r`n", "`n")
+    Assert-True ($normalizedReadinessProperties.Contains('request.timeout.ms=5000' + "`n" + 'default.api.timeout.ms=5000')) 'Readiness client properties do not retain the adjacent five-second Kafka timeouts.'
+    Assert-True ($normalizedProvisionerProperties.Contains('request.timeout.ms=30000' + "`n" + 'default.api.timeout.ms=30000')) 'Provisioner client properties do not retain the adjacent thirty-second Kafka timeouts.'
+    $readinessClientSource = '(?s)@\(\s*''kafka/clients''\s*,\s*''readiness\.properties''\s*,\s*''1000:1000''\s*,\s*\(New-Cp6P09ClientProperties\s+-Username\s+''cp6-p09-provisioner''\s+-Password\s+\$Credentials\.Provisioner\s+-TimeoutMilliseconds\s+5000\)\s*\)'
+    $provisionerClientSource = '(?s)@\(\s*''kafka/clients''\s*,\s*''provisioner\.properties''\s*,\s*''1000:1000''\s*,\s*\(New-Cp6P09ClientProperties\s+-Username\s+''cp6-p09-provisioner''\s+-Password\s+\$Credentials\.Provisioner\s+-TimeoutMilliseconds\s+30000\)\s*\)'
+    Assert-True ($moduleText -match $readinessClientSource) 'Runtime population does not generate the provisioner readiness client file with a five-second deadline.'
+    Assert-True ($moduleText -match $provisionerClientSource) 'Runtime population does not generate the provisioner client file with a thirty-second deadline.'
 
     $readinessLog = Join-Path $testRoot 'readiness.jsonl'
     $readinessResponses = Join-Path $testRoot 'readiness-responses.jsonl'
@@ -132,7 +150,7 @@ try {
         Assert-Equal @(
             'compose','--project-name','cp6-p09-abcdef0123456789','--file',(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'),
             '--profile','provision','run','--no-TTY','--rm','--no-deps','--entrypoint','/opt/kafka/bin/kafka-topics.sh','kafka-admin',
-            '--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list'
+            '--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/readiness.properties','--list'
         ) @($call.argv) 'Kafka data-plane readiness command drifted.'
     }
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
@@ -395,8 +413,8 @@ try {
     }
     & $module { param($context,$values) Initialize-Cp6P09RuntimeFiles -Context $context -Credentials $values } $populationContext $credentials
     $populationCalls = @(Get-Content -LiteralPath $populationLog | ForEach-Object { $_ | ConvertFrom-Json })
-    Assert-Equal 25 $populationCalls.Count 'Runtime ownership preflight must use 16 writes plus 9 directory-group readability calls.'
-    Assert-Equal 16 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match ':/out(?:\s|$)' }).Count 'Target-UID STDIN write call count drifted.'
+    Assert-Equal 26 $populationCalls.Count 'Runtime ownership preflight must use 17 writes plus 9 directory-group readability calls.'
+    Assert-Equal 17 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match ':/out(?:\s|$)' }).Count 'Target-UID STDIN write call count drifted.'
     Assert-Equal 9 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match ':/input:ro(?:\s|$)' }).Count 'Directory-group readability call count drifted.'
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''

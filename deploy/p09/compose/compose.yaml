@@ -74,7 +74,7 @@ services:
         - --bootstrap-controller
         - localhost:9093
         - --command-config
-        - /etc/kafka/clients/provisioner.properties
+        - /etc/kafka/clients/readiness.properties
         - describe
         - --status
       interval: 5s

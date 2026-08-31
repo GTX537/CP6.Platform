@@ -582,7 +582,7 @@ public sealed class P09ComposeContractTests
                 "--bootstrap-controller",
                 "localhost:9093",
                 "--command-config",
-                "/etc/kafka/clients/provisioner.properties",
+                "/etc/kafka/clients/readiness.properties",
                 "describe",
                 "--status"
             },
@@ -837,7 +837,7 @@ public sealed class P09ComposeContractTests
                 "--bootstrap-controller",
                 "localhost:9093",
                 "--command-config",
-                "/etc/kafka/clients/provisioner.properties",
+                "/etc/kafka/clients/readiness.properties",
                 "describe",
                 "--status"
             },
