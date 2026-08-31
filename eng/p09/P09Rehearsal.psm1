@@ -1067,6 +1067,81 @@ function Invoke-Cp6P09PrincipalNegative {
     if ($producerText -notmatch '(?i)(TopicAuthorization|not authorized)' -or $consumerText -notmatch '(?i)(Authorization|not authorized)') { throw 'principal-denied' }
 }
 
+function Get-Cp6P09DaprDiagnosticProcessSpec {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][ValidatePattern('^cp6-p09-[a-f0-9]{16}$')][string]$ProjectName,
+        [Parameter(Mandatory)][string]$ComposeFile
+    )
+
+    $shell = @'
+set -eu; exec 3<>/dev/tcp/publisher-dapr/3500; printf 'POST /v1.0/invoke/cp6-p09-probe-receiver/method/invoked HTTP/1.1\r\nHost: publisher-dapr\r\nContent-Type: application/json\r\nContent-Length: 34\r\nConnection: close\r\n\r\n{"correlationId":"p09-diagnostic"}' >&3; timeout 10 head -c 3072 <&3
+'@.Trim()
+    [pscustomobject]@{
+        Arguments = @(
+            'compose','--project-name',$ProjectName,'--file',([IO.Path]::GetFullPath($ComposeFile)),
+            '--profile','provision','run','--no-TTY','--rm','--no-deps','--entrypoint','/bin/bash','kafka-admin','-c',$shell
+        )
+        TimeoutSeconds = 15
+        MaximumOutputBytes = 4096
+    }
+}
+
+function Get-Cp6P09ReceiverEndpointNetworkClasses {
+    param([Parameter(Mandatory)]$Context, [Parameter(Mandatory)][string]$Text)
+    $classes = [Collections.Generic.HashSet[string]]::new([StringComparer]::Ordinal)
+    $addresses = @([regex]::Matches($Text,'(?<![0-9])(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?![0-9])') | ForEach-Object Value | Select-Object -Unique)
+    if ($addresses.Count -eq 0) { return @() }
+    $list = Invoke-Cp6P09Process -FilePath $Context.DockerCommand -ArgumentList @(
+        'container','ls','--quiet',
+        '--filter',"label=com.docker.compose.project=$($Context.ProjectName)",
+        '--filter','label=com.docker.compose.service=receiver-dapr'
+    ) -TimeoutSeconds 10 -MaximumOutputBytes 4096 -WorkingDirectory $Context.RepositoryRoot
+    $ids = @($list.StandardOutput.Trim().Split("`n",[StringSplitOptions]::RemoveEmptyEntries))
+    if ($list.ExitCode -ne 0 -or $ids.Count -ne 1 -or $ids[0] -cnotmatch '^[a-f0-9]{12,64}$') { return @() }
+    $inspect = Invoke-Cp6P09Process -FilePath $Context.DockerCommand -ArgumentList @(
+        'container','inspect','--format','{{json .NetworkSettings.Networks}}',$ids[0]
+    ) -TimeoutSeconds 10 -MaximumOutputBytes 4096 -WorkingDirectory $Context.RepositoryRoot
+    if ($inspect.ExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($inspect.StandardOutput)) { return @() }
+    $networks = $inspect.StandardOutput | ConvertFrom-Json
+    foreach ($property in $networks.PSObject.Properties) {
+        $address = [string]$property.Value.IPAddress
+        if ([string]::IsNullOrWhiteSpace($address) -or $addresses -cnotcontains $address) { continue }
+        if ($property.Name -cmatch '_receiver-app$') { [void]$classes.Add('receiver-app') }
+        elseif ($property.Name -cmatch '_runtime$') { [void]$classes.Add('runtime') }
+    }
+    return @($classes | Sort-Object -CaseSensitive)
+}
+
+function Invoke-Cp6P09DaprDiagnostic {
+    [CmdletBinding()]
+    param([Parameter(Mandatory)]$Context)
+    try {
+        $spec = Get-Cp6P09DaprDiagnosticProcessSpec -ProjectName $Context.ProjectName -ComposeFile $Context.ComposeFile
+        $result = Invoke-Cp6P09Process -FilePath $Context.DockerCommand -ArgumentList $spec.Arguments `
+            -TimeoutSeconds $spec.TimeoutSeconds -MaximumOutputBytes $spec.MaximumOutputBytes `
+            -WorkingDirectory $Context.RepositoryRoot -EnvironmentVariables $Context.Environment
+        if ($result.ExitCode -ne 0) { return 'diagnostic-unavailable' }
+        $text = $result.StandardOutput + $result.StandardError
+        Assert-Cp6P09SafeText -Text $text
+        $status = [regex]::Match($result.StandardOutput,'HTTP/1\.[01]\s+(?<status>[1-5][0-9]{2})')
+        if (-not $status.Success) { return 'diagnostic-unavailable' }
+        if ($text -match '"errorCode"\s*:\s*"DAPR_APP_ID_NOT_FOUND"') { return 'target-app-id-not-found' }
+        $networkClasses = @(Get-Cp6P09ReceiverEndpointNetworkClasses -Context $Context -Text $text)
+        if ($networkClasses -ccontains 'receiver-app') { return 'target-receiver-app-network' }
+        if ($networkClasses -ccontains 'runtime') { return 'target-runtime-network' }
+        if ($text -match '(?i)no address(?:es)? (?:found|available)|address is empty') { return 'target-no-address' }
+        if ($text -match '(?i)connection refused|actively refused') { return 'target-refused' }
+        if ($text -match '(?i)error while dialing|failed to connect') { return 'target-dial' }
+        if ($text -match '(?i)(?:code\s*=\s*Unavailable|\bUnavailable\b)') { return 'target-unavailable' }
+        if ($text -match '(?i)timeout|timed out|deadline exceeded') { return 'target-timeout' }
+        return 'target-unknown'
+    }
+    catch {
+        return 'diagnostic-unavailable'
+    }
+}
+
 function Invoke-Cp6P09RuntimeMatrix {
     param([Parameter(Mandatory)]$Context)
     $Context.MatrixFailureId = 'topic-list'
@@ -1087,8 +1162,14 @@ function Invoke-Cp6P09RuntimeMatrix {
         Wait-Cp6P09Publisher $client $baseUri
         $Context.MatrixFailureId = 'invoke-positive'
         $matrixDeadline = [DateTimeOffset]::UtcNow.AddSeconds(60)
-        $invocation = Invoke-Cp6P09BoundedRetry -Deadline $matrixDeadline -FailureId 'invoke-positive' -Action {
-            Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'invoke-positive')) '{}'
+        try {
+            $invocation = Invoke-Cp6P09BoundedRetry -Deadline $matrixDeadline -FailureId 'invoke-positive' -Action {
+                Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'invoke-positive')) '{}'
+            }
+        }
+        catch {
+            $Context.MatrixDiagnosticCategory = Invoke-Cp6P09DaprDiagnostic -Context $Context
+            throw
         }
         if ($invocation.appId -cne 'cp6-p09-probe-receiver' -or $invocation.invocationTraceId -cnotmatch '^[0-9a-f]{32}$') { throw 'invoke-positive' }
         $Context.MatrixFailureId = 'pubsub-positive'
@@ -1221,6 +1302,7 @@ function Invoke-Cp6P09Rehearsal {
         Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$layout.RuntimeRoot; CP6_P09_CLUSTER_ID=$clusterId; CP6_P09_NEGATIVE_ROLE='probe' }
         KubernetesManifestSha=$null
         MatrixFailureId='runtime-start'
+        MatrixDiagnosticCategory=$null
         ProvisionFailureId='topic-create-first'
         ProvisionFailureCategory=$null
         PopulationFailureId='runtime-population'
@@ -1324,7 +1406,7 @@ function Invoke-Cp6P09Rehearsal {
         [IO.File]::WriteAllText($resultPath,(ConvertTo-Cp6P09CanonicalJson $composeResult)+"`n",[Text.UTF8Encoding]::new($false))
         return [pscustomobject]@{ Status='Failed'; RunId=$layout.RunId; Reason='kubernetes-assets-pending'; ArtifactsDirectory=$layout.ArtifactReference; ZeroResidue=$true }
     }
-    return [pscustomobject]@{ Status='Failed'; RunId=$layout.RunId; Reason=$(if ($null -ne $cleanupFailure) {$cleanupFailure} else {$originalFailure}); ArtifactsDirectory=$layout.ArtifactReference; ZeroResidue=$zeroResidue; OriginalFailureId=$originalFailure; CleanupFailureId=$cleanupFailure; FailureCategory=$context.ProvisionFailureCategory }
+    return [pscustomobject]@{ Status='Failed'; RunId=$layout.RunId; Reason=$(if ($null -ne $cleanupFailure) {$cleanupFailure} else {$originalFailure}); ArtifactsDirectory=$layout.ArtifactReference; ZeroResidue=$zeroResidue; OriginalFailureId=$originalFailure; CleanupFailureId=$cleanupFailure; FailureCategory=$context.ProvisionFailureCategory; DiagnosticCategory=$context.MatrixDiagnosticCategory }
 }
 
 Export-ModuleMember -Function @(
@@ -1345,6 +1427,8 @@ Export-ModuleMember -Function @(
     'Get-Cp6P09AclBatchDockerArguments',
     'Get-Cp6P09AclBatchFailureId',
     'Get-Cp6P09KafkaFailureCategory',
+    'Get-Cp6P09DaprDiagnosticProcessSpec',
+    'Invoke-Cp6P09DaprDiagnostic',
     'Get-Cp6P09StableFailureId',
     'Assert-Cp6P09TraceTopology',
     'Assert-Cp6P09ExpectedGitState',

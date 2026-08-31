@@ -310,6 +310,49 @@ try {
     Assert-True ($moduleText.Contains("Invoke-Cp6P09BoundedRetry -Deadline `$matrixDeadline -FailureId 'invoke-positive'")) 'Invocation does not use the shared matrix deadline.'
     Assert-True ($moduleText.Contains('} while ([DateTimeOffset]::UtcNow -lt $matrixDeadline)')) 'Publish polling does not reuse the shared matrix deadline.'
 
+    $diagnosticSpec = Get-Cp6P09DaprDiagnosticProcessSpec `
+        -ProjectName 'cp6-p09-abcdef0123456789' `
+        -ComposeFile (Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml')
+    Assert-Equal 15 $diagnosticSpec.TimeoutSeconds 'Dapr diagnostic outer timeout drifted.'
+    Assert-Equal 4096 $diagnosticSpec.MaximumOutputBytes 'Dapr diagnostic output bound drifted.'
+    Assert-Equal @(
+        'compose','--project-name','cp6-p09-abcdef0123456789','--file',(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'),
+        '--profile','provision','run','--no-TTY','--rm','--no-deps','--entrypoint','/bin/bash','kafka-admin','-c'
+    ) @($diagnosticSpec.Arguments[0..14]) 'Dapr diagnostic escaped the exact canonical kafka-admin one-off.'
+    $diagnosticShell = [string]$diagnosticSpec.Arguments[15]
+    Assert-True ($diagnosticShell.Contains('/dev/tcp/publisher-dapr/3500')) 'Dapr diagnostic endpoint drifted.'
+    Assert-True ($diagnosticShell.Contains('POST /v1.0/invoke/cp6-p09-probe-receiver/method/invoked HTTP/1.1')) 'Dapr diagnostic method drifted.'
+    Assert-True ($diagnosticShell.Contains('Content-Length: 34')) 'Dapr diagnostic body length is not compile-time fixed.'
+    Assert-True ($diagnosticShell.Contains('{"correlationId":"p09-diagnostic"}')) 'Dapr diagnostic body drifted.'
+    Assert-True ($diagnosticShell.Contains('timeout 10 head -c 3072')) 'Dapr diagnostic inner read is not bounded.'
+    Assert-True ($diagnosticShell -notmatch '\$|(?i)password|token|secret') 'Dapr diagnostic contains interpolation or secret material.'
+
+    $diagnosticLog = Join-Path $testRoot 'dapr-diagnostic.jsonl'
+    $diagnosticResponses = Join-Path $testRoot 'dapr-diagnostic-responses.jsonl'
+    @{ exitCode=0; stdout="HTTP/1.1 500 Internal Server Error`r`nContent-Type: application/json`r`n`r`n{`"errorCode`":`"ERR_DIRECT_INVOKE`",`"message`":`"rpc error: code = Unavailable desc = connection error`"}"; stderr='' } |
+        ConvertTo-Json -Compress | Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
+    $env:CP6_P09_FAKE_DOCKER_LOG = $diagnosticLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $diagnosticResponses
+    $diagnosticContext = [pscustomobject]@{
+        RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
+        ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
+        Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$testRoot; CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
+    }
+    Assert-Equal 'target-unavailable' (Invoke-Cp6P09DaprDiagnostic -Context $diagnosticContext) 'Dapr diagnostic did not classify the fixed Unavailable response.'
+    $diagnosticCalls = @(Get-Content -LiteralPath $diagnosticLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 1 $diagnosticCalls.Count 'Dapr diagnostic issued more than its single fixed one-off.'
+    Assert-Equal @($diagnosticSpec.Arguments) @($diagnosticCalls[0].argv) 'Dapr diagnostic fake argv drifted.'
+    Assert-Equal 0 $diagnosticCalls[0].stdinBytes 'Dapr diagnostic unexpectedly received secret STDIN.'
+
+    @{ exitCode=1; stdout=''; stderr='bounded diagnostic failure' } |
+        ConvertTo-Json -Compress | Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
+    Assert-Equal 'diagnostic-unavailable' (Invoke-Cp6P09DaprDiagnostic -Context $diagnosticContext) 'Dapr diagnostic failure escaped its closed fallback category.'
+    Assert-True ($moduleText -match '(?s)catch\s*\{\s*\$Context\.MatrixDiagnosticCategory\s*=\s*Invoke-Cp6P09DaprDiagnostic.+?throw\s*\}') 'Dapr diagnostic is not synchronized after final invoke-positive failure while preserving the original exception.'
+    Assert-True ($moduleText.Contains('DiagnosticCategory=$context.MatrixDiagnosticCategory')) 'Runner result does not expose only the closed Dapr diagnostic category.'
+    $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
+
     Assert-Equal 'kafka-health' (Get-Cp6P09StableFailureId -Candidate 'kafka-health' -Fallback 'kafka-start') 'Stable Kafka health failure id was lost.'
     foreach ($stableFailure in @('runtime-start','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied','principal-denied','appid-scope-denied','foreign-topic-denied')) {
         Assert-Equal $stableFailure (Get-Cp6P09StableFailureId -Candidate $stableFailure -Fallback 'runtime-matrix') 'Stable runtime failure id was lost.'
