@@ -1,0 +1,39 @@
+{
+  "apiVersion": "apps/v1",
+  "kind": "Deployment",
+  "metadata": {
+    "name": "unauthorized",
+    "namespace": "cp6-p09-ci",
+    "labels": { "cp6.io/nondeployable": "true" }
+  },
+  "spec": {
+    "replicas": 0,
+    "selector": { "matchLabels": { "cp6.io/workload": "unauthorized" } },
+    "template": {
+      "metadata": {
+        "labels": {
+          "cp6.io/nondeployable": "true",
+          "cp6.io/workload": "unauthorized",
+          "cp6.io/component": "probe"
+        },
+        "annotations": {
+          "dapr.io/enabled": "true",
+          "dapr.io/app-id": "cp6-p09-unauthorized-probe",
+          "dapr.io/app-port": "8080"
+        }
+      },
+      "spec": {
+        "serviceAccountName": "unauthorized",
+        "automountServiceAccountToken": false,
+        "containers": [
+          {
+            "name": "p09-fixture",
+            "image": "example.invalid/cp6/p09-fixture@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "imagePullPolicy": "IfNotPresent",
+            "args": ["probe"]
+          }
+        ]
+      }
+    }
+  }
+}

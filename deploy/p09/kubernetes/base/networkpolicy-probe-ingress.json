@@ -1,0 +1,25 @@
+{
+  "apiVersion": "networking.k8s.io/v1",
+  "kind": "NetworkPolicy",
+  "metadata": {
+    "name": "allow-probe-ingress",
+    "namespace": "cp6-p09-ci",
+    "labels": { "cp6.io/nondeployable": "true" }
+  },
+  "spec": {
+    "podSelector": {
+      "matchExpressions": [
+        { "key": "cp6.io/workload", "operator": "In", "values": ["publisher", "receiver"] }
+      ]
+    },
+    "policyTypes": ["Ingress"],
+    "ingress": [
+      {
+        "from": [
+          { "podSelector": { "matchLabels": { "cp6.io/workload": "unauthorized" } } }
+        ],
+        "ports": [{ "protocol": "TCP", "port": 8080 }]
+      }
+    ]
+  }
+}

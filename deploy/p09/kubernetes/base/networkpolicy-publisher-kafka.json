@@ -1,0 +1,24 @@
+{
+  "apiVersion": "networking.k8s.io/v1",
+  "kind": "NetworkPolicy",
+  "metadata": {
+    "name": "allow-publisher-kafka-egress",
+    "namespace": "cp6-p09-ci",
+    "labels": { "cp6.io/nondeployable": "true" }
+  },
+  "spec": {
+    "podSelector": {
+      "matchLabels": {
+        "cp6.io/workload": "publisher",
+        "cp6.io/kafka-client": "dapr-sidecar"
+      }
+    },
+    "policyTypes": ["Egress"],
+    "egress": [
+      {
+        "to": [{ "podSelector": { "matchLabels": { "cp6.io/workload": "kafka" } } }],
+        "ports": [{ "protocol": "TCP", "port": 9092 }]
+      }
+    ]
+  }
+}
