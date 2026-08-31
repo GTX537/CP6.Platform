@@ -627,7 +627,8 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
     Assert-True ($moduleText.Contains('$command = @(''--profile'',''provision'',''run'',''--no-TTY'',''--rm'',''--no-deps'',''--entrypoint''')) 'Kafka one-off tools must disable Compose TTY allocation.'
-    Assert-True ($moduleText -match "(?s)Invoke-Cp6P09RuntimeMatrix.+?@\('up','--detach','--build','--wait','--wait-timeout','120','receiver','receiver-dapr'\).+?@\('up','--detach','--build','--wait','--wait-timeout','120','publisher','publisher-dapr'\)") 'Runtime must start receiver and sidecar before publisher and sidecar.'
+    Assert-True ($moduleText -match "(?s)Invoke-Cp6P09RuntimeMatrix.+?@\('build','--quiet','publisher','receiver','direct-probe'\).+?@\('up','--detach','--no-build','--wait','--wait-timeout','120','receiver','receiver-dapr'\).+?@\('up','--detach','--no-build','--wait','--wait-timeout','120','publisher','publisher-dapr'\)") 'Runtime must build fixtures before the bounded receiver and publisher readiness windows.'
+    Assert-Equal 2 ([regex]::Matches($moduleText, "@\('--profile','negative','up','--detach','--no-build','--force-recreate','direct-probe','unauthorized-dapr'\)")).Count 'Negative probes must reuse the prebuilt fixture image without rebuilding.'
     Assert-Equal 'receiver-process-output-limit' (Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage 'The bounded child process exceeded its output limit.' -StandardOutput '' -StandardError '') 'Receiver cold-build output overflow was not mapped to a closed diagnostic category.'
     Assert-Equal 'publisher-process-timeout' (Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage 'The bounded child process exceeded its timeout.' -StandardOutput '' -StandardError '') 'Publisher start timeout was not mapped to a closed diagnostic category.'
     Assert-Equal 'receiver-image-build' (Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage '' -StandardOutput '' -StandardError 'failed to solve: process did not complete successfully') 'Receiver image-build failure was not mapped to a closed diagnostic category.'
@@ -775,7 +776,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     Assert-Equal 'kafka-health' (Get-Cp6P09StableFailureId -Candidate 'kafka-health' -Fallback 'kafka-start') 'Stable Kafka health failure id was lost.'
     Assert-Equal 'pubsub-positive' (Get-Cp6P09StableFailureId -Candidate 'http-status' -Fallback 'pubsub-positive') 'Generic HTTP status hid the active runtime matrix checkpoint.'
     Assert-Equal 'appid-scope-denied' (Get-Cp6P09StableFailureId -Candidate 'http-output-limit' -Fallback 'appid-scope-denied') 'Generic HTTP output failure hid the active runtime matrix checkpoint.'
-    foreach ($stableFailure in @('runtime-start','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied','principal-denied','appid-scope-denied','foreign-topic-denied')) {
+    foreach ($stableFailure in @('runtime-build','runtime-start','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied','principal-denied','appid-scope-denied','foreign-topic-denied')) {
         Assert-Equal $stableFailure (Get-Cp6P09StableFailureId -Candidate $stableFailure -Fallback 'runtime-matrix') 'Stable runtime failure id was lost.'
         Assert-True ($moduleText.Contains("`$Context.MatrixFailureId = '$stableFailure'")) "Runtime matrix does not checkpoint $stableFailure before its side effect."
     }

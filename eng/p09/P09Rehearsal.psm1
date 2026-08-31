@@ -486,7 +486,7 @@ function Get-Cp6P09StableFailureId {
     $allowed = @(
         'compose-contract','contract-tests','runtime-acl','runtime-mode','runtime-population','runtime-readability',
         'image-pull','kafka-start','kafka-health','provision-first','provision-idempotent','topic-drift','acl-drift','acl-list',
-        'runtime-start','publisher-port','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied',
+        'runtime-build','runtime-start','publisher-port','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied',
         'principal-denied','appid-scope-denied','foreign-topic-denied','topic-list','image-digest'
     )
     $allowed += @('topic-create-first','topic-describe-first','acl-list-first','topic-create-replay','acl-list-replay')
@@ -1305,9 +1305,11 @@ function Invoke-Cp6P09RuntimeStartStateDiagnostic {
 
 function Invoke-Cp6P09RuntimeMatrix {
     param([Parameter(Mandatory)]$Context)
+    $Context.MatrixFailureId = 'runtime-build'
+    Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('build','--quiet','publisher','receiver','direct-probe') 600) 'runtime-build'
     $Context.MatrixFailureId = 'runtime-start'
     try {
-        $receiverStart = Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','receiver','receiver-dapr') 600
+        $receiverStart = Invoke-Cp6P09Compose $Context @('up','--detach','--no-build','--wait','--wait-timeout','120','receiver','receiver-dapr') 600
         if ($receiverStart.ExitCode -ne 0) {
             $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage '' -StandardOutput $receiverStart.StandardOutput -StandardError $receiverStart.StandardError
             if ($Context.MatrixDiagnosticCategory -ceq 'receiver-diagnostic-unavailable') {
@@ -1326,7 +1328,7 @@ function Invoke-Cp6P09RuntimeMatrix {
         throw
     }
     try {
-        $publisherStart = Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','publisher','publisher-dapr') 600
+        $publisherStart = Invoke-Cp6P09Compose $Context @('up','--detach','--no-build','--wait','--wait-timeout','120','publisher','publisher-dapr') 600
         if ($publisherStart.ExitCode -ne 0) {
             $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage '' -StandardOutput $publisherStart.StandardOutput -StandardError $publisherStart.StandardError
             if ($Context.MatrixDiagnosticCategory -ceq 'publisher-diagnostic-unavailable') {
@@ -1383,7 +1385,7 @@ function Invoke-Cp6P09RuntimeMatrix {
 
         $Context.MatrixFailureId = 'direct-kafka-denied'
         $Context.Environment['CP6_P09_NEGATIVE_ROLE'] = 'probe'
-        Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('--profile','negative','up','--detach','--build','--force-recreate','direct-probe','unauthorized-dapr') 600) 'direct-kafka-denied'
+        Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('--profile','negative','up','--detach','--no-build','--force-recreate','direct-probe','unauthorized-dapr') 600) 'direct-kafka-denied'
         $directDeadline = [DateTimeOffset]::UtcNow.AddSeconds(60)
         $direct = Invoke-Cp6P09BoundedRetry -Deadline $directDeadline -FailureId 'direct-kafka-denied' -Action {
             $candidate = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'negative/direct-kafka')) '{}'
@@ -1393,7 +1395,7 @@ function Invoke-Cp6P09RuntimeMatrix {
 
         $Context.MatrixFailureId = 'appid-scope-denied'
         $Context.Environment['CP6_P09_NEGATIVE_ROLE'] = 'unauthorized'
-        Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('--profile','negative','up','--detach','--build','--force-recreate','direct-probe','unauthorized-dapr') 600) 'appid-scope-denied'
+        Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('--profile','negative','up','--detach','--no-build','--force-recreate','direct-probe','unauthorized-dapr') 600) 'appid-scope-denied'
         $appidDeadline = [DateTimeOffset]::UtcNow.AddSeconds(60)
         $appid = Invoke-Cp6P09BoundedRetry -Deadline $appidDeadline -FailureId 'appid-scope-denied' -Action {
             $candidate = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'negative/appid-scope')) '{}'
