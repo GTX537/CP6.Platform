@@ -86,6 +86,9 @@ Cp6P09ReceivedEvidenceProxy? receivedEvidenceProxy = role == PublisherRole
         profile.EventType,
         profile.TopicName)
     : null;
+Cp6P09NegativeProbeProxy? negativeProbeProxy = role == PublisherRole
+    ? new Cp6P09NegativeProbeProxy(daprTransport!, profile.UnauthorizedAppId)
+    : null;
 var received = new ReceivedEventStore();
 var published = new PublishedProbeStore();
 var app = builder.Build();
@@ -214,6 +217,25 @@ if (role == PublisherRole)
             Cp6P09ReceivedEvidenceProxyOutcome.Success when result.Evidence is not null =>
                 Results.Json(result.Evidence),
             _ => ReceivedProxyBadGateway()
+        };
+    });
+
+    app.MapPost("/negative/{kind}", async (
+        string kind,
+        CancellationToken cancellationToken) =>
+    {
+        var outcome = await negativeProbeProxy!.InvokeAsync(kind, cancellationToken);
+        return outcome switch
+        {
+            Cp6P09NegativeProbeOutcome.Denied => Results.Json(new
+            {
+                denied = true,
+                code = kind == "direct-kafka" ? "direct-kafka-denied" : "appid-scope-denied"
+            }),
+            Cp6P09NegativeProbeOutcome.InvalidKind => Results.BadRequest(new { code = "negative-kind-invalid" }),
+            _ => Results.Json(
+                new { denied = false, code = "negative-probe-failed" },
+                statusCode: StatusCodes.Status502BadGateway)
         };
     });
 }

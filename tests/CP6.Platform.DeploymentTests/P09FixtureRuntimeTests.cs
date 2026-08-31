@@ -15,6 +15,62 @@ public sealed class P09FixtureRuntimeTests
     private const string ValidReceivedEvidenceJson =
         "{\"eventId\":\"p09-event-0001\",\"eventType\":\"com.gtx537.platform.contract-example.changed.v1\",\"topicName\":\"cp6.platform.deployment-probe.v1\",\"partitionKey\":\"cp6-p09-entity-0001\",\"region\":\"TEST\",\"traceId\":\"11111111111111111111111111111111\",\"publisherSpanId\":\"2222222222222222\",\"receiverSpanId\":\"3333333333333333\",\"receiverParentSpanId\":\"2222222222222222\",\"contractValid\":true}";
 
+    [Theory]
+    [InlineData("direct-kafka", HttpStatusCode.OK, "{\"denied\":true,\"code\":\"direct-kafka-denied\"}")]
+    [InlineData("appid-scope", HttpStatusCode.OK, "{\"denied\":true,\"code\":\"appid-scope-denied\"}")]
+    public async Task NegativeProbeProxy_UsesOnlyFixedUnauthorizedMethodsAndValidatesBoundedDenial(
+        string kind,
+        HttpStatusCode statusCode,
+        string responseJson)
+    {
+        var content = new TrackingHttpContent(Encoding.UTF8.GetBytes(responseJson));
+        var transport = new RecordingDaprTransport((_, _, _, _, _) => Task.FromResult(
+            new HttpResponseMessage(statusCode) { Content = content }));
+        var proxy = new Cp6P09NegativeProbeProxy(transport, "cp6-p09-unauthorized-probe");
+
+        var result = await proxy.InvokeAsync(kind);
+
+        Assert.Equal(Cp6P09NegativeProbeOutcome.Denied, result);
+        Assert.True(content.IsDisposed);
+        var call = Assert.Single(transport.Invocations);
+        Assert.Equal("cp6-p09-unauthorized-probe", call.AppId);
+        Assert.Equal(kind == "direct-kafka" ? HttpMethod.Get : HttpMethod.Post, call.Method);
+        Assert.Equal(kind == "direct-kafka" ? "direct-kafka" : "publish", call.MethodName);
+        Assert.Null(call.Content);
+    }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData("foreign-topic")]
+    [InlineData("../publish")]
+    [InlineData("DIRECT-KAFKA")]
+    public async Task NegativeProbeProxy_RejectsUnknownEnumBeforeTransport(string kind)
+    {
+        var transport = new RecordingDaprTransport((_, _, _, _, _) => throw new InvalidOperationException());
+        var proxy = new Cp6P09NegativeProbeProxy(transport, "cp6-p09-unauthorized-probe");
+
+        Assert.Equal(Cp6P09NegativeProbeOutcome.InvalidKind, await proxy.InvokeAsync(kind));
+        Assert.Empty(transport.Invocations);
+    }
+
+    [Theory]
+    [InlineData(HttpStatusCode.ServiceUnavailable, "{\"denied\":true,\"code\":\"direct-kafka-denied\"}")]
+    [InlineData(HttpStatusCode.OK, "{\"denied\":false,\"code\":\"direct-kafka-denied\"}")]
+    [InlineData(HttpStatusCode.OK, "{\"denied\":true,\"code\":\"wrong\"}")]
+    [InlineData(HttpStatusCode.OK, "{\"denied\":true,\"code\":\"direct-kafka-denied\",\"extra\":true}")]
+    public async Task NegativeProbeProxy_FailsClosedOnStatusOrPayloadDrift(
+        HttpStatusCode statusCode,
+        string responseJson)
+    {
+        var content = new TrackingHttpContent(Encoding.UTF8.GetBytes(responseJson));
+        var transport = new RecordingDaprTransport((_, _, _, _, _) => Task.FromResult(
+            new HttpResponseMessage(statusCode) { Content = content }));
+        var proxy = new Cp6P09NegativeProbeProxy(transport, "cp6-p09-unauthorized-probe");
+
+        Assert.Equal(Cp6P09NegativeProbeOutcome.Failed, await proxy.InvokeAsync("direct-kafka"));
+        Assert.True(content.IsDisposed);
+    }
+
     [Fact]
     public async Task ReceivedEvidenceProxy_DisposesRepeatedNotFoundAndOtherNonSuccessResponses()
     {
