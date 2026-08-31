@@ -1257,7 +1257,12 @@ function Get-Cp6P09RuntimeStartStateCategory {
     try {
         $containers = @()
         if (-not [string]::IsNullOrWhiteSpace($PsOutput)) {
-            $containers = @($PsOutput | ConvertFrom-Json)
+            try {
+                $containers = @($PsOutput | ConvertFrom-Json)
+            }
+            catch {
+                $containers = @($PsOutput -split '\r?\n' | Where-Object { -not [string]::IsNullOrWhiteSpace($_) } | ForEach-Object { $_ | ConvertFrom-Json })
+            }
         }
         if ($containers.Count -eq 0) { return "$Phase-containers-missing" }
         $kafka = @($containers | Where-Object { [string]$_.Service -ceq 'kafka' })

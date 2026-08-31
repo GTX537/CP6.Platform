@@ -665,6 +665,12 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
         [ordered]@{ Service='kafka'; State='exited'; Health=''; ExitCode=137 }
     ) | ConvertTo-Json -Compress
     Assert-Equal 'publisher-kafka-exited' (Get-Cp6P09RuntimeStartStateCategory -Phase publisher -PsOutput $publisherKafkaExitedState) 'Exited Kafka dependency was hidden by missing publisher containers.'
+    $receiverJsonLinesState = (@(
+        ([ordered]@{ Service='kafka'; State='running'; Health='healthy'; ExitCode=0 } | ConvertTo-Json -Compress),
+        ([ordered]@{ Service='receiver'; State='running'; Health=''; ExitCode=0 } | ConvertTo-Json -Compress),
+        ([ordered]@{ Service='receiver-dapr'; State='exited'; Health=''; ExitCode=1 } | ConvertTo-Json -Compress)
+    ) -join "`n")
+    Assert-Equal 'receiver-sidecar-exited' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput $receiverJsonLinesState) 'Compose JSONL state output was not parsed across supported Compose versions.'
     Assert-Equal 'receiver-containers-missing' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput '[]') 'Missing receiver containers did not map to a closed state category.'
     Assert-Equal 'publisher-state-diagnostic-unavailable' (Get-Cp6P09RuntimeStartStateCategory -Phase publisher -PsOutput 'not-json') 'Invalid Compose state output escaped the closed category.'
     Assert-True ($moduleText.Contains("@('ps','--all','--format','json',`$Phase,`"`$Phase-dapr`",'kafka')")) 'Runtime-start state diagnostic does not include the Kafka dependency.'
