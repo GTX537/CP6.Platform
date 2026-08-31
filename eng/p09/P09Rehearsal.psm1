@@ -563,19 +563,38 @@ function Get-Cp6P09OwnedFileDockerArguments {
     )
 }
 
-function Assert-Cp6P09TargetReadableFile {
+function Get-Cp6P09ReadabilityDockerArguments {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][ValidatePattern('^cp6-p09-[a-f0-9]{16}$')][string]$ProjectName,
+        [Parameter(Mandatory)][string]$ComposeFile,
+        [Parameter(Mandatory)][string]$Directory,
+        [Parameter(Mandatory)][ValidateNotNullOrEmpty()][string[]]$FileNames,
+        [Parameter(Mandatory)][ValidatePattern('^[0-9]{1,6}:[0-9]{1,6}$')][string]$User
+    )
+    foreach ($fileName in $FileNames) {
+        if ($fileName -cnotmatch '^[a-z][a-z0-9.-]{0,63}$') { throw 'runtime-readability' }
+    }
+    $compose = [IO.Path]::GetFullPath($ComposeFile)
+    $directoryPath = [IO.Path]::GetFullPath($Directory)
+    $tests = @($FileNames | ForEach-Object { "test -r '/input/$_'" }) -join ' && '
+    return @(
+        'compose','--project-name',$ProjectName,'--file',$compose,
+        '--profile','provision','run','--no-TTY','--rm','--no-deps','--user',$User,
+        '--volume',("${directoryPath}:/input:ro"),'--entrypoint','/bin/sh','kafka-admin','-c',$tests
+    )
+}
+
+function Assert-Cp6P09TargetReadableFiles {
     param(
         [Parameter(Mandatory)]$Context,
         [Parameter(Mandatory)][string]$RelativeDirectory,
-        [Parameter(Mandatory)][string]$FileName,
+        [Parameter(Mandatory)][string[]]$FileNames,
         [Parameter(Mandatory)][string]$User
     )
     $directory = Resolve-Cp6P09ContainedPath -Root $Context.RuntimeRoot -Candidate (Join-Path $Context.RuntimeRoot $RelativeDirectory) -RequireChild
-    $mount = "${directory}:/input:ro"
-    $result = Invoke-Cp6P09Compose -Context $Context -Arguments @(
-        '--profile','provision','run','--no-TTY','--rm','--no-deps','--user',$User,
-        '--volume',$mount,'--entrypoint','/bin/sh','kafka-admin','-c',"test -r '/input/$FileName'"
-    ) -TimeoutSeconds 120
+    $arguments = Get-Cp6P09ReadabilityDockerArguments -ProjectName $Context.ProjectName -ComposeFile $Context.ComposeFile -Directory $directory -FileNames $FileNames -User $User
+    $result = Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -Arguments $arguments -WorkingDirectory $Context.RepositoryRoot -TimeoutSeconds 120 -EnvironmentVariables $Context.Environment
     Assert-Cp6P09CommandSucceeded $result 'runtime-readability'
 }
 
@@ -622,14 +641,24 @@ function Initialize-Cp6P09RuntimeFiles {
         @('dapr/unauthorized/components','kafka-publish.yaml','65532:65532',$publishComponent),
         @('dapr/unauthorized/secrets','secrets.json','65532:65532',$unauthorizedSecrets)
     )
+    $Context.PopulationFailureId = 'runtime-population'
     foreach ($file in $files) {
         Write-Cp6P09TargetOwnedFile -Context $Context -RelativeDirectory $file[0] -FileName $file[1] -User $file[2] -Content $file[3]
     }
     foreach ($relative in @($files | ForEach-Object { $_[0] } | Select-Object -Unique)) {
         Set-Cp6P09RuntimeDirectorySecurity -Path (Join-Path $Context.RuntimeRoot $relative) -UnixMode '0711'
     }
+    $readabilityGroups = [ordered]@{}
     foreach ($file in $files) {
-        Assert-Cp6P09TargetReadableFile -Context $Context -RelativeDirectory $file[0] -FileName $file[1] -User $file[2]
+        $key = "$($file[2])|$($file[0])"
+        if (-not $readabilityGroups.Contains($key)) {
+            $readabilityGroups[$key] = [pscustomobject]@{ User=$file[2]; RelativeDirectory=$file[0]; FileNames=[Collections.Generic.List[string]]::new() }
+        }
+        $readabilityGroups[$key].FileNames.Add([string]$file[1])
+    }
+    $Context.PopulationFailureId = 'runtime-readability'
+    foreach ($group in $readabilityGroups.Values) {
+        Assert-Cp6P09TargetReadableFiles -Context $Context -RelativeDirectory $group.RelativeDirectory -FileNames @($group.FileNames) -User $group.User
     }
 }
 
@@ -1128,6 +1157,7 @@ function Invoke-Cp6P09Rehearsal {
         KubernetesManifestSha=$null
         MatrixFailureId='runtime-start'
         ProvisionFailureId='topic-create-first'
+        PopulationFailureId='runtime-population'
     }
     $config = Invoke-Cp6P09Compose $context @('--profile','negative','--profile','provision','config','--quiet') 30
     Assert-Cp6P09CommandSucceeded $config 'compose-contract'
@@ -1179,6 +1209,9 @@ function Invoke-Cp6P09Rehearsal {
         }
         elseif ($stage -ceq 'provision-first') {
             [string]$context.ProvisionFailureId
+        }
+        elseif ($stage -ceq 'runtime-population') {
+            [string]$context.PopulationFailureId
         }
         else {
             $stage
@@ -1241,6 +1274,7 @@ Export-ModuleMember -Function @(
     'ConvertTo-Cp6P09CanonicalJson',
     'Test-Cp6P09Evidence',
     'Get-Cp6P09OwnedFileDockerArguments',
+    'Get-Cp6P09ReadabilityDockerArguments',
     'Wait-Cp6P09KafkaDataPlane',
     'Get-Cp6P09StableFailureId',
     'Assert-Cp6P09TraceTopology',

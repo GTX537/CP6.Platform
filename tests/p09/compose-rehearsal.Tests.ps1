@@ -182,7 +182,37 @@ try {
         '--entrypoint','/bin/sh','kafka-admin','-c',"umask 077; cat > '/out/secrets.json'; chmod 0600 '/out/secrets.json'"
     ) $populationArgs 'Target-UID STDIN population command drifted from canonical Compose ordering.'
     Assert-True (($populationArgs -join ' ') -notmatch '(?i)password|token|secret-value') 'Population argv contains secret material.'
-    Assert-True ($moduleText -match "(?s)function Assert-Cp6P09TargetReadableFile.+?'--profile','provision','run','--no-TTY','--rm','--no-deps','--user'") 'Target-UID readability probes must disable Compose TTY allocation.'
+    $readabilityArgs = Get-Cp6P09ReadabilityDockerArguments `
+        -ProjectName 'cp6-p09-abcdef0123456789' `
+        -ComposeFile (Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml') `
+        -Directory $populationDirectory `
+        -FileNames @('secret-store.yaml','subscription.yaml') `
+        -User '65532:65532'
+    Assert-Equal @(
+        'compose','--project-name','cp6-p09-abcdef0123456789','--file',(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'),
+        '--profile','provision','run','--no-TTY','--rm','--no-deps','--user','65532:65532','--volume',("${populationDirectory}:/input:ro"),
+        '--entrypoint','/bin/sh','kafka-admin','-c',"test -r '/input/secret-store.yaml' && test -r '/input/subscription.yaml'"
+    ) $readabilityArgs 'Target-UID directory-group readability command drifted.'
+    Assert-True ($moduleText -match "(?s)function Get-Cp6P09ReadabilityDockerArguments.+?'--profile','provision','run','--no-TTY','--rm','--no-deps','--user'") 'Target-UID readability probes must disable Compose TTY allocation.'
+    Assert-True ($moduleText.Contains("`$Context.PopulationFailureId = 'runtime-readability'")) 'Generic readability timeouts are not mapped to the stable runtime-readability id.'
+    $populationLog = Join-Path $testRoot 'population.jsonl'
+    $env:CP6_P09_FAKE_DOCKER_LOG = $populationLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
+    $populationContext = [pscustomobject]@{
+        RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
+        ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
+        RuntimeRoot=(Join-Path $testRoot 'runtime-population')
+        Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=(Join-Path $testRoot 'runtime-population'); CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
+        PopulationFailureId='runtime-population'
+    }
+    $module = Get-Module P09Rehearsal
+    & $module { param($context,$values) Initialize-Cp6P09RuntimeFiles -Context $context -Credentials $values } $populationContext $credentials
+    $populationCalls = @(Get-Content -LiteralPath $populationLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 25 $populationCalls.Count 'Runtime ownership preflight must use 16 writes plus 9 directory-group readability calls.'
+    Assert-Equal 16 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match ':/out(?:\s|$)' }).Count 'Target-UID STDIN write call count drifted.'
+    Assert-Equal 9 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match ':/input:ro(?:\s|$)' }).Count 'Directory-group readability call count drifted.'
+    $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
     Assert-True ($moduleText.Contains('$command = @(''--profile'',''provision'',''run'',''--no-TTY'',''--rm'',''--no-deps'',''--entrypoint''')) 'Kafka one-off tools must disable Compose TTY allocation.'
     Assert-True ($moduleText -match "(?s)Invoke-Cp6P09RuntimeMatrix.+?@\('up','--detach','--build','--wait','--wait-timeout','120','receiver','receiver-dapr'\).+?@\('up','--detach','--build','--wait','--wait-timeout','120','publisher','publisher-dapr'\)") 'Runtime must start receiver and sidecar before publisher and sidecar.'
 
