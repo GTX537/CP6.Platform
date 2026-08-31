@@ -27,7 +27,7 @@ The probe reuses the existing P04 synthetic event type. It does not add a busine
 - Git with the repository checked out at the commit being verified.
 - PowerShell 7 (`pwsh`).
 - .NET 8 SDK. If multiple SDK majors are installed, set `DOTNET_HOST_PATH` to the .NET 8 host.
-- Docker Engine with Docker Compose `2.36.0` or newer for the offline Kubernetes gate and real rehearsal.
+- Docker Engine API `1.49` or newer (Docker Engine `28.1+`) with Docker Compose `2.36.0` or newer for the offline Kubernetes gate and real rehearsal.
 - Enough local resources to start one Kafka broker, three Dapr sidecars, and bounded one-off helper containers.
 
 No host `kubectl`, cloud account, kubeconfig, external Kafka, Registry credential, or committed secret value is required.
@@ -92,7 +92,7 @@ The CI overlay uses nondeployable `example.invalid` image identities and `cp6.io
 
 1. Read `artifacts/verify/p09real/summary.json` and the named bounded log to identify the first failed check.
 2. Inspect `run-log.v1.jsonl` for stable stages such as `kubernetes-policy`, `provision`, `runtime-matrix`, `image-digest`, and `zero-residue`.
-3. If the result is `NotRun`, confirm Docker Engine is reachable and `docker compose version --short` is at least `2.36.0`; do not bypass the version check.
+3. If the result is `NotRun`, confirm Docker Engine is reachable, `docker version --format '{{.Server.APIVersion}}'` is at least `1.49`, and `docker compose version --short` is at least `2.36.0`; do not bypass either version check.
 4. If an exact-SHA check fails, commit or deliberately discard only the task's own P09 changes, then rerun with the new `HEAD`; do not weaken the check.
 5. If cleanup fails, inspect only resources carrying the exact run's P09 project labels. Do not use global prune commands.
 6. Reproduce failures with the same command and preserve the bounded artifact directory. Never add credentials or raw environment data to diagnostics.

@@ -433,6 +433,36 @@ function Invoke-Cp6P09Compose {
     return Invoke-Cp6P09DockerCommand @parameters
 }
 
+function Test-Cp6P09SupportedEngineApiVersion {
+    [CmdletBinding()]
+    param(
+        [AllowNull()]
+        [AllowEmptyString()]
+        [string]$VersionOutput
+    )
+
+    if ([string]::IsNullOrWhiteSpace($VersionOutput)) {
+        return $false
+    }
+
+    $match = [regex]::Match(
+        $VersionOutput.Trim(),
+        '^(?<major>\d+)\.(?<minor>\d+)$',
+        [Text.RegularExpressions.RegexOptions]::CultureInvariant)
+    if (-not $match.Success) {
+        return $false
+    }
+
+    $major = 0
+    $minor = 0
+    if (-not [int]::TryParse($match.Groups['major'].Value, [ref]$major) -or
+        -not [int]::TryParse($match.Groups['minor'].Value, [ref]$minor)) {
+        return $false
+    }
+
+    return $major -eq 1 -and $minor -ge 49
+}
+
 function Test-Cp6P09SupportedComposeVersion {
     [CmdletBinding()]
     param(
@@ -1547,13 +1577,16 @@ function Invoke-Cp6P09Rehearsal {
         Assert-Cp6P09ExpectedGitState -RepositoryRoot $repository -ExpectedGitSha $ExpectedGitSha
     }
     try {
-        $version = Invoke-Cp6P09DockerCommand -DockerCommand $DockerCommand -WorkingDirectory $repository -Arguments @('version','--format','{{.Server.Version}}') -TimeoutSeconds 30
+        $engineApiVersion = Invoke-Cp6P09DockerCommand -DockerCommand $DockerCommand -WorkingDirectory $repository -Arguments @('version','--format','{{.Server.APIVersion}}') -TimeoutSeconds 30
     }
     catch [System.ComponentModel.Win32Exception] {
         return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='docker-unavailable' }
     }
-    if ($version.ExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($version.StandardOutput)) {
+    if ($engineApiVersion.ExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($engineApiVersion.StandardOutput)) {
         return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='docker-unavailable' }
+    }
+    if (-not (Test-Cp6P09SupportedEngineApiVersion -VersionOutput $engineApiVersion.StandardOutput)) {
+        return [pscustomobject]@{ Status='NotRun'; RunId=$layout.RunId; Reason='unsupported-engine-api' }
     }
     try {
         $composeVersion = Invoke-Cp6P09DockerCommand -DockerCommand $DockerCommand -WorkingDirectory $repository -Arguments @('compose','version','--short') -TimeoutSeconds 30
@@ -1727,6 +1760,7 @@ Export-ModuleMember -Function @(
     'Get-Cp6P09StableFailureId',
     'Assert-Cp6P09TraceTopology',
     'Assert-Cp6P09ExpectedGitState',
+    'Test-Cp6P09SupportedEngineApiVersion',
     'Test-Cp6P09SupportedComposeVersion',
     'Invoke-Cp6P09Teardown',
     'Invoke-Cp6P09GuardedDockerFailure',

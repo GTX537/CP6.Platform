@@ -20,6 +20,8 @@ public sealed class P09DocumentationContractTests
             "-P09Contract",
             "-P09Real -ExpectedGitSha",
             "eng/pack-p09.ps1 -VerifyReproducible",
+            "Docker Engine API `1.49`",
+            "Docker Compose `2.36.0`",
             "Passed",
             "NotRun",
             "Failed",

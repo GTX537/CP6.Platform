@@ -71,6 +71,12 @@ Assert-True ($runnerText -match '(?s)param\(\s*\[string\]\$ProfilePath\s*=\s*"co
 $testRoot = Join-Path ([IO.Path]::GetTempPath()) ("cp6-p09-tests-" + [Guid]::NewGuid().ToString('N'))
 [IO.Directory]::CreateDirectory($testRoot) | Out-Null
 try {
+    foreach ($supported in @('1.49', '1.50', '1.51', "1.49`n", "1.51`r`n")) {
+        Assert-True (Test-Cp6P09SupportedEngineApiVersion -VersionOutput $supported) "Expected Docker Engine API version '$supported' to be supported."
+    }
+    foreach ($unsupported in @($null, '', '1.48', '0.99', '2.0', '1.49.0', 'v1.49', 'garbage', '1.49 unexpected text', '1.2147483648')) {
+        Assert-True (-not (Test-Cp6P09SupportedEngineApiVersion -VersionOutput $unsupported)) "Expected Docker Engine API version '$unsupported' to be unsupported."
+    }
     foreach ($supported in @('2.36.0', 'v2.36.0', '2.36.0-desktop.1', '2.40.3', '5.1.1', "2.36.0`n", "v2.40.3`r`n")) {
         Assert-True (Test-Cp6P09SupportedComposeVersion -VersionOutput $supported) "Expected Compose version '$supported' to be supported."
     }
@@ -427,9 +433,27 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     $afterEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
     Assert-Equal $beforeEvidence $afterEvidence 'NotRun wrote rehearsal evidence.'
 
+    $unsupportedEngineResponses = Join-Path $testRoot 'unsupported-engine-responses.jsonl'
+    @{ exitCode = 0; stdout = '1.48'; stderr = '' } |
+        ConvertTo-Json -Compress | Set-Content -LiteralPath $unsupportedEngineResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
+    Remove-Item -LiteralPath "$fakeLog.index" -Force -ErrorAction SilentlyContinue
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $unsupportedEngineResponses
+    $beforeUnsupportedEngineEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
+    $unsupportedEngine = Invoke-Cp6P09Rehearsal -RepositoryRoot $repositoryRoot -ProfilePath (Join-Path $repositoryRoot 'contracts\p09\examples\non-production-runtime-profile.valid.json') -ArtifactsRoot $notRunArtifacts -DockerCommand $fakeDocker -SkipDotnetPreflight
+    Assert-Equal 'NotRun' $unsupportedEngine.Status 'Unsupported Docker Engine API must fail closed.'
+    Assert-Equal 'unsupported-engine-api' $unsupportedEngine.Reason 'Unsupported Docker Engine API did not return the stable closed reason.'
+    $unsupportedEngineCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 1 $unsupportedEngineCalls.Count 'Unsupported Docker Engine API must stop before probing Compose.'
+    Assert-Equal @('version','--format','{{.Server.APIVersion}}') @($unsupportedEngineCalls[0].argv) 'Unsupported Docker Engine API probe drifted.'
+    $afterUnsupportedEngineEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
+    Assert-Equal $beforeUnsupportedEngineEvidence $afterUnsupportedEngineEvidence 'Unsupported Docker Engine API wrote rehearsal evidence.'
+    Assert-True (-not (Test-Path -LiteralPath (Join-Path $notRunArtifacts $unsupportedEngine.RunId))) 'Unsupported Docker Engine API created a per-run artifact directory.'
+    Assert-True (-not (Test-Path -LiteralPath (Join-Path ([IO.Path]::GetTempPath()) ('cp6-p09-' + $unsupportedEngine.RunId)))) 'Unsupported Docker Engine API created a runtime temp root.'
+
     $unsupportedComposeResponses = Join-Path $testRoot 'unsupported-compose-responses.jsonl'
     @(
-        @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
+        @{ exitCode = 0; stdout = '1.49'; stderr = '' }
         @{ exitCode = 0; stdout = '2.35.9'; stderr = '' }
     ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $unsupportedComposeResponses -Encoding utf8NoBOM
     Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
@@ -441,7 +465,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     Assert-Equal 'unsupported-compose-version' $unsupportedCompose.Reason 'Unsupported Compose version did not return the stable closed reason.'
     $unsupportedComposeCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
     Assert-Equal 2 $unsupportedComposeCalls.Count 'Unsupported Compose version should issue exactly two Docker calls.'
-    Assert-Equal @('version','--format','{{.Server.Version}}') @($unsupportedComposeCalls[0].argv) 'Unsupported Compose version first Docker call drifted.'
+    Assert-Equal @('version','--format','{{.Server.APIVersion}}') @($unsupportedComposeCalls[0].argv) 'Unsupported Compose version Engine API call drifted.'
     Assert-Equal @('compose','version','--short') @($unsupportedComposeCalls[1].argv) 'Unsupported Compose version second Docker call drifted.'
     $afterUnsupportedEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
     Assert-Equal $beforeUnsupportedEvidence $afterUnsupportedEvidence 'Unsupported Compose version wrote rehearsal evidence.'
@@ -452,7 +476,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
 
     $supportedComposeConfigFailureResponses = Join-Path $testRoot 'supported-compose-config-failure-responses.jsonl'
     @(
-        @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
+        @{ exitCode = 0; stdout = '1.49'; stderr = '' }
         @{ exitCode = 0; stdout = "2.36.0`r`n"; stderr = '' }
         @{ exitCode = 1; stdout = ''; stderr = 'config validation failed' }
     ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $supportedComposeConfigFailureResponses -Encoding utf8NoBOM
@@ -464,7 +488,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     } 'compose-contract'
     $supportedComposeConfigFailureCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
     Assert-Equal 3 $supportedComposeConfigFailureCalls.Count 'Supported Compose probe should reach the config preflight as a third Docker call.'
-    Assert-Equal @('version','--format','{{.Server.Version}}') @($supportedComposeConfigFailureCalls[0].argv) 'Supported Compose probe first Docker call drifted.'
+    Assert-Equal @('version','--format','{{.Server.APIVersion}}') @($supportedComposeConfigFailureCalls[0].argv) 'Supported Compose probe Engine API call drifted.'
     Assert-Equal @('compose','version','--short') @($supportedComposeConfigFailureCalls[1].argv) 'Supported Compose probe second Docker call drifted.'
     Assert-Equal 11 @($supportedComposeConfigFailureCalls[2].argv).Count 'Supported Compose preflight third Docker call did not keep the canonical arity.'
     Assert-Equal 'compose' $supportedComposeConfigFailureCalls[2].argv[0] 'Supported Compose preflight third Docker call lost the compose verb.'
@@ -476,7 +500,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
 
     $composeProbeFailureResponses = Join-Path $testRoot 'compose-probe-failure-responses.jsonl'
     @(
-        @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
+        @{ exitCode = 0; stdout = '1.49'; stderr = '' }
         @{ exitCode = 1; stdout = ''; stderr = 'compose version failed' }
     ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $composeProbeFailureResponses -Encoding utf8NoBOM
     Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
@@ -488,7 +512,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     Assert-Equal 'unsupported-compose-version' $composeProbeFailure.Reason 'Compose probe failure did not return the stable closed reason.'
     $composeProbeFailureCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
     Assert-Equal 2 $composeProbeFailureCalls.Count 'Compose probe failure should issue exactly two Docker calls.'
-    Assert-Equal @('version','--format','{{.Server.Version}}') @($composeProbeFailureCalls[0].argv) 'Compose probe failure first Docker call drifted.'
+    Assert-Equal @('version','--format','{{.Server.APIVersion}}') @($composeProbeFailureCalls[0].argv) 'Compose probe failure Engine API call drifted.'
     Assert-Equal @('compose','version','--short') @($composeProbeFailureCalls[1].argv) 'Compose probe failure second Docker call drifted.'
     $afterProbeFailureEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
     Assert-Equal $beforeProbeFailureEvidence $afterProbeFailureEvidence 'Compose probe failure wrote rehearsal evidence.'
@@ -499,7 +523,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
 
     $malformedComposeResponses = Join-Path $testRoot 'malformed-compose-responses.jsonl'
     @(
-        @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
+        @{ exitCode = 0; stdout = '1.49'; stderr = '' }
         @{ exitCode = 0; stdout = 'garbage'; stderr = '' }
     ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $malformedComposeResponses -Encoding utf8NoBOM
     Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
@@ -511,7 +535,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     Assert-Equal 'unsupported-compose-version' $malformedCompose.Reason 'Malformed Compose version did not return the stable closed reason.'
     $malformedComposeCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
     Assert-Equal 2 $malformedComposeCalls.Count 'Malformed Compose version should issue exactly two Docker calls.'
-    Assert-Equal @('version','--format','{{.Server.Version}}') @($malformedComposeCalls[0].argv) 'Malformed Compose version first Docker call drifted.'
+    Assert-Equal @('version','--format','{{.Server.APIVersion}}') @($malformedComposeCalls[0].argv) 'Malformed Compose version Engine API call drifted.'
     Assert-Equal @('compose','version','--short') @($malformedComposeCalls[1].argv) 'Malformed Compose version second Docker call drifted.'
     $afterMalformedEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
     Assert-Equal $beforeMalformedEvidence $afterMalformedEvidence 'Malformed Compose version wrote rehearsal evidence.'
@@ -522,7 +546,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
 
     $composeProbeExceptionResponses = Join-Path $testRoot 'compose-probe-exception-responses.jsonl'
     @(
-        @{ exitCode = 0; stdout = '26.1.4'; stderr = '' }
+        @{ exitCode = 0; stdout = '1.49'; stderr = '' }
         @{ exitCode = 0; stdout = ('x' * 70000); stderr = '' }
     ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $composeProbeExceptionResponses -Encoding utf8NoBOM
     Remove-Item -LiteralPath $fakeLog -Force -ErrorAction SilentlyContinue
@@ -534,7 +558,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     Assert-Equal 'unsupported-compose-version' $composeProbeException.Reason 'Exceptional Compose probe did not return the stable closed reason.'
     $composeProbeExceptionCalls = @(Get-Content -LiteralPath $fakeLog | ForEach-Object { $_ | ConvertFrom-Json })
     Assert-Equal 2 $composeProbeExceptionCalls.Count 'Exceptional Compose probe should issue exactly two Docker calls.'
-    Assert-Equal @('version','--format','{{.Server.Version}}') @($composeProbeExceptionCalls[0].argv) 'Exceptional Compose probe first Docker call drifted.'
+    Assert-Equal @('version','--format','{{.Server.APIVersion}}') @($composeProbeExceptionCalls[0].argv) 'Exceptional Compose probe Engine API call drifted.'
     Assert-Equal @('compose','version','--short') @($composeProbeExceptionCalls[1].argv) 'Exceptional Compose probe second Docker call drifted.'
     $afterComposeProbeExceptionEvidence = @(Get-ChildItem -LiteralPath $notRunArtifacts -Recurse -Filter 'rehearsal-evidence.v1.json' -ErrorAction SilentlyContinue).Count
     Assert-Equal $beforeComposeProbeExceptionEvidence $afterComposeProbeExceptionEvidence 'Exceptional Compose probe wrote rehearsal evidence.'
