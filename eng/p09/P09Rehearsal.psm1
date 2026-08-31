@@ -1265,19 +1265,28 @@ function Get-Cp6P09RuntimeStartStateCategory {
             }
         }
         if ($containers.Count -eq 0) { return "$Phase-containers-missing" }
+        $kafkaReadiness = 'absent'
         $kafka = @($containers | Where-Object { [string]$_.Service -ceq 'kafka' })
         if ($kafka.Count -eq 1) {
             $kafkaState = [string]$kafka[0].State
             $kafkaHealthProperty = $kafka[0].PSObject.Properties['Health']
             $kafkaHealth = if ($null -eq $kafkaHealthProperty) { '' } else { [string]$kafkaHealthProperty.Value }
-            if ($kafkaHealth -ceq 'unhealthy') { return "$Phase-kafka-unhealthy" }
+            $kafkaStatusProperty = $kafka[0].PSObject.Properties['Status']
+            $kafkaStatus = if ($null -eq $kafkaStatusProperty) { '' } else { [string]$kafkaStatusProperty.Value }
+            if ($kafkaHealth -ceq 'unhealthy' -or $kafkaStatus -match '(?i)\(health:\s*unhealthy\)') { return "$Phase-kafka-unhealthy" }
+            if ($kafkaHealth -ceq 'starting' -or $kafkaStatus -match '(?i)\(health:\s*starting\)') { return "$Phase-kafka-health-pending" }
             if ($kafkaState -in @('exited','dead')) { return "$Phase-kafka-exited" }
             if ($kafkaState -ceq 'restarting') { return "$Phase-kafka-restarting" }
             if ($kafkaState -in @('created','paused')) { return "$Phase-kafka-not-running" }
+            $kafkaReadiness = if ($kafkaHealth -ceq 'healthy' -or $kafkaStatus -match '(?i)\(healthy\)|\(health:\s*healthy\)') { 'healthy' } else { 'health-unknown' }
         }
         $app = @($containers | Where-Object { [string]$_.Service -ceq $Phase })
         $sidecar = @($containers | Where-Object { [string]$_.Service -ceq "$Phase-dapr" })
-        if ($app.Count -ne 1 -or $sidecar.Count -ne 1) { return "$Phase-containers-missing" }
+        if ($app.Count -ne 1 -or $sidecar.Count -ne 1) {
+            if ($kafkaReadiness -ceq 'healthy') { return "$Phase-containers-missing-kafka-healthy" }
+            if ($kafkaReadiness -ceq 'health-unknown') { return "$Phase-containers-missing-kafka-health-unknown" }
+            return "$Phase-containers-missing"
+        }
 
         foreach ($candidate in @(
             [pscustomobject]@{ Role='app'; Value=$app[0] },
@@ -1311,7 +1320,12 @@ function Invoke-Cp6P09RuntimeStartStateDiagnostic {
     try {
         $result = Invoke-Cp6P09Compose $Context @('ps','--all','--format','json',$Phase,"$Phase-dapr",'kafka') 30
         if ($result.ExitCode -ne 0) { return "$Phase-state-diagnostic-unavailable" }
-        return Get-Cp6P09RuntimeStartStateCategory -Phase $Phase -PsOutput $result.StandardOutput
+        $category = Get-Cp6P09RuntimeStartStateCategory -Phase $Phase -PsOutput $result.StandardOutput
+        if ($category -notmatch 'containers-missing') { return $category }
+        $imageResult = Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -WorkingDirectory $Context.RepositoryRoot -Arguments @('image','inspect',($Context.ProjectName + '-' + $Phase + ':latest'),'--format','{{.Id}}') -TimeoutSeconds 30
+        if ($imageResult.ExitCode -ne 0) { return "$category-image-missing" }
+        if ($imageResult.StandardOutput.Trim() -match '^sha256:[0-9a-f]{64}$') { return "$category-image-present" }
+        return "$category-image-diagnostic-unavailable"
     }
     catch {
         return "$Phase-state-diagnostic-unavailable"

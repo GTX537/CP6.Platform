@@ -665,6 +665,14 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
         [ordered]@{ Service='kafka'; State='exited'; Health=''; ExitCode=137 }
     ) | ConvertTo-Json -Compress
     Assert-Equal 'publisher-kafka-exited' (Get-Cp6P09RuntimeStartStateCategory -Phase publisher -PsOutput $publisherKafkaExitedState) 'Exited Kafka dependency was hidden by missing publisher containers.'
+    $receiverKafkaPendingState = @(
+        [ordered]@{ Service='kafka'; State='running'; Status='Up 2 minutes (health: starting)'; ExitCode=0 }
+    ) | ConvertTo-Json -Compress
+    Assert-Equal 'receiver-kafka-health-pending' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput $receiverKafkaPendingState) 'Kafka starting health was hidden by missing receiver containers.'
+    $receiverKafkaHealthyOnlyState = @(
+        [ordered]@{ Service='kafka'; State='running'; Health='healthy'; ExitCode=0 }
+    ) | ConvertTo-Json -Compress
+    Assert-Equal 'receiver-containers-missing-kafka-healthy' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput $receiverKafkaHealthyOnlyState) 'Healthy Kafka state was lost when receiver containers were missing.'
     $receiverJsonLinesState = (@(
         ([ordered]@{ Service='kafka'; State='running'; Health='healthy'; ExitCode=0 } | ConvertTo-Json -Compress),
         ([ordered]@{ Service='receiver'; State='running'; Health=''; ExitCode=0 } | ConvertTo-Json -Compress),
@@ -674,6 +682,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     Assert-Equal 'receiver-containers-missing' (Get-Cp6P09RuntimeStartStateCategory -Phase receiver -PsOutput '[]') 'Missing receiver containers did not map to a closed state category.'
     Assert-Equal 'publisher-state-diagnostic-unavailable' (Get-Cp6P09RuntimeStartStateCategory -Phase publisher -PsOutput 'not-json') 'Invalid Compose state output escaped the closed category.'
     Assert-True ($moduleText.Contains("@('ps','--all','--format','json',`$Phase,`"`$Phase-dapr`",'kafka')")) 'Runtime-start state diagnostic does not include the Kafka dependency.'
+    Assert-True ($moduleText.Contains("@('image','inspect',(`$Context.ProjectName + '-' + `$Phase + ':latest'),'--format','{{.Id}}')")) 'Runtime-start state diagnostic does not inspect the exact project-owned fixture image.'
 
     $validInvocationTrace = [pscustomobject]@{
         invocationTraceId='44444444444444444444444444444444'; invokerSpanId='5555555555555555'
