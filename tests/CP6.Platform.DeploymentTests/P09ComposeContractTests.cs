@@ -185,6 +185,9 @@ public sealed class P09ComposeContractTests
         Assert.Contains("value: \"cp6-p09-probe-receiver-v1\"", receiver, StringComparison.Ordinal);
 
         var subscription = ReadTemplate("subscription.yaml");
+        Assert.Equal(
+            "cp6-p09-deployment-probe-subscription",
+            NestedMapScalar(subscription, "metadata", "name"));
         Assert.Contains("pubsubname: cp6-p09-kafka-subscribe", subscription, StringComparison.Ordinal);
         Assert.Contains("topic: cp6.platform.deployment-probe.v1", subscription, StringComparison.Ordinal);
         Assert.Contains("default: /events/deployment-probe", subscription, StringComparison.Ordinal);
@@ -458,6 +461,20 @@ public sealed class P09ComposeContractTests
         return Regex.Matches(match.Groups["body"].Value, @"(?m)^\s+-\s+(?<value>[^\s#]+)")
             .Select(value => value.Groups["value"].Value.Trim(' ', '\'', '"'))
             .ToArray();
+    }
+
+    private static string NestedMapScalar(string yaml, string map, string key)
+    {
+        var normalized = yaml.Replace("\r\n", "\n", StringComparison.Ordinal);
+        var mapMatch = Regex.Match(
+            normalized,
+            $@"(?m)^{Regex.Escape(map)}:\s*\n(?<body>(?:^  [^\n]*\n?)+)");
+        Assert.True(mapMatch.Success, $"YAML map '{map}' is missing.");
+        var scalarMatch = Regex.Match(
+            mapMatch.Groups["body"].Value,
+            $@"(?m)^  {Regex.Escape(key)}:\s*(?<value>[^\s#]+)\s*$");
+        Assert.True(scalarMatch.Success, $"YAML scalar '{map}.{key}' is missing.");
+        return scalarMatch.Groups["value"].Value.Trim('\'', '"');
     }
 
     private static string ReadTemplate(string name) => ReadRequired(Path.Combine(TemplateRoot, name));
