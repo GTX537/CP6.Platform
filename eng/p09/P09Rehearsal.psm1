@@ -903,19 +903,26 @@ function Invoke-Cp6P09PrincipalNegative {
 
 function Invoke-Cp6P09RuntimeMatrix {
     param([Parameter(Mandatory)]$Context)
+    $Context.MatrixFailureId = 'topic-list'
     $beforeTopics = Get-Cp6P09TopicList $Context
+    $Context.MatrixFailureId = 'foreign-topic-denied'
     Assert-Cp6P09ForeignTopicRejected
+    $Context.MatrixFailureId = 'runtime-start'
     Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','receiver','receiver-dapr') 600) 'runtime-start'
     Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','publisher','publisher-dapr') 600) 'runtime-start'
+    $Context.MatrixFailureId = 'publisher-port'
     $baseUri = Get-Cp6P09PublisherEndpoint $Context
     $handler = [Net.Http.SocketsHttpHandler]::new()
     $handler.AllowAutoRedirect = $false
     $client = [Net.Http.HttpClient]::new($handler)
     $client.Timeout = [TimeSpan]::FromSeconds(15)
     try {
+        $Context.MatrixFailureId = 'publisher-health'
         Wait-Cp6P09Publisher $client $baseUri
+        $Context.MatrixFailureId = 'invoke-positive'
         $invocation = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'invoke-positive')) '{}'
         if ($invocation.appId -cne 'cp6-p09-probe-receiver' -or $invocation.invocationTraceId -cnotmatch '^[0-9a-f]{32}$') { throw 'invoke-positive' }
+        $Context.MatrixFailureId = 'pubsub-positive'
         $eventId = 'p09-event-' + [Guid]::NewGuid().ToString('N')
         $partitionKey = 'cp6-p09-entity-' + [Guid]::NewGuid().ToString('N')
         $publishJson = ConvertTo-Cp6P09CanonicalJson ([ordered]@{ eventId=$eventId; partitionKey=$partitionKey })
@@ -931,18 +938,22 @@ function Invoke-Cp6P09RuntimeMatrix {
         if ($null -eq $received -or -not $received.contractValid -or $received.eventId -cne $eventId -or $received.partitionKey -cne $partitionKey -or $received.topicName -cne 'cp6.platform.deployment-probe.v1') { throw 'pubsub-positive' }
         Assert-Cp6P09TraceTopology -Invocation $invocation -Delivery $received
 
+        $Context.MatrixFailureId = 'direct-kafka-denied'
         $Context.Environment['CP6_P09_NEGATIVE_ROLE'] = 'probe'
         Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('--profile','negative','up','--detach','--build','--force-recreate','direct-probe','unauthorized-dapr') 600) 'direct-kafka-denied'
         Start-Sleep -Seconds 3
         $direct = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'negative/direct-kafka')) '{}'
         if (-not $direct.denied -or $direct.code -cne 'direct-kafka-denied') { throw 'direct-kafka-denied' }
 
+        $Context.MatrixFailureId = 'appid-scope-denied'
         $Context.Environment['CP6_P09_NEGATIVE_ROLE'] = 'unauthorized'
         Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('--profile','negative','up','--detach','--build','--force-recreate','direct-probe','unauthorized-dapr') 600) 'appid-scope-denied'
         Start-Sleep -Seconds 3
         $appid = Invoke-Cp6P09HttpJson $client ([Net.Http.HttpMethod]::Post) ([Uri]::new($baseUri,'negative/appid-scope')) '{}'
         if (-not $appid.denied -or $appid.code -cne 'appid-scope-denied') { throw 'appid-scope-denied' }
+        $Context.MatrixFailureId = 'principal-denied'
         Invoke-Cp6P09PrincipalNegative $Context
+        $Context.MatrixFailureId = 'foreign-topic-denied'
         $afterTopics = Get-Cp6P09TopicList $Context
         if (($beforeTopics -join "`n") -cne ($afterTopics -join "`n")) { throw 'foreign-topic-denied' }
         return [pscustomobject]@{ Invocation=$invocation; Received=$received; EventId=$eventId; PartitionKey=$partitionKey }
@@ -1040,6 +1051,7 @@ function Invoke-Cp6P09Rehearsal {
         RuntimeRoot=$layout.RuntimeRoot; DockerCommand=$DockerCommand
         Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$layout.RuntimeRoot; CP6_P09_CLUSTER_ID=$clusterId; CP6_P09_NEGATIVE_ROLE='probe' }
         KubernetesManifestSha=$null
+        MatrixFailureId='runtime-start'
     }
     $config = Invoke-Cp6P09Compose $context @('--profile','negative','--profile','provision','config','--quiet') 30
     Assert-Cp6P09CommandSucceeded $config 'compose-contract'
@@ -1083,7 +1095,8 @@ function Invoke-Cp6P09Rehearsal {
         Add-Cp6P09RunLog $logPath 'image-digest' 'Passed'
     }
     catch {
-        $originalFailure = Get-Cp6P09StableFailureId -Candidate $_.Exception.Message -Fallback $stage
+        $fallback = if ($stage -ceq 'runtime-matrix') { [string]$context.MatrixFailureId } else { $stage }
+        $originalFailure = Get-Cp6P09StableFailureId -Candidate $_.Exception.Message -Fallback $fallback
         Add-Cp6P09RunLog $logPath $originalFailure 'Failed'
     }
     finally {
