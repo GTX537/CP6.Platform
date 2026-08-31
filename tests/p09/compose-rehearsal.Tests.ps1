@@ -628,6 +628,13 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
     Assert-True ($moduleText.Contains('$command = @(''--profile'',''provision'',''run'',''--no-TTY'',''--rm'',''--no-deps'',''--entrypoint''')) 'Kafka one-off tools must disable Compose TTY allocation.'
     Assert-True ($moduleText -match "(?s)Invoke-Cp6P09RuntimeMatrix.+?@\('up','--detach','--build','--wait','--wait-timeout','120','receiver','receiver-dapr'\).+?@\('up','--detach','--build','--wait','--wait-timeout','120','publisher','publisher-dapr'\)") 'Runtime must start receiver and sidecar before publisher and sidecar.'
+    Assert-Equal 'receiver-process-output-limit' (Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage 'The bounded child process exceeded its output limit.' -StandardOutput '' -StandardError '') 'Receiver cold-build output overflow was not mapped to a closed diagnostic category.'
+    Assert-Equal 'publisher-process-timeout' (Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage 'The bounded child process exceeded its timeout.' -StandardOutput '' -StandardError '') 'Publisher start timeout was not mapped to a closed diagnostic category.'
+    Assert-Equal 'receiver-image-build' (Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage '' -StandardOutput '' -StandardError 'failed to solve: process did not complete successfully') 'Receiver image-build failure was not mapped to a closed diagnostic category.'
+    Assert-Equal 'publisher-service-unhealthy' (Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage '' -StandardOutput 'container publisher-dapr is unhealthy' -StandardError '') 'Publisher unhealthy service was not mapped to a closed diagnostic category.'
+    Assert-Equal 'receiver-service-exited' (Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage '' -StandardOutput '' -StandardError 'service receiver-dapr exited (1)') 'Receiver exited service was not mapped to a closed diagnostic category.'
+    Assert-Equal 'publisher-resource' (Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage '' -StandardOutput '' -StandardError 'no space left on device') 'Publisher resource failure was not mapped to a closed diagnostic category.'
+    Assert-Equal 'receiver-diagnostic-unavailable' (Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage 'runtime-start' -StandardOutput 'bounded unknown text' -StandardError '') 'Unknown runtime-start output escaped the closed diagnostic category.'
 
     $validInvocationTrace = [pscustomobject]@{
         invocationTraceId='44444444444444444444444444444444'; invokerSpanId='5555555555555555'

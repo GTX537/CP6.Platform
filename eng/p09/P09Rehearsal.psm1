@@ -1227,11 +1227,55 @@ function Invoke-Cp6P09DaprDiagnostic {
     }
 }
 
+function Get-Cp6P09RuntimeStartFailureCategory {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][ValidateSet('receiver','publisher')][string]$Phase,
+        [Parameter(Mandatory)][AllowEmptyString()][string]$ExceptionMessage,
+        [Parameter(Mandatory)][AllowEmptyString()][string]$StandardOutput,
+        [Parameter(Mandatory)][AllowEmptyString()][string]$StandardError
+    )
+
+    $text = $ExceptionMessage + "`n" + $StandardOutput + "`n" + $StandardError
+    if ($text -match '(?i)bounded child process exceeded its output limit') { return "$Phase-process-output-limit" }
+    if ($text -match '(?i)bounded child process exceeded its timeout') { return "$Phase-process-timeout" }
+    if ($text -match '(?i)(?:no space left on device|cannot allocate memory|out of memory|resource temporarily unavailable)') { return "$Phase-resource" }
+    if ($text -match '(?i)(?:failed to solve|build(?:ing)? .* failed|process .* did not complete successfully)') { return "$Phase-image-build" }
+    if ($text -match '(?i)(?:is unhealthy|container .* unhealthy)') { return "$Phase-service-unhealthy" }
+    if ($text -match '(?i)(?:service .* exited|container .* exited|exited with code)') { return "$Phase-service-exited" }
+    if ($text -match '(?i)(?:permission denied|operation not permitted)') { return "$Phase-permission" }
+    return "$Phase-diagnostic-unavailable"
+}
+
 function Invoke-Cp6P09RuntimeMatrix {
     param([Parameter(Mandatory)]$Context)
     $Context.MatrixFailureId = 'runtime-start'
-    Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','receiver','receiver-dapr') 600) 'runtime-start'
-    Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','publisher','publisher-dapr') 600) 'runtime-start'
+    try {
+        $receiverStart = Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','receiver','receiver-dapr') 600
+        if ($receiverStart.ExitCode -ne 0) {
+            $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage '' -StandardOutput $receiverStart.StandardOutput -StandardError $receiverStart.StandardError
+        }
+        Assert-Cp6P09CommandSucceeded $receiverStart 'runtime-start'
+    }
+    catch {
+        if ([string]::IsNullOrWhiteSpace([string]$Context.MatrixDiagnosticCategory)) {
+            $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage $_.Exception.Message -StandardOutput '' -StandardError ''
+        }
+        throw
+    }
+    try {
+        $publisherStart = Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','publisher','publisher-dapr') 600
+        if ($publisherStart.ExitCode -ne 0) {
+            $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage '' -StandardOutput $publisherStart.StandardOutput -StandardError $publisherStart.StandardError
+        }
+        Assert-Cp6P09CommandSucceeded $publisherStart 'runtime-start'
+    }
+    catch {
+        if ([string]::IsNullOrWhiteSpace([string]$Context.MatrixDiagnosticCategory)) {
+            $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage $_.Exception.Message -StandardOutput '' -StandardError ''
+        }
+        throw
+    }
     $Context.MatrixFailureId = 'publisher-port'
     $baseUri = Get-Cp6P09PublisherEndpoint $Context
     $handler = [Net.Http.SocketsHttpHandler]::new()
@@ -1554,6 +1598,7 @@ Export-ModuleMember -Function @(
     'Get-Cp6P09AclBatchDockerArguments',
     'Get-Cp6P09AclBatchFailureId',
     'Get-Cp6P09KafkaFailureCategory',
+    'Get-Cp6P09RuntimeStartFailureCategory',
     'Get-Cp6P09DaprDiagnosticProcessSpec',
     'Invoke-Cp6P09DaprDiagnostic',
     'Get-Cp6P09StableFailureId',
