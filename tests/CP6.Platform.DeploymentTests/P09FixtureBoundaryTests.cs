@@ -49,7 +49,7 @@ public sealed class P09FixtureBoundaryTests
     {
         var source = string.Join(
             '\n',
-            Directory.GetFiles(FixtureRoot, "*.cs", SearchOption.TopDirectoryOnly)
+            FixtureSourceFiles(FixtureRoot)
                 .Order(StringComparer.Ordinal)
                 .Select(File.ReadAllText));
 
@@ -78,9 +78,11 @@ public sealed class P09FixtureBoundaryTests
         Assert.Contains("com.gtx537.platform.contract-example.changed.v1", source, StringComparison.Ordinal);
         Assert.Contains("Cp6CloudEventValidator", source, StringComparison.Ordinal);
         Assert.Contains("DaprClient", source, StringComparison.Ordinal);
-        Assert.Contains("DaprSidecarPort = 3500", source, StringComparison.Ordinal);
-        Assert.Contains("daprEndpointUri.Port != DaprSidecarPort", source, StringComparison.Ordinal);
-        Assert.Contains("IsAllowedDaprHost", source, StringComparison.Ordinal);
+        Assert.Contains("DAPR_HTTP_ENDPOINT", source, StringComparison.Ordinal);
+        Assert.Contains("DAPR_GRPC_ENDPOINT", source, StringComparison.Ordinal);
+        Assert.Contains("UseHttpEndpoint", source, StringComparison.Ordinal);
+        Assert.Contains("UseGrpcEndpoint", source, StringComparison.Ordinal);
+        Assert.Contains("Cp6P09DaprEndpointValidator.TryParse", source, StringComparison.Ordinal);
         Assert.Contains("\"publisher-dapr\"", source, StringComparison.Ordinal);
         Assert.Contains("\"unauthorized-dapr\"", source, StringComparison.Ordinal);
 
@@ -256,6 +258,47 @@ public sealed class P09FixtureBoundaryTests
             cancellation.Token,
             TimeSpan.FromSeconds(1)));
     }
+
+    [Fact]
+    public void FixtureSourceScanner_RecursesButExcludesBuildOutputs()
+    {
+        var root = Path.Combine(Path.GetTempPath(), $"cp6-p09-source-scan-{Guid.NewGuid():N}");
+        var nested = Path.Combine(root, "Runtime");
+        var bin = Path.Combine(root, "bin", "Debug");
+        var obj = Path.Combine(root, "obj", "Debug");
+        var uppercaseBin = Path.Combine(root, "BIN", "Release");
+        var uppercaseObj = Path.Combine(root, "OBJ", "Release");
+        Directory.CreateDirectory(nested);
+        Directory.CreateDirectory(bin);
+        Directory.CreateDirectory(obj);
+        Directory.CreateDirectory(uppercaseBin);
+        Directory.CreateDirectory(uppercaseObj);
+        try
+        {
+            var expected = Path.Combine(nested, "Nested.cs");
+            File.WriteAllText(expected, "internal sealed class Nested;");
+            File.WriteAllText(Path.Combine(bin, "Generated.cs"), "internal sealed class BinGenerated;");
+            File.WriteAllText(Path.Combine(obj, "Generated.cs"), "internal sealed class ObjGenerated;");
+            File.WriteAllText(Path.Combine(uppercaseBin, "Generated.cs"), "internal sealed class UpperBinGenerated;");
+            File.WriteAllText(Path.Combine(uppercaseObj, "Generated.cs"), "internal sealed class UpperObjGenerated;");
+
+            Assert.Equal(new[] { expected }, FixtureSourceFiles(root));
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    private static string[] FixtureSourceFiles(string root) =>
+        Directory.GetFiles(root, "*.cs", SearchOption.AllDirectories)
+            .Where(path => !Path.GetRelativePath(root, path)
+                .Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
+                .Any(segment =>
+                    string.Equals(segment, "bin", StringComparison.OrdinalIgnoreCase) ||
+                    string.Equals(segment, "obj", StringComparison.OrdinalIgnoreCase)))
+            .Order(StringComparer.Ordinal)
+            .ToArray();
 
     private static string FindRepositoryRoot()
     {

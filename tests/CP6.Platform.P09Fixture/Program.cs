@@ -18,9 +18,8 @@ const string UnauthorizedRole = "unauthorized";
 const string ProbeEventType = "com.gtx537.platform.contract-example.changed.v1";
 const string ProbeRegionLabel = "TEST";
 const string ProbeRegion = "test";
-const string DaprEndpointConfigurationKey = "DAPR_HTTP_ENDPOINT";
-const string DefaultDaprEndpoint = "http://127.0.0.1:3500";
-const int DaprSidecarPort = 3500;
+const string DaprHttpEndpointConfigurationKey = "DAPR_HTTP_ENDPOINT";
+const string DaprGrpcEndpointConfigurationKey = "DAPR_GRPC_ENDPOINT";
 const string DirectKafkaHost = "kafka";
 const int DirectKafkaPort = 9092;
 
@@ -47,24 +46,33 @@ if (!string.Equals(profile.EventType, ProbeEventType, StringComparison.Ordinal))
 var bundle = Cp6ContractBundle.Load(contractRoot);
 var cloudEventValidator = new Cp6CloudEventValidator(bundle);
 var builder = WebApplication.CreateBuilder(Array.Empty<string>());
-var daprEndpoint = builder.Configuration[DaprEndpointConfigurationKey] ?? DefaultDaprEndpoint;
-if (!Uri.TryCreate(daprEndpoint, UriKind.Absolute, out var daprEndpointUri) ||
-    !string.Equals(daprEndpointUri.Scheme, Uri.UriSchemeHttp, StringComparison.Ordinal) ||
-    !string.IsNullOrEmpty(daprEndpointUri.UserInfo) ||
-    daprEndpointUri.Port != DaprSidecarPort ||
-    daprEndpointUri.AbsolutePath != "/" ||
-    !string.IsNullOrEmpty(daprEndpointUri.Query) ||
-    !string.IsNullOrEmpty(daprEndpointUri.Fragment) ||
-    !IsAllowedDaprHost(daprEndpointUri.IdnHost))
+Uri? daprHttpEndpointUri = null;
+Uri? daprGrpcEndpointUri = null;
+if (role is PublisherRole or UnauthorizedRole &&
+    (!Cp6P09DaprEndpointValidator.TryParse(
+        builder.Configuration[DaprHttpEndpointConfigurationKey] ??
+            Cp6P09DaprEndpointValidator.DefaultHttpEndpoint,
+        role,
+        Cp6P09DaprEndpointKind.Http,
+        out daprHttpEndpointUri) ||
+     !Cp6P09DaprEndpointValidator.TryParse(
+         builder.Configuration[DaprGrpcEndpointConfigurationKey] ??
+            Cp6P09DaprEndpointValidator.DefaultGrpcEndpoint,
+         role,
+         Cp6P09DaprEndpointKind.Grpc,
+         out daprGrpcEndpointUri)))
 {
-    throw new InvalidDataException("The local Dapr endpoint is invalid.");
+    throw new InvalidDataException("The local Dapr sidecar endpoints are invalid.");
 }
 
 DaprClient? daprClient = role is PublisherRole or UnauthorizedRole
-    ? new DaprClientBuilder().UseHttpEndpoint(daprEndpointUri.AbsoluteUri).Build()
+    ? new DaprClientBuilder()
+        .UseHttpEndpoint(daprHttpEndpointUri!.AbsoluteUri)
+        .UseGrpcEndpoint(daprGrpcEndpointUri!.AbsoluteUri)
+        .Build()
     : null;
 HttpClient? invocationClient = role == PublisherRole
-    ? new HttpClient { BaseAddress = daprEndpointUri }
+    ? new HttpClient { BaseAddress = daprHttpEndpointUri }
     : null;
 Cp6DaprServiceInvoker? serviceInvoker = role == PublisherRole
     ? new Cp6DaprServiceInvoker(new Cp6DaprTransport(daprClient!, invocationClient!))
@@ -88,6 +96,7 @@ if (role == PublisherRole)
 
     app.MapPost("/invoke-positive", async (CancellationToken cancellationToken) =>
     {
+        var invokerTrace = RequireCurrentTrace();
         var correlationId = $"p09-{Guid.NewGuid():N}";
         using var content = JsonContent.Create(new InvocationProbeRequest(correlationId));
         using var invokeResponse = await serviceInvoker!.InvokeAsync(
@@ -96,20 +105,37 @@ if (role == PublisherRole)
             "invoked",
             content,
             cancellationToken);
-        var response = await invokeResponse.Content.ReadFromJsonAsync<InvocationProbeEvidence>(
+        var response = await invokeResponse.Content.ReadFromJsonAsync<InvokedTraceObservation>(
             cancellationToken: cancellationToken);
         if (response is null ||
             !string.Equals(response.AppId, profile.ReceiverAppId, StringComparison.Ordinal) ||
             !string.Equals(response.CorrelationId, correlationId, StringComparison.Ordinal) ||
-            !IsTraceId(response.TraceId) ||
-            !IsSpanId(response.SpanId))
+            !Cp6P09TraceTopology.TryParseObservedContext(
+                response.InvocationTraceId,
+                response.InvokedSpanId,
+                isRemote: true,
+                out var invokedTrace) ||
+            !Cp6P09TraceTopology.TryParseObservedSpanId(
+                response.InvokedParentSpanId,
+                out var invokedParentSpanId) ||
+            !Cp6P09TraceTopology.TryCreateInvocation(
+                invokerTrace,
+                invokedTrace,
+                invokedParentSpanId,
+                out var invocationTrace))
         {
             return Results.Json(
                 new { code = "invoke-response-invalid" },
                 statusCode: StatusCodes.Status502BadGateway);
         }
 
-        return Results.Json(response);
+        return Results.Json(new InvocationProbeEvidence(
+            response.AppId,
+            response.CorrelationId,
+            invocationTrace.InvocationTraceId,
+            invocationTrace.InvokerSpanId,
+            invocationTrace.InvokedSpanId,
+            invocationTrace.InvokedParentSpanId));
     });
 
     app.MapPost("/publish-positive", async (
@@ -121,11 +147,12 @@ if (role == PublisherRole)
             return Results.BadRequest(new { code = "publish-input-invalid" });
         }
 
+        var publisherTrace = RequireCurrentTrace();
         var structuredEvent = CreateStructuredProbeEvent(
             profile,
             request.EventId,
             request.PartitionKey,
-            RequireCurrentTrace());
+            publisherTrace);
         var validation = cloudEventValidator.Validate(structuredEvent);
         if (!validation.IsValid)
         {
@@ -151,7 +178,9 @@ if (role == PublisherRole)
             partitionKey = request.PartitionKey,
             region = ProbeRegionLabel,
             topic = profile.TopicName,
-            component = profile.PublishComponentName
+            component = profile.PublishComponentName,
+            traceId = publisherTrace.TraceId.ToHexString(),
+            publisherSpanId = publisherTrace.SpanId.ToHexString()
         });
     });
 }
@@ -189,12 +218,19 @@ else if (role == ReceiverRole)
         var region = (string?)cloudEvent[Cp6CloudEventAttributes.Region];
         var aggregateId = (string?)cloudEvent[Cp6CloudEventAttributes.AggregateId];
         var traceParent = (string?)cloudEvent[Cp6CloudEventAttributes.TraceParent];
+        var receiverTrace = RequireCurrentTrace();
+        var receiverParentSpanId = RequireCurrentParentSpanId();
         if (!string.Equals(cloudEvent.Type, profile.EventType, StringComparison.Ordinal) ||
             !string.Equals(region, ProbeRegion, StringComparison.Ordinal) ||
             !string.Equals(topic, profile.TopicName, StringComparison.Ordinal) ||
             !IsIdentifier(partitionKey) ||
             !string.Equals(partitionKey, aggregateId, StringComparison.Ordinal) ||
-            !TryParseTrace(traceParent, out var traceContext))
+            !TryParseTrace(traceParent, out var publisherTrace) ||
+            !Cp6P09TraceTopology.TryCreateDelivery(
+                publisherTrace,
+                receiverTrace,
+                receiverParentSpanId,
+                out var deliveryTrace))
         {
             return Results.Json(new { status = "DROP", code = "delivery-contract-invalid" });
         }
@@ -205,8 +241,10 @@ else if (role == ReceiverRole)
             topic,
             partitionKey,
             ProbeRegionLabel,
-            traceContext.TraceId.ToHexString(),
-            traceContext.SpanId.ToHexString(),
+            deliveryTrace.TraceId,
+            deliveryTrace.PublisherSpanId,
+            deliveryTrace.ReceiverSpanId,
+            deliveryTrace.ReceiverParentSpanId,
             true));
         return Results.Json(new { status = "SUCCESS" });
     });
@@ -219,11 +257,12 @@ else if (role == ReceiverRole)
         }
 
         var trace = RequireCurrentTrace();
-        return Results.Json(new InvocationProbeEvidence(
+        return Results.Json(new InvokedTraceObservation(
             profile.ReceiverAppId,
             request.CorrelationId,
             trace.TraceId.ToHexString(),
-            trace.SpanId.ToHexString()));
+            trace.SpanId.ToHexString(),
+            RequireCurrentParentSpanId().ToHexString()));
     });
 
     app.MapGet("/received/{eventId}", (string eventId) =>
@@ -306,9 +345,25 @@ else
                 },
                 cancellationToken);
         }
-        catch (Exception exception) when (exception is not OperationCanceledException)
+        catch (Exception exception)
         {
-            return Results.Json(new { denied = true, code = "appid-scope-denied" });
+            var outcome = Cp6P09UnauthorizedPublishClassifier.Classify(
+                exception,
+                cancellationToken.IsCancellationRequested);
+            if (outcome == Cp6P09UnauthorizedPublishOutcome.CallerCancellation)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                throw;
+            }
+
+            if (outcome == Cp6P09UnauthorizedPublishOutcome.AllowedDenied)
+            {
+                return Results.Json(new { denied = true, code = "appid-scope-denied" });
+            }
+
+            return Results.Json(
+                new { denied = false, code = "dapr-publish-infrastructure-failure" },
+                statusCode: StatusCodes.Status503ServiceUnavailable);
         }
 
         return Results.Json(
@@ -371,22 +426,15 @@ static bool TryParseTrace(string? traceParent, out ActivityContext context)
         context.SpanId != default;
 }
 
-static bool IsTraceId(string? value) =>
-    value is { Length: 32 } && value.All(IsLowerHex) && value.Any(character => character != '0');
-
-static bool IsSpanId(string? value) =>
-    value is { Length: 16 } && value.All(IsLowerHex) && value.Any(character => character != '0');
-
-static bool IsLowerHex(char value) => value is >= '0' and <= '9' or >= 'a' and <= 'f';
-
-static bool IsAllowedDaprHost(string host)
+static ActivitySpanId RequireCurrentParentSpanId()
 {
-    if (IPAddress.TryParse(host, out var address))
+    var parentSpanId = Activity.Current?.ParentSpanId ?? default;
+    if (parentSpanId == default)
     {
-        return IPAddress.IsLoopback(address);
+        throw new InvalidOperationException("An observed W3C parent Span ID is required for the P09 probe.");
     }
 
-    return host is "localhost" or "publisher-dapr" or "receiver-dapr" or "unauthorized-dapr";
+    return parentSpanId;
 }
 
 static bool IsIdentifier([NotNullWhen(true)] string? value)
@@ -448,11 +496,20 @@ internal sealed record PublishProbeRequest(string? EventId, string? PartitionKey
 
 internal sealed record InvocationProbeRequest(string? CorrelationId);
 
+internal sealed record InvokedTraceObservation(
+    string AppId,
+    string CorrelationId,
+    string InvocationTraceId,
+    string InvokedSpanId,
+    string InvokedParentSpanId);
+
 internal sealed record InvocationProbeEvidence(
     string AppId,
     string CorrelationId,
-    string TraceId,
-    string SpanId);
+    string InvocationTraceId,
+    string InvokerSpanId,
+    string InvokedSpanId,
+    string InvokedParentSpanId);
 
 internal sealed record ReceivedEventEvidence(
     string EventId,
@@ -461,5 +518,7 @@ internal sealed record ReceivedEventEvidence(
     string PartitionKey,
     string Region,
     string TraceId,
-    string ParentSpanId,
+    string PublisherSpanId,
+    string ReceiverSpanId,
+    string ReceiverParentSpanId,
     bool ContractValid);
