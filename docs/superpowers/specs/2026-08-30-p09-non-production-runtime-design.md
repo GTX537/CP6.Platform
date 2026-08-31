@@ -3,7 +3,7 @@
 | 项目 | 值 |
 | --- | --- |
 | 里程碑 | 公开执行语义 `P09` |
-| 设计状态 | 对话设计已批准 / 等待书面规格复核 |
+| 设计状态 | 对话设计与书面规格均已批准 |
 | 日期 | 2026-08-30 |
 | 权威前置 | P05、P08 均为 `Frozen / Consumable` |
 | 计划版本 | repository `0.9.0.0` / package `0.9.0-alpha.1` |
@@ -98,6 +98,7 @@ Profile 使用 Draft 2020-12 JSON Schema，关闭未知属性，至少包含：
 - Dapr/Kafka 精确版本；
 - publisher/receiver/provisioner/unauthorized-probe 的稳定 AppId/principal；
 - Dapr component 名称、scope 和 Secret 引用名；
+- 复用现有 P04 `com.gtx537.platform.contract-example.changed.v1` 作为合成 probe event type，不新增业务或部署事件合同；
 - 唯一 Topic `cp6.platform.deployment-probe.v1`、3 partitions、retention 和最大消息大小；
 - publisher、receiver、consumer group 和 provisioner 的精确 ACL；
 - Compose network/port 断言；
