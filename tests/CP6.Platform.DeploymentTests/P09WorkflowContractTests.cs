@@ -26,7 +26,7 @@ public sealed class P09WorkflowContractTests
             "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
             "actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9",
             "docker/setup-docker-action@77e84dbf09b47d1e29270283c22f16145aa85ca1",
-            "version: v28.5.2",
+            "version: v29.3.1",
             "dotnet test tests/CP6.Platform.DeploymentTests/CP6.Platform.DeploymentTests.csproj",
             "dotnet test tests/CP6.Platform.ArchitectureTests/CP6.Platform.ArchitectureTests.csproj",
             "tests/p09/compose-rehearsal.Tests.ps1",
