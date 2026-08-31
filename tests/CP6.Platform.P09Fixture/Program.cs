@@ -10,7 +10,6 @@ using Dapr.Client;
 
 const int UnknownRoleExitCode = 64;
 const int MaximumEventBytes = 1_048_576;
-const int MaximumEvidenceResponseBytes = 16_384;
 const string PublisherRole = "publisher";
 const string ReceiverRole = "receiver";
 const string ProbeRole = "probe";
@@ -74,8 +73,18 @@ DaprClient? daprClient = role is PublisherRole or UnauthorizedRole
 HttpClient? invocationClient = role == PublisherRole
     ? new HttpClient { BaseAddress = daprHttpEndpointUri }
     : null;
+Cp6DaprTransport? daprTransport = role == PublisherRole
+    ? new Cp6DaprTransport(daprClient!, invocationClient!)
+    : null;
 Cp6DaprServiceInvoker? serviceInvoker = role == PublisherRole
-    ? new Cp6DaprServiceInvoker(new Cp6DaprTransport(daprClient!, invocationClient!))
+    ? new Cp6DaprServiceInvoker(daprTransport!)
+    : null;
+Cp6P09ReceivedEvidenceProxy? receivedEvidenceProxy = role == PublisherRole
+    ? new Cp6P09ReceivedEvidenceProxy(
+        daprTransport!,
+        profile.ReceiverAppId,
+        profile.EventType,
+        profile.TopicName)
     : null;
 var received = new ReceivedEventStore();
 var published = new PublishedProbeStore();
@@ -198,54 +207,14 @@ if (role == PublisherRole)
             return Results.NotFound();
         }
 
-        try
+        var result = await receivedEvidenceProxy!.GetAsync(expectation, cancellationToken);
+        return result.Outcome switch
         {
-            using var response = await serviceInvoker!.InvokeAsync(
-                HttpMethod.Get,
-                profile.ReceiverAppId,
-                $"received/{eventId}",
-                content: null,
-                cancellationToken);
-            if (response.StatusCode == HttpStatusCode.NotFound)
-            {
-                return Results.NotFound();
-            }
-
-            if (!response.IsSuccessStatusCode)
-            {
-                return ReceivedProxyBadGateway();
-            }
-
-            var body = await ReadBoundedHttpContentAsync(
-                response.Content,
-                MaximumEvidenceResponseBytes,
-                cancellationToken);
-            if (body is null ||
-                !Cp6P09ReceivedEvidenceValidator.TryValidate(
-                    body,
-                    expectation.EventId,
-                    expectation.PartitionKey,
-                    profile.EventType,
-                    profile.TopicName,
-                    out var evidence))
-            {
-                return ReceivedProxyBadGateway();
-            }
-
-            return Results.Json(evidence);
-        }
-        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
-        {
-            throw;
-        }
-        catch (HttpRequestException exception) when (exception.StatusCode == HttpStatusCode.NotFound)
-        {
-            return Results.NotFound();
-        }
-        catch
-        {
-            return ReceivedProxyBadGateway();
-        }
+            Cp6P09ReceivedEvidenceProxyOutcome.NotFound => Results.NotFound(),
+            Cp6P09ReceivedEvidenceProxyOutcome.Success when result.Evidence is not null =>
+                Results.Json(result.Evidence),
+            _ => ReceivedProxyBadGateway()
+        };
     });
 }
 else if (role == ReceiverRole)
@@ -516,37 +485,6 @@ static async Task<byte[]?> ReadBoundedBodyAsync(
     while (true)
     {
         var read = await request.Body.ReadAsync(buffer, cancellationToken);
-        if (read == 0)
-        {
-            return output.ToArray();
-        }
-
-        if (output.Length + read > maximumBytes)
-        {
-            return null;
-        }
-
-        await output.WriteAsync(buffer.AsMemory(0, read), cancellationToken);
-    }
-}
-
-static async Task<byte[]?> ReadBoundedHttpContentAsync(
-    HttpContent content,
-    int maximumBytes,
-    CancellationToken cancellationToken)
-{
-    if (content.Headers.ContentLength is < 0 ||
-        content.Headers.ContentLength > maximumBytes)
-    {
-        return null;
-    }
-
-    await using var input = await content.ReadAsStreamAsync(cancellationToken);
-    using var output = new MemoryStream(Math.Min(maximumBytes, (int)(content.Headers.ContentLength ?? 0)));
-    var buffer = new byte[4 * 1024];
-    while (true)
-    {
-        var read = await input.ReadAsync(buffer, cancellationToken);
         if (read == 0)
         {
             return output.ToArray();

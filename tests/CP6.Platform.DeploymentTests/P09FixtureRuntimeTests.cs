@@ -1,6 +1,8 @@
 using System.Diagnostics;
+using System.Net;
 using System.Text;
 using System.Text.Json;
+using CP6.Platform.Messaging;
 using Dapr;
 using Google.Protobuf;
 using Google.Protobuf.WellKnownTypes;
@@ -12,6 +14,113 @@ public sealed class P09FixtureRuntimeTests
 {
     private const string ValidReceivedEvidenceJson =
         "{\"eventId\":\"p09-event-0001\",\"eventType\":\"com.gtx537.platform.contract-example.changed.v1\",\"topicName\":\"cp6.platform.deployment-probe.v1\",\"partitionKey\":\"cp6-p09-entity-0001\",\"region\":\"TEST\",\"traceId\":\"11111111111111111111111111111111\",\"publisherSpanId\":\"2222222222222222\",\"receiverSpanId\":\"3333333333333333\",\"receiverParentSpanId\":\"2222222222222222\",\"contractValid\":true}";
+
+    [Fact]
+    public async Task ReceivedEvidenceProxy_DisposesRepeatedNotFoundAndOtherNonSuccessResponses()
+    {
+        var contents = Enumerable.Range(0, 3)
+            .Select(_ => new TrackingHttpContent([]))
+            .ToArray();
+        var responses = new Queue<HttpResponseMessage>(
+        [
+            new(HttpStatusCode.NotFound) { Content = contents[0] },
+            new(HttpStatusCode.NotFound) { Content = contents[1] },
+            new(HttpStatusCode.ServiceUnavailable) { Content = contents[2] }
+        ]);
+        var transport = new RecordingDaprTransport((_, _, _, _, _) => Task.FromResult(responses.Dequeue()));
+        var proxy = CreateReceivedEvidenceProxy(transport);
+
+        Assert.Equal(Cp6P09ReceivedEvidenceProxyOutcome.NotFound, (await proxy.GetAsync(Expectation())).Outcome);
+        Assert.True(contents[0].IsDisposed);
+        Assert.Equal(Cp6P09ReceivedEvidenceProxyOutcome.NotFound, (await proxy.GetAsync(Expectation())).Outcome);
+        Assert.True(contents[1].IsDisposed);
+        Assert.Equal(Cp6P09ReceivedEvidenceProxyOutcome.BadGateway, (await proxy.GetAsync(Expectation())).Outcome);
+        Assert.True(contents[2].IsDisposed);
+    }
+
+    [Fact]
+    public async Task ReceivedEvidenceProxy_UsesFixedTargetValidatesSuccessAndDisposesResponse()
+    {
+        var content = new TrackingHttpContent(Encoding.UTF8.GetBytes(ValidReceivedEvidenceJson));
+        var transport = new RecordingDaprTransport((_, _, _, _, _) => Task.FromResult(
+            new HttpResponseMessage(HttpStatusCode.OK) { Content = content }));
+        var proxy = CreateReceivedEvidenceProxy(transport);
+
+        var result = await proxy.GetAsync(Expectation());
+
+        Assert.Equal(Cp6P09ReceivedEvidenceProxyOutcome.Success, result.Outcome);
+        Assert.NotNull(result.Evidence);
+        Assert.Equal("p09-event-0001", result.Evidence.EventId);
+        Assert.True(content.IsDisposed);
+        var call = Assert.Single(transport.Invocations);
+        Assert.Equal(HttpMethod.Get, call.Method);
+        Assert.Equal("cp6-p09-probe-receiver", call.AppId);
+        Assert.Equal("received/p09-event-0001", call.MethodName);
+        Assert.Null(call.Content);
+    }
+
+    [Fact]
+    public async Task ReceivedEvidenceProxy_RejectsArbitraryPathBeforeTransport()
+    {
+        var transport = new RecordingDaprTransport((_, _, _, _, _) => throw new InvalidOperationException());
+        var proxy = CreateReceivedEvidenceProxy(transport);
+
+        var result = await proxy.GetAsync(new PublishedProbeExpectation("../escape", "cp6-p09-entity-0001"));
+
+        Assert.Equal(Cp6P09ReceivedEvidenceProxyOutcome.BadGateway, result.Outcome);
+        Assert.Empty(transport.Invocations);
+        Assert.Throws<ArgumentException>(() => new Cp6P09ReceivedEvidenceProxy(
+            transport,
+            "receiver.example",
+            "com.gtx537.platform.contract-example.changed.v1",
+            "cp6.platform.deployment-probe.v1"));
+    }
+
+    [Fact]
+    public async Task ReceivedEvidenceProxy_PropagatesCallerCancellation()
+    {
+        using var cancellation = new CancellationTokenSource();
+        var transport = new RecordingDaprTransport((_, _, _, _, token) =>
+        {
+            cancellation.Cancel();
+            return Task.FromCanceled<HttpResponseMessage>(token);
+        });
+        var proxy = CreateReceivedEvidenceProxy(transport);
+
+        await Assert.ThrowsAnyAsync<OperationCanceledException>(() =>
+            proxy.GetAsync(Expectation(), cancellation.Token));
+
+        Assert.Equal(cancellation.Token, Assert.Single(transport.Invocations).CancellationToken);
+    }
+
+    [Fact]
+    public async Task ReceivedEvidenceProxy_MapsTransportMalformedAndOversizedFailuresWithoutDetails()
+    {
+        var contents = new[]
+        {
+            new TrackingHttpContent(Encoding.UTF8.GetBytes("not-json")),
+            new TrackingHttpContent(new byte[16_385])
+        };
+        var responses = new Queue<HttpResponseMessage>(contents.Select(content =>
+            new HttpResponseMessage(HttpStatusCode.OK) { Content = content }));
+        var call = 0;
+        var transport = new RecordingDaprTransport((_, _, _, _, _) =>
+        {
+            call++;
+            return call <= 2
+                ? Task.FromResult(responses.Dequeue())
+                : Task.FromException<HttpResponseMessage>(new HttpRequestException("sensitive transport detail"));
+        });
+        var proxy = CreateReceivedEvidenceProxy(transport);
+
+        Assert.Equal(Cp6P09ReceivedEvidenceProxyOutcome.BadGateway, (await proxy.GetAsync(Expectation())).Outcome);
+        Assert.True(contents[0].IsDisposed);
+        Assert.Equal(Cp6P09ReceivedEvidenceProxyOutcome.BadGateway, (await proxy.GetAsync(Expectation())).Outcome);
+        Assert.True(contents[1].IsDisposed);
+        var transportFailure = await proxy.GetAsync(Expectation());
+        Assert.Equal(Cp6P09ReceivedEvidenceProxyOutcome.BadGateway, transportFailure.Outcome);
+        Assert.Null(transportFailure.Evidence);
+    }
 
     [Theory]
     [InlineData("publisher", "Http", "http://127.0.0.1:3500")]
@@ -377,6 +486,16 @@ public sealed class P09FixtureRuntimeTests
         Assert.NotEqual(publisherRequest.SpanId.ToHexString(), invocation.InvokerSpanId);
     }
 
+    private static Cp6P09ReceivedEvidenceProxy CreateReceivedEvidenceProxy(ICp6DaprTransport transport) =>
+        new(
+            transport,
+            "cp6-p09-probe-receiver",
+            "com.gtx537.platform.contract-example.changed.v1",
+            "cp6.platform.deployment-probe.v1");
+
+    private static PublishedProbeExpectation Expectation() =>
+        new("p09-event-0001", "cp6-p09-entity-0001");
+
     private static ActivityContext Context(
         ActivityTraceId traceId,
         ActivitySpanId spanId,
@@ -431,5 +550,77 @@ public sealed class P09FixtureRuntimeTests
         return new DaprException(
             "Dapr publish failed.",
             new RpcException(new Status(statusCode, "bounded-test-status"), trailers));
+    }
+
+    private sealed class RecordingDaprTransport : ICp6DaprTransport
+    {
+        private readonly Func<
+            HttpMethod,
+            string,
+            string,
+            HttpContent?,
+            CancellationToken,
+            Task<HttpResponseMessage>> invoke;
+
+        internal RecordingDaprTransport(Func<
+            HttpMethod,
+            string,
+            string,
+            HttpContent?,
+            CancellationToken,
+            Task<HttpResponseMessage>> invoke) => this.invoke = invoke;
+
+        internal List<TransportInvocation> Invocations { get; } = [];
+
+        public Task<HttpResponseMessage> InvokeAsync(
+            HttpMethod method,
+            string appId,
+            string methodName,
+            HttpContent? content,
+            CancellationToken cancellationToken = default)
+        {
+            Invocations.Add(new TransportInvocation(method, appId, methodName, content, cancellationToken));
+            return invoke(method, appId, methodName, content, cancellationToken);
+        }
+
+        public Task PublishAsync(
+            string pubsubName,
+            string topicName,
+            ReadOnlyMemory<byte> body,
+            string contentType,
+            IReadOnlyDictionary<string, string> metadata,
+            CancellationToken cancellationToken = default) =>
+            throw new NotSupportedException();
+    }
+
+    private sealed record TransportInvocation(
+        HttpMethod Method,
+        string AppId,
+        string MethodName,
+        HttpContent? Content,
+        CancellationToken CancellationToken);
+
+    private sealed class TrackingHttpContent : HttpContent
+    {
+        private readonly byte[] payload;
+
+        internal TrackingHttpContent(byte[] payload) => this.payload = payload;
+
+        internal bool IsDisposed { get; private set; }
+
+        protected override Task SerializeToStreamAsync(Stream stream, TransportContext? context) =>
+            stream.WriteAsync(payload).AsTask();
+
+        protected override bool TryComputeLength(out long length)
+        {
+            length = payload.Length;
+            return true;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            IsDisposed = true;
+            base.Dispose(disposing);
+        }
     }
 }

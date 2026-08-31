@@ -127,6 +127,10 @@ public sealed class P09FixtureBoundaryTests
     public void PublisherSource_HasOnlyTheFixedBoundedReceivedEvidenceProxy()
     {
         var source = File.ReadAllText(Path.Combine(FixtureRoot, "Program.cs"));
+        var proxy = File.ReadAllText(Path.Combine(
+            FixtureRoot,
+            "Runtime",
+            "Cp6P09ReceivedEvidenceProxy.cs"));
 
         Assert.Equal(
             2,
@@ -134,14 +138,23 @@ public sealed class P09FixtureBoundaryTests
                 source,
                 Regex.Escape("app.MapGet(\"/received/{eventId}\""),
                 RegexOptions.CultureInvariant).Count);
-        Assert.Contains("Cp6P09ReceivedEvidenceValidator.TryValidate", source, StringComparison.Ordinal);
-        Assert.Contains("ReadBoundedHttpContentAsync", source, StringComparison.Ordinal);
+        Assert.Single(Regex.Matches(source, "new Cp6DaprTransport", RegexOptions.CultureInvariant).Cast<Match>());
+        Assert.Contains("new Cp6DaprServiceInvoker(daprTransport!)", source, StringComparison.Ordinal);
+        Assert.Contains("new Cp6P09ReceivedEvidenceProxy(", source, StringComparison.Ordinal);
+        Assert.Contains("receivedEvidenceProxy!.GetAsync", source, StringComparison.Ordinal);
         Assert.Contains("profile.ReceiverAppId", source, StringComparison.Ordinal);
-        Assert.Contains("HttpRequestException exception", source, StringComparison.Ordinal);
-        Assert.Contains("exception.StatusCode == HttpStatusCode.NotFound", source, StringComparison.Ordinal);
         Assert.Contains("received-response-invalid", source, StringComparison.Ordinal);
+        Assert.DoesNotContain("HttpRequestException exception", source, StringComparison.Ordinal);
+        Assert.DoesNotContain("ReadBoundedHttpContentAsync", source, StringComparison.Ordinal);
         Assert.DoesNotContain("MapFallback", source, StringComparison.Ordinal);
         Assert.DoesNotContain("{**path}", source, StringComparison.Ordinal);
+
+        Assert.Contains("Cp6P09ReceivedEvidenceValidator.TryValidate", proxy, StringComparison.Ordinal);
+        Assert.Contains("MaximumEvidenceBytes = 16_384", proxy, StringComparison.Ordinal);
+        Assert.Contains("using var response = await transport.InvokeAsync", proxy, StringComparison.Ordinal);
+        Assert.Contains("ReceiverAppId = \"cp6-p09-probe-receiver\"", proxy, StringComparison.Ordinal);
+        Assert.Contains("Cp6P09ProbeIdentifier.IsMethodSegment", proxy, StringComparison.Ordinal);
+        Assert.Contains("cancellationToken.ThrowIfCancellationRequested", proxy, StringComparison.Ordinal);
     }
 
     [Fact]
