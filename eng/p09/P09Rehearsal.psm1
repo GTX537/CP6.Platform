@@ -1376,11 +1376,21 @@ function Invoke-Cp6P09Rehearsal {
     $config = Invoke-Cp6P09Compose $context @('--profile','negative','--profile','provision','config','--quiet') 30
     Assert-Cp6P09CommandSucceeded $config 'compose-contract'
     $profile = [IO.File]::ReadAllText($resolvedProfile,[Text.Encoding]::UTF8) | ConvertFrom-Json
-    $kubernetesRoot = Join-Path $repository 'deploy/p09/kubernetes'
-    $kubernetesReady = Test-Path -LiteralPath $kubernetesRoot -PathType Container
-    if ($kubernetesReady) {
-        throw 'kubernetes-gate-not-integrated'
+    $kubernetesGate = Invoke-Cp6P09Process -FilePath 'pwsh' -ArgumentList @(
+        '-NoProfile', '-File', 'eng/test-p09-kubernetes.ps1'
+    ) -TimeoutSeconds 300 -MaximumOutputBytes 32768 -WorkingDirectory $repository
+    Assert-Cp6P09CommandSucceeded $kubernetesGate 'kubernetes-policy'
+    try {
+        $kubernetesResult = $kubernetesGate.StandardOutput | ConvertFrom-Json
     }
+    catch {
+        throw 'kubernetes-policy'
+    }
+    if ($kubernetesResult.Status -cne 'Passed' -or
+        $kubernetesResult.ManifestSha256 -cnotmatch '^[0-9a-f]{64}$') {
+        throw 'kubernetes-policy'
+    }
+    $context.KubernetesManifestSha = [string]$kubernetesResult.ManifestSha256
 
     [IO.Directory]::CreateDirectory($layout.ArtifactsDirectory) | Out-Null
     $logPath = Join-Path $layout.ArtifactsDirectory 'run-log.v1.jsonl'
@@ -1395,6 +1405,7 @@ function Invoke-Cp6P09Rehearsal {
     $stage = 'runtime-population'
     try {
         Add-Cp6P09RunLog $logPath 'preflight' 'Passed'
+        Add-Cp6P09RunLog $logPath 'kubernetes-policy' 'Passed'
         $pull = Invoke-Cp6P09Compose $context @('pull','kafka','kafka-admin','publisher-dapr','receiver-dapr','unauthorized-dapr') 600
         Assert-Cp6P09CommandSucceeded $pull 'image-pull'
         $credentials = New-Cp6P09CredentialSet
@@ -1414,7 +1425,11 @@ function Invoke-Cp6P09Rehearsal {
         $matrix = Invoke-Cp6P09RuntimeMatrix $context
         Add-Cp6P09RunLog $logPath 'runtime-matrix' 'Passed'
         $stage = 'image-digest'
-        $digests = [pscustomobject]@{ Dapr=(Get-Cp6P09ImageDigest $context 'daprio/daprd:1.18.2'); Kafka=(Get-Cp6P09ImageDigest $context 'apache/kafka:4.3.1'); Kubectl=$null }
+        $digests = [pscustomobject]@{
+            Dapr=(Get-Cp6P09ImageDigest $context 'daprio/daprd:1.18.2')
+            Kafka=(Get-Cp6P09ImageDigest $context 'apache/kafka:4.3.1')
+            Kubectl=(Get-Cp6P09ImageDigest $context 'registry.k8s.io/kubectl:v1.34.1')
+        }
         Add-Cp6P09RunLog $logPath 'image-digest' 'Passed'
     }
     catch {
@@ -1464,13 +1479,18 @@ function Invoke-Cp6P09Rehearsal {
     }
     $gitSha = if ([string]::IsNullOrWhiteSpace($ExpectedGitSha)) { (Invoke-Cp6P09Process -FilePath 'git' -ArgumentList @('-C',$repository,'rev-parse','HEAD') -TimeoutSeconds 20 -MaximumOutputBytes 4096).StandardOutput.Trim() } else { $ExpectedGitSha }
     if ($null -eq $originalFailure -and $null -eq $cleanupFailure -and $null -ne $matrix) {
-        $composeResult = [ordered]@{
-            schemaVersion='1'; profileId='cp6-platform-p09-ci-v1'; profileSha256='94addf0349ff895f21eca3e0d660c8d5159198267080df9109ff6493c1063681'
-            platformGitSha=$gitSha; composeManifestSha256=(Get-Cp6P09Sha256File $composeFile); composeChecks='Passed'; zeroResidue=$true; kubernetesEvidence='Pending'
+        $evidence = Get-Cp6P09EvidenceObject -Context $context -Profile $profile -Matrix $matrix -Digests $digests -Teardown $teardown -GitSha $gitSha -Started $started -Overall 'Passed'
+        $evidencePath = Join-Path $layout.ArtifactsDirectory 'rehearsal-evidence.v1.json'
+        [IO.File]::WriteAllText($evidencePath,(ConvertTo-Cp6P09CanonicalJson $evidence)+"`n",[Text.UTF8Encoding]::new($false))
+        $evidenceSha = Test-Cp6P09Evidence -RepositoryRoot $repository -EvidencePath $evidencePath
+        return [pscustomobject]@{
+            Status='Passed'
+            RunId=$layout.RunId
+            ArtifactsDirectory=$layout.ArtifactReference
+            EvidenceSha256=$evidenceSha
+            KubernetesManifestSha256=$context.KubernetesManifestSha
+            ZeroResidue=$true
         }
-        $resultPath = Join-Path $layout.ArtifactsDirectory 'compose-rehearsal-result.v1.json'
-        [IO.File]::WriteAllText($resultPath,(ConvertTo-Cp6P09CanonicalJson $composeResult)+"`n",[Text.UTF8Encoding]::new($false))
-        return [pscustomobject]@{ Status='Failed'; RunId=$layout.RunId; Reason='kubernetes-assets-pending'; ArtifactsDirectory=$layout.ArtifactReference; ZeroResidue=$true }
     }
     return [pscustomobject]@{ Status='Failed'; RunId=$layout.RunId; Reason=$(if ($null -ne $cleanupFailure) {$cleanupFailure} else {$originalFailure}); ArtifactsDirectory=$layout.ArtifactReference; ZeroResidue=$zeroResidue; OriginalFailureId=$originalFailure; CleanupFailureId=$cleanupFailure; FailureCategory=$context.ProvisionFailureCategory; DiagnosticCategory=$context.MatrixDiagnosticCategory }
 }

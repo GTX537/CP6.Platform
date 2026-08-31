@@ -436,7 +436,7 @@ exit "$status"
         RunId = $runId
         ManifestSha256 = $renderOneSha
         ArtifactsDirectory = [System.IO.Path]::GetRelativePath($repositoryRoot, $runRoot).Replace('\', '/')
-    }
+    } | ConvertTo-Json -Compress
 }
 finally {
     if ($extractContainerCreated) {

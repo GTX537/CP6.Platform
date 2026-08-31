@@ -48,6 +48,9 @@ jobs:
       - name: Verify package contracts
         shell: pwsh
         run: ./eng/verify.ps1 -Gate Contract -Profile ci
+      - name: Verify P09 package contracts
+        shell: pwsh
+        run: dotnet test tests/CP6.Platform.DeploymentTests/CP6.Platform.DeploymentTests.csproj --configuration Release --no-build
       - name: Verify dependency security
         shell: pwsh
         run: ./eng/verify.ps1 -Gate Security -Profile ci
@@ -114,5 +117,73 @@ jobs:
         with:
           name: p06-sql-server-integration
           path: artifacts/**
+          if-no-files-found: error
+          retention-days: 7
+
+  p09-non-production-runtime:
+    name: ubuntu-p09-non-production-runtime
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Check out source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Restore and build P09 contracts
+        shell: pwsh
+        run: |
+          dotnet restore CP6.Platform.sln
+          dotnet build CP6.Platform.sln --configuration Release --no-restore
+      - name: Verify P09 .NET contracts
+        shell: pwsh
+        run: |
+          dotnet test tests/CP6.Platform.DeploymentTests/CP6.Platform.DeploymentTests.csproj --configuration Release --no-build
+          dotnet test tests/CP6.Platform.ArchitectureTests/CP6.Platform.ArchitectureTests.csproj --configuration Release --no-build
+      - name: Verify P09 script contracts
+        shell: pwsh
+        run: |
+          ./tests/p09/compose-rehearsal.Tests.ps1
+          ./tests/p09/cleanup-failure.Tests.ps1
+          ./tests/p09/kubernetes-negative.Tests.ps1
+      - name: Verify P09 offline Kubernetes contract
+        shell: pwsh
+        run: ./eng/test-p09-kubernetes.ps1
+      - name: Run exact-commit P09 Compose rehearsal
+        shell: pwsh
+        run: ./eng/run-p09-compose-rehearsal.ps1 -ExpectedGitSha ${{ github.sha }}
+      - name: Validate P09 evidence and residue boundary
+        shell: pwsh
+        run: |
+          Import-Module ./eng/p09/P09Rehearsal.psm1 -Force
+          $evidencePaths = @(Get-ChildItem artifacts/p09-rehearsal -Recurse -Filter rehearsal-evidence.v1.json)
+          if ($evidencePaths.Count -ne 1) { throw "Expected one rehearsal evidence file; found $($evidencePaths.Count)." }
+          $validatedHash = Test-Cp6P09Evidence -RepositoryRoot $PWD -EvidencePath $evidencePaths[0].FullName
+          $fileHash = (Get-FileHash -Algorithm SHA256 $evidencePaths[0].FullName).Hash.ToLowerInvariant()
+          if ($validatedHash -cne $fileHash) { throw 'Evidence validator hash differs from the file SHA-256.' }
+          $evidence = Get-Content $evidencePaths[0].FullName -Raw | ConvertFrom-Json
+          if ($evidence.overall -cne 'Passed' -or $evidence.platformGitSha -cne '${{ github.sha }}') { throw 'Evidence is not Passed for the exact workflow commit.' }
+          if ($evidence.teardown.commandExitCode -ne 0 -or $evidence.teardown.containerCount -ne 0 -or $evidence.teardown.networkCount -ne 0 -or $evidence.teardown.volumeCount -ne 0 -or $evidence.teardown.imageCount -ne 0 -or -not $evidence.teardown.temporaryDirectoryRemoved) { throw 'Evidence does not prove zero residue.' }
+          $kubernetesEvidence = @(Get-ChildItem artifacts/p09-kubernetes -Recurse -Filter kubernetes-contract-result.v1.json | ForEach-Object { Get-Content $_.FullName -Raw | ConvertFrom-Json })
+          if (-not ($kubernetesEvidence | Where-Object { $_.status -ceq 'Passed' -and $_.renderedManifestSha256 -ceq $evidence.kubernetesManifestSha256 })) { throw 'Kubernetes evidence hash does not match the rehearsal evidence.' }
+      - name: Scan P09 evidence for secret patterns
+        shell: pwsh
+        run: |
+          $matches = @(Get-ChildItem artifacts/p09-rehearsal, artifacts/p09-kubernetes -Recurse -File | Select-String -Pattern '(?i)(password|client[_-]?secret|access[_-]?token|private[_-]?key)\s*[:=]')
+          if ($matches.Count -gt 0) { throw "Secret-pattern scan found $($matches.Count) artifact match(es)." }
+      - name: Preserve P09 rehearsal evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: p09-non-production-runtime-${{ github.sha }}
+          path: |
+            artifacts/p09-rehearsal/**
+            artifacts/p09-kubernetes/**
           if-no-files-found: error
           retention-days: 7
