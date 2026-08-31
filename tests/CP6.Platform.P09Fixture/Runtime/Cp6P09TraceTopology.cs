@@ -28,25 +28,24 @@ internal static class Cp6P09TraceTopology
     }
 
     internal static bool TryCreateInvocation(
-        ActivityContext invoker,
+        ActivityContext publisherRequest,
         ActivityContext invoked,
         ActivitySpanId invokedParentSpanId,
         out Cp6P09InvocationTrace topology)
     {
         topology = default!;
-        if (!IsObserved(invoker) ||
+        if (!IsObserved(publisherRequest) ||
             !IsObserved(invoked) ||
             invokedParentSpanId == default ||
-            invoker.TraceId != invoked.TraceId ||
-            invoker.SpanId == invoked.SpanId ||
-            invoker.SpanId != invokedParentSpanId)
+            publisherRequest.TraceId != invoked.TraceId ||
+            invokedParentSpanId == invoked.SpanId)
         {
             return false;
         }
 
         topology = new Cp6P09InvocationTrace(
-            invoker.TraceId.ToHexString(),
-            invoker.SpanId.ToHexString(),
+            invoked.TraceId.ToHexString(),
+            invokedParentSpanId.ToHexString(),
             invoked.SpanId.ToHexString(),
             invokedParentSpanId.ToHexString());
         return true;

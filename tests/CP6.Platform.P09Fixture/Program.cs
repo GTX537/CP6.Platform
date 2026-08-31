@@ -172,16 +172,12 @@ if (role == PublisherRole)
             },
             cancellationToken);
 
-        return Results.Json(new
-        {
-            eventId = request.EventId,
-            partitionKey = request.PartitionKey,
-            region = ProbeRegionLabel,
-            topic = profile.TopicName,
-            component = profile.PublishComponentName,
-            traceId = publisherTrace.TraceId.ToHexString(),
-            publisherSpanId = publisherTrace.SpanId.ToHexString()
-        });
+        return Results.Json(new PublishProbeReceipt(
+            request.EventId,
+            request.PartitionKey,
+            ProbeRegionLabel,
+            profile.TopicName,
+            profile.PublishComponentName));
     });
 }
 else if (role == ReceiverRole)
@@ -493,6 +489,13 @@ internal sealed class ReceivedEventStore
 }
 
 internal sealed record PublishProbeRequest(string? EventId, string? PartitionKey);
+
+internal sealed record PublishProbeReceipt(
+    string EventId,
+    string PartitionKey,
+    string Region,
+    string Topic,
+    string Component);
 
 internal sealed record InvocationProbeRequest(string? CorrelationId);
 

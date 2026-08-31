@@ -13,6 +13,7 @@ internal enum Cp6P09UnauthorizedPublishOutcome
 internal static class Cp6P09UnauthorizedPublishClassifier
 {
     private const string RpcStatusDetailsTrailer = "grpc-status-details-bin";
+    private const string DaprErrorDomain = "dapr.io";
     private const string PubSubNotFoundReason = "DAPR_PUBSUB_NOT_FOUND";
     private const string PubSubForbiddenReason = "DAPR_PUBSUB_FORBIDDEN";
 
@@ -59,10 +60,13 @@ internal static class Cp6P09UnauthorizedPublishClassifier
                 return false;
             }
 
-            return rpcStatus.Details
+            var errorInfo = rpcStatus.Details
                 .Where(detail => detail.Is(Google.Rpc.ErrorInfo.Descriptor))
                 .Select(detail => detail.Unpack<Google.Rpc.ErrorInfo>())
-                .Any(errorInfo => string.Equals(errorInfo.Reason, expectedReason, StringComparison.Ordinal));
+                .ToArray();
+            return errorInfo.Length == 1 &&
+                string.Equals(errorInfo[0].Domain, DaprErrorDomain, StringComparison.Ordinal) &&
+                string.Equals(errorInfo[0].Reason, expectedReason, StringComparison.Ordinal);
         }
         catch (InvalidProtocolBufferException)
         {

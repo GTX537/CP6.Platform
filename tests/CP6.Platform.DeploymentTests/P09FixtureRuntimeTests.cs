@@ -82,6 +82,37 @@ public sealed class P09FixtureRuntimeTests
     }
 
     [Theory]
+    [InlineData("")]
+    [InlineData("example.com")]
+    [InlineData("DAPR.IO")]
+    [InlineData("Dapr.io")]
+    public void UnauthorizedPublishClassifier_RequiresExactDaprDomain(string domain)
+    {
+        Assert.Equal(
+            Cp6P09UnauthorizedPublishOutcome.InfrastructureFailure,
+            Cp6P09UnauthorizedPublishClassifier.Classify(
+                DaprPublishException(
+                    StatusCode.PermissionDenied,
+                    "DAPR_PUBSUB_FORBIDDEN",
+                    domain),
+                callerCancellationRequested: false));
+    }
+
+    [Fact]
+    public void UnauthorizedPublishClassifier_RejectsDuplicateMatchingErrorInfo()
+    {
+        Assert.Equal(
+            Cp6P09UnauthorizedPublishOutcome.InfrastructureFailure,
+            Cp6P09UnauthorizedPublishClassifier.Classify(
+                DaprPublishException(
+                    StatusCode.PermissionDenied,
+                    "DAPR_PUBSUB_FORBIDDEN",
+                    "dapr.io",
+                    duplicateErrorInfo: true),
+                callerCancellationRequested: false));
+    }
+
+    [Theory]
     [InlineData(StatusCode.Unavailable)]
     [InlineData(StatusCode.DeadlineExceeded)]
     [InlineData(StatusCode.Cancelled)]
@@ -183,6 +214,21 @@ public sealed class P09FixtureRuntimeTests
     }
 
     [Fact]
+    public void PublishReceipt_SerializesWithoutAmbiguousTraceEvidence()
+    {
+        var receipt = new PublishProbeReceipt(
+            "p09-event-0001",
+            "cp6-p09-entity-0001",
+            "TEST",
+            "cp6.platform.deployment-probe.v1",
+            "cp6-p09-kafka-publish");
+
+        Assert.Equal(
+            new[] { "component", "eventId", "partitionKey", "region", "topic" },
+            JsonPropertyNames(receipt));
+    }
+
+    [Fact]
     public void TraceTopology_RejectsSyntheticOrDiscontinuousRelationships()
     {
         var firstTraceId = ActivityTraceId.CreateFromString("11111111111111111111111111111111");
@@ -206,6 +252,44 @@ public sealed class P09FixtureRuntimeTests
             Context(firstTraceId, parentSpanId),
             parentSpanId,
             out _));
+        Assert.False(Cp6P09TraceTopology.TryCreateInvocation(
+            Context(firstTraceId, parentSpanId),
+            Context(secondTraceId, childSpanId),
+            parentSpanId,
+            out _));
+        Assert.False(Cp6P09TraceTopology.TryCreateInvocation(
+            Context(firstTraceId, parentSpanId),
+            Context(firstTraceId, childSpanId),
+            default,
+            out _));
+    }
+
+    [Fact]
+    public void TraceTopology_UsesReceiverObservedOutboundTransportSpanAsInvokerEvidence()
+    {
+        using var publisherRequest = new Activity("publisher-request")
+            .SetIdFormat(ActivityIdFormat.W3C)
+            .Start();
+        using var outboundRequest = new Activity("http-outbound")
+            .SetParentId(publisherRequest.Id!)
+            .Start();
+        var outboundSpanId = outboundRequest.SpanId;
+        var outboundTraceParent = outboundRequest.Id!;
+        outboundRequest.Stop();
+        using var invokedRequest = new Activity("receiver-request")
+            .SetParentId(outboundTraceParent)
+            .Start();
+
+        Assert.True(Cp6P09TraceTopology.TryCreateInvocation(
+            publisherRequest.Context,
+            invokedRequest.Context,
+            invokedRequest.ParentSpanId,
+            out var invocation));
+        Assert.Equal(publisherRequest.TraceId.ToHexString(), invocation.InvocationTraceId);
+        Assert.Equal(outboundSpanId.ToHexString(), invocation.InvokerSpanId);
+        Assert.Equal(invokedRequest.SpanId.ToHexString(), invocation.InvokedSpanId);
+        Assert.Equal(outboundSpanId.ToHexString(), invocation.InvokedParentSpanId);
+        Assert.NotEqual(publisherRequest.SpanId.ToHexString(), invocation.InvokerSpanId);
     }
 
     private static ActivityContext Context(
@@ -225,7 +309,11 @@ public sealed class P09FixtureRuntimeTests
             .ToArray();
     }
 
-    private static DaprException DaprPublishException(StatusCode statusCode, string reason)
+    private static DaprException DaprPublishException(
+        StatusCode statusCode,
+        string reason,
+        string domain = "dapr.io",
+        bool duplicateErrorInfo = false)
     {
         var rpcStatus = new Google.Rpc.Status
         {
@@ -235,7 +323,21 @@ public sealed class P09FixtureRuntimeTests
         rpcStatus.Details.Add(Any.Pack(new Google.Rpc.ErrorInfo
         {
             Reason = reason,
-            Domain = "dapr.io"
+            Domain = domain
+        }));
+        if (duplicateErrorInfo)
+        {
+            rpcStatus.Details.Add(Any.Pack(new Google.Rpc.ErrorInfo
+            {
+                Reason = reason,
+                Domain = domain
+            }));
+        }
+
+        rpcStatus.Details.Add(Any.Pack(new Google.Rpc.ResourceInfo
+        {
+            ResourceType = "pubsub",
+            ResourceName = "cp6-p09-kafka-publish"
         }));
         var trailers = new Metadata
         {
