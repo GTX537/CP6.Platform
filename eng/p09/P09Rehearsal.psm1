@@ -1305,8 +1305,6 @@ function Invoke-Cp6P09RuntimeStartStateDiagnostic {
 
 function Invoke-Cp6P09RuntimeMatrix {
     param([Parameter(Mandatory)]$Context)
-    $Context.MatrixFailureId = 'runtime-build'
-    Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('build','--quiet','publisher','receiver','direct-probe') 600) 'runtime-build'
     $Context.MatrixFailureId = 'runtime-start'
     try {
         $receiverStart = Invoke-Cp6P09Compose $Context @('up','--detach','--no-build','--wait','--wait-timeout','120','receiver','receiver-dapr') 600
@@ -1566,6 +1564,10 @@ function Invoke-Cp6P09Rehearsal {
         $credentials = New-Cp6P09CredentialSet
         Initialize-Cp6P09RuntimeFiles $context $credentials
         Add-Cp6P09RunLog $logPath 'runtime-population' 'Passed'
+        $stage = 'runtime-build'
+        $fixtureBuild = Invoke-Cp6P09Compose $context @('build','--quiet','publisher','receiver','direct-probe') 600
+        Assert-Cp6P09CommandSucceeded $fixtureBuild 'runtime-build'
+        Add-Cp6P09RunLog $logPath 'runtime-build' 'Passed'
         $stage = 'kafka-start'
         $kafkaDeadline = [DateTimeOffset]::UtcNow.AddSeconds(120)
         $startKafka = Invoke-Cp6P09Compose $context @('up','--detach','--no-build','--wait','--wait-timeout','120','kafka') 180
