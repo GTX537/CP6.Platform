@@ -302,7 +302,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
         RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
         ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
         Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$testRoot; CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
-        ProvisionFailureId='provision-first'; ProvisionFailureCategory=$null
+        ProvisionFailureId='provision-first'; ProvisionFailureCategory=$null; MatrixFailureId='runtime-matrix'
     }
     & $module { param($context) Invoke-Cp6P09Provision -Context $context } $provisionContext
     $provisionCalls = @(Get-Content -LiteralPath $provisionLog | ForEach-Object { $_ | ConvertFrom-Json })
@@ -346,6 +346,27 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
         '/opt/kafka/bin/kafka-topics.sh','kafka-admin','--bootstrap-server','kafka:9092','--command-config','/etc/kafka/clients/provisioner.properties','--list'
     )) @($topicListCall.argv) 'Topic list command drifted from provisioner.properties.'
     Assert-Cp6P09ProvisionerConfigOnly -Text (@($topicListCall.argv) -join ' ') -ExpectedProvisionerCount 1 -Description 'Topic list fake-Docker argv'
+
+    $foreignBoundaryLog = Join-Path $testRoot 'foreign-topic-boundary.jsonl'
+    $foreignBoundaryResponses = Join-Path $testRoot 'foreign-topic-boundary-responses.jsonl'
+    @(
+        @{ exitCode=0; stdout="__consumer_offsets`ncp6.platform.deployment-probe.v1`n"; stderr='' }
+        @{ exitCode=0; stdout="__consumer_offsets`ncp6.platform.deployment-probe.v1`n"; stderr='' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $foreignBoundaryResponses -Encoding utf8NoBOM
+    $env:CP6_P09_FAKE_DOCKER_LOG = $foreignBoundaryLog
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $foreignBoundaryResponses
+    & $module { param($context) Assert-Cp6P09ForeignTopicBoundary -Context $context } $provisionContext
+    Assert-Equal 2 @(Get-Content -LiteralPath $foreignBoundaryLog).Count 'Foreign Topic boundary did not take exactly two adjacent broker snapshots.'
+
+    Remove-Item -LiteralPath $foreignBoundaryLog -Force
+    Remove-Item -LiteralPath "$foreignBoundaryLog.index" -Force -ErrorAction SilentlyContinue
+    @(
+        @{ exitCode=0; stdout="__consumer_offsets`ncp6.platform.deployment-probe.v1`n"; stderr='' }
+        @{ exitCode=0; stdout="__consumer_offsets`ncp6.platform.deployment-probe.v1`ncp6.platform.other.v1`n"; stderr='' }
+    ) | ForEach-Object { $_ | ConvertTo-Json -Compress } | Set-Content -LiteralPath $foreignBoundaryResponses -Encoding utf8NoBOM
+    Assert-Throws {
+        & $module { param($context) Assert-Cp6P09ForeignTopicBoundary -Context $context } $provisionContext
+    } 'foreign-topic-denied'
 
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''

@@ -1099,6 +1099,17 @@ function Get-Cp6P09TopicList {
     return @($result.StandardOutput.Replace("`r`n","`n").Split("`n",[StringSplitOptions]::RemoveEmptyEntries) | Sort-Object -CaseSensitive)
 }
 
+function Assert-Cp6P09ForeignTopicBoundary {
+    param([Parameter(Mandatory)]$Context)
+    $Context.MatrixFailureId = 'topic-list'
+    $beforeTopics = Get-Cp6P09TopicList $Context
+    $Context.MatrixFailureId = 'foreign-topic-denied'
+    Assert-Cp6P09ForeignTopicRejected
+    $Context.MatrixFailureId = 'topic-list'
+    $afterTopics = Get-Cp6P09TopicList $Context
+    if (($beforeTopics -join "`n") -cne ($afterTopics -join "`n")) { throw 'foreign-topic-denied' }
+}
+
 function Invoke-Cp6P09PrincipalNegative {
     param([Parameter(Mandatory)]$Context)
     $topic = 'cp6.platform.deployment-probe.v1'
@@ -1193,10 +1204,6 @@ function Invoke-Cp6P09DaprDiagnostic {
 
 function Invoke-Cp6P09RuntimeMatrix {
     param([Parameter(Mandatory)]$Context)
-    $Context.MatrixFailureId = 'topic-list'
-    $beforeTopics = Get-Cp6P09TopicList $Context
-    $Context.MatrixFailureId = 'foreign-topic-denied'
-    Assert-Cp6P09ForeignTopicRejected
     $Context.MatrixFailureId = 'runtime-start'
     Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','receiver','receiver-dapr') 600) 'runtime-start'
     Assert-Cp6P09CommandSucceeded (Invoke-Cp6P09Compose $Context @('up','--detach','--build','--wait','--wait-timeout','120','publisher','publisher-dapr') 600) 'runtime-start'
@@ -1259,8 +1266,7 @@ function Invoke-Cp6P09RuntimeMatrix {
         $Context.MatrixFailureId = 'principal-denied'
         Invoke-Cp6P09PrincipalNegative $Context
         $Context.MatrixFailureId = 'foreign-topic-denied'
-        $afterTopics = Get-Cp6P09TopicList $Context
-        if (($beforeTopics -join "`n") -cne ($afterTopics -join "`n")) { throw 'foreign-topic-denied' }
+        Assert-Cp6P09ForeignTopicBoundary $Context
         return [pscustomobject]@{ Invocation=$invocation; Received=$received; EventId=$eventId; PartitionKey=$partitionKey }
     }
     finally { $client.Dispose(); $handler.Dispose() }
