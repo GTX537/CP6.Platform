@@ -146,6 +146,35 @@ public sealed class P09FixtureBoundaryTests
     }
 
     [Fact]
+    public async Task DirectKafkaProbe_EndpointDoesNotTruncateResolvedAddresses()
+    {
+        var source = File.ReadAllText(Path.Combine(FixtureRoot, "Program.cs"));
+        Assert.DoesNotContain("MaximumDirectKafkaAddresses", source, StringComparison.Ordinal);
+        Assert.DoesNotContain(".Take(", source, StringComparison.Ordinal);
+
+        var addresses = Enumerable.Range(1, 9)
+            .Select(index => IPAddress.Parse($"192.0.2.{index}"))
+            .ToArray();
+        var attempted = new List<IPAddress>();
+        Task ConnectAsync(IPAddress address, CancellationToken _)
+        {
+            attempted.Add(address);
+            return address.Equals(addresses[^1])
+                ? Task.CompletedTask
+                : Task.FromException(new SocketException((int)SocketError.HostUnreachable));
+        }
+
+        var reachable = await Cp6P09DirectKafkaProbe.CanConnectAnyAsync(
+            addresses,
+            ConnectAsync,
+            CancellationToken.None,
+            TimeSpan.FromSeconds(1));
+
+        Assert.True(reachable);
+        Assert.Equal(addresses, attempted);
+    }
+
+    [Fact]
     public async Task DirectKafkaProbe_ContinuesAfterLocalTimeoutAndFindsLaterReachableAddress()
     {
         var first = IPAddress.Parse("192.0.2.1");

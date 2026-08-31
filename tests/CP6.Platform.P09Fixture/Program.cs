@@ -23,7 +23,6 @@ const string DefaultDaprEndpoint = "http://127.0.0.1:3500";
 const int DaprSidecarPort = 3500;
 const string DirectKafkaHost = "kafka";
 const int DirectKafkaPort = 9092;
-const int MaximumDirectKafkaAddresses = 8;
 
 if (args.Length != 1 ||
     args[0] is not (PublisherRole or ReceiverRole or ProbeRole or UnauthorizedRole))
@@ -249,7 +248,6 @@ else if (role == ProbeRole)
             dnsTimeout.CancelAfter(TimeSpan.FromSeconds(3));
             addresses = (await Dns.GetHostAddressesAsync(DirectKafkaHost, dnsTimeout.Token))
                 .Distinct()
-                .Take(MaximumDirectKafkaAddresses)
                 .ToArray();
         }
         catch (SocketException)
