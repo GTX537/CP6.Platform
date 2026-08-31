@@ -42,7 +42,7 @@ try {
     Assert-Equal $null $result.CleanupFailureId 'Successful cleanup was reported as failed.'
 
     $calls = @(Get-Content -LiteralPath $log | ForEach-Object { $_ | ConvertFrom-Json })
-    Assert-Equal @('compose','--project-name',$project,'--file',$compose,'down','--volumes','--remove-orphans','--rmi','local') @($calls[1].argv) 'The first cleanup command was not the exact project-scoped compose down.'
+    Assert-Equal @('compose','--project-name',$project,'--file',$compose,'--profile','negative','--profile','provision','down','--volumes','--remove-orphans','--rmi','local') @($calls[1].argv) 'The first cleanup command did not include every resource-bearing profile.'
     foreach ($call in $calls) {
         $flat = @($call.argv)
         Assert-True (-not ($flat -contains 'prune')) 'Runner invoked prune.'
@@ -100,7 +100,7 @@ try {
     $calls = @(Get-Content -LiteralPath $log | ForEach-Object { $_ | ConvertFrom-Json })
     Assert-Equal @('container','inspect','--format','{{json .Config.Labels}}',$residualId) @($calls[6].argv) 'Residual container identity was not inspected before removal.'
     Assert-Equal @('container','rm','--force','--volumes',$residualId) @($calls[7].argv) 'Verified one-off cleanup did not remove the exact container and its anonymous volumes.'
-    Assert-Equal @('compose','--project-name',$project,'--file',$compose,'down','--volumes','--remove-orphans','--rmi','local') @($calls[8].argv) 'One-off cleanup did not repeat exact canonical Compose down.'
+    Assert-Equal @('compose','--project-name',$project,'--file',$compose,'--profile','negative','--profile','provision','down','--volumes','--remove-orphans','--rmi','local') @($calls[8].argv) 'One-off cleanup did not repeat the all-profile Compose down.'
 
     Remove-Item -LiteralPath $log -Force
     Remove-Item -LiteralPath "$log.index" -Force -ErrorAction SilentlyContinue

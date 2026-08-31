@@ -487,7 +487,7 @@ function Get-Cp6P09StableFailureId {
         'compose-contract','contract-tests','runtime-acl','runtime-mode','runtime-population','runtime-readability',
         'image-pull','kafka-start','kafka-health','provision-first','provision-idempotent','topic-drift','acl-drift','acl-list',
         'runtime-start','publisher-port','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied',
-        'principal-denied','appid-scope-denied','foreign-topic-denied','topic-list','image-digest','http-status','http-output-limit'
+        'principal-denied','appid-scope-denied','foreign-topic-denied','topic-list','image-digest'
     )
     $allowed += @('topic-create-first','topic-describe-first','acl-list-first','topic-create-replay','acl-list-replay')
     $allowed += @('acl-add-first-batch','acl-add-replay-batch')
@@ -898,7 +898,7 @@ function Invoke-Cp6P09Teardown {
     $compose = [IO.Path]::GetFullPath($ComposeFile)
     $label = "com.docker.compose.project=$ProjectName"
     $down = Invoke-Cp6P09DockerCommand -DockerCommand $DockerCommand -WorkingDirectory $RepositoryRoot -EnvironmentVariables $EnvironmentVariables -Arguments @(
-        'compose','--project-name',$ProjectName,'--file',$compose,'down','--volumes','--remove-orphans','--rmi','local'
+        'compose','--project-name',$ProjectName,'--file',$compose,'--profile','negative','--profile','provision','down','--volumes','--remove-orphans','--rmi','local'
     ) -TimeoutSeconds 120
     $cleanupFailure = if ($down.ExitCode -eq 0) { $null } else { 'compose-down' }
     $queries = [ordered]@{
@@ -971,7 +971,7 @@ function Invoke-Cp6P09Teardown {
             }
         }
         $secondDown = Invoke-Cp6P09DockerCommand -DockerCommand $DockerCommand -WorkingDirectory $RepositoryRoot -EnvironmentVariables $EnvironmentVariables -Arguments @(
-            'compose','--project-name',$ProjectName,'--file',$compose,'down','--volumes','--remove-orphans','--rmi','local'
+            'compose','--project-name',$ProjectName,'--file',$compose,'--profile','negative','--profile','provision','down','--volumes','--remove-orphans','--rmi','local'
         ) -TimeoutSeconds 120
         if ($secondDown.ExitCode -ne 0 -and $null -eq $cleanupFailure) { $cleanupFailure = 'compose-down' }
         $residue = . $invokeQueries

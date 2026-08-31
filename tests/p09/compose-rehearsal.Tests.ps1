@@ -656,6 +656,8 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
 
     Assert-Equal 'kafka-health' (Get-Cp6P09StableFailureId -Candidate 'kafka-health' -Fallback 'kafka-start') 'Stable Kafka health failure id was lost.'
+    Assert-Equal 'pubsub-positive' (Get-Cp6P09StableFailureId -Candidate 'http-status' -Fallback 'pubsub-positive') 'Generic HTTP status hid the active runtime matrix checkpoint.'
+    Assert-Equal 'appid-scope-denied' (Get-Cp6P09StableFailureId -Candidate 'http-output-limit' -Fallback 'appid-scope-denied') 'Generic HTTP output failure hid the active runtime matrix checkpoint.'
     foreach ($stableFailure in @('runtime-start','publisher-health','invoke-positive','pubsub-positive','direct-kafka-denied','principal-denied','appid-scope-denied','foreign-topic-denied')) {
         Assert-Equal $stableFailure (Get-Cp6P09StableFailureId -Candidate $stableFailure -Fallback 'runtime-matrix') 'Stable runtime failure id was lost.'
         Assert-True ($moduleText.Contains("`$Context.MatrixFailureId = '$stableFailure'")) "Runtime matrix does not checkpoint $stableFailure before its side effect."
