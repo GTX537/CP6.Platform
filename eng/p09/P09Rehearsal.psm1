@@ -1336,7 +1336,9 @@ function Invoke-Cp6P09RuntimeMatrix {
     param([Parameter(Mandatory)]$Context)
     $Context.MatrixFailureId = 'runtime-start'
     try {
-        $receiverStart = Invoke-Cp6P09Compose $Context @('up','--detach','--no-build','--wait','--wait-timeout','120','receiver','receiver-dapr') 600
+        $receiverCreate = Invoke-Cp6P09Compose $Context @('create','--no-build','receiver','receiver-dapr') 120
+        Assert-Cp6P09CommandSucceeded $receiverCreate 'runtime-start'
+        $receiverStart = Invoke-Cp6P09Compose $Context @('start','receiver','receiver-dapr') 120
         if ($receiverStart.ExitCode -ne 0) {
             $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase receiver -ExceptionMessage '' -StandardOutput $receiverStart.StandardOutput -StandardError $receiverStart.StandardError
             if ($Context.MatrixDiagnosticCategory -ceq 'receiver-diagnostic-unavailable') {
@@ -1355,7 +1357,9 @@ function Invoke-Cp6P09RuntimeMatrix {
         throw
     }
     try {
-        $publisherStart = Invoke-Cp6P09Compose $Context @('up','--detach','--no-build','--wait','--wait-timeout','120','publisher','publisher-dapr') 600
+        $publisherCreate = Invoke-Cp6P09Compose $Context @('create','--no-build','publisher','publisher-dapr') 120
+        Assert-Cp6P09CommandSucceeded $publisherCreate 'runtime-start'
+        $publisherStart = Invoke-Cp6P09Compose $Context @('start','publisher','publisher-dapr') 120
         if ($publisherStart.ExitCode -ne 0) {
             $Context.MatrixDiagnosticCategory = Get-Cp6P09RuntimeStartFailureCategory -Phase publisher -ExceptionMessage '' -StandardOutput $publisherStart.StandardOutput -StandardError $publisherStart.StandardError
             if ($Context.MatrixDiagnosticCategory -ceq 'publisher-diagnostic-unavailable') {
