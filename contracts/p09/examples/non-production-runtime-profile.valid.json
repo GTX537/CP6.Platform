@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1",
+  "environmentClass": "NonProduction",
+  "profileId": "cp6-platform-p09-ci-v1",
+  "runtime": {
+    "daprImage": "daprio/daprd:1.18.2",
+    "kafkaImage": "apache/kafka:4.3.1",
+    "kubectlImage": "registry.k8s.io/kubectl:v1.34.1"
+  },
+  "identities": {
+    "publisherAppId": "cp6-p09-probe-publisher",
+    "receiverAppId": "cp6-p09-probe-receiver",
+    "provisionerPrincipal": "cp6-p09-provisioner",
+    "unauthorizedAppId": "cp6-p09-unauthorized-probe",
+    "consumerGroup": "cp6-p09-probe-receiver-v1"
+  },
+  "components": [
+    {
+      "name": "cp6-p09-kafka-publish",
+      "direction": "Publish",
+      "scope": ["cp6-p09-probe-publisher"],
+      "usernameSecretRef": "publisher-username",
+      "passwordSecretRef": "publisher-password"
+    },
+    {
+      "name": "cp6-p09-kafka-subscribe",
+      "direction": "Subscribe",
+      "scope": ["cp6-p09-probe-receiver"],
+      "usernameSecretRef": "receiver-username",
+      "passwordSecretRef": "receiver-password"
+    }
+  ],
+  "topic": {
+    "name": "cp6.platform.deployment-probe.v1",
+    "eventType": "com.gtx537.platform.contract-example.changed.v1",
+    "partitions": 3,
+    "retentionMs": 3600000,
+    "maxMessageBytes": 1048576
+  },
+  "acls": [
+    {"principal":"cp6-p09-probe-publisher","resourceType":"Topic","resourceName":"cp6.platform.deployment-probe.v1","operation":"Write"},
+    {"principal":"cp6-p09-probe-publisher","resourceType":"Topic","resourceName":"cp6.platform.deployment-probe.v1","operation":"Describe"},
+    {"principal":"cp6-p09-probe-receiver","resourceType":"Topic","resourceName":"cp6.platform.deployment-probe.v1","operation":"Read"},
+    {"principal":"cp6-p09-probe-receiver","resourceType":"Topic","resourceName":"cp6.platform.deployment-probe.v1","operation":"Describe"},
+    {"principal":"cp6-p09-probe-receiver","resourceType":"Group","resourceName":"cp6-p09-probe-receiver-v1","operation":"Read"},
+    {"principal":"cp6-p09-provisioner","resourceType":"Topic","resourceName":"cp6.platform.deployment-probe.v1","operation":"Create"},
+    {"principal":"cp6-p09-provisioner","resourceType":"Topic","resourceName":"cp6.platform.deployment-probe.v1","operation":"Alter"},
+    {"principal":"cp6-p09-provisioner","resourceType":"Topic","resourceName":"cp6.platform.deployment-probe.v1","operation":"Describe"},
+    {"principal":"cp6-p09-provisioner","resourceType":"Cluster","resourceName":"kafka-cluster","operation":"Describe"}
+  ],
+  "compose": {
+    "appNetwork": "app",
+    "runtimeNetwork": "runtime",
+    "bootstrapServers": "kafka:9092",
+    "kafkaHostPort": false,
+    "hostBinding": "127.0.0.1:0",
+    "hostNetwork": false,
+    "privileged": false,
+    "dockerSocket": false,
+    "hostPath": false
+  },
+  "kubernetes": {
+    "namespace": "cp6-p09-ci",
+    "nonDeployableLabel": "cp6.io/nondeployable=true",
+    "defaultDeny": true,
+    "dnsEgress": true,
+    "minimalProbeIngress": true,
+    "minimalKafkaEgress": true,
+    "forbiddenKinds": ["Secret","ClusterRole","ClusterRoleBinding","Ingress","PersistentVolume"]
+  },
+  "evidence": {
+    "schemaId": "https://cp6.example/contracts/p09/rehearsal-evidence.v1.schema.json",
+    "requiredChecks": ["profile-valid","provision-first","provision-idempotent","invoke-positive","pubsub-positive","direct-kafka-denied","principal-denied","appid-scope-denied","foreign-topic-denied","kubernetes-render","kubernetes-policy","zero-residue"]
+  }
+}

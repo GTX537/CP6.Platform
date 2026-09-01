@@ -1,0 +1,20 @@
+{
+  "apiVersion": "dapr.io/v1alpha1",
+  "kind": "Component",
+  "metadata": {
+    "name": "cp6-p09-kafka-publish",
+    "namespace": "cp6-p09-ci",
+    "labels": { "cp6.io/nondeployable": "true" }
+  },
+  "spec": {
+    "type": "pubsub.kafka",
+    "version": "v1",
+    "metadata": [
+      { "name": "brokers", "value": "kafka:9092" },
+      { "name": "authType", "value": "password" },
+      { "name": "saslUsername", "secretKeyRef": { "name": "publisher-username", "key": "value" } },
+      { "name": "saslPassword", "secretKeyRef": { "name": "publisher-password", "key": "value" } }
+    ]
+  },
+  "scopes": ["cp6-p09-probe-publisher"]
+}

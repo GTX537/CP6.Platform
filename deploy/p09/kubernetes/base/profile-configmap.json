@@ -1,0 +1,24 @@
+{
+  "apiVersion": "v1",
+  "kind": "ConfigMap",
+  "metadata": {
+    "name": "p09-runtime-profile",
+    "namespace": "cp6-p09-ci",
+    "labels": { "cp6.io/nondeployable": "true" }
+  },
+  "data": {
+    "profileId": "cp6-platform-p09-ci-v1",
+    "profileSha256": "94addf0349ff895f21eca3e0d660c8d5159198267080df9109ff6493c1063681",
+    "environmentClass": "NonProduction",
+    "topicName": "cp6.platform.deployment-probe.v1",
+    "eventType": "com.gtx537.platform.contract-example.changed.v1",
+    "partitions": "3",
+    "publisherAppId": "cp6-p09-probe-publisher",
+    "receiverAppId": "cp6-p09-probe-receiver",
+    "unauthorizedAppId": "cp6-p09-unauthorized-probe",
+    "publishComponentName": "cp6-p09-kafka-publish",
+    "subscribeComponentName": "cp6-p09-kafka-subscribe",
+    "subscriptionRoute": "/events/p09",
+    "executionMode": "offline"
+  }
+}

@@ -1,0 +1,11 @@
+apiVersion: dapr.io/v1alpha1
+kind: Configuration
+metadata:
+  name: cp6-p09-docker-dns
+spec:
+  tracing:
+    samplingRate: "1"
+  nameResolution:
+    component: nameformat
+    configuration:
+      format: "{appid}:50002"

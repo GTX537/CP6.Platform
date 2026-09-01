@@ -1,0 +1,15 @@
+{
+  "apiVersion": "dapr.io/v2alpha1",
+  "kind": "Subscription",
+  "metadata": {
+    "name": "cp6-p09-deployment-probe-subscription",
+    "namespace": "cp6-p09-ci",
+    "labels": { "cp6.io/nondeployable": "true" }
+  },
+  "spec": {
+    "topic": "cp6.platform.deployment-probe.v1",
+    "routes": { "default": "/events/p09" },
+    "pubsubname": "cp6-p09-kafka-subscribe",
+    "scopes": ["cp6-p09-probe-receiver"]
+  }
+}

@@ -483,4 +483,6 @@ $RECYCLE.BIN/
 
 # Local verification and agent state
 artifacts/
+/artifacts/p09-rehearsal/
+/artifacts/p09-package/
 .gstack/

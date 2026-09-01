@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cp6.example/contracts/p09/non-production-runtime-profile.v1.schema.json",
+  "title": "CP6 P09 Non-Production Runtime Profile v1",
+  "type": "object",
+  "required": ["schemaVersion","environmentClass","profileId","runtime","identities","components","topic","acls","compose","kubernetes","evidence"],
+  "properties": {
+    "schemaVersion": {"type":"string","const":"1"},
+    "environmentClass": {"type":"string","const":"NonProduction"},
+    "profileId": {"type":"string","const":"cp6-platform-p09-ci-v1"},
+    "runtime": {"$ref":"#/$defs/runtime"},
+    "identities": {"$ref":"#/$defs/identities"},
+    "components": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref":"#/$defs/publishComponent"},
+        {"$ref":"#/$defs/subscribeComponent"}
+      ],
+      "items": false
+    },
+    "topic": {"$ref":"#/$defs/topic"},
+    "acls": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "prefixItems": [
+        {"$ref":"#/$defs/aclPublisherWrite"},
+        {"$ref":"#/$defs/aclPublisherDescribe"},
+        {"$ref":"#/$defs/aclReceiverRead"},
+        {"$ref":"#/$defs/aclReceiverDescribe"},
+        {"$ref":"#/$defs/aclReceiverGroupRead"},
+        {"$ref":"#/$defs/aclProvisionerCreate"},
+        {"$ref":"#/$defs/aclProvisionerAlter"},
+        {"$ref":"#/$defs/aclProvisionerDescribe"},
+        {"$ref":"#/$defs/aclProvisionerClusterDescribe"}
+      ],
+      "items": false
+    },
+    "compose": {"$ref":"#/$defs/compose"},
+    "kubernetes": {"$ref":"#/$defs/kubernetes"},
+    "evidence": {"$ref":"#/$defs/evidence"}
+  },
+  "$defs": {
+    "runtime": {
+      "type": "object",
+      "required": ["daprImage","kafkaImage","kubectlImage"],
+      "properties": {
+        "daprImage": {"type":"string","const":"daprio/daprd:1.18.2"},
+        "kafkaImage": {"type":"string","const":"apache/kafka:4.3.1"},
+        "kubectlImage": {"type":"string","const":"registry.k8s.io/kubectl:v1.34.1"}
+      },
+      "additionalProperties": false
+    },
+    "identities": {
+      "type": "object",
+      "required": ["publisherAppId","receiverAppId","provisionerPrincipal","unauthorizedAppId","consumerGroup"],
+      "properties": {
+        "publisherAppId": {"type":"string","const":"cp6-p09-probe-publisher"},
+        "receiverAppId": {"type":"string","const":"cp6-p09-probe-receiver"},
+        "provisionerPrincipal": {"type":"string","const":"cp6-p09-provisioner"},
+        "unauthorizedAppId": {"type":"string","const":"cp6-p09-unauthorized-probe"},
+        "consumerGroup": {"type":"string","const":"cp6-p09-probe-receiver-v1"}
+      },
+      "additionalProperties": false
+    },
+    "publishComponent": {
+      "type": "object",
+      "required": ["name","direction","scope","usernameSecretRef","passwordSecretRef"],
+      "properties": {
+        "name": {"type":"string","const":"cp6-p09-kafka-publish"},
+        "direction": {"type":"string","const":"Publish"},
+        "scope": {"type":"array","minItems":1,"maxItems":1,"prefixItems":[{"type":"string","const":"cp6-p09-probe-publisher"}],"items":false},
+        "usernameSecretRef": {"type":"string","const":"publisher-username"},
+        "passwordSecretRef": {"type":"string","const":"publisher-password"}
+      },
+      "additionalProperties": false
+    },
+    "subscribeComponent": {
+      "type": "object",
+      "required": ["name","direction","scope","usernameSecretRef","passwordSecretRef"],
+      "properties": {
+        "name": {"type":"string","const":"cp6-p09-kafka-subscribe"},
+        "direction": {"type":"string","const":"Subscribe"},
+        "scope": {"type":"array","minItems":1,"maxItems":1,"prefixItems":[{"type":"string","const":"cp6-p09-probe-receiver"}],"items":false},
+        "usernameSecretRef": {"type":"string","const":"receiver-username"},
+        "passwordSecretRef": {"type":"string","const":"receiver-password"}
+      },
+      "additionalProperties": false
+    },
+    "topic": {
+      "type": "object",
+      "required": ["name","eventType","partitions","retentionMs","maxMessageBytes"],
+      "properties": {
+        "name": {"type":"string","const":"cp6.platform.deployment-probe.v1"},
+        "eventType": {"type":"string","const":"com.gtx537.platform.contract-example.changed.v1"},
+        "partitions": {"type":"integer","const":3,"minimum":3,"maximum":3},
+        "retentionMs": {"type":"integer","const":3600000,"minimum":3600000,"maximum":3600000},
+        "maxMessageBytes": {"type":"integer","const":1048576,"minimum":1048576,"maximum":1048576}
+      },
+      "additionalProperties": false
+    },
+    "aclPublisherWrite": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-probe-publisher"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Write"}},
+      "additionalProperties":false
+    },
+    "aclPublisherDescribe": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-probe-publisher"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Describe"}},
+      "additionalProperties":false
+    },
+    "aclReceiverRead": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-probe-receiver"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Read"}},
+      "additionalProperties":false
+    },
+    "aclReceiverDescribe": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-probe-receiver"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Describe"}},
+      "additionalProperties":false
+    },
+    "aclReceiverGroupRead": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-probe-receiver"},"resourceType":{"type":"string","const":"Group"},"resourceName":{"type":"string","const":"cp6-p09-probe-receiver-v1"},"operation":{"type":"string","const":"Read"}},
+      "additionalProperties":false
+    },
+    "aclProvisionerCreate": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-provisioner"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Create"}},
+      "additionalProperties":false
+    },
+    "aclProvisionerAlter": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-provisioner"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Alter"}},
+      "additionalProperties":false
+    },
+    "aclProvisionerDescribe": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-provisioner"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Describe"}},
+      "additionalProperties":false
+    },
+    "aclProvisionerClusterDescribe": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-provisioner"},"resourceType":{"type":"string","const":"Cluster"},"resourceName":{"type":"string","const":"kafka-cluster"},"operation":{"type":"string","const":"Describe"}},
+      "additionalProperties":false
+    },
+    "compose": {
+      "type": "object",
+      "required": ["appNetwork","runtimeNetwork","bootstrapServers","kafkaHostPort","hostBinding","hostNetwork","privileged","dockerSocket","hostPath"],
+      "properties": {
+        "appNetwork": {"type":"string","const":"app"},
+        "runtimeNetwork": {"type":"string","const":"runtime"},
+        "bootstrapServers": {"type":"string","const":"kafka:9092"},
+        "kafkaHostPort": {"type":"boolean","const":false},
+        "hostBinding": {"type":"string","const":"127.0.0.1:0"},
+        "hostNetwork": {"type":"boolean","const":false},
+        "privileged": {"type":"boolean","const":false},
+        "dockerSocket": {"type":"boolean","const":false},
+        "hostPath": {"type":"boolean","const":false}
+      },
+      "additionalProperties": false
+    },
+    "kubernetes": {
+      "type": "object",
+      "required": ["namespace","nonDeployableLabel","defaultDeny","dnsEgress","minimalProbeIngress","minimalKafkaEgress","forbiddenKinds"],
+      "properties": {
+        "namespace": {"type":"string","const":"cp6-p09-ci"},
+        "nonDeployableLabel": {"type":"string","const":"cp6.io/nondeployable=true"},
+        "defaultDeny": {"type":"boolean","const":true},
+        "dnsEgress": {"type":"boolean","const":true},
+        "minimalProbeIngress": {"type":"boolean","const":true},
+        "minimalKafkaEgress": {"type":"boolean","const":true},
+        "forbiddenKinds": {
+          "type":"array","minItems":5,"maxItems":5,
+          "prefixItems":[{"type":"string","const":"Secret"},{"type":"string","const":"ClusterRole"},{"type":"string","const":"ClusterRoleBinding"},{"type":"string","const":"Ingress"},{"type":"string","const":"PersistentVolume"}],
+          "items":false
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["schemaId","requiredChecks"],
+      "properties": {
+        "schemaId": {"type":"string","const":"https://cp6.example/contracts/p09/rehearsal-evidence.v1.schema.json"},
+        "requiredChecks": {
+          "type":"array","minItems":12,"maxItems":12,
+          "prefixItems":[
+            {"type":"string","const":"profile-valid"},
+            {"type":"string","const":"provision-first"},
+            {"type":"string","const":"provision-idempotent"},
+            {"type":"string","const":"invoke-positive"},
+            {"type":"string","const":"pubsub-positive"},
+            {"type":"string","const":"direct-kafka-denied"},
+            {"type":"string","const":"principal-denied"},
+            {"type":"string","const":"appid-scope-denied"},
+            {"type":"string","const":"foreign-topic-denied"},
+            {"type":"string","const":"kubernetes-render"},
+            {"type":"string","const":"kubernetes-policy"},
+            {"type":"string","const":"zero-residue"}
+          ],
+          "items":false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

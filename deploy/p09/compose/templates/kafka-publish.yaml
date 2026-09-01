@@ -1,0 +1,32 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: cp6-p09-kafka-publish
+auth:
+  secretStore: cp6-p09-local-secret-store
+spec:
+  type: pubsub.kafka
+  version: v1
+  metadata:
+    - name: brokers
+      value: "kafka:9092"
+    - name: clientID
+      value: "cp6-p09-probe-publisher"
+    - name: authType
+      value: "password"
+    - name: saslUsername
+      secretKeyRef:
+        name: publisher-username
+        key: publisher-username
+    - name: saslPassword
+      secretKeyRef:
+        name: publisher-password
+        key: publisher-password
+    - name: saslMechanism
+      value: "PLAIN"
+    - name: disableTls
+      value: "true"
+    - name: maxMessageBytes
+      value: "1048576"
+scopes:
+  - cp6-p09-probe-publisher

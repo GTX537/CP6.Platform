@@ -1,0 +1,40 @@
+{
+  "apiVersion": "batch/v1",
+  "kind": "Job",
+  "metadata": {
+    "name": "provisioner",
+    "namespace": "cp6-p09-ci",
+    "labels": { "cp6.io/nondeployable": "true" }
+  },
+  "spec": {
+    "suspend": true,
+    "backoffLimit": 0,
+    "template": {
+      "metadata": {
+        "labels": {
+          "cp6.io/nondeployable": "true",
+          "cp6.io/workload": "provisioner",
+          "cp6.io/component": "provisioner",
+          "cp6.io/kafka-client": "provisioner"
+        }
+      },
+      "spec": {
+        "serviceAccountName": "provisioner",
+        "automountServiceAccountToken": false,
+        "restartPolicy": "Never",
+        "containers": [
+          {
+            "name": "p09-fixture",
+            "image": "example.invalid/cp6/p09-fixture@sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "imagePullPolicy": "IfNotPresent",
+            "args": ["provision"],
+            "env": [
+              { "name": "KAFKA_BOOTSTRAP_SERVERS", "value": "kafka:9092" },
+              { "name": "KAFKA_TOPIC", "value": "cp6.platform.deployment-probe.v1" }
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

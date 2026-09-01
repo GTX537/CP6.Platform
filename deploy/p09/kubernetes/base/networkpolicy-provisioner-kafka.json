@@ -1,0 +1,24 @@
+{
+  "apiVersion": "networking.k8s.io/v1",
+  "kind": "NetworkPolicy",
+  "metadata": {
+    "name": "allow-provisioner-kafka-egress",
+    "namespace": "cp6-p09-ci",
+    "labels": { "cp6.io/nondeployable": "true" }
+  },
+  "spec": {
+    "podSelector": {
+      "matchLabels": {
+        "cp6.io/workload": "provisioner",
+        "cp6.io/kafka-client": "provisioner"
+      }
+    },
+    "policyTypes": ["Egress"],
+    "egress": [
+      {
+        "to": [{ "podSelector": { "matchLabels": { "cp6.io/workload": "kafka" } } }],
+        "ports": [{ "protocol": "TCP", "port": 9092 }]
+      }
+    ]
+  }
+}

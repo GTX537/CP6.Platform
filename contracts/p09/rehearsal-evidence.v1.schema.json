@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cp6.example/contracts/p09/rehearsal-evidence.v1.schema.json",
+  "title": "CP6 P09 Rehearsal Evidence v1",
+  "type": "object",
+  "required": ["schemaVersion","profileId","profileSha256","platformGitSha","repositoryVersion","packageVersion","composeManifestSha256","kubernetesManifestSha256","runtime","topic","acls","checks","trace","startedUtc","completedUtc","teardown","overall"],
+  "properties": {
+    "schemaVersion": {"type":"string","const":"1"},
+    "profileId": {"type":"string","const":"cp6-platform-p09-ci-v1"},
+    "profileSha256": {"type":"string","const":"94addf0349ff895f21eca3e0d660c8d5159198267080df9109ff6493c1063681"},
+    "platformGitSha": {"type":"string","pattern":"^[0-9a-f]{40}$"},
+    "repositoryVersion": {"type":"string","const":"0.9.0.0"},
+    "packageVersion": {"type":"string","const":"0.9.0-alpha.1"},
+    "composeManifestSha256": {"$ref":"#/$defs/sha256"},
+    "kubernetesManifestSha256": {"$ref":"#/$defs/sha256"},
+    "runtime": {"$ref":"#/$defs/runtime"},
+    "topic": {"$ref":"#/$defs/topic"},
+    "acls": {"$ref":"#/$defs/acls"},
+    "checks": {
+      "type":"array",
+      "minItems":12,
+      "maxItems":12,
+      "uniqueItems":true,
+      "prefixItems":[
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"profile-valid"},"summary":{"const":"profile-valid"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"provision-first"},"summary":{"const":"provision-first"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"provision-idempotent"},"summary":{"const":"provision-idempotent"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"invoke-positive"},"summary":{"const":"invoke-positive"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"pubsub-positive"},"summary":{"const":"pubsub-positive"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"direct-kafka-denied"},"summary":{"const":"direct-kafka-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"principal-denied"},"summary":{"const":"principal-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"appid-scope-denied"},"summary":{"const":"appid-scope-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"foreign-topic-denied"},"summary":{"const":"foreign-topic-denied"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"kubernetes-render"},"summary":{"const":"kubernetes-render"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"kubernetes-policy"},"summary":{"const":"kubernetes-policy"}}}]},
+        {"allOf":[{"$ref":"#/$defs/check"},{"properties":{"id":{"const":"zero-residue"},"summary":{"const":"zero-residue"}}}]}
+      ],
+      "items":false
+    },
+    "trace": {"$ref":"#/$defs/trace"},
+    "startedUtc": {"$ref":"#/$defs/utcTimestamp"},
+    "completedUtc": {"$ref":"#/$defs/utcTimestamp"},
+    "teardown": {"$ref":"#/$defs/teardown"},
+    "overall": {"type":"string","enum":["Passed","Failed"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties":{"overall":{"const":"Passed"}},"required":["overall"]},
+      "then": {
+        "properties": {
+          "checks": {
+            "type":"array",
+            "minItems":12,
+            "maxItems":12,
+            "prefixItems":[
+              {"$ref":"#/$defs/passedCheckProfileValid"},
+              {"$ref":"#/$defs/passedCheckProvisionFirst"},
+              {"$ref":"#/$defs/passedCheckProvisionIdempotent"},
+              {"$ref":"#/$defs/passedCheckInvokePositive"},
+              {"$ref":"#/$defs/passedCheckPubsubPositive"},
+              {"$ref":"#/$defs/passedCheckDirectKafkaDenied"},
+              {"$ref":"#/$defs/passedCheckPrincipalDenied"},
+              {"$ref":"#/$defs/passedCheckAppidScopeDenied"},
+              {"$ref":"#/$defs/passedCheckForeignTopicDenied"},
+              {"$ref":"#/$defs/passedCheckKubernetesRender"},
+              {"$ref":"#/$defs/passedCheckKubernetesPolicy"},
+              {"$ref":"#/$defs/passedCheckZeroResidue"}
+            ],
+            "items":false
+          },
+          "teardown": {
+            "type":"object",
+            "required":["commandExitCode","containerCount","networkCount","volumeCount","imageCount","temporaryDirectoryRemoved"],
+            "properties":{
+              "commandExitCode":{"type":"integer","const":0},
+              "containerCount":{"type":"integer","const":0},
+              "networkCount":{"type":"integer","const":0},
+              "volumeCount":{"type":"integer","const":0},
+              "imageCount":{"type":"integer","const":0},
+              "temporaryDirectoryRemoved":{"type":"boolean","const":true}
+            },
+            "additionalProperties":false
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {"type":"string","pattern":"^[0-9a-f]{64}$"},
+    "digest": {"type":"string","pattern":"^sha256:[0-9a-f]{64}$"},
+    "utcTimestamp": {"type":"string","format":"date-time","pattern":"^(?:(?:(?!0000)[0-9]{4})-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12][0-9]|3[01])|(?:0[469]|11)-(?:0[1-9]|[12][0-9]|30)|02-(?:0[1-9]|1[0-9]|2[0-8]))|(?:[0-9]{2}(?:0[48]|[2468][048]|[13579][26])|(?:0[48]|[2468][048]|[13579][26])00)-02-29)T(?:[01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](?:\\.[0-9]{1,7})?Z$"},
+    "safeIdentifier": {"type":"string","pattern":"^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+    "runtime": {
+      "type":"object",
+      "required":["daprImage","daprImageDigest","kafkaImage","kafkaImageDigest","kubectlImage","kubectlImageDigest","kubectlVersion"],
+      "properties":{
+        "daprImage":{"type":"string","const":"daprio/daprd:1.18.2"},
+        "daprImageDigest":{"$ref":"#/$defs/digest"},
+        "kafkaImage":{"type":"string","const":"apache/kafka:4.3.1"},
+        "kafkaImageDigest":{"$ref":"#/$defs/digest"},
+        "kubectlImage":{"type":"string","const":"registry.k8s.io/kubectl:v1.34.1"},
+        "kubectlImageDigest":{"$ref":"#/$defs/digest"},
+        "kubectlVersion":{"type":"string","const":"v1.34.1"}
+      },
+      "additionalProperties":false
+    },
+    "topic": {
+      "type":"object",
+      "required":["name","eventType","partitions","retentionMs","maxMessageBytes"],
+      "properties":{
+        "name":{"type":"string","const":"cp6.platform.deployment-probe.v1"},
+        "eventType":{"type":"string","const":"com.gtx537.platform.contract-example.changed.v1"},
+        "partitions":{"type":"integer","const":3},
+        "retentionMs":{"type":"integer","const":3600000},
+        "maxMessageBytes":{"type":"integer","const":1048576}
+      },
+      "additionalProperties":false
+    },
+    "acls": {
+      "type":"array","minItems":9,"maxItems":9,
+      "prefixItems":[
+        {"$ref":"#/$defs/aclPublisherWrite"},
+        {"$ref":"#/$defs/aclPublisherDescribe"},
+        {"$ref":"#/$defs/aclReceiverRead"},
+        {"$ref":"#/$defs/aclReceiverDescribe"},
+        {"$ref":"#/$defs/aclReceiverGroupRead"},
+        {"$ref":"#/$defs/aclProvisionerCreate"},
+        {"$ref":"#/$defs/aclProvisionerAlter"},
+        {"$ref":"#/$defs/aclProvisionerDescribe"},
+        {"$ref":"#/$defs/aclProvisionerClusterDescribe"}
+      ],
+      "items":false
+    },
+    "aclPublisherWrite": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-probe-publisher"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Write"}},"additionalProperties":false
+    },
+    "aclPublisherDescribe": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-probe-publisher"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Describe"}},"additionalProperties":false
+    },
+    "aclReceiverRead": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-probe-receiver"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Read"}},"additionalProperties":false
+    },
+    "aclReceiverDescribe": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-probe-receiver"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Describe"}},"additionalProperties":false
+    },
+    "aclReceiverGroupRead": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-probe-receiver"},"resourceType":{"type":"string","const":"Group"},"resourceName":{"type":"string","const":"cp6-p09-probe-receiver-v1"},"operation":{"type":"string","const":"Read"}},"additionalProperties":false
+    },
+    "aclProvisionerCreate": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-provisioner"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Create"}},"additionalProperties":false
+    },
+    "aclProvisionerAlter": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-provisioner"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Alter"}},"additionalProperties":false
+    },
+    "aclProvisionerDescribe": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-provisioner"},"resourceType":{"type":"string","const":"Topic"},"resourceName":{"type":"string","const":"cp6.platform.deployment-probe.v1"},"operation":{"type":"string","const":"Describe"}},"additionalProperties":false
+    },
+    "aclProvisionerClusterDescribe": {
+      "type":"object","required":["principal","resourceType","resourceName","operation"],
+      "properties":{"principal":{"type":"string","const":"cp6-p09-provisioner"},"resourceType":{"type":"string","const":"Cluster"},"resourceName":{"type":"string","const":"kafka-cluster"},"operation":{"type":"string","const":"Describe"}},"additionalProperties":false
+    },
+    "check": {
+      "type":"object",
+      "required":["id","result","summary"],
+      "properties":{
+        "id":{"$ref":"#/$defs/safeIdentifier"},
+        "result":{"type":"string","enum":["Passed","Failed"]},
+        "summary":{"type":"string"}
+      },
+      "additionalProperties":false
+    },
+    "passedCheckProfileValid": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"profile-valid"}}},
+    "passedCheckProvisionFirst": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"provision-first"}}},
+    "passedCheckProvisionIdempotent": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"provision-idempotent"}}},
+    "passedCheckInvokePositive": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"invoke-positive"}}},
+    "passedCheckPubsubPositive": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"pubsub-positive"}}},
+    "passedCheckDirectKafkaDenied": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"direct-kafka-denied"}}},
+    "passedCheckPrincipalDenied": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"principal-denied"}}},
+    "passedCheckAppidScopeDenied": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"appid-scope-denied"}}},
+    "passedCheckForeignTopicDenied": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"foreign-topic-denied"}}},
+    "passedCheckKubernetesRender": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"kubernetes-render"}}},
+    "passedCheckKubernetesPolicy": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"kubernetes-policy"}}},
+    "passedCheckZeroResidue": {"$ref":"#/$defs/passedCheck","properties":{"id":{"const":"zero-residue"}}},
+    "passedCheck": {
+      "type":"object",
+      "required":["id","result","summary"],
+      "properties":{"id":{"$ref":"#/$defs/safeIdentifier"},"result":{"type":"string","const":"Passed"},"summary":{"type":"string"}},
+      "additionalProperties":false
+    },
+    "trace": {
+      "type":"object",
+      "required":["eventId","eventType","topic","partitionKey","traceId","publisherSpanId","receiverSpanId","invocationTraceId","invokerSpanId","invokedSpanId"],
+      "properties":{
+        "eventId":{"$ref":"#/$defs/safeIdentifier"},
+        "eventType":{"type":"string","const":"com.gtx537.platform.contract-example.changed.v1"},
+        "topic":{"type":"string","const":"cp6.platform.deployment-probe.v1"},
+        "partitionKey":{"$ref":"#/$defs/safeIdentifier"},
+        "traceId":{"type":"string","pattern":"^(?!0{32}$)[0-9a-f]{32}$"},
+        "publisherSpanId":{"type":"string","pattern":"^(?!0{16}$)[0-9a-f]{16}$"},
+        "receiverSpanId":{"type":"string","pattern":"^(?!0{16}$)[0-9a-f]{16}$"},
+        "invocationTraceId":{"type":"string","pattern":"^(?!0{32}$)[0-9a-f]{32}$"},
+        "invokerSpanId":{"type":"string","pattern":"^(?!0{16}$)[0-9a-f]{16}$"},
+        "invokedSpanId":{"type":"string","pattern":"^(?!0{16}$)[0-9a-f]{16}$"}
+      },
+      "additionalProperties":false
+    },
+    "teardown": {
+      "type":"object",
+      "required":["commandExitCode","containerCount","networkCount","volumeCount","imageCount","temporaryDirectoryRemoved"],
+      "properties":{
+        "commandExitCode":{"type":"integer","minimum":-2147483648,"maximum":2147483647},
+        "containerCount":{"type":"integer","minimum":0,"maximum":2147483647},
+        "networkCount":{"type":"integer","minimum":0,"maximum":2147483647},
+        "volumeCount":{"type":"integer","minimum":0,"maximum":2147483647},
+        "imageCount":{"type":"integer","minimum":0,"maximum":2147483647},
+        "temporaryDirectoryRemoved":{"type":"boolean"}
+      },
+      "additionalProperties":false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace CP6.Platform.ArchitectureTests;
@@ -5,11 +6,107 @@ namespace CP6.Platform.ArchitectureTests;
 public sealed class RepositoryArchitectureTests
 {
     private static readonly string RepositoryRoot = FindRepositoryRoot();
+    private static readonly Regex ForbiddenBackendNames = new(
+        @"Grafana|Prometheus",
+        RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
+    private static readonly Regex ForbiddenTempoNames = new(
+        @"(?<![A-Za-z0-9])(?i:tempo)(?![A-Za-z0-9])|(?:Tempo|tempo|TEMPO)(?![a-z])|(?i:tempo(?:exporteroptions?|exporters?|backends?|clients?|services?|collectors?|sinks?|settings?|endpoints?|configs?))",
+        RegexOptions.CultureInvariant);
+
+    public static TheoryData<string> ForbiddenTempoCases => new()
+    {
+        "tempo",
+        "Tempo",
+        "TEMPO",
+        "TempoExporter",
+        "TempoBackend",
+        "AddTempoExporter",
+        "AddTempoClient",
+        "TempoClient",
+        "TempoService",
+        "TempoCollector",
+        "TempoSink",
+        "TempoSettings",
+        "TempoEndpoint",
+        "TempoConfig",
+        "TempoExporterOptions",
+        "OpenTelemetryTempoExporter",
+        "tempoExporter",
+        "tempo_endpoint",
+        "TEMPO_ENDPOINT",
+        "addTempoExporter",
+        "temporaryTempoDirectory",
+        "tempo:4317",
+        "http://tempo:4317",
+        "tempo backend",
+        "Tempo backend",
+        "tempo-client",
+        "Tempo.Endpoint",
+        "Tempo/Exporter",
+        "TEMPO-ENDPOINT",
+        "AddTempo",
+        "AddTempo.Endpoint",
+        "AddTempo/Exporter",
+        "AddTempo-Exporter",
+        "AddTempo_Exporter",
+        "AddTempo backend",
+        "UseTempo:4317",
+        "OpenTelemetryTempo:4317",
+        "tempoexporter",
+        "tempobackend",
+        "tempoclient",
+        "temposervice",
+        "tempocollector",
+        "temposink",
+        "temposettings",
+        "tempoendpoint",
+        "tempoconfig",
+        "tempoexporteroptions",
+        "Tempoexporter",
+        "Tempobackend",
+        "Tempoclient",
+        "Temposervice",
+        "Tempocollector",
+        "Temposink",
+        "Temposettings",
+        "Tempoendpoint",
+        "Tempoconfig",
+        "Tempoexporteroptions",
+        "TeMpOExporter",
+        "TeMpOBackend",
+        "TeMpOClient",
+        "TeMpOService",
+        "TeMpOCollector",
+        "TeMpOSink",
+        "TeMpOSettings",
+        "TeMpOEndpoint",
+        "TeMpOConfig",
+        "TeMpOExporterOptions"
+    };
+
+    public static TheoryData<string> AllowedTemporaryCases => new()
+    {
+        "tempOutput",
+        "TempOutput",
+        "tempOffset",
+        "TemporalWindow",
+        "temporalWindow",
+        "TemporallyConsistent",
+        "temporallyConsistent",
+        "TemporarilyRemoved",
+        "TemporaryFileRemoved",
+        "temporaryFileRemoved",
+        "contemporaryOperation",
+        "contemporaneousOperation",
+        "temporaryDirectoryRemoved",
+        "TemporaryDirectoryRemoved"
+    };
 
     private static readonly IReadOnlyDictionary<string, string[]> ExpectedDependencies =
         new Dictionary<string, string[]>(StringComparer.Ordinal)
         {
             ["CP6.Platform.Contracts"] = [],
+            ["CP6.Platform.Deployment"] = [],
             ["CP6.Platform.Abstractions"] = ["CP6.Platform.Contracts"],
             ["CP6.Platform.AspNetCore"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
             ["CP6.Platform.Messaging"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
@@ -56,6 +153,87 @@ public sealed class RepositoryArchitectureTests
         Assert.Empty(contracts.Descendants("ProjectReference"));
         Assert.Empty(contracts.Descendants("PackageReference"));
         Assert.Empty(contracts.Descendants("FrameworkReference"));
+    }
+
+    [Fact]
+    public void Deployment_HasNoExternalInternalOrFrameworkDependencies()
+    {
+        var deployment = LoadProjects()["CP6.Platform.Deployment"].Document;
+
+        Assert.Empty(deployment.Descendants("ProjectReference"));
+        Assert.Empty(deployment.Descendants("PackageReference"));
+        Assert.Empty(deployment.Descendants("FrameworkReference"));
+    }
+
+    [Fact]
+    public void OtherSourceProjects_DoNotReferenceDeployment()
+    {
+        foreach (var (_, project) in LoadProjects()
+                     .Where(project => project.Key != "CP6.Platform.Deployment"))
+        {
+            Assert.DoesNotContain(
+                project.Document.Descendants("ProjectReference"),
+                reference => string.Equals(
+                    Path.GetFileNameWithoutExtension(reference.Attribute("Include")!.Value),
+                    "CP6.Platform.Deployment",
+                    StringComparison.Ordinal));
+        }
+    }
+
+    [Fact]
+    public void Deployment_IsOnlyProjectPackingP09ContractsAndDeploymentAssets()
+    {
+        var projects = LoadProjects();
+        var deploymentAssets = GetProjectItems(projects["CP6.Platform.Deployment"].Document)
+            .Where(item => !string.IsNullOrWhiteSpace(GetItemValue(item, "Pack")))
+            .Select(item => (
+                ItemType: item.Name.LocalName,
+                Include: item.Attribute("Include")?.Value ?? string.Empty,
+                Update: item.Attribute("Update")?.Value ?? string.Empty,
+                Remove: item.Attribute("Remove")?.Value ?? string.Empty,
+                Pack: GetItemValue(item, "Pack"),
+                PackagePath: GetItemValue(item, "PackagePath")))
+            .ToArray();
+        var expectedDeploymentAssets = new[]
+        {
+            (
+                ItemType: "None",
+                Include: "../../contracts/p09/**/*",
+                Update: string.Empty,
+                Remove: string.Empty,
+                Pack: "true",
+                PackagePath: "contracts/p09/%(RecursiveDir)%(Filename)%(Extension)"),
+            (
+                ItemType: "None",
+                Include: "../../deploy/p09/**/*",
+                Update: string.Empty,
+                Remove: string.Empty,
+                Pack: "true",
+                PackagePath: "deploy/p09/%(RecursiveDir)%(Filename)%(Extension)")
+        };
+
+        Assert.Equal(expectedDeploymentAssets, deploymentAssets);
+
+        foreach (var (_, project) in projects.Where(project => project.Key != "CP6.Platform.Deployment"))
+        {
+            var ownershipValues = GetProjectItems(project.Document)
+                .SelectMany(item => new[]
+                {
+                    item.Attribute("Include")?.Value,
+                    item.Attribute("Update")?.Value,
+                    item.Attribute("Remove")?.Value,
+                    GetItemValue(item, "PackagePath")
+                })
+                .Where(value => !string.IsNullOrWhiteSpace(value))
+                .Select(value => value!)
+                .ToArray();
+            var projectText = File.ReadAllText(project.Path);
+
+            Assert.DoesNotContain(
+                ownershipValues,
+                value => value.Contains("p09", StringComparison.OrdinalIgnoreCase));
+            Assert.DoesNotContain("p09", projectText, StringComparison.OrdinalIgnoreCase);
+        }
     }
 
     [Fact]
@@ -192,6 +370,15 @@ public sealed class RepositoryArchitectureTests
                     ],
                     packedAssets);
             }
+            else if (packageId == "CP6.Platform.Deployment")
+            {
+                Assert.Equal(
+                    [
+                        "contracts/p09/%(RecursiveDir)%(Filename)%(Extension)",
+                        "deploy/p09/%(RecursiveDir)%(Filename)%(Extension)"
+                    ],
+                    packedAssets);
+            }
             else
             {
                 Assert.Empty(packedAssets);
@@ -211,9 +398,6 @@ public sealed class RepositoryArchitectureTests
                 "http://localhost:4317",
                 "http://localhost:4318",
                 "collector:4317",
-                "Grafana",
-                "Tempo",
-                "Prometheus",
                 "BEGIN PRIVATE KEY",
                 "password=",
                 "MapGet(\"/deploy",
@@ -222,6 +406,9 @@ public sealed class RepositoryArchitectureTests
             {
                 Assert.DoesNotContain(forbidden, productionText, StringComparison.OrdinalIgnoreCase);
             }
+
+            Assert.DoesNotMatch(ForbiddenBackendNames, productionText);
+            Assert.DoesNotMatch(ForbiddenTempoNames, productionText);
         }
 
         var verify = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
@@ -235,6 +422,44 @@ public sealed class RepositoryArchitectureTests
         Assert.Contains("CP6.Platform.Testing", pack, StringComparison.Ordinal);
         Assert.Contains("$packageVersion = '0.8.0-alpha.2'", verify, StringComparison.Ordinal);
         Assert.Contains("[string]$PackageVersion = '0.8.0-alpha.2'", pack, StringComparison.Ordinal);
+    }
+
+    [Theory]
+    [MemberData(nameof(ForbiddenTempoCases))]
+    public void ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(string value)
+    {
+        Assert.Matches(ForbiddenTempoNames, value);
+    }
+
+    [Theory]
+    [MemberData(nameof(AllowedTemporaryCases))]
+    public void ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(string value)
+    {
+        Assert.DoesNotMatch(ForbiddenTempoNames, value);
+    }
+
+    [Fact]
+    public void ProductionBackendGuard_RejectsGrafanaAndPrometheusCaseInsensitively()
+    {
+        Assert.Matches(ForbiddenBackendNames, "Grafana.Exporter");
+        Assert.Matches(ForbiddenBackendNames, "Prometheus backend");
+        Assert.Matches(ForbiddenBackendNames, "AddPrometheusExporter");
+        Assert.Matches(ForbiddenBackendNames, "OpenTelemetryPrometheusExporter");
+        Assert.Matches(ForbiddenBackendNames, "GrafanaClient");
+        Assert.Matches(ForbiddenBackendNames, "GRAFANA_ENDPOINT");
+    }
+
+    [Fact]
+    public void P09EvidenceImplementation_SeparatesFacadeValidationAndSafetyPolicy()
+    {
+        var deploymentRoot = Path.Combine(RepositoryRoot, "src", "CP6.Platform.Deployment");
+        var facade = Path.Combine(deploymentRoot, "Cp6P09RehearsalEvidence.cs");
+        var validator = Path.Combine(deploymentRoot, "Cp6P09RehearsalEvidence.Validator.cs");
+        var safety = Path.Combine(deploymentRoot, "Cp6P09RehearsalEvidence.Safety.cs");
+
+        Assert.True(File.Exists(validator), "Missing focused Evidence shape/fixed-invariant validator file.");
+        Assert.True(File.Exists(safety), "Missing focused Evidence safety policy file.");
+        Assert.InRange(File.ReadAllLines(facade).Length, 1, 300);
     }
 
     [Fact]
@@ -502,6 +727,15 @@ public sealed class RepositoryArchitectureTests
     private static bool HasDirectorySegment(string path, string segment) =>
         path.Split(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)
             .Contains(segment, StringComparer.OrdinalIgnoreCase);
+
+    private static IEnumerable<XElement> GetProjectItems(XDocument document) =>
+        document.Descendants()
+            .Where(element => string.Equals(element.Parent?.Name.LocalName, "ItemGroup", StringComparison.Ordinal));
+
+    private static string GetItemValue(XElement item, string name) =>
+        item.Attribute(name)?.Value
+        ?? item.Elements().SingleOrDefault(element => string.Equals(element.Name.LocalName, name, StringComparison.Ordinal))?.Value
+        ?? string.Empty;
 
     private static IReadOnlyDictionary<string, ProjectInfo> LoadProjects()
     {

@@ -2,6 +2,13 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## 0.9.0.0 - 2026-08-31
+
+- Complete P09-S01 through P09-S03 on the implementation branch: strict Profile/Evidence contracts, the independent dependency-free `CP6.Platform.Deployment 0.9.0-alpha.1` package candidate, real Dapr/Kafka Compose rehearsal, and offline Kubernetes render/dry-run/policy validation.
+- Prove exact-SHA service invocation, Pub/Sub, Topic/ACL idempotence, direct-network/AppId/principal/foreign-Topic rejection, canonical content-addressed evidence, and zero container/network/volume/image/temporary-directory residue.
+- Add the dedicated `ubuntu-p09-non-production-runtime` job and explicit `-P09Contract` / `-P09Real` verification entries while keeping ordinary Windows/Linux jobs free of Docker rehearsal.
+- Record P09 as `Implemented / Rehearsal Candidate`; P09-S04 through P09-S06 remain not started, so immutable publication, CRM fixed-version consumption, public project-memory synchronization, real environment rollout, and final reuse authorization are not claimed.
+
 ## 0.8.0.0 - 2026-08-30
 
 - Begin P08-S01 from the approved observability, health, resilience, and SLO evidence design.

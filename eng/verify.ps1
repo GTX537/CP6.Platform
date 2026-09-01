@@ -1,16 +1,30 @@
 [CmdletBinding()]
 param(
-    [Parameter(Mandatory = $true)]
+    [Parameter(Mandatory = $false)]
     [ValidateSet('Format', 'Build', 'Unit', 'Integration', 'Contract', 'Security', 'E2E', 'Performance', 'Migration')]
     [string]$Gate,
 
-    [string]$Profile = 'local'
+    [string]$Profile = 'local',
+
+    [switch]$P09Contract,
+
+    [switch]$P09Real,
+
+    [string]$ExpectedGitSha
 )
 
 $ErrorActionPreference = 'Stop'
+$p09SelectionCount = [int]$P09Contract.IsPresent + [int]$P09Real.IsPresent
+if ($p09SelectionCount -gt 1 -or
+    (-not [string]::IsNullOrWhiteSpace($Gate) -and $p09SelectionCount -gt 0) -or
+    ([string]::IsNullOrWhiteSpace($Gate) -and $p09SelectionCount -eq 0)) {
+    throw 'Select exactly one verification entry: -Gate, -P09Contract, or -P09Real.'
+}
+$verificationGate = if ($P09Contract) { 'P09Contract' } elseif ($P09Real) { 'P09Real' } else { $Gate }
+
 $repositoryRoot = Split-Path -Parent $PSScriptRoot
 $solutionPath = Join-Path $repositoryRoot 'CP6.Platform.sln'
-$gateName = $Gate.ToLowerInvariant()
+$gateName = $verificationGate.ToLowerInvariant()
 $outputRoot = Join-Path $repositoryRoot "artifacts/verify/$gateName"
 $summaryPath = Join-Path $outputRoot 'summary.json'
 $junitPath = Join-Path $outputRoot 'results.junit.xml'
@@ -26,6 +40,13 @@ $runtimePackageProjects = @(
     'src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj',
     'src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj'
 )
+$dotnetCommand = if (-not [string]::IsNullOrWhiteSpace($env:DOTNET_HOST_PATH)) {
+    $env:DOTNET_HOST_PATH
+}
+else {
+    (Get-Command -Name 'dotnet' -CommandType Application -ErrorAction Stop | Select-Object -First 1).Source
+}
+$env:DOTNET_HOST_PATH = $dotnetCommand
 
 if (-not $outputRoot.StartsWith((Join-Path $repositoryRoot 'artifacts'), [StringComparison]::OrdinalIgnoreCase)) {
     throw "Refusing to write verification output outside the repository artifacts directory: $outputRoot"
@@ -48,7 +69,7 @@ function Invoke-DotNetStep {
 
     $stepStarted = [DateTimeOffset]::UtcNow
     $logPath = Join-Path $outputRoot "$($Name.ToLowerInvariant()).log"
-    & dotnet @Arguments 2>&1 | Tee-Object -FilePath $logPath
+    & $dotnetCommand @Arguments 2>&1 | Tee-Object -FilePath $logPath
     $exitCode = $LASTEXITCODE
     $checks.Add([ordered]@{
         name = $Name
@@ -62,12 +83,110 @@ function Invoke-DotNetStep {
     }
 }
 
+function Invoke-PowerShellStep {
+    param(
+        [Parameter(Mandatory = $true)][string]$Name,
+        [Parameter(Mandatory = $true)][string]$ScriptPath,
+        [string[]]$Arguments = @(),
+        [ValidateRange(1, 2)][int]$MaxAttempts = 1
+    )
+
+    $stepStarted = [DateTimeOffset]::UtcNow
+    $logPath = Join-Path $outputRoot "$($Name.ToLowerInvariant()).log"
+    $output = @()
+    $exitCode = 1
+    foreach ($attempt in 1..$MaxAttempts) {
+        $output = @(& pwsh -NoProfile -File $ScriptPath @Arguments 2>&1 | Tee-Object -FilePath $logPath -Append)
+        $exitCode = $LASTEXITCODE
+        if ($exitCode -eq 0) { break }
+        if ($attempt -lt $MaxAttempts) { Start-Sleep -Milliseconds 500 }
+    }
+    $checks.Add([ordered]@{
+        name = $Name
+        status = if ($exitCode -eq 0) { 'Passed' } else { 'Failed' }
+        durationMs = [Math]::Round(([DateTimeOffset]::UtcNow - $stepStarted).TotalMilliseconds)
+        log = [IO.Path]::GetRelativePath($repositoryRoot, $logPath).Replace('\', '/')
+    })
+
+    if ($exitCode -ne 0) {
+        throw "PowerShell step '$Name' failed with exit code $exitCode."
+    }
+
+    return $output
+}
+
+function Add-NotRunCheck {
+    param([Parameter(Mandatory = $true)][string]$Reason)
+
+    $script:status = 'NotRun'
+    $checks.Add([ordered]@{
+        name = $verificationGate
+        status = 'NotRun'
+        durationMs = 0
+        reason = $Reason
+    })
+}
+
+function Test-P09DockerAvailable {
+    try {
+        & docker version --format '{{.Server.Version}}' *> $null
+        return $LASTEXITCODE -eq 0
+    }
+    catch {
+        return $false
+    }
+}
+
+function Get-P09JsonResult {
+    param(
+        [Parameter(Mandatory = $true)][object[]]$Output,
+        [Parameter(Mandatory = $true)][string]$StepName
+    )
+
+    $jsonLine = @($Output | ForEach-Object { [string]$_ } | Where-Object { $_.TrimStart().StartsWith('{', [StringComparison]::Ordinal) } | Select-Object -Last 1)
+    if ($jsonLine.Count -ne 1) {
+        throw "PowerShell step '$StepName' did not return its JSON result."
+    }
+    try {
+        return $jsonLine[0] | ConvertFrom-Json -Depth 20
+    }
+    catch {
+        throw "PowerShell step '$StepName' returned invalid JSON."
+    }
+}
+
+function Invoke-P09ContractVerification {
+    Invoke-DotNetStep -Name 'P09DeploymentContracts' -Arguments @(
+        'test', 'tests/CP6.Platform.DeploymentTests/CP6.Platform.DeploymentTests.csproj',
+        '--configuration', 'Release'
+    )
+    [void](Invoke-PowerShellStep -Name 'P09ComposeScriptContracts' -ScriptPath 'tests/p09/compose-rehearsal.Tests.ps1')
+    [void](Invoke-PowerShellStep -Name 'P09CleanupFailureContracts' -ScriptPath 'tests/p09/cleanup-failure.Tests.ps1')
+    [void](Invoke-PowerShellStep -Name 'P09KubernetesNegativeContracts' -ScriptPath 'tests/p09/kubernetes-negative.Tests.ps1')
+
+    if (-not (Test-P09DockerAvailable)) {
+        if ($Profile -ceq 'ci') {
+            throw 'Docker is required for the P09 Kubernetes gate in CI.'
+        }
+        Add-NotRunCheck 'Docker is unavailable; the offline Kubernetes container gate was not run.'
+        return $false
+    }
+
+    $kubernetesOutput = Invoke-PowerShellStep -Name 'P09KubernetesOfflineGate' -ScriptPath 'eng/test-p09-kubernetes.ps1' -MaxAttempts 2
+    $kubernetesResult = Get-P09JsonResult -Output $kubernetesOutput -StepName 'P09KubernetesOfflineGate'
+    if ($kubernetesResult.Status -cne 'Passed' -or
+        [string]$kubernetesResult.ManifestSha256 -cnotmatch '^[0-9a-f]{64}$') {
+        throw 'The P09 Kubernetes gate did not return Passed evidence with a manifest SHA-256.'
+    }
+    return $true
+}
+
 function Add-NotApplicableCheck {
     param([Parameter(Mandatory = $true)][string]$Reason)
 
     $script:status = 'NotApplicable'
     $checks.Add([ordered]@{
-        name = $Gate
+        name = $verificationGate
         status = 'NotApplicable'
         durationMs = 0
         reason = $Reason
@@ -280,7 +399,7 @@ function Write-Evidence {
 
     $summary = [ordered]@{
         schemaVersion = 1
-        gate = $Gate
+        gate = $verificationGate
         profile = $Profile
         status = $status
         startedAtUtc = $startedAt.ToString('o')
@@ -296,15 +415,16 @@ function Write-Evidence {
 
     $summary | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath $summaryPath -Encoding utf8
 
-    $escapedGate = [Security.SecurityElement]::Escape($Gate)
+    $escapedGate = [Security.SecurityElement]::Escape($verificationGate)
     $durationSeconds = [Math]::Round(($completedAt - $startedAt).TotalSeconds, 3).ToString([Globalization.CultureInfo]::InvariantCulture)
     if ($status -eq 'Failed') {
         $escapedFailure = [Security.SecurityElement]::Escape($failureMessage)
         $resultElement = "<failure message=`"$escapedFailure`" />"
         $failures = 1
         $skipped = 0
-    } elseif ($status -eq 'NotApplicable') {
-        $reason = [string]$checks[0].reason
+    } elseif ($status -in @('NotApplicable', 'NotRun')) {
+        $reasonCheck = @($checks | Where-Object { $_.status -eq $status } | Select-Object -First 1)
+        $reason = [string]$reasonCheck[0].reason
         $escapedReason = [Security.SecurityElement]::Escape($reason)
         $resultElement = "<skipped message=`"$escapedReason`" />"
         $failures = 0
@@ -326,7 +446,7 @@ function Write-Evidence {
 
 Push-Location $repositoryRoot
 try {
-    switch ($Gate) {
+    switch ($verificationGate) {
         'Format' {
             Invoke-DotNetStep -Name 'Format' -Arguments @('format', $solutionPath, '--verify-no-changes')
         }
@@ -410,13 +530,34 @@ try {
         }
         'Performance' { Add-NotApplicableCheck 'P08-S01 freezes evidence contracts but does not claim production performance or SLO thresholds.' }
         'Migration' { Add-NotApplicableCheck 'P08-S01 contains no database schema or migration assets.' }
+        'P09Contract' {
+            [void](Invoke-P09ContractVerification)
+        }
+        'P09Real' {
+            if ([string]::IsNullOrWhiteSpace($ExpectedGitSha) -or
+                $ExpectedGitSha -cnotmatch '^[0-9a-f]{40}$') {
+                throw '-P09Real requires -ExpectedGitSha with exactly 40 lowercase hexadecimal characters.'
+            }
+            if (Invoke-P09ContractVerification) {
+                $rehearsalOutput = Invoke-PowerShellStep `
+                    -Name 'P09RealComposeRehearsal' `
+                    -ScriptPath 'eng/run-p09-compose-rehearsal.ps1' `
+                    -Arguments @('-ExpectedGitSha', $ExpectedGitSha)
+                $rehearsalResult = Get-P09JsonResult -Output $rehearsalOutput -StepName 'P09RealComposeRehearsal'
+                if ($rehearsalResult.Status -cne 'Passed' -or
+                    -not $rehearsalResult.ZeroResidue -or
+                    [string]$rehearsalResult.EvidenceSha256 -cnotmatch '^[0-9a-f]{64}$') {
+                    throw 'The P09 real Compose rehearsal did not return Passed evidence with zero residue.'
+                }
+            }
+        }
     }
 } catch {
     $status = 'Failed'
     $failureMessage = $_.Exception.Message
     if (-not $checks.Exists({ param($check) $check.status -eq 'Failed' })) {
         $checks.Add([ordered]@{
-            name = $Gate
+            name = $verificationGate
             status = 'Failed'
             durationMs = 0
             reason = $failureMessage
@@ -427,8 +568,11 @@ try {
     Write-Evidence
 }
 
-Write-Host "[$Gate] $status - $summaryPath"
+Write-Host "[$verificationGate] $status - $summaryPath"
 if ($status -eq 'Failed') {
     Write-Error $failureMessage
     exit 1
+}
+if ($status -eq 'NotRun') {
+    exit 2
 }
