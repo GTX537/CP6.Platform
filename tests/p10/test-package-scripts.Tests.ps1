@@ -7,7 +7,8 @@ $scriptPaths = @(
     'eng/p10/Pack-P10TestPackages.ps1',
     'eng/p10/New-P10TestPackageSet.ps1',
     'eng/p10/Test-P10TestPackageSet.ps1',
-    'eng/p10/New-P10TransportRecord.ps1'
+    'eng/p10/New-P10TransportRecord.ps1',
+    'eng/p10/Test-P10TransportRecord.ps1'
 )
 
 function Assert-True([bool]$Condition, [string]$Message) {
@@ -35,6 +36,7 @@ $newCertificate = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/N
 $packPackages = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Pack-P10TestPackages.ps1') -Raw
 $verifyPackageSet = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Test-P10TestPackageSet.ps1') -Raw
 $transportRecord = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/New-P10TransportRecord.ps1') -Raw
+$verifyTransportRecord = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Test-P10TransportRecord.ps1') -Raw
 $releaseTool = Get-Content -LiteralPath (Join-Path $repositoryRoot 'tools/CP6.Platform.ReleaseTool/Program.cs') -Raw
 $releaseToolProject = Get-Content -LiteralPath (Join-Path $repositoryRoot 'tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj') -Raw
 Assert-True ($newPackageSet -cmatch '\$privateBuild = Join-Path \$privateRoot ''build''') 'P10 package creation must isolate its build output below the private root.'
@@ -62,5 +64,8 @@ Assert-True ($releaseTool -cmatch 'CertificateHashAllowListEntry') 'The Release 
 Assert-True ($transportRecord -cmatch '\$transportBuild = Join-Path \$privateRoot ''build''') 'Transport creation must isolate its Release tool build.'
 Assert-True ([regex]::Matches($transportRecord, '"-p:ArtifactsPath=\$transportBuild"').Count -ge 2) 'Transport creation must restore and build the Release tool in its private artifacts path.'
 Assert-True ($transportRecord -cmatch 'MSBUILDDISABLENODEREUSE') 'Transport creation must disable MSBuild node reuse so redirected process pipes can close.'
+Assert-True ($verifyTransportRecord -cmatch '\$transportVerifyBuild = Join-Path \$privateRoot ''build''') 'Independent transport verification must isolate its Release tool build.'
+Assert-True ([regex]::Matches($verifyTransportRecord, '"-p:ArtifactsPath=\$transportVerifyBuild"').Count -ge 2) 'Independent transport verification must restore and build the Release tool in its private artifacts path.'
+Assert-True ($verifyTransportRecord -cmatch 'MSBUILDDISABLENODEREUSE') 'Independent transport verification must disable MSBuild node reuse so redirected process pipes can close.'
 
 Write-Host 'P10 test-package script contract tests passed.'

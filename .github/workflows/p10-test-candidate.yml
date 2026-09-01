@@ -80,7 +80,7 @@ jobs:
         shell: pwsh
         run: |
           $evaluationUtc = [DateTimeOffset]::UtcNow.UtcDateTime.ToString('O')
-          dotnet run --project tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj --configuration Release --no-build -- validate-transport artifacts/p10-test/transport/test-package-transport.v1.json $evaluationUtc
+          ./eng/p10/Test-P10TransportRecord.ps1 -TransportPath artifacts/p10-test/transport/test-package-transport.v1.json -EvaluationUtc $evaluationUtc
           $files = @(Get-ChildItem artifacts/p10-test/transport -Recurse -File)
           if (@($files | Where-Object { $_.Extension -in '.pfx', '.p12', '.pem', '.key' -or $_.Name -match '(?i)password|private[-_]?key' }).Count -ne 0) { throw 'Private material found in transport artifact.' }
           if (@($files | Select-String -Pattern '-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|(?i)(?:password|token|secret)\s*[:=]\s*[^\s]+').Count -ne 0) { throw 'Secret-shaped text found in transport artifact.' }
