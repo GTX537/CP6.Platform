@@ -1188,7 +1188,7 @@ function Get-Cp6P09DaprDiagnosticProcessSpec {
     )
 
     $shell = @'
-set -eu; exec 3<>/dev/tcp/publisher-dapr/3500; printf 'POST /v1.0/invoke/cp6-p09-probe-receiver/method/invoked HTTP/1.1\r\nHost: publisher-dapr\r\nContent-Type: application/json\r\nContent-Length: 34\r\nConnection: close\r\n\r\n{"correlationId":"p09-diagnostic"}' >&3; timeout 10 head -c 3072 <&3
+set -eu; exec 3<>/dev/tcp/cp6-p09-probe-publisher/3500; printf 'POST /v1.0/invoke/cp6-p09-probe-receiver/method/invoked HTTP/1.1\r\nHost: cp6-p09-probe-publisher\r\nContent-Type: application/json\r\nContent-Length: 34\r\nConnection: close\r\n\r\n{"correlationId":"p09-diagnostic"}' >&3; timeout 10 head -c 3072 <&3
 '@.Trim()
     [pscustomobject]@{
         Arguments = @(
@@ -1271,8 +1271,8 @@ function Get-Cp6P09DaprTransportDiagnosticProcessSpec {
 
     $shell = @'
 set -eu
-getent hosts publisher-dapr >/dev/null 2>&1 || { printf 'publisher-sidecar-dns-unavailable\n'; exit 0; }
-timeout 4 nc -z -w 3 publisher-dapr 3500 >/dev/null 2>&1 || { printf 'publisher-sidecar-api-unreachable\n'; exit 0; }
+getent hosts cp6-p09-probe-publisher >/dev/null 2>&1 || { printf 'publisher-sidecar-dns-unavailable\n'; exit 0; }
+timeout 4 nc -z -w 3 cp6-p09-probe-publisher 3500 >/dev/null 2>&1 || { printf 'publisher-sidecar-api-unreachable\n'; exit 0; }
 getent hosts cp6-p09-probe-receiver >/dev/null 2>&1 || { printf 'target-dns-unavailable\n'; exit 0; }
 timeout 4 nc -z -w 3 cp6-p09-probe-receiver 50002 >/dev/null 2>&1 || { printf 'target-internal-grpc-unreachable\n'; exit 0; }
 printf 'transport-reachable\n'
@@ -1493,9 +1493,15 @@ function Invoke-Cp6P09RuntimeMatrix {
             }
         }
         catch {
-            $Context.MatrixDiagnosticCategory = Invoke-Cp6P09DaprDiagnostic -Context $Context
-            if ($Context.MatrixDiagnosticCategory -ceq 'diagnostic-unavailable') {
-                $Context.MatrixDiagnosticCategory = Invoke-Cp6P09DaprTransportDiagnostic -Context $Context
+            $stateCategory = Invoke-Cp6P09RuntimeStartStateDiagnostic -Context $Context -Phase publisher
+            if ($stateCategory -cne 'publisher-compose-wait-failed') {
+                $Context.MatrixDiagnosticCategory = $stateCategory
+            }
+            else {
+                $Context.MatrixDiagnosticCategory = Invoke-Cp6P09DaprDiagnostic -Context $Context
+                if ($Context.MatrixDiagnosticCategory -ceq 'diagnostic-unavailable') {
+                    $Context.MatrixDiagnosticCategory = Invoke-Cp6P09DaprTransportDiagnostic -Context $Context
+                }
             }
             throw
         }
