@@ -40,6 +40,7 @@ $privateRoot = Join-Path $artifactsRoot ("private\" + [Guid]::NewGuid().ToString
 $privatePackages = Join-Path $privateRoot 'packages'
 $privateResults = Join-Path $privateRoot 'test-results'
 $privateRaw = Join-Path $privateRoot 'raw'
+$privateBuild = Join-Path $privateRoot 'build'
 [IO.Directory]::CreateDirectory($privatePackages) | Out-Null
 [IO.Directory]::CreateDirectory($privateResults) | Out-Null
 [IO.Directory]::CreateDirectory($privateRaw) | Out-Null
@@ -74,7 +75,7 @@ function Write-RawJson([string]$Path, $Value) {
 }
 
 function Invoke-ReleaseTool([string[]]$Arguments) {
-    $toolPath = Join-Path $repositoryRoot 'tools\CP6.Platform.ReleaseTool\bin\Release\net8.0\CP6.Platform.ReleaseTool.dll'
+    $toolPath = Join-Path $privateBuild 'bin\CP6.Platform.ReleaseTool\release\CP6.Platform.ReleaseTool.dll'
     if (-not (Test-Path -LiteralPath $toolPath -PathType Leaf)) {
         throw 'The Release tool was not produced by the one solution build.'
     }
@@ -90,6 +91,7 @@ function Invoke-Gate([string]$Name, [string]$Project, [string[]]$AdditionalArgum
         'test', $Project,
         '--configuration', 'Release',
         '--no-build', '--no-restore',
+        "-p:ArtifactsPath=$privateBuild",
         '--results-directory', $resultDirectory,
         '--logger', "trx;LogFileName=$trxName"
     ) + $AdditionalArguments
@@ -140,12 +142,13 @@ try {
     }
 
     Write-Verbose 'P10 package set: restoring solution.'
-    Invoke-Checked 'dotnet' @('restore', 'CP6.Platform.sln')
+    Invoke-Checked 'dotnet' @('restore', 'CP6.Platform.sln', "-p:ArtifactsPath=$privateBuild")
     Write-Verbose 'P10 package set: building solution once.'
     Invoke-Checked 'dotnet' @(
         'build', 'CP6.Platform.sln',
         '--configuration', 'Release',
         '--no-restore',
+        "-p:ArtifactsPath=$privateBuild",
         "-p:PackageVersion=$packageVersion",
         "-p:Version=$packageVersion",
         "-p:RepositoryCommit=$SourceGitSha",
@@ -163,6 +166,7 @@ try {
     $packageSet = & (Join-Path $PSScriptRoot 'Pack-P10TestPackages.ps1') `
         -PackageVersion $packageVersion `
         -SourceGitSha $SourceGitSha `
+        -BuildArtifactsPath $privateBuild `
         -OutputPath $privatePackages
     if (@($packageSet).Count -ne 1) {
         throw 'P10 pack script did not return one package-set record.'

@@ -30,4 +30,12 @@ foreach ($relativePath in $scriptPaths) {
     Assert-True ($text -notmatch '(?i)(Set-Content|Out-File|WriteAllText).*password') "$relativePath must not persist a signing password."
 }
 
+$newPackageSet = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/New-P10TestPackageSet.ps1') -Raw
+$packPackages = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Pack-P10TestPackages.ps1') -Raw
+Assert-True ($newPackageSet -cmatch '\$privateBuild = Join-Path \$privateRoot ''build''') 'P10 package creation must isolate its build output below the private root.'
+Assert-True ([regex]::Matches($newPackageSet, '"-p:ArtifactsPath=\$privateBuild"').Count -ge 3) 'P10 restore, build, and gate commands must use the isolated artifacts path.'
+Assert-True ($newPackageSet -cmatch '-BuildArtifactsPath \$privateBuild') 'P10 packing must consume the isolated build output.'
+Assert-True ($packPackages -cmatch '\[string\]\$BuildArtifactsPath') 'P10 packing must require an explicit build artifacts path.'
+Assert-True ($packPackages -cmatch '"-p:ArtifactsPath=\$resolvedBuildArtifacts"') 'P10 packing must preserve the isolated artifacts path.'
+
 Write-Host 'P10 test-package script contract tests passed.'

@@ -9,6 +9,9 @@ param(
     [string]$SourceGitSha,
 
     [Parameter(Mandatory)]
+    [string]$BuildArtifactsPath,
+
+    [Parameter(Mandatory)]
     [string]$OutputPath
 )
 
@@ -18,9 +21,13 @@ Set-StrictMode -Version Latest
 $repositoryRoot = [IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..'))
 $artifactsRoot = [IO.Path]::GetFullPath((Join-Path $repositoryRoot 'artifacts\p10-test'))
 $resolvedOutput = [IO.Path]::GetFullPath($OutputPath, $repositoryRoot)
+$resolvedBuildArtifacts = [IO.Path]::GetFullPath($BuildArtifactsPath, $repositoryRoot)
 $artifactsPrefix = $artifactsRoot.TrimEnd([IO.Path]::DirectorySeparatorChar) + [IO.Path]::DirectorySeparatorChar
 if (-not $resolvedOutput.StartsWith($artifactsPrefix, [StringComparison]::OrdinalIgnoreCase)) {
     throw "Package output must be below $artifactsRoot."
+}
+if (-not $resolvedBuildArtifacts.StartsWith($artifactsPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+    throw "Build artifacts must be below $artifactsRoot."
 }
 
 $packages = [ordered]@{
@@ -36,9 +43,8 @@ if (@($packages.Keys | Sort-Object -Unique).Count -ne 7) {
     throw 'P10 package list contains duplicate package IDs.'
 }
 foreach ($project in $packages.Values) {
-    $projectDirectory = Split-Path -Parent (Join-Path $repositoryRoot $project)
     $assemblyName = [IO.Path]::GetFileNameWithoutExtension($project)
-    $assemblyPath = Join-Path $projectDirectory "bin\Release\net8.0\$assemblyName.dll"
+    $assemblyPath = Join-Path $resolvedBuildArtifacts "bin\$assemblyName\release\$assemblyName.dll"
     if (-not (Test-Path -LiteralPath $assemblyPath -PathType Leaf)) {
         throw "The required Release solution build output is missing for $project."
     }
@@ -61,6 +67,7 @@ try {
             --configuration Release `
             --no-build `
             --no-restore `
+            "-p:ArtifactsPath=$resolvedBuildArtifacts" `
             "-p:PackageVersion=$PackageVersion" `
             "-p:RepositoryCommit=$SourceGitSha" `
             -p:ContinuousIntegrationBuild=true `
