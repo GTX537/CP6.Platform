@@ -1,6 +1,6 @@
 # P10 Release Governance, Signed Packages, and Candidate Evidence Design
 
-**Status:** Conditionally approved design; implementation blocked pending P0 specification closure
+**Status:** Approved design; P0 specification closure complete; implementation not started
 
 **Date:** 2026-09-01
 
