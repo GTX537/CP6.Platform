@@ -51,6 +51,7 @@ $expectedVersion = "0.10.0-test.$($ExpectedSourceGitSha.Substring(0, 12)).$Expec
 $expectedInvocation = "p10-s02:$ExpectedSourceGitSha`:$ExpectedRunId`:$ExpectedRunAttempt"
 $certificate = $null
 $verifyRoot = Join-Path $artifactsRoot ("private\verify-" + [Guid]::NewGuid().ToString('N'))
+$verifyBuild = Join-Path $verifyRoot 'build'
 [IO.Directory]::CreateDirectory($verifyRoot) | Out-Null
 
 function Assert-True([bool]$Condition, [string]$Message) {
@@ -75,7 +76,7 @@ function Invoke-Checked([string]$FileName, [string[]]$Arguments) {
 }
 
 function Invoke-ReleaseTool([string[]]$Arguments) {
-    $toolPath = Join-Path $repositoryRoot 'tools\CP6.Platform.ReleaseTool\bin\Release\net8.0\CP6.Platform.ReleaseTool.dll'
+    $toolPath = Join-Path $verifyBuild 'bin\CP6.Platform.ReleaseTool\release\CP6.Platform.ReleaseTool.dll'
     Assert-True (Test-Path -LiteralPath $toolPath -PathType Leaf) 'Release tool build output is missing.'
     Invoke-Checked 'dotnet' (@($toolPath) + $Arguments)
 }
@@ -112,8 +113,21 @@ function Get-PackageMetadata([string]$Path) {
     }
 }
 
+$hadMsbuildDisableNodeReuse = Test-Path Env:MSBUILDDISABLENODEREUSE
+$previousMsbuildDisableNodeReuse = $env:MSBUILDDISABLENODEREUSE
+$env:MSBUILDDISABLENODEREUSE = '1'
 Push-Location $repositoryRoot
 try {
+    Invoke-Checked 'dotnet' @(
+        'restore', 'tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj',
+        "-p:ArtifactsPath=$verifyBuild"
+    )
+    Invoke-Checked 'dotnet' @(
+        'build', 'tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj',
+        '--configuration', 'Release',
+        '--no-restore',
+        "-p:ArtifactsPath=$verifyBuild"
+    )
     Add-Type -AssemblyName System.IO.Compression.FileSystem
     $expectedPackageFiles = @($packageIds | ForEach-Object {
         "$($_).$expectedVersion.nupkg"
@@ -250,6 +264,12 @@ try {
 finally {
     Pop-Location
     if ($null -ne $certificate) { $certificate.Dispose() }
+    if ($hadMsbuildDisableNodeReuse) {
+        $env:MSBUILDDISABLENODEREUSE = $previousMsbuildDisableNodeReuse
+    }
+    else {
+        Remove-Item Env:MSBUILDDISABLENODEREUSE -ErrorAction SilentlyContinue
+    }
     if (Test-Path -LiteralPath $verifyRoot) {
         Remove-Item -LiteralPath $verifyRoot -Recurse -Force
     }
