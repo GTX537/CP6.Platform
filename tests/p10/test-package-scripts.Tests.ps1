@@ -49,6 +49,9 @@ foreach ($verificationScript in @($newPackageSet, $verifyPackageSet)) {
     Assert-True ($verificationScript -notmatch 'Write-NuGetVerificationConfig') 'P10 verification must not rely on a NuGet configuration that the verify command ignores.'
     Assert-True ($verificationScript -cmatch "'verify-test-package'") 'P10 signature verification must call the isolated Release tool verifier.'
 }
+Assert-True ($verifyPackageSet -cmatch '\$verifyBuild = Join-Path \$verifyRoot ''build''') 'Independent package verification must isolate its Release tool build.'
+Assert-True ([regex]::Matches($verifyPackageSet, '"-p:ArtifactsPath=\$verifyBuild"').Count -ge 2) 'Independent package verification must restore and build the Release tool in its private artifacts path.'
+Assert-True ($verifyPackageSet -cmatch 'MSBUILDDISABLENODEREUSE') 'Independent package verification must disable MSBuild node reuse so redirected process pipes can close.'
 Assert-True ($releaseToolProject -cmatch 'PackageReference Include="NuGet\.Packaging"') 'The Release tool must use the official NuGet package-verification API.'
 Assert-True ($releaseTool -cmatch 'IntegrityVerificationProvider') 'The Release tool must verify signed-package archive integrity.'
 Assert-True ($releaseTool -cmatch 'SignatureTrustAndValidityVerificationProvider') 'The Release tool must verify CMS validity while scoping untrusted-root allowance.'
