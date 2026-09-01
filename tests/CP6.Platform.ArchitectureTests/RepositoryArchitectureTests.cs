@@ -704,6 +704,80 @@ public sealed class RepositoryArchitectureTests
     }
 
     [Fact]
+    public void P10_Documentation_IsCompleteAndNonDeployable()
+    {
+        Assert.Equal("0.10.0.0", File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim());
+
+        var readme = File.ReadAllText(Path.Combine(RepositoryRoot, "README.md"));
+        Assert.Contains("docs/P10-RELEASE-GOVERNANCE.md", readme, StringComparison.Ordinal);
+
+        var path = Path.Combine(RepositoryRoot, "docs", "P10-RELEASE-GOVERNANCE.md");
+        Assert.True(File.Exists(path), "P10 release governance document is missing.");
+        var document = File.ReadAllText(path);
+
+        foreach (var packageId in new[]
+        {
+            "CP6.Platform.Abstractions",
+            "CP6.Platform.AspNetCore",
+            "CP6.Platform.Contracts",
+            "CP6.Platform.Deployment",
+            "CP6.Platform.EntityFramework",
+            "CP6.Platform.Messaging",
+            "CP6.Platform.Release"
+        })
+        {
+            Assert.Contains(packageId, document, StringComparison.Ordinal);
+        }
+
+        foreach (var contract in new[]
+        {
+            "system-release-manifest.v1",
+            "candidate-result.v2",
+            "candidate-locator.v1",
+            "platform-release-candidate.v1",
+            "release-gate-result.v1",
+            "system-lineage-bootstrap-evidence.v1",
+            "evidence-record.v1",
+            "build-invocation-provenance.v1",
+            "test-package-transport.v1",
+            "pinned-trust-store.v1"
+        })
+        {
+            Assert.Contains(contract, document, StringComparison.Ordinal);
+        }
+
+        foreach (var required in new[]
+        {
+            "Implemented / Test Candidate",
+            "testOnly=true",
+            "deployable=false",
+            "GitHub Packages",
+            "S03",
+            "90 days",
+            "formal package publication: denied",
+            "System candidate publication: denied",
+            "Portal fabrication: denied",
+            "R2 Locator publication: denied",
+            "deployment: denied"
+        })
+        {
+            Assert.Contains(required, document, StringComparison.Ordinal);
+        }
+
+        foreach (var forbidden in new[]
+        {
+            "VersionId",
+            "Object Lock",
+            "Frozen / Consumable",
+            "production certificate exists",
+            "real certificate exists"
+        })
+        {
+            Assert.DoesNotContain(forbidden, document, StringComparison.OrdinalIgnoreCase);
+        }
+    }
+
+    [Fact]
     public void ProjectReferences_StayInsideSourceTree_AndGraphIsAcyclic()
     {
         var sourceRoot = Path.GetFullPath(Path.Combine(RepositoryRoot, "src")) + Path.DirectorySeparatorChar;

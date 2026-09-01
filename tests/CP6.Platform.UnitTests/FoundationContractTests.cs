@@ -12,12 +12,13 @@ public sealed class FoundationContractTests
     public void Version_UsesAuditableFourPartFormat()
     {
         var version = File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim();
-        var decisionRecord = File.ReadAllText(Path.Combine(
+        var p09DecisionRecord = File.ReadAllText(Path.Combine(
             RepositoryRoot,
             "docs",
             "superpowers",
             "specs",
             "2026-08-30-p09-non-production-runtime-design.md"));
+        var p10Governance = File.ReadAllText(Path.Combine(RepositoryRoot, "docs", "P10-RELEASE-GOVERNANCE.md"));
         var changelog = File.ReadAllText(Path.Combine(RepositoryRoot, "CHANGELOG.md"));
         var props = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
         var packageVersion = $"{props.Descendants("VersionPrefix").Single().Value}-{props.Descendants("VersionSuffix").Single().Value}";
@@ -27,13 +28,23 @@ public sealed class FoundationContractTests
             "CP6.Platform.Deployment",
             "CP6.Platform.Deployment.csproj"));
         var deploymentPackageVersion = $"{deploymentProject.Descendants("VersionPrefix").Single().Value}-{deploymentProject.Descendants("VersionSuffix").Single().Value}";
+        var releaseProject = XDocument.Load(Path.Combine(
+            RepositoryRoot,
+            "src",
+            "CP6.Platform.Release",
+            "CP6.Platform.Release.csproj"));
+        var releaseVersionPrefix = releaseProject.Descendants("VersionPrefix").Single().Value;
+        var releasePackageVersion = $"{releaseVersionPrefix}-{releaseProject.Descendants("VersionSuffix").Single().Value}";
         var verification = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "verify.ps1"));
         var releasePack = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "pack-release.ps1"));
         var deploymentPack = File.ReadAllText(Path.Combine(RepositoryRoot, "eng", "pack-p09.ps1"));
         var publication = File.ReadAllText(Path.Combine(RepositoryRoot, ".github", "workflows", "publish-alpha.yml"));
 
         Assert.Matches(new Regex(@"^\d+\.\d+\.\d+\.\d+$", RegexOptions.CultureInvariant), version);
-        Assert.Contains($"repository `{version}` / package `{deploymentPackageVersion}`", decisionRecord, StringComparison.Ordinal);
+        Assert.Contains($"repository `0.9.0.0` / package `{deploymentPackageVersion}`", p09DecisionRecord, StringComparison.Ordinal);
+        Assert.Equal(string.Join('.', version.Split('.')[..3]), releaseVersionPrefix);
+        Assert.Equal("0.10.0-test.local.1", releasePackageVersion);
+        Assert.Contains("The test version is `0.10.0-test.<first-12-source-sha>.<run-attempt>`", p10Governance, StringComparison.Ordinal);
         Assert.Contains($"## {version} -", changelog, StringComparison.Ordinal);
         Assert.Contains($"$packageVersion = '{packageVersion}'", verification, StringComparison.Ordinal);
         Assert.Contains($"[string]$PackageVersion = '{packageVersion}'", releasePack, StringComparison.Ordinal);

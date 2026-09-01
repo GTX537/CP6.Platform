@@ -2,6 +2,13 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## 0.10.0.0 - 2026-09-01
+
+- Establish the independent `CP6.Platform.Release` package with strict P10 release, evidence, provenance, transport, trust-store, candidate, and locator contracts.
+- Add the `cp6-deterministic-json-v1` canonical byte profile, fail-closed semantic validators, and a repository-local validation CLI.
+- Create an exact seven-package test-only candidate flow with temporary certificate signing, local verification, immutable GitHub Actions artifact transport, and no package-feed publication.
+- Record the S00-S02 ceiling as `Implemented / Test Candidate` with `testOnly=true` and `deployable=false`; formal package publication, System candidate publication, Portal fabrication, R2 Locator publication, and deployment remain denied.
+
 ## 0.9.0.0 - 2026-08-31
 
 - Complete P09-S01 through P09-S06 evidence reconciliation across Platform implementation/publication, CRM PR #37/#38/#39 fixed-version black-box consumption, public CP6 PR #77 synchronization, and the conditional Platform final audit.
