@@ -34,6 +34,7 @@ $newPackageSet = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Ne
 $newCertificate = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/New-P10TestCertificate.ps1') -Raw
 $packPackages = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Pack-P10TestPackages.ps1') -Raw
 $verifyPackageSet = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Test-P10TestPackageSet.ps1') -Raw
+$transportRecord = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/New-P10TransportRecord.ps1') -Raw
 $releaseTool = Get-Content -LiteralPath (Join-Path $repositoryRoot 'tools/CP6.Platform.ReleaseTool/Program.cs') -Raw
 $releaseToolProject = Get-Content -LiteralPath (Join-Path $repositoryRoot 'tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj') -Raw
 Assert-True ($newPackageSet -cmatch '\$privateBuild = Join-Path \$privateRoot ''build''') 'P10 package creation must isolate its build output below the private root.'
@@ -57,5 +58,9 @@ Assert-True ($releaseTool -cmatch 'IntegrityVerificationProvider') 'The Release 
 Assert-True ($releaseTool -cmatch 'SignatureTrustAndValidityVerificationProvider') 'The Release tool must verify CMS validity while scoping untrusted-root allowance.'
 Assert-True ($releaseTool -cmatch 'AllowListVerificationProvider') 'The Release tool must independently pin the author certificate fingerprint.'
 Assert-True ($releaseTool -cmatch 'CertificateHashAllowListEntry') 'The Release tool must construct an exact certificate SHA-256 allow-list entry.'
+
+Assert-True ($transportRecord -cmatch '\$transportBuild = Join-Path \$privateRoot ''build''') 'Transport creation must isolate its Release tool build.'
+Assert-True ([regex]::Matches($transportRecord, '"-p:ArtifactsPath=\$transportBuild"').Count -ge 2) 'Transport creation must restore and build the Release tool in its private artifacts path.'
+Assert-True ($transportRecord -cmatch 'MSBUILDDISABLENODEREUSE') 'Transport creation must disable MSBuild node reuse so redirected process pipes can close.'
 
 Write-Host 'P10 test-package script contract tests passed.'
