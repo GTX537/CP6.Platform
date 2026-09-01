@@ -4,12 +4,12 @@ All notable changes to CP6.Platform are documented here.
 
 ## 0.9.0.0 - 2026-08-31
 
-- Complete P09-S01 through P09-S03 on the implementation branch: strict Profile/Evidence contracts, the independent dependency-free `CP6.Platform.Deployment 0.9.0-alpha.1` package candidate, real Dapr/Kafka Compose rehearsal, and offline Kubernetes render/dry-run/policy validation.
+- Complete P09-S01 through P09-S04: strict Profile/Evidence contracts, the independent dependency-free `CP6.Platform.Deployment 0.9.0-alpha.1` package, real Dapr/Kafka Compose rehearsal, offline Kubernetes render/dry-run/policy validation, and exact-main immutable publication.
 - Prove exact-SHA service invocation, Pub/Sub, Topic/ACL idempotence, direct-network/AppId/principal/foreign-Topic rejection, canonical content-addressed evidence, and zero container/network/volume/image/temporary-directory residue.
 - Add the dedicated `ubuntu-p09-non-production-runtime` job and explicit `-P09Contract` / `-P09Real` verification entries while keeping ordinary Windows/Linux jobs free of Docker rehearsal.
-- Prepare a P09-only exact-main publication transaction with pre-upload collision rejection, a machine-readable candidate manifest, one explicit ordinary package push, and independent Registry download/SHA/content verification. P09-S04 publication automation is ready; publication evidence and P09-S05 through P09-S06 remain pending.
+- Publish the P09 package once from merge commit `1c40f21e38929abaaa6006f69ee70d4492890661` in run `33480300468` and independently match Registry version `1194316756` at SHA-256 `e820d1771ed004b4a7089d008eef3bb2aca4fe35e4912d67057840373c4952cb`; retain artifact `9789925866` with its immutable digest. P09-S05 and P09-S06 remain pending.
 - Make the required publication gates reproducible from Windows worktrees by normalizing the offline Kubernetes container script to LF and making the P06 SQL runner honor the verified `DOTNET_HOST_PATH`.
-- Record P09 as `Implemented / Rehearsal Candidate`; immutable publication evidence, CRM fixed-version consumption, public project-memory synchronization, real environment rollout, and final reuse authorization are not claimed.
+- Record P09 as `Published / Consumer Candidate`; CRM fixed-version consumption, public project-memory synchronization, real environment rollout, and final reuse authorization are not claimed.
 
 ## 0.8.0.0 - 2026-08-30
 
