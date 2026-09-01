@@ -4,6 +4,8 @@ All notable changes to CP6.Platform are documented here.
 
 ## 0.9.0.0 - 2026-08-31
 
+- Complete P09-S01 through P09-S06 evidence reconciliation across Platform implementation/publication, CRM PR #37/#38/#39 fixed-version black-box consumption, public CP6 PR #77 synchronization, and the conditional Platform final audit.
+- Issue the P09 `Frozen / Consumable` final decision without changing package bytes or runtime behavior; it becomes effective only after this change is merged and the exact-main five-job Platform validation succeeds.
 - Complete P09-S01 through P09-S04: strict Profile/Evidence contracts, the independent dependency-free `CP6.Platform.Deployment 0.9.0-alpha.1` package, real Dapr/Kafka Compose rehearsal, offline Kubernetes render/dry-run/policy validation, and exact-main immutable publication.
 - Prove exact-SHA service invocation, Pub/Sub, Topic/ACL idempotence, direct-network/AppId/principal/foreign-Topic rejection, canonical content-addressed evidence, and zero container/network/volume/image/temporary-directory residue.
 - Add the dedicated `ubuntu-p09-non-production-runtime` job and explicit `-P09Contract` / `-P09Real` verification entries while keeping ordinary Windows/Linux jobs free of Docker rehearsal.

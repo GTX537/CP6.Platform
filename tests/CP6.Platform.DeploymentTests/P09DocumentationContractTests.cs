@@ -5,13 +5,14 @@ public sealed class P09DocumentationContractTests
     private static readonly string RepositoryRoot = P09ContractTestData.RepositoryRoot;
 
     [Fact]
-    public void RuntimeGuide_RecordsPublishedConsumerCandidateBoundary()
+    public void RuntimeGuide_RecordsFrozenConsumableFinalAuditBoundary()
     {
         var guide = ReadRequired("docs/P09-NON-PRODUCTION-RUNTIME.md");
 
         foreach (var required in new[]
         {
-            "Published / Consumer Candidate",
+            "P09 final decision: `Frozen / Consumable`",
+            "ubuntu-p09-non-production-runtime",
             "0.9.0.0",
             "0.9.0-alpha.1",
             "P09-S01",
@@ -75,7 +76,30 @@ public sealed class P09DocumentationContractTests
             "1194316756",
             "e820d1771ed004b4a7089d008eef3bb2aca4fe35e4912d67057840373c4952cb",
             "2ffb1365e3d0cb85970e7bc148271bdc4b2ca0b37e5dbb55f772fc4f37d4bf5d",
-            "S01-S04 complete; S05-S06 pending"
+            "S01-S06 complete",
+            "https://github.com/GTX537/CP6.CRM/pull/37",
+            "https://github.com/GTX537/CP6.CRM/pull/38",
+            "https://github.com/GTX537/CP6.CRM/pull/39",
+            "https://github.com/GTX537/CP6/pull/77",
+            "8578bc1df9c64b00e0f27ae602d2960a91b8450a",
+            "ed08018a160d467342ddee823409232e6c412267",
+            "33494115752",
+            "33494115758",
+            "33494115763",
+            "33494115788",
+            "33494115825",
+            "33494116082",
+            "33495318290",
+            "33495318251",
+            "33495318334",
+            "33495318261",
+            "33495318252",
+            "99816026203",
+            "99816026466",
+            "99816026399",
+            "99816026564",
+            "99816026391",
+            "99816026598"
         })
         {
             Assert.Contains(required, guide, StringComparison.Ordinal);
@@ -83,26 +107,26 @@ public sealed class P09DocumentationContractTests
     }
 
     [Fact]
-    public void RepositoryState_AdvancesOnlyToP09PublishedConsumerCandidate()
+    public void RepositoryState_RecordsOnlyTheConditionalP09FinalDecision()
     {
         Assert.Equal("0.9.0.0", ReadRequired("VERSION").Trim());
 
         var readme = ReadRequired("README.md");
         Assert.Contains("P09", readme, StringComparison.Ordinal);
-        Assert.Contains("Published / Consumer Candidate", readme, StringComparison.Ordinal);
+        Assert.Contains("P09 final decision: `Frozen / Consumable`", readme, StringComparison.Ordinal);
+        Assert.Contains("until then the PR head is only a final-audit candidate", readme, StringComparison.Ordinal);
         Assert.Contains("docs/P09-NON-PRODUCTION-RUNTIME.md", readme, StringComparison.Ordinal);
         Assert.Contains("docs/P09-PUBLICATION.md", readme, StringComparison.Ordinal);
 
         var changelog = ReadRequired("CHANGELOG.md");
         Assert.Contains("## 0.9.0.0 - 2026-08-31", changelog, StringComparison.Ordinal);
-        Assert.Contains("P09-S01 through P09-S04", changelog, StringComparison.Ordinal);
-        Assert.Contains("Published / Consumer Candidate", changelog, StringComparison.Ordinal);
-        Assert.Contains("P09-S05 and P09-S06 remain pending", changelog, StringComparison.Ordinal);
-        Assert.Contains("S01-S04 complete; S05-S06 pending", readme, StringComparison.Ordinal);
+        Assert.Contains("P09-S01 through P09-S06", changelog, StringComparison.Ordinal);
+        Assert.Contains("Frozen / Consumable", changelog, StringComparison.Ordinal);
+        Assert.Contains("S01-S06 complete", readme, StringComparison.Ordinal);
     }
 
     [Fact]
-    public void PublishedGuides_DoNotClaimConsumptionCloudOrProduction()
+    public void FinalAuditGuides_DoNotClaimRuntimeCloudOrProduction()
     {
         var candidateGuides = string.Join(
             '\n',
@@ -111,9 +135,9 @@ public sealed class P09DocumentationContractTests
 
         foreach (var forbidden in new[]
         {
-            "Frozen / Consumable",
-            "P09-S05: Complete",
-            "P09-S06: Complete",
+            "| Status | `Published / Consumer Candidate` |",
+            "| Current boundary | `S01-S04 complete; S05-S06 pending` |",
+            "| Deferred stages | `P09-S05`, `P09-S06` |",
             "production ready",
             "production deployment complete",
             "real cluster validated",

@@ -10,6 +10,8 @@
 | 仓库 | `GTX537/CP6.Platform` |
 | 开发模式 | `SoloDevelopment` |
 
+> **权威阶段更新（2026-09-01）：** P09-S01～S05 已通过 Platform 实现/发布、CRM PR #37/#38/#39 固定版本黑盒消费和精确 PR/main/SQL artifact 证据完成；公共 CP6 PR #77 同步候选状态。本 P09-S06 final-audit 变更给出首次 `Frozen / Consumable` 决定，但 PR head 仍只是候选；只有该变更合并且 exact-main `platform-validation` 的 Windows、Linux、真实 Dapr/Kafka、真实 SQL Server 和真实 P09 非生产运行时五项作业成功后，决定才生效。该更新不授权真实集群、Secret、CRM runtime、业务 Topic、云资源、环境部署或 P10。
+
 ## 1. 权威语义与背景
 
 公开执行规格把 P09 定义为 Compose/Kubernetes Dapr 组件、Subscription、Kafka Topic/ACL provision 和非生产部署演练，前置为 P05/P08。该公开定义是唯一当前语义。
