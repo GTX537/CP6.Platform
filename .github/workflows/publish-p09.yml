@@ -1,0 +1,126 @@
+name: publish-p09-deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_commit:
+        description: Exact CP6.Platform main commit approved for immutable P09 publication
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Check out approved commit
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          ref: ${{ inputs.expected_commit }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Assert immutable main source
+        shell: pwsh
+        run: |
+          if ('${{ github.ref }}' -ne 'refs/heads/main') { throw 'Publication must be dispatched from main.' }
+          if ('${{ inputs.expected_commit }}' -cnotmatch '^[0-9a-f]{40}$') { throw 'Expected commit must be an exact lowercase Git SHA.' }
+          $actual = (git rev-parse HEAD).Trim()
+          $main = (git rev-parse origin/main).Trim()
+          if ($actual -cne '${{ inputs.expected_commit }}') { throw "Checked out $actual, not the approved commit." }
+          if ($actual -cne $main) { throw "Approved commit is not current origin/main ($main)." }
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Set up Docker Engine 28.5.2
+        uses: docker/setup-docker-action@77e84dbf09b47d1e29270283c22f16145aa85ca1 # v5.4.0
+        with:
+          version: v28.5.2
+      - name: Reject an existing immutable version
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          New-Item -ItemType Directory artifacts/p09-publication -Force | Out-Null
+          [IO.File]::WriteAllText('artifacts/p09-publication/availability-started.json', '{"status":"Started"}', [Text.UTF8Encoding]::new($false))
+          $availability = ./eng/p09/Test-P09RegistryPackage.ps1 -Mode Available
+          $availability | ConvertTo-Json -Compress | Set-Content artifacts/p09-publication/availability-initial.json -Encoding utf8
+      - name: Verify exact publication source
+        shell: pwsh
+        run: |
+          ./eng/verify.ps1 -Gate Format -Profile ci
+          ./eng/verify.ps1 -Gate Build -Profile ci
+          ./eng/verify.ps1 -Gate Unit -Profile ci
+          ./eng/verify.ps1 -Gate Integration -Profile p05-real
+          Copy-Item artifacts/verify/integration artifacts/verify/p05-real -Recurse -Force
+          ./eng/verify.ps1 -Gate Integration -Profile p06-real
+          Copy-Item artifacts/verify/integration artifacts/verify/p06-real -Recurse -Force
+          ./eng/verify.ps1 -Gate E2E -Profile ci
+          ./eng/verify.ps1 -Gate Contract -Profile ci
+          ./eng/verify.ps1 -Gate Security -Profile ci
+          ./eng/verify.ps1 -P09Real -Profile ci -ExpectedGitSha ${{ inputs.expected_commit }}
+      - name: Pack the approved package once
+        shell: pwsh
+        run: |
+          $pack = ./eng/pack-p09.ps1 -VerifyReproducible
+          $pack | ConvertTo-Json -Depth 8 | Set-Content artifacts/p09-package/pack-result.json -Encoding utf8
+          $ordinary = @(Get-ChildItem artifacts/p09-package -Filter '*.nupkg' -File | Where-Object { -not $_.Name.EndsWith('.snupkg', [StringComparison]::OrdinalIgnoreCase) })
+          if ($ordinary.Count -ne 1 -or $ordinary[0].Name -cne 'CP6.Platform.Deployment.0.9.0-alpha.1.nupkg') { throw 'The exact ordinary P09 package is missing.' }
+      - name: Build the pre-upload candidate manifest
+        shell: pwsh
+        run: |
+          ./eng/p09/New-P09PublicationManifest.ps1 `
+            -SourceGitSha '${{ inputs.expected_commit }}' `
+            -WorkflowRunId '${{ github.run_id }}' `
+            -WorkflowRunAttempt ${{ github.run_attempt }} `
+            -WorkflowJob '${{ github.job }}'
+      - name: Reconfirm immutable version availability
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          $availability = ./eng/p09/Test-P09RegistryPackage.ps1 -Mode Available
+          $availability | ConvertTo-Json -Compress | Set-Content artifacts/p09-publication/availability-reconfirmed.json -Encoding utf8
+      - name: Publish the immutable ordinary package once
+        shell: pwsh
+        env:
+          NUGET_AUTH_TOKEN: ${{ github.token }}
+        run: |
+          dotnet nuget push artifacts/p09-package/CP6.Platform.Deployment.0.9.0-alpha.1.nupkg --source 'https://nuget.pkg.github.com/GTX537/index.json' --api-key $env:NUGET_AUTH_TOKEN
+          if ($LASTEXITCODE -ne 0) { throw 'Publishing CP6.Platform.Deployment.0.9.0-alpha.1.nupkg failed.' }
+      - name: Independently verify accepted Registry bytes
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          ./eng/p09/Test-P09RegistryPackage.ps1 `
+            -Mode Published `
+            -CandidateManifestPath artifacts/p09-publication/candidate-manifest.v1.json `
+            -OutputPath artifacts/p09-publication/registry-verification.v1.json `
+            -DownloadDirectory artifacts/p09-publication/download
+      - name: Assert main remained fixed through publication
+        shell: pwsh
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          $remoteMain = (gh api repos/GTX537/CP6.Platform/git/ref/heads/main --jq .object.sha).Trim()
+          if ($remoteMain -cne '${{ inputs.expected_commit }}') { throw "Platform main moved to $remoteMain during publication." }
+      - name: Preserve P09 publication evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: p09-publication-${{ inputs.expected_commit }}
+          path: |
+            artifacts/p09-package/**
+            artifacts/p09-publication/**
+            artifacts/verify/**
+            artifacts/p05-integration/**
+            artifacts/p06-sql-integration/**
+            artifacts/p09-rehearsal/**
+            artifacts/p09-kubernetes/**
+          if-no-files-found: error
+          retention-days: 30

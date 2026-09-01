@@ -180,6 +180,25 @@ public sealed class P09WorkflowContractTests
             StringComparison.Ordinal);
     }
 
+    [Fact]
+    public void KubernetesGate_NormalizesInlineShellForLinuxContainers()
+    {
+        var gate = File.ReadAllText(Path.Combine(
+            RepositoryRoot,
+            "eng",
+            "test-p09-kubernetes.ps1"));
+
+        Assert.Contains(
+            "$offlineApply = $offlineApply.Replace(\"`r`n\", \"`n\").Replace(\"`r\", [string]::Empty)",
+            gate,
+            StringComparison.Ordinal);
+        var normalization = gate.IndexOf("$offlineApply = $offlineApply.Replace", StringComparison.Ordinal);
+        var dockerArguments = gate.IndexOf("$applyArguments =", StringComparison.Ordinal);
+        Assert.True(
+            normalization >= 0 && normalization < dockerArguments,
+            "Inline Linux shell must be normalized before it is passed to Docker.");
+    }
+
     private static string Job(string name)
     {
         var marker = $"  {name}:";

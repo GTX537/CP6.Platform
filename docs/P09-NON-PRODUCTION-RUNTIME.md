@@ -6,7 +6,8 @@
 | Repository version | `0.9.0.0` |
 | Deployment package candidate | `CP6.Platform.Deployment 0.9.0-alpha.1` |
 | Implemented stages | `P09-S01`, `P09-S02`, `P09-S03` |
-| Deferred stages | `P09-S04`, `P09-S05`, `P09-S06` |
+| Publication stage | `P09-S04` automation ready; upload and evidence pending |
+| Deferred stages | `P09-S05`, `P09-S06` |
 
 This status describes the producer implementation and rehearsal evidence only. It becomes the authoritative implementation candidate after the branch is merged and the exact-main `platform-validation` workflow passes. Package publication, CRM consumption, public project-memory synchronization, real environment rollout, and the final reusable-state decision remain separate later stages.
 
@@ -112,7 +113,7 @@ The CI overlay uses nondeployable `example.invalid` image identities and `cp6.io
 | `P09-S01` | Complete on this implementation branch | Profile, Schema, validator, independent package boundary, positive/negative tests |
 | `P09-S02` | Complete on this implementation branch | Exact-SHA real Dapr/Kafka matrix, canonical evidence, zero residue |
 | `P09-S03` | Complete on this implementation branch | Deterministic offline Kubernetes render/dry-run/policy matrix |
-| `P09-S04` | Not started | Exact-main immutable package publication and retained hashes |
+| `P09-S04` | Implementation ready; publication pending | Exact-main immutable package publication and retained hashes |
 | `P09-S05` | Not started | CRM fixed-version black-box consumption and locator evidence |
 | `P09-S06` | Not started | Public project-memory synchronization and final Platform audit |
 
