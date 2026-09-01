@@ -34,6 +34,8 @@ No host `kubectl`, cloud account, kubeconfig, external Kafka, Registry credentia
 
 The three Dapr sidecars keep the isolated dual-network topology, fixed interfaces, and runtime gateway priority. Service invocation does not depend on self-hosted mDNS: the Dapr `nameformat` resolver maps each AppId to its exact runtime-network Docker DNS alias on the pinned internal gRPC port `50002`, whose cross-container listener is fixed to `0.0.0.0` rather than left to host-specific empty-address handling. The rehearsal configuration also fixes Dapr trace sampling to `1`, because the acceptance matrix validates every invocation and Pub/Sub trace rather than accepting Dapr's probabilistic default. The Pub/Sub assertion accepts Dapr's sampled consumer span between the CloudEvent publisher span and the receiver HTTP span, while still requiring the same Trace ID and distinct nonzero publisher, Dapr-parent, and receiver Span IDs. Failure diagnosis exposes only closed DNS/TCP categories, never raw container logs, addresses, paths, or credentials. These settings add no discovery service, trace exporter, static IP, host network, or application access to the Kafka runtime network, and remain deterministic on hosted Azure runners where mDNS may be unavailable.
 
+Runtime files are populated through bounded one-off containers as their exact target UID/GID with mode `0600`. The three Dapr component mount directories are then sealed as target-owned `0700`, because Dapr watches `/components` and must be able to enumerate that directory. The helper runs as root only for an exact temporary component-directory bind and performs only `chown <target-uid:gid> /input` plus `chmod 0700 /input`; it receives no Docker socket or credential value. Kafka client and Dapr secret directories do not need directory watches and remain host-owned `0711`, preserving traversal without group/other read access. Every resulting directory/file group is probed from its target runtime identity before any long-lived service starts.
+
 ## Exact local commands
 
 Run the static, script, package, and offline Kubernetes contract:
@@ -96,9 +98,10 @@ The CI overlay uses nondeployable `example.invalid` image identities and `cp6.io
 2. Inspect `run-log.v1.jsonl` for stable stages such as `kubernetes-policy`, `provision`, `runtime-matrix`, `image-digest`, and `zero-residue`.
 3. If the result is `NotRun`, confirm Docker Engine is reachable, `docker version --format '{{.Server.APIVersion}}'` is at least `1.49`, and `docker compose version --short` is at least `2.36.0`; do not bypass either version check.
 4. If service invocation fails, use the closed `DiagnosticCategory` to distinguish publisher DNS/API from target DNS/internal-gRPC reachability; then confirm each runtime alias equals its Dapr AppId, each sidecar loads `name-resolution.yaml`, trace sampling remains `1`, and internal gRPC remains `0.0.0.0:50002`. Do not fall back to mDNS, raw-log publication, or probabilistic trace acceptance in hosted Azure CI.
-5. If an exact-SHA check fails, commit or deliberately discard only the task's own P09 changes, then rerun with the new `HEAD`; do not weaken the check.
-6. If cleanup fails, inspect only resources carrying the exact run's P09 project labels. Do not use global prune commands.
-7. Reproduce failures with the same command and preserve the bounded artifact directory. Never add credentials or raw environment data to diagnostics.
+5. If a Dapr sidecar exits during startup, inspect only the bounded, redacted `sidecar-exit-diagnostic.v1.json`. A watcher `permission denied` means a Dapr component directory lost its target-owned `0700` seal; do not make the whole temporary tree readable or change unrelated Kafka/secret directories from `0711`.
+6. If an exact-SHA check fails, commit or deliberately discard only the task's own P09 changes, then rerun with the new `HEAD`; do not weaken the check.
+7. If cleanup fails, inspect only resources carrying the exact run's P09 project labels. Do not use global prune commands.
+8. Reproduce failures with the same command and preserve the bounded artifact directory. Never add credentials or raw environment data to diagnostics.
 
 ## Stage ledger
 

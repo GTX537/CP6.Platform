@@ -664,6 +664,46 @@ function Get-Cp6P09ReadabilityDockerArguments {
     )
 }
 
+function Get-Cp6P09DirectorySealDockerArguments {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][ValidatePattern('^cp6-p09-[a-f0-9]{16}$')][string]$ProjectName,
+        [Parameter(Mandatory)][string]$ComposeFile,
+        [Parameter(Mandatory)][string]$Directory,
+        [Parameter(Mandatory)][ValidatePattern('^[0-9]{1,6}:[0-9]{1,6}$')][string]$User
+    )
+    $compose = [IO.Path]::GetFullPath($ComposeFile)
+    $directoryPath = [IO.Path]::GetFullPath($Directory)
+    $shell = "chown '$User' '/input'; chmod 0700 '/input'"
+    return @(
+        'compose','--project-name',$ProjectName,'--file',$compose,
+        '--profile','provision','run','--no-TTY','--rm','--no-deps','--user','0:0',
+        '--volume',("${directoryPath}:/input"),'--entrypoint','/bin/sh','kafka-admin','-c',$shell
+    )
+}
+
+function Set-Cp6P09TargetOwnedPrivateDirectory {
+    param(
+        [Parameter(Mandatory)]$Context,
+        [Parameter(Mandatory)][string]$RelativeDirectory,
+        [Parameter(Mandatory)][string]$User
+    )
+    $directory = Resolve-Cp6P09ContainedPath -Root $Context.RuntimeRoot -Candidate (Join-Path $Context.RuntimeRoot $RelativeDirectory) -RequireChild
+    $arguments = Get-Cp6P09DirectorySealDockerArguments -ProjectName $Context.ProjectName -ComposeFile $Context.ComposeFile -Directory $directory -User $User
+    for ($attempt = 1; $attempt -le 2; $attempt++) {
+        try {
+            $result = Invoke-Cp6P09DockerCommand -DockerCommand $Context.DockerCommand -Arguments $arguments -WorkingDirectory $Context.RepositoryRoot -TimeoutSeconds 120 -EnvironmentVariables $Context.Environment
+            if ($result.ExitCode -eq 0) { return }
+            if ($attempt -eq 2) { Assert-Cp6P09CommandSucceeded $result 'runtime-mode' }
+        }
+        catch {
+            if ($attempt -eq 2) { throw 'runtime-mode' }
+        }
+        Start-Sleep -Milliseconds 250
+    }
+    throw 'runtime-mode'
+}
+
 function Assert-Cp6P09TargetReadableFiles {
     param(
         [Parameter(Mandatory)]$Context,
@@ -743,9 +783,6 @@ function Initialize-Cp6P09RuntimeFiles {
     foreach ($file in $files) {
         Write-Cp6P09TargetOwnedFile -Context $Context -RelativeDirectory $file[0] -FileName $file[1] -User $file[2] -Content $file[3]
     }
-    foreach ($relative in @($files | ForEach-Object { $_[0] } | Select-Object -Unique)) {
-        Set-Cp6P09RuntimeDirectorySecurity -Path (Join-Path $Context.RuntimeRoot $relative) -UnixMode '0711'
-    }
     $readabilityGroups = [ordered]@{}
     foreach ($file in $files) {
         $key = "$($file[2])|$($file[0])"
@@ -753,6 +790,15 @@ function Initialize-Cp6P09RuntimeFiles {
             $readabilityGroups[$key] = [pscustomobject]@{ User=$file[2]; RelativeDirectory=$file[0]; FileNames=[Collections.Generic.List[string]]::new() }
         }
         $readabilityGroups[$key].FileNames.Add([string]$file[1])
+    }
+    $Context.PopulationFailureId = 'runtime-mode'
+    foreach ($group in $readabilityGroups.Values) {
+        if ($group.RelativeDirectory -cmatch '^dapr/(?:publisher|receiver|unauthorized)/components$') {
+            Set-Cp6P09TargetOwnedPrivateDirectory -Context $Context -RelativeDirectory $group.RelativeDirectory -User $group.User
+        }
+        else {
+            Set-Cp6P09RuntimeDirectorySecurity -Path (Join-Path $Context.RuntimeRoot $group.RelativeDirectory) -UnixMode '0711'
+        }
     }
     $Context.PopulationFailureId = 'runtime-readability'
     foreach ($group in $readabilityGroups.Values) {
@@ -1867,6 +1913,7 @@ Export-ModuleMember -Function @(
     'ConvertTo-Cp6P09CanonicalJson',
     'Test-Cp6P09Evidence',
     'Get-Cp6P09OwnedFileDockerArguments',
+    'Get-Cp6P09DirectorySealDockerArguments',
     'Get-Cp6P09ReadabilityDockerArguments',
     'Wait-Cp6P09KafkaDataPlane',
     'Get-Cp6P09AclBatchDockerArguments',

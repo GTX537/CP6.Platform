@@ -9,6 +9,13 @@ x-cp6-p09-runtime-ownership:
   bind-directory-mode: "0711"
   file-mode: "0600"
   population-method: target-uid-stdin
+  watch-directory-mode: "0700"
+  watch-directory-owner: target-uid
+  watch-directory-sealing-method: root-chown-chmod
+  watchable-mount-sources:
+    - dapr/publisher/components
+    - dapr/receiver/components
+    - dapr/unauthorized/components
   population-image: apache/kafka:4.3.1
   targets:
     kafka:

@@ -62,6 +62,13 @@ public sealed class P09ComposeContractTests
                   bind-directory-mode: "0711"
                   file-mode: "0600"
                   population-method: target-uid-stdin
+                  watch-directory-mode: "0700"
+                  watch-directory-owner: target-uid
+                  watch-directory-sealing-method: root-chown-chmod
+                  watchable-mount-sources:
+                    - dapr/publisher/components
+                    - dapr/receiver/components
+                    - dapr/unauthorized/components
                   population-image: apache/kafka:4.3.1
                   targets:
                     kafka:
@@ -97,9 +104,9 @@ public sealed class P09ComposeContractTests
                 """),
             NormalizeBlock(ownership));
 
+        AssertNoGroupOrOtherReadBits("0711");
         AssertNoGroupOrOtherReadBits("0700");
         AssertNoGroupOrOtherReadBits("0733");
-        AssertNoGroupOrOtherReadBits("0711");
         Assert.Equal(0, Convert.ToInt32("0600", 8) & Convert.ToInt32("0077", 8));
 
         Assert.Equal("1000:1000", ServiceScalar(compose, "kafka", "user"));

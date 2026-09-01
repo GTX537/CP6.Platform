@@ -581,6 +581,17 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
         '--entrypoint','/bin/sh','kafka-admin','-c',"umask 077; cat > '/out/secrets.json'; chmod 0600 '/out/secrets.json'"
     ) $populationArgs 'Target-UID STDIN population command drifted from canonical Compose ordering.'
     Assert-True (($populationArgs -join ' ') -notmatch '(?i)password|token|secret-value') 'Population argv contains secret material.'
+    $sealArgs = Get-Cp6P09DirectorySealDockerArguments `
+        -ProjectName 'cp6-p09-abcdef0123456789' `
+        -ComposeFile (Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml') `
+        -Directory $populationDirectory `
+        -User '65532:65532'
+    Assert-Equal @(
+        'compose','--project-name','cp6-p09-abcdef0123456789','--file',(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'),
+        '--profile','provision','run','--no-TTY','--rm','--no-deps','--user','0:0','--volume',("${populationDirectory}:/input"),
+        '--entrypoint','/bin/sh','kafka-admin','-c',"chown '65532:65532' '/input'; chmod 0700 '/input'"
+    ) $sealArgs 'Target-UID private directory sealing command drifted.'
+    Assert-True (($sealArgs -join ' ') -notmatch '(?i)password|token|secret-value') 'Directory sealing argv contains secret material.'
     $readabilityArgs = Get-Cp6P09ReadabilityDockerArguments `
         -ProjectName 'cp6-p09-abcdef0123456789' `
         -ComposeFile (Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml') `
@@ -645,8 +656,9 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     }
     & $module { param($context,$values) Initialize-Cp6P09RuntimeFiles -Context $context -Credentials $values } $populationContext $credentials
     $populationCalls = @(Get-Content -LiteralPath $populationLog | ForEach-Object { $_ | ConvertFrom-Json })
-    Assert-Equal 29 $populationCalls.Count 'Runtime ownership preflight must use 20 writes plus 9 directory-group readability calls.'
+    Assert-Equal 32 $populationCalls.Count 'Runtime ownership preflight must use 20 writes, 3 watch-directory seals, and 9 directory-group readability calls.'
     Assert-Equal 20 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match ':/out(?:\s|$)' }).Count 'Target-UID STDIN write call count drifted.'
+    Assert-Equal 3 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match "--user 0:0 .*:/input(?:\s|$)" }).Count 'Dapr watch-directory seal call count drifted.'
     Assert-Equal 9 @($populationCalls | Where-Object { (@($_.argv) -join ' ') -match ':/input:ro(?:\s|$)' }).Count 'Directory-group readability call count drifted.'
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''
