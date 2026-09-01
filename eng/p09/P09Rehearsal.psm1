@@ -581,6 +581,22 @@ function Set-Cp6P09RuntimeDirectorySecurity {
     }
 }
 
+function Get-Cp6P09HostCleanupUser {
+    [CmdletBinding()]
+    param()
+    if ($IsWindows) { return $null }
+
+    $uidResult = Invoke-Cp6P09Process -FilePath 'id' -ArgumentList @('-u') -TimeoutSeconds 30 -MaximumOutputBytes 128
+    $gidResult = Invoke-Cp6P09Process -FilePath 'id' -ArgumentList @('-g') -TimeoutSeconds 30 -MaximumOutputBytes 128
+    $uid = $uidResult.StandardOutput.Trim()
+    $gid = $gidResult.StandardOutput.Trim()
+    if ($uidResult.ExitCode -ne 0 -or $gidResult.ExitCode -ne 0 -or
+        $uid -cnotmatch '^[0-9]{1,6}$' -or $gid -cnotmatch '^[0-9]{1,6}$') {
+        throw 'runtime-owner'
+    }
+    return "${uid}:${gid}"
+}
+
 function Initialize-Cp6P09RuntimeDirectories {
     param([Parameter(Mandatory)]$Context)
     [IO.Directory]::CreateDirectory($Context.RuntimeRoot) | Out-Null
@@ -679,6 +695,25 @@ function Get-Cp6P09DirectorySealDockerArguments {
         'compose','--project-name',$ProjectName,'--file',$compose,
         '--profile','provision','run','--no-TTY','--rm','--no-deps','--user','0:0',
         '--volume',("${directoryPath}:/input"),'--entrypoint','/bin/sh','kafka-admin','-c',$shell
+    )
+}
+
+function Get-Cp6P09DirectoryReleaseDockerArguments {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][ValidatePattern('^cp6-p09-[a-f0-9]{16}$')][string]$ProjectName,
+        [Parameter(Mandatory)][string]$ComposeFile,
+        [Parameter(Mandatory)][string]$Directory,
+        [Parameter(Mandatory)][ValidatePattern('^[0-9]{1,6}:[0-9]{1,6}$')][string]$User
+    )
+    $compose = [IO.Path]::GetFullPath($ComposeFile)
+    $directoryPath = [IO.Path]::GetFullPath($Directory)
+    $shell = "chown '$User' '/input'; chmod 0700 '/input'"
+    return @(
+        'run','--rm','--network','none','--user','0:0',
+        '--label',("com.docker.compose.project=$ProjectName"),
+        '--label',("com.docker.compose.project.config_files=$compose"),
+        '--volume',("${directoryPath}:/input"),'--entrypoint','/bin/sh','apache/kafka:4.3.1','-c',$shell
     )
 }
 
@@ -998,7 +1033,9 @@ function Invoke-Cp6P09Teardown {
         [Parameter(Mandatory)][ValidatePattern('^cp6-p09-[a-f0-9]{16}$')][string]$ProjectName,
         [Parameter(Mandatory)][string]$ComposeFile,
         [string]$RepositoryRoot = (Split-Path -Parent (Split-Path -Parent $PSScriptRoot)),
-        [Collections.IDictionary]$EnvironmentVariables
+        [Collections.IDictionary]$EnvironmentVariables,
+        [string]$RuntimeRoot,
+        [ValidatePattern('^[0-9]{1,6}:[0-9]{1,6}$')][string]$CleanupUser
     )
 
     $compose = [IO.Path]::GetFullPath($ComposeFile)
@@ -1007,6 +1044,26 @@ function Invoke-Cp6P09Teardown {
         'compose','--project-name',$ProjectName,'--file',$compose,'--profile','negative','--profile','provision','down','--volumes','--remove-orphans','--rmi','local'
     ) -TimeoutSeconds 120
     $cleanupFailure = if ($down.ExitCode -eq 0) { $null } else { 'compose-down' }
+    if ($down.ExitCode -eq 0 -and (-not [string]::IsNullOrWhiteSpace($RuntimeRoot) -or -not [string]::IsNullOrWhiteSpace($CleanupUser))) {
+        if ([string]::IsNullOrWhiteSpace($RuntimeRoot) -or [string]::IsNullOrWhiteSpace($CleanupUser)) {
+            $cleanupFailure = 'runtime-release'
+        }
+        else {
+            foreach ($relative in @('dapr/publisher/components','dapr/receiver/components','dapr/unauthorized/components')) {
+                try {
+                    $directory = Resolve-Cp6P09ContainedPath -Root $RuntimeRoot -Candidate (Join-Path $RuntimeRoot $relative) -RequireChild
+                    if (-not (Test-Path -LiteralPath $directory -PathType Container)) { continue }
+                    $release = Invoke-Cp6P09DockerCommand -DockerCommand $DockerCommand -WorkingDirectory $RepositoryRoot -Arguments (
+                        Get-Cp6P09DirectoryReleaseDockerArguments -ProjectName $ProjectName -ComposeFile $compose -Directory $directory -User $CleanupUser
+                    ) -TimeoutSeconds 120
+                    if ($release.ExitCode -ne 0 -and $null -eq $cleanupFailure) { $cleanupFailure = 'runtime-release' }
+                }
+                catch {
+                    if ($null -eq $cleanupFailure) { $cleanupFailure = 'runtime-release' }
+                }
+            }
+        }
+    }
     $queries = [ordered]@{
         ContainerCount = @('container','ls','--all','--quiet','--filter',"label=$label")
         NetworkCount = @('network','ls','--quiet','--filter',"label=$label")
@@ -1767,6 +1824,7 @@ function Invoke-Cp6P09Rehearsal {
         RepositoryRoot=$repository; ProjectName=$layout.ProjectName; ComposeFile=$composeFile
         RuntimeRoot=$layout.RuntimeRoot; DockerCommand=$DockerCommand
         Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$layout.RuntimeRoot; CP6_P09_CLUSTER_ID=$clusterId; CP6_P09_NEGATIVE_ROLE='probe' }
+        CleanupUser=(Get-Cp6P09HostCleanupUser)
         KubernetesManifestSha=$null
         ArtifactsDirectory=$layout.ArtifactsDirectory
         SensitiveValues=@()
@@ -1855,7 +1913,18 @@ function Invoke-Cp6P09Rehearsal {
     }
     finally {
         try {
-            $teardown = Invoke-Cp6P09Teardown -DockerCommand $DockerCommand -ProjectName $layout.ProjectName -ComposeFile $composeFile -RepositoryRoot $repository -EnvironmentVariables $context.Environment
+            $teardownArguments = @{
+                DockerCommand=$DockerCommand
+                ProjectName=$layout.ProjectName
+                ComposeFile=$composeFile
+                RepositoryRoot=$repository
+                EnvironmentVariables=$context.Environment
+            }
+            if (-not [string]::IsNullOrWhiteSpace($context.CleanupUser)) {
+                $teardownArguments.RuntimeRoot=$layout.RuntimeRoot
+                $teardownArguments.CleanupUser=$context.CleanupUser
+            }
+            $teardown = Invoke-Cp6P09Teardown @teardownArguments
             $cleanupFailure = $teardown.CleanupFailureId
         }
         catch { $cleanupFailure = 'cleanup-exception' }
@@ -1912,8 +1981,10 @@ Export-ModuleMember -Function @(
     'Test-Cp6P09Profile',
     'ConvertTo-Cp6P09CanonicalJson',
     'Test-Cp6P09Evidence',
+    'Get-Cp6P09HostCleanupUser',
     'Get-Cp6P09OwnedFileDockerArguments',
     'Get-Cp6P09DirectorySealDockerArguments',
+    'Get-Cp6P09DirectoryReleaseDockerArguments',
     'Get-Cp6P09ReadabilityDockerArguments',
     'Wait-Cp6P09KafkaDataPlane',
     'Get-Cp6P09AclBatchDockerArguments',

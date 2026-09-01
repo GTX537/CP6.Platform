@@ -26,6 +26,42 @@ try {
     $log = Join-Path $testRoot 'docker.jsonl'
     $responses = Join-Path $testRoot 'responses.jsonl'
     $env:CP6_P09_FAKE_DOCKER_LOG = $log
+    $runtimeRoot = Join-Path $testRoot 'runtime-root'
+    $releaseDirectories = @(
+        'dapr/publisher/components',
+        'dapr/receiver/components',
+        'dapr/unauthorized/components'
+    )
+    foreach ($relative in $releaseDirectories) {
+        [IO.Directory]::CreateDirectory((Join-Path $runtimeRoot $relative)) | Out-Null
+    }
+    @(1..8 | ForEach-Object { @{ exitCode = 0; stdout = ''; stderr = '' } }) |
+        ForEach-Object { $_ | ConvertTo-Json -Compress } |
+        Set-Content -LiteralPath $responses -Encoding utf8NoBOM
+    $env:CP6_P09_FAKE_DOCKER_RESPONSES = $responses
+
+    $releasedTeardown = Invoke-Cp6P09Teardown `
+        -DockerCommand $fakeDocker `
+        -ProjectName $project `
+        -ComposeFile $compose `
+        -RepositoryRoot $repositoryRoot `
+        -RuntimeRoot $runtimeRoot `
+        -CleanupUser '1001:1001'
+    Assert-Equal $null $releasedTeardown.CleanupFailureId 'Successful target-owned directory release was reported as failed.'
+    $releaseCalls = @(Get-Content -LiteralPath $log | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal 8 $releaseCalls.Count 'Teardown must down Compose, release three watch directories, then query four residue classes.'
+    foreach ($index in 0..2) {
+        $expected = Get-Cp6P09DirectoryReleaseDockerArguments `
+            -ProjectName $project `
+            -ComposeFile $compose `
+            -Directory (Join-Path $runtimeRoot $releaseDirectories[$index]) `
+            -User '1001:1001'
+        Assert-Equal $expected @($releaseCalls[$index + 1].argv) "Watch-directory release call $index drifted."
+    }
+    Assert-Equal @('container','ls','--all','--quiet','--filter',"label=com.docker.compose.project=$project") @($releaseCalls[4].argv) 'Residue queries did not run after ownership release.'
+
+    Remove-Item -LiteralPath $log -Force
+    Remove-Item -LiteralPath "$log.index" -Force -ErrorAction SilentlyContinue
     @(
         @{ exitCode = 19; stdout = ''; stderr = 'runtime-failed' }
         @{ exitCode = 0; stdout = ''; stderr = '' }

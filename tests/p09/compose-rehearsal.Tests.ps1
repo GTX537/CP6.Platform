@@ -67,6 +67,8 @@ $moduleText = [IO.File]::ReadAllText($modulePath, [Text.Encoding]::UTF8)
 Assert-True ($runnerText -match '(?s)param\(\s*\[string\]\$ProfilePath\s*=\s*"contracts/p09/examples/non-production-runtime-profile.valid.json",\s*\[string\]\$ArtifactsRoot\s*=\s*"artifacts/p09-rehearsal",\s*\[string\]\$ExpectedGitSha,\s*\[switch\]\$KeepFailedArtifacts\s*\)') 'Runner parameters drifted from the approved interface.'
     Assert-True ($moduleText -notmatch '(?i)[A-Za-z]:[\\/]Users[\\/]') 'Runner module contains a machine-specific user path.'
     Assert-True ($moduleText.Contains('$actualCompose.Equals($compose, (Get-Cp6P09PathComparison))')) 'Teardown Compose-label validation is not platform case-sensitive.'
+    Assert-True ($moduleText.Contains('CleanupUser=(Get-Cp6P09HostCleanupUser)')) 'Runner does not capture the bounded host cleanup identity before runtime population.'
+    Assert-True ($moduleText -match '(?s)\$teardownArguments\s*=\s*@\{.+?if \(-not \[string\]::IsNullOrWhiteSpace\(\$context\.CleanupUser\)\)\s*\{\s*\$teardownArguments\.RuntimeRoot=\$layout\.RuntimeRoot\s*\$teardownArguments\.CleanupUser=\$context\.CleanupUser\s*\}.+?Invoke-Cp6P09Teardown @teardownArguments') 'Runner does not release Unix watch-directory ownership through the guarded teardown path.'
 
 $testRoot = Join-Path ([IO.Path]::GetTempPath()) ("cp6-p09-tests-" + [Guid]::NewGuid().ToString('N'))
 [IO.Directory]::CreateDirectory($testRoot) | Out-Null
@@ -124,6 +126,31 @@ try {
     $stdinRecord = (Get-Content -LiteralPath $fakeLog | Select-Object -Last 1) | ConvertFrom-Json
     Assert-Equal ([Text.Encoding]::UTF8.GetByteCount($secretStdin)) $stdinRecord.stdinBytes 'Generated content was not delivered through STDIN.'
     Assert-True ((Get-Content -Raw -LiteralPath $fakeLog) -notmatch [Regex]::Escape($secretStdin)) 'Generated secret entered argv or the fake Docker log.'
+
+    $releaseDirectory = Join-Path $testRoot 'release target'
+    [IO.Directory]::CreateDirectory($releaseDirectory) | Out-Null
+    $releaseArguments = Get-Cp6P09DirectoryReleaseDockerArguments `
+        -ProjectName 'cp6-p09-abcdef0123456789' `
+        -ComposeFile (Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml') `
+        -Directory $releaseDirectory `
+        -User '1001:1001'
+    Assert-Equal @(
+        'run','--rm','--network','none','--user','0:0',
+        '--label','com.docker.compose.project=cp6-p09-abcdef0123456789',
+        '--label',("com.docker.compose.project.config_files=" + (Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml')),
+        '--volume',("${releaseDirectory}:/input"),'--entrypoint','/bin/sh','apache/kafka:4.3.1','-c',
+        "chown '1001:1001' '/input'; chmod 0700 '/input'"
+    ) $releaseArguments 'Host cleanup ownership release command drifted.'
+    Assert-True (($releaseArguments -join ' ') -notmatch '(?i)password|token|secret-value') 'Directory release argv contains secret material.'
+    $hostCleanupUser = Get-Cp6P09HostCleanupUser
+    if ($IsWindows) {
+        Assert-Equal $null $hostCleanupUser 'Windows cleanup must continue to use the existing host ACL path.'
+    }
+    else {
+        $expectedCleanupUser = ((& id -u).Trim() + ':' + (& id -g).Trim())
+        Assert-Equal $expectedCleanupUser $hostCleanupUser 'Unix cleanup identity did not match the current host user.'
+        Assert-True ($hostCleanupUser -cmatch '^[0-9]{1,6}:[0-9]{1,6}$') 'Unix cleanup identity was not bounded numeric UID:GID.'
+    }
 
     $largeResponse = Join-Path $testRoot 'large-response.jsonl'
     @{ exitCode = 0; stdout = ('x' * 5000); stderr = '' } | ConvertTo-Json -Compress | Set-Content -LiteralPath $largeResponse -Encoding utf8NoBOM
