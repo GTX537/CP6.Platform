@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/system-lineage-bootstrap-evidence.v1",
+  "type": "object",
+  "required": ["$schemaId", "createdAtUtc", "authority", "systemManifestSubject", "reason", "trustPolicyVersion", "signaturePolicy"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/system-lineage-bootstrap-evidence.v1" },
+    "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+    "authority": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/workflowIdentity" },
+    "systemManifestSubject": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/evidenceSubject" },
+    "reason": { "type": "string", "minLength": 1, "maxLength": 4096 },
+    "trustPolicyVersion": { "type": "integer", "minimum": 1 },
+    "signaturePolicy": { "const": "BootstrapOnly" }
+  },
+  "additionalProperties": false
+}

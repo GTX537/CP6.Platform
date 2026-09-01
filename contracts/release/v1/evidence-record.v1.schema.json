@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/evidence-record.v1",
+  "type": "object",
+  "required": ["$schemaId", "createdAtUtc", "evidenceKind", "producer", "policyVersion", "accessClass", "object", "subjects", "conclusion"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/evidence-record.v1" },
+    "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+    "evidenceKind": { "type": "string", "minLength": 1, "maxLength": 128 },
+    "producer": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/workflowIdentity" },
+    "policyVersion": { "type": "integer", "minimum": 1 },
+    "accessClass": { "enum": ["RequiredPublic", "RestrictedAudit", "TestOnly"] },
+    "object": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/objectReference" },
+    "subjects": { "type": "array", "items": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/evidenceSubject" }, "minItems": 1, "uniqueItems": true },
+    "conclusion": { "enum": ["Success", "Failure"] }
+  },
+  "additionalProperties": false
+}

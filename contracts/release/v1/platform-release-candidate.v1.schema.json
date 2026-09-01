@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/platform-release-candidate.v1",
+  "type": "object",
+  "required": ["$schemaId", "candidateKind", "deployable", "createdAtUtc", "platformSource", "packages", "buildProvenance", "images", "evidence", "crmConsumer", "publisher", "verifier", "releaseGateResult", "policyVersions"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/platform-release-candidate.v1" },
+    "candidateKind": { "const": "PlatformReference" },
+    "deployable": { "const": false },
+    "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+    "platformSource": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/evidenceSubject" },
+    "packages": { "type": "array", "items": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/packageIdentity" }, "minItems": 7, "maxItems": 7, "uniqueItems": true },
+    "buildProvenance": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/objectReference" },
+    "images": { "type": "array", "items": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/evidenceSubject" }, "uniqueItems": true },
+    "evidence": { "type": "array", "items": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/objectReference" }, "minItems": 1, "uniqueItems": true },
+    "crmConsumer": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/workflowIdentity" },
+    "publisher": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/workflowIdentity" },
+    "verifier": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/workflowIdentity" },
+    "releaseGateResult": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/objectReference" },
+    "policyVersions": {
+      "type": "object",
+      "required": ["trust", "evidence"],
+      "properties": {
+        "trust": { "type": "integer", "minimum": 1 },
+        "evidence": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

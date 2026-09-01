@@ -1,0 +1,60 @@
+{
+  "profile": "cp6-deterministic-json-v1",
+  "commonSchema": {
+    "id": "https://schemas.cp6.dev/release/release-common.v1",
+    "path": "release-common.v1.schema.json",
+    "mediaType": "application/schema+json"
+  },
+  "schemas": [
+    {
+      "id": "https://schemas.cp6.dev/release/build-invocation-provenance.v1",
+      "path": "build-invocation-provenance.v1.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
+      "id": "https://schemas.cp6.dev/release/candidate-locator.v1",
+      "path": "candidate-locator.v1.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
+      "id": "https://schemas.cp6.dev/release/candidate-result.v2",
+      "path": "candidate-result.v2.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
+      "id": "https://schemas.cp6.dev/release/evidence-record.v1",
+      "path": "evidence-record.v1.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
+      "id": "https://schemas.cp6.dev/release/pinned-trust-store.v1",
+      "path": "pinned-trust-store.v1.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
+      "id": "https://schemas.cp6.dev/release/platform-release-candidate.v1",
+      "path": "platform-release-candidate.v1.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
+      "id": "https://schemas.cp6.dev/release/release-gate-result.v1",
+      "path": "release-gate-result.v1.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
+      "id": "https://schemas.cp6.dev/release/system-lineage-bootstrap-evidence.v1",
+      "path": "system-lineage-bootstrap-evidence.v1.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
+      "id": "https://schemas.cp6.dev/release/system-release-manifest.v1",
+      "path": "system-release-manifest.v1.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
+      "id": "https://schemas.cp6.dev/release/test-package-transport.v1",
+      "path": "test-package-transport.v1.schema.json",
+      "mediaType": "application/schema+json"
+    }
+  ]
+}

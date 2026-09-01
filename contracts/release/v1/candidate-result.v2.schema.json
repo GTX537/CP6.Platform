@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/candidate-result.v2",
+  "type": "object",
+  "required": ["$schemaId", "releaseTag", "repositories", "systemManifest", "releaseGateResult", "validationWorkflow", "trustPolicyVersion", "evidencePolicyVersion"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/candidate-result.v2" },
+    "releaseTag": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/releaseTag" },
+    "repositories": {
+      "type": "array",
+      "prefixItems": [{ "const": "CP6" }, { "const": "CP6.CRM" }, { "const": "CP6.Platform" }, { "const": "CP6.Portal" }],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "systemManifest": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/objectReference" },
+    "releaseGateResult": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/objectReference" },
+    "validationWorkflow": {
+      "allOf": [
+        { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/workflowIdentity" },
+        { "required": ["conclusion"], "properties": { "conclusion": { "const": "Success" } } }
+      ]
+    },
+    "trustPolicyVersion": { "type": "integer", "minimum": 1 },
+    "evidencePolicyVersion": { "type": "integer", "minimum": 1 }
+  },
+  "additionalProperties": false
+}

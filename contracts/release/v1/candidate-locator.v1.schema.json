@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/candidate-locator.v1",
+  "type": "object",
+  "required": ["$schemaId", "releaseTag", "subjectKind", "subject", "trustPolicyVersion", "signerKeyId", "createdAtUtc"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/candidate-locator.v1" },
+    "releaseTag": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/releaseTag" },
+    "subjectKind": { "enum": ["SystemCandidateResult", "PlatformReleaseCandidate"] },
+    "subject": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/objectReference" },
+    "trustPolicyVersion": { "type": "integer", "minimum": 1 },
+    "signerKeyId": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" }
+  },
+  "additionalProperties": false
+}

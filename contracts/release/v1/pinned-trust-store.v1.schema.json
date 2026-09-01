@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/pinned-trust-store.v1",
+  "type": "object",
+  "required": ["$schemaId", "policyVersion", "minimumAcceptedPolicyVersion", "acceptedHistoricalPolicyVersions", "storageAuthorities", "keys"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/pinned-trust-store.v1" },
+    "policyVersion": { "type": "integer", "minimum": 1 },
+    "minimumAcceptedPolicyVersion": { "type": "integer", "minimum": 1 },
+    "acceptedHistoricalPolicyVersions": { "type": "array", "items": { "type": "integer", "minimum": 1 }, "uniqueItems": true },
+    "storageAuthorities": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": ["id", "endpoint", "bucket"],
+        "properties": {
+          "id": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/storageAuthority" },
+          "endpoint": { "type": "string", "pattern": "^https://[A-Za-z0-9.-]+$" },
+          "bucket": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{1,62}$" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "keys": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": ["keyId", "purpose", "validFromUtc", "validUntilUtc", "publicKey"],
+        "properties": {
+          "keyId": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+          "purpose": { "enum": ["oci", "candidate-locator"] },
+          "validFromUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+          "validUntilUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+          "publicKey": { "type": "string", "minLength": 1, "maxLength": 16384 },
+          "revokedAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+          "revocationReason": { "type": "string", "minLength": 1, "maxLength": 4096 }
+        },
+        "dependentRequired": { "revokedAtUtc": ["revocationReason"], "revocationReason": ["revokedAtUtc"] },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
