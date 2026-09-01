@@ -242,9 +242,9 @@ public sealed class P09PublicationWorkflowTests
             Assert.NotEqual(0, result.ExitCode);
             Assert.Equal(1, collision.CompletedRequests);
             var collisionOutput = PlainTerminalText(result.Combined);
-            Assert.True(
-                collisionOutput.Contains("already exists", StringComparison.Ordinal),
-                collisionOutput);
+            Assert.Contains("CP6.Platform.Deployment", collisionOutput, StringComparison.Ordinal);
+            Assert.Contains("already", collisionOutput, StringComparison.Ordinal);
+            Assert.Contains("exists.", collisionOutput, StringComparison.Ordinal);
             Assert.DoesNotContain(credential, result.Combined, StringComparison.Ordinal);
         }
     }
@@ -454,7 +454,7 @@ public sealed class P09PublicationWorkflowTests
     {
         var withoutAnsi = Regex.Replace(
             value,
-            "\\u001B\\[[0-?]*[ -/]*[@-~]",
+            "\u001B\\[[0-?]*[ -/]*[@-~]",
             string.Empty,
             RegexOptions.CultureInvariant);
         return Regex.Replace(withoutAnsi, @"\s+", " ", RegexOptions.CultureInvariant).Trim();
