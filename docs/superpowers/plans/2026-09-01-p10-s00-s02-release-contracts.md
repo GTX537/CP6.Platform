@@ -38,7 +38,7 @@ The S00-S02 state ceiling is `Implemented / Test Candidate`. It is not `Frozen /
 | Additional package IDs | Deployment, Release |
 | Test package count | 7 `.nupkg` plus 7 `.snupkg` |
 | Test certificate subject | `CN=CP6 Platform P10 TEST ONLY` |
-| S02 signing runner | `windows-latest` with task-local CurrentUser test-root cleanup |
+| S02 signing runner | `windows-latest`; no operating-system certificate-store mutation |
 | Contract root | `contracts/release/v1/` |
 | JSON profile | `cp6-deterministic-json-v1` |
 | JSON maximum bytes/depth | 4 MiB / 32 |
@@ -1071,7 +1071,7 @@ CP6.Platform.ReleaseTool validate-transport <input-json> <evaluation-utc>
 
 - [ ] **Step 5: Implement ephemeral test certificate creation**
 
-`New-P10TestCertificate.ps1` rejects non-Windows hosts because NuGet verification requires a suitable code-signing root store and S02 deliberately avoids mutating a Linux system trust bundle. It captures one `DateTimeOffset.UtcNow`, then uses `System.Security.Cryptography.X509Certificates.CertificateRequest` with RSA-2048, SHA-256, subject `CN=CP6 Platform P10 TEST ONLY`, Basic Constraints `CA=false`, Key Usage `DigitalSignature`, code-signing EKU `1.3.6.1.5.5.7.3.3`, Subject Key Identifier, `notBefore=now-5 minutes`, and `notAfter=now+91 days` so S03 can verify during the 90-day artifact lifetime. It exports a PFX protected by a 32-byte cryptographically random base64 password held only in memory, exports the public certificate as `test-signing-public.cer`, and temporarily adds only that public certificate to `CurrentUser\Root`. It returns PFX/CER paths, password, lowercase SHA-256 fingerprint, and the exact store locator. The caller removes the CurrentUser root entry, deletes the PFX, and clears password state in `finally`; only the public CER and fingerprint enter artifacts. Tests inject a failure after signing and require the same cleanup.
+`New-P10TestCertificate.ps1` rejects non-Windows hosts, captures one `DateTimeOffset.UtcNow`, then uses `System.Security.Cryptography.X509Certificates.CertificateRequest` with RSA-2048, SHA-256, subject `CN=CP6 Platform P10 TEST ONLY`, Basic Constraints `CA=false`, Key Usage `DigitalSignature`, code-signing EKU `1.3.6.1.5.5.7.3.3`, Subject Key Identifier, `notBefore=now-5 minutes`, and `notAfter=now+91 days` so S03 can verify during the 90-day artifact lifetime. It exports a PFX protected by a 32-byte cryptographically random base64 password held only in memory and exports the public certificate as `test-signing-public.cer`; it never imports either certificate into an operating-system store. It returns PFX/CER paths, password, and the lowercase SHA-256 fingerprint. The caller deletes the PFX and clears password state in `finally`; only the public CER and fingerprint enter artifacts. Tests inject a failure after signing and require the same cleanup.
 
 - [ ] **Step 6: Implement the one-build package-set generator**
 
@@ -1092,7 +1092,7 @@ For each package it:
 
 1. records the pre-sign SHA-256;
 2. signs with the ephemeral test PFX and `dotnet nuget sign --hash-algorithm SHA256 --overwrite` without a production TSA;
-3. runs `dotnet nuget verify <path> --all --certificate-fingerprint <lowercase-test-fingerprint>`;
+3. runs `CP6.Platform.ReleaseTool verify-test-package <path> <lowercase-test-fingerprint>`, which composes NuGet's integrity, CMS trust/validity, and exact-author-fingerprint allow-list providers while allowing an untrusted root only for that fingerprint;
 4. records final file SHA-256, ID, version, source SHA, invocation ID, certificate subject/fingerprint, `testOnly=true`, and `timestampPolicy=TestOnlyNone`; and
 5. rejects paths, credentials, formal feed URLs, production signer IDs, and mixed versions.
 
@@ -1108,7 +1108,7 @@ Write raw `test-package-manifest.v1.json`, `build-invocation-provenance.v1.json`
 
 - [ ] **Step 7: Implement independent package-set verification**
 
-`Test-P10TestPackageSet.ps1` accepts `PackagePath`, `ExpectedSourceGitSha`, `ExpectedRunId`, `ExpectedRunAttempt`, and mandatory lowercase `ExpectedCertificateFingerprint`. It rejects non-Windows hosts, derives the expected version/invocation ID, calculates the fingerprint of the single `test-signing-public.cer`, and requires it to equal the expected value. It temporarily imports that public certificate into `CurrentUser\Root`, verifies every signature and fingerprint, and removes the trust entry in `finally`. It fails unless all 14 package files, the tooling manifest and locked-restore fields, provenance, evidence, hashes, signatures, package metadata, gate summaries, and test-only markers match exactly. It must reject any formal signer, production timestamp claim, `CP6.Platform.Testing` package, missing Release/Deployment package, second certificate, certificate subject other than `CN=CP6 Platform P10 TEST ONLY`, or final bytes differing from `sha256.json`.
+`Test-P10TestPackageSet.ps1` accepts `PackagePath`, `ExpectedSourceGitSha`, `ExpectedRunId`, `ExpectedRunAttempt`, and mandatory lowercase `ExpectedCertificateFingerprint`. It rejects non-Windows hosts, derives the expected version/invocation ID, calculates the fingerprint of the single `test-signing-public.cer`, and requires it to equal the expected value. Without importing any certificate, it calls the Release tool's isolated NuGet verifier for every package and exact fingerprint. It fails unless all 14 package files, the tooling manifest and locked-restore fields, provenance, evidence, hashes, signatures, package metadata, gate summaries, and test-only markers match exactly. It must reject any formal signer, production timestamp claim, `CP6.Platform.Testing` package, missing Release/Deployment package, second certificate, certificate subject other than `CN=CP6 Platform P10 TEST ONLY`, or final bytes differing from `sha256.json`.
 
 - [ ] **Step 8: Implement transport record creation**
 

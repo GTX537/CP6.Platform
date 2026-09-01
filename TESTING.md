@@ -7,7 +7,7 @@
 | `Format` | 校验 `.NET` 格式，不修改源码 |
 | `Build` | restore 后以 Release 构建整个 solution |
 | `Unit` | 运行基础约束、P02-P07 回归及 P08 release/telemetry/SLO/messaging/fault 的纯逻辑和负向矩阵 |
-| `Contract` | 运行依赖/包/文档架构测试；两次打包五个 runtime 与五个 symbol 包，比较逐项哈希并核对 P04/P08 资产所有权和内容安全 |
+| `Contract` | 运行依赖/包/文档架构测试、P10 Release 确定性契约及脚本安全契约；两次打包五个 P08 runtime 与五个 symbol 包，比较逐项哈希并核对 P04/P08 资产所有权和内容安全 |
 | `Security` | 以 `NuGetAuditMode=all` + warnings-as-errors 失败关闭，并使用 nuget.org 漏洞数据检查直接与传递依赖 |
 | `Integration` | 验证 ASP.NET、P07 gateway 和 P08 health/resilience；`p05-real`/`p06-real` 另跑真实 Dapr/Kafka/SQL |
 | `E2E` | 运行 P07 gateway 与 P08 两服务 W3C trace、exporter isolation、fault/cancellation/retry/circuit 门禁 |
@@ -37,6 +37,12 @@ pwsh ./eng/verify.ps1 -P09Real -ExpectedGitSha (git rev-parse HEAD)
 `summary.json` 的 `status` 仅允许 `Passed`、`Failed`、`NotApplicable`、`NotRun`。失败 Gate 退出码为 1；不适用 Gate 退出码为零且 JUnit 中有明确 skipped reason。显式 P09 契约在本地缺少 Docker 时返回 `NotRun`、退出码 2 并记录原因，绝不伪装成功；`-Profile ci` 下缺少 Docker 则失败关闭。
 
 P09 输出分别位于 `artifacts/verify/p09contract/`、`artifacts/verify/p09real/`、`artifacts/p09-kubernetes/` 和 `artifacts/p09-rehearsal/`。GitHub 的独立 `ubuntu-p09-non-production-runtime` job 对工作流精确 SHA 执行真实演练，验证 Evidence Schema、文件哈希、Kubernetes 清单哈希、零残留和秘密模式扫描；无论成功失败都只上传后两个 P09 目录并保留 7 天。Windows/Linux 常规矩阵只运行 Deployment 合同测试，不承担 Docker 演练。
+
+| P10 入口 | 当前行为 |
+| --- | --- |
+| `ReleaseContracts` / `p10-test-candidate` | 普通 Contract gate 跨平台校验 Release 契约；S02 仅在精确 `main` SHA 上手工生成测试候选与 90 天传输记录 |
+
+P10 Release 合同通过普通 `Contract` gate 在 Windows/Linux 矩阵运行。`.github/workflows/p10-test-candidate.yml` 只允许从 `main` 手工派发，并要求输入与事件冻结 SHA 完全相同；它在 Windows 上一次构建、执行三类 gate、生成并独立验证精确 7 个普通包和 7 个 symbol 包。签名证书仅为 `CN=CP6 Platform P10 TEST ONLY` 的临时测试证书，私钥和密码不会进入 artifact。S02 绝不推送 NuGet 包、不写正式 feed、不部署，也不声明正式候选状态；包 artifact 与绑定的 transport artifact 均不可覆盖并在 90 天后过期。
 
 `Unit` 还会用隔离的假 `dotnet` 命令验证失败 Gate 必须返回非零并产生 `Failed` JSON/JUnit failure，同时验证 `NotApplicable` 必须返回零并产生带原因的 JSON/JUnit skipped。CI 无论成功或失败都上传各操作系统的 Gate 证据，保留 7 天。
 

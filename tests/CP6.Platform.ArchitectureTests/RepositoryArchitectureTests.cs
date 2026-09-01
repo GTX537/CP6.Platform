@@ -107,6 +107,7 @@ public sealed class RepositoryArchitectureTests
         {
             ["CP6.Platform.Contracts"] = [],
             ["CP6.Platform.Deployment"] = [],
+            ["CP6.Platform.Release"] = [],
             ["CP6.Platform.Abstractions"] = ["CP6.Platform.Contracts"],
             ["CP6.Platform.AspNetCore"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
             ["CP6.Platform.Messaging"] = ["CP6.Platform.Abstractions", "CP6.Platform.Contracts"],
@@ -163,6 +164,39 @@ public sealed class RepositoryArchitectureTests
         Assert.Empty(deployment.Descendants("ProjectReference"));
         Assert.Empty(deployment.Descendants("PackageReference"));
         Assert.Empty(deployment.Descendants("FrameworkReference"));
+    }
+
+    [Fact]
+    public void Release_package_is_independent_and_owns_only_release_contract_assets()
+    {
+        var projects = LoadProjects();
+        var release = projects["CP6.Platform.Release"].Document;
+
+        Assert.Empty(release.Descendants("ProjectReference"));
+        Assert.Empty(release.Descendants("PackageReference"));
+        Assert.Empty(release.Descendants("FrameworkReference"));
+
+        var packed = GetProjectItems(release)
+            .Where(item => string.Equals(GetItemValue(item, "Pack"), "true", StringComparison.OrdinalIgnoreCase))
+            .Select(item => (item.Attribute("Include")?.Value, GetItemValue(item, "PackagePath")))
+            .ToArray();
+        Assert.Equal(
+            [("../../contracts/release/v1/**/*", "contracts/release/v1/%(RecursiveDir)%(Filename)%(Extension)")],
+            packed);
+
+        foreach (var (packageId, project) in projects.Where(project => project.Key != "CP6.Platform.Release"))
+        {
+            Assert.DoesNotContain(
+                GetProjectItems(project.Document),
+                item => (item.Attribute("Include")?.Value ?? string.Empty)
+                    .Contains("contracts/release", StringComparison.OrdinalIgnoreCase));
+            Assert.DoesNotContain(
+                project.Document.Descendants("ProjectReference"),
+                reference => string.Equals(
+                    Path.GetFileNameWithoutExtension(reference.Attribute("Include")!.Value),
+                    "CP6.Platform.Release",
+                    StringComparison.Ordinal));
+        }
     }
 
     [Fact]
@@ -378,6 +412,10 @@ public sealed class RepositoryArchitectureTests
                         "deploy/p09/%(RecursiveDir)%(Filename)%(Extension)"
                     ],
                     packedAssets);
+            }
+            else if (packageId == "CP6.Platform.Release")
+            {
+                Assert.Equal(["contracts/release/v1/%(RecursiveDir)%(Filename)%(Extension)"], packedAssets);
             }
             else
             {
@@ -662,6 +700,80 @@ public sealed class RepositoryArchitectureTests
         })
         {
             Assert.DoesNotContain(forbidden, safetyText, StringComparison.OrdinalIgnoreCase);
+        }
+    }
+
+    [Fact]
+    public void P10_Documentation_IsCompleteAndNonDeployable()
+    {
+        Assert.Equal("0.10.0.0", File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim());
+
+        var readme = File.ReadAllText(Path.Combine(RepositoryRoot, "README.md"));
+        Assert.Contains("docs/P10-RELEASE-GOVERNANCE.md", readme, StringComparison.Ordinal);
+
+        var path = Path.Combine(RepositoryRoot, "docs", "P10-RELEASE-GOVERNANCE.md");
+        Assert.True(File.Exists(path), "P10 release governance document is missing.");
+        var document = File.ReadAllText(path);
+
+        foreach (var packageId in new[]
+        {
+            "CP6.Platform.Abstractions",
+            "CP6.Platform.AspNetCore",
+            "CP6.Platform.Contracts",
+            "CP6.Platform.Deployment",
+            "CP6.Platform.EntityFramework",
+            "CP6.Platform.Messaging",
+            "CP6.Platform.Release"
+        })
+        {
+            Assert.Contains(packageId, document, StringComparison.Ordinal);
+        }
+
+        foreach (var contract in new[]
+        {
+            "system-release-manifest.v1",
+            "candidate-result.v2",
+            "candidate-locator.v1",
+            "platform-release-candidate.v1",
+            "release-gate-result.v1",
+            "system-lineage-bootstrap-evidence.v1",
+            "evidence-record.v1",
+            "build-invocation-provenance.v1",
+            "test-package-transport.v1",
+            "pinned-trust-store.v1"
+        })
+        {
+            Assert.Contains(contract, document, StringComparison.Ordinal);
+        }
+
+        foreach (var required in new[]
+        {
+            "Implemented / Test Candidate",
+            "testOnly=true",
+            "deployable=false",
+            "GitHub Packages",
+            "S03",
+            "90 days",
+            "formal package publication: denied",
+            "System candidate publication: denied",
+            "Portal fabrication: denied",
+            "R2 Locator publication: denied",
+            "deployment: denied"
+        })
+        {
+            Assert.Contains(required, document, StringComparison.Ordinal);
+        }
+
+        foreach (var forbidden in new[]
+        {
+            "VersionId",
+            "Object Lock",
+            "Frozen / Consumable",
+            "production certificate exists",
+            "real certificate exists"
+        })
+        {
+            Assert.DoesNotContain(forbidden, document, StringComparison.OrdinalIgnoreCase);
         }
     }
 

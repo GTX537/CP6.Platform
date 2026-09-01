@@ -476,6 +476,11 @@ try {
                 'test', 'tests/CP6.Platform.ArchitectureTests/CP6.Platform.ArchitectureTests.csproj',
                 '--configuration', 'Release', '--no-build'
             )
+            Invoke-DotNetStep -Name 'ReleaseContracts' -Arguments @(
+                'test', 'tests/CP6.Platform.ReleaseTests/CP6.Platform.ReleaseTests.csproj',
+                '--configuration', 'Release', '--no-build'
+            )
+            [void](Invoke-PowerShellStep -Name 'P10PackageScriptContracts' -ScriptPath 'tests/p10/test-package-scripts.Tests.ps1')
             Assert-ReproduciblePackages
         }
         'Security' {

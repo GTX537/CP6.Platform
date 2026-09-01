@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/system-release-manifest.v1",
+  "type": "object",
+  "required": ["$schemaId", "candidateKind", "deployable", "createdAtUtc", "repositories", "packages", "images", "compatibility", "evidence", "lineage"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/system-release-manifest.v1" },
+    "candidateKind": { "const": "System" },
+    "deployable": { "const": true },
+    "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+    "repositories": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "CP6" },
+        { "const": "CP6.CRM" },
+        { "const": "CP6.Platform" },
+        { "const": "CP6.Portal" }
+      ],
+      "items": false,
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "packages": { "type": "array", "items": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/packageIdentity" }, "minItems": 1, "uniqueItems": true },
+    "images": { "type": "array", "items": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/evidenceSubject" }, "uniqueItems": true },
+    "compatibility": {
+      "type": "object",
+      "required": ["schemaVersion", "minimumConsumerVersion"],
+      "properties": {
+        "schemaVersion": { "type": "integer", "minimum": 1 },
+        "minimumConsumerVersion": { "type": "string", "minLength": 1, "maxLength": 128 }
+      },
+      "additionalProperties": false
+    },
+    "evidence": { "type": "array", "items": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/objectReference" }, "minItems": 1, "uniqueItems": true },
+    "lineage": {
+      "type": "object",
+      "required": ["lineageMode", "predecessor"],
+      "properties": {
+        "lineageMode": { "enum": ["Bootstrap", "Successor"] },
+        "predecessor": { "oneOf": [{ "type": "null" }, { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/objectReference" }] }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

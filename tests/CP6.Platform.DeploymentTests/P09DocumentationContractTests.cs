@@ -107,9 +107,10 @@ public sealed class P09DocumentationContractTests
     }
 
     [Fact]
-    public void RepositoryState_RecordsOnlyTheConditionalP09FinalDecision()
+    public void RepositoryState_PreservesTheConditionalP09FinalDecision()
     {
-        Assert.Equal("0.9.0.0", ReadRequired("VERSION").Trim());
+        var repositoryVersion = Version.Parse(ReadRequired("VERSION").Trim());
+        Assert.True(repositoryVersion >= new Version(0, 9, 0, 0));
 
         var readme = ReadRequired("README.md");
         Assert.Contains("P09", readme, StringComparison.Ordinal);

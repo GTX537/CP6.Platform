@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/test-package-transport.v1",
+  "type": "object",
+  "required": ["$schemaId", "testOnly", "platformSourceSha", "workflow", "packageArtifact", "createdAtUtc", "expiresAtUtc"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/test-package-transport.v1" },
+    "testOnly": { "const": true },
+    "platformSourceSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
+    "workflow": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/workflowIdentity" },
+    "packageArtifact": {
+      "type": "object",
+      "required": ["artifactId", "digest", "sourceRunId", "sourceRunAttempt"],
+      "properties": {
+        "artifactId": { "type": "integer", "minimum": 1 },
+        "digest": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "sourceRunId": { "type": "integer", "minimum": 1 },
+        "sourceRunAttempt": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+    "expiresAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" }
+  },
+  "additionalProperties": false
+}

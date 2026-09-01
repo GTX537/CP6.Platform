@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/build-invocation-provenance.v1",
+  "type": "object",
+  "required": ["$schemaId", "createdAtUtc", "sourceGitSha", "buildInvocationId", "toolchain", "preSignOutputs", "finalPackages"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/build-invocation-provenance.v1" },
+    "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+    "sourceGitSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
+    "buildInvocationId": { "type": "string", "pattern": "^p10-s02:[0-9a-f]{40}:[1-9][0-9]*:[1-9][0-9]*$" },
+    "toolchain": {
+      "type": "object",
+      "required": ["dotnetSdk", "runner"],
+      "properties": {
+        "dotnetSdk": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "runner": { "type": "string", "minLength": 1, "maxLength": 128 }
+      },
+      "additionalProperties": false
+    },
+    "preSignOutputs": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": ["packageId", "sha256"],
+        "properties": {
+          "packageId": { "type": "string", "pattern": "^CP6\\.Platform\\.[A-Za-z]+$" },
+          "sha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" }
+        },
+        "additionalProperties": false
+      }
+    },
+    "finalPackages": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": ["packageId", "preSignSha256", "finalSha256", "subject"],
+        "properties": {
+          "packageId": { "type": "string", "pattern": "^CP6\\.Platform\\.[A-Za-z]+$" },
+          "preSignSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
+          "finalSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
+          "subject": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/evidenceSubject" }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
