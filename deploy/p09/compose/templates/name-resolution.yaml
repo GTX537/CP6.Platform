@@ -3,6 +3,8 @@ kind: Configuration
 metadata:
   name: cp6-p09-docker-dns
 spec:
+  tracing:
+    samplingRate: "1"
   nameResolution:
     component: nameformat
     configuration:

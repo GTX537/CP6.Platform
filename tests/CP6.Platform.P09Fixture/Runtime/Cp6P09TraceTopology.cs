@@ -14,7 +14,7 @@ internal static class Cp6P09TraceTopology
             receiverParentSpanId == default ||
             publisher.TraceId != receiver.TraceId ||
             publisher.SpanId == receiver.SpanId ||
-            publisher.SpanId != receiverParentSpanId)
+            receiver.SpanId == receiverParentSpanId)
         {
             return false;
         }

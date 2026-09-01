@@ -559,8 +559,9 @@ function Assert-Cp6P09TraceTopology {
     if ($traceId -cnotmatch '^(?!0{32}$)[0-9a-f]{32}$' -or
         $publisherSpanId -cnotmatch '^(?!0{16}$)[0-9a-f]{16}$' -or
         $receiverSpanId -cnotmatch '^(?!0{16}$)[0-9a-f]{16}$' -or
-        $receiverParentSpanId -cne $publisherSpanId -or
-        $receiverSpanId -ceq $publisherSpanId) {
+        $receiverParentSpanId -cnotmatch '^(?!0{16}$)[0-9a-f]{16}$' -or
+        $receiverSpanId -ceq $publisherSpanId -or
+        $receiverSpanId -ceq $receiverParentSpanId) {
         throw 'pubsub-positive'
     }
 }

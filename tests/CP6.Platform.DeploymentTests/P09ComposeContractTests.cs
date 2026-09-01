@@ -387,7 +387,7 @@ public sealed class P09ComposeContractTests
     [Fact]
     public void ComposeNetworkValidator_RejectsInterfaceAndGatewayMutations()
     {
-        var compose = ReadRequired(ComposePath);
+        var compose = NormalizeBlock(ReadRequired(ComposePath));
 
         var wrongRuntimeInterface = ReplaceFirst(
             compose,
@@ -690,7 +690,11 @@ public sealed class P09ComposeContractTests
         Assert.Equal("cp6-p09-docker-dns", RequiredScalar(metadata, 2, "name"));
 
         var spec = RequiredBlock(lines, 0, "spec");
-        Assert.Equal(new[] { "nameResolution" }, DirectMapKeys(spec, 2));
+        Assert.Equal(new[] { "nameResolution", "tracing" }, DirectMapKeys(spec, 2));
+        var tracing = RequiredBlock(spec, 2, "tracing");
+        Assert.Equal(new[] { "samplingRate" }, DirectMapKeys(tracing, 4));
+        Assert.Equal("1", RequiredScalar(tracing, 4, "samplingRate"));
+
         var nameResolution = RequiredBlock(spec, 2, "nameResolution");
         Assert.Equal(new[] { "component", "configuration" }, DirectMapKeys(nameResolution, 4));
         Assert.Equal("nameformat", RequiredScalar(nameResolution, 4, "component"));

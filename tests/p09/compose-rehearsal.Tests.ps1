@@ -727,7 +727,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
     }
     $validDeliveryTrace = [pscustomobject]@{
         traceId='11111111111111111111111111111111'; publisherSpanId='2222222222222222'
-        receiverSpanId='3333333333333333'; receiverParentSpanId='2222222222222222'
+        receiverSpanId='3333333333333333'; receiverParentSpanId='7777777777777777'
     }
     Assert-Cp6P09TraceTopology -Invocation $validInvocationTrace -Delivery $validDeliveryTrace
     $invalidInvocationTrace = $validInvocationTrace.PSObject.Copy()

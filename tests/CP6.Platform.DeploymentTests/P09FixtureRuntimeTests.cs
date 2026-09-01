@@ -376,24 +376,30 @@ public sealed class P09FixtureRuntimeTests
     }
 
     [Fact]
-    public void TraceTopology_AcceptsObservedDirectParentChildSpansAndSerializesEvidenceNames()
+    public void TraceTopology_AcceptsObservedDirectOrDaprIntermediateParentSpansAndSerializesEvidenceNames()
     {
         var eventTraceId = ActivityTraceId.CreateFromString("11111111111111111111111111111111");
         var publisherSpanId = ActivitySpanId.CreateFromString("2222222222222222");
         var receiverSpanId = ActivitySpanId.CreateFromString("3333333333333333");
+        var daprConsumerSpanId = ActivitySpanId.CreateFromString("7777777777777777");
         var publisher = Context(eventTraceId, publisherSpanId);
         var receiver = Context(eventTraceId, receiverSpanId, isRemote: true);
 
         Assert.True(Cp6P09TraceTopology.TryCreateDelivery(
             publisher,
             receiver,
-            publisherSpanId,
+            daprConsumerSpanId,
             out var delivery));
+        Assert.True(Cp6P09TraceTopology.TryCreateDelivery(
+            publisher,
+            receiver,
+            publisherSpanId,
+            out _));
 
         Assert.Equal("11111111111111111111111111111111", delivery.TraceId);
         Assert.Equal("2222222222222222", delivery.PublisherSpanId);
         Assert.Equal("3333333333333333", delivery.ReceiverSpanId);
-        Assert.Equal("2222222222222222", delivery.ReceiverParentSpanId);
+        Assert.Equal("7777777777777777", delivery.ReceiverParentSpanId);
         Assert.Equal(
             new[] { "publisherSpanId", "receiverParentSpanId", "receiverSpanId", "traceId" },
             JsonPropertyNames(delivery));
@@ -505,7 +511,7 @@ public sealed class P09FixtureRuntimeTests
             ValidReceivedEvidenceJson.Replace("11111111111111111111111111111111", "00000000000000000000000000000000", StringComparison.Ordinal),
             ValidReceivedEvidenceJson.Replace("11111111111111111111111111111111", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", StringComparison.Ordinal),
             ValidReceivedEvidenceJson.Replace("3333333333333333", "2222222222222222", StringComparison.Ordinal),
-            ValidReceivedEvidenceJson.Replace("\"receiverParentSpanId\":\"2222222222222222\"", "\"receiverParentSpanId\":\"4444444444444444\"", StringComparison.Ordinal),
+            ValidReceivedEvidenceJson.Replace("\"receiverParentSpanId\":\"2222222222222222\"", "\"receiverParentSpanId\":\"3333333333333333\"", StringComparison.Ordinal),
             ValidReceivedEvidenceJson.Replace("\"contractValid\":true", "\"contractValid\":true,\"extra\":true", StringComparison.Ordinal),
             ValidReceivedEvidenceJson.Replace("{\"eventId\":", "{\"eventId\":\"p09-event-0001\",\"eventId\":", StringComparison.Ordinal),
             ValidReceivedEvidenceJson.Replace("\"topicName\":\"cp6.platform.deployment-probe.v1\",", string.Empty, StringComparison.Ordinal),
@@ -522,7 +528,6 @@ public sealed class P09FixtureRuntimeTests
         var secondTraceId = ActivityTraceId.CreateFromString("44444444444444444444444444444444");
         var parentSpanId = ActivitySpanId.CreateFromString("2222222222222222");
         var childSpanId = ActivitySpanId.CreateFromString("3333333333333333");
-        var wrongParentSpanId = ActivitySpanId.CreateFromString("7777777777777777");
 
         Assert.False(Cp6P09TraceTopology.TryCreateDelivery(
             Context(firstTraceId, parentSpanId),
@@ -532,7 +537,7 @@ public sealed class P09FixtureRuntimeTests
         Assert.False(Cp6P09TraceTopology.TryCreateDelivery(
             Context(firstTraceId, parentSpanId),
             Context(firstTraceId, childSpanId),
-            wrongParentSpanId,
+            childSpanId,
             out _));
         Assert.False(Cp6P09TraceTopology.TryCreateInvocation(
             Context(firstTraceId, parentSpanId),
