@@ -240,7 +240,11 @@ public sealed class P09PublicationWorkflowTests
                 ["-Mode", "Available", "-RegistryApiUrl", collision.Uri + "versions"],
                 new Dictionary<string, string> { ["GITHUB_TOKEN"] = credential });
             Assert.NotEqual(0, result.ExitCode);
-            Assert.Contains("already exists", result.Combined, StringComparison.Ordinal);
+            Assert.Equal(1, collision.CompletedRequests);
+            var collisionOutput = PlainTerminalText(result.Combined);
+            Assert.True(
+                collisionOutput.Contains("already exists", StringComparison.Ordinal),
+                collisionOutput);
             Assert.DoesNotContain(credential, result.Combined, StringComparison.Ordinal);
         }
     }
@@ -438,6 +442,12 @@ public sealed class P09PublicationWorkflowTests
         return new ProcessResult(process.ExitCode, output.GetAwaiter().GetResult(), error.GetAwaiter().GetResult());
     }
 
+    private static string PlainTerminalText(string value) => Regex.Replace(
+        value,
+        "\\u001B\\[[0-?]*[ -/]*[@-~]",
+        string.Empty,
+        RegexOptions.CultureInvariant);
+
     private static byte[] BuildValidDeploymentPackage(string root)
     {
         var output = Path.Combine(root, "pack");
@@ -479,6 +489,7 @@ public sealed class P09PublicationWorkflowTests
     {
         private readonly TcpListener listener;
         private readonly Task completion;
+        private int completedRequests;
 
         public OneShotHttpServer(string responseBody)
         {
@@ -507,10 +518,13 @@ public sealed class P09PublicationWorkflowTests
                     $"HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: {body.Length}\r\nConnection: close\r\n\r\n");
                 await stream.WriteAsync(headers);
                 await stream.WriteAsync(body);
+                Interlocked.Increment(ref completedRequests);
             });
         }
 
         public string Uri { get; }
+
+        public int CompletedRequests => Volatile.Read(ref completedRequests);
 
         public void Dispose()
         {
