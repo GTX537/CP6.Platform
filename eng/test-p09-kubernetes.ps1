@@ -408,6 +408,7 @@ kill "$sentinel_pid" 2>/dev/null || true
 wait "$sentinel_pid" 2>/dev/null || true
 exit "$status"
 '@
+    $offlineApply = $offlineApply.Replace("`r`n", "`n").Replace("`r", [string]::Empty)
     $applyArguments = (New-Cp6P09DockerRunArguments -ContainerName $runContainerNames[2] -Image $offlineHelperImage -EntryPoint 'sh') + @(
         '-c', $offlineApply,
         'cp6-offline-apply',

@@ -11,6 +11,12 @@ $containerName = "cp6-p06-sql-$PID"
 $sqlPassword = "CP6_P06!Sql_${PID}_Strong"
 $sqlImage = 'mcr.microsoft.com/mssql/server@sha256:ba4c8329f48fb8f02e1416be6a930ebfd71268caee78aa985f3af4315e457c89'
 $containerStarted = $false
+$dotnetCommand = if (-not [string]::IsNullOrWhiteSpace($env:DOTNET_HOST_PATH)) {
+    $env:DOTNET_HOST_PATH
+}
+else {
+    (Get-Command -Name 'dotnet' -CommandType Application -ErrorAction Stop | Select-Object -First 1).Source
+}
 
 if (-not $resolvedOutput.StartsWith($artifactsPrefix, [StringComparison]::OrdinalIgnoreCase)) {
     throw "Refusing to write P06 evidence outside $artifactsRoot."
@@ -55,7 +61,7 @@ try {
     }
 
     $env:CP6_P06_SQL_CONNECTION = "Server=127.0.0.1,$sqlPort;User ID=sa;Password=$sqlPassword;TrustServerCertificate=True;Encrypt=True"
-    & dotnet run --project (Join-Path $repositoryRoot 'tests/CP6.Platform.SqlServerFixture/CP6.Platform.SqlServerFixture.csproj') --configuration Release
+    & $dotnetCommand run --project (Join-Path $repositoryRoot 'tests/CP6.Platform.SqlServerFixture/CP6.Platform.SqlServerFixture.csproj') --configuration Release
     if ($LASTEXITCODE -ne 0) {
         throw "P06 SQL Server fixture failed with exit code $LASTEXITCODE."
     }

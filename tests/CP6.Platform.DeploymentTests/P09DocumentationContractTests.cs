@@ -39,19 +39,22 @@ public sealed class P09DocumentationContractTests
     }
 
     [Fact]
-    public void PublicationGuide_IsAnUnexecutedExactMainRunbook()
+    public void PublicationGuide_HasReadyUnpublishedExactMainWorkflow()
     {
         var guide = ReadRequired("docs/P09-PUBLICATION.md");
 
         foreach (var required in new[]
         {
-            "Publication status: Not published",
-            "P09-S04: Not started",
+            "Publication status: Ready for exact-main publication; no package has been uploaded",
+            "P09-S04: implementation ready; publication evidence pending",
             "exact `origin/main`",
             "CP6.Platform.Deployment",
             "0.9.0-alpha.1",
             "only this package",
             "reject overwrite",
+            ".github/workflows/publish-p09.yml",
+            "eng/p09/New-P09PublicationManifest.ps1",
+            "eng/p09/Test-P09RegistryPackage.ps1",
             "P05",
             "P06",
             "P08",
@@ -65,7 +68,7 @@ public sealed class P09DocumentationContractTests
     }
 
     [Fact]
-    public void RepositoryState_AdvancesOnlyToP09RehearsalCandidate()
+    public void RepositoryState_AdvancesOnlyToP09PublicationReadyCandidate()
     {
         Assert.Equal("0.9.0.0", ReadRequired("VERSION").Trim());
 
@@ -79,7 +82,9 @@ public sealed class P09DocumentationContractTests
         Assert.Contains("## 0.9.0.0 - 2026-08-31", changelog, StringComparison.Ordinal);
         Assert.Contains("P09-S01 through P09-S03", changelog, StringComparison.Ordinal);
         Assert.Contains("Implemented / Rehearsal Candidate", changelog, StringComparison.Ordinal);
-        Assert.Contains("P09-S04 through P09-S06 remain not started", changelog, StringComparison.Ordinal);
+        Assert.Contains("P09-S04 publication automation is ready", changelog, StringComparison.Ordinal);
+        Assert.Contains("publication evidence and P09-S05 through P09-S06 remain pending", changelog, StringComparison.Ordinal);
+        Assert.Contains("S04 exact-main publisher is ready; upload and evidence remain pending", readme, StringComparison.Ordinal);
     }
 
     [Fact]

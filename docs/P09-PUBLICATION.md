@@ -2,14 +2,22 @@
 
 | Field | Value |
 | --- | --- |
-| Publication status | Not published |
-| Stage | `P09-S04: Not started` |
+| Publication status | Ready for exact-main publication; not uploaded |
+| Stage | `P09-S04: implementation ready; publication evidence pending` |
 | Candidate package | `CP6.Platform.Deployment 0.9.0-alpha.1` |
 | Source requirement | exact `origin/main` after the implementation PR and exact-main validation pass |
 
-Publication status: Not published.
+Publication status: Ready for exact-main publication; no package has been uploaded by this implementation PR.
 
-This is a publication prerequisite and operator runbook. It records what a future separately authorized P09-S04 task must prove; it is not evidence that a package upload, Registry mutation, CRM consumption, or environment rollout has occurred.
+This is the P09-S04 publication operator runbook. It defines what the exact-main publisher must prove; implementation readiness is not evidence that a package upload, Registry mutation, CRM consumption, or environment rollout has occurred.
+
+## Implemented publication transaction
+
+`.github/workflows/publish-p09.yml` is the sole P09 publisher. It is manual-dispatch only, requires an exact current `main` commit, reruns all required P05/P06/P08/P09 gates, invokes `eng/pack-p09.ps1 -VerifyReproducible`, and publishes one explicit ordinary package path. It does not modify the historical P08 publisher.
+
+Before mutation, `eng/p09/Test-P09RegistryPackage.ps1 -Mode Available` rejects an existing `0.9.0-alpha.1` version and `eng/p09/New-P09PublicationManifest.ps1` records the exact package, source, gate, rehearsal, manifest, and image identities. After the single push, `Test-P09RegistryPackage.ps1 -Mode Published` independently queries the Registry, downloads the accepted fixed version, verifies its SHA-256 and content boundary, and writes a non-secret Registry result.
+
+Every outcome preserves package, publication, verification, P05, P06, rehearsal, and Kubernetes roots in one 30-day workflow artifact. If upload status is uncertain, operators must query the Registry and preserve the run before taking any further action. The workflow never retries an overwrite and contains no duplicate-ignore option.
 
 ## Immutable scope
 
@@ -27,7 +35,7 @@ Use one authoritative Registry. The current Platform package source is GitHub Pa
 
 ## Required pre-publication gates
 
-The future S04 workflow must rerun the established P05, P06, P08, and P09 boundaries from the selected source commit:
+The S04 workflow reruns the established P05, P06, P08, and P09 boundaries from the selected source commit:
 
 ```powershell
 pwsh ./eng/verify.ps1 -Gate Format -Profile ci
@@ -60,7 +68,7 @@ The ordinary package must contain the non-empty `lib/net8.0/CP6.Platform.Deploym
 
 ## Publication transaction
 
-The future workflow must build once from the exact selected commit, verify the produced bytes, upload that exact ordinary package once, and then query the Registry independently. It must not rebuild between verification and upload. Symbols may be retained as evidence according to the existing Platform policy but are not a substitute for the ordinary package identity.
+The workflow builds once from the exact selected commit, verifies the produced bytes, uploads that exact ordinary package once, and then queries the Registry independently. It does not rebuild between verification and upload. Symbols may be retained as evidence according to the existing Platform policy but are not a substitute for the ordinary package identity.
 
 After upload, independently download the immutable version and require its SHA-256 and package contents to match the pre-upload manifest. Retain the workflow artifact ID/digest, package SHA-256, Profile and manifest hashes, rehearsal evidence SHA-256, and Registry version identity.
 
@@ -70,4 +78,4 @@ If upload status is uncertain, query the Registry before retrying. If bytes were
 
 A successful S04 result advances only to the publication candidate boundary. S05 must then consume the fixed version from the Registry in CRM-owned black-box tests without project references or copied source. S06 must later synchronize the public repository and perform the final Platform evidence audit. Neither step is part of this runbook execution.
 
-This file authorizes no cloud resource, Kubernetes context, environment deployment, CRM runtime registration, business Topic, gateway route, worker process, production approval, or package upload in the current S01-S03 task.
+This implementation branch authorizes no cloud resource, Kubernetes context, environment deployment, CRM runtime registration, business Topic, gateway route, worker process, or production approval. Package upload is permitted only by the separately observed exact-main workflow transaction after its implementation PR and exact-main validation have passed.
