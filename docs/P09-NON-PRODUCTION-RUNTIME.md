@@ -1,15 +1,17 @@
 # P09 non-production runtime rehearsal
 
+P09 final decision: `Frozen / Consumable`. Effective condition: the S06 final-audit change containing this declaration is merged to `main` and its exact-main `platform-validation` passes `ubuntu-latest`, `windows-latest`, `ubuntu-dapr-kafka`, `ubuntu-sql-server`, and `ubuntu-p09-non-production-runtime`; until then the PR head is only a final-audit candidate.
+
 | Field | Value |
 | --- | --- |
-| Status | `Published / Consumer Candidate` |
+| Status | Conditional final decision: `Frozen / Consumable` |
 | Repository version | `0.9.0.0` |
-| Deployment package candidate | `CP6.Platform.Deployment 0.9.0-alpha.1` |
-| Completed stages | `P09-S01`, `P09-S02`, `P09-S03`, `P09-S04` |
+| Deployment package baseline | `CP6.Platform.Deployment 0.9.0-alpha.1` |
+| Completed evidence stages | `P09-S01` through `P09-S05`; public synchronization completed for `P09-S06` |
 | Publication stage | `P09-S04: Complete`; independently verified evidence is in `P09-PUBLICATION.md` |
-| Deferred stages | `P09-S05`, `P09-S06` |
+| Final audit | This change proposes the `P09-S06` decision; exact-main five-job success is required for effect |
 
-This status describes the published producer package and its exact-main rehearsal evidence. `CP6.Platform.Deployment 0.9.0-alpha.1` was published from Platform commit `1c40f21e38929abaaa6006f69ee70d4492890661` by run `33480300468` and independently matched at SHA-256 `e820d1771ed004b4a7089d008eef3bb2aca4fe35e4912d67057840373c4952cb`. CRM consumption, public project-memory synchronization, real environment rollout, and the final reusable-state decision remain separate later stages.
+`CP6.Platform.Deployment 0.9.0-alpha.1` was published from Platform commit `1c40f21e38929abaaa6006f69ee70d4492890661` by run `33480300468` and independently matched at SHA-256 `e820d1771ed004b4a7089d008eef3bb2aca4fe35e4912d67057840373c4952cb`. CRM PR #37/#38/#39 completed Registry-fixed black-box consumption and exact evidence binding; public CP6 PR #77 synchronized the candidate evidence. This final audit changes no package byte, Profile, Compose/Kubernetes asset, runtime registration, environment, or deployment scope.
 
 ## Scope
 
@@ -114,7 +116,7 @@ The CI overlay uses nondeployable `example.invalid` image identities and `cp6.io
 | `P09-S02` | Complete on Platform main | Exact-SHA real Dapr/Kafka matrix, canonical evidence, zero residue |
 | `P09-S03` | Complete on Platform main | Deterministic offline Kubernetes render/dry-run/policy matrix |
 | `P09-S04` | Complete; published and independently verified | Exact-main immutable package publication, Registry download match, and retained hashes |
-| `P09-S05` | Not started | CRM fixed-version black-box consumption and locator evidence |
-| `P09-S06` | Not started | Public project-memory synchronization and final Platform audit |
+| `P09-S05` | Complete | CRM PR #37/#38/#39 fixed-version black-box consumption, locator evidence, and forward binding |
+| `P09-S06` | Final decision | Public CP6 PR #77 synchronization plus this Platform final audit; decision is effective only after the exact-main condition above |
 
-The allowed state at this boundary is only `Published / Consumer Candidate`: S01-S04 complete; S05-S06 pending.
+The S06 PR head is only a final-audit candidate. Once the effective condition at the top succeeds, S01-S06 complete and P09 is `Frozen / Consumable`; real cluster use, runtime registration, Secret provisioning, business Topics, cloud resources, and deployment remain separately unauthorized.
