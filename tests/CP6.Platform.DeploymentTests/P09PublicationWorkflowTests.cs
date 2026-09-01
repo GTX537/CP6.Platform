@@ -250,6 +250,14 @@ public sealed class P09PublicationWorkflowTests
     }
 
     [Fact]
+    public void PublicationTestHarness_NormalizesWrappedPowerShellErrors()
+    {
+        var rendered = "\u001b[31;1malready\r\nexists.\u001b[0m";
+
+        Assert.Equal("already exists.", PlainTerminalText(rendered));
+    }
+
+    [Fact]
     public void RegistryVerifier_PublishedModeDownloadsAndMatchesExactPackageBytes()
     {
         const string credential = "obvious-fake-registry-credential";
@@ -442,11 +450,15 @@ public sealed class P09PublicationWorkflowTests
         return new ProcessResult(process.ExitCode, output.GetAwaiter().GetResult(), error.GetAwaiter().GetResult());
     }
 
-    private static string PlainTerminalText(string value) => Regex.Replace(
-        value,
-        "\\u001B\\[[0-?]*[ -/]*[@-~]",
-        string.Empty,
-        RegexOptions.CultureInvariant);
+    private static string PlainTerminalText(string value)
+    {
+        var withoutAnsi = Regex.Replace(
+            value,
+            "\\u001B\\[[0-?]*[ -/]*[@-~]",
+            string.Empty,
+            RegexOptions.CultureInvariant);
+        return Regex.Replace(withoutAnsi, @"\s+", " ", RegexOptions.CultureInvariant).Trim();
+    }
 
     private static byte[] BuildValidDeploymentPackage(string root)
     {
