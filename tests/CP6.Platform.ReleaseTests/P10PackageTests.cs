@@ -41,7 +41,7 @@ public sealed class P10PackageTests
     }
 
     [Fact]
-    public void Injected_signing_failure_removes_private_material_and_test_trust()
+    public void Injected_signing_failure_removes_private_material()
     {
         if (!OperatingSystem.IsWindows())
         {

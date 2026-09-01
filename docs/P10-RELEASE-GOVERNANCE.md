@@ -78,7 +78,7 @@ The Platform lane can describe only a Platform reference candidate. It cannot be
 
 ## Test certificate and artifact boundary
 
-The S02 certificate is created at run time with subject `CN=CP6 Platform P10 TEST ONLY`, RSA-2048, SHA-256, digital-signature key usage, code-signing EKU, and a 91-day validity window. Its random PFX password exists only in process memory. The public certificate is temporarily trusted by the Windows runner for NuGet verification; the trust entry, PFX, password state, and private-key object are removed in `finally` paths.
+The S02 certificate is created at run time with subject `CN=CP6 Platform P10 TEST ONLY`, RSA-2048, SHA-256, digital-signature key usage, code-signing EKU, and a 91-day validity window. Its random PFX password exists only in process memory. Verification never modifies an operating-system certificate store. The Release tool uses the official NuGet package-verification API: archive integrity and CMS validity remain mandatory, the exact SHA-256 signer fingerprint is the only certificate permitted to chain to an untrusted root, and a separate author allow-list pins that same fingerprint. The PFX, password state, and private-key object are removed in `finally` paths; only the public certificate and fingerprint enter the test artifact.
 
 Only the public CER, lowercase SHA-256 fingerprint, 14 signed package files, canonical manifests/evidence, locked-restore metadata, sanitized gate summaries, and `sha256.json` enter the package artifact. The package artifact is independently verified before upload. A second artifact contains only `test-package-transport.v1.json` and binds the first artifact's API ID and digest.
 
@@ -95,7 +95,7 @@ pwsh -NoProfile -File tests/p10/test-package-scripts.Tests.ps1
 pwsh -NoProfile -File eng/verify.ps1 -Gate Contract -Profile ci
 ```
 
-The full Windows package lifecycle requires a runner account that can temporarily update `CurrentUser\Root`. It generates only test packages under `artifacts/p10-test/` and never pushes them.
+The full package lifecycle requires Windows for NuGet package signing, but it requires no machine or user root-store mutation. It generates only test packages under `artifacts/p10-test/` and never pushes them.
 
 ## S02 dispatch and verification
 

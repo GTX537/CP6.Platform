@@ -31,11 +31,28 @@ foreach ($relativePath in $scriptPaths) {
 }
 
 $newPackageSet = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/New-P10TestPackageSet.ps1') -Raw
+$newCertificate = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/New-P10TestCertificate.ps1') -Raw
 $packPackages = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Pack-P10TestPackages.ps1') -Raw
+$verifyPackageSet = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Test-P10TestPackageSet.ps1') -Raw
+$releaseTool = Get-Content -LiteralPath (Join-Path $repositoryRoot 'tools/CP6.Platform.ReleaseTool/Program.cs') -Raw
+$releaseToolProject = Get-Content -LiteralPath (Join-Path $repositoryRoot 'tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj') -Raw
 Assert-True ($newPackageSet -cmatch '\$privateBuild = Join-Path \$privateRoot ''build''') 'P10 package creation must isolate its build output below the private root.'
 Assert-True ([regex]::Matches($newPackageSet, '"-p:ArtifactsPath=\$privateBuild"').Count -ge 3) 'P10 restore, build, and gate commands must use the isolated artifacts path.'
 Assert-True ($newPackageSet -cmatch '-BuildArtifactsPath \$privateBuild') 'P10 packing must consume the isolated build output.'
+Assert-True ($newPackageSet -cmatch 'MSBUILDDISABLENODEREUSE') 'P10 nested builds must disable MSBuild node reuse so redirected process pipes can close.'
 Assert-True ($packPackages -cmatch '\[string\]\$BuildArtifactsPath') 'P10 packing must require an explicit build artifacts path.'
 Assert-True ($packPackages -cmatch '"-p:ArtifactsPath=\$resolvedBuildArtifacts"') 'P10 packing must preserve the isolated artifacts path.'
+foreach ($certificateScript in @($newCertificate, $newPackageSet, $verifyPackageSet)) {
+    Assert-True ($certificateScript -notmatch '(?i)(certutil|X509Store)') 'P10 test signing must not mutate the Windows root store.'
+}
+foreach ($verificationScript in @($newPackageSet, $verifyPackageSet)) {
+    Assert-True ($verificationScript -notmatch 'Write-NuGetVerificationConfig') 'P10 verification must not rely on a NuGet configuration that the verify command ignores.'
+    Assert-True ($verificationScript -cmatch "'verify-test-package'") 'P10 signature verification must call the isolated Release tool verifier.'
+}
+Assert-True ($releaseToolProject -cmatch 'PackageReference Include="NuGet\.Packaging"') 'The Release tool must use the official NuGet package-verification API.'
+Assert-True ($releaseTool -cmatch 'IntegrityVerificationProvider') 'The Release tool must verify signed-package archive integrity.'
+Assert-True ($releaseTool -cmatch 'SignatureTrustAndValidityVerificationProvider') 'The Release tool must verify CMS validity while scoping untrusted-root allowance.'
+Assert-True ($releaseTool -cmatch 'AllowListVerificationProvider') 'The Release tool must independently pin the author certificate fingerprint.'
+Assert-True ($releaseTool -cmatch 'CertificateHashAllowListEntry') 'The Release tool must construct an exact certificate SHA-256 allow-list entry.'
 
 Write-Host 'P10 test-package script contract tests passed.'

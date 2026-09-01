@@ -50,7 +50,6 @@ $packageIds = @(
 $expectedVersion = "0.10.0-test.$($ExpectedSourceGitSha.Substring(0, 12)).$ExpectedRunAttempt"
 $expectedInvocation = "p10-s02:$ExpectedSourceGitSha`:$ExpectedRunId`:$ExpectedRunAttempt"
 $certificate = $null
-$trustWasAdded = $false
 $verifyRoot = Join-Path $artifactsRoot ("private\verify-" + [Guid]::NewGuid().ToString('N'))
 [IO.Directory]::CreateDirectory($verifyRoot) | Out-Null
 
@@ -144,17 +143,10 @@ try {
     Assert-Equal $ExpectedCertificateFingerprint $actualFingerprint 'Test signing certificate fingerprint differs.'
     $certificate = [Security.Cryptography.X509Certificates.X509Certificate2]::new($certificateBytes)
     Assert-Equal 'CN=CP6 Platform P10 TEST ONLY' $certificate.Subject 'Test certificate subject differs.'
-    & certutil.exe -user -f -addstore Root $certificatePath | Out-Host
-    if ($LASTEXITCODE -ne 0) { throw 'Could not add the test certificate to CurrentUser/Root.' }
-    $trustWasAdded = $true
 
     foreach ($fileName in $expectedPackageFiles) {
         $path = Join-Path $resolvedPackages $fileName
-        Invoke-Checked 'dotnet' @(
-            'nuget', 'verify', $path,
-            '--all',
-            '--certificate-fingerprint', $ExpectedCertificateFingerprint
-        )
+        Invoke-ReleaseTool @('verify-test-package', $path, $ExpectedCertificateFingerprint)
         $metadata = Get-PackageMetadata $path
         $expectedId = $packageIds | Where-Object { $fileName.StartsWith("$_`.$expectedVersion.", [StringComparison]::Ordinal) }
         Assert-Equal $expectedId $metadata.Id "$fileName package ID differs."
@@ -257,10 +249,6 @@ try {
 }
 finally {
     Pop-Location
-    if ($trustWasAdded -and $null -ne $certificate) {
-        & certutil.exe -user -f -delstore Root $certificate.Thumbprint | Out-Host
-        if ($LASTEXITCODE -ne 0) { throw 'Could not remove the test certificate from CurrentUser/Root.' }
-    }
     if ($null -ne $certificate) { $certificate.Dispose() }
     if (Test-Path -LiteralPath $verifyRoot) {
         Remove-Item -LiteralPath $verifyRoot -Recurse -Force

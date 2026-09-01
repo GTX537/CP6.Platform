@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using System.IO.Compression;
 using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 
 namespace CP6.Platform.ReleaseTests;
@@ -95,7 +94,6 @@ internal static class P10PackageTestHarness
         var privatePfxBefore = Directory.Exists(privateRoot)
             ? Directory.GetFiles(privateRoot, "*.pfx", SearchOption.AllDirectories).Order(StringComparer.Ordinal).ToArray()
             : [];
-        var trustedBefore = CountTestCertificates();
         try
         {
             var sourceGitSha = Capture("git", "rev-parse", "HEAD").Trim();
@@ -124,10 +122,6 @@ internal static class P10PackageTestHarness
             if (!privatePfxBefore.SequenceEqual(privatePfxAfter, StringComparer.Ordinal))
             {
                 throw new InvalidOperationException("Injected signing failure left PFX material under artifacts/p10-test/private.");
-            }
-            if (trustedBefore != CountTestCertificates())
-            {
-                throw new InvalidOperationException("Injected signing failure left a test certificate in CurrentUser/Root.");
             }
         }
         finally
@@ -188,14 +182,6 @@ internal static class P10PackageTestHarness
         var output = standardOutput.GetAwaiter().GetResult();
         var error = standardError.GetAwaiter().GetResult();
         return new(process.ExitCode, output, error);
-    }
-
-    private static int CountTestCertificates()
-    {
-        using var store = new X509Store(StoreName.Root, StoreLocation.CurrentUser);
-        store.Open(OpenFlags.ReadOnly);
-        return store.Certificates.Count(certificate =>
-            string.Equals(certificate.Subject, "CN=CP6 Platform P10 TEST ONLY", StringComparison.Ordinal));
     }
 
     private static void DeleteDirectory(string path)

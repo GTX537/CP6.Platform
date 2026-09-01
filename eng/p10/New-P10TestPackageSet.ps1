@@ -125,14 +125,9 @@ function Invoke-Gate([string]$Name, [string]$Project, [string[]]$AdditionalArgum
     return [pscustomobject]$summary
 }
 
-function Remove-TestTrust($State) {
-    if ($null -eq $State) { return }
-    & certutil.exe -user -f -delstore Root $State.StoreThumbprint | Out-Host
-    if ($LASTEXITCODE -ne 0) {
-        throw 'Could not remove the P10 test certificate from CurrentUser/Root.'
-    }
-}
-
+$hadMsbuildDisableNodeReuse = Test-Path Env:MSBUILDDISABLENODEREUSE
+$previousMsbuildDisableNodeReuse = $env:MSBUILDDISABLENODEREUSE
+$env:MSBUILDDISABLENODEREUSE = '1'
 Push-Location $repositoryRoot
 try {
     Write-Verbose 'P10 package set: checking source identity.'
@@ -188,11 +183,7 @@ try {
             '--hash-algorithm', 'SHA256',
             '--overwrite'
         )
-        Invoke-Checked 'dotnet' @(
-            'nuget', 'verify', $package.FullName,
-            '--all',
-            '--certificate-fingerprint', $certificateState.Fingerprint
-        )
+        Invoke-ReleaseTool @('verify-test-package', $package.FullName, $certificateState.Fingerprint)
         $finalHash = (Get-FileHash -LiteralPath $package.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
         $isSymbol = $package.Name.EndsWith('.snupkg', [StringComparison]::Ordinal)
         $packageId = $packageIds | Where-Object { $package.Name.StartsWith("$_`.$packageVersion.", [StringComparison]::Ordinal) }
@@ -387,11 +378,16 @@ try {
     Write-Host "Prepared the exact seven-package P10 test candidate $packageVersion."
 }
 finally {
-    Write-Verbose 'P10 package set: cleaning private material and temporary trust.'
+    Write-Verbose 'P10 package set: cleaning private material.'
     Pop-Location
-    Remove-TestTrust $certificateState
     if ($null -ne $certificateState) {
         $certificateState.Password = $null
+    }
+    if ($hadMsbuildDisableNodeReuse) {
+        $env:MSBUILDDISABLENODEREUSE = $previousMsbuildDisableNodeReuse
+    }
+    else {
+        Remove-Item Env:MSBUILDDISABLENODEREUSE -ErrorAction SilentlyContinue
     }
     if (Test-Path -LiteralPath $privateRoot) {
         Remove-Item -LiteralPath $privateRoot -Recurse -Force

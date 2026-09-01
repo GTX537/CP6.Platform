@@ -53,21 +53,15 @@ $cerPath = Join-Path $resolvedOutput 'test-signing-public.cer'
 $cerBytes = $certificate.Export([Security.Cryptography.X509Certificates.X509ContentType]::Cert)
 [IO.File]::WriteAllBytes($cerPath, $cerBytes)
 $fingerprint = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($cerBytes)).ToLowerInvariant()
-
-$certutilOutput = & certutil.exe -user -f -addstore Root $cerPath 2>&1
-if ($LASTEXITCODE -ne 0) {
-    throw "Could not add the P10 test certificate to CurrentUser/Root: $($certutilOutput -join ' ')"
-}
+$certificateSubject = $certificate.Subject
 
 $result = [pscustomobject]@{
     PfxPath = $pfxPath
     CerPath = $cerPath
     Password = $password
     Fingerprint = $fingerprint
-    CertificateSubject = $certificate.Subject
-    StoreName = [Security.Cryptography.X509Certificates.StoreName]::Root
-    StoreLocation = [Security.Cryptography.X509Certificates.StoreLocation]::CurrentUser
-    StoreThumbprint = $certificate.Thumbprint
+    CertificateSubject = $certificateSubject
+    TrustMode = 'PinnedNuGetVerifierAllowUntrustedRoot'
 }
 $certificate.Dispose()
 $rsa.Dispose()
