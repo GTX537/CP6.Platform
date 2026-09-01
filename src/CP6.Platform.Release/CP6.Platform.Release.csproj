@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>CP6.Platform.Release</AssemblyName>
+    <RootNamespace>CP6.Platform.Release</RootNamespace>
+    <Description>Deterministic release, evidence, trust, and candidate contracts for CP6.</Description>
+    <PackageId>CP6.Platform.Release</PackageId>
+    <IsPackable>true</IsPackable>
+    <VersionPrefix>0.10.0</VersionPrefix>
+    <VersionSuffix>test.local.1</VersionSuffix>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../contracts/release/v1/**/*"
+          Pack="true"
+          PackagePath="contracts/release/v1/%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>
