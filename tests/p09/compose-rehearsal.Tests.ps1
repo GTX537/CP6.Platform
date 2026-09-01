@@ -791,7 +791,34 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
         RepositoryRoot=$repositoryRoot; ProjectName='cp6-p09-abcdef0123456789'
         ComposeFile=(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'); DockerCommand=$fakeDocker
         Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$testRoot; CP6_P09_CLUSTER_ID='MkU3OEVBNTcwNTJENDM2Qk' }
+        ArtifactsDirectory=$testRoot
+        SensitiveValues=@('cp6-sensitive-value-0123456789abcdef')
     }
+    $sidecarRawLog = 'level=fatal msg="failed to read /run/cp6-p09/secrets at 10.1.2.3 password=visible" cp6-sensitive-value-0123456789abcdef'
+    @{ exitCode=0; stdout=$sidecarRawLog; stderr='' } |
+        ConvertTo-Json -Compress | Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
+    Save-Cp6P09SidecarExitDiagnostic -Context $diagnosticContext -Phase publisher
+    $sidecarDiagnosticPath = Join-Path $testRoot 'sidecar-exit-diagnostic.v1.json'
+    Assert-True (Test-Path -LiteralPath $sidecarDiagnosticPath -PathType Leaf) 'Exited sidecar diagnostic artifact was not written.'
+    $sidecarDiagnosticText = Get-Content -LiteralPath $sidecarDiagnosticPath -Raw
+    foreach ($forbiddenDiagnosticText in @('/run/','10.1.2.3','password=visible','cp6-sensitive-value-0123456789abcdef')) {
+        Assert-True (-not $sidecarDiagnosticText.Contains($forbiddenDiagnosticText,[StringComparison]::OrdinalIgnoreCase)) "Exited sidecar diagnostic leaked $forbiddenDiagnosticText."
+    }
+    $sidecarDiagnostic = $sidecarDiagnosticText | ConvertFrom-Json
+    Assert-Equal '1' $sidecarDiagnostic.schemaVersion 'Exited sidecar diagnostic schema drifted.'
+    Assert-Equal 'publisher' $sidecarDiagnostic.phase 'Exited sidecar diagnostic phase drifted.'
+    Assert-True (@($sidecarDiagnostic.lines).Count -eq 1 -and [string]$sidecarDiagnostic.lines[0] -match '<redacted>') 'Exited sidecar diagnostic did not retain a bounded redacted reason.'
+    $sidecarDiagnosticCalls = @(Get-Content -LiteralPath $diagnosticLog | ForEach-Object { $_ | ConvertFrom-Json })
+    Assert-Equal @(
+        'compose','--project-name','cp6-p09-abcdef0123456789','--file',(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'),
+        'logs','--no-color','--tail','40','publisher-dapr'
+    ) @($sidecarDiagnosticCalls[0].argv) 'Exited sidecar diagnostic escaped the exact bounded Compose log command.'
+
+    Remove-Item -LiteralPath $diagnosticLog -Force -ErrorAction SilentlyContinue
+    @{ exitCode=0; stdout=$diagnosticPayload; stderr='' } |
+        ConvertTo-Json -Compress | Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
+    Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
     Assert-Equal 'target-unavailable' (Invoke-Cp6P09DaprDiagnostic -Context $diagnosticContext) 'Dapr diagnostic did not classify the fixed Unavailable response.'
     $diagnosticCalls = @(Get-Content -LiteralPath $diagnosticLog | ForEach-Object { $_ | ConvertFrom-Json })
     Assert-Equal 1 $diagnosticCalls.Count 'Dapr diagnostic issued more than its single fixed one-off.'
@@ -860,7 +887,7 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
         Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
         Assert-Equal 'diagnostic-unavailable' (Invoke-Cp6P09DaprTransportDiagnostic -Context $diagnosticContext) 'Dapr transport diagnostic accepted malformed output.'
     }
-    Assert-True ($moduleText -match '(?s)catch\s*\{\s*\$stateCategory\s*=\s*Invoke-Cp6P09RuntimeStartStateDiagnostic.+?Invoke-Cp6P09DaprDiagnostic.+?Invoke-Cp6P09DaprTransportDiagnostic.+?throw\s*\}') 'Dapr state and transport diagnostics are not synchronized after final invoke-positive failure while preserving the original exception.'
+    Assert-True ($moduleText -match '(?s)catch\s*\{\s*\$stateCategory\s*=\s*Invoke-Cp6P09RuntimeStartStateDiagnostic.+?Save-Cp6P09SidecarExitDiagnostic.+?Invoke-Cp6P09DaprDiagnostic.+?Invoke-Cp6P09DaprTransportDiagnostic.+?throw\s*\}') 'Dapr state, exit, and transport diagnostics are not synchronized after final invoke-positive failure while preserving the original exception.'
     Assert-True ($moduleText.Contains('DiagnosticCategory=$context.MatrixDiagnosticCategory')) 'Runner result does not expose only the closed Dapr diagnostic category.'
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''

@@ -1312,6 +1312,56 @@ function Invoke-Cp6P09DaprTransportDiagnostic {
     }
 }
 
+function Save-Cp6P09SidecarExitDiagnostic {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]$Context,
+        [Parameter(Mandatory)][ValidateSet('receiver','publisher')][string]$Phase
+    )
+
+    try {
+        $result = Invoke-Cp6P09Compose $Context @('logs','--no-color','--tail','40',"$Phase-dapr") 30
+        if ($result.ExitCode -ne 0 -or [string]::IsNullOrWhiteSpace($result.StandardOutput)) { return }
+
+        $text = [regex]::Replace($result.StandardOutput, '\x1B\[[0-?]*[ -/]*[@-~]', '')
+        $sensitiveProperty = $Context.PSObject.Properties['SensitiveValues']
+        $sensitiveValues = if ($null -eq $sensitiveProperty) { @() } else { @($sensitiveProperty.Value) }
+        foreach ($value in $sensitiveValues) {
+            $candidate = [string]$value
+            if (-not [string]::IsNullOrEmpty($candidate)) {
+                $text = $text.Replace($candidate, '<redacted>', [StringComparison]::Ordinal)
+            }
+        }
+        $text = [regex]::Replace($text, '(?i)(?:password|token|connectionString)\s*[=:]\s*[^\s"'']+', '<redacted>')
+        $text = [regex]::Replace($text, '(?<![A-Za-z0-9])(?:[A-Za-z]:[\\/]|\\\\)[^\s"'']+', '<redacted>')
+        $text = [regex]::Replace($text, '(?<![A-Za-z0-9:])/(?:[A-Za-z0-9._-]+/)*[A-Za-z0-9._-]+', '<redacted>')
+        $text = [regex]::Replace($text, '(?<![0-9])(?:[0-9]{1,3}\.){3}[0-9]{1,3}(?::[0-9]{1,5})?(?![0-9])', '<redacted>')
+        $text = [regex]::Replace($text, '(?<![A-Za-z0-9_-])[A-Za-z0-9_-]{32,}(?![A-Za-z0-9_-])', '<redacted>')
+
+        $lines = @($text.Replace("`r`n","`n").Split("`n",[StringSplitOptions]::RemoveEmptyEntries) |
+            Select-Object -Last 40 |
+            ForEach-Object {
+                $line = $_.Trim()
+                if ($line.Length -gt 512) { $line = $line.Substring(0,512) }
+                $line
+            } |
+            Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
+        if ($lines.Count -eq 0) { return }
+        $boundedText = ($lines -join "`n")
+        if ([Text.Encoding]::UTF8.GetByteCount($boundedText) -gt 24576) { return }
+        Assert-Cp6P09SafeText -Text $boundedText
+
+        $artifactRoot = [IO.Path]::GetFullPath([string]$Context.ArtifactsDirectory)
+        $path = Resolve-Cp6P09ContainedPath -Root $artifactRoot -Candidate (Join-Path $artifactRoot 'sidecar-exit-diagnostic.v1.json') -RequireChild
+        $json = [ordered]@{ lines=[object[]]$lines; phase=$Phase; schemaVersion='1' } | ConvertTo-Json -Compress -Depth 4
+        Assert-Cp6P09SafeText -Text $json
+        [IO.File]::WriteAllText($path,$json,[Text.UTF8Encoding]::new($false))
+    }
+    catch {
+        return
+    }
+}
+
 function Get-Cp6P09RuntimeStartFailureCategory {
     [CmdletBinding()]
     param(
@@ -1494,6 +1544,9 @@ function Invoke-Cp6P09RuntimeMatrix {
         }
         catch {
             $stateCategory = Invoke-Cp6P09RuntimeStartStateDiagnostic -Context $Context -Phase publisher
+            if ($stateCategory -ceq 'publisher-sidecar-exited') {
+                Save-Cp6P09SidecarExitDiagnostic -Context $Context -Phase publisher
+            }
             if ($stateCategory -cne 'publisher-compose-wait-failed') {
                 $Context.MatrixDiagnosticCategory = $stateCategory
             }
@@ -1669,6 +1722,8 @@ function Invoke-Cp6P09Rehearsal {
         RuntimeRoot=$layout.RuntimeRoot; DockerCommand=$DockerCommand
         Environment=[ordered]@{ CP6_P09_RUNTIME_ROOT=$layout.RuntimeRoot; CP6_P09_CLUSTER_ID=$clusterId; CP6_P09_NEGATIVE_ROLE='probe' }
         KubernetesManifestSha=$null
+        ArtifactsDirectory=$layout.ArtifactsDirectory
+        SensitiveValues=@()
         MatrixFailureId='runtime-start'
         MatrixDiagnosticCategory=$null
         ProvisionFailureId='topic-create-first'
@@ -1708,6 +1763,7 @@ function Invoke-Cp6P09Rehearsal {
         $pull = Invoke-Cp6P09Compose $context @('pull','kafka','kafka-admin','publisher-dapr','receiver-dapr','unauthorized-dapr') 600
         Assert-Cp6P09CommandSucceeded $pull 'image-pull'
         $credentials = New-Cp6P09CredentialSet
+        $context.SensitiveValues = @($credentials.PSObject.Properties.Value | ForEach-Object { [string]$_ })
         Initialize-Cp6P09RuntimeFiles $context $credentials
         Add-Cp6P09RunLog $logPath 'runtime-population' 'Passed'
         $stage = 'runtime-build'
@@ -1823,6 +1879,7 @@ Export-ModuleMember -Function @(
     'Invoke-Cp6P09DaprDiagnostic',
     'Get-Cp6P09DaprTransportDiagnosticProcessSpec',
     'Invoke-Cp6P09DaprTransportDiagnostic',
+    'Save-Cp6P09SidecarExitDiagnostic',
     'Get-Cp6P09StableFailureId',
     'Assert-Cp6P09TraceTopology',
     'Assert-Cp6P09ExpectedGitState',
