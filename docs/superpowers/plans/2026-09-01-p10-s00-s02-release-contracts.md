@@ -1112,7 +1112,7 @@ Write raw `test-package-manifest.v1.json`, `build-invocation-provenance.v1.json`
 
 - [ ] **Step 8: Implement transport record creation**
 
-`New-P10TransportRecord.ps1` runs only after package artifact upload and requires exact workflow identity plus package artifact ID, `sha256:<digest>`, API creation time, and API expiry time. It emits canonical `test-package-transport.v1.json`; it does not include its own artifact ID/digest.
+`New-P10TransportRecord.ps1` runs only after package artifact upload and requires exact workflow identity plus package artifact ID, `sha256:<digest>`, API creation time, and API expiry time. It restores and builds the Release tool from the exact checkout into a GUID-scoped private artifacts path, emits canonical `test-package-transport.v1.json`, validates it with that isolated tool, and removes the private build in `finally`. It does not require or leave the repository-default `bin/Release` output, and it does not include its own artifact ID/digest.
 
 - [ ] **Step 9: Run package tests and script tests GREEN**
 

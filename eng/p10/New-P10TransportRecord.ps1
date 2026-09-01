@@ -94,10 +94,19 @@ $record = [ordered]@{
 $outputDirectory = Split-Path -Parent $resolvedOutput
 [IO.Directory]::CreateDirectory($outputDirectory) | Out-Null
 $privateRoot = Join-Path $artifactsRoot ("private\transport-" + [Guid]::NewGuid().ToString('N'))
+$transportBuild = Join-Path $privateRoot 'build'
 [IO.Directory]::CreateDirectory($privateRoot) | Out-Null
 $rawPath = Join-Path $privateRoot 'test-package-transport.raw.json'
-$toolPath = Join-Path $repositoryRoot 'tools\CP6.Platform.ReleaseTool\bin\Release\net8.0\CP6.Platform.ReleaseTool.dll'
+$toolProject = Join-Path $repositoryRoot 'tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj'
+$toolPath = Join-Path $transportBuild 'bin\CP6.Platform.ReleaseTool\release\CP6.Platform.ReleaseTool.dll'
+$hadMsbuildDisableNodeReuse = Test-Path Env:MSBUILDDISABLENODEREUSE
+$previousMsbuildDisableNodeReuse = $env:MSBUILDDISABLENODEREUSE
+$env:MSBUILDDISABLENODEREUSE = '1'
 try {
+    & dotnet restore $toolProject "-p:ArtifactsPath=$transportBuild" | Out-Host
+    if ($LASTEXITCODE -ne 0) { throw 'Release tool restore failed.' }
+    & dotnet build $toolProject --configuration Release --no-restore "-p:ArtifactsPath=$transportBuild" | Out-Host
+    if ($LASTEXITCODE -ne 0) { throw 'Release tool build failed.' }
     if (-not (Test-Path -LiteralPath $toolPath -PathType Leaf)) {
         throw 'Release tool build output is missing.'
     }
@@ -110,6 +119,12 @@ try {
     if ($LASTEXITCODE -ne 0) { throw 'Transport contract validation failed.' }
 }
 finally {
+    if ($hadMsbuildDisableNodeReuse) {
+        $env:MSBUILDDISABLENODEREUSE = $previousMsbuildDisableNodeReuse
+    }
+    else {
+        Remove-Item Env:MSBUILDDISABLENODEREUSE -ErrorAction SilentlyContinue
+    }
     if (Test-Path -LiteralPath $privateRoot) {
         Remove-Item -LiteralPath $privateRoot -Recurse -Force
     }
