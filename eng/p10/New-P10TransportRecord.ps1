@@ -2,7 +2,7 @@
 param(
     [Parameter(Mandatory)]
     [ValidatePattern('^[0-9a-f]{40}$')]
-    [string]$SourceGitSha,
+    [string]$PlatformSourceSha,
 
     [Parameter(Mandatory)]
     [ValidateRange(1, [long]::MaxValue)]
@@ -13,19 +13,6 @@ param(
     [int]$RunAttempt,
 
     [Parameter(Mandatory)]
-    [string]$Repository,
-
-    [Parameter(Mandatory)]
-    [string]$WorkflowPath,
-
-    [Parameter(Mandatory)]
-    [ValidatePattern('^[0-9a-f]{40}$')]
-    [string]$WorkflowFileSha,
-
-    [Parameter(Mandatory)]
-    [string]$Environment,
-
-    [Parameter(Mandatory)]
     [ValidateRange(1, [long]::MaxValue)]
     [long]$PackageArtifactId,
 
@@ -34,10 +21,10 @@ param(
     [string]$PackageArtifactDigest,
 
     [Parameter(Mandatory)]
-    [string]$ArtifactCreatedAtUtc,
+    [string]$CreatedAtUtc,
 
     [Parameter(Mandatory)]
-    [string]$ArtifactExpiresAtUtc,
+    [string]$ExpiresAtUtc,
 
     [string]$OutputPath = 'artifacts/p10-test/transport/test-package-transport.v1.json'
 )
@@ -54,21 +41,31 @@ if (-not $resolvedOutput.StartsWith($artifactsPrefix, [StringComparison]::Ordina
 }
 
 $created = [DateTimeOffset]::Parse(
-    $ArtifactCreatedAtUtc,
+    $CreatedAtUtc,
     [Globalization.CultureInfo]::InvariantCulture,
     [Globalization.DateTimeStyles]::AssumeUniversal -bor [Globalization.DateTimeStyles]::AdjustToUniversal)
 $expires = [DateTimeOffset]::Parse(
-    $ArtifactExpiresAtUtc,
+    $ExpiresAtUtc,
     [Globalization.CultureInfo]::InvariantCulture,
     [Globalization.DateTimeStyles]::AssumeUniversal -bor [Globalization.DateTimeStyles]::AdjustToUniversal)
-if (-not $ArtifactCreatedAtUtc.EndsWith('Z', [StringComparison]::Ordinal) -or
-    -not $ArtifactExpiresAtUtc.EndsWith('Z', [StringComparison]::Ordinal) -or
+if (-not $CreatedAtUtc.EndsWith('Z', [StringComparison]::Ordinal) -or
+    -not $ExpiresAtUtc.EndsWith('Z', [StringComparison]::Ordinal) -or
     $expires -le $created) {
     throw 'Artifact API timestamps must be UTC and expiry must follow creation.'
 }
 
 function Format-UtcMilliseconds([DateTimeOffset]$Value) {
     return $Value.ToUniversalTime().ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'", [Globalization.CultureInfo]::InvariantCulture)
+}
+
+$workflowPath = '.github/workflows/p10-test-candidate.yml'
+$workflowFullPath = Join-Path $repositoryRoot $workflowPath
+if (-not (Test-Path -LiteralPath $workflowFullPath -PathType Leaf)) {
+    throw 'P10 workflow file is missing.'
+}
+$workflowFileSha = (& git -C $repositoryRoot hash-object $workflowFullPath).Trim()
+if ($LASTEXITCODE -ne 0 -or $workflowFileSha -cnotmatch '^[0-9a-f]{40}$') {
+    throw 'Could not calculate the exact workflow file Git blob SHA.'
 }
 
 $record = [ordered]@{
@@ -81,16 +78,16 @@ $record = [ordered]@{
         sourceRunAttempt = $RunAttempt
         sourceRunId = $RunId
     }
-    platformSourceSha = $SourceGitSha
+    platformSourceSha = $PlatformSourceSha
     testOnly = $true
     workflow = [ordered]@{
-        commitSha = $SourceGitSha
-        environment = $Environment
-        repository = $Repository
+        commitSha = $PlatformSourceSha
+        environment = 'test'
+        repository = 'GTX537/CP6.Platform'
         runAttempt = $RunAttempt
         runId = $RunId
-        workflowFileSha = $WorkflowFileSha
-        workflowPath = $WorkflowPath
+        workflowFileSha = $workflowFileSha
+        workflowPath = $workflowPath
     }
 }
 

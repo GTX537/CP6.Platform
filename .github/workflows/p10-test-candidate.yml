@@ -1,0 +1,94 @@
+name: p10-test-candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_commit:
+        description: Exact CP6.Platform main commit approved for the P10 test candidate
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  build-test-candidate:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - name: Check out exact dispatch source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up .NET 8
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9
+        with:
+          dotnet-version: 8.0.x
+      - name: Assert exact main source
+        shell: pwsh
+        run: |
+          if ('${{ github.ref }}' -cne 'refs/heads/main') { throw 'Dispatch must target main.' }
+          if ('${{ github.sha }}' -cne '${{ inputs.expected_commit }}') { throw 'Expected commit differs from the dispatch event main SHA.' }
+          if ((git rev-parse HEAD).Trim() -cne '${{ github.sha }}') { throw 'Checkout mismatch.' }
+      - name: Build and verify test package set
+        shell: pwsh
+        run: |
+          ./eng/p10/New-P10TestPackageSet.ps1 -SourceGitSha '${{ inputs.expected_commit }}' -RunId ${{ github.run_id }} -RunAttempt ${{ github.run_attempt }}
+          $cerBytes = [IO.File]::ReadAllBytes((Resolve-Path artifacts/p10-test/packages/test-signing-public.cer))
+          $testFingerprint = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($cerBytes)).ToLowerInvariant()
+          ./eng/p10/Test-P10TestPackageSet.ps1 -PackagePath artifacts/p10-test/packages -ExpectedSourceGitSha '${{ inputs.expected_commit }}' -ExpectedRunId ${{ github.run_id }} -ExpectedRunAttempt ${{ github.run_attempt }} -ExpectedCertificateFingerprint $testFingerprint
+      - name: Reject private material and secret-shaped text
+        shell: pwsh
+        run: |
+          $files = @(Get-ChildItem artifacts/p10-test/packages -Recurse -File)
+          $private = @($files | Where-Object { $_.Extension -in '.pfx', '.p12', '.pem', '.key' -or $_.Name -match '(?i)password|private[-_]?key' })
+          if ($private.Count -ne 0) { throw "Private material found: $($private.Name -join ', ')" }
+          $text = @($files | Where-Object { $_.Extension -in '.json', '.txt', '.md' })
+          $matches = @($text | Select-String -Pattern '-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|(?i)(?:password|token|secret)\s*[:=]\s*[^\s]+')
+          if ($matches.Count -ne 0) { throw 'Secret-shaped text found in package artifact.' }
+      - name: Upload immutable package set
+        id: packages
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p10-s02-packages-${{ inputs.expected_commit }}-${{ github.run_attempt }}
+          path: artifacts/p10-test/packages/**
+          if-no-files-found: error
+          overwrite: false
+          retention-days: 90
+      - name: Query package artifact metadata and create transport record
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $artifactJson = @(& gh api repos/${{ github.repository }}/actions/artifacts/${{ steps.packages.outputs.artifact-id }})
+          if ($LASTEXITCODE -ne 0) { throw 'Could not query the exact package artifact.' }
+          $artifactDocument = [Text.Json.JsonDocument]::Parse(($artifactJson -join "`n"))
+          $artifact = $artifactDocument.RootElement
+          $artifactId = $artifact.GetProperty('id').GetInt64()
+          $artifactCreatedAt = $artifact.GetProperty('created_at').GetString()
+          $artifactExpiresAt = $artifact.GetProperty('expires_at').GetString()
+          $artifactDigest = '${{ steps.packages.outputs.artifact-digest }}'
+          if ($artifactDigest -cmatch '^[0-9a-f]{64}$') { $artifactDigest = "sha256:$artifactDigest" }
+          if ($artifactDigest -cnotmatch '^sha256:[0-9a-f]{64}$') { throw 'Package artifact digest is not canonical SHA-256.' }
+          $apiDigest = if ($artifact.GetProperty('digest').ValueKind -eq [Text.Json.JsonValueKind]::String) { $artifact.GetProperty('digest').GetString() } else { $null }
+          if ($apiDigest -and $apiDigest -cne $artifactDigest) { throw 'Upload output digest differs from the artifact API digest.' }
+          ./eng/p10/New-P10TransportRecord.ps1 -OutputPath artifacts/p10-test/transport/test-package-transport.v1.json -PlatformSourceSha '${{ inputs.expected_commit }}' -RunId ${{ github.run_id }} -RunAttempt ${{ github.run_attempt }} -PackageArtifactId $artifactId -PackageArtifactDigest $artifactDigest -CreatedAtUtc $artifactCreatedAt -ExpiresAtUtc $artifactExpiresAt
+      - name: Validate transport and reject secret-shaped text
+        shell: pwsh
+        run: |
+          $evaluationUtc = [DateTimeOffset]::UtcNow.UtcDateTime.ToString('O')
+          dotnet run --project tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj --configuration Release --no-build -- validate-transport artifacts/p10-test/transport/test-package-transport.v1.json $evaluationUtc
+          $files = @(Get-ChildItem artifacts/p10-test/transport -Recurse -File)
+          if (@($files | Where-Object { $_.Extension -in '.pfx', '.p12', '.pem', '.key' -or $_.Name -match '(?i)password|private[-_]?key' }).Count -ne 0) { throw 'Private material found in transport artifact.' }
+          if (@($files | Select-String -Pattern '-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|(?i)(?:password|token|secret)\s*[:=]\s*[^\s]+').Count -ne 0) { throw 'Secret-shaped text found in transport artifact.' }
+      - name: Upload immutable transport record
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p10-s02-transport-${{ inputs.expected_commit }}-${{ github.run_attempt }}
+          path: artifacts/p10-test/transport/test-package-transport.v1.json
+          if-no-files-found: error
+          overwrite: false
+          retention-days: 90

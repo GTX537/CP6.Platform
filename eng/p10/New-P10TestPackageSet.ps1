@@ -257,6 +257,15 @@ try {
     }
 
     $createdAtUtc = Format-UtcMilliseconds ([DateTimeOffset]::UtcNow)
+    $workflowPath = '.github/workflows/p10-test-candidate.yml'
+    $workflowFullPath = Join-Path $repositoryRoot $workflowPath
+    if (-not (Test-Path -LiteralPath $workflowFullPath -PathType Leaf)) {
+        throw 'P10 workflow file is missing.'
+    }
+    $workflowFileSha = (& git hash-object $workflowFullPath).Trim()
+    if ($LASTEXITCODE -ne 0 -or $workflowFileSha -cnotmatch '^[0-9a-f]{40}$') {
+        throw 'Could not calculate the exact workflow file Git blob SHA.'
+    }
     $provenance = [ordered]@{
         '$schemaId' = 'https://schemas.cp6.dev/release/build-invocation-provenance.v1'
         buildInvocationId = $invocationId
@@ -309,8 +318,8 @@ try {
             repository = 'GTX537/CP6.Platform'
             runAttempt = $RunAttempt
             runId = $RunId
-            workflowFileSha = $SourceGitSha
-            workflowPath = '.github/workflows/p10-test-packages.yml'
+            workflowFileSha = $workflowFileSha
+            workflowPath = $workflowPath
         }
         subjects = @($packageIds | ForEach-Object {
             $id = $_
