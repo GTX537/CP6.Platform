@@ -1435,13 +1435,13 @@ $packageArtifact = $artifacts.artifacts | Where-Object name -like 'p10-s02-packa
 $transportArtifact = $artifacts.artifacts | Where-Object name -like 'p10-s02-transport-*'
 if (@($packageArtifact).Count -ne 1 -or @($transportArtifact).Count -ne 1) { throw 'Expected one package and one transport artifact.' }
 if ($packageArtifact.expired -or $transportArtifact.expired) { throw 'S02 artifact is already expired.' }
-gh run download $runId --repo GTX537/CP6.Platform --name $packageArtifact.name --dir artifacts/p10-s02-audit/packages
-gh run download $runId --repo GTX537/CP6.Platform --name $transportArtifact.name --dir artifacts/p10-s02-audit/transport
-$cerBytes = [IO.File]::ReadAllBytes((Resolve-Path artifacts/p10-s02-audit/packages/test-signing-public.cer))
+gh run download $runId --repo GTX537/CP6.Platform --name $packageArtifact.name --dir artifacts/p10-test/audit/packages
+gh run download $runId --repo GTX537/CP6.Platform --name $transportArtifact.name --dir artifacts/p10-test/audit/transport
+$cerBytes = [IO.File]::ReadAllBytes((Resolve-Path artifacts/p10-test/audit/packages/test-signing-public.cer))
 $testFingerprint = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($cerBytes)).ToLowerInvariant()
-pwsh -NoProfile -File ./eng/p10/Test-P10TestPackageSet.ps1 -PackagePath artifacts/p10-s02-audit/packages -ExpectedSourceGitSha $s01MainSha -ExpectedRunId $runId -ExpectedRunAttempt $run.run_attempt -ExpectedCertificateFingerprint $testFingerprint
-pwsh -NoProfile -File ./eng/p10/Test-P10TransportRecord.ps1 -TransportPath artifacts/p10-s02-audit/transport/test-package-transport.v1.json -EvaluationUtc ([DateTimeOffset]::UtcNow.ToString('O'))
-$transport = Get-Content artifacts/p10-s02-audit/transport/test-package-transport.v1.json -Raw | ConvertFrom-Json
+pwsh -NoProfile -File ./eng/p10/Test-P10TestPackageSet.ps1 -PackagePath artifacts/p10-test/audit/packages -ExpectedSourceGitSha $s01MainSha -ExpectedRunId $runId -ExpectedRunAttempt $run.run_attempt -ExpectedCertificateFingerprint $testFingerprint
+pwsh -NoProfile -File ./eng/p10/Test-P10TransportRecord.ps1 -TransportPath artifacts/p10-test/audit/transport/test-package-transport.v1.json -EvaluationUtc ([DateTimeOffset]::UtcNow.ToString('O'))
+$transport = Get-Content artifacts/p10-test/audit/transport/test-package-transport.v1.json -Raw | ConvertFrom-Json
 if ([long]$transport.packageArtifact.artifactId -ne [long]$packageArtifact.id -or $transport.packageArtifact.digest -cne $packageArtifact.digest -or [long]$transport.packageArtifact.sourceRunId -ne [long]$runId -or [int]$transport.packageArtifact.sourceRunAttempt -ne [int]$run.run_attempt) { throw 'Transport record does not bind the downloaded package artifact and source run.' }
 ```
 

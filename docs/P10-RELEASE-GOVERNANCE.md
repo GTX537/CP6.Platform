@@ -116,10 +116,31 @@ gh run download <run-id> --repo GTX537/CP6.Platform --name p10-s02-transport-<so
 $cer = [IO.File]::ReadAllBytes('artifacts/p10-test/download/packages/test-signing-public.cer')
 $fingerprint = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($cer)).ToLowerInvariant()
 pwsh -NoProfile -File eng/p10/Test-P10TestPackageSet.ps1 -PackagePath artifacts/p10-test/download/packages -ExpectedSourceGitSha <source-sha> -ExpectedRunId <run-id> -ExpectedRunAttempt <attempt> -ExpectedCertificateFingerprint $fingerprint
-dotnet run --project tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj --configuration Release -- validate-transport artifacts/p10-test/download/transport/test-package-transport.v1.json ([DateTimeOffset]::UtcNow.UtcDateTime.ToString('O'))
+pwsh -NoProfile -File eng/p10/Test-P10TransportRecord.ps1 -TransportPath artifacts/p10-test/download/transport/test-package-transport.v1.json -EvaluationUtc ([DateTimeOffset]::UtcNow.UtcDateTime.ToString('O'))
 ```
 
 The consumer must compare the transport source/run tuple and artifact ID/digest with the GitHub API response before using the package directory as an ephemeral local source.
+
+## S02 exact test-candidate evidence
+
+The following test-only evidence was produced and independently verified on 2026-09-01. It does not advance the status beyond **Implemented / Test Candidate**.
+
+| Identity | Exact value |
+| --- | --- |
+| Platform source SHA | `f09773a8cbd32c27ba531f5c02f52d32ef534fb3` |
+| Workflow path | `.github/workflows/p10-test-candidate.yml` |
+| Workflow file Git blob SHA | `1c0ade934712c245435d373fb4c4141f6f6ffb68` |
+| Workflow run | `33546570407`, attempt `1`, conclusion `success` |
+| Package artifact | ID `9815880292`; `p10-s02-packages-f09773a8cbd32c27ba531f5c02f52d32ef534fb3-1` |
+| Package artifact digest | `sha256:c0d79908d874fa836e1a296e94bb8955d07add5a27de20351b489385ced44aeb` |
+| Package artifact UTC window | created `2026-09-01T19:01:09Z`; expires `2026-11-30T18:56:17Z` |
+| Transport artifact | ID `9815889756`; `p10-s02-transport-f09773a8cbd32c27ba531f5c02f52d32ef534fb3-1` |
+| Transport artifact digest | `sha256:4e2ff548297e526c6a8797ec81d95cf8cb1db20ebeb4d185cf9cd8461a2af5a5` |
+| Transport artifact UTC window | created `2026-09-01T19:01:24Z`; expires `2026-11-30T18:56:17Z` |
+| Test package version | `0.10.0-test.f09773a8cbd3.1` |
+| Test certificate SHA-256 fingerprint | `cefa6a52b6b9a50a9e2f992e3aecf7f118e765bae0da1ab2fa83eff4c02d6a10` |
+
+Independent verification downloaded both artifacts by their exact names and run ID into a clean worktree at the recorded Platform source SHA. `Test-P10TestPackageSet.ps1` accepted exactly seven `.nupkg` and seven `.snupkg` files, all seven manifest entries, hashes, source/run identities, test-only markers, and signatures pinned to the fingerprint above. `Test-P10TransportRecord.ps1` accepted the canonical transport record and its binding to package artifact ID `9815880292`, package digest `sha256:c0d79908d874fa836e1a296e94bb8955d07add5a27de20351b489385ced44aeb`, run `33546570407` attempt `1`, and Platform SHA `f09773a8cbd32c27ba531f5c02f52d32ef534fb3`. Both validators started and ended without repository-default ReleaseTool output, and left no private build residue.
 
 ## Evidence still required after S02
 
