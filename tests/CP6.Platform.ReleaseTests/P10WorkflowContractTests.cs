@@ -60,6 +60,8 @@ public sealed class P10WorkflowContractTests
         Assert.Contains("$artifact.GetProperty('expires_at').GetString()", text, StringComparison.Ordinal);
         Assert.DoesNotContain("ConvertFrom-Json", text, StringComparison.Ordinal);
         Assert.Contains("./eng/p10/New-P10TransportRecord.ps1", text, StringComparison.Ordinal);
+        Assert.Contains("./eng/p10/Test-P10TransportRecord.ps1", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("dotnet run --project tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj --configuration Release --no-build -- validate-transport", text, StringComparison.Ordinal);
     }
 
     [Fact]

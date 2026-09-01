@@ -970,6 +970,7 @@ git commit -m "feat(release): enforce trust and evidence contracts"
 - Create: `eng/p10/New-P10TestPackageSet.ps1`
 - Create: `eng/p10/Test-P10TestPackageSet.ps1`
 - Create: `eng/p10/New-P10TransportRecord.ps1`
+- Create: `eng/p10/Test-P10TransportRecord.ps1`
 - Create: `tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj`
 - Create: `tools/CP6.Platform.ReleaseTool/Program.cs`
 - Create: `tests/CP6.Platform.ReleaseTests/P10PackageTests.cs`
@@ -1112,7 +1113,7 @@ Write raw `test-package-manifest.v1.json`, `build-invocation-provenance.v1.json`
 
 - [ ] **Step 8: Implement transport record creation**
 
-`New-P10TransportRecord.ps1` runs only after package artifact upload and requires exact workflow identity plus package artifact ID, `sha256:<digest>`, API creation time, and API expiry time. It restores and builds the Release tool from the exact checkout into a GUID-scoped private artifacts path, emits canonical `test-package-transport.v1.json`, validates it with that isolated tool, and removes the private build in `finally`. It does not require or leave the repository-default `bin/Release` output, and it does not include its own artifact ID/digest.
+`New-P10TransportRecord.ps1` runs only after package artifact upload and requires exact workflow identity plus package artifact ID, `sha256:<digest>`, API creation time, and API expiry time. It restores and builds the Release tool from the exact checkout into a GUID-scoped private artifacts path, emits canonical `test-package-transport.v1.json`, validates it with that isolated tool, and removes the private build in `finally`. `Test-P10TransportRecord.ps1` independently restores and builds the same exact-source validator into a second GUID-scoped private path before transport upload. Both scripts remove their private builds, neither requires or leaves the repository-default `bin/Release` output, and the transport record does not include its own artifact ID/digest.
 
 - [ ] **Step 9: Run package tests and script tests GREEN**
 
@@ -1243,7 +1244,7 @@ jobs:
       - name: Validate transport and reject secret-shaped text
         shell: pwsh
         run: |
-          dotnet run --project tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj --configuration Release --no-build -- validate-transport artifacts/p10-test/transport/test-package-transport.v1.json ([DateTimeOffset]::UtcNow.ToString('O'))
+          ./eng/p10/Test-P10TransportRecord.ps1 -TransportPath artifacts/p10-test/transport/test-package-transport.v1.json -EvaluationUtc ([DateTimeOffset]::UtcNow.ToString('O'))
           $files = @(Get-ChildItem artifacts/p10-test/transport -Recurse -File)
           if (@($files | Where-Object { $_.Extension -in '.pfx', '.p12', '.pem', '.key' -or $_.Name -match '(?i)password|private[-_]?key' }).Count -ne 0) { throw 'Private material found in transport artifact.' }
           if (@($files | Select-String -Pattern '-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|(?i)(?:password|token|secret)\s*[:=]\s*[^\s]+').Count -ne 0) { throw 'Secret-shaped text found in transport artifact.' }
@@ -1439,9 +1440,9 @@ gh run download $runId --repo GTX537/CP6.Platform --name $transportArtifact.name
 $cerBytes = [IO.File]::ReadAllBytes((Resolve-Path artifacts/p10-s02-audit/packages/test-signing-public.cer))
 $testFingerprint = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($cerBytes)).ToLowerInvariant()
 pwsh -NoProfile -File ./eng/p10/Test-P10TestPackageSet.ps1 -PackagePath artifacts/p10-s02-audit/packages -ExpectedSourceGitSha $s01MainSha -ExpectedRunId $runId -ExpectedRunAttempt $run.run_attempt -ExpectedCertificateFingerprint $testFingerprint
-dotnet run --project tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj --configuration Release --no-build -- validate-transport artifacts/p10-s02-audit/transport/test-package-transport.v1.json ([DateTimeOffset]::UtcNow.ToString('O'))
+pwsh -NoProfile -File ./eng/p10/Test-P10TransportRecord.ps1 -TransportPath artifacts/p10-s02-audit/transport/test-package-transport.v1.json -EvaluationUtc ([DateTimeOffset]::UtcNow.ToString('O'))
 $transport = Get-Content artifacts/p10-s02-audit/transport/test-package-transport.v1.json -Raw | ConvertFrom-Json
-if ([long]$transport.packageArtifactId -ne [long]$packageArtifact.id -or $transport.packageArtifactDigest -cne $packageArtifact.digest -or [long]$transport.sourceRunId -ne [long]$runId -or [int]$transport.sourceRunAttempt -ne [int]$run.run_attempt) { throw 'Transport record does not bind the downloaded package artifact and source run.' }
+if ([long]$transport.packageArtifact.artifactId -ne [long]$packageArtifact.id -or $transport.packageArtifact.digest -cne $packageArtifact.digest -or [long]$transport.packageArtifact.sourceRunId -ne [long]$runId -or [int]$transport.packageArtifact.sourceRunAttempt -ne [int]$run.run_attempt) { throw 'Transport record does not bind the downloaded package artifact and source run.' }
 ```
 
 Expected: exactly 14 packages and all hashes, signatures, source/run identities, test-only markers, and transport fields verify.
