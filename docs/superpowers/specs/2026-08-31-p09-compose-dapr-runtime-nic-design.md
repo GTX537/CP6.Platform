@@ -13,7 +13,7 @@
 
 ## 1. 决策摘要
 
-> 2026-08-31 验证补充：固定 NIC 与网关后，本机演练通过，但 GitHub 托管 Azure runner 仍稳定失败于 Dapr service invocation；Docker Engine `28.5.2` 与 `29.3.1` 结果相同。Dapr 官方文档明确指出 Azure 虚拟网络可能不支持 mDNS。因此最终实现保留本设计的四网络、`eth0/eth1` 与 `gw_priority` 合同，同时使用 Dapr `1.18.2` 内置 `nameformat` 解析器、runtime 网络 Docker DNS AppId 别名和固定内部 gRPC 端口 `50002`。由于验收矩阵逐次验证 invocation 与 Pub/Sub Trace，演练配置同时把 Dapr 采样率固定为 `1`，不再依赖默认概率采样；不配置 exporter。启用采样后，Pub/Sub 的接收 HTTP Span 会以 Dapr consumer Span 为直接父节点，因此合同要求 CloudEvent 发布 Span、Dapr 中间父 Span 与接收 Span 位于同一 Trace 且均非零、互不相同，不再把“无中间 Span”误当作唯一合法拓扑。该校准不新增名称解析服务、静态 IP、host network 或应用到 runtime 的网络连接。
+> 2026-08-31 验证补充：固定 NIC 与网关后，本机演练通过，但 GitHub 托管 Azure runner 仍稳定失败于 Dapr service invocation；Docker Engine `28.5.2` 与 `29.3.1` 结果相同。Dapr 官方文档明确指出 Azure 虚拟网络可能不支持 mDNS。因此最终实现保留本设计的四网络、`eth0/eth1` 与 `gw_priority` 合同，同时使用 Dapr `1.18.2` 内置 `nameformat` 解析器、runtime 网络 Docker DNS AppId 别名、固定内部 gRPC 端口 `50002` 和显式跨容器监听地址 `0.0.0.0`。由于验收矩阵逐次验证 invocation 与 Pub/Sub Trace，演练配置同时把 Dapr 采样率固定为 `1`，不再依赖默认概率采样；不配置 exporter。启用采样后，Pub/Sub 的接收 HTTP Span 会以 Dapr consumer Span 为直接父节点，因此合同要求 CloudEvent 发布 Span、Dapr 中间父 Span 与接收 Span 位于同一 Trace 且均非零、互不相同，不再把“无中间 Span”误当作唯一合法拓扑。托管环境失败诊断只保留 publisher/target 的 DNS 与 TCP 闭集分类，不上传原始容器日志、地址、机器路径或凭据。该校准不新增名称解析服务、静态 IP、host network 或应用到 runtime 的网络连接。
 
 P09 Compose 演练保留现有的四网络隔离模型，但为三个双网卡 Dapr sidecar 显式固定接口名和默认网关优先级：
 

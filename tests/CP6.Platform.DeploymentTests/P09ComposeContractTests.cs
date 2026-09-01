@@ -416,6 +416,12 @@ public sealed class P09ComposeContractTests
         var wrongInternalPort = ReplaceFirst(compose, "      - \"50002\"", "      - \"50003\"");
         Assert.ThrowsAny<Exception>(() => AssertExactDaprCommands(wrongInternalPort));
 
+        var wrongInternalListenAddress = ReplaceFirst(
+            compose,
+            "      - --dapr-internal-grpc-listen-address\n      - 0.0.0.0",
+            "      - --dapr-internal-grpc-listen-address\n      - 127.0.0.1");
+        Assert.ThrowsAny<Exception>(() => AssertExactDaprCommands(wrongInternalListenAddress));
+
         var wrongNameResolution = ReadTemplate("name-resolution.yaml")
             .Replace("{appid}:50002", "{appid}:50003", StringComparison.Ordinal);
         Assert.ThrowsAny<Exception>(() => AssertExactNameResolution(wrongNameResolution));
@@ -1295,6 +1301,7 @@ public sealed class P09ComposeContractTests
                 "--dapr-http-port", "3500",
                 "--dapr-grpc-port", "50001",
                 "--dapr-internal-grpc-port", "50002",
+                "--dapr-internal-grpc-listen-address", "0.0.0.0",
                 "--config", "/run/cp6-p09/secrets/name-resolution.yaml",
                 "--resources-path", "/components",
                 "--log-level", "warn"

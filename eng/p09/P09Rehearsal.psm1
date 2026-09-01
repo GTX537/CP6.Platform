@@ -1262,6 +1262,56 @@ function Invoke-Cp6P09DaprDiagnostic {
     }
 }
 
+function Get-Cp6P09DaprTransportDiagnosticProcessSpec {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)][ValidatePattern('^cp6-p09-[a-f0-9]{16}$')][string]$ProjectName,
+        [Parameter(Mandatory)][string]$ComposeFile
+    )
+
+    $shell = @'
+set -eu
+getent hosts publisher-dapr >/dev/null 2>&1 || { printf 'publisher-sidecar-dns-unavailable\n'; exit 0; }
+timeout 4 nc -z -w 3 publisher-dapr 3500 >/dev/null 2>&1 || { printf 'publisher-sidecar-api-unreachable\n'; exit 0; }
+getent hosts cp6-p09-probe-receiver >/dev/null 2>&1 || { printf 'target-dns-unavailable\n'; exit 0; }
+timeout 4 nc -z -w 3 cp6-p09-probe-receiver 50002 >/dev/null 2>&1 || { printf 'target-internal-grpc-unreachable\n'; exit 0; }
+printf 'transport-reachable\n'
+'@.Trim()
+    [pscustomobject]@{
+        Arguments = @(
+            'compose','--project-name',$ProjectName,'--file',([IO.Path]::GetFullPath($ComposeFile)),
+            '--profile','provision','run','--no-TTY','--rm','--no-deps','--entrypoint','/bin/bash','kafka-admin','-c',$shell
+        )
+        TimeoutSeconds = 15
+        MaximumOutputBytes = 256
+    }
+}
+
+function Invoke-Cp6P09DaprTransportDiagnostic {
+    [CmdletBinding()]
+    param([Parameter(Mandatory)]$Context)
+
+    try {
+        $spec = Get-Cp6P09DaprTransportDiagnosticProcessSpec -ProjectName $Context.ProjectName -ComposeFile $Context.ComposeFile
+        $result = Invoke-Cp6P09Process -FilePath $Context.DockerCommand -ArgumentList $spec.Arguments `
+            -TimeoutSeconds $spec.TimeoutSeconds -MaximumOutputBytes $spec.MaximumOutputBytes `
+            -WorkingDirectory $Context.RepositoryRoot -EnvironmentVariables $Context.Environment
+        $text = $result.StandardOutput + $result.StandardError
+        Assert-Cp6P09SafeText -Text $text
+        if ($result.ExitCode -ne 0 -or -not [string]::IsNullOrWhiteSpace($result.StandardError)) {
+            return 'diagnostic-unavailable'
+        }
+        $category = $result.StandardOutput.Trim()
+        if ($category -cnotmatch '^(?:publisher-sidecar-dns-unavailable|publisher-sidecar-api-unreachable|target-dns-unavailable|target-internal-grpc-unreachable|transport-reachable)$') {
+            return 'diagnostic-unavailable'
+        }
+        return $category
+    }
+    catch {
+        return 'diagnostic-unavailable'
+    }
+}
+
 function Get-Cp6P09RuntimeStartFailureCategory {
     [CmdletBinding()]
     param(
@@ -1444,6 +1494,9 @@ function Invoke-Cp6P09RuntimeMatrix {
         }
         catch {
             $Context.MatrixDiagnosticCategory = Invoke-Cp6P09DaprDiagnostic -Context $Context
+            if ($Context.MatrixDiagnosticCategory -ceq 'diagnostic-unavailable') {
+                $Context.MatrixDiagnosticCategory = Invoke-Cp6P09DaprTransportDiagnostic -Context $Context
+            }
             throw
         }
         if ($invocation.appId -cne 'cp6-p09-probe-receiver' -or $invocation.invocationTraceId -cnotmatch '^[0-9a-f]{32}$') { throw 'invoke-positive' }
@@ -1762,6 +1815,8 @@ Export-ModuleMember -Function @(
     'Invoke-Cp6P09RuntimeStartStateDiagnostic',
     'Get-Cp6P09DaprDiagnosticProcessSpec',
     'Invoke-Cp6P09DaprDiagnostic',
+    'Get-Cp6P09DaprTransportDiagnosticProcessSpec',
+    'Invoke-Cp6P09DaprTransportDiagnostic',
     'Get-Cp6P09StableFailureId',
     'Assert-Cp6P09TraceTopology',
     'Assert-Cp6P09ExpectedGitState',

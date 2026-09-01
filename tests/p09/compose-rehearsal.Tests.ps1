@@ -830,7 +830,37 @@ principal=User:cp6-p09-provisioner, host=*, operation=DESCRIBE, permissionType=A
         Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
         Assert-Equal 'diagnostic-unavailable' (Invoke-Cp6P09DaprDiagnostic -Context $diagnosticContext) "Dapr diagnostic accepted $($invalidDiagnostic.name)."
     }
-    Assert-True ($moduleText -match '(?s)catch\s*\{\s*\$Context\.MatrixDiagnosticCategory\s*=\s*Invoke-Cp6P09DaprDiagnostic.+?throw\s*\}') 'Dapr diagnostic is not synchronized after final invoke-positive failure while preserving the original exception.'
+
+    $transportSpec = Get-Cp6P09DaprTransportDiagnosticProcessSpec `
+        -ProjectName 'cp6-p09-abcdef0123456789' `
+        -ComposeFile (Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml')
+    Assert-Equal 15 $transportSpec.TimeoutSeconds 'Dapr transport diagnostic outer timeout drifted.'
+    Assert-Equal 256 $transportSpec.MaximumOutputBytes 'Dapr transport diagnostic output bound drifted.'
+    Assert-Equal @(
+        'compose','--project-name','cp6-p09-abcdef0123456789','--file',(Join-Path $repositoryRoot 'deploy\p09\compose\compose.yaml'),
+        '--profile','provision','run','--no-TTY','--rm','--no-deps','--entrypoint','/bin/bash','kafka-admin','-c'
+    ) @($transportSpec.Arguments[0..14]) 'Dapr transport diagnostic escaped the exact canonical kafka-admin one-off.'
+    $transportShell = [string]$transportSpec.Arguments[15]
+    foreach ($fixedProbe in @('publisher-dapr','cp6-p09-probe-receiver','3500','50002','getent hosts','nc -z -w 3')) {
+        Assert-True ($transportShell.Contains($fixedProbe)) "Dapr transport diagnostic omitted $fixedProbe."
+    }
+    Assert-True ($transportShell -notmatch '\$|(?i)password|token|secret') 'Dapr transport diagnostic contains interpolation or secret material.'
+    foreach ($transportCategory in @('publisher-sidecar-dns-unavailable','publisher-sidecar-api-unreachable','target-dns-unavailable','target-internal-grpc-unreachable','transport-reachable')) {
+        @{ exitCode=0; stdout="$transportCategory`n"; stderr='' } |
+            ConvertTo-Json -Compress | Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
+        Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
+        Assert-Equal $transportCategory (Invoke-Cp6P09DaprTransportDiagnostic -Context $diagnosticContext) "Dapr transport diagnostic rejected $transportCategory."
+    }
+    foreach ($invalidTransport in @(
+        @{ exitCode=1; stdout="transport-reachable`n"; stderr='' }
+        @{ exitCode=0; stdout="foreign-category`n"; stderr='' }
+        @{ exitCode=0; stdout="transport-reachable`ntransport-reachable`n"; stderr='' }
+    )) {
+        $invalidTransport | ConvertTo-Json -Compress | Set-Content -LiteralPath $diagnosticResponses -Encoding utf8NoBOM
+        Remove-Item -LiteralPath "$diagnosticLog.index" -Force -ErrorAction SilentlyContinue
+        Assert-Equal 'diagnostic-unavailable' (Invoke-Cp6P09DaprTransportDiagnostic -Context $diagnosticContext) 'Dapr transport diagnostic accepted malformed output.'
+    }
+    Assert-True ($moduleText -match '(?s)catch\s*\{\s*\$Context\.MatrixDiagnosticCategory\s*=\s*Invoke-Cp6P09DaprDiagnostic.+?Invoke-Cp6P09DaprTransportDiagnostic.+?throw\s*\}') 'Dapr diagnostics are not synchronized after final invoke-positive failure while preserving the original exception.'
     Assert-True ($moduleText.Contains('DiagnosticCategory=$context.MatrixDiagnosticCategory')) 'Runner result does not expose only the closed Dapr diagnostic category.'
     $env:CP6_P09_FAKE_DOCKER_LOG = $fakeLog
     $env:CP6_P09_FAKE_DOCKER_RESPONSES = ''

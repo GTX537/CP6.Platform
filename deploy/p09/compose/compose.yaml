@@ -111,6 +111,8 @@ services:
       - "50001"
       - --dapr-internal-grpc-port
       - "50002"
+      - --dapr-internal-grpc-listen-address
+      - 0.0.0.0
       - --config
       - /run/cp6-p09/secrets/name-resolution.yaml
       - --resources-path
@@ -168,6 +170,8 @@ services:
       - "50001"
       - --dapr-internal-grpc-port
       - "50002"
+      - --dapr-internal-grpc-listen-address
+      - 0.0.0.0
       - --config
       - /run/cp6-p09/secrets/name-resolution.yaml
       - --resources-path
@@ -226,6 +230,8 @@ services:
       - "50001"
       - --dapr-internal-grpc-port
       - "50002"
+      - --dapr-internal-grpc-listen-address
+      - 0.0.0.0
       - --config
       - /run/cp6-p09/secrets/name-resolution.yaml
       - --resources-path
