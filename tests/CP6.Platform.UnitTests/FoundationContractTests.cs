@@ -70,11 +70,11 @@ public sealed class FoundationContractTests
     }
 
     [Fact]
-    public void SourceProjects_FreezeSixPackableRuntimePackagesAndRepositoryOnlyTesting()
+    public void SourceProjects_FreezeSevenPackableRuntimePackagesAndRepositoryOnlyTesting()
     {
         var projects = Directory.GetFiles(Path.Combine(RepositoryRoot, "src"), "*.csproj", SearchOption.AllDirectories);
 
-        Assert.Equal(7, projects.Length);
+        Assert.Equal(8, projects.Length);
         var packageStates = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var project in projects)
         {
