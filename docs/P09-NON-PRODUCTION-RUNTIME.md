@@ -2,14 +2,14 @@
 
 | Field | Value |
 | --- | --- |
-| Status | `Implemented / Rehearsal Candidate` |
+| Status | `Published / Consumer Candidate` |
 | Repository version | `0.9.0.0` |
 | Deployment package candidate | `CP6.Platform.Deployment 0.9.0-alpha.1` |
-| Implemented stages | `P09-S01`, `P09-S02`, `P09-S03` |
-| Publication stage | `P09-S04` automation ready; upload and evidence pending |
+| Completed stages | `P09-S01`, `P09-S02`, `P09-S03`, `P09-S04` |
+| Publication stage | `P09-S04: Complete`; independently verified evidence is in `P09-PUBLICATION.md` |
 | Deferred stages | `P09-S05`, `P09-S06` |
 
-This status describes the producer implementation and rehearsal evidence only. It becomes the authoritative implementation candidate after the branch is merged and the exact-main `platform-validation` workflow passes. Package publication, CRM consumption, public project-memory synchronization, real environment rollout, and the final reusable-state decision remain separate later stages.
+This status describes the published producer package and its exact-main rehearsal evidence. `CP6.Platform.Deployment 0.9.0-alpha.1` was published from Platform commit `1c40f21e38929abaaa6006f69ee70d4492890661` by run `33480300468` and independently matched at SHA-256 `e820d1771ed004b4a7089d008eef3bb2aca4fe35e4912d67057840373c4952cb`. CRM consumption, public project-memory synchronization, real environment rollout, and the final reusable-state decision remain separate later stages.
 
 ## Scope
 
@@ -110,11 +110,11 @@ The CI overlay uses nondeployable `example.invalid` image identities and `cp6.io
 
 | Stage | Candidate state | Exit boundary |
 | --- | --- | --- |
-| `P09-S01` | Complete on this implementation branch | Profile, Schema, validator, independent package boundary, positive/negative tests |
-| `P09-S02` | Complete on this implementation branch | Exact-SHA real Dapr/Kafka matrix, canonical evidence, zero residue |
-| `P09-S03` | Complete on this implementation branch | Deterministic offline Kubernetes render/dry-run/policy matrix |
-| `P09-S04` | Implementation ready; publication pending | Exact-main immutable package publication and retained hashes |
+| `P09-S01` | Complete on Platform main | Profile, Schema, validator, independent package boundary, positive/negative tests |
+| `P09-S02` | Complete on Platform main | Exact-SHA real Dapr/Kafka matrix, canonical evidence, zero residue |
+| `P09-S03` | Complete on Platform main | Deterministic offline Kubernetes render/dry-run/policy matrix |
+| `P09-S04` | Complete; published and independently verified | Exact-main immutable package publication, Registry download match, and retained hashes |
 | `P09-S05` | Not started | CRM fixed-version black-box consumption and locator evidence |
 | `P09-S06` | Not started | Public project-memory synchronization and final Platform audit |
 
-The allowed state at this boundary is only `Implemented / Rehearsal Candidate`.
+The allowed state at this boundary is only `Published / Consumer Candidate`: S01-S04 complete; S05-S06 pending.
