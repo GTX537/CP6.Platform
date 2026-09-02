@@ -833,7 +833,8 @@ Assert manual exact-main inputs `expected_commit` and `version`, exact version
 `ubuntu-latest` job, pinned actions, publish before feed download, Windows
 verification before upload, Linux verification after read-back, immutable
 artifacts, and unconditional cleanup. Assert no deploy, R2, cosign, Azure,
-`--skip-duplicate`, or package deletion text.
+`--skip-duplicate`, or package deletion text. Assert the exact Node 24-compatible
+Action pins below and reject the legacy Node 20 pins used by the existing CI.
 
 Run and expect failure because the workflow is absent.
 
@@ -851,7 +852,15 @@ sign-publish:
     packages: write
 ```
 
-Use the already pinned checkout, setup-dotnet, and upload-artifact commits.
+Pin every third-party Action to these verified Node 24-compatible commits:
+
+```text
+actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68
+actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+```
+
 Pass Secrets only to the signing step. Upload only downloaded public `.nupkg`,
 public CER/trust, provenance, hashes, and sanitized Windows results with
 `overwrite: false`.
@@ -859,7 +868,7 @@ public CER/trust, provenance, hashes, and sanitized Windows results with
 - [ ] **Step 3: Implement independent `verify-linux`**
 
 The Linux job depends on `sign-publish`, downloads the public artifact with
-`actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093`, runs
+`actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c`, runs
 the same formal verifier in Current mode on all seven feed-read-back package
 bytes, creates the final canonical publication record, validates it, scans for
 secret-shaped files/text, and uploads only the final evidence with
