@@ -112,6 +112,8 @@ $originalGitHubRef = [Environment]::GetEnvironmentVariable('GITHUB_REF')
 $originalGitHubSha = [Environment]::GetEnvironmentVariable('GITHUB_SHA')
 $originalExternalReady = [Environment]::GetEnvironmentVariable('S04_EXTERNAL_PREREQUISITES_READY')
 $originalGitHubToken = [Environment]::GetEnvironmentVariable('GITHUB_TOKEN')
+$originalGitHubActions = [Environment]::GetEnvironmentVariable('GITHUB_ACTIONS')
+$originalRejectSecretList = [Environment]::GetEnvironmentVariable('CP6_TEST_REJECT_SECRET_LIST')
 
 try {
     $fakeGh = Join-Path $testRoot 'fake-gh.ps1'
@@ -325,6 +327,7 @@ exit 31
         $preflightOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') @preflightArguments 2>&1 | Out-String
         Assert-True ($LASTEXITCODE -eq 0) "All-seven-absent preflight failed: $preflightOutput"
         Assert-True ($preflightOutput -match 'Success') 'All-seven-absent preflight must succeed.'
+        $env:GITHUB_ACTIONS = $null
         $localBypassOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') `
             @preflightArguments -UseProtectedEnvironmentSecretBinding 2>&1 | Out-String
         Assert-True ($LASTEXITCODE -ne 0) 'Protected Environment binding mode must reject non-Actions callers.'
@@ -336,7 +339,7 @@ exit 31
         Assert-True ($LASTEXITCODE -eq 0) "Protected Environment binding preflight failed: $protectedBindingOutput"
         Assert-True ($protectedBindingOutput -match 'ProtectedEnvironmentBinding') 'Protected Environment binding mode must be explicit in preflight evidence.'
         $env:CP6_TEST_REJECT_SECRET_LIST = $null
-        $env:GITHUB_ACTIONS = $null
+        $env:GITHUB_ACTIONS = $originalGitHubActions
         $env:CP6_TEST_EXISTING_PACKAGE = 'CP6.Platform.Deployment'
         $conflictOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') @preflightArguments 2>&1 | Out-String
         Assert-True ($LASTEXITCODE -ne 0) 'An existing formal version must fail preflight.'
@@ -574,6 +577,8 @@ finally {
     [Environment]::SetEnvironmentVariable('GITHUB_SHA', $originalGitHubSha)
     [Environment]::SetEnvironmentVariable('S04_EXTERNAL_PREREQUISITES_READY', $originalExternalReady)
     [Environment]::SetEnvironmentVariable('GITHUB_TOKEN', $originalGitHubToken)
+    [Environment]::SetEnvironmentVariable('GITHUB_ACTIONS', $originalGitHubActions)
+    [Environment]::SetEnvironmentVariable('CP6_TEST_REJECT_SECRET_LIST', $originalRejectSecretList)
     if (Test-Path -LiteralPath $testRoot) {
         Remove-Item -LiteralPath $testRoot -Recurse -Force
     }
