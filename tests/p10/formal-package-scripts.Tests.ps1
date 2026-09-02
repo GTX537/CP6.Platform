@@ -331,7 +331,7 @@ exit 31
         $localBypassOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') `
             @preflightArguments -UseProtectedEnvironmentSecretBinding 2>&1 | Out-String
         Assert-True ($LASTEXITCODE -ne 0) 'Protected Environment binding mode must reject non-Actions callers.'
-        Assert-True ($localBypassOutput -match 'allowed only inside GitHub Actions') 'Rejected local binding bypass must report its boundary.'
+        Assert-True ($localBypassOutput -match 'p10-signing-secrets' -and $localBypassOutput -match 'inside GitHub Actions') 'Rejected local binding bypass must report its boundary.'
         $env:CP6_TEST_REJECT_SECRET_LIST = 'true'
         $env:GITHUB_ACTIONS = 'true'
         $protectedBindingOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') `
