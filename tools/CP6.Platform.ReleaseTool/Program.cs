@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Text.Json;
 using CP6.Platform.Release;
 using NuGet.Common;
 using NuGet.Packaging;
@@ -27,6 +28,39 @@ static async Task<int> RunAsync(string[] arguments)
                 return 0;
             case ["validate-transport", _, _]:
                 return 64;
+            case ["validate-nuget-trust", var policyPath, var certificateDirectory]:
+                var policy = FormalPackageVerifier.LoadTrustPolicy(policyPath, certificateDirectory);
+                Console.WriteLine(policy.ValidatedDocument.Sha256);
+                return 0;
+            case ["verify-formal-package", var packagePath, var policyPath, var certificateDirectory,
+                var packageId, var version, var sourceGitSha, var evaluationText, var modeText]
+                when TryParseCanonicalUtc(evaluationText, out var evaluationUtc) &&
+                     Enum.TryParse<Cp6ReleaseValidationMode>(modeText, ignoreCase: false, out var mode):
+                var result = await FormalPackageVerifier.VerifyAsync(
+                    packagePath,
+                    policyPath,
+                    certificateDirectory,
+                    packageId,
+                    version,
+                    sourceGitSha,
+                    evaluationUtc,
+                    mode,
+                    CancellationToken.None);
+                Console.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                }));
+                return 0;
+            case ["verify-formal-package", ..]:
+                return 64;
+            case ["download-package", var sourceUrl, var packageId, var version, var destinationPath]:
+                await NuGetPackageDownloader.DownloadAsync(
+                    sourceUrl,
+                    packageId,
+                    version,
+                    destinationPath,
+                    CancellationToken.None);
+                return 0;
             case ["verify-test-package", var packagePath, var certificateFingerprint]
                 when IsCanonicalSha256(certificateFingerprint):
                 return await VerifyTestPackageAsync(packagePath, certificateFingerprint) ? 0 : 2;
@@ -98,5 +132,17 @@ static bool TryParseUtcRoundTrip(string value, out DateTimeOffset result)
             CultureInfo.InvariantCulture,
             DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal,
             out result) &&
+        result.Offset == TimeSpan.Zero;
+}
+
+static bool TryParseCanonicalUtc(string value, out DateTimeOffset result)
+{
+    result = default;
+    return DateTimeOffset.TryParseExact(
+        value,
+        "yyyy-MM-dd'T'HH:mm:ss.fff'Z'",
+        CultureInfo.InvariantCulture,
+        DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal,
+        out result) &&
         result.Offset == TimeSpan.Zero;
 }
