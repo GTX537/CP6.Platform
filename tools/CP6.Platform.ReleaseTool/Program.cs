@@ -32,6 +32,17 @@ static async Task<int> RunAsync(string[] arguments)
                 var policy = FormalPackageVerifier.LoadTrustPolicy(policyPath, certificateDirectory);
                 Console.WriteLine(policy.ValidatedDocument.Sha256);
                 return 0;
+            case ["validate-formal-publication", var publicationPath, var policyPath, var certificateDirectory, var evaluationText]
+                when TryParseCanonicalUtc(evaluationText, out var publicationEvaluationUtc):
+                var publicationPolicy = FormalPackageVerifier.LoadTrustPolicy(policyPath, certificateDirectory);
+                var publication = Cp6FormalPackagePublicationValidator.ValidateFormalPackagePublication(
+                    File.ReadAllBytes(publicationPath),
+                    publicationPolicy,
+                    publicationEvaluationUtc);
+                Console.WriteLine(publication.Sha256);
+                return 0;
+            case ["validate-formal-publication", ..]:
+                return 64;
             case ["verify-formal-package", var packagePath, var policyPath, var certificateDirectory,
                 var packageId, var version, var sourceGitSha, var evaluationText, var modeText]
                 when TryParseCanonicalUtc(evaluationText, out var evaluationUtc) &&
