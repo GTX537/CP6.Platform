@@ -23,9 +23,9 @@ public sealed class P10FormalWorkflowContractTests
         Assert.Contains("expected_commit:", text, StringComparison.Ordinal);
         Assert.Contains("version:", text, StringComparison.Ordinal);
         Assert.Equal(2, Count(text, "required: true"));
-        Assert.Contains("if ('${{ github.ref }}' -cne 'refs/heads/main')", text, StringComparison.Ordinal);
-        Assert.Contains("if ('${{ github.sha }}' -cne '${{ inputs.expected_commit }}')", text, StringComparison.Ordinal);
-        Assert.Contains("if ('${{ inputs.version }}' -cne '0.10.0')", text, StringComparison.Ordinal);
+        Assert.Contains("if ($env:P10_EVENT_REF -cne 'refs/heads/main')", text, StringComparison.Ordinal);
+        Assert.Contains("if ($env:P10_EVENT_SHA -cne $env:P10_EXPECTED_COMMIT)", text, StringComparison.Ordinal);
+        Assert.Contains("if ($env:P10_PACKAGE_VERSION -cne '0.10.0')", text, StringComparison.Ordinal);
         Assert.Contains("ref: ${{ github.sha }}", text, StringComparison.Ordinal);
         Assert.Contains("sign-publish:\n    runs-on: windows-2025\n    timeout-minutes: 45\n    environment: p10-formal-release\n    permissions:\n      contents: read\n      packages: write", Normalize(text), StringComparison.Ordinal);
         Assert.DoesNotContain("id-token: write", text, StringComparison.OrdinalIgnoreCase);
@@ -146,11 +146,54 @@ public sealed class P10FormalWorkflowContractTests
         }
     }
 
+    [Fact]
+    public void GitHub_context_values_are_never_interpolated_into_powershell_source()
+    {
+        var text = File.ReadAllText(WorkflowPath);
+        var runScripts = ExtractRunScripts(text);
+
+        Assert.DoesNotContain("${{", runScripts, StringComparison.Ordinal);
+        Assert.Contains("P10_EXPECTED_COMMIT: ${{ inputs.expected_commit }}", text, StringComparison.Ordinal);
+        Assert.Contains("P10_PACKAGE_VERSION: ${{ inputs.version }}", text, StringComparison.Ordinal);
+        Assert.Contains("P10_EVENT_SHA: ${{ github.sha }}", text, StringComparison.Ordinal);
+        Assert.Contains("P10_EVENT_REF: ${{ github.ref }}", text, StringComparison.Ordinal);
+    }
+
     private static string ArtifactUploadBlock(string text, int uploadIndex)
     {
         Assert.True(uploadIndex >= 0, "Windows artifact upload step is missing.");
         var nextStep = text.IndexOf("\n      - name:", uploadIndex + 1, StringComparison.Ordinal);
         return nextStep < 0 ? text[uploadIndex..] : text[uploadIndex..nextStep];
+    }
+
+    private static string ExtractRunScripts(string text)
+    {
+        var lines = Normalize(text).Split('\n');
+        var scripts = new List<string>();
+        for (var index = 0; index < lines.Length; index++)
+        {
+            var marker = lines[index];
+            if (!string.Equals(marker.Trim(), "run: |", StringComparison.Ordinal))
+            {
+                continue;
+            }
+
+            var markerIndent = marker.Length - marker.TrimStart().Length;
+            for (index++; index < lines.Length; index++)
+            {
+                var line = lines[index];
+                var indent = line.Length - line.TrimStart().Length;
+                if (line.Length != 0 && indent <= markerIndent)
+                {
+                    index--;
+                    break;
+                }
+
+                scripts.Add(line);
+            }
+        }
+
+        return string.Join('\n', scripts);
     }
 
     private static string Normalize(string value) => value.Replace("\r\n", "\n", StringComparison.Ordinal);

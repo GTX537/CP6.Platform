@@ -20,6 +20,11 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env:
+      P10_EXPECTED_COMMIT: ${{ inputs.expected_commit }}
+      P10_PACKAGE_VERSION: ${{ inputs.version }}
+      P10_EVENT_REF: ${{ github.ref }}
+      P10_EVENT_SHA: ${{ github.sha }}
     steps:
       - name: Check out exact dispatch source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -34,10 +39,10 @@ jobs:
       - name: Assert exact main source and fixed formal version
         shell: pwsh
         run: |
-          if ('${{ github.ref }}' -cne 'refs/heads/main') { throw 'Formal publication must be dispatched from main.' }
-          if ('${{ github.sha }}' -cne '${{ inputs.expected_commit }}') { throw 'Expected commit differs from the dispatch event main SHA.' }
-          if ('${{ inputs.version }}' -cne '0.10.0') { throw 'Formal package version must be exactly 0.10.0.' }
-          if ((git rev-parse HEAD).Trim() -cne '${{ github.sha }}') { throw 'Checkout differs from the dispatch event SHA.' }
+          if ($env:P10_EVENT_REF -cne 'refs/heads/main') { throw 'Formal publication must be dispatched from main.' }
+          if ($env:P10_EVENT_SHA -cne $env:P10_EXPECTED_COMMIT) { throw 'Expected commit differs from the dispatch event main SHA.' }
+          if ($env:P10_PACKAGE_VERSION -cne '0.10.0') { throw 'Formal package version must be exactly 0.10.0.' }
+          if ((git rev-parse HEAD).Trim() -cne $env:P10_EVENT_SHA) { throw 'Checkout differs from the dispatch event SHA.' }
       - name: Build public release verifier
         shell: pwsh
         run: |
@@ -51,6 +56,10 @@ jobs:
           P10_NUGET_SIGNING_PFX_BASE64: ${{ secrets.P10_NUGET_SIGNING_PFX_BASE64 }}
           P10_NUGET_SIGNING_PFX_PASSWORD: ${{ secrets.P10_NUGET_SIGNING_PFX_PASSWORD }}
           S04_EXTERNAL_PREREQUISITES_READY: ${{ vars.S04_EXTERNAL_PREREQUISITES_READY }}
+          P10_CRM_TRUST_POLICY_SHA256: ${{ vars.P10_CRM_TRUST_POLICY_SHA256 }}
+          P10_SYSTEM_TRUST_POLICY_SHA256: ${{ vars.P10_SYSTEM_TRUST_POLICY_SHA256 }}
+          P10_CRM_CERTIFICATE_SHA256: ${{ vars.P10_CRM_CERTIFICATE_SHA256 }}
+          P10_SYSTEM_CERTIFICATE_SHA256: ${{ vars.P10_SYSTEM_CERTIFICATE_SHA256 }}
           GH_TOKEN: ${{ github.token }}
           GITHUB_TOKEN: ${{ github.token }}
         run: |
@@ -59,36 +68,36 @@ jobs:
           $trustPolicy = 'eng/p10/trust/p10-formal-nuget-trust-store.v1.json'
           $certificateDirectory = 'eng/p10/trust/certificates'
           $preflight = ./eng/p10/Test-P10FormalPrerequisites.ps1 `
-            -Repository '${{ github.repository }}' `
+            -Repository $env:GITHUB_REPOSITORY `
             -Environment 'p10-formal-release' `
-            -PackageVersion '${{ inputs.version }}' `
-            -ExpectedCommit '${{ inputs.expected_commit }}' `
+            -PackageVersion $env:P10_PACKAGE_VERSION `
+            -ExpectedCommit $env:P10_EXPECTED_COMMIT `
             -CheckoutCommit $checkoutCommit `
             -TrustPolicyPath $trustPolicy `
             -CertificateDirectory $certificateDirectory `
-            -CrmTrustPolicySha256 '${{ vars.P10_CRM_TRUST_POLICY_SHA256 }}'.ToLowerInvariant() `
-            -SystemTrustPolicySha256 '${{ vars.P10_SYSTEM_TRUST_POLICY_SHA256 }}'.ToLowerInvariant() `
-            -CrmCertificateSha256 '${{ vars.P10_CRM_CERTIFICATE_SHA256 }}'.ToLowerInvariant() `
-            -SystemCertificateSha256 '${{ vars.P10_SYSTEM_CERTIFICATE_SHA256 }}'.ToLowerInvariant() `
+            -CrmTrustPolicySha256 $env:P10_CRM_TRUST_POLICY_SHA256.ToLowerInvariant() `
+            -SystemTrustPolicySha256 $env:P10_SYSTEM_TRUST_POLICY_SHA256.ToLowerInvariant() `
+            -CrmCertificateSha256 $env:P10_CRM_CERTIFICATE_SHA256.ToLowerInvariant() `
+            -SystemCertificateSha256 $env:P10_SYSTEM_CERTIFICATE_SHA256.ToLowerInvariant() `
             -UseProtectedEnvironmentSecretBinding `
             -ReleaseToolPath $releaseTool
           if ($preflight.Status -cne 'Success') { throw 'Formal prerequisite preflight did not return Success.' }
 
           ./eng/p10/New-P10FormalPackageSet.ps1 `
-            -SourceGitSha '${{ inputs.expected_commit }}' `
-            -RunId ${{ github.run_id }} `
-            -RunAttempt ${{ github.run_attempt }} `
-            -PackageVersion '${{ inputs.version }}' `
+            -SourceGitSha $env:P10_EXPECTED_COMMIT `
+            -RunId ([long]$env:GITHUB_RUN_ID) `
+            -RunAttempt ([int]$env:GITHUB_RUN_ATTEMPT) `
+            -PackageVersion $env:P10_PACKAGE_VERSION `
             -OutputPath 'artifacts/p10-formal/package-set' `
             -TrustPolicyPath $trustPolicy `
             -CertificateDirectory $certificateDirectory
 
           ./eng/p10/Publish-P10FormalPackageSet.ps1 `
             -PackagePath 'artifacts/p10-formal/package-set/packages' `
-            -PackageVersion '${{ inputs.version }}' `
-            -SourceGitSha '${{ inputs.expected_commit }}' `
-            -RunId ${{ github.run_id }} `
-            -RunAttempt ${{ github.run_attempt }} `
+            -PackageVersion $env:P10_PACKAGE_VERSION `
+            -SourceGitSha $env:P10_EXPECTED_COMMIT `
+            -RunId ([long]$env:GITHUB_RUN_ID) `
+            -RunAttempt ([int]$env:GITHUB_RUN_ATTEMPT) `
             -PreflightStatus Success `
             -TrustPolicyPath $trustPolicy `
             -CertificateDirectory $certificateDirectory `
@@ -153,7 +162,7 @@ jobs:
         if: ${{ always() }}
         shell: pwsh
         run: |
-          $scanRoots = @($env:RUNNER_TEMP, (Join-Path '${{ github.workspace }}' 'artifacts/p10-formal'))
+          $scanRoots = @($env:RUNNER_TEMP, (Join-Path $env:GITHUB_WORKSPACE 'artifacts/p10-formal'))
           $residue = @()
           foreach ($root in $scanRoots) {
             if (Test-Path -LiteralPath $root) {
@@ -169,8 +178,8 @@ jobs:
             if (-not $directory.FullName.StartsWith($runnerTemp, [StringComparison]::OrdinalIgnoreCase)) { throw 'Cleanup target escaped RUNNER_TEMP.' }
             Remove-Item -LiteralPath $directory.FullName -Recurse -Force
           }
-          $formalRoot = [IO.Path]::GetFullPath((Join-Path '${{ github.workspace }}' 'artifacts/p10-formal'))
-          $artifactParent = [IO.Path]::GetFullPath((Join-Path '${{ github.workspace }}' 'artifacts'))
+          $formalRoot = [IO.Path]::GetFullPath((Join-Path $env:GITHUB_WORKSPACE 'artifacts/p10-formal'))
+          $artifactParent = [IO.Path]::GetFullPath((Join-Path $env:GITHUB_WORKSPACE 'artifacts'))
           if ((Test-Path -LiteralPath $formalRoot) -and $formalRoot.StartsWith($artifactParent, [StringComparison]::OrdinalIgnoreCase)) {
             Remove-Item -LiteralPath $formalRoot -Recurse -Force
           }
@@ -182,6 +191,11 @@ jobs:
     timeout-minutes: 20
     permissions:
       contents: read
+    env:
+      P10_EXPECTED_COMMIT: ${{ inputs.expected_commit }}
+      P10_PACKAGE_VERSION: ${{ inputs.version }}
+      P10_EVENT_REF: ${{ github.ref }}
+      P10_EVENT_SHA: ${{ github.sha }}
     steps:
       - name: Check out exact verified source
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
@@ -196,10 +210,10 @@ jobs:
       - name: Assert Linux source identity
         shell: pwsh
         run: |
-          if ('${{ github.ref }}' -cne 'refs/heads/main') { throw 'Linux verification must use main.' }
-          if ('${{ github.sha }}' -cne '${{ inputs.expected_commit }}') { throw 'Linux event SHA differs from the approved commit.' }
-          if ('${{ inputs.version }}' -cne '0.10.0') { throw 'Linux verifier accepts only formal version 0.10.0.' }
-          if ((git rev-parse HEAD).Trim() -cne '${{ inputs.expected_commit }}') { throw 'Linux checkout differs from the approved commit.' }
+          if ($env:P10_EVENT_REF -cne 'refs/heads/main') { throw 'Linux verification must use main.' }
+          if ($env:P10_EVENT_SHA -cne $env:P10_EXPECTED_COMMIT) { throw 'Linux event SHA differs from the approved commit.' }
+          if ($env:P10_PACKAGE_VERSION -cne '0.10.0') { throw 'Linux verifier accepts only formal version 0.10.0.' }
+          if ((git rev-parse HEAD).Trim() -cne $env:P10_EXPECTED_COMMIT) { throw 'Linux checkout differs from the approved commit.' }
       - name: Download immutable Windows read-back evidence
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
         with:
@@ -219,8 +233,8 @@ jobs:
           $releaseTool = (Resolve-Path tools/CP6.Platform.ReleaseTool/bin/Release/net8.0/CP6.Platform.ReleaseTool.dll).Path
           ./eng/p10/Test-P10FormalPackageSet.ps1 `
             -PackagePath "$publicRoot/feed-readback-packages" `
-            -ExpectedVersion '${{ inputs.version }}' `
-            -ExpectedSourceGitSha '${{ inputs.expected_commit }}' `
+            -ExpectedVersion $env:P10_PACKAGE_VERSION `
+            -ExpectedSourceGitSha $env:P10_EXPECTED_COMMIT `
             -TrustPolicyPath "$publicRoot/trust/p10-formal-nuget-trust-store.v1.json" `
             -CertificateDirectory "$publicRoot/trust/certificates" `
             -BuildProvenancePath "$publicRoot/evidence/build-invocation-provenance.v1.json" `
@@ -233,11 +247,11 @@ jobs:
             -WindowsVerificationPath "$publicRoot/verification/windows/formal-package-verification.v1.json" `
             -LinuxVerificationEvidencePath 'artifacts/p10-formal/verification/linux/formal-package-verification.v1.json' `
             -LinuxVerification Success `
-            -PackageVersion '${{ inputs.version }}' `
-            -SourceGitSha '${{ inputs.expected_commit }}' `
+            -PackageVersion $env:P10_PACKAGE_VERSION `
+            -SourceGitSha $env:P10_EXPECTED_COMMIT `
             -WorkflowFileSha ([string]$toolchain.workflowFileSha) `
-            -RunId ${{ github.run_id }} `
-            -RunAttempt ${{ github.run_attempt }} `
+            -RunId ([long]$env:GITHUB_RUN_ID) `
+            -RunAttempt ([int]$env:GITHUB_RUN_ATTEMPT) `
             -DotNetSdk ([string]$toolchain.dotnetSdk) `
             -NuGetClient ([string]$toolchain.nugetClient) `
             -RunnerImage ([string]$toolchain.runnerImage) `
