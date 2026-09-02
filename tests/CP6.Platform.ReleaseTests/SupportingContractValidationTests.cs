@@ -89,6 +89,7 @@ public sealed class SupportingContractValidationTests
     }
 
     [Theory]
+    [InlineData("pinned-trust-store.v1.schema.json", "trust.valid.json")]
     [InlineData("pinned-nuget-trust-store.v1.schema.json", "pinned-nuget-trust.valid.json")]
     [InlineData("formal-package-publication.v1.schema.json", "formal-package-publication.valid.json")]
     [InlineData("formal-package-publication.v1.schema.json", "formal-package-publication-changed-published-bytes.invalid.json")]

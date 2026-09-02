@@ -14,11 +14,23 @@
       "uniqueItems": true,
       "items": {
         "type": "object",
-        "required": ["id", "endpoint", "bucket"],
+        "required": ["accessMode", "accountId", "allowedPrefixes", "bucket", "endpointTemplate", "id", "jurisdiction", "maxObjectBytes", "provider"],
         "properties": {
+          "accessMode": { "const": "AuthenticatedReadConditionalCreate" },
+          "accountId": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
+          "allowedPrefixes": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "uniqueItems": true,
+            "items": { "enum": ["candidates/platform/", "objects/sha256/"] }
+          },
+          "bucket": { "const": "cp6-release" },
+          "endpointTemplate": { "const": "https://{accountId}.r2.cloudflarestorage.com" },
           "id": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/storageAuthority" },
-          "endpoint": { "type": "string", "pattern": "^https://[A-Za-z0-9.-]+$" },
-          "bucket": { "type": "string", "pattern": "^[a-z0-9][a-z0-9.-]{1,62}$" }
+          "jurisdiction": { "const": "default" },
+          "maxObjectBytes": { "const": 4194304 },
+          "provider": { "const": "cloudflare-r2" }
         },
         "additionalProperties": false
       }

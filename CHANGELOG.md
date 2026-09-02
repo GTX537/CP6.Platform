@@ -8,6 +8,7 @@ All notable changes to CP6.Platform are documented here.
 - Add the `cp6-deterministic-json-v1` canonical byte profile, fail-closed semantic validators, and a repository-local validation CLI.
 - Create an exact seven-package test-only candidate flow with temporary certificate signing, local verification, immutable GitHub Actions artifact transport, and no package-feed publication.
 - Record the S00-S02 ceiling as `Implemented / Test Candidate` with `testOnly=true` and `deployable=false`; formal package publication, System candidate publication, Portal fabrication, R2 Locator publication, and deployment remain denied.
+- Retain the complete pinned Cloudflare R2 authority mapping in the pre-publication v1 trust contract so S06 can derive and enforce the approved endpoint, bucket, prefixes, access mode, and object-size ceiling without trusting Locator-supplied storage coordinates.
 
 ## 0.9.0.0 - 2026-08-31
 

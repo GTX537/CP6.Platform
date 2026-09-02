@@ -72,6 +72,14 @@ All schemas and `assets.v1.json` live under `contracts/release/v1/` and are pack
 
 Fail-closed limits are 4 MiB per JSON document, depth 32, 256 members per object, 4,096 entries per array, and 65,536 UTF-8 bytes per string. `CP6.Platform.ReleaseTool canonicalize` is the only repository script boundary used to produce final contract bytes.
 
+## Pinned R2 storage authority
+
+`pinned-trust-store.v1` retains one complete Cloudflare R2 authority instead of accepting storage coordinates from a Locator. Its authority ID is `cp6-release-r2-v1`, provider is `cloudflare-r2`, jurisdiction is `default`, bucket is `cp6-release`, and endpoint is derived only from the pinned account ID through `https://{accountId}.r2.cloudflarestorage.com`. The only accepted object prefixes are `candidates/platform/` and `objects/sha256/`; the access mode is `AuthenticatedReadConditionalCreate` and the per-object ceiling is 4 MiB. Repository fixtures use a non-production all-`1` account ID. The later reviewed public trust-policy instance must supply the real public account ID.
+
+Consumers use a permanent credential limited to authenticated, read-only access to `cp6-release`. Publication uses a short-lived R2 session credential narrowed to the two approved prefixes and performs a conditional `PutObject` with `If-None-Match: *`; normal publication has no list, delete, copy, or multipart permission. The parent bucket-scoped write identity remains a protected Environment secret and is not represented in any public trust document.
+
+This pre-publication contract correction creates no credential, signing key, candidate, Locator, bundle, or R2 object. It does not dispatch the formal package workflow and does not advance the P10 status beyond **S04 tooling implemented / publication not started**.
+
 ## System and Platform lane separation
 
 The System lane is production-only. It requires exact identities for `CP6`, `CP6.Platform`, `CP6.CRM`, and `CP6.Portal`, plus compatible packages, images, schemas, migrations, evidence, trust policy, release gates, and lineage. P10 implements rejection and positive-shape validation, but S00–S02 publish no successful System instance.
