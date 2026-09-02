@@ -11,6 +11,20 @@ public sealed class FormalPackageVerifierTests
     private static readonly TimeSpan ProcessTimeout = TimeSpan.FromMinutes(5);
 
     [Fact]
+    public void Cli_validates_pinned_cosign_and_storage_trust()
+    {
+        var valid = Path.Combine(
+            ReleaseTestData.RepositoryRoot,
+            "contracts", "release", "v1", "fixtures", "supporting", "trust.valid.json");
+        var invalid = Path.Combine(
+            ReleaseTestData.RepositoryRoot,
+            "contracts", "release", "v1", "fixtures", "supporting", "trust-authority.invalid.json");
+
+        Assert.Equal(0, RunTool("validate-trust", valid).ExitCode);
+        Assert.Equal(2, RunTool("validate-trust", invalid).ExitCode);
+    }
+
+    [Fact]
     public void Cli_validates_pinned_trust_without_accepting_the_S02_identity()
     {
         using var directory = new UnitDirectory();
