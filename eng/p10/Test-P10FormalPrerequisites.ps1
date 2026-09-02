@@ -40,6 +40,8 @@ param(
     [ValidatePattern('^[0-9a-f]{64}$')]
     [string]$SystemCertificateSha256,
 
+    [switch]$UseProtectedEnvironmentSecretBinding,
+
     [string]$GitHubCliPath = 'gh',
 
     [string]$ReleaseToolPath,
@@ -52,6 +54,9 @@ Set-StrictMode -Version Latest
 
 if ($Repository -cne 'GTX537/CP6.Platform' -or $Environment -cne 'p10-formal-release') {
     throw 'Formal preflight repository or Environment is not approved.'
+}
+if ($UseProtectedEnvironmentSecretBinding -and $env:GITHUB_ACTIONS -cne 'true') {
+    throw 'p10-signing-secrets: protected Environment binding mode is allowed only inside GitHub Actions.'
 }
 if ($env:GITHUB_REF -cne 'refs/heads/main' -or
     $env:GITHUB_SHA -cne $ExpectedCommit -or
@@ -168,11 +173,15 @@ if ($branchPolicies.Count -ne 1 -or $branchPolicies[0].name -cne 'main' -or $bra
     throw 'p10-environment-policy: Environment deployment policy must allow only main.'
 }
 
-$secretList = Invoke-GitHub @('secret', 'list', '--repo', $Repository, '--env', $Environment)
-$secretNames = @($secretList -split "`r?`n" | Where-Object { $_ } | ForEach-Object { ($_ -split '\s+')[0] } | Sort-Object)
-$expectedSecretNames = @('P10_NUGET_SIGNING_PFX_BASE64', 'P10_NUGET_SIGNING_PFX_PASSWORD') | Sort-Object
-if (($secretNames | ConvertTo-Json -Compress) -cne ($expectedSecretNames | ConvertTo-Json -Compress)) {
-    throw 'p10-signing-secrets: Environment must contain exactly the two formal signing Secrets.'
+$secretInventoryMode = 'ProtectedEnvironmentBinding'
+if (-not $UseProtectedEnvironmentSecretBinding) {
+    $secretList = Invoke-GitHub @('secret', 'list', '--repo', $Repository, '--env', $Environment)
+    $secretNames = @($secretList -split "`r?`n" | Where-Object { $_ } | ForEach-Object { ($_ -split '\s+')[0] } | Sort-Object)
+    $expectedSecretNames = @('P10_NUGET_SIGNING_PFX_BASE64', 'P10_NUGET_SIGNING_PFX_PASSWORD') | Sort-Object
+    if (($secretNames | ConvertTo-Json -Compress) -cne ($expectedSecretNames | ConvertTo-Json -Compress)) {
+        throw 'p10-signing-secrets: Environment must contain exactly the two formal signing Secrets.'
+    }
+    $secretInventoryMode = 'ExactInventoryVerified'
 }
 
 $packageIds = @(
@@ -237,6 +246,7 @@ $timestamp = Invoke-Rfc3161Probe
     SourceGitSha = $ExpectedCommit
     RepositoryVisibility = $visibility
     Environment = $Environment
+    SecretInventoryMode = $secretInventoryMode
     PolicySha256 = $policyHash
     CertificateSha256 = $certificateHash
     TimestampPolicyOid = [string]$timestamp.policyOid

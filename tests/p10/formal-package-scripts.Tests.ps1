@@ -268,6 +268,7 @@ param([Parameter(ValueFromRemainingArguments)][string[]]$GhArguments)
 $ErrorActionPreference = 'Stop'
 if ($GhArguments[0] -ceq 'repo' -and $GhArguments[1] -ceq 'view') { 'PUBLIC'; exit 0 }
 if ($GhArguments[0] -ceq 'secret' -and $GhArguments[1] -ceq 'list') {
+    if ($env:CP6_TEST_REJECT_SECRET_LIST -ceq 'true') { exit 57 }
     'P10_NUGET_SIGNING_PFX_BASE64'
     'P10_NUGET_SIGNING_PFX_PASSWORD'
     exit 0
@@ -324,6 +325,18 @@ exit 31
         $preflightOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') @preflightArguments 2>&1 | Out-String
         Assert-True ($LASTEXITCODE -eq 0) "All-seven-absent preflight failed: $preflightOutput"
         Assert-True ($preflightOutput -match 'Success') 'All-seven-absent preflight must succeed.'
+        $localBypassOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') `
+            @preflightArguments -UseProtectedEnvironmentSecretBinding 2>&1 | Out-String
+        Assert-True ($LASTEXITCODE -ne 0) 'Protected Environment binding mode must reject non-Actions callers.'
+        Assert-True ($localBypassOutput -match 'allowed only inside GitHub Actions') 'Rejected local binding bypass must report its boundary.'
+        $env:CP6_TEST_REJECT_SECRET_LIST = 'true'
+        $env:GITHUB_ACTIONS = 'true'
+        $protectedBindingOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') `
+            @preflightArguments -UseProtectedEnvironmentSecretBinding 2>&1 | Out-String
+        Assert-True ($LASTEXITCODE -eq 0) "Protected Environment binding preflight failed: $protectedBindingOutput"
+        Assert-True ($protectedBindingOutput -match 'ProtectedEnvironmentBinding') 'Protected Environment binding mode must be explicit in preflight evidence.'
+        $env:CP6_TEST_REJECT_SECRET_LIST = $null
+        $env:GITHUB_ACTIONS = $null
         $env:CP6_TEST_EXISTING_PACKAGE = 'CP6.Platform.Deployment'
         $conflictOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') @preflightArguments 2>&1 | Out-String
         Assert-True ($LASTEXITCODE -ne 0) 'An existing formal version must fail preflight.'

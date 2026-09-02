@@ -1,0 +1,274 @@
+name: p10-formal-packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_commit:
+        description: Exact CP6.Platform main commit approved for formal package publication
+        required: true
+        type: string
+      version:
+        description: Immutable formal package version; must be exactly 0.10.0
+        required: true
+        type: string
+
+jobs:
+  sign-publish:
+    runs-on: windows-2025
+    timeout-minutes: 45
+    environment: p10-formal-release
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Check out exact dispatch source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up pinned .NET SDK
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68
+        with:
+          global-json-file: global.json
+      - name: Assert exact main source and fixed formal version
+        shell: pwsh
+        run: |
+          if ('${{ github.ref }}' -cne 'refs/heads/main') { throw 'Formal publication must be dispatched from main.' }
+          if ('${{ github.sha }}' -cne '${{ inputs.expected_commit }}') { throw 'Expected commit differs from the dispatch event main SHA.' }
+          if ('${{ inputs.version }}' -cne '0.10.0') { throw 'Formal package version must be exactly 0.10.0.' }
+          if ((git rev-parse HEAD).Trim() -cne '${{ github.sha }}') { throw 'Checkout differs from the dispatch event SHA.' }
+      - name: Build public release verifier
+        shell: pwsh
+        run: |
+          dotnet restore tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj
+          if ($LASTEXITCODE -ne 0) { throw 'Release verifier restore failed.' }
+          dotnet build tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj --configuration Release --no-restore
+          if ($LASTEXITCODE -ne 0) { throw 'Release verifier build failed.' }
+      - name: Preflight, sign, publish, and read back
+        shell: pwsh
+        env:
+          P10_NUGET_SIGNING_PFX_BASE64: ${{ secrets.P10_NUGET_SIGNING_PFX_BASE64 }}
+          P10_NUGET_SIGNING_PFX_PASSWORD: ${{ secrets.P10_NUGET_SIGNING_PFX_PASSWORD }}
+          S04_EXTERNAL_PREREQUISITES_READY: ${{ vars.S04_EXTERNAL_PREREQUISITES_READY }}
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          $releaseTool = (Resolve-Path tools/CP6.Platform.ReleaseTool/bin/Release/net8.0/CP6.Platform.ReleaseTool.dll).Path
+          $checkoutCommit = (git rev-parse HEAD).Trim()
+          $trustPolicy = 'eng/p10/trust/p10-formal-nuget-trust-store.v1.json'
+          $certificateDirectory = 'eng/p10/trust/certificates'
+          $preflight = ./eng/p10/Test-P10FormalPrerequisites.ps1 `
+            -Repository '${{ github.repository }}' `
+            -Environment 'p10-formal-release' `
+            -PackageVersion '${{ inputs.version }}' `
+            -ExpectedCommit '${{ inputs.expected_commit }}' `
+            -CheckoutCommit $checkoutCommit `
+            -TrustPolicyPath $trustPolicy `
+            -CertificateDirectory $certificateDirectory `
+            -CrmTrustPolicySha256 '${{ vars.P10_CRM_TRUST_POLICY_SHA256 }}'.ToLowerInvariant() `
+            -SystemTrustPolicySha256 '${{ vars.P10_SYSTEM_TRUST_POLICY_SHA256 }}'.ToLowerInvariant() `
+            -CrmCertificateSha256 '${{ vars.P10_CRM_CERTIFICATE_SHA256 }}'.ToLowerInvariant() `
+            -SystemCertificateSha256 '${{ vars.P10_SYSTEM_CERTIFICATE_SHA256 }}'.ToLowerInvariant() `
+            -UseProtectedEnvironmentSecretBinding `
+            -ReleaseToolPath $releaseTool
+          if ($preflight.Status -cne 'Success') { throw 'Formal prerequisite preflight did not return Success.' }
+
+          ./eng/p10/New-P10FormalPackageSet.ps1 `
+            -SourceGitSha '${{ inputs.expected_commit }}' `
+            -RunId ${{ github.run_id }} `
+            -RunAttempt ${{ github.run_attempt }} `
+            -PackageVersion '${{ inputs.version }}' `
+            -OutputPath 'artifacts/p10-formal/package-set' `
+            -TrustPolicyPath $trustPolicy `
+            -CertificateDirectory $certificateDirectory
+
+          ./eng/p10/Publish-P10FormalPackageSet.ps1 `
+            -PackagePath 'artifacts/p10-formal/package-set/packages' `
+            -PackageVersion '${{ inputs.version }}' `
+            -SourceGitSha '${{ inputs.expected_commit }}' `
+            -RunId ${{ github.run_id }} `
+            -RunAttempt ${{ github.run_attempt }} `
+            -PreflightStatus Success `
+            -TrustPolicyPath $trustPolicy `
+            -CertificateDirectory $certificateDirectory `
+            -OutputPath 'artifacts/p10-formal/publication' `
+            -ReleaseToolPath $releaseTool
+
+          $publicRoot = 'artifacts/p10-formal/public-windows'
+          $directories = @(
+            "$publicRoot/feed-readback-packages",
+            "$publicRoot/trust/certificates",
+            "$publicRoot/evidence",
+            "$publicRoot/verification/windows",
+            "$publicRoot/publication"
+          )
+          foreach ($directory in $directories) { [IO.Directory]::CreateDirectory($directory) | Out-Null }
+          Copy-Item 'artifacts/p10-formal/publication/feed-readback-packages/*.nupkg' "$publicRoot/feed-readback-packages"
+          Copy-Item $trustPolicy "$publicRoot/trust/p10-formal-nuget-trust-store.v1.json"
+          Copy-Item "$certificateDirectory/*.cer" "$publicRoot/trust/certificates"
+          Copy-Item 'artifacts/p10-formal/package-set/evidence/build-invocation-provenance.v1.json' "$publicRoot/evidence"
+          Copy-Item 'artifacts/p10-formal/package-set/verification/windows/formal-package-verification.v1.json' "$publicRoot/verification/windows"
+          Copy-Item 'artifacts/p10-formal/publication/formal-package-readback.v1.json' "$publicRoot/publication"
+          Copy-Item 'artifacts/p10-formal/publication/p10-formal-version-consumed.json' "$publicRoot/publication"
+
+          $hashes = @(Get-ChildItem "$publicRoot/feed-readback-packages" -Filter '*.nupkg' -File | Sort-Object Name | ForEach-Object {
+            "{0}  {1}" -f (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant(), $_.Name
+          })
+          [IO.File]::WriteAllLines((Join-Path $publicRoot 'evidence/package-hashes.sha256'), $hashes, [Text.UTF8Encoding]::new($false))
+          $nugetClient = [string](@(& dotnet nuget --version) | Select-Object -Last 1)
+          $toolchain = [ordered]@{
+            dotnetSdk = (& dotnet --version).Trim()
+            nugetClient = $nugetClient.Trim()
+            runnerImage = 'windows-2025'
+            workflowFileSha = (git rev-parse 'HEAD:.github/workflows/p10-formal-packages.yml').Trim()
+          }
+          [IO.File]::WriteAllText(
+            (Join-Path $publicRoot 'evidence/toolchain.json'),
+            ($toolchain | ConvertTo-Json -Compress),
+            [Text.UTF8Encoding]::new($false))
+      - name: Scan Windows public evidence
+        shell: pwsh
+        run: |
+          $publicRoot = 'artifacts/p10-formal/public-windows'
+          $files = @(Get-ChildItem $publicRoot -Recurse -File)
+          $packages = @($files | Where-Object { $_.Extension -ceq '.nupkg' })
+          if ($packages.Count -ne 7) { throw 'Public Windows evidence must contain exactly seven feed read-back packages.' }
+          $private = @($files | Where-Object {
+            $_.Extension -in '.pfx', '.p12', '.key', '.pem' -or $_.Name -match '(?i)password|private[-_]?key'
+          })
+          if ($private.Count -ne 0) { throw "Private material found in public Windows evidence: $($private.Name -join ', ')" }
+          $textFiles = @($files | Where-Object { $_.Extension -in '.json', '.txt', '.md', '.sha256' })
+          $matches = @($textFiles | Select-String -Pattern '-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|(?i)(?:password|token|secret)\s*[:=]\s*[^\s]+')
+          if ($matches.Count -ne 0) { throw 'Secret-shaped text found in public Windows evidence.' }
+      - name: Upload immutable Windows read-back evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: p10-s04-windows-readback-${{ inputs.expected_commit }}-${{ github.run_attempt }}
+          path: artifacts/p10-formal/public-windows/**
+          if-no-files-found: error
+          overwrite: false
+          retention-days: 90
+      - name: Remove Windows private material and prove no residue
+        if: ${{ always() }}
+        shell: pwsh
+        run: |
+          $scanRoots = @($env:RUNNER_TEMP, (Join-Path '${{ github.workspace }}' 'artifacts/p10-formal'))
+          $residue = @()
+          foreach ($root in $scanRoots) {
+            if (Test-Path -LiteralPath $root) {
+              $residue += @(Get-ChildItem -LiteralPath $root -Recurse -File -Force -ErrorAction SilentlyContinue | Where-Object {
+                $_.Name -ceq 'p10-formal-signing-private.pfx' -or $_.Extension -in '.pfx', '.p12', '.key', '.pem'
+              })
+            }
+          }
+          $runnerTemp = [IO.Path]::GetFullPath($env:RUNNER_TEMP)
+          foreach ($directory in @(Get-ChildItem -LiteralPath $runnerTemp -Directory -Force -ErrorAction SilentlyContinue | Where-Object {
+            $_.Name -like 'cp6-p10-formal-*' -or $_.Name -like 'cp6-p10-publish-*'
+          })) {
+            if (-not $directory.FullName.StartsWith($runnerTemp, [StringComparison]::OrdinalIgnoreCase)) { throw 'Cleanup target escaped RUNNER_TEMP.' }
+            Remove-Item -LiteralPath $directory.FullName -Recurse -Force
+          }
+          $formalRoot = [IO.Path]::GetFullPath((Join-Path '${{ github.workspace }}' 'artifacts/p10-formal'))
+          $artifactParent = [IO.Path]::GetFullPath((Join-Path '${{ github.workspace }}' 'artifacts'))
+          if ((Test-Path -LiteralPath $formalRoot) -and $formalRoot.StartsWith($artifactParent, [StringComparison]::OrdinalIgnoreCase)) {
+            Remove-Item -LiteralPath $formalRoot -Recurse -Force
+          }
+          if ($residue.Count -ne 0) { throw "Private residue existed after formal publication: $($residue.FullName -join ', ')" }
+
+  verify-linux:
+    needs: sign-publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: read
+    steps:
+      - name: Check out exact verified source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up pinned .NET SDK
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68
+        with:
+          global-json-file: global.json
+      - name: Assert Linux source identity
+        shell: pwsh
+        run: |
+          if ('${{ github.ref }}' -cne 'refs/heads/main') { throw 'Linux verification must use main.' }
+          if ('${{ github.sha }}' -cne '${{ inputs.expected_commit }}') { throw 'Linux event SHA differs from the approved commit.' }
+          if ('${{ inputs.version }}' -cne '0.10.0') { throw 'Linux verifier accepts only formal version 0.10.0.' }
+          if ((git rev-parse HEAD).Trim() -cne '${{ inputs.expected_commit }}') { throw 'Linux checkout differs from the approved commit.' }
+      - name: Download immutable Windows read-back evidence
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          name: p10-s04-windows-readback-${{ inputs.expected_commit }}-${{ github.run_attempt }}
+          path: artifacts/p10-formal/public-windows
+      - name: Build Linux release verifier
+        shell: pwsh
+        run: |
+          dotnet restore tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj
+          if ($LASTEXITCODE -ne 0) { throw 'Linux release verifier restore failed.' }
+          dotnet build tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj --configuration Release --no-restore
+          if ($LASTEXITCODE -ne 0) { throw 'Linux release verifier build failed.' }
+      - name: Independently verify feed read-back packages on Linux
+        shell: pwsh
+        run: |
+          $publicRoot = 'artifacts/p10-formal/public-windows'
+          $releaseTool = (Resolve-Path tools/CP6.Platform.ReleaseTool/bin/Release/net8.0/CP6.Platform.ReleaseTool.dll).Path
+          ./eng/p10/Test-P10FormalPackageSet.ps1 `
+            -PackagePath "$publicRoot/feed-readback-packages" `
+            -ExpectedVersion '${{ inputs.version }}' `
+            -ExpectedSourceGitSha '${{ inputs.expected_commit }}' `
+            -TrustPolicyPath "$publicRoot/trust/p10-formal-nuget-trust-store.v1.json" `
+            -CertificateDirectory "$publicRoot/trust/certificates" `
+            -BuildProvenancePath "$publicRoot/evidence/build-invocation-provenance.v1.json" `
+            -OutputPath 'artifacts/p10-formal/verification/linux' `
+            -ReleaseToolPath $releaseTool
+
+          $toolchain = Get-Content "$publicRoot/evidence/toolchain.json" -Raw | ConvertFrom-Json
+          ./eng/p10/New-P10FormalPublicationRecord.ps1 `
+            -ReadBackPath "$publicRoot/publication/formal-package-readback.v1.json" `
+            -WindowsVerificationPath "$publicRoot/verification/windows/formal-package-verification.v1.json" `
+            -LinuxVerificationEvidencePath 'artifacts/p10-formal/verification/linux/formal-package-verification.v1.json' `
+            -LinuxVerification Success `
+            -PackageVersion '${{ inputs.version }}' `
+            -SourceGitSha '${{ inputs.expected_commit }}' `
+            -WorkflowFileSha ([string]$toolchain.workflowFileSha) `
+            -RunId ${{ github.run_id }} `
+            -RunAttempt ${{ github.run_attempt }} `
+            -DotNetSdk ([string]$toolchain.dotnetSdk) `
+            -NuGetClient ([string]$toolchain.nugetClient) `
+            -RunnerImage ([string]$toolchain.runnerImage) `
+            -TrustPolicyPath "$publicRoot/trust/p10-formal-nuget-trust-store.v1.json" `
+            -CertificateDirectory "$publicRoot/trust/certificates" `
+            -OutputPath 'artifacts/p10-formal/final/formal-package-publication.v1.json' `
+            -ReleaseToolPath $releaseTool
+
+          $evaluationUtc = [DateTimeOffset]::UtcNow.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z", [Globalization.CultureInfo]::InvariantCulture)
+          & dotnet $releaseTool validate-formal-publication `
+            'artifacts/p10-formal/final/formal-package-publication.v1.json' `
+            "$publicRoot/trust/p10-formal-nuget-trust-store.v1.json" `
+            "$publicRoot/trust/certificates" `
+            $evaluationUtc
+          if ($LASTEXITCODE -ne 0) { throw 'Final formal publication evidence validation failed.' }
+      - name: Scan Linux public evidence
+        shell: pwsh
+        run: |
+          $files = @(Get-ChildItem 'artifacts/p10-formal' -Recurse -File)
+          $private = @($files | Where-Object {
+            $_.Extension -in '.pfx', '.p12', '.key', '.pem' -or $_.Name -match '(?i)password|private[-_]?key'
+          })
+          if ($private.Count -ne 0) { throw "Private material crossed into Linux evidence: $($private.Name -join ', ')" }
+          $textFiles = @($files | Where-Object { $_.Extension -in '.json', '.txt', '.md', '.sha256' })
+          $matches = @($textFiles | Select-String -Pattern '-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|(?i)(?:password|token|secret)\s*[:=]\s*[^\s]+')
+          if ($matches.Count -ne 0) { throw 'Secret-shaped text crossed into Linux evidence.' }
+      - name: Upload immutable final publication evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: p10-s04-final-publication-${{ inputs.expected_commit }}-${{ github.run_attempt }}
+          path: artifacts/p10-formal/final/**
+          if-no-files-found: error
+          overwrite: false
+          retention-days: 90
