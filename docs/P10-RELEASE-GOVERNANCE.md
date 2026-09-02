@@ -80,6 +80,22 @@ Consumers use a permanent credential limited to authenticated, read-only access 
 
 This pre-publication contract correction creates no credential, signing key, candidate, Locator, bundle, or R2 object. It does not dispatch the formal package workflow and does not advance the P10 status beyond **S04 tooling implemented / publication not started**.
 
+## Pinned cosign public-key identity
+
+Each `pinned-trust-store.v1` key now carries one canonical cosign-compatible
+PKIX `PUBLIC KEY` PEM value. The initial P10 trust domain accepts ECDSA P-256,
+uses LF separators, and omits a trailing newline. The semantic validator parses
+that PEM, exports its DER SubjectPublicKeyInfo, and requires `keyId` to equal
+`sha256:<lowercase SHA-256 of DER SubjectPublicKeyInfo>`. A noncanonical PEM,
+unsupported curve, malformed key, or mismatched digest fails with `trust-key`.
+
+The JSON representation escapes PEM line feeds according to
+`cp6-deterministic-json-v1`; consumers use the parsed string as the cosign
+public-key file. This makes the reviewed trust entry and the key used by
+`cosign verify-blob` the same public identity. It does not generate or approve a
+real key. Production key generation remains blocked until this contract repair
+is merged and passes exact-main validation.
+
 ## System and Platform lane separation
 
 The System lane is production-only. It requires exact identities for `CP6`, `CP6.Platform`, `CP6.CRM`, and `CP6.Portal`, plus compatible packages, images, schemas, migrations, evidence, trust policy, release gates, and lineage. P10 implements rejection and positive-shape validation, but S00–S02 publish no successful System instance.

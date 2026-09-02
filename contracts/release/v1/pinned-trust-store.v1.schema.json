@@ -47,7 +47,13 @@
           "purpose": { "enum": ["oci", "candidate-locator"] },
           "validFromUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
           "validUntilUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
-          "publicKey": { "type": "string", "minLength": 1, "maxLength": 16384 },
+          "publicKey": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 16384,
+            "pattern": "^-----BEGIN PUBLIC KEY-----\\n[A-Za-z0-9+/=\\n]+\\n-----END PUBLIC KEY-----$",
+            "description": "Canonical LF-delimited PKIX PUBLIC KEY PEM for an ECDSA P-256 cosign key, without a trailing newline; keyId is the SHA-256 of its DER SubjectPublicKeyInfo."
+          },
           "revokedAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
           "revocationReason": { "type": "string", "minLength": 1, "maxLength": 4096 }
         },

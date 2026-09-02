@@ -1,5 +1,6 @@
 using System.Collections.ObjectModel;
 using System.Globalization;
+using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 
@@ -12,6 +13,7 @@ public sealed class Cp6PinnedTrustPolicy
         RegexOptions.CultureInvariant);
     private static readonly string[] RequiredR2Prefixes =
         ["candidates/platform/", "objects/sha256/"];
+    private const string P256Oid = "1.2.840.10045.3.1.7";
     private readonly IReadOnlyDictionary<string, Cp6PinnedTrustKey> _keys;
     private readonly IReadOnlyDictionary<string, Cp6PinnedStorageAuthority> _storageAuthorities;
 
@@ -228,6 +230,7 @@ public sealed class Cp6PinnedTrustPolicy
             var validUntil = ParseUtc(element, "validUntilUtc");
             if (validUntil <= validFrom) throw Error("trust-validity", "Key validity interval is empty.");
             var publicKey = Cp6ReleaseJsonRules.RequireString(element, "publicKey", "trust-public-key");
+            ValidateCosignPublicKey(keyId, publicKey);
             DateTimeOffset? revokedAt = null;
             string? reason = null;
             if (hasRevocation)
@@ -241,6 +244,46 @@ public sealed class Cp6PinnedTrustPolicy
         var ordered = keys.Keys.Order(StringComparer.Ordinal).ToArray();
         if (!keys.Keys.SequenceEqual(ordered, StringComparer.Ordinal)) throw Error("trust-key", "Pinned keys must be ordinal-sorted.");
         return keys;
+    }
+
+    private static void ValidateCosignPublicKey(string keyId, string publicKey)
+    {
+        try
+        {
+            using var key = ECDsa.Create();
+            key.ImportFromPem(publicKey);
+            var parameters = key.ExportParameters(includePrivateParameters: false);
+            if (key.KeySize != 256 ||
+                !string.Equals(parameters.Curve.Oid.Value, P256Oid, StringComparison.Ordinal))
+            {
+                throw Error("trust-key", "Pinned cosign public keys must use ECDSA P-256.");
+            }
+
+            var subjectPublicKeyInfo = key.ExportSubjectPublicKeyInfo();
+            var canonicalPem = PemEncoding.WriteString("PUBLIC KEY", subjectPublicKeyInfo);
+            if (!string.Equals(publicKey, canonicalPem, StringComparison.Ordinal))
+            {
+                throw Error(
+                    "trust-key",
+                    "Pinned cosign public keys must use canonical PKIX PUBLIC KEY PEM with LF separators and no trailing newline.");
+            }
+
+            var derivedKeyId = "sha256:" +
+                               Convert.ToHexString(SHA256.HashData(subjectPublicKeyInfo))
+                                   .ToLowerInvariant();
+            if (!string.Equals(keyId, derivedKeyId, StringComparison.Ordinal))
+            {
+                throw Error("trust-key", "Pinned cosign key ID does not match the public-key SPKI digest.");
+            }
+        }
+        catch (Cp6ReleaseContractException)
+        {
+            throw;
+        }
+        catch (Exception exception) when (exception is ArgumentException or CryptographicException)
+        {
+            throw Error("trust-key", "Pinned cosign public key is not a valid PKIX ECDSA public key.", exception);
+        }
     }
 
     private static int RequirePositiveInt(JsonElement value, string name)
@@ -258,6 +301,9 @@ public sealed class Cp6PinnedTrustPolicy
     }
 
     private static Cp6ReleaseContractException Error(string code, string message) => new(code, message);
+
+    private static Cp6ReleaseContractException Error(string code, string message, Exception innerException) =>
+        new(code, message, innerException);
 }
 
 public sealed record Cp6PinnedTrustKey(
