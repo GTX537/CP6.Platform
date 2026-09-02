@@ -542,8 +542,13 @@ exit 47
             -TrustPolicyPath $syntheticPolicyPath `
             -CertificateDirectory $syntheticCertificates `
             -InjectFailureAfterSigning 2>&1 | Out-String
-        Assert-True ($LASTEXITCODE -ne 0) 'Synthetic injected post-signing failure must fail.'
-        Assert-True ($syntheticOutputText -match 'Synthetic injected failure') 'Synthetic execution must reach the post-signing failure point.'
+        Assert-True ($LASTEXITCODE -ne 0) 'Synthetic formal package execution must fail.'
+        if ($IsWindows) {
+            Assert-True ($syntheticOutputText -match 'Synthetic injected failure') 'Windows synthetic execution must reach the post-signing failure point.'
+        }
+        else {
+            Assert-True ($syntheticOutputText -match 'protected Windows runner') 'Non-Windows synthetic execution must stop at the signing platform boundary.'
+        }
         Assert-True (-not (Test-Path -LiteralPath $syntheticOutput)) 'Synthetic failure must remove all candidate formal output.'
         $syntheticPrivateResidue = @(Get-ChildItem -LiteralPath $syntheticRunnerTemp -Recurse -File -ErrorAction SilentlyContinue | Where-Object {
             $_.Extension -in '.pfx', '.p12', '.pem', '.key' -or $_.Name -match '(?i)password|private[-_]?key'
