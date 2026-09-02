@@ -444,6 +444,13 @@ public sealed class P09ComposeContractTests
     }
 
     [Fact]
+    public void DockerComposeAvailability_WhenProbeTimesOut_ReturnsFalse()
+    {
+        Assert.False(DockerComposeIsAvailable(
+            () => throw new TimeoutException("Synthetic Docker Compose probe timeout.")));
+    }
+
+    [Fact]
     public void DockerComposeConfig_WhenAvailable_PreservesTheStaticSecurityContract()
     {
         if (!DockerComposeIsAvailable())
@@ -1165,15 +1172,22 @@ public sealed class P09ComposeContractTests
     private static IReadOnlyDictionary<string, string> Map(params (string Key, string Value)[] values) =>
         values.ToDictionary(pair => pair.Key, pair => pair.Value, StringComparer.Ordinal);
 
-    private static bool DockerComposeIsAvailable()
+    private static bool DockerComposeIsAvailable() =>
+        DockerComposeIsAvailable(() => RunProcess("docker", "compose", "version"));
+
+    private static bool DockerComposeIsAvailable(Func<ProcessResult> probe)
     {
         try
         {
-            var result = RunProcess("docker", "compose", "version");
+            var result = probe();
             Assert.True(
                 result.ExitCode == 0,
                 $"docker compose is installed but failed:{Environment.NewLine}{result.Error}");
             return true;
+        }
+        catch (TimeoutException)
+        {
+            return false;
         }
         catch (Win32Exception exception) when (exception.NativeErrorCode is 2 or 3)
         {
