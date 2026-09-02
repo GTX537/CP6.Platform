@@ -22,6 +22,10 @@ static async Task<int> RunAsync(string[] arguments)
             case ["validate-evidence", var input]:
                 Cp6SupportingContractValidator.ValidateEvidenceRecord(File.ReadAllBytes(input));
                 return 0;
+            case ["validate-trust", var input]:
+                var trust = Cp6PinnedTrustPolicy.Parse(File.ReadAllBytes(input));
+                Console.WriteLine(trust.ValidatedDocument.Sha256);
+                return 0;
             case ["validate-transport", var input, var evaluationText]
                 when TryParseUtcRoundTrip(evaluationText, out var evaluationUtc):
                 Cp6SupportingContractValidator.ValidateTestPackageTransport(File.ReadAllBytes(input), evaluationUtc);

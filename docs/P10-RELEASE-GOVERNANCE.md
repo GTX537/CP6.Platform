@@ -96,6 +96,12 @@ public-key file. This makes the reviewed trust entry and the key used by
 real key. Production key generation remains blocked until this contract repair
 is merged and passes exact-main validation.
 
+`CP6.Platform.ReleaseTool validate-trust <path>` exposes that complete parser at
+the process boundary and prints only the canonical policy SHA-256 on success.
+It returns the normal contract failure code for an invalid key, storage
+authority, policy version, or noncanonical document, so downstream bootstrap
+does not need to duplicate or bypass the library validator.
+
 ## System and Platform lane separation
 
 The System lane is production-only. It requires exact identities for `CP6`, `CP6.Platform`, `CP6.CRM`, and `CP6.Portal`, plus compatible packages, images, schemas, migrations, evidence, trust policy, release gates, and lineage. P10 implements rejection and positive-shape validation, but S00–S02 publish no successful System instance.
