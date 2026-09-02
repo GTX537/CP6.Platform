@@ -37,4 +37,49 @@ public sealed class TrustAndStorageValidationTests
         Assert.Equal("trust-policy-downgrade", Assert.Throws<Cp6ReleaseContractException>(() =>
             policy.RequireKey("sha256:" + new string('b', 64), "candidate-locator", 1, signedAt, evaluatedAt, Cp6ReleaseValidationMode.Current)).Code);
     }
+
+    [Fact]
+    public void Storage_authority_retains_the_complete_pinned_r2_mapping()
+    {
+        var policy = Cp6PinnedTrustPolicy.Parse(
+            ReleaseTestData.Fixture("supporting", "trust.valid.json"));
+
+        var authority = policy.RequireStorageAuthority("cp6-release-r2-v1");
+
+        Assert.Equal("cloudflare-r2", authority.Provider);
+        Assert.Equal("11111111111111111111111111111111", authority.AccountId);
+        Assert.Equal("default", authority.Jurisdiction);
+        Assert.Equal(
+            "https://{accountId}.r2.cloudflarestorage.com",
+            authority.EndpointTemplate);
+        Assert.Equal(
+            "https://11111111111111111111111111111111.r2.cloudflarestorage.com",
+            authority.Endpoint);
+        Assert.Equal("cp6-release", authority.Bucket);
+        Assert.Equal(
+            new[] { "candidates/platform/", "objects/sha256/" },
+            authority.AllowedPrefixes);
+        Assert.Equal("AuthenticatedReadConditionalCreate", authority.AccessMode);
+        Assert.Equal(4 * 1024 * 1024, authority.MaxObjectBytes);
+        var dictionary = Assert.IsAssignableFrom<
+            IDictionary<string, Cp6PinnedStorageAuthority>>(
+            policy.StorageAuthorities);
+        Assert.Throws<NotSupportedException>(() =>
+            dictionary.Add("untrusted-r2", authority));
+        Assert.Equal(
+            "storage-authority",
+            Assert.Throws<Cp6ReleaseContractException>(() =>
+                policy.RequireStorageAuthority("untrusted-r2")).Code);
+    }
+
+    [Fact]
+    public void Storage_authority_rejects_an_unapproved_prefix()
+    {
+        var exception = Assert.Throws<Cp6ReleaseContractException>(() =>
+            Cp6PinnedTrustPolicy.Parse(ReleaseTestData.Fixture(
+                "supporting",
+                "trust-authority.invalid.json")));
+
+        Assert.Equal("storage-authority", exception.Code);
+    }
 }
