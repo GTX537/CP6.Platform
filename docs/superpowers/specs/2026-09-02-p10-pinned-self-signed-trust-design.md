@@ -1,6 +1,6 @@
 # P10 Pinned Self-Signed Formal NuGet Trust Design
 
-**Status:** Written design; awaiting final user review
+**Status:** Approved design; implementation not started
 
 **Date:** 2026-09-02
 
