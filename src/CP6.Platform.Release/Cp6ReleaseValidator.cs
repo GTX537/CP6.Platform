@@ -193,14 +193,20 @@ public static class Cp6ReleaseValidator
             var version = Cp6ReleaseJsonRules.RequireString(package, "version", "package-version");
             var source = Cp6ReleaseJsonRules.RequireString(package, "sourceGitSha", "package-source");
             Cp6ReleaseJsonRules.RequireGitSha(source, "package-source");
-            Cp6ReleaseJsonRules.RequireSha256(Cp6ReleaseJsonRules.RequireString(package, "authorSignedPackageSha256", "package-hash"), "package-hash");
-            Cp6ReleaseJsonRules.RequireSha256(Cp6ReleaseJsonRules.RequireString(package, "publishedPackageSha256", "package-hash"), "package-hash");
+            var authorSignedHash = Cp6ReleaseJsonRules.RequireString(package, "authorSignedPackageSha256", "package-hash");
+            var publishedHash = Cp6ReleaseJsonRules.RequireString(package, "publishedPackageSha256", "package-hash");
+            Cp6ReleaseJsonRules.RequireSha256(authorSignedHash, "package-hash");
+            Cp6ReleaseJsonRules.RequireSha256(publishedHash, "package-hash");
             _ = Cp6ReleaseJsonRules.RequireString(package, "feedIdentity", "feed-identity");
             var transformation = Cp6ReleaseJsonRules.RequireString(package, "feedTransformation", "feed-transformation");
-            if (transformation is not ("None" or "Documented")) throw Error("feed-transformation", "Feed transformation is not approved.");
+            if (transformation is not ("None" or "Documented" or "BytePreserving")) throw Error("feed-transformation", "Feed transformation is not approved.");
             Cp6ReleaseJsonRules.RequireSha256(Cp6ReleaseJsonRules.RequireString(package, "signerFingerprint", "signer-fingerprint"), "signer-fingerprint");
             var timestampPolicy = Cp6ReleaseJsonRules.RequireString(package, "timestampPolicy", "timestamp-policy");
             if (timestampPolicy is not ("Rfc3161Required" or "TestOnlyNone")) throw Error("timestamp-policy", "Timestamp policy is not approved.");
+            if (transformation == "BytePreserving" && !string.Equals(authorSignedHash, publishedHash, StringComparison.Ordinal))
+                throw Error("package-hash", "Byte-preserving feed publication requires equal package hashes.");
+            if (transformation == "BytePreserving" && timestampPolicy != "Rfc3161Required")
+                throw Error("timestamp-policy", "Byte-preserving formal packages require RFC3161 timestamps.");
             ids.Add(id);
             versions.Add(version);
             sources.Add(source);

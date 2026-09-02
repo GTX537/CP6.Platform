@@ -27,6 +27,16 @@
       "mediaType": "application/schema+json"
     },
     {
+      "id": "https://schemas.cp6.dev/release/formal-package-publication.v1",
+      "path": "formal-package-publication.v1.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
+      "id": "https://schemas.cp6.dev/release/pinned-nuget-trust-store.v1",
+      "path": "pinned-nuget-trust-store.v1.schema.json",
+      "mediaType": "application/schema+json"
+    },
+    {
       "id": "https://schemas.cp6.dev/release/pinned-trust-store.v1",
       "path": "pinned-trust-store.v1.schema.json",
       "mediaType": "application/schema+json"

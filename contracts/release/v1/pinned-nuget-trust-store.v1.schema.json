@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/pinned-nuget-trust-store.v1",
+  "type": "object",
+  "required": ["$schemaId", "policyVersion", "trustModel", "publicCaTrusted", "internallyTrusted", "timestampPolicy", "timestampService", "allowedPackageIds", "signers"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/pinned-nuget-trust-store.v1" },
+    "policyVersion": { "type": "integer", "minimum": 1 },
+    "trustModel": { "const": "PinnedSelfSigned" },
+    "publicCaTrusted": { "const": false },
+    "internallyTrusted": { "const": true },
+    "timestampPolicy": { "const": "Rfc3161Required" },
+    "timestampService": { "const": "http://timestamp.digicert.com" },
+    "allowedPackageIds": {
+      "type": "array",
+      "prefixItems": [
+        { "const": "CP6.Platform.Abstractions" },
+        { "const": "CP6.Platform.AspNetCore" },
+        { "const": "CP6.Platform.Contracts" },
+        { "const": "CP6.Platform.Deployment" },
+        { "const": "CP6.Platform.EntityFramework" },
+        { "const": "CP6.Platform.Messaging" },
+        { "const": "CP6.Platform.Release" }
+      ],
+      "items": false,
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true
+    },
+    "signers": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "contains": { "type": "object", "properties": { "status": { "const": "Current" } }, "required": ["status"] },
+      "minContains": 1,
+      "maxContains": 1,
+      "items": { "$ref": "#/$defs/signer" }
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "signer": {
+      "type": "object",
+      "required": ["certificatePath", "certificateSha256", "spkiKeyId", "subject", "issuer", "validFromUtc", "validUntilUtc", "status", "activatedAtUtc", "revokedAtUtc", "revocationReason"],
+      "properties": {
+        "certificatePath": { "type": "string", "pattern": "^certificates/[0-9a-f]{64}\\.cer$" },
+        "certificateSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
+        "spkiKeyId": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "subject": { "const": "CN=CP6 Platform Release Signing" },
+        "issuer": { "const": "CN=CP6 Platform Release Signing" },
+        "validFromUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+        "validUntilUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+        "status": { "enum": ["Current", "Historical", "Revoked"] },
+        "activatedAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+        "revokedAtUtc": {
+          "oneOf": [
+            { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+            { "type": "null" }
+          ]
+        },
+        "revocationReason": { "type": ["string", "null"], "minLength": 1, "maxLength": 4096 }
+      },
+      "additionalProperties": false,
+      "oneOf": [
+        {
+          "properties": {
+            "status": { "const": "Current" },
+            "revokedAtUtc": { "type": "null" },
+            "revocationReason": { "type": "null" }
+          }
+        },
+        {
+          "properties": {
+            "status": { "const": "Historical" },
+            "revokedAtUtc": { "type": "null" },
+            "revocationReason": { "type": "null" }
+          }
+        },
+        {
+          "properties": {
+            "status": { "const": "Revoked" },
+            "revokedAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+            "revocationReason": { "type": "string", "minLength": 1, "maxLength": 4096 }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -14,7 +14,11 @@
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="10.9.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
     <PackageVersion Include="NuGet.Packaging" Version="6.11.2" />
+    <PackageVersion Include="NuGet.Configuration" Version="6.11.2" />
+    <PackageVersion Include="NuGet.Protocol" Version="6.11.2" />
+    <PackageVersion Include="NuGet.Versioning" Version="6.11.2" />
     <PackageVersion Include="System.Formats.Asn1" Version="8.0.1" />
+    <PackageVersion Include="System.Security.Cryptography.Pkcs" Version="8.0.1" />
     <PackageVersion Include="OpenTelemetry.Extensions.Hosting" Version="1.18.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.18.0" />
     <PackageVersion Include="OpenTelemetry.Instrumentation.Http" Version="1.18.0" />

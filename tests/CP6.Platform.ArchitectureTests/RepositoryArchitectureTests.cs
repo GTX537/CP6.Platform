@@ -740,7 +740,9 @@ public sealed class RepositoryArchitectureTests
             "evidence-record.v1",
             "build-invocation-provenance.v1",
             "test-package-transport.v1",
-            "pinned-trust-store.v1"
+            "pinned-trust-store.v1",
+            "pinned-nuget-trust-store.v1",
+            "formal-package-publication.v1"
         })
         {
             Assert.Contains(contract, document, StringComparison.Ordinal);
@@ -748,13 +750,16 @@ public sealed class RepositoryArchitectureTests
 
         foreach (var required in new[]
         {
-            "Implemented / Test Candidate",
+            "S04 tooling implemented / publication not started",
             "testOnly=true",
             "deployable=false",
             "GitHub Packages",
             "S03",
             "90 days",
-            "formal package publication: denied",
+            "formal package publication: not started",
+            "PinnedSelfSigned",
+            "publicCaTrusted=false",
+            "S04_EXTERNAL_PREREQUISITES_READY",
             "System candidate publication: denied",
             "Portal fabrication: denied",
             "R2 Locator publication: denied",

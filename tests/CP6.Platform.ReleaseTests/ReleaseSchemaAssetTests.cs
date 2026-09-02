@@ -22,6 +22,21 @@ public sealed class ReleaseSchemaAssetTests
     }
 
     [Fact]
+    public void Formal_contract_assets_are_closed_and_registered_once()
+    {
+        var path = Path.Combine(
+            ReleaseTestData.RepositoryRoot,
+            "contracts", "release", "v1", "assets.v1.json");
+        using var document = JsonDocument.Parse(File.ReadAllBytes(path));
+        var ids = document.RootElement.GetProperty("schemas")
+            .EnumerateArray()
+            .Select(item => item.GetProperty("id").GetString())
+            .ToArray();
+        Assert.Single(ids, id => id == Cp6ReleaseContractIds.PinnedNuGetTrustStore);
+        Assert.Single(ids, id => id == Cp6ReleaseContractIds.FormalPackagePublication);
+    }
+
+    [Fact]
     public void Every_schema_is_draft_2020_12_closed_and_buildable()
     {
         var schemaRoot = Path.Combine(Root, "contracts", "release", "v1");

@@ -13,7 +13,7 @@ public sealed class ReleaseProjectBoundaryTests
     [Fact]
     public void Contract_ids_are_exact_and_unique()
     {
-        Assert.Equal(10, Cp6ReleaseContractIds.All.Count);
+        Assert.Equal(12, Cp6ReleaseContractIds.All.Count);
         Assert.Equal(Cp6ReleaseContractIds.All.Count, Cp6ReleaseContractIds.All.Distinct(StringComparer.Ordinal).Count());
         Assert.All(Cp6ReleaseContractIds.All, id => Assert.StartsWith("https://schemas.cp6.dev/release/", id, StringComparison.Ordinal));
     }

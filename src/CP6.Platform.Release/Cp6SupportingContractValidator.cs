@@ -20,7 +20,7 @@ public static class Cp6SupportingContractValidator
         "^objects/sha256/(?<prefix>[0-9a-f]{2})/(?<hash>[0-9a-f]{64})/[a-z0-9][a-z0-9.-]{0,127}\\.json$",
         RegexOptions.CultureInvariant);
     private static readonly Regex BuildInvocation = new(
-        "^p10-s02:(?<sha>[0-9a-f]{40}):[1-9][0-9]*:[1-9][0-9]*$",
+        "^p10-s(?:02|04):(?<sha>[0-9a-f]{40}):[1-9][0-9]*:[1-9][0-9]*$",
         RegexOptions.CultureInvariant);
 
     public static Cp6ValidatedReleaseDocument ValidateReleaseGateResult(ReadOnlySpan<byte> utf8Json)

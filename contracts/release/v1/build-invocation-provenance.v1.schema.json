@@ -7,7 +7,7 @@
     "$schemaId": { "const": "https://schemas.cp6.dev/release/build-invocation-provenance.v1" },
     "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
     "sourceGitSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
-    "buildInvocationId": { "type": "string", "pattern": "^p10-s02:[0-9a-f]{40}:[1-9][0-9]*:[1-9][0-9]*$" },
+    "buildInvocationId": { "type": "string", "pattern": "^p10-s0(?:2|4):[0-9a-f]{40}:[1-9][0-9]*:[1-9][0-9]*$" },
     "toolchain": {
       "type": "object",
       "required": ["dotnetSdk", "runner"],

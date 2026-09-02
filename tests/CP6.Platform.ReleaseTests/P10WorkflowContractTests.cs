@@ -103,10 +103,12 @@ public sealed class P10WorkflowContractTests
         var architecture = verify.IndexOf("Invoke-DotNetStep -Name 'Architecture'", StringComparison.Ordinal);
         var releaseContracts = verify.IndexOf("Invoke-DotNetStep -Name 'ReleaseContracts'", StringComparison.Ordinal);
         var scriptContracts = verify.IndexOf("Invoke-PowerShellStep -Name 'P10PackageScriptContracts'", StringComparison.Ordinal);
+        var formalScriptContracts = verify.IndexOf("Invoke-PowerShellStep -Name 'P10FormalPackageScriptContracts'", StringComparison.Ordinal);
         var reproducibility = verify.IndexOf("Assert-ReproduciblePackages", releaseContracts, StringComparison.Ordinal);
         Assert.True(
-            architecture >= 0 && releaseContracts > architecture && scriptContracts > releaseContracts && reproducibility > scriptContracts,
-            "Contract gate must run Architecture, ReleaseContracts, P10 script contracts, then reproducibility in order.");
+            architecture >= 0 && releaseContracts > architecture && scriptContracts > releaseContracts &&
+            formalScriptContracts > scriptContracts && reproducibility > formalScriptContracts,
+            "Contract gate must run Architecture, ReleaseContracts, both P10 script contracts, then reproducibility in order.");
     }
 
     private static int Count(string value, string fragment)
