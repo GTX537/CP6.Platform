@@ -1,8 +1,13 @@
 # P10 Release Governance, Signed Packages, and Candidate Evidence Design
 
-**Status:** Approved design; P0 specification closure complete; implementation not started
+**Status:** Approved design; S00-S03 complete; S04-S06 not started
 
 **Date:** 2026-09-01
+
+**Amendment:** The formal NuGet author-certificate trust model is amended by
+[`2026-09-02-p10-pinned-self-signed-trust-design.md`](./2026-09-02-p10-pinned-self-signed-trust-design.md).
+Where the two documents differ on author-certificate issuance, storage,
+revocation, or public trust, the amendment is authoritative.
 
 **Primary producer:** `CP6.Platform`
 
@@ -125,6 +130,12 @@ S04 preflight freezes and records:
 - RFC3161 TSA URI, chain, EKU, and allowed timestamp policy;
 - cross-platform signature verification on the supported Windows and Linux consumers; and
 - the immutable formal package version.
+
+For the initial P10 formal signer, the author-certificate chain is the single
+leaf permitted by the reviewed `PinnedSelfSigned` trust policy. Its revocation
+source is that versioned policy rather than CRL or OCSP. This exception applies
+only to the exact pinned author-certificate fingerprint; the RFC3161 timestamp
+chain must still validate through the normal supported timestamp trust store.
 
 The signer may use `dotnet nuget sign`; P10 does not impose a Windows-only `nuget.exe` rule that applies to a different feed policy.
 
@@ -306,7 +317,15 @@ P10 uses independent NuGet and cosign trust domains. The approved P10 cosign rel
 
 ### 9.1 NuGet trust
 
-Formal packages are author-signed using a user-provided X.509 code-signing certificate and private key, then timestamped by an approved RFC3161 service. The formal workflow verifies the signature, certificate policy, timestamp, package metadata, and both package hashes before and after upload.
+Formal packages are author-signed using the X.509 code-signing certificate
+allowed by the reviewed NuGet trust policy, then timestamped by an approved
+RFC3161 service. The initial policy is `PinnedSelfSigned`: the certificate is a
+stable self-signed leaf, `publicCaTrusted=false`, and `internallyTrusted=true`.
+Its exact DER fingerprint is pinned out of band in Platform, CRM, and public CP6.
+The formal workflow verifies the signature, certificate policy, timestamp,
+package metadata, and both package hashes before and after upload. This policy
+may contribute to `Frozen / Consumable`, but it never represents public-CA
+trust.
 
 S00-S03 may use a repository test certificate. Every resulting artifact and package carries `testOnly=true`; formal validation rejects the test certificate and missing or synthetic timestamps.
 
@@ -540,6 +559,11 @@ P10 becomes `Frozen / Consumable` only after:
 4. the public CP6 publication workflow passes pre-commit verification, conditionally writes the Locator, and passes post-commit confirmation;
 5. all required gates pass on the relevant immutable commits; and
 6. the public project-state documents and changelog record exact package versions, commit SHAs, object hashes, workflow identities, trust-policy versions, state, and remaining production boundary.
+
+The initial formal author certificate may satisfy item 1 under the amended
+`PinnedSelfSigned` policy only when the evidence records
+`publicCaTrusted=false`, `internallyTrusted=true`, and the exact reviewed
+fingerprint. No P10 state may imply public-CA trust for that certificate.
 
 If any formal signing input, protected environment, publication destination, trust bootstrap, or real verification result is absent, the status remains `Candidate / No-Go`. Test certificates, synthetic data, skipped gates, partial package sets, expired test artifacts, or candidate-shaped fixtures cannot satisfy completion.
 
