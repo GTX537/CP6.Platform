@@ -33,6 +33,8 @@ fails. No task deletes, overwrites, or unlists a package version.
 | --- | --- |
 | Formal version | `0.10.0` |
 | Package feed | `https://nuget.pkg.github.com/GTX537/index.json` |
+| Repository visibility | `GTX537/CP6.Platform` is `PUBLIC` |
+| GitHub account plan | Free; no paid subscription required |
 | Signing environment | `p10-formal-release` |
 | Signing runner | `windows-2025` |
 | Linux verifier | `ubuntu-latest` |
@@ -936,14 +938,15 @@ gh pr merge $implementationPrNumber --repo GTX537/CP6.Platform --merge
 Expected: required checks pass and the implementation PR is merged. No workflow
 dispatch exists yet.
 
-## Task 10: Prove Environment capability before creating a key
+## Task 10: Prove the zero-cost public Environment before creating a key
 
 **External state:** GitHub repository `GTX537/CP6.Platform`.
 
-This is a hard gate. GitHub's current product rules require Pro/Team/Enterprise
-for Environment Secrets in a private repository, and required reviewers in a
-private repository may require Enterprise. The confirmed design is not silently
-downgraded if the account lacks either capability.
+This is a hard gate. The repository was made public on 2026-09-02 after a
+zero-finding full-history secret scan so that GitHub Free can provide
+Environment Secrets and required reviewers. The workflow must not fall back to
+repository-level Secrets. If the repository is private at preflight time,
+publication stops before key creation or package upload.
 
 - [ ] **Step 1: Confirm all non-NuGet external P10 prerequisites**
 
@@ -951,7 +954,16 @@ Record reviewed evidence that the downstream cosign key, pinned cosign trust,
 R2 authority/write policy, and permanent read-only consumer credentials are
 ready. If any is absent, keep `S04_EXTERNAL_PREREQUISITES_READY` unset and stop.
 
-- [ ] **Step 2: Create and protect the Environment without Secrets**
+- [ ] **Step 2: Reconfirm public visibility**
+
+```powershell
+$visibility = gh repo view GTX537/CP6.Platform --json visibility --jq .visibility
+if ($visibility -cne 'PUBLIC') { throw 'p10-repository-visibility: CP6.Platform must remain public for the GitHub Free Environment policy.' }
+```
+
+Expected: `PUBLIC`. Any other result is `Candidate / No-Go`.
+
+- [ ] **Step 3: Create and protect the Environment without Secrets**
 
 Configure `p10-formal-release` with main-only deployment branch policy and one
 required reviewer. Then read it back:
@@ -960,11 +972,13 @@ required reviewer. Then read it back:
 gh api /repos/GTX537/CP6.Platform/environments/p10-formal-release --jq '{name:.name,protection_rules:.protection_rules,deployment_branch_policy:.deployment_branch_policy}'
 ```
 
-Expected: the exact Environment, a reviewer rule, and main-only policy. A 404,
+Expected: the exact Environment, a reviewer rule, and main-only policy under
+GitHub Free. Configure `prevent_self_review=false` because the repository has
+one owner, while preserving the separate dispatch and approval actions. A 404,
 403, 422, ignored rule, or missing reviewer is `Candidate / No-Go`. Do not write
 Secrets and do not substitute repository-level Secrets.
 
-- [ ] **Step 3: Preflight DigiCert RFC3161 from both runner images**
+- [ ] **Step 4: Preflight DigiCert RFC3161 from both runner images**
 
 Run a non-secret manual diagnostic workflow or temporary local request that
 submits a SHA-256 RFC3161 query from `windows-2025` and `ubuntu-latest`, then

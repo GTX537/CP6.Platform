@@ -95,6 +95,20 @@ these certificate Secrets:
 - `P10_NUGET_SIGNING_PFX_BASE64`;
 - `P10_NUGET_SIGNING_PFX_PASSWORD`.
 
+`GTX537/CP6.Platform` is intentionally public for this initial zero-cost
+release path. Formal preflight requires the GitHub API to report
+`visibility=public`; changing the repository back to private makes Environment
+Secrets and required-reviewer protection unavailable on GitHub Free and is an
+immediate `Candidate / No-Go`. Public visibility applies to source and Git
+history only. No private key, password, token, customer data, or restricted
+audit evidence may enter the repository.
+
+Before the visibility change on 2026-09-02, the current tree and all 171 Git
+commits were scanned for secret-bearing filenames, private-key material, common
+provider credentials, and high-confidence secret patterns. The independent
+history scan reported zero findings. This scan is a publication hygiene check,
+not a substitute for the workflow's ongoing secret-residue gates.
+
 An audited bootstrap command creates the certificate and PFX in process memory,
 writes the two Secret values to GitHub through standard input, exports only the
 public DER certificate, and clears private-key and password state in `finally`.
