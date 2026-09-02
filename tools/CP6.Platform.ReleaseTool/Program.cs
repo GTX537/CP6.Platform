@@ -72,6 +72,13 @@ static async Task<int> RunAsync(string[] arguments)
                     destinationPath,
                     CancellationToken.None);
                 return 0;
+            case ["probe-rfc3161", var serviceUrl]:
+                var probe = await Rfc3161Preflight.ProbeAsync(serviceUrl, CancellationToken.None);
+                Console.WriteLine(JsonSerializer.Serialize(probe, new JsonSerializerOptions
+                {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                }));
+                return 0;
             case ["verify-test-package", var packagePath, var certificateFingerprint]
                 when IsCanonicalSha256(certificateFingerprint):
                 return await VerifyTestPackageAsync(packagePath, certificateFingerprint) ? 0 : 2;

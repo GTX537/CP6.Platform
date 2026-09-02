@@ -42,6 +42,7 @@ $packFormal = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Pack-
 $newFormal = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/New-P10FormalPackageSet.ps1') -Raw
 $testFormal = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPackageSet.ps1') -Raw
 $verifyScript = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/verify.ps1') -Raw
+$rfc3161Probe = Get-Content -LiteralPath (Join-Path $repositoryRoot 'tools/CP6.Platform.ReleaseTool/Rfc3161Preflight.cs') -Raw
 $formalProjects = @(
     'src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj',
     'src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj',
@@ -71,6 +72,34 @@ Assert-True ($testFormal -cmatch "'Current'") 'Formal verification must require 
 Assert-True ($testFormal -cmatch "'validate-build-provenance'") 'Formal verification must validate build provenance.'
 Assert-True ($verifyScript -cmatch "P10FormalPackageScriptContracts") 'The Contract gate must run formal script contracts.'
 
+$publicationScriptPaths = @(
+    'eng/p10/Test-P10FormalPrerequisites.ps1',
+    'eng/p10/Publish-P10FormalPackageSet.ps1',
+    'eng/p10/New-P10FormalPublicationRecord.ps1'
+)
+foreach ($relativePath in $publicationScriptPaths) {
+    $path = Join-Path $repositoryRoot $relativePath
+    Assert-True (Test-Path -LiteralPath $path -PathType Leaf) "$relativePath is missing."
+    $text = Get-Content -LiteralPath $path -Raw
+    Assert-True ($text -cmatch '(?m)^\[CmdletBinding\(\)\]\r?$') "$relativePath must declare CmdletBinding."
+    Assert-True ($text -notmatch '(?i)--skip-duplicate') "$relativePath must not suppress immutable-version conflicts."
+    Assert-True ($text -notmatch '(?i)nuget\s+delete|package\s+delete|package\s+unlist|--overwrite') "$relativePath must not repair a consumed version."
+}
+$prerequisites = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') -Raw
+$publisher = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Publish-P10FormalPackageSet.ps1') -Raw
+$publicationRecord = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/New-P10FormalPublicationRecord.ps1') -Raw
+Assert-True ($prerequisites -cmatch "visibility.*PUBLIC") 'Preflight must require public repository visibility.'
+Assert-True ($prerequisites -cmatch "required_reviewers") 'Preflight must require an Environment reviewer.'
+Assert-True ($prerequisites -cmatch "prevent_self_review.*false") 'Preflight must preserve the approved sole-owner review setting.'
+Assert-True ($prerequisites -cmatch "S04_EXTERNAL_PREREQUISITES_READY") 'Preflight must require the explicit external-readiness flag.'
+Assert-True ($prerequisites -cmatch "'probe-rfc3161'") 'Preflight must invoke the cross-platform RFC3161 probe.'
+Assert-True ($rfc3161Probe -cmatch 'Rfc3161TimestampRequest') 'The Release tool must build a real RFC3161 request.'
+Assert-True ($publisher -cmatch "p10-formal-version-consumed") 'Publication failures must burn the selected version.'
+Assert-True ($publisher -cmatch "'https://nuget\.pkg\.github\.com/GTX537/index\.json'") 'Publication must use the fixed GitHub feed.'
+Assert-True ($publisher -cmatch "'download-package'") 'Publication must read package bytes back through the isolated downloader.'
+Assert-True ($publisher -cmatch "'verify-formal-package'") 'Read-back bytes must be independently verified.'
+Assert-True ($publicationRecord -cmatch "'validate-formal-publication'") 'Final evidence must pass the formal publication validator.'
+
 $testRoot = Join-Path ([IO.Path]::GetTempPath()) ('cp6-p10-formal-bootstrap-' + [Guid]::NewGuid().ToString('N'))
 [IO.Directory]::CreateDirectory($testRoot) | Out-Null
 $originalState = [Environment]::GetEnvironmentVariable('CP6_TEST_GH_STATE')
@@ -79,6 +108,10 @@ $originalNodeReuse = [Environment]::GetEnvironmentVariable('MSBUILDDISABLENODERE
 $originalPfxBase64 = [Environment]::GetEnvironmentVariable('P10_NUGET_SIGNING_PFX_BASE64')
 $originalPfxPassword = [Environment]::GetEnvironmentVariable('P10_NUGET_SIGNING_PFX_PASSWORD')
 $originalRunnerTemp = [Environment]::GetEnvironmentVariable('RUNNER_TEMP')
+$originalGitHubRef = [Environment]::GetEnvironmentVariable('GITHUB_REF')
+$originalGitHubSha = [Environment]::GetEnvironmentVariable('GITHUB_SHA')
+$originalExternalReady = [Environment]::GetEnvironmentVariable('S04_EXTERNAL_PREREQUISITES_READY')
+$originalGitHubToken = [Environment]::GetEnvironmentVariable('GITHUB_TOKEN')
 
 try {
     $fakeGh = Join-Path $testRoot 'fake-gh.ps1'
@@ -228,6 +261,257 @@ exit 23
         & dotnet $releaseToolPath validate-nuget-trust $syntheticPolicyPath $syntheticCertificates | Out-Host
         if ($LASTEXITCODE -ne 0) { throw 'Synthetic policy validation failed.' }
 
+        $preflightGh = Join-Path $testRoot 'preflight-gh.ps1'
+        $preflightGhText = @'
+[CmdletBinding()]
+param([Parameter(ValueFromRemainingArguments)][string[]]$GhArguments)
+$ErrorActionPreference = 'Stop'
+if ($GhArguments[0] -ceq 'repo' -and $GhArguments[1] -ceq 'view') { 'PUBLIC'; exit 0 }
+if ($GhArguments[0] -ceq 'secret' -and $GhArguments[1] -ceq 'list') {
+    'P10_NUGET_SIGNING_PFX_BASE64'
+    'P10_NUGET_SIGNING_PFX_PASSWORD'
+    exit 0
+}
+if ($GhArguments[0] -ceq 'api') {
+    $endpoint = $GhArguments[1]
+    if ($endpoint -like '*/git/ref/heads/main') { $env:CP6_TEST_EXPECTED_SHA; exit 0 }
+    if ($endpoint -like '*/deployment-branch-policies') {
+        '{"total_count":1,"branch_policies":[{"name":"main","type":"branch"}]}'
+        exit 0
+    }
+    if ($endpoint -like '*/environments/p10-formal-release') {
+        '{"name":"p10-formal-release","protection_rules":[{"type":"required_reviewers","prevent_self_review":false,"reviewers":[{"type":"User"}]}],"deployment_branch_policy":{"protected_branches":false,"custom_branch_policies":true}}'
+        exit 0
+    }
+    if ($endpoint -like '*/packages/nuget/*/versions*') {
+        if ($env:CP6_TEST_EXISTING_PACKAGE -and $endpoint -like "*$($env:CP6_TEST_EXISTING_PACKAGE)*") {
+            '[{"name":"0.10.0"}]'
+        }
+        else { '[]' }
+        exit 0
+    }
+}
+exit 31
+'@
+        [IO.File]::WriteAllText($preflightGh, $preflightGhText, [Text.UTF8Encoding]::new($false))
+        $timestampProbe = Join-Path $testRoot 'timestamp-probe.ps1'
+        [IO.File]::WriteAllText(
+            $timestampProbe,
+            "param([string]`$Uri)`n[pscustomobject]@{success=`$true;policyOid='1.2.3.4';certificateChainSha256=@('$('d' * 64)')} | ConvertTo-Json -Compress",
+            [Text.UTF8Encoding]::new($false))
+        $env:GITHUB_REF = 'refs/heads/main'
+        $env:GITHUB_SHA = (& git -C $repositoryRoot rev-parse HEAD).Trim()
+        $env:CP6_TEST_EXPECTED_SHA = $env:GITHUB_SHA
+        $env:S04_EXTERNAL_PREREQUISITES_READY = 'true'
+        $env:CP6_TEST_EXISTING_PACKAGE = $null
+        $syntheticPolicyHash = (Get-FileHash -LiteralPath $syntheticPolicyPath -Algorithm SHA256).Hash.ToLowerInvariant()
+        $preflightArguments = @(
+            '-Repository', 'GTX537/CP6.Platform',
+            '-Environment', 'p10-formal-release',
+            '-PackageVersion', '0.10.0',
+            '-ExpectedCommit', $env:GITHUB_SHA,
+            '-CheckoutCommit', $env:GITHUB_SHA,
+            '-TrustPolicyPath', $syntheticPolicyPath,
+            '-CertificateDirectory', $syntheticCertificates,
+            '-CrmTrustPolicySha256', $syntheticPolicyHash,
+            '-SystemTrustPolicySha256', $syntheticPolicyHash,
+            '-CrmCertificateSha256', $syntheticFingerprint,
+            '-SystemCertificateSha256', $syntheticFingerprint,
+            '-GitHubCliPath', $preflightGh,
+            '-ReleaseToolPath', $releaseToolPath,
+            '-TimestampProbePath', $timestampProbe
+        )
+        $preflightOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') @preflightArguments 2>&1 | Out-String
+        Assert-True ($LASTEXITCODE -eq 0) "All-seven-absent preflight failed: $preflightOutput"
+        Assert-True ($preflightOutput -match 'Success') 'All-seven-absent preflight must succeed.'
+        $env:CP6_TEST_EXISTING_PACKAGE = 'CP6.Platform.Deployment'
+        $conflictOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') @preflightArguments 2>&1 | Out-String
+        Assert-True ($LASTEXITCODE -ne 0) 'An existing formal version must fail preflight.'
+        Assert-True ($conflictOutput -match 'p10-package-version-conflict') 'Existing-version preflight must report the exact conflict.'
+        $env:CP6_TEST_EXISTING_PACKAGE = $null
+
+        $publisherPackageRoot = Join-Path $testRoot 'publisher-packages'
+        [IO.Directory]::CreateDirectory($publisherPackageRoot) | Out-Null
+        $formalIds = @(
+            'CP6.Platform.Abstractions', 'CP6.Platform.AspNetCore', 'CP6.Platform.Contracts',
+            'CP6.Platform.Deployment', 'CP6.Platform.EntityFramework', 'CP6.Platform.Messaging', 'CP6.Platform.Release'
+        )
+        foreach ($id in $formalIds) {
+            [IO.File]::WriteAllText((Join-Path $publisherPackageRoot "$id.0.10.0.nupkg"), "synthetic-$id", [Text.UTF8Encoding]::new($false))
+        }
+        $fakeDotNet = Join-Path $testRoot 'publish-dotnet.ps1'
+        $fakeDotNetText = @'
+[CmdletBinding()]
+param([Parameter(ValueFromRemainingArguments)][string[]]$ToolArguments)
+$count = if (Test-Path -LiteralPath $env:CP6_TEST_PUSH_STATE) { [int][IO.File]::ReadAllText($env:CP6_TEST_PUSH_STATE) } else { 0 }
+$count++
+[IO.File]::WriteAllText($env:CP6_TEST_PUSH_STATE, [string]$count)
+if ($env:CP6_TEST_PUSH_FAIL_AT -and $count -eq [int]$env:CP6_TEST_PUSH_FAIL_AT) { exit 41 }
+exit 0
+'@
+        [IO.File]::WriteAllText($fakeDotNet, $fakeDotNetText, [Text.UTF8Encoding]::new($false))
+        $fakeReleaseTool = Join-Path $testRoot 'publish-release-tool.ps1'
+        $fakeReleaseToolText = @'
+[CmdletBinding()]
+param([Parameter(ValueFromRemainingArguments)][string[]]$ToolArguments)
+$command = $ToolArguments[0]
+if ($command -ceq 'validate-nuget-trust') { 'policy'; exit 0 }
+if ($command -ceq 'canonicalize') { [IO.File]::Copy($ToolArguments[1], $ToolArguments[2]); exit 0 }
+if ($command -ceq 'download-package') {
+    $id = $ToolArguments[2]
+    $source = Join-Path $env:CP6_TEST_PUBLISH_PACKAGES "$id.0.10.0.nupkg"
+    [IO.File]::Copy($source, $ToolArguments[4])
+    if ($env:CP6_TEST_HASH_MISMATCH -ceq $id) { [IO.File]::AppendAllText($ToolArguments[4], 'changed') }
+    exit 0
+}
+if ($command -ceq 'verify-formal-package') {
+    $id = $ToolArguments[4]
+    if ($env:CP6_TEST_WRONG_IDENTITY -ceq $id) { exit 43 }
+    $hash = (Get-FileHash -LiteralPath $ToolArguments[1] -Algorithm SHA256).Hash.ToLowerInvariant()
+    [pscustomobject]@{
+        packageId=$id;version='0.10.0';sourceGitSha=$ToolArguments[6]
+        packageSha256=$hash;signerFingerprint=$env:CP6_TEST_SIGNER;spkiKeyId=$env:CP6_TEST_SPKI
+        timestampPolicyOid='1.2.3.4';timestampUtc='2026-09-02T00:00:00.000Z'
+        timestampCertificateChainSha256=@(('d' * 64))
+    } | ConvertTo-Json -Compress
+    exit 0
+}
+exit 47
+'@
+        [IO.File]::WriteAllText($fakeReleaseTool, $fakeReleaseToolText, [Text.UTF8Encoding]::new($false))
+        $cleanupProbe = Join-Path $testRoot 'publish-cleanup.ps1'
+        [IO.File]::WriteAllText($cleanupProbe, "if (`$env:CP6_TEST_CLEANUP_FAIL -ceq 'true') { exit 49 }", [Text.UTF8Encoding]::new($false))
+        $env:GITHUB_TOKEN = 'synthetic-test-token'
+        $env:CP6_TEST_PUBLISH_PACKAGES = $publisherPackageRoot
+        $env:CP6_TEST_SIGNER = $syntheticFingerprint
+        $env:CP6_TEST_SPKI = $syntheticSpkiId
+
+        function Invoke-SyntheticPublishCase(
+            [string]$Name,
+            [int]$FailAt,
+            [string]$HashMismatch,
+            [string]$WrongIdentity,
+            [bool]$CleanupFails,
+            [bool]$ExpectSuccess,
+            [int]$ExpectedPushCount
+        ) {
+            $env:CP6_TEST_PUSH_STATE = Join-Path $testRoot "$Name-push-count.txt"
+            $env:CP6_TEST_PUSH_FAIL_AT = if ($FailAt -gt 0) { [string]$FailAt } else { $null }
+            $env:CP6_TEST_HASH_MISMATCH = $HashMismatch
+            $env:CP6_TEST_WRONG_IDENTITY = $WrongIdentity
+            $env:CP6_TEST_CLEANUP_FAIL = if ($CleanupFails) { 'true' } else { 'false' }
+            $caseOutput = Join-Path $repositoryRoot ("artifacts/p10-formal/synthetic-publish-$Name-" + [Guid]::NewGuid().ToString('N'))
+            try {
+                $caseText = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Publish-P10FormalPackageSet.ps1') `
+                    -PackagePath $publisherPackageRoot `
+                    -PackageVersion '0.10.0' `
+                    -SourceGitSha $env:GITHUB_SHA `
+                    -RunId 1 `
+                    -RunAttempt 1 `
+                    -PreflightStatus Success `
+                    -TrustPolicyPath $syntheticPolicyPath `
+                    -CertificateDirectory $syntheticCertificates `
+                    -OutputPath $caseOutput `
+                    -ReleaseToolPath $fakeReleaseTool `
+                    -DotNetPath $fakeDotNet `
+                    -CleanupProbePath $cleanupProbe 2>&1 | Out-String
+                if ($ExpectSuccess) {
+                    Assert-True ($LASTEXITCODE -eq 0) "$Name publication case failed: $caseText"
+                    Assert-True (Test-Path -LiteralPath (Join-Path $caseOutput 'formal-package-readback.v1.json') -PathType Leaf) "$Name must retain read-back evidence."
+                    Assert-True (@(Get-ChildItem -LiteralPath (Join-Path $caseOutput 'feed-readback-packages') -File).Count -eq 7) "$Name must retain seven read-back packages."
+                    [IO.File]::Copy(
+                        (Join-Path $caseOutput 'formal-package-readback.v1.json'),
+                        (Join-Path $testRoot 'publisher-success-readback.json'))
+                }
+                else {
+                    Assert-True ($LASTEXITCODE -ne 0) "$Name publication case must fail."
+                    Assert-True ($caseText -match 'p10-formal-version-consumed') "$Name must burn the immutable version."
+                }
+                Assert-True ([int][IO.File]::ReadAllText($env:CP6_TEST_PUSH_STATE) -eq $ExpectedPushCount) "$Name push count is incorrect."
+                Assert-True (Test-Path -LiteralPath (Join-Path $caseOutput 'p10-formal-version-consumed.json') -PathType Leaf) "$Name must retain the public version marker."
+            }
+            finally {
+                if (Test-Path -LiteralPath $caseOutput) { Remove-Item -LiteralPath $caseOutput -Recurse -Force }
+            }
+        }
+
+        Invoke-SyntheticPublishCase 'success' 0 '' '' $false $true 7
+        Invoke-SyntheticPublishCase 'first-upload' 1 '' '' $false $false 1
+        Invoke-SyntheticPublishCase 'fourth-upload' 4 '' '' $false $false 4
+        Invoke-SyntheticPublishCase 'hash-mismatch' 0 'CP6.Platform.Contracts' '' $false $false 7
+        Invoke-SyntheticPublishCase 'wrong-identity' 0 '' 'CP6.Platform.Contracts' $false $false 7
+        Invoke-SyntheticPublishCase 'cleanup-failure' 0 '' '' $true $false 7
+
+        $successfulReadBackPath = Join-Path $testRoot 'publisher-success-readback.json'
+        $successfulReadBack = Get-Content -LiteralPath $successfulReadBackPath -Raw | ConvertFrom-Json -Depth 30
+        $verificationPackages = @($successfulReadBack.packages | ForEach-Object {
+            [ordered]@{
+                packageId = [string]$_.packageId
+                version = '0.10.0'
+                sourceGitSha = $env:GITHUB_SHA
+                packageSha256 = [string]$_.publishedPackageSha256
+                signerFingerprint = [string]$_.signerFingerprint
+                spkiKeyId = [string]$_.spkiKeyId
+                timestampPolicyOid = [string]$_.timestampPolicyOid
+                timestampCertificateChainSha256 = @($_.timestampCertificateChainSha256)
+            }
+        })
+        $verificationEvidence = [ordered]@{
+            version = '0.10.0'
+            sourceGitSha = $env:GITHUB_SHA
+            mode = 'Current'
+            packages = $verificationPackages
+        }
+        $windowsEvidence = Join-Path $testRoot 'synthetic-windows-verification.json'
+        $linuxEvidence = Join-Path $testRoot 'synthetic-linux-verification.json'
+        $verificationJson = $verificationEvidence | ConvertTo-Json -Depth 20 -Compress
+        [IO.File]::WriteAllText($windowsEvidence, $verificationJson, [Text.UTF8Encoding]::new($false))
+        [IO.File]::WriteAllText($linuxEvidence, $verificationJson, [Text.UTF8Encoding]::new($false))
+        $syntheticFinalRecord = Join-Path $testRoot 'synthetic-formal-publication.json'
+        $finalRecordText = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/New-P10FormalPublicationRecord.ps1') `
+            -ReadBackPath $successfulReadBackPath `
+            -WindowsVerificationPath $windowsEvidence `
+            -LinuxVerificationEvidencePath $linuxEvidence `
+            -LinuxVerification Success `
+            -PackageVersion '0.10.0' `
+            -SourceGitSha $env:GITHUB_SHA `
+            -WorkflowFileSha ('e' * 40) `
+            -RunId 1 `
+            -RunAttempt 1 `
+            -DotNetSdk '8.0.100' `
+            -NuGetClient '6.11.2' `
+            -RunnerImage 'synthetic-test-only' `
+            -TrustPolicyPath $syntheticPolicyPath `
+            -CertificateDirectory $syntheticCertificates `
+            -OutputPath $syntheticFinalRecord `
+            -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
+        Assert-True ($LASTEXITCODE -eq 0) "Synthetic final publication record failed: $finalRecordText"
+        Assert-True (Test-Path -LiteralPath $syntheticFinalRecord -PathType Leaf) 'Synthetic final publication record was not produced.'
+        $mismatchedLinux = Get-Content -LiteralPath $linuxEvidence -Raw | ConvertFrom-Json -Depth 20
+        $mismatchedLinux.packages[0].timestampPolicyOid = '1.2.3.5'
+        $mismatchedLinuxPath = Join-Path $testRoot 'synthetic-linux-mismatched-timestamp.json'
+        [IO.File]::WriteAllText($mismatchedLinuxPath, ($mismatchedLinux | ConvertTo-Json -Depth 20 -Compress), [Text.UTF8Encoding]::new($false))
+        $rejectedFinalRecord = Join-Path $testRoot 'synthetic-formal-publication-rejected.json'
+        $rejectedRecordText = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/New-P10FormalPublicationRecord.ps1') `
+            -ReadBackPath $successfulReadBackPath `
+            -WindowsVerificationPath $windowsEvidence `
+            -LinuxVerificationEvidencePath $mismatchedLinuxPath `
+            -LinuxVerification Success `
+            -PackageVersion '0.10.0' `
+            -SourceGitSha $env:GITHUB_SHA `
+            -WorkflowFileSha ('e' * 40) `
+            -RunId 1 `
+            -RunAttempt 1 `
+            -DotNetSdk '8.0.100' `
+            -NuGetClient '6.11.2' `
+            -RunnerImage 'synthetic-test-only' `
+            -TrustPolicyPath $syntheticPolicyPath `
+            -CertificateDirectory $syntheticCertificates `
+            -OutputPath $rejectedFinalRecord `
+            -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
+        Assert-True ($LASTEXITCODE -ne 0) 'Mismatched Linux timestamp identity must reject the final record.'
+        Assert-True (-not (Test-Path -LiteralPath $rejectedFinalRecord)) "Rejected final record must not remain: $rejectedRecordText"
+
         $syntheticRunnerTemp = Join-Path $testRoot 'synthetic-runner-temp'
         [IO.Directory]::CreateDirectory($syntheticRunnerTemp) | Out-Null
         $env:RUNNER_TEMP = $syntheticRunnerTemp
@@ -273,6 +557,10 @@ finally {
     [Environment]::SetEnvironmentVariable('P10_NUGET_SIGNING_PFX_BASE64', $originalPfxBase64)
     [Environment]::SetEnvironmentVariable('P10_NUGET_SIGNING_PFX_PASSWORD', $originalPfxPassword)
     [Environment]::SetEnvironmentVariable('RUNNER_TEMP', $originalRunnerTemp)
+    [Environment]::SetEnvironmentVariable('GITHUB_REF', $originalGitHubRef)
+    [Environment]::SetEnvironmentVariable('GITHUB_SHA', $originalGitHubSha)
+    [Environment]::SetEnvironmentVariable('S04_EXTERNAL_PREREQUISITES_READY', $originalExternalReady)
+    [Environment]::SetEnvironmentVariable('GITHUB_TOKEN', $originalGitHubToken)
     if (Test-Path -LiteralPath $testRoot) {
         Remove-Item -LiteralPath $testRoot -Recurse -Force
     }
