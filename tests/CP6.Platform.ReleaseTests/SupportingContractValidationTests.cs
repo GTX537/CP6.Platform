@@ -1,4 +1,6 @@
+using System.Text.Json;
 using CP6.Platform.Release;
+using Json.Schema;
 
 namespace CP6.Platform.ReleaseTests;
 
@@ -86,6 +88,54 @@ public sealed class SupportingContractValidationTests
             Cp6SupportingContractValidator.RequireRequiredPublicEvidence([], evidence.SubjectHashes)).Code);
     }
 
+    [Theory]
+    [InlineData("pinned-nuget-trust-store.v1.schema.json", "pinned-nuget-trust.valid.json")]
+    [InlineData("formal-package-publication.v1.schema.json", "formal-package-publication.valid.json")]
+    [InlineData("formal-package-publication.v1.schema.json", "formal-package-publication-changed-published-bytes.invalid.json")]
+    public void Formal_supporting_fixtures_match_their_structural_contract(string schemaName, string fixtureName)
+    {
+        var result = EvaluateSchema(schemaName, fixtureName);
+        Assert.True(result.IsValid, JsonSerializer.Serialize(result));
+    }
+
+    [Theory]
+    [InlineData("pinned-nuget-trust-store.v1.schema.json", "pinned-nuget-trust-public-ca.invalid.json")]
+    [InlineData("pinned-nuget-trust-store.v1.schema.json", "pinned-nuget-trust-wrong-package-set.invalid.json")]
+    [InlineData("pinned-nuget-trust-store.v1.schema.json", "pinned-nuget-trust-two-current.invalid.json")]
+    [InlineData("pinned-nuget-trust-store.v1.schema.json", "pinned-nuget-trust-bad-fingerprint.invalid.json")]
+    [InlineData("pinned-nuget-trust-store.v1.schema.json", "pinned-nuget-trust-bad-status-fields.invalid.json")]
+    [InlineData("formal-package-publication.v1.schema.json", "formal-package-publication-mixed-version.invalid.json")]
+    [InlineData("formal-package-publication.v1.schema.json", "formal-package-publication-test-timestamp-policy.invalid.json")]
+    [InlineData("formal-package-publication.v1.schema.json", "formal-package-publication-missing-package.invalid.json")]
+    public void Formal_supporting_schemas_reject_structural_mutations(string schemaName, string fixtureName)
+    {
+        Assert.False(EvaluateSchema(schemaName, fixtureName).IsValid);
+    }
+
+    [Fact]
+    public void Formal_supporting_fixture_bytes_are_canonical_except_the_explicit_negative_case()
+    {
+        var fixtureRoot = Path.Combine(ReleaseTestData.RepositoryRoot, "contracts", "release", "v1", "fixtures", "supporting");
+        var fixtures = Directory.GetFiles(fixtureRoot, "pinned-nuget-trust*.json")
+            .Concat(Directory.GetFiles(fixtureRoot, "formal-package-publication*.json"))
+            .Order(StringComparer.Ordinal)
+            .ToArray();
+
+        foreach (var fixture in fixtures)
+        {
+            var bytes = File.ReadAllBytes(fixture);
+            var canonical = Cp6DeterministicJson.Canonicalize(bytes);
+            if (fixture.EndsWith("pinned-nuget-trust-noncanonical.invalid.json", StringComparison.Ordinal))
+            {
+                Assert.False(bytes.AsSpan().SequenceEqual(canonical));
+            }
+            else
+            {
+                Assert.True(bytes.AsSpan().SequenceEqual(canonical), $"Fixture must be canonical: {fixture}");
+            }
+        }
+    }
+
     public static TheoryData<string, string, string> StructuralMutations => new()
     {
         { "release-gate", "release-gate-missing.invalid.json", "missing-property" },
@@ -118,4 +168,15 @@ public sealed class SupportingContractValidationTests
         "trust" => Cp6PinnedTrustPolicy.Parse(ReleaseTestData.Fixture("supporting", fixture)).ValidatedDocument,
         _ => throw new ArgumentOutOfRangeException(nameof(stem))
     };
+
+    private static EvaluationResults EvaluateSchema(string schemaName, string fixtureName)
+    {
+        var schemaRoot = Path.Combine(ReleaseTestData.RepositoryRoot, "contracts", "release", "v1");
+        var registry = new SchemaRegistry();
+        var buildOptions = new BuildOptions { Dialect = Dialect.Draft202012, SchemaRegistry = registry };
+        _ = JsonSchema.FromText(File.ReadAllText(Path.Combine(schemaRoot, "release-common.v1.schema.json")), buildOptions);
+        var schema = JsonSchema.FromText(File.ReadAllText(Path.Combine(schemaRoot, schemaName)), buildOptions);
+        using var fixture = JsonDocument.Parse(ReleaseTestData.Fixture("supporting", fixtureName));
+        return schema.Evaluate(fixture.RootElement, new EvaluationOptions { OutputFormat = OutputFormat.List });
+    }
 }

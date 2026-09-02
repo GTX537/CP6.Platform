@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/formal-package-publication.v1",
+  "type": "object",
+  "required": ["$schemaId", "createdAtUtc", "version", "sourceGitSha", "buildInvocationId", "workflow", "toolchain", "trust", "packages", "verification"],
+  "properties": {
+    "$schemaId": { "const": "https://schemas.cp6.dev/release/formal-package-publication.v1" },
+    "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
+    "version": { "const": "0.10.0" },
+    "sourceGitSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
+    "buildInvocationId": { "type": "string", "pattern": "^p10-s04:[0-9a-f]{40}:[1-9][0-9]*:[1-9][0-9]*$" },
+    "workflow": { "$ref": "#/$defs/workflow" },
+    "toolchain": { "$ref": "#/$defs/toolchain" },
+    "trust": { "$ref": "#/$defs/trust" },
+    "packages": {
+      "type": "array",
+      "prefixItems": [
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Abstractions" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.AspNetCore" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Contracts" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Deployment" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.EntityFramework" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Messaging" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Release" } } }] }
+      ],
+      "items": false,
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true
+    },
+    "verification": {
+      "type": "object",
+      "required": ["windows", "linux"],
+      "properties": {
+        "windows": { "const": "Success" },
+        "linux": { "const": "Success" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "workflow": {
+      "type": "object",
+      "required": ["repository", "workflowPath", "workflowFileSha", "commitSha", "runId", "runAttempt", "environment"],
+      "properties": {
+        "repository": { "const": "GTX537/CP6.Platform" },
+        "workflowPath": { "const": ".github/workflows/p10-formal-packages.yml" },
+        "workflowFileSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
+        "commitSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
+        "runId": { "type": "integer", "minimum": 1 },
+        "runAttempt": { "type": "integer", "minimum": 1 },
+        "environment": { "const": "p10-formal-release" }
+      },
+      "additionalProperties": false
+    },
+    "toolchain": {
+      "type": "object",
+      "required": ["dotnetSdk", "nugetClient", "runnerImage"],
+      "properties": {
+        "dotnetSdk": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "nugetClient": { "type": "string", "minLength": 1, "maxLength": 64 },
+        "runnerImage": { "type": "string", "minLength": 1, "maxLength": 128 }
+      },
+      "additionalProperties": false
+    },
+    "trust": {
+      "type": "object",
+      "required": ["policyVersion", "policySha256", "trustModel", "publicCaTrusted", "internallyTrusted", "signerFingerprint", "spkiKeyId", "timestampPolicy", "timestampService"],
+      "properties": {
+        "policyVersion": { "type": "integer", "minimum": 1 },
+        "policySha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
+        "trustModel": { "const": "PinnedSelfSigned" },
+        "publicCaTrusted": { "const": false },
+        "internallyTrusted": { "const": true },
+        "signerFingerprint": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
+        "spkiKeyId": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "timestampPolicy": { "const": "Rfc3161Required" },
+        "timestampService": { "const": "http://timestamp.digicert.com" }
+      },
+      "additionalProperties": false
+    },
+    "package": {
+      "type": "object",
+      "required": ["packageId", "version", "sourceGitSha", "authorSignedPackageSha256", "publishedPackageSha256", "feedIdentity", "feedTransformation", "signerFingerprint", "timestampPolicy", "timestampPolicyOid", "timestampCertificateChainSha256"],
+      "properties": {
+        "packageId": { "enum": ["CP6.Platform.Abstractions", "CP6.Platform.AspNetCore", "CP6.Platform.Contracts", "CP6.Platform.Deployment", "CP6.Platform.EntityFramework", "CP6.Platform.Messaging", "CP6.Platform.Release"] },
+        "version": { "const": "0.10.0" },
+        "sourceGitSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
+        "authorSignedPackageSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
+        "publishedPackageSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
+        "feedIdentity": { "type": "string", "pattern": "^https://nuget\\.pkg\\.github\\.com/GTX537/index\\.json#CP6\\.Platform\\.[A-Za-z]+/0\\.10\\.0$" },
+        "feedTransformation": { "const": "BytePreserving" },
+        "signerFingerprint": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
+        "timestampPolicy": { "const": "Rfc3161Required" },
+        "timestampPolicyOid": { "type": "string", "pattern": "^[0-2](?:\\.[0-9]+)+$" },
+        "timestampCertificateChainSha256": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

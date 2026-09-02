@@ -11,12 +11,15 @@ public static class Cp6ReleaseContractIds
     public const string SystemLineageBootstrap = "https://schemas.cp6.dev/release/system-lineage-bootstrap-evidence.v1";
     public const string EvidenceRecord = "https://schemas.cp6.dev/release/evidence-record.v1";
     public const string BuildProvenance = "https://schemas.cp6.dev/release/build-invocation-provenance.v1";
+    public const string FormalPackagePublication = "https://schemas.cp6.dev/release/formal-package-publication.v1";
+    public const string PinnedNuGetTrustStore = "https://schemas.cp6.dev/release/pinned-nuget-trust-store.v1";
     public const string TestPackageTransport = "https://schemas.cp6.dev/release/test-package-transport.v1";
     public const string PinnedTrustStore = "https://schemas.cp6.dev/release/pinned-trust-store.v1";
 
     public static IReadOnlyList<string> All { get; } =
     [
-        BuildProvenance, CandidateLocator, CandidateResult, EvidenceRecord, PinnedTrustStore,
-        PlatformCandidate, ReleaseGateResult, SystemLineageBootstrap, SystemManifest, TestPackageTransport
+        BuildProvenance, CandidateLocator, CandidateResult, EvidenceRecord, FormalPackagePublication,
+        PinnedNuGetTrustStore, PinnedTrustStore, PlatformCandidate, ReleaseGateResult,
+        SystemLineageBootstrap, SystemManifest, TestPackageTransport
     ];
 }
