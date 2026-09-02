@@ -481,6 +481,7 @@ try {
                 '--configuration', 'Release', '--no-build'
             )
             [void](Invoke-PowerShellStep -Name 'P10PackageScriptContracts' -ScriptPath 'tests/p10/test-package-scripts.Tests.ps1')
+            [void](Invoke-PowerShellStep -Name 'P10FormalPackageScriptContracts' -ScriptPath 'tests/p10/formal-package-scripts.Tests.ps1')
             Assert-ReproduciblePackages
         }
         'Security' {
