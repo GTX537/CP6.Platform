@@ -151,7 +151,7 @@ jobs:
             -OutputPath 'artifacts/p10-formal/final/formal-package-publication.v1.json' `
             -ReleaseToolPath $releaseTool
 
-          $evaluationUtc = [DateTimeOffset]::UtcNow.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z", [Globalization.CultureInfo]::InvariantCulture)
+          $evaluationUtc = [DateTimeOffset]::UtcNow.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z'", [Globalization.CultureInfo]::InvariantCulture)
           & dotnet $releaseTool validate-formal-publication `
             'artifacts/p10-formal/final/formal-package-publication.v1.json' `
             "$publicRoot/trust/p10-formal-nuget-trust-store.v1.json" `

@@ -166,6 +166,20 @@ public sealed class P10FormalWorkflowContractTests
     }
 
     [Fact]
+    public void Formal_workflows_use_parseable_utc_validation_timestamp_format()
+    {
+        var formal = File.ReadAllText(WorkflowPath);
+        var recovery = File.ReadAllText(RecoveryWorkflowPath);
+        const string validFormat = "ToString(\"yyyy-MM-dd'T'HH:mm:ss.fff'Z'\", [Globalization.CultureInfo]::InvariantCulture)";
+        const string malformedFormat = "ToString(\"yyyy-MM-dd'T'HH:mm:ss.fff'Z\", [Globalization.CultureInfo]::InvariantCulture)";
+
+        Assert.Contains(validFormat, formal, StringComparison.Ordinal);
+        Assert.Contains(validFormat, recovery, StringComparison.Ordinal);
+        Assert.DoesNotContain(malformedFormat, formal, StringComparison.Ordinal);
+        Assert.DoesNotContain(malformedFormat, recovery, StringComparison.Ordinal);
+    }
+
+    [Fact]
     public void Recovery_workflow_is_read_only_and_binds_the_failed_publication_evidence()
     {
         Assert.True(File.Exists(RecoveryWorkflowPath), "P10 S04 formal recovery workflow is missing.");
