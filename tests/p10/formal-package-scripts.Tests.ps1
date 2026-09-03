@@ -274,14 +274,13 @@ exit 23
         & dotnet $releaseToolPath validate-nuget-trust $syntheticPolicyPath $syntheticCertificates | Out-Host
         if ($LASTEXITCODE -ne 0) { throw 'Synthetic policy validation failed.' }
 
-        $signerIdentityOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalSignerIdentity.ps1') `
+        $signerIdentityResult = & (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalSignerIdentity.ps1') `
             -TrustPolicyPath $syntheticPolicyPath `
             -CertificateDirectory $syntheticCertificates `
-            -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
-        Assert-True ($LASTEXITCODE -eq 0) "Synthetic signer identity validation failed: $signerIdentityOutput"
-        Assert-True ($signerIdentityOutput -match 'Success') 'Signer identity validation must report success.'
-        Assert-True ($signerIdentityOutput -match $syntheticFingerprint) 'Signer identity evidence must contain the public DER fingerprint.'
-        Assert-True ($signerIdentityOutput -match [regex]::Escape($syntheticSpkiId)) 'Signer identity evidence must contain the SPKI ID.'
+            -ReleaseToolPath $releaseToolPath
+        Assert-True ($signerIdentityResult.Status -ceq 'Success') 'Signer identity validation must report success.'
+        Assert-True ($signerIdentityResult.CertificateSha256 -ceq $syntheticFingerprint) 'Signer identity evidence must contain the public DER fingerprint.'
+        Assert-True ($signerIdentityResult.SpkiKeyId -ceq $syntheticSpkiId) 'Signer identity evidence must contain the SPKI ID.'
 
         $mismatchRsa = [Security.Cryptography.RSA]::Create(3072)
         $mismatchCertificate = $null
