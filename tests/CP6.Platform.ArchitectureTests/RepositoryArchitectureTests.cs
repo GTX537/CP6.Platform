@@ -750,20 +750,20 @@ public sealed class RepositoryArchitectureTests
 
         foreach (var required in new[]
         {
-            "S04 tooling implemented / publication not started",
-            "testOnly=true",
+            "P10 Platform status: **S04 complete**",
+            "P10 overall: **Candidate / No-Go pending S05 and S06**",
             "deployable=false",
             "GitHub Packages",
             "S03",
             "90 days",
-            "formal package publication: not started",
+            "formal Platform package publication: complete for exactly `0.10.0`",
             "PinnedSelfSigned",
             "publicCaTrusted=false",
-            "S04_EXTERNAL_PREREQUISITES_READY",
-            "System candidate publication: denied",
-            "Portal fabrication: denied",
-            "R2 Locator publication: denied",
-            "deployment: denied"
+            "S04_EXTERNAL_PREREQUISITES_READY=true",
+            "System candidate publication: not authorized",
+            "Portal fabrication: not authorized",
+            "R2 candidate or Locator publication: not authorized",
+            "deployment: not authorized"
         })
         {
             Assert.Contains(required, document, StringComparison.Ordinal);
@@ -771,6 +771,10 @@ public sealed class RepositoryArchitectureTests
 
         foreach (var forbidden in new[]
         {
+            "S04 tooling implemented / publication not started",
+            "formal package publication: not started",
+            "formal workflow has not been dispatched",
+            "version `0.10.0` has not been published",
             "VersionId",
             "Object Lock",
             "Frozen / Consumable",
