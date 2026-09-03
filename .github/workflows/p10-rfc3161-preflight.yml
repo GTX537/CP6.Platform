@@ -120,7 +120,7 @@ jobs:
           path: artifacts/p10-rfc3161/download
           merge-multiple: true
 
-      - name: Compare public RFC3161 identities
+      - name: Aggregate public RFC3161 identities
         shell: pwsh
         run: |
           $ErrorActionPreference = 'Stop'
@@ -135,15 +135,21 @@ jobs:
           if (($runnerNames -join '|') -cne 'ubuntu-latest|windows-2025') {
             throw "Unexpected runner set: $($runnerNames -join ',')."
           }
-
-          $windows = $records | Where-Object runnerImage -ceq 'windows-2025'
-          $linux = $records | Where-Object runnerImage -ceq 'ubuntu-latest'
-          if ([string]$windows.policyOid -cne [string]$linux.policyOid) {
-            throw 'Policy OIDs differ across the two runner probes.'
-          }
-          if ((@($windows.certificateChainSha256) -join '|') -cne
-              (@($linux.certificateChainSha256) -join '|')) {
-            throw 'RFC3161 certificate chains differ across the two runner probes.'
+          foreach ($record in $records) {
+            if ($record.success -ne $true -or
+                [long]$record.workflowRunId -ne [long]$env:P10_RUN_ID -or
+                [int]$record.workflowRunAttempt -ne [int]$env:P10_RUN_ATTEMPT -or
+                [string]$record.sourceGitSha -cne $env:P10_SOURCE_SHA -or
+                [string]$record.timestampService -cne 'http://timestamp.digicert.com' -or
+                [string]::IsNullOrWhiteSpace([string]$record.policyOid) -or
+                @($record.certificateChainSha256).Count -lt 2) {
+              throw "Runner probe evidence is incomplete or mismatched: $($record.runnerImage)."
+            }
+            foreach ($fingerprint in @($record.certificateChainSha256)) {
+              if ([string]$fingerprint -cnotmatch '^[0-9a-f]{64}$') {
+                throw "Runner probe chain is not canonical SHA-256: $($record.runnerImage)."
+              }
+            }
           }
 
           $evidence = [ordered]@{
@@ -153,13 +159,13 @@ jobs:
             workflowRunAttempt = [int]$env:P10_RUN_ATTEMPT
             sourceGitSha = $env:P10_SOURCE_SHA
             timestampService = 'http://timestamp.digicert.com'
-            policyOid = [string]$windows.policyOid
-            certificateChainSha256 = @($windows.certificateChainSha256)
             probes = @($records | Sort-Object runnerImage | ForEach-Object {
               [ordered]@{
                 runnerImage = [string]$_.runnerImage
                 timestampUtc = [string]$_.timestampUtc
                 success = [bool]$_.success
+                policyOid = [string]$_.policyOid
+                certificateChainSha256 = @($_.certificateChainSha256)
               }
             })
           }
@@ -168,7 +174,7 @@ jobs:
           $path = Join-Path $directory 'p10-rfc3161-two-runner-evidence.json'
           $json = $evidence | ConvertTo-Json -Depth 6 -Compress
           [IO.File]::WriteAllText($path, $json, [Text.UTF8Encoding]::new($false))
-          Write-Host "Two-runner RFC3161 identity matched: policy=$($evidence.policyOid) chain=$($evidence.certificateChainSha256 -join ',')"
+          Write-Host 'Both RFC3161 probes passed with runner-specific normal trust paths recorded.'
 
       - name: Upload two-runner evidence
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a

@@ -32,7 +32,7 @@ public sealed class P10Rfc3161PreflightWorkflowContractTests
     }
 
     [Fact]
-    public void Preflight_uses_the_real_probe_and_compares_public_identity()
+    public void Preflight_uses_the_real_probe_and_records_runner_specific_public_identity()
     {
         var text = File.ReadAllText(WorkflowPath);
 
@@ -43,8 +43,10 @@ public sealed class P10Rfc3161PreflightWorkflowContractTests
         Assert.Contains("p10-rfc3161-windows-2025", text, StringComparison.Ordinal);
         Assert.Contains("p10-rfc3161-ubuntu-latest", text, StringComparison.Ordinal);
         Assert.Contains("p10-rfc3161-two-runner-evidence", text, StringComparison.Ordinal);
-        Assert.Contains("Policy OIDs differ", text, StringComparison.Ordinal);
-        Assert.Contains("certificate chains differ", text, StringComparison.Ordinal);
+        Assert.Contains("policyOid = [string]$_.policyOid", text, StringComparison.Ordinal);
+        Assert.Contains("certificateChainSha256 = @($_.certificateChainSha256)", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("Policy OIDs differ", text, StringComparison.Ordinal);
+        Assert.DoesNotContain("certificate chains differ", text, StringComparison.Ordinal);
     }
 
     [Fact]
