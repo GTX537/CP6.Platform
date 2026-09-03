@@ -4,6 +4,10 @@
 
 P10 Platform status: **S04 tooling implemented / publication not started**.
 
+Task 10's zero-cost external infrastructure gate is complete. The formal NuGet
+signing identity, its two Environment Secrets, and the three-repository public
+NuGet trust bootstrap remain uncreated, so this does not complete S04.
+
 This repository implements the release-contract package, deterministic JSON profile, validation rules, test-only package tooling, immutable GitHub Actions transport, and the formal NuGet signing/publication toolchain. The formal workflow has not been dispatched, version `0.10.0` has not been published by this work, and no real signing Secret or committed formal trust asset is created by the tooling implementation branch. It does not complete the cross-repository release process. The current evidence ceiling remains `testOnly=true` and `deployable=false`.
 
 The following actions are outside this phase:
@@ -149,7 +153,61 @@ $sourceSha = gh api repos/GTX537/CP6.Platform/commits/main --jq .sha
 gh workflow run p10-formal-packages.yml --repo GTX537/CP6.Platform --ref main -f expected_commit=$sourceSha -f version=0.10.0
 ```
 
-That dispatch command is documented for the future gate only; it has not been run. `S04_EXTERNAL_PREREQUISITES_READY` must remain unset until reviewed evidence exists for the downstream cosign key and pinned trust, R2 authority/write policy, permanent read-only consumer credentials, protected Environment policy, and real DigiCert RFC 3161 probes from both runner images. At this status, those external prerequisites have not been proven.
+That dispatch command is documented for the future gate only; it has not been
+run. Reviewed evidence now exists for the downstream cosign keys and pinned
+trust, R2 authority/write policy, permanent read-only consumer credentials,
+protected Environment policy, and real DigiCert RFC 3161 probes from both
+runner images. `S04_EXTERNAL_PREREQUISITES_READY` nevertheless remains unset
+until the next gate creates the two formal signing Secrets, merges identical
+public certificate/trust bytes into Platform, CRM, and CP6, and revalidates
+the Environment PFX against that merged trust.
+
+## S04 external prerequisite evidence
+
+Public CP6 `main@96ba90acf24cdf8be37c48cf94e5bc5d3f4fb3d7` records the
+bucket-scoped R2 publisher, permanent read-only consumer, non-mutating
+900-second temporary-credential preflight, and separate locator/OCI cosign
+identities. The canonical storage/cosign trust SHA-256 is
+`0a6e72951c196e612a593cc8831e294bb538c9ba8a79eada4538771a3811d8e9`.
+The R2 authority remains `cp6-release-r2-v1`, bucket `cp6-release`, default
+jurisdiction, with only `candidates/platform/` and `objects/sha256/` accepted.
+
+`GTX537/CP6.Platform` was reconfirmed public. Environment
+`p10-formal-release` (ID `21135999336`) has required reviewer `GTX537`,
+`prevent_self_review=false`, custom branch policies, and exactly one `main`
+branch policy. It contained no Secrets during this gate; repository-level
+fallback Secrets were not created.
+
+The non-secret diagnostic workflow
+`.github/workflows/p10-rfc3161-preflight.yml` was merged by PR #44 at
+`main@df7388e6c3787f83dc74345513ce1adfe6c1ed5b`. Exact-main run
+`33714794599`, attempt `1`, passed on `ubuntu-latest`, `windows-2025`, and the
+aggregate job. Both live SHA-256 probes returned policy OID
+`2.16.840.1.114412.7.1` and built normal online-revocation system trust paths.
+Linux recorded the three-certificate chain:
+
+```text
+4aa03fa22cd75c84c55c938f828e676b9caecab33fe36d269aa334f146110a33
+ca0b1554ecd901ea19dcad8749e9f2648c8d6dfcea1add9d2c2109415bb82ccd
+552f7bdcf1a7af9e6ce672017f4f12abf77240c78e761ac203d1d9d20ac89988
+```
+
+Windows recorded the four-certificate chain:
+
+```text
+4aa03fa22cd75c84c55c938f828e676b9caecab33fe36d269aa334f146110a33
+ca0b1554ecd901ea19dcad8749e9f2648c8d6dfcea1add9d2c2109415bb82ccd
+33846b545a49c9be4903c60e01713c1bd4e4ef31ea65cd95d69e62794f30b941
+3e9099b5015e8f486c00bcea9d111ee721faba355a89bcf1df69561e3dc6325c
+```
+
+The OS-specific root paths are expected and retained independently; both share
+the same timestamp signer and issuing intermediate. Aggregate artifact ID
+`9878130997` has digest
+`sha256:e8a007e8e4b96f5aea6d5a277b144072a20a8c8eda4b0cb65a2006546786fff5`.
+Independent download validation confirmed the exact main/run tuple, canonical
+UTC timestamps, runner-specific identities, and a clean secret-shaped-content
+scan. This evidence is a preflight only and authorizes no publication.
 
 ## Local validation
 
@@ -214,7 +272,7 @@ Independent verification downloaded both artifacts by their exact names and run 
 The following formal inputs remain unavailable at this phase:
 
 - committed byte-identical public NuGet trust in Platform, CRM, and public CP6;
-- the protected Environment, its two signing Secrets, and two-runner RFC 3161 preflight evidence;
+- the two formal signing Environment Secrets and successful PFX-to-merged-trust revalidation;
 - immutable GitHub Packages identities, published package hashes, approved author signer, and RFC 3161 results;
 - exact GHCR repository digests, signature bundles, SBOMs, scans, and deployable image evidence;
 - S03 CRM package consumption from an ephemeral exact-version source with no `ProjectReference` fallback;

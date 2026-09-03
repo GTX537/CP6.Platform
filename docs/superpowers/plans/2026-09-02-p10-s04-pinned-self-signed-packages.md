@@ -957,13 +957,13 @@ Environment Secrets and required reviewers. The workflow must not fall back to
 repository-level Secrets. If the repository is private at preflight time,
 publication stops before key creation or package upload.
 
-- [ ] **Step 1: Confirm all non-NuGet external P10 prerequisites**
+- [x] **Step 1: Confirm all non-NuGet external P10 prerequisites**
 
 Record reviewed evidence that the downstream cosign key, pinned cosign trust,
 R2 authority/write policy, and permanent read-only consumer credentials are
 ready. If any is absent, keep `S04_EXTERNAL_PREREQUISITES_READY` unset and stop.
 
-- [ ] **Step 2: Reconfirm public visibility**
+- [x] **Step 2: Reconfirm public visibility**
 
 ```powershell
 $visibility = gh repo view GTX537/CP6.Platform --json visibility --jq .visibility
@@ -972,7 +972,7 @@ if ($visibility -cne 'PUBLIC') { throw 'p10-repository-visibility: CP6.Platform 
 
 Expected: `PUBLIC`. Any other result is `Candidate / No-Go`.
 
-- [ ] **Step 3: Create and protect the Environment without Secrets**
+- [x] **Step 3: Create and protect the Environment without Secrets**
 
 Configure `p10-formal-release` with main-only deployment branch policy and one
 required reviewer. Then read it back:
@@ -987,12 +987,66 @@ one owner, while preserving the separate dispatch and approval actions. A 404,
 403, 422, ignored rule, or missing reviewer is `Candidate / No-Go`. Do not write
 Secrets and do not substitute repository-level Secrets.
 
-- [ ] **Step 4: Preflight DigiCert RFC3161 from both runner images**
+- [x] **Step 4: Preflight DigiCert RFC3161 from both runner images**
 
 Run a non-secret manual diagnostic workflow or temporary local request that
 submits a SHA-256 RFC3161 query from `windows-2025` and `ubuntu-latest`, then
 validates the returned token and normal TSA chain. Record the policy OID and
 chain fingerprints. Both must pass; synthetic timestamps are forbidden.
+
+### Task 10 outcome (2026-09-03 UTC)
+
+- The reviewed non-NuGet prerequisites are recorded on public CP6
+  `main@96ba90acf24cdf8be37c48cf94e5bc5d3f4fb3d7`. The canonical storage/cosign
+  trust SHA-256 is
+  `0a6e72951c196e612a593cc8831e294bb538c9ba8a79eada4538771a3811d8e9`;
+  locator and OCI SPKI key IDs are respectively
+  `sha256:9c0fd05b3159651cc2e9138555f32387988c6961889ee00211139e710f1febaa`
+  and
+  `sha256:eb623d784fc55294e942fa49062477769a34943d5997fdbdd483ad0fb0103c21`.
+  R2 authority `cp6-release-r2-v1` is bound to bucket `cp6-release`, default
+  jurisdiction, and prefixes `candidates/platform/` and `objects/sha256/`.
+  The bucket-scoped publisher and permanent read-only consumer secret names are
+  confirmed. A 900-second four-action, path-restricted temporary credential
+  returned HTTP 200 for non-mutating `GetBucketLocation`; no object was
+  uploaded.
+- `GTX537/CP6.Platform` read back as `PUBLIC`. Environment
+  `p10-formal-release` has ID `21135999336`, required reviewer `GTX537`
+  (`62733943`), `prevent_self_review=false`, custom deployment branch policy,
+  and exactly one branch policy: ID `58979074`, name `main`, type `branch`.
+  Its Environment Secret count remained zero during this gate.
+- PR #44 head `6db7b0932f693a9de8fc0dc5949e0509087bf66f` merged normally as
+  `main@df7388e6c3787f83dc74345513ce1adfe6c1ed5b` after all eight PR checks
+  passed. The diagnostic workflow Git blob is
+  `00ffe45cf6867d8a4538c067e30e3ece93b4b97d`; its raw file SHA-256 is
+  `88aba0aaac567f398b083442a733444d773e4ffbbd66bc9ea3687acdfe47c92d`.
+- Exact-main workflow run `33714794599`, attempt `1`, completed successfully.
+  Jobs `100521580367` (`ubuntu-latest`), `100521580498` (`windows-2025`), and
+  `100521725503` (aggregate) all passed. Both live probes returned policy OID
+  `2.16.840.1.114412.7.1`. Linux validated the normal three-certificate path
+  `4aa03fa22cd75c84c55c938f828e676b9caecab33fe36d269aa334f146110a33`,
+  `ca0b1554ecd901ea19dcad8749e9f2648c8d6dfcea1add9d2c2109415bb82ccd`,
+  `552f7bdcf1a7af9e6ce672017f4f12abf77240c78e761ac203d1d9d20ac89988`.
+  Windows validated the normal four-certificate path with the same first two
+  fingerprints followed by
+  `33846b545a49c9be4903c60e01713c1bd4e4ef31ea65cd95d69e62794f30b941`
+  and
+  `3e9099b5015e8f486c00bcea9d111ee721faba355a89bcf1df69561e3dc6325c`.
+- Retained public artifacts are Linux ID `9878117894`, digest
+  `sha256:272e3ec6c2b41851b1b00018e46af919925634cb19b34913ba1164e82710af72`;
+  Windows ID `9878124241`, digest
+  `sha256:a6038b5aa9bc8d68bcfb3dcb766966bacfa2bb6ba8e0ae4e2c111b4128c8a26a`;
+  and aggregate ID `9878130997`, digest
+  `sha256:e8a007e8e4b96f5aea6d5a277b144072a20a8c8eda4b0cb65a2006546786fff5`.
+  They expire on 2026-10-03 UTC. Independent download validation confirmed the
+  exact source/run tuple, two canonical UTC timestamps, runner-specific chain
+  records, and no secret-shaped content.
+
+Task 10 is complete. `S04_EXTERNAL_PREREQUISITES_READY` remains unset until
+Task 11 creates the two protected signing Secrets, merges byte-identical public
+NuGet trust into Platform, CRM, and CP6, and revalidates the Environment PFX
+against that merged trust. No formal package, R2 object, Locator, image, or
+deployment was published by this gate.
 
 ## Task 11: Bootstrap and merge identical public trust into three repositories
 
