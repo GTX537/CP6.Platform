@@ -1,0 +1,64 @@
+name: p10-formal-signer-revalidation
+
+on:
+  workflow_dispatch:
+    inputs:
+      expected_commit:
+        description: Exact CP6.Platform main commit whose protected signer identity must be revalidated
+        required: true
+        type: string
+
+permissions: {}
+
+jobs:
+  revalidate-signer:
+    runs-on: windows-2025
+    timeout-minutes: 20
+    environment: p10-formal-release
+    permissions:
+      contents: read
+    env:
+      P10_EXPECTED_COMMIT: ${{ inputs.expected_commit }}
+      P10_EVENT_REF: ${{ github.ref }}
+      P10_EVENT_SHA: ${{ github.sha }}
+    steps:
+      - name: Check out exact validation source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up pinned .NET SDK
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68
+        with:
+          global-json-file: global.json
+      - name: Assert exact main source
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if ($env:P10_EVENT_REF -cne 'refs/heads/main') { throw 'Signer revalidation must be dispatched from main.' }
+          if ($env:P10_EVENT_SHA -cne $env:P10_EXPECTED_COMMIT) { throw 'Expected commit differs from the dispatch event main SHA.' }
+          if ((git rev-parse HEAD).Trim() -cne $env:P10_EXPECTED_COMMIT) { throw 'Checkout differs from the approved main commit.' }
+          $remoteMain = (gh api "/repos/$env:GITHUB_REPOSITORY/git/ref/heads/main" --jq '.object.sha').Trim()
+          if ($remoteMain -cne $env:P10_EXPECTED_COMMIT) { throw 'Remote main differs from the approved commit.' }
+      - name: Build public release verifier
+        shell: pwsh
+        run: |
+          dotnet restore tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj
+          if ($LASTEXITCODE -ne 0) { throw 'Release verifier restore failed.' }
+          dotnet build tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj --configuration Release --no-restore
+          if ($LASTEXITCODE -ne 0) { throw 'Release verifier build failed.' }
+      - name: Revalidate protected signer against merged public trust
+        shell: pwsh
+        env:
+          P10_NUGET_SIGNING_PFX_BASE64: ${{ secrets.P10_NUGET_SIGNING_PFX_BASE64 }}
+          P10_NUGET_SIGNING_PFX_PASSWORD: ${{ secrets.P10_NUGET_SIGNING_PFX_PASSWORD }}
+        run: |
+          $releaseTool = (Resolve-Path tools/CP6.Platform.ReleaseTool/bin/Release/net8.0/CP6.Platform.ReleaseTool.dll).Path
+          $identity = ./eng/p10/Test-P10FormalSignerIdentity.ps1 `
+            -TrustPolicyPath 'eng/p10/trust/p10-formal-nuget-trust-store.v1.json' `
+            -CertificateDirectory 'eng/p10/trust/certificates' `
+            -ReleaseToolPath $releaseTool
+          if ($identity.Status -cne 'Success') { throw 'Formal signer revalidation did not return Success.' }
+          $identity | ConvertTo-Json -Depth 10 -Compress | Out-Host
