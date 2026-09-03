@@ -212,31 +212,14 @@ if ($policyHash -cne $CrmTrustPolicySha256 -or $policyHash -cne $SystemTrustPoli
     throw 'p10-trust: Platform, CRM, and CP6 public trust hashes must be identical.'
 }
 
-$pfxBytes = $null
-$certificate = $null
-$publicKey = $null
-$spkiBytes = $null
-try {
-    $pfxBytes = [Convert]::FromBase64String($env:P10_NUGET_SIGNING_PFX_BASE64)
-    $certificate = [Security.Cryptography.X509Certificates.X509Certificate2]::new(
-        $pfxBytes,
-        $env:P10_NUGET_SIGNING_PFX_PASSWORD,
-        [Security.Cryptography.X509Certificates.X509KeyStorageFlags]::EphemeralKeySet)
-    if (-not $certificate.HasPrivateKey) { throw 'p10-trust: Environment PFX has no private key.' }
-    $der = $certificate.Export([Security.Cryptography.X509Certificates.X509ContentType]::Cert)
-    $pfxCertificateHash = [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($der)).ToLowerInvariant()
-    $publicKey = [Security.Cryptography.X509Certificates.RSACertificateExtensions]::GetRSAPublicKey($certificate)
-    $spkiBytes = $publicKey.ExportSubjectPublicKeyInfo()
-    $pfxSpki = 'sha256:' + [Convert]::ToHexString([Security.Cryptography.SHA256]::HashData($spkiBytes)).ToLowerInvariant()
-    if ($pfxCertificateHash -cne $certificateHash -or $pfxSpki -cne [string]$currentSigner[0].spkiKeyId) {
-        throw 'p10-trust: Environment PFX does not match the Current public signer.'
-    }
-}
-finally {
-    if ($pfxBytes) { [Array]::Clear($pfxBytes, 0, $pfxBytes.Length) }
-    if ($spkiBytes) { [Array]::Clear($spkiBytes, 0, $spkiBytes.Length) }
-    if ($publicKey) { $publicKey.Dispose() }
-    if ($certificate) { $certificate.Dispose() }
+$signerIdentity = & (Join-Path $PSScriptRoot 'Test-P10FormalSignerIdentity.ps1') `
+    -TrustPolicyPath $resolvedPolicy `
+    -CertificateDirectory $resolvedCertificates `
+    -ReleaseToolPath $ReleaseToolPath
+if ($signerIdentity.Status -cne 'Success' -or
+    $signerIdentity.PolicySha256 -cne $policyHash -or
+    $signerIdentity.CertificateSha256 -cne $certificateHash) {
+    throw 'p10-trust: signer identity validation did not match the approved trust policy.'
 }
 
 $timestamp = Invoke-Rfc3161Probe
@@ -249,6 +232,10 @@ $timestamp = Invoke-Rfc3161Probe
     SecretInventoryMode = $secretInventoryMode
     PolicySha256 = $policyHash
     CertificateSha256 = $certificateHash
+    SignerSpkiKeyId = [string]$signerIdentity.SpkiKeyId
+    SignerSubject = [string]$signerIdentity.Subject
+    SignerValidFromUtc = [string]$signerIdentity.ValidFromUtc
+    SignerValidUntilUtc = [string]$signerIdentity.ValidUntilUtc
     TimestampPolicyOid = [string]$timestamp.policyOid
     TimestampCertificateChainSha256 = @($timestamp.certificateChainSha256)
 }

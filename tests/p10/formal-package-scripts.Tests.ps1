@@ -73,6 +73,7 @@ Assert-True ($testFormal -cmatch "'validate-build-provenance'") 'Formal verifica
 Assert-True ($verifyScript -cmatch "P10FormalPackageScriptContracts") 'The Contract gate must run formal script contracts.'
 
 $publicationScriptPaths = @(
+    'eng/p10/Test-P10FormalSignerIdentity.ps1',
     'eng/p10/Test-P10FormalPrerequisites.ps1',
     'eng/p10/Publish-P10FormalPackageSet.ps1',
     'eng/p10/New-P10FormalPublicationRecord.ps1'
@@ -86,6 +87,7 @@ foreach ($relativePath in $publicationScriptPaths) {
     Assert-True ($text -notmatch '(?i)nuget\s+delete|package\s+delete|package\s+unlist|--overwrite') "$relativePath must not repair a consumed version."
 }
 $prerequisites = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalPrerequisites.ps1') -Raw
+$signerIdentity = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalSignerIdentity.ps1') -Raw
 $publisher = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/Publish-P10FormalPackageSet.ps1') -Raw
 $publicationRecord = Get-Content -LiteralPath (Join-Path $repositoryRoot 'eng/p10/New-P10FormalPublicationRecord.ps1') -Raw
 Assert-True ($prerequisites -cmatch "visibility.*PUBLIC") 'Preflight must require public repository visibility.'
@@ -93,6 +95,15 @@ Assert-True ($prerequisites -cmatch "required_reviewers") 'Preflight must requir
 Assert-True ($prerequisites -cmatch "prevent_self_review.*false") 'Preflight must preserve the approved sole-owner review setting.'
 Assert-True ($prerequisites -cmatch "S04_EXTERNAL_PREREQUISITES_READY") 'Preflight must require the explicit external-readiness flag.'
 Assert-True ($prerequisites -cmatch "'probe-rfc3161'") 'Preflight must invoke the cross-platform RFC3161 probe.'
+Assert-True ($prerequisites -cmatch "Test-P10FormalSignerIdentity\.ps1") 'Formal preflight must reuse the signer identity validator.'
+Assert-True ($signerIdentity -cmatch 'EphemeralKeySet') 'Signer identity validation must keep the private key ephemeral.'
+Assert-True ($signerIdentity -cmatch 'FixedTimeEquals') 'Signer identity validation must require exact public DER bytes.'
+Assert-True ($signerIdentity -cmatch 'SubjectName\.Name') 'Signer identity validation must bind the subject.'
+Assert-True ($signerIdentity -cmatch 'IssuerName\.Name') 'Signer identity validation must bind the issuer.'
+Assert-True ($signerIdentity -cmatch 'validFromUtc' -and $signerIdentity -cmatch 'validUntilUtc') 'Signer identity validation must bind validity.'
+Assert-True ($signerIdentity -cmatch 'ExportSubjectPublicKeyInfo') 'Signer identity validation must bind the SPKI.'
+Assert-True ($signerIdentity -cmatch '\[Array\]::Clear') 'Signer identity validation must zero sensitive byte arrays.'
+Assert-True ($signerIdentity -notmatch 'S04_EXTERNAL_PREREQUISITES_READY|nuget\s+push|dotnet\s+pack') 'Signer-only validation must not claim readiness or publish.'
 Assert-True ($rfc3161Probe -cmatch 'Rfc3161TimestampRequest') 'The Release tool must build a real RFC3161 request.'
 Assert-True ($publisher -cmatch "p10-formal-version-consumed") 'Publication failures must burn the selected version.'
 Assert-True ($publisher -cmatch "'https://nuget\.pkg\.github\.com/GTX537/index\.json'") 'Publication must use the fixed GitHub feed.'
@@ -262,6 +273,43 @@ exit 23
         Remove-Item -LiteralPath $syntheticRawPolicy -Force
         & dotnet $releaseToolPath validate-nuget-trust $syntheticPolicyPath $syntheticCertificates | Out-Host
         if ($LASTEXITCODE -ne 0) { throw 'Synthetic policy validation failed.' }
+
+        $signerIdentityOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalSignerIdentity.ps1') `
+            -TrustPolicyPath $syntheticPolicyPath `
+            -CertificateDirectory $syntheticCertificates `
+            -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
+        Assert-True ($LASTEXITCODE -eq 0) "Synthetic signer identity validation failed: $signerIdentityOutput"
+        Assert-True ($signerIdentityOutput -match 'Success') 'Signer identity validation must report success.'
+        Assert-True ($signerIdentityOutput -match $syntheticFingerprint) 'Signer identity evidence must contain the public DER fingerprint.'
+        Assert-True ($signerIdentityOutput -match [regex]::Escape($syntheticSpkiId)) 'Signer identity evidence must contain the SPKI ID.'
+
+        $mismatchRsa = [Security.Cryptography.RSA]::Create(3072)
+        $mismatchCertificate = $null
+        $mismatchPfxBytes = $null
+        try {
+            $mismatchRequest = [Security.Cryptography.X509Certificates.CertificateRequest]::new(
+                'CN=CP6 Platform Release Signing',
+                $mismatchRsa,
+                [Security.Cryptography.HashAlgorithmName]::SHA256,
+                [Security.Cryptography.RSASignaturePadding]::Pkcs1)
+            $mismatchCertificate = $mismatchRequest.CreateSelfSigned($syntheticNow.AddMinutes(-5), $syntheticNow.AddDays(1))
+            $mismatchPfxBytes = $mismatchCertificate.Export(
+                [Security.Cryptography.X509Certificates.X509ContentType]::Pkcs12,
+                $syntheticPassword)
+            $env:P10_NUGET_SIGNING_PFX_BASE64 = [Convert]::ToBase64String($mismatchPfxBytes)
+            $mismatchOutput = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Test-P10FormalSignerIdentity.ps1') `
+                -TrustPolicyPath $syntheticPolicyPath `
+                -CertificateDirectory $syntheticCertificates `
+                -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
+            Assert-True ($LASTEXITCODE -ne 0) 'A different protected PFX must fail signer identity validation.'
+            Assert-True ($mismatchOutput -match 'public DER differs') 'A different protected PFX must fail at the exact DER boundary.'
+        }
+        finally {
+            $env:P10_NUGET_SIGNING_PFX_BASE64 = [Convert]::ToBase64String($syntheticPfxBytes)
+            if ($mismatchPfxBytes) { [Array]::Clear($mismatchPfxBytes, 0, $mismatchPfxBytes.Length) }
+            if ($mismatchCertificate) { $mismatchCertificate.Dispose() }
+            $mismatchRsa.Dispose()
+        }
 
         $preflightGh = Join-Path $testRoot 'preflight-gh.ps1'
         $preflightGhText = @'
