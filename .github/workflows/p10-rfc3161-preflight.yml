@@ -1,0 +1,189 @@
+name: P10 RFC3161 two-runner preflight
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/p10-rfc3161-preflight.yml"
+      - "tests/CP6.Platform.ReleaseTests/P10Rfc3161PreflightWorkflowContractTests.cs"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [windows-2025, ubuntu-latest]
+        include:
+          - runner: windows-2025
+            artifact_prefix: p10-rfc3161-windows-2025
+          - runner: ubuntu-latest
+            artifact_prefix: p10-rfc3161-ubuntu-latest
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 15
+    env:
+      P10_RUNNER_IMAGE: ${{ matrix.runner }}
+      P10_RUN_ID: ${{ github.run_id }}
+      P10_RUN_ATTEMPT: ${{ github.run_attempt }}
+      P10_SOURCE_SHA: ${{ github.sha }}
+    steps:
+      - name: Check out exact source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Install pinned .NET SDK
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68
+        with:
+          global-json-file: global.json
+
+      - name: Probe and validate DigiCert RFC3161
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $output = @(
+            & dotnet run `
+              --project ./tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj `
+              --configuration Release `
+              -- probe-rfc3161 'http://timestamp.digicert.com'
+          )
+          if ($LASTEXITCODE -ne 0) {
+            throw "RFC3161 probe failed with exit code $LASTEXITCODE."
+          }
+
+          $jsonLines = @($output | Where-Object { $_ -match '^\{.+\}$' })
+          if ($jsonLines.Count -ne 1) {
+            throw 'RFC3161 probe did not emit exactly one public JSON result.'
+          }
+
+          $result = $jsonLines[0] | ConvertFrom-Json
+          if ($result.success -ne $true -or
+              [string]::IsNullOrWhiteSpace([string]$result.policyOid) -or
+              @($result.certificateChainSha256).Count -lt 2) {
+            throw 'RFC3161 probe result is incomplete.'
+          }
+          foreach ($fingerprint in @($result.certificateChainSha256)) {
+            if ([string]$fingerprint -cnotmatch '^[0-9a-f]{64}$') {
+              throw 'RFC3161 certificate-chain fingerprint is not canonical SHA-256.'
+            }
+          }
+
+          $timestamp = [DateTimeOffset]::Parse(
+            [string]$result.timestampUtc,
+            [Globalization.CultureInfo]::InvariantCulture,
+            [Globalization.DateTimeStyles]::AssumeUniversal
+          ).ToUniversalTime().ToString(
+            "yyyy-MM-dd'T'HH:mm:ss.fff'Z'",
+            [Globalization.CultureInfo]::InvariantCulture
+          )
+          $record = [ordered]@{
+            schemaVersion = 1
+            runnerImage = $env:P10_RUNNER_IMAGE
+            workflowRunId = [long]$env:P10_RUN_ID
+            workflowRunAttempt = [int]$env:P10_RUN_ATTEMPT
+            sourceGitSha = $env:P10_SOURCE_SHA
+            timestampService = 'http://timestamp.digicert.com'
+            success = $true
+            policyOid = [string]$result.policyOid
+            timestampUtc = $timestamp
+            certificateChainSha256 = @($result.certificateChainSha256)
+          }
+          $directory = Join-Path $PWD 'artifacts/p10-rfc3161'
+          [void](New-Item -ItemType Directory -Path $directory -Force)
+          $path = Join-Path $directory "$($env:P10_RUNNER_IMAGE).json"
+          $json = $record | ConvertTo-Json -Depth 6 -Compress
+          [IO.File]::WriteAllText($path, $json, [Text.UTF8Encoding]::new($false))
+          Write-Host "RFC3161 public identity: policy=$($record.policyOid) chain=$($record.certificateChainSha256 -join ',')"
+
+      - name: Upload runner probe evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: ${{ matrix.artifact_prefix }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/p10-rfc3161/${{ matrix.runner }}.json
+          if-no-files-found: error
+          retention-days: 30
+          overwrite: false
+
+  compare:
+    needs: probe
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      P10_RUN_ID: ${{ github.run_id }}
+      P10_RUN_ATTEMPT: ${{ github.run_attempt }}
+      P10_SOURCE_SHA: ${{ github.sha }}
+    steps:
+      - name: Download both runner probes
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          pattern: p10-rfc3161-*-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/p10-rfc3161/download
+          merge-multiple: true
+
+      - name: Aggregate public RFC3161 identities
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $files = @(Get-ChildItem -LiteralPath 'artifacts/p10-rfc3161/download' -File -Filter '*.json')
+          if ($files.Count -ne 2) {
+            throw "Expected two runner probe files, found $($files.Count)."
+          }
+          $records = @($files | ForEach-Object {
+            Get-Content -Raw -LiteralPath $_.FullName | ConvertFrom-Json
+          })
+          $runnerNames = @($records.runnerImage | Sort-Object)
+          if (($runnerNames -join '|') -cne 'ubuntu-latest|windows-2025') {
+            throw "Unexpected runner set: $($runnerNames -join ',')."
+          }
+          foreach ($record in $records) {
+            if ($record.success -ne $true -or
+                [long]$record.workflowRunId -ne [long]$env:P10_RUN_ID -or
+                [int]$record.workflowRunAttempt -ne [int]$env:P10_RUN_ATTEMPT -or
+                [string]$record.sourceGitSha -cne $env:P10_SOURCE_SHA -or
+                [string]$record.timestampService -cne 'http://timestamp.digicert.com' -or
+                [string]::IsNullOrWhiteSpace([string]$record.policyOid) -or
+                @($record.certificateChainSha256).Count -lt 2) {
+              throw "Runner probe evidence is incomplete or mismatched: $($record.runnerImage)."
+            }
+            foreach ($fingerprint in @($record.certificateChainSha256)) {
+              if ([string]$fingerprint -cnotmatch '^[0-9a-f]{64}$') {
+                throw "Runner probe chain is not canonical SHA-256: $($record.runnerImage)."
+              }
+            }
+          }
+
+          $evidence = [ordered]@{
+            schemaVersion = 1
+            status = 'Success'
+            workflowRunId = [long]$env:P10_RUN_ID
+            workflowRunAttempt = [int]$env:P10_RUN_ATTEMPT
+            sourceGitSha = $env:P10_SOURCE_SHA
+            timestampService = 'http://timestamp.digicert.com'
+            probes = @($records | Sort-Object runnerImage | ForEach-Object {
+              [ordered]@{
+                runnerImage = [string]$_.runnerImage
+                timestampUtc = ([DateTimeOffset]$_.timestampUtc).ToUniversalTime().ToString(
+                  "yyyy-MM-dd'T'HH:mm:ss.fff'Z'",
+                  [Globalization.CultureInfo]::InvariantCulture
+                )
+                success = [bool]$_.success
+                policyOid = [string]$_.policyOid
+                certificateChainSha256 = @($_.certificateChainSha256)
+              }
+            })
+          }
+          $directory = Join-Path $PWD 'artifacts/p10-rfc3161/final'
+          [void](New-Item -ItemType Directory -Path $directory -Force)
+          $path = Join-Path $directory 'p10-rfc3161-two-runner-evidence.json'
+          $json = $evidence | ConvertTo-Json -Depth 6 -Compress
+          [IO.File]::WriteAllText($path, $json, [Text.UTF8Encoding]::new($false))
+          Write-Host 'Both RFC3161 probes passed with runner-specific normal trust paths recorded.'
+
+      - name: Upload two-runner evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: p10-rfc3161-two-runner-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/p10-rfc3161/final/p10-rfc3161-two-runner-evidence.json
+          if-no-files-found: error
+          retention-days: 30
+          overwrite: false
