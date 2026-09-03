@@ -13,6 +13,12 @@ public sealed class P10FormalWorkflowContractTests
         "workflows",
         "p10-formal-packages.yml");
 
+    private static readonly string RecoveryWorkflowPath = Path.Combine(
+        ReleaseTestData.RepositoryRoot,
+        ".github",
+        "workflows",
+        "p10-formal-packages-recovery.yml");
+
     [Fact]
     public void Formal_workflow_is_manual_exact_main_fixed_version_and_protected()
     {
@@ -157,6 +163,58 @@ public sealed class P10FormalWorkflowContractTests
         Assert.Contains("P10_PACKAGE_VERSION: ${{ inputs.version }}", text, StringComparison.Ordinal);
         Assert.Contains("P10_EVENT_SHA: ${{ github.sha }}", text, StringComparison.Ordinal);
         Assert.Contains("P10_EVENT_REF: ${{ github.ref }}", text, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Recovery_workflow_is_read_only_and_binds_the_failed_publication_evidence()
+    {
+        Assert.True(File.Exists(RecoveryWorkflowPath), "P10 S04 formal recovery workflow is missing.");
+        var text = File.ReadAllText(RecoveryWorkflowPath);
+
+        Assert.Contains("workflow_dispatch:", text, StringComparison.Ordinal);
+        Assert.Contains("publication_run_id:", text, StringComparison.Ordinal);
+        Assert.Contains("publication_run_attempt:", text, StringComparison.Ordinal);
+        Assert.Contains("publication_commit:", text, StringComparison.Ordinal);
+        Assert.Contains("version:", text, StringComparison.Ordinal);
+        Assert.Contains("windows_artifact_id:", text, StringComparison.Ordinal);
+        Assert.Contains("windows_artifact_digest:", text, StringComparison.Ordinal);
+        Assert.Contains("permissions:\n      actions: read\n      contents: read", Normalize(text), StringComparison.Ordinal);
+        Assert.Contains("runs-on: ubuntu-latest", text, StringComparison.Ordinal);
+        Assert.Contains("repos/$env:GITHUB_REPOSITORY/actions/runs/$env:P10_PUBLICATION_RUN_ID", text, StringComparison.Ordinal);
+        Assert.Contains("repos/$env:GITHUB_REPOSITORY/actions/artifacts/$env:P10_WINDOWS_ARTIFACT_ID", text, StringComparison.Ordinal);
+        Assert.Contains("run-id: ${{ inputs.publication_run_id }}", text, StringComparison.Ordinal);
+        Assert.Contains("github-token: ${{ github.token }}", text, StringComparison.Ordinal);
+        Assert.Contains(DownloadArtifactPin, text, StringComparison.Ordinal);
+        Assert.Contains("./eng/p10/Test-P10FormalPackageSet.ps1", text, StringComparison.Ordinal);
+        Assert.Contains("./eng/p10/New-P10FormalPublicationRecord.ps1", text, StringComparison.Ordinal);
+        Assert.Contains("-RunId ([long]$env:P10_PUBLICATION_RUN_ID)", text, StringComparison.Ordinal);
+        Assert.Contains("-RunAttempt ([int]$env:P10_PUBLICATION_RUN_ATTEMPT)", text, StringComparison.Ordinal);
+        Assert.Contains("name: Upload immutable recovered final publication evidence", text, StringComparison.Ordinal);
+        Assert.Contains(UploadArtifactPin, text, StringComparison.Ordinal);
+
+        string[] forbidden =
+        [
+            "packages: write",
+            "p10-formal-release",
+            "P10_NUGET_SIGNING_PFX",
+            "New-P10FormalPackageSet.ps1",
+            "Publish-P10FormalPackageSet.ps1",
+            "nuget push",
+            "--skip-duplicate",
+            "delete-package-version",
+            "package delete",
+            "nuget delete",
+            "wrangler r2",
+            "aws s3",
+            "kubectl",
+            "docker compose"
+        ];
+        foreach (var value in forbidden)
+        {
+            Assert.DoesNotContain(value, text, StringComparison.OrdinalIgnoreCase);
+        }
+
+        Assert.DoesNotContain("${{", ExtractRunScripts(text), StringComparison.Ordinal);
     }
 
     private static string ArtifactUploadBlock(string text, int uploadIndex)

@@ -1,0 +1,196 @@
+name: p10-formal-packages-recovery
+
+on:
+  workflow_dispatch:
+    inputs:
+      publication_run_id:
+        description: Failed formal publication run whose Windows publication job succeeded
+        required: true
+        type: string
+      publication_run_attempt:
+        description: Exact attempt of the failed formal publication run
+        required: true
+        type: string
+      publication_commit:
+        description: Exact package source commit used by the formal publication run
+        required: true
+        type: string
+      version:
+        description: Immutable published formal package version; must be exactly 0.10.0
+        required: true
+        type: string
+      windows_artifact_id:
+        description: Exact immutable Windows read-back artifact ID from the publication run
+        required: true
+        type: string
+      windows_artifact_digest:
+        description: Exact sha256 digest reported by GitHub for the Windows read-back artifact
+        required: true
+        type: string
+
+jobs:
+  recover-final-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      actions: read
+      contents: read
+    env:
+      P10_PUBLICATION_RUN_ID: ${{ inputs.publication_run_id }}
+      P10_PUBLICATION_RUN_ATTEMPT: ${{ inputs.publication_run_attempt }}
+      P10_PUBLICATION_COMMIT: ${{ inputs.publication_commit }}
+      P10_PACKAGE_VERSION: ${{ inputs.version }}
+      P10_WINDOWS_ARTIFACT_ID: ${{ inputs.windows_artifact_id }}
+      P10_WINDOWS_ARTIFACT_DIGEST: ${{ inputs.windows_artifact_digest }}
+      P10_EVENT_REF: ${{ github.ref }}
+      P10_RECOVERY_COMMIT: ${{ github.sha }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Check out exact recovery source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: ${{ github.sha }}
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Set up pinned .NET SDK
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68
+        with:
+          global-json-file: global.json
+      - name: Bind failed publication run and immutable Windows artifact
+        shell: pwsh
+        run: |
+          if ($env:P10_EVENT_REF -cne 'refs/heads/main') { throw 'Formal evidence recovery must be dispatched from main.' }
+          if ((git rev-parse HEAD).Trim() -cne $env:P10_RECOVERY_COMMIT) { throw 'Recovery checkout differs from the dispatch event SHA.' }
+          if ($env:P10_PACKAGE_VERSION -cne '0.10.0') { throw 'Recovery accepts only the consumed formal version 0.10.0.' }
+          if ($env:P10_PUBLICATION_COMMIT -cnotmatch '^[0-9a-f]{40}$') { throw 'Publication commit is not canonical.' }
+          if ($env:P10_PUBLICATION_RUN_ID -cnotmatch '^[1-9][0-9]*$' -or $env:P10_PUBLICATION_RUN_ATTEMPT -cnotmatch '^[1-9][0-9]*$') {
+            throw 'Publication run identity is not canonical.'
+          }
+          if ($env:P10_WINDOWS_ARTIFACT_ID -cnotmatch '^[1-9][0-9]*$' -or $env:P10_WINDOWS_ARTIFACT_DIGEST -cnotmatch '^sha256:[0-9a-f]{64}$') {
+            throw 'Windows artifact identity is not canonical.'
+          }
+
+          $remoteMain = [string](gh api "repos/$env:GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)
+          if ($LASTEXITCODE -ne 0 -or $remoteMain.Trim() -cne $env:P10_RECOVERY_COMMIT) { throw 'Recovery source is not exact remote main.' }
+
+          $sourceRun = gh api "repos/$env:GITHUB_REPOSITORY/actions/runs/$env:P10_PUBLICATION_RUN_ID" | ConvertFrom-Json -Depth 20
+          if ($LASTEXITCODE -ne 0 -or
+              [string]$sourceRun.path -cne '.github/workflows/p10-formal-packages.yml' -or
+              [string]$sourceRun.event -cne 'workflow_dispatch' -or
+              [string]$sourceRun.head_sha -cne $env:P10_PUBLICATION_COMMIT -or
+              [int]$sourceRun.run_attempt -ne [int]$env:P10_PUBLICATION_RUN_ATTEMPT -or
+              [string]$sourceRun.status -cne 'completed' -or
+              [string]$sourceRun.conclusion -cne 'failure') {
+            throw 'Source publication run does not match the recoverable failed-run profile.'
+          }
+
+          $jobs = @(gh api "repos/$env:GITHUB_REPOSITORY/actions/runs/$env:P10_PUBLICATION_RUN_ID/jobs?filter=latest&per_page=100" | ConvertFrom-Json -Depth 20).jobs
+          $signPublish = @($jobs | Where-Object { $_.name -ceq 'sign-publish' })
+          $verifyLinux = @($jobs | Where-Object { $_.name -ceq 'verify-linux' })
+          if ($LASTEXITCODE -ne 0 -or $signPublish.Count -ne 1 -or [string]$signPublish[0].conclusion -cne 'success' -or
+              $verifyLinux.Count -ne 1 -or [string]$verifyLinux[0].conclusion -cne 'failure') {
+            throw 'Source run must have one successful publication job and one failed Linux verification job.'
+          }
+
+          $artifact = gh api "repos/$env:GITHUB_REPOSITORY/actions/artifacts/$env:P10_WINDOWS_ARTIFACT_ID" | ConvertFrom-Json -Depth 20
+          $expectedName = "p10-s04-windows-readback-$($env:P10_PUBLICATION_COMMIT)-$($env:P10_PUBLICATION_RUN_ATTEMPT)"
+          if ($LASTEXITCODE -ne 0 -or
+              [long]$artifact.workflow_run.id -ne [long]$env:P10_PUBLICATION_RUN_ID -or
+              [string]$artifact.workflow_run.head_sha -cne $env:P10_PUBLICATION_COMMIT -or
+              [string]$artifact.name -cne $expectedName -or
+              [string]$artifact.digest -cne $env:P10_WINDOWS_ARTIFACT_DIGEST -or
+              [bool]$artifact.expired -or
+              [long]$artifact.size_in_bytes -le 0) {
+            throw 'Windows artifact does not match the immutable publication evidence identity.'
+          }
+      - name: Download immutable Windows read-back evidence
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          name: p10-s04-windows-readback-${{ inputs.publication_commit }}-${{ inputs.publication_run_attempt }}
+          path: artifacts/p10-formal/public-windows
+          run-id: ${{ inputs.publication_run_id }}
+          github-token: ${{ github.token }}
+      - name: Build Linux release verifier
+        shell: pwsh
+        run: |
+          dotnet restore tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj
+          if ($LASTEXITCODE -ne 0) { throw 'Linux release verifier restore failed.' }
+          dotnet build tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj --configuration Release --no-restore
+          if ($LASTEXITCODE -ne 0) { throw 'Linux release verifier build failed.' }
+      - name: Independently verify published feed bytes and recover final evidence
+        shell: pwsh
+        run: |
+          $publicRoot = 'artifacts/p10-formal/public-windows'
+          $releaseTool = (Resolve-Path tools/CP6.Platform.ReleaseTool/bin/Release/net8.0/CP6.Platform.ReleaseTool.dll).Path
+          ./eng/p10/Test-P10FormalPackageSet.ps1 `
+            -PackagePath "$publicRoot/feed-readback-packages" `
+            -ExpectedVersion $env:P10_PACKAGE_VERSION `
+            -ExpectedSourceGitSha $env:P10_PUBLICATION_COMMIT `
+            -TrustPolicyPath "$publicRoot/trust/p10-formal-nuget-trust-store.v1.json" `
+            -CertificateDirectory "$publicRoot/trust/certificates" `
+            -BuildProvenancePath "$publicRoot/evidence/build-invocation-provenance.v1.json" `
+            -OutputPath 'artifacts/p10-formal/verification/linux' `
+            -ReleaseToolPath $releaseTool
+
+          $toolchain = Get-Content "$publicRoot/evidence/toolchain.json" -Raw | ConvertFrom-Json -Depth 20
+          ./eng/p10/New-P10FormalPublicationRecord.ps1 `
+            -ReadBackPath "$publicRoot/publication/formal-package-readback.v1.json" `
+            -WindowsVerificationPath "$publicRoot/verification/windows/formal-package-verification.v1.json" `
+            -LinuxVerificationEvidencePath 'artifacts/p10-formal/verification/linux/formal-package-verification.v1.json' `
+            -LinuxVerification Success `
+            -PackageVersion $env:P10_PACKAGE_VERSION `
+            -SourceGitSha $env:P10_PUBLICATION_COMMIT `
+            -WorkflowFileSha ([string]$toolchain.workflowFileSha) `
+            -RunId ([long]$env:P10_PUBLICATION_RUN_ID) `
+            -RunAttempt ([int]$env:P10_PUBLICATION_RUN_ATTEMPT) `
+            -DotNetSdk ([string]$toolchain.dotnetSdk) `
+            -NuGetClient ([string]$toolchain.nugetClient) `
+            -RunnerImage ([string]$toolchain.runnerImage) `
+            -TrustPolicyPath "$publicRoot/trust/p10-formal-nuget-trust-store.v1.json" `
+            -CertificateDirectory "$publicRoot/trust/certificates" `
+            -OutputPath 'artifacts/p10-formal/final/formal-package-publication.v1.json' `
+            -ReleaseToolPath $releaseTool
+
+          $evaluationUtc = [DateTimeOffset]::UtcNow.ToString("yyyy-MM-dd'T'HH:mm:ss.fff'Z", [Globalization.CultureInfo]::InvariantCulture)
+          & dotnet $releaseTool validate-formal-publication `
+            'artifacts/p10-formal/final/formal-package-publication.v1.json' `
+            "$publicRoot/trust/p10-formal-nuget-trust-store.v1.json" `
+            "$publicRoot/trust/certificates" `
+            $evaluationUtc
+          if ($LASTEXITCODE -ne 0) { throw 'Recovered final formal publication evidence validation failed.' }
+
+          Copy-Item 'artifacts/p10-formal/verification/linux/formal-package-verification.v1.json' `
+            'artifacts/p10-formal/final/formal-package-verification.linux.v1.json'
+          $recovery = [ordered]@{
+            publicationRunId = [long]$env:P10_PUBLICATION_RUN_ID
+            publicationRunAttempt = [int]$env:P10_PUBLICATION_RUN_ATTEMPT
+            publicationCommit = $env:P10_PUBLICATION_COMMIT
+            packageVersion = $env:P10_PACKAGE_VERSION
+            windowsArtifactId = [long]$env:P10_WINDOWS_ARTIFACT_ID
+            windowsArtifactDigest = $env:P10_WINDOWS_ARTIFACT_DIGEST
+            recoveryRepository = $env:GITHUB_REPOSITORY
+            recoveryWorkflow = '.github/workflows/p10-formal-packages-recovery.yml'
+            recoveryCommit = $env:P10_RECOVERY_COMMIT
+            recoveryRunId = [long]$env:GITHUB_RUN_ID
+            recoveryRunAttempt = [int]$env:GITHUB_RUN_ATTEMPT
+          }
+          [IO.File]::WriteAllText(
+            'artifacts/p10-formal/final/formal-package-recovery.v1.json',
+            ($recovery | ConvertTo-Json -Depth 10 -Compress),
+            [Text.UTF8Encoding]::new($false))
+      - name: Scan recovered public evidence
+        shell: pwsh
+        run: |
+          $files = @(Get-ChildItem 'artifacts/p10-formal/final' -Recurse -File)
+          if ($files.Count -ne 3) { throw 'Recovered final evidence must contain exactly three public JSON records.' }
+          if (@($files | Where-Object { $_.Extension -cne '.json' }).Count -ne 0) { throw 'Recovered final evidence may contain only JSON.' }
+          $matches = @($files | Select-String -Pattern '-----BEGIN (?:RSA |EC )?PRIVATE KEY-----|(?i)(?:password|token|secret)\s*[:=]\s*[^\s]+')
+          if ($matches.Count -ne 0) { throw 'Secret-shaped text crossed into recovered final evidence.' }
+      - name: Upload immutable recovered final publication evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: p10-s04-final-publication-${{ inputs.publication_commit }}-${{ inputs.publication_run_id }}-recovery-${{ github.run_attempt }}
+          path: artifacts/p10-formal/final/**
+          if-no-files-found: error
+          overwrite: false
+          retention-days: 90
