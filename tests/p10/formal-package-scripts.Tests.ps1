@@ -550,6 +550,58 @@ exit 47
             -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
         Assert-True ($LASTEXITCODE -eq 0) "Synthetic final publication record failed: $finalRecordText"
         Assert-True (Test-Path -LiteralPath $syntheticFinalRecord -PathType Leaf) 'Synthetic final publication record was not produced.'
+
+        $platformSpecificLinux = Get-Content -LiteralPath $linuxEvidence -Raw | ConvertFrom-Json -Depth 20
+        $sharedTimestampLeaf = [string]$platformSpecificLinux.packages[0].timestampCertificateChainSha256[0]
+        $platformSpecificLinux.packages[0].timestampCertificateChainSha256 = @($sharedTimestampLeaf, ('f' * 64))
+        $platformSpecificLinuxPath = Join-Path $testRoot 'synthetic-linux-platform-specific-chain.json'
+        [IO.File]::WriteAllText($platformSpecificLinuxPath, ($platformSpecificLinux | ConvertTo-Json -Depth 20 -Compress), [Text.UTF8Encoding]::new($false))
+        $platformSpecificFinalRecord = Join-Path $testRoot 'synthetic-formal-publication-platform-specific-chain.json'
+        $platformSpecificRecordText = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/New-P10FormalPublicationRecord.ps1') `
+            -ReadBackPath $successfulReadBackPath `
+            -WindowsVerificationPath $windowsEvidence `
+            -LinuxVerificationEvidencePath $platformSpecificLinuxPath `
+            -LinuxVerification Success `
+            -PackageVersion '0.10.0' `
+            -SourceGitSha $env:GITHUB_SHA `
+            -WorkflowFileSha ('e' * 40) `
+            -RunId 1 `
+            -RunAttempt 1 `
+            -DotNetSdk '8.0.100' `
+            -NuGetClient '6.11.2' `
+            -RunnerImage 'synthetic-test-only' `
+            -TrustPolicyPath $syntheticPolicyPath `
+            -CertificateDirectory $syntheticCertificates `
+            -OutputPath $platformSpecificFinalRecord `
+            -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
+        Assert-True ($LASTEXITCODE -eq 0) "Platform-specific timestamp chain tails must be accepted: $platformSpecificRecordText"
+        Assert-True (Test-Path -LiteralPath $platformSpecificFinalRecord -PathType Leaf) 'Platform-specific-chain final record was not produced.'
+
+        $mismatchedLeafLinux = Get-Content -LiteralPath $linuxEvidence -Raw | ConvertFrom-Json -Depth 20
+        $mismatchedLeafLinux.packages[0].timestampCertificateChainSha256 = @(('a' * 64), ('f' * 64))
+        $mismatchedLeafLinuxPath = Join-Path $testRoot 'synthetic-linux-mismatched-timestamp-leaf.json'
+        [IO.File]::WriteAllText($mismatchedLeafLinuxPath, ($mismatchedLeafLinux | ConvertTo-Json -Depth 20 -Compress), [Text.UTF8Encoding]::new($false))
+        $rejectedLeafFinalRecord = Join-Path $testRoot 'synthetic-formal-publication-rejected-leaf.json'
+        $rejectedLeafRecordText = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/New-P10FormalPublicationRecord.ps1') `
+            -ReadBackPath $successfulReadBackPath `
+            -WindowsVerificationPath $windowsEvidence `
+            -LinuxVerificationEvidencePath $mismatchedLeafLinuxPath `
+            -LinuxVerification Success `
+            -PackageVersion '0.10.0' `
+            -SourceGitSha $env:GITHUB_SHA `
+            -WorkflowFileSha ('e' * 40) `
+            -RunId 1 `
+            -RunAttempt 1 `
+            -DotNetSdk '8.0.100' `
+            -NuGetClient '6.11.2' `
+            -RunnerImage 'synthetic-test-only' `
+            -TrustPolicyPath $syntheticPolicyPath `
+            -CertificateDirectory $syntheticCertificates `
+            -OutputPath $rejectedLeafFinalRecord `
+            -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
+        Assert-True ($LASTEXITCODE -ne 0) 'A different Linux timestamp leaf certificate must reject the final record.'
+        Assert-True (-not (Test-Path -LiteralPath $rejectedLeafFinalRecord)) "Rejected leaf-mismatch record must not remain: $rejectedLeafRecordText"
+
         $mismatchedLinux = Get-Content -LiteralPath $linuxEvidence -Raw | ConvertFrom-Json -Depth 20
         $mismatchedLinux.packages[0].timestampPolicyOid = '1.2.3.5'
         $mismatchedLinuxPath = Join-Path $testRoot 'synthetic-linux-mismatched-timestamp.json'

@@ -82,6 +82,17 @@ function Invoke-ReleaseTool([string[]]$Arguments) {
     if ($LASTEXITCODE -ne 0) { throw "Release tool failed for $($Arguments[0])." }
 }
 
+function Get-TimestampLeafHash([object[]]$Chain, [string]$EvidenceName, [string]$PackageId) {
+    $hashes = @($Chain | ForEach-Object { [string]$_ })
+    if ($hashes.Count -eq 0 -or
+        @($hashes | Where-Object { $_ -cnotmatch '^[0-9a-f]{64}$' }).Count -ne 0 -or
+        @($hashes | Select-Object -Unique).Count -ne $hashes.Count) {
+        throw "$EvidenceName timestamp certificate chain is malformed for $PackageId."
+    }
+
+    return $hashes[0]
+}
+
 Invoke-ReleaseTool @('validate-nuget-trust', $resolvedPolicy, $resolvedCertificates)
 $readBack = Get-Content -LiteralPath $resolvedReadBack -Raw | ConvertFrom-Json -Depth 30
 $windows = Get-Content -LiteralPath $resolvedWindows -Raw | ConvertFrom-Json -Depth 30
@@ -117,6 +128,9 @@ foreach ($packageId in $packageIds) {
     $readBackChain = @($readBackPackage.timestampCertificateChainSha256)
     $windowsChain = @($windowsPackage.timestampCertificateChainSha256)
     $linuxChain = @($linuxPackage.timestampCertificateChainSha256)
+    $readBackTimestampLeaf = Get-TimestampLeafHash $readBackChain 'Feed read-back' $packageId
+    $windowsTimestampLeaf = Get-TimestampLeafHash $windowsChain 'Windows' $packageId
+    $linuxTimestampLeaf = Get-TimestampLeafHash $linuxChain 'Linux' $packageId
     if ($publishedHash -cne [string]$readBackPackage.authorSignedPackageSha256 -or
         $publishedHash -cne [string]$windowsPackage.packageSha256 -or
         $publishedHash -cne [string]$linuxPackage.packageSha256 -or
@@ -134,8 +148,8 @@ foreach ($packageId in $packageIds) {
         [string]$linuxPackage.spkiKeyId -cne [string]$currentSigner[0].spkiKeyId -or
         [string]$windowsPackage.timestampPolicyOid -cne [string]$readBackPackage.timestampPolicyOid -or
         [string]$linuxPackage.timestampPolicyOid -cne [string]$readBackPackage.timestampPolicyOid -or
-        ($readBackChain | ConvertTo-Json -Compress) -cne ($windowsChain | ConvertTo-Json -Compress) -or
-        ($readBackChain | ConvertTo-Json -Compress) -cne ($linuxChain | ConvertTo-Json -Compress)) {
+        $readBackTimestampLeaf -cne $windowsTimestampLeaf -or
+        $readBackTimestampLeaf -cne $linuxTimestampLeaf) {
         throw "Windows, Linux, feed, and trust evidence differ for $packageId."
     }
     $packages += [ordered]@{
