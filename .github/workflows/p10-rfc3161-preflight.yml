@@ -1,0 +1,180 @@
+name: P10 RFC3161 two-runner preflight
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/p10-rfc3161-preflight.yml"
+      - "tests/CP6.Platform.ReleaseTests/P10Rfc3161PreflightWorkflowContractTests.cs"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    strategy:
+      fail-fast: false
+      matrix:
+        runner: [windows-2025, ubuntu-latest]
+        include:
+          - runner: windows-2025
+            artifact_prefix: p10-rfc3161-windows-2025
+          - runner: ubuntu-latest
+            artifact_prefix: p10-rfc3161-ubuntu-latest
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 15
+    env:
+      P10_RUNNER_IMAGE: ${{ matrix.runner }}
+      P10_RUN_ID: ${{ github.run_id }}
+      P10_RUN_ATTEMPT: ${{ github.run_attempt }}
+      P10_SOURCE_SHA: ${{ github.sha }}
+    steps:
+      - name: Check out exact source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+
+      - name: Install pinned .NET SDK
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68
+        with:
+          global-json-file: global.json
+
+      - name: Probe and validate DigiCert RFC3161
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $output = @(
+            & dotnet run `
+              --project ./tools/CP6.Platform.ReleaseTool/CP6.Platform.ReleaseTool.csproj `
+              --configuration Release `
+              -- probe-rfc3161 'http://timestamp.digicert.com'
+          )
+          if ($LASTEXITCODE -ne 0) {
+            throw "RFC3161 probe failed with exit code $LASTEXITCODE."
+          }
+
+          $jsonLines = @($output | Where-Object { $_ -match '^\{.+\}$' })
+          if ($jsonLines.Count -ne 1) {
+            throw 'RFC3161 probe did not emit exactly one public JSON result.'
+          }
+
+          $result = $jsonLines[0] | ConvertFrom-Json
+          if ($result.success -ne $true -or
+              [string]::IsNullOrWhiteSpace([string]$result.policyOid) -or
+              @($result.certificateChainSha256).Count -lt 2) {
+            throw 'RFC3161 probe result is incomplete.'
+          }
+          foreach ($fingerprint in @($result.certificateChainSha256)) {
+            if ([string]$fingerprint -cnotmatch '^[0-9a-f]{64}$') {
+              throw 'RFC3161 certificate-chain fingerprint is not canonical SHA-256.'
+            }
+          }
+
+          $timestamp = [DateTimeOffset]::Parse(
+            [string]$result.timestampUtc,
+            [Globalization.CultureInfo]::InvariantCulture,
+            [Globalization.DateTimeStyles]::AssumeUniversal
+          ).ToUniversalTime().ToString(
+            "yyyy-MM-dd'T'HH:mm:ss.fff'Z'",
+            [Globalization.CultureInfo]::InvariantCulture
+          )
+          $record = [ordered]@{
+            schemaVersion = 1
+            runnerImage = $env:P10_RUNNER_IMAGE
+            workflowRunId = [long]$env:P10_RUN_ID
+            workflowRunAttempt = [int]$env:P10_RUN_ATTEMPT
+            sourceGitSha = $env:P10_SOURCE_SHA
+            timestampService = 'http://timestamp.digicert.com'
+            success = $true
+            policyOid = [string]$result.policyOid
+            timestampUtc = $timestamp
+            certificateChainSha256 = @($result.certificateChainSha256)
+          }
+          $directory = Join-Path $PWD 'artifacts/p10-rfc3161'
+          [void](New-Item -ItemType Directory -Path $directory -Force)
+          $path = Join-Path $directory "$($env:P10_RUNNER_IMAGE).json"
+          $json = $record | ConvertTo-Json -Depth 6 -Compress
+          [IO.File]::WriteAllText($path, $json, [Text.UTF8Encoding]::new($false))
+          Write-Host "RFC3161 public identity: policy=$($record.policyOid) chain=$($record.certificateChainSha256 -join ',')"
+
+      - name: Upload runner probe evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: ${{ matrix.artifact_prefix }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/p10-rfc3161/${{ matrix.runner }}.json
+          if-no-files-found: error
+          retention-days: 30
+          overwrite: false
+
+  compare:
+    needs: probe
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      P10_RUN_ID: ${{ github.run_id }}
+      P10_RUN_ATTEMPT: ${{ github.run_attempt }}
+      P10_SOURCE_SHA: ${{ github.sha }}
+    steps:
+      - name: Download both runner probes
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c
+        with:
+          pattern: p10-rfc3161-*-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/p10-rfc3161/download
+          merge-multiple: true
+
+      - name: Compare public RFC3161 identities
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $files = @(Get-ChildItem -LiteralPath 'artifacts/p10-rfc3161/download' -File -Filter '*.json')
+          if ($files.Count -ne 2) {
+            throw "Expected two runner probe files, found $($files.Count)."
+          }
+          $records = @($files | ForEach-Object {
+            Get-Content -Raw -LiteralPath $_.FullName | ConvertFrom-Json
+          })
+          $runnerNames = @($records.runnerImage | Sort-Object)
+          if (($runnerNames -join '|') -cne 'ubuntu-latest|windows-2025') {
+            throw "Unexpected runner set: $($runnerNames -join ',')."
+          }
+
+          $windows = $records | Where-Object runnerImage -ceq 'windows-2025'
+          $linux = $records | Where-Object runnerImage -ceq 'ubuntu-latest'
+          if ([string]$windows.policyOid -cne [string]$linux.policyOid) {
+            throw 'Policy OIDs differ across the two runner probes.'
+          }
+          if ((@($windows.certificateChainSha256) -join '|') -cne
+              (@($linux.certificateChainSha256) -join '|')) {
+            throw 'RFC3161 certificate chains differ across the two runner probes.'
+          }
+
+          $evidence = [ordered]@{
+            schemaVersion = 1
+            status = 'Success'
+            workflowRunId = [long]$env:P10_RUN_ID
+            workflowRunAttempt = [int]$env:P10_RUN_ATTEMPT
+            sourceGitSha = $env:P10_SOURCE_SHA
+            timestampService = 'http://timestamp.digicert.com'
+            policyOid = [string]$windows.policyOid
+            certificateChainSha256 = @($windows.certificateChainSha256)
+            probes = @($records | Sort-Object runnerImage | ForEach-Object {
+              [ordered]@{
+                runnerImage = [string]$_.runnerImage
+                timestampUtc = [string]$_.timestampUtc
+                success = [bool]$_.success
+              }
+            })
+          }
+          $directory = Join-Path $PWD 'artifacts/p10-rfc3161/final'
+          [void](New-Item -ItemType Directory -Path $directory -Force)
+          $path = Join-Path $directory 'p10-rfc3161-two-runner-evidence.json'
+          $json = $evidence | ConvertTo-Json -Depth 6 -Compress
+          [IO.File]::WriteAllText($path, $json, [Text.UTF8Encoding]::new($false))
+          Write-Host "Two-runner RFC3161 identity matched: policy=$($evidence.policyOid) chain=$($evidence.certificateChainSha256 -join ',')"
+
+      - name: Upload two-runner evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: p10-rfc3161-two-runner-evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/p10-rfc3161/final/p10-rfc3161-two-runner-evidence.json
+          if-no-files-found: error
+          retention-days: 30
+          overwrite: false
