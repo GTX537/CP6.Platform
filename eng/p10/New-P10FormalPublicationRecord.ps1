@@ -128,6 +128,8 @@ foreach ($packageId in $packageIds) {
     $readBackChain = @($readBackPackage.timestampCertificateChainSha256)
     $windowsChain = @($windowsPackage.timestampCertificateChainSha256)
     $linuxChain = @($linuxPackage.timestampCertificateChainSha256)
+    # Windows and Linux can select different valid system-root paths for the same embedded RFC3161 token.
+    # Exact package bytes, timestamp policy, and timestamp leaf identity remain cross-platform invariants.
     $readBackTimestampLeaf = Get-TimestampLeafHash $readBackChain 'Feed read-back' $packageId
     $windowsTimestampLeaf = Get-TimestampLeafHash $windowsChain 'Windows' $packageId
     $linuxTimestampLeaf = Get-TimestampLeafHash $linuxChain 'Linux' $packageId
