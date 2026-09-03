@@ -162,7 +162,10 @@ jobs:
             probes = @($records | Sort-Object runnerImage | ForEach-Object {
               [ordered]@{
                 runnerImage = [string]$_.runnerImage
-                timestampUtc = [string]$_.timestampUtc
+                timestampUtc = ([DateTimeOffset]$_.timestampUtc).ToUniversalTime().ToString(
+                  "yyyy-MM-dd'T'HH:mm:ss.fff'Z'",
+                  [Globalization.CultureInfo]::InvariantCulture
+                )
                 success = [bool]$_.success
                 policyOid = [string]$_.policyOid
                 certificateChainSha256 = @($_.certificateChainSha256)

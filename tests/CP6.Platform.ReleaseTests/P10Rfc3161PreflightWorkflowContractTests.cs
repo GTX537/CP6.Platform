@@ -45,6 +45,7 @@ public sealed class P10Rfc3161PreflightWorkflowContractTests
         Assert.Contains("p10-rfc3161-two-runner-evidence", text, StringComparison.Ordinal);
         Assert.Contains("policyOid = [string]$_.policyOid", text, StringComparison.Ordinal);
         Assert.Contains("certificateChainSha256 = @($_.certificateChainSha256)", text, StringComparison.Ordinal);
+        Assert.Contains("([DateTimeOffset]$_.timestampUtc).ToUniversalTime().ToString(", text, StringComparison.Ordinal);
         Assert.DoesNotContain("Policy OIDs differ", text, StringComparison.Ordinal);
         Assert.DoesNotContain("certificate chains differ", text, StringComparison.Ordinal);
     }
