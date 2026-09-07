@@ -6,6 +6,7 @@ using CP6.Platform.Release;
 
 namespace CP6.Platform.ReleaseTests;
 
+[Collection(nameof(PackageBuildCollection))]
 public sealed class FormalPackageVerifierTests
 {
     private static readonly TimeSpan ProcessTimeout = TimeSpan.FromMinutes(5);
