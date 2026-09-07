@@ -4,6 +4,7 @@ All notable changes to CP6.Platform are documented here.
 
 ## 0.10.1.0 - 2026-09-07
 
+- Isolate repository-local Release package-building tests in one nonparallel xUnit collection after exact-main Windows CI exposed a shared nuspec lock race; deterministic regression covers both classes. Published 0.10.1 packages and evidence are unchanged.
 - Correct the shared candidate Schema to accept byte-preserving formal package identities only with RFC 3161 timestamps, matching the existing API rule; preserve semantic equal-hash enforcement.
 - Add cross-lane API/Schema policy tests, positive-fixture coverage, media-type allowlist comparison, and direct packaged-Schema regression coverage after CRM found the defect in real `0.10.0` feed bytes.
 - Complete the shared object-reference media-type allowlist for the owned formal-publication and pinned NuGet trust contracts; cover every owned contract through both the API and Schema so S06 can reference the original typed evidence.

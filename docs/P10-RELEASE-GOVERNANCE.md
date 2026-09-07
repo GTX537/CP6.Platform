@@ -71,6 +71,8 @@ records: `formal-package-publication.v1.json`,
 run, artifact digest and individual record hashes; they must not substitute the
 historical recovery workflow or claim unobserved publication evidence.
 
+Post-publication CI follow-up: exact-main run `34128917890` at `421951a44f1dcc05b7aeb51c24a0ccaf2f03ef5f` failed Windows contract tests because two test classes concurrently wrote the same repository-local nuspec. The package-build isolation repair changes tests only and requires a new fully green PR/main validation before downstream handoff. Formal publication run `34126521193` and all immutable `0.10.1` bytes remain unchanged; the failed CI is not acceptance evidence.
+
 ## S04 corrective 0.10.1 publication evidence
 
 On 2026-09-07, [PR #51](https://github.com/GTX537/CP6.Platform/pull/51)

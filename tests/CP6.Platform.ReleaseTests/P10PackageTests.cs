@@ -1,5 +1,6 @@
 namespace CP6.Platform.ReleaseTests;
 
+[Collection(nameof(PackageBuildCollection))]
 public sealed class P10PackageTests
 {
     [Fact]
