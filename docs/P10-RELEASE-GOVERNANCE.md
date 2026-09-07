@@ -2,9 +2,9 @@
 
 ## Status and authority
 
-P10 Platform status: **S04 complete**.
+P10 Platform status: **S04 historical publication complete; 0.10.1 corrective publication pending**.
 
-P10 overall: **Candidate / No-Go pending S05 and S06**.
+P10 overall: **Candidate / No-Go pending corrected packages, S05 and S06**.
 
 The exact seven-package Platform set at version `0.10.0` was built once, signed
 with the pinned self-signed release identity, RFC 3161 timestamped, published to
@@ -14,6 +14,7 @@ and Linux. The immutable publication and recovery evidence is recorded below.
 The current authority boundary is:
 
 - formal Platform package publication: complete for exactly `0.10.0`;
+- corrected seven-package publication: pending for exactly `0.10.1`;
 - System candidate publication: not authorized pending S05 and S06;
 - Portal fabrication: not authorized;
 - R2 candidate or Locator publication: not authorized; and
@@ -22,6 +23,43 @@ The current authority boundary is:
 S04 evidence is not production authorization. S05 consumer reconciliation and
 S06 cross-repository evidence, final decision, and any separately approved
 deployment request remain mandatory.
+
+## Forward patch after the S05 packaged-Schema regression
+
+On 2026-09-07, CRM's fresh actual-GitHub-Packages regression proved that the
+published `0.10.0` common Schema rejects `feedTransformation=BytePreserving`,
+although the semantic API accepts it and the formal publication uses it. The
+consumer run reported 12 passed, 1 failed, 0 skipped. CRM PR #46 remains draft;
+the earlier 12-test Windows/Linux successes do not close this contract gap.
+
+The correction adds `BytePreserving` to the shared candidate Schema and requires
+`Rfc3161Required` for that transformation. Equal package hashes remain a semantic
+API requirement. Regression tests evaluate both candidate lanes, every positive
+primary/supporting fixture, the media-type allowlist, and actual newly packed
+Schema assets. These local fixtures are tests, not production acceptance.
+
+The forward-only repair version is the exact seven-package set `0.10.1`. The
+publication workflow and its prerequisite/pack/sign/push scripts accept only
+`0.10.1`; read-only verification and publication-record validation retain
+`0.10.0` compatibility. Mixed root/package/feed versions, unapproved stable
+versions, and prereleases fail closed. The historical recovery workflow remains
+fixed to `0.10.0` and read-only. No historical package bytes, publication record,
+signer, trust policy, or immutable artifact are changed.
+
+New publication requires the corrected PR and exact-main gates to pass, a fresh
+all-seven-versions-absent preflight, and the existing `p10-formal-release`
+Environment approval. The corrected source is still a publication candidate;
+`0.10.1` is not claimed published until actual signed feed read-back and both
+OS verification results are recorded. S05 must then consume the new immutable
+set before S06 can complete.
+
+The normal publication's final public Artifact retains five byte-preserved
+records: `formal-package-publication.v1.json`,
+`build-invocation-provenance.v1.json`, `formal-package-readback.v1.json`,
+`formal-package-verification.windows.v1.json`, and
+`formal-package-verification.linux.v1.json`. S05/S06 must bind the actual new
+run, artifact digest and individual record hashes; they must not substitute the
+historical recovery workflow or claim unobserved publication evidence.
 
 ## Package ownership and exact package set
 

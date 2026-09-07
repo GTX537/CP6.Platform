@@ -6,7 +6,7 @@
   "properties": {
     "$schemaId": { "const": "https://schemas.cp6.dev/release/formal-package-publication.v1" },
     "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
-    "version": { "const": "0.10.0" },
+    "version": { "enum": ["0.10.0", "0.10.1"] },
     "sourceGitSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
     "buildInvocationId": { "type": "string", "pattern": "^p10-s04:[0-9a-f]{40}:[1-9][0-9]*:[1-9][0-9]*$" },
     "workflow": { "$ref": "#/$defs/workflow" },
@@ -39,6 +39,22 @@
     }
   },
   "additionalProperties": false,
+  "allOf": [
+    {
+      "if": { "properties": { "version": { "const": "0.10.0" } }, "required": ["version"] },
+      "then": { "properties": { "packages": { "items": { "properties": {
+        "version": { "const": "0.10.0" },
+        "feedIdentity": { "pattern": "/0\\.10\\.0$" }
+      } } } } }
+    },
+    {
+      "if": { "properties": { "version": { "const": "0.10.1" } }, "required": ["version"] },
+      "then": { "properties": { "packages": { "items": { "properties": {
+        "version": { "const": "0.10.1" },
+        "feedIdentity": { "pattern": "/0\\.10\\.1$" }
+      } } } } }
+    }
+  ],
   "$defs": {
     "workflow": {
       "type": "object",
@@ -85,11 +101,11 @@
       "required": ["packageId", "version", "sourceGitSha", "authorSignedPackageSha256", "publishedPackageSha256", "feedIdentity", "feedTransformation", "signerFingerprint", "timestampPolicy", "timestampPolicyOid", "timestampCertificateChainSha256"],
       "properties": {
         "packageId": { "enum": ["CP6.Platform.Abstractions", "CP6.Platform.AspNetCore", "CP6.Platform.Contracts", "CP6.Platform.Deployment", "CP6.Platform.EntityFramework", "CP6.Platform.Messaging", "CP6.Platform.Release"] },
-        "version": { "const": "0.10.0" },
+        "version": { "enum": ["0.10.0", "0.10.1"] },
         "sourceGitSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
         "authorSignedPackageSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
         "publishedPackageSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
-        "feedIdentity": { "type": "string", "pattern": "^https://nuget\\.pkg\\.github\\.com/GTX537/index\\.json#CP6\\.Platform\\.[A-Za-z]+/0\\.10\\.0$" },
+        "feedIdentity": { "type": "string", "pattern": "^https://nuget\\.pkg\\.github\\.com/GTX537/index\\.json#CP6\\.Platform\\.[A-Za-z]+/0\\.10\\.[01]$" },
         "feedTransformation": { "const": "BytePreserving" },
         "signerFingerprint": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
         "timestampPolicy": { "const": "Rfc3161Required" },

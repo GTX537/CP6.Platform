@@ -9,7 +9,7 @@ internal static class P10PackageTestHarness
 {
     private static readonly TimeSpan ProcessTimeout = TimeSpan.FromMinutes(10);
 
-    public static string[] PackReleasePackage(string version)
+    public static string[] PackReleasePackage(string version, Action<ZipArchive>? inspect = null)
     {
         var output = CreateUnitDirectory();
         try
@@ -28,6 +28,7 @@ internal static class P10PackageTestHarness
 
             var package = Directory.GetFiles(output, "*.nupkg", SearchOption.TopDirectoryOnly).Single();
             using var archive = ZipFile.OpenRead(package);
+            inspect?.Invoke(archive);
             return archive.Entries.Select(entry => entry.FullName).Order(StringComparer.Ordinal).ToArray();
         }
         finally

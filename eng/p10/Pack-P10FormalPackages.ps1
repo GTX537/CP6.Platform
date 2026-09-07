@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)]
-    [ValidatePattern('^0\.10\.0$')]
+    [ValidatePattern('^0\.10\.1$')]
     [string]$PackageVersion,
 
     [Parameter(Mandatory)]

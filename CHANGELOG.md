@@ -2,6 +2,14 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## 0.10.1.0 - 2026-09-07 (formal package publication pending)
+
+- Correct the shared candidate Schema to accept byte-preserving formal package identities only with RFC 3161 timestamps, matching the existing API rule; preserve semantic equal-hash enforcement.
+- Add cross-lane API/Schema policy tests, positive-fixture coverage, media-type allowlist comparison, and direct packaged-Schema regression coverage after CRM found the defect in real `0.10.0` feed bytes.
+- Prepare the exact seven-package `0.10.1` forward patch. Pin all write entry points to the new version while retaining `0.10.0` read-only validation; reject mixed and unapproved versions without weakening publication, trust, timestamp, or protected-Environment gates.
+- Retain the publication, build provenance, feed read-back, Windows verification and Linux verification records in the final public artifact so downstream consumers can audit the normal publication path without a recovery-workflow substitution.
+- Preserve immutable `0.10.0` publication history. CRM S05 remains paused and P10 remains Candidate / No-Go until corrected publication, fixed-version consumer verification, and S06 evidence complete.
+
 ## 0.10.0.0 - 2026-09-01
 
 - Establish the independent `CP6.Platform.Release` package with strict P10 release, evidence, provenance, transport, trust-store, candidate, and locator contracts.

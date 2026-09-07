@@ -6,7 +6,6 @@ namespace CP6.Platform.Release;
 
 public static class Cp6FormalPackagePublicationValidator
 {
-    private const string FormalVersion = "0.10.0";
     private const string FeedPrefix = "https://nuget.pkg.github.com/GTX537/index.json#";
     private static readonly Regex BuildInvocation = new(
         "^p10-s04:(?<sha>[0-9a-f]{40}):(?<run>[1-9][0-9]*):(?<attempt>[1-9][0-9]*)$",
@@ -35,7 +34,11 @@ public static class Cp6FormalPackagePublicationValidator
             "workflow", "toolchain", "trust", "packages", "verification");
         RequireExact(root, "$schemaId", Cp6ReleaseContractIds.FormalPackagePublication, "schema-id");
         var createdAtUtc = ParseUtc(root, "createdAtUtc");
-        RequireExact(root, "version", FormalVersion, "package-version");
+        var version = Cp6ReleaseJsonRules.RequireString(root, "version", "package-version");
+        if (version is not ("0.10.0" or "0.10.1"))
+        {
+            throw Error("package-version", "Formal publication version is not approved.");
+        }
         var sourceGitSha = Cp6ReleaseJsonRules.RequireString(root, "sourceGitSha", "package-source");
         Cp6ReleaseJsonRules.RequireGitSha(sourceGitSha, "package-source");
 
@@ -43,7 +46,7 @@ public static class Cp6FormalPackagePublicationValidator
         ValidateWorkflow(root.GetProperty("workflow"), sourceGitSha, invocation);
         ValidateToolchain(root.GetProperty("toolchain"));
         ValidateTrust(root.GetProperty("trust"), trustPolicy, createdAtUtc, evaluationUtc);
-        var (packageIds, hashes) = ValidatePackages(root.GetProperty("packages"), sourceGitSha, trustPolicy);
+        var (packageIds, hashes) = ValidatePackages(root.GetProperty("packages"), version, sourceGitSha, trustPolicy);
         ValidateVerification(root.GetProperty("verification"));
 
         return new(
@@ -149,6 +152,7 @@ public static class Cp6FormalPackagePublicationValidator
 
     private static (IReadOnlyList<string> PackageIds, IReadOnlyList<string> Hashes) ValidatePackages(
         JsonElement value,
+        string version,
         string sourceGitSha,
         Cp6PinnedNuGetTrustPolicy trustPolicy)
     {
@@ -167,7 +171,7 @@ public static class Cp6FormalPackagePublicationValidator
                 "feedIdentity", "feedTransformation", "signerFingerprint", "timestampPolicy", "timestampPolicyOid",
                 "timestampCertificateChainSha256");
             var id = Cp6ReleaseJsonRules.RequireString(item, "packageId", "package-id");
-            RequireExact(item, "version", FormalVersion, "package-version");
+            RequireExact(item, "version", version, "package-version");
             RequireExact(item, "sourceGitSha", sourceGitSha, "package-source");
             var signedHash = Cp6ReleaseJsonRules.RequireString(item, "authorSignedPackageSha256", "package-hash");
             var publishedHash = Cp6ReleaseJsonRules.RequireString(item, "publishedPackageSha256", "package-hash");
@@ -179,7 +183,7 @@ public static class Cp6FormalPackagePublicationValidator
                 throw Error("package-hash", "Byte-preserving publication requires identical signed and published hashes.");
             }
 
-            RequireExact(item, "feedIdentity", $"{FeedPrefix}{id}/{FormalVersion}", "feed-identity");
+            RequireExact(item, "feedIdentity", $"{FeedPrefix}{id}/{version}", "feed-identity");
             RequireExact(item, "signerFingerprint", trustPolicy.CurrentSigner.CertificateSha256, "trust-signer");
             RequireExact(item, "timestampPolicy", "Rfc3161Required", "timestamp-policy");
             var oid = Cp6ReleaseJsonRules.RequireString(item, "timestampPolicyOid", "timestamp-policy");

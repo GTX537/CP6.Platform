@@ -79,10 +79,14 @@
         "authorSignedPackageSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
         "publishedPackageSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
         "feedIdentity": { "type": "string", "minLength": 1, "maxLength": 256 },
-        "feedTransformation": { "enum": ["None", "Documented"] },
+        "feedTransformation": { "enum": ["None", "Documented", "BytePreserving"] },
         "signerFingerprint": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
         "timestampPolicy": { "enum": ["Rfc3161Required", "TestOnlyNone"] }
       },
+      "allOf": [{
+        "if": { "properties": { "feedTransformation": { "const": "BytePreserving" } }, "required": ["feedTransformation"] },
+        "then": { "properties": { "timestampPolicy": { "const": "Rfc3161Required" } } }
+      }],
       "additionalProperties": false
     },
     "workflowIdentity": {

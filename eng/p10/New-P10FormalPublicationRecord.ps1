@@ -14,7 +14,7 @@ param(
     [string]$LinuxVerification,
 
     [Parameter(Mandatory)]
-    [ValidatePattern('^0\.10\.0$')]
+    [ValidatePattern('^0\.10\.[01]$')]
     [string]$PackageVersion,
 
     [Parameter(Mandatory)]

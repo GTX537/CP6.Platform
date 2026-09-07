@@ -13,7 +13,7 @@ param(
     [int]$RunAttempt,
 
     [Parameter(Mandatory)]
-    [ValidatePattern('^0\.10\.0$')]
+    [ValidatePattern('^0\.10\.1$')]
     [string]$PackageVersion,
 
     [string]$OutputPath = 'artifacts/p10-formal/package-set',

@@ -706,7 +706,7 @@ public sealed class RepositoryArchitectureTests
     [Fact]
     public void P10_Documentation_IsCompleteAndNonDeployable()
     {
-        Assert.Equal("0.10.0.0", File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim());
+        Assert.Equal("0.10.1.0", File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim());
 
         var readme = File.ReadAllText(Path.Combine(RepositoryRoot, "README.md"));
         Assert.Contains("docs/P10-RELEASE-GOVERNANCE.md", readme, StringComparison.Ordinal);
@@ -750,8 +750,8 @@ public sealed class RepositoryArchitectureTests
 
         foreach (var required in new[]
         {
-            "P10 Platform status: **S04 complete**",
-            "P10 overall: **Candidate / No-Go pending S05 and S06**",
+            "P10 Platform status: **S04 historical publication complete; 0.10.1 corrective publication pending**",
+            "P10 overall: **Candidate / No-Go pending corrected packages, S05 and S06**",
             "deployable=false",
             "GitHub Packages",
             "S03",
