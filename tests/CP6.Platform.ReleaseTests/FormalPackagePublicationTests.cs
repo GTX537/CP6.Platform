@@ -8,6 +8,40 @@ public sealed class FormalPackagePublicationTests
 {
     private static readonly DateTimeOffset EvaluationUtc = new(2026, 9, 2, 0, 15, 0, TimeSpan.Zero);
 
+    [Theory]
+    [MemberData(nameof(FormalVersionMatrix))]
+    public void Publication_API_accepts_only_coherent_approved_formal_versions(
+        string rootVersion, string packageVersion, string feedVersion, bool expected)
+    {
+        var fixture = CreateVersionedPublication(rootVersion, packageVersion, feedVersion);
+        var error = Record.Exception(() => Cp6FormalPackagePublicationValidator.ValidateFormalPackagePublication(
+            Canonical(fixture.Root), fixture.Policy, EvaluationUtc));
+        if (expected) Assert.Null(error);
+        else Assert.IsType<Cp6ReleaseContractException>(error);
+    }
+
+    [Theory]
+    [MemberData(nameof(FormalVersionMatrix))]
+    public void Publication_Schema_accepts_only_coherent_approved_formal_versions(
+        string rootVersion, string packageVersion, string feedVersion, bool expected)
+    {
+        var fixture = CreateVersionedPublication(rootVersion, packageVersion, feedVersion);
+        var result = ReleaseSchemaTestData.Evaluate(fixture.Root);
+        Assert.True(result.IsValid == expected, ReleaseSchemaTestData.Errors(result));
+    }
+
+    public static TheoryData<string, string, string, bool> FormalVersionMatrix => new()
+    {
+        { "0.10.0", "0.10.0", "0.10.0", true },
+        { "0.10.1", "0.10.1", "0.10.1", true },
+        { "0.10.0", "0.10.1", "0.10.1", false },
+        { "0.10.1", "0.10.0", "0.10.0", false },
+        { "0.10.0", "0.10.0", "0.10.1", false },
+        { "0.10.1", "0.10.1", "0.10.0", false },
+        { "0.10.2", "0.10.2", "0.10.2", false },
+        { "0.10.1-preview.1", "0.10.1-preview.1", "0.10.1-preview.1", false }
+    };
+
     [Fact]
     public void Valid_publication_returns_the_exact_seven_packages_and_subject_hashes()
     {
@@ -130,6 +164,20 @@ public sealed class FormalPackagePublicationTests
         }
 
         return new(root, policy);
+    }
+
+    private static PublicationFixture CreateVersionedPublication(string rootVersion, string packageVersion, string feedVersion)
+    {
+        var fixture = CreatePublication();
+        fixture.Root["version"] = rootVersion;
+        foreach (var item in fixture.Root["packages"]!.AsArray())
+        {
+            var package = item!.AsObject();
+            package["version"] = packageVersion;
+            package["feedIdentity"] = $"https://nuget.pkg.github.com/GTX537/index.json#{package["packageId"]!.GetValue<string>()}/{feedVersion}";
+        }
+
+        return fixture;
     }
 
     private static JsonObject Package(JsonObject root, int index) =>

@@ -3,6 +3,40 @@ namespace CP6.Platform.ReleaseTests;
 public sealed class P10PackageTests
 {
     [Fact]
+    public void Packaged_candidate_Schemas_accept_formal_byte_preserving_identities()
+    {
+        P10PackageTestHarness.PackReleasePackage("0.10.1-test.schema.1", archive =>
+        {
+            string ReadSchema(string name)
+            {
+                var entry = archive.GetEntry($"contracts/release/v1/{name}");
+                Assert.NotNull(entry);
+                using var reader = new StreamReader(entry.Open());
+                return reader.ReadToEnd();
+            }
+
+            foreach (var stem in new[] { "platform", "system" })
+            {
+                var root = ReleaseSchemaTestData.Candidate(stem, "BytePreserving", "Rfc3161Required");
+                Assert.NotEmpty(ReleaseSchemaTestData.ValidateCandidate(stem, root).PackageIds);
+                var result = ReleaseSchemaTestData.Evaluate(root, ReadSchema);
+                Assert.True(result.IsValid, ReleaseSchemaTestData.Errors(result));
+                foreach (var mediaType in new[]
+                {
+                    CP6.Platform.Release.Cp6ReleaseMediaTypes.FormalPackagePublication,
+                    CP6.Platform.Release.Cp6ReleaseMediaTypes.PinnedNuGetTrustStore
+                })
+                {
+                    root["evidence"]![0]!["mediaType"] = mediaType;
+                    Assert.NotEmpty(ReleaseSchemaTestData.ValidateCandidate(stem, root).PackageIds);
+                    var evidenceResult = ReleaseSchemaTestData.Evaluate(root, ReadSchema);
+                    Assert.True(evidenceResult.IsValid, ReleaseSchemaTestData.Errors(evidenceResult));
+                }
+            }
+        });
+    }
+
+    [Fact]
     public void Release_package_contains_only_dll_xml_readme_and_release_contract_assets()
     {
         var entries = P10PackageTestHarness.PackReleasePackage("0.10.0-test.local.1");

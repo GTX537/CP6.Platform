@@ -31,7 +31,8 @@ public sealed class P10FormalWorkflowContractTests
         Assert.Equal(2, Count(text, "required: true"));
         Assert.Contains("if ($env:P10_EVENT_REF -cne 'refs/heads/main')", text, StringComparison.Ordinal);
         Assert.Contains("if ($env:P10_EVENT_SHA -cne $env:P10_EXPECTED_COMMIT)", text, StringComparison.Ordinal);
-        Assert.Contains("if ($env:P10_PACKAGE_VERSION -cne '0.10.0')", text, StringComparison.Ordinal);
+        Assert.Equal(2, Count(text, "if ($env:P10_PACKAGE_VERSION -cne '0.10.1')"));
+        Assert.DoesNotContain("if ($env:P10_PACKAGE_VERSION -cne '0.10.0')", text, StringComparison.Ordinal);
         Assert.Contains("ref: ${{ github.sha }}", text, StringComparison.Ordinal);
         Assert.Contains("sign-publish:\n    runs-on: windows-2025\n    timeout-minutes: 45\n    environment: p10-formal-release\n    permissions:\n      contents: read\n      packages: write", Normalize(text), StringComparison.Ordinal);
         Assert.DoesNotContain("id-token: write", text, StringComparison.OrdinalIgnoreCase);
@@ -118,6 +119,31 @@ public sealed class P10FormalWorkflowContractTests
         Assert.Equal(2, Count(text, "overwrite: false"));
         Assert.Equal(2, Count(text, "retention-days: 90"));
         Assert.DoesNotContain("overwrite: true", text, StringComparison.OrdinalIgnoreCase);
+    }
+
+    [Fact]
+    public void Formal_final_artifact_preserves_build_readback_and_both_OS_verification_records()
+    {
+        var text = File.ReadAllText(WorkflowPath);
+        var collect = text.IndexOf("name: Collect final public verification records", StringComparison.Ordinal);
+        var scan = text.IndexOf("name: Scan Linux public evidence", StringComparison.Ordinal);
+        var upload = text.IndexOf("name: Upload immutable final publication evidence", StringComparison.Ordinal);
+        Assert.True(collect >= 0 && scan > collect && upload > scan,
+            "Final verification records must be collected and scanned before the immutable upload.");
+        var block = text[collect..scan];
+        foreach (var file in new[]
+        {
+            "build-invocation-provenance.v1.json",
+            "formal-package-readback.v1.json",
+            "formal-package-verification.windows.v1.json",
+            "formal-package-verification.linux.v1.json"
+        })
+        {
+            Assert.Contains(file, block, StringComparison.Ordinal);
+        }
+        Assert.Equal(4, Count(block, "Copy-Item -LiteralPath"));
+        Assert.Contains("public-windows/verification/windows/formal-package-verification.v1.json", block, StringComparison.Ordinal);
+        Assert.Contains("verification/linux/formal-package-verification.v1.json", block, StringComparison.Ordinal);
     }
 
     [Fact]
