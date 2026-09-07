@@ -7,8 +7,10 @@ public static class Cp6ReleaseMediaTypes
     public const string CandidateResult = "application/vnd.cp6.candidate-result.v2+json";
     public const string CycloneDx = "application/vnd.cyclonedx+json";
     public const string EvidenceRecord = "application/vnd.cp6.evidence-record.v1+json";
+    public const string FormalPackagePublication = "application/vnd.cp6.formal-package-publication.v1+json";
     public const string InToto = "application/vnd.in-toto+json";
     public const string OpenApi = "application/vnd.oai.openapi+json;version=3.1";
+    public const string PinnedNuGetTrustStore = "application/vnd.cp6.pinned-nuget-trust-store.v1+json";
     public const string PinnedTrustStore = "application/vnd.cp6.pinned-trust-store.v1+json";
     public const string PlatformReleaseCandidate = "application/vnd.cp6.platform-release-candidate.v1+json";
     public const string ReleaseGateResult = "application/vnd.cp6.release-gate-result.v1+json";
@@ -27,8 +29,10 @@ public static class Cp6ReleaseMediaTypes
         CandidateResult,
         CycloneDx,
         EvidenceRecord,
+        FormalPackagePublication,
         InToto,
         OpenApi,
+        PinnedNuGetTrustStore,
         PinnedTrustStore,
         PlatformReleaseCandidate,
         ReleaseGateResult,

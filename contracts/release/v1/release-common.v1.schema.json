@@ -45,6 +45,8 @@
             "application/vnd.cp6.build-invocation-provenance.v1+json",
             "application/vnd.cp6.test-package-transport.v1+json",
             "application/vnd.cp6.pinned-trust-store.v1+json",
+            "application/vnd.cp6.pinned-nuget-trust-store.v1+json",
+            "application/vnd.cp6.formal-package-publication.v1+json",
             "application/vnd.oai.openapi+json;version=3.1",
             "application/schema+json",
             "application/spdx+json",

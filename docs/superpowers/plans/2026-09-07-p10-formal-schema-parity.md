@@ -38,6 +38,8 @@
 ```
 
 - [x] Rerun the regression and package tests. Review all discovered structural mismatches before moving on; do not assert universal semantic equivalence of JSON Schema and the API.
+- [x] During S06 planning, test references to every ID in `Cp6ReleaseContractIds.All` through both the candidate API and Schema. Observe 20 passed / 4 failed: both layers reject the owned formal-publication and pinned NuGet trust media types. Add only `application/vnd.cp6.formal-package-publication.v1+json` and `application/vnd.cp6.pinned-nuget-trust-store.v1+json` to `Cp6ReleaseMediaTypes.cs` and the common Schema, and include them in the actual packaged-Schema test.
+- [x] Update the exact closed media-type count in `PrimaryCandidateValidationTests.cs` from 17 to 19 after observing that assertion fail; preserve uniqueness, ordering, fixture-reference and rejected-media-type checks.
 
 ## Task 2: Pin the forward patch and retain historical readers
 
@@ -85,3 +87,5 @@ This is a forward compatibility repair within P10, not a second publisher author
 - The full Contract gate also passed the P10 package scripts, formal scripts including historical-reader coverage, package content safety and deterministic package reproduction. The final Release recheck, including the added artifact-collection regression, passed 190/190 with zero skipped in 4 minutes 25 seconds.
 - P09 Compose, cleanup-failure and Kubernetes negative script suites passed with the pinned local .NET 8 host. Docker-dependent real gates remain a remote PR/exact-main requirement.
 - The complete 25-file diff preserves the historical recovery workflow, trust/certificate files and five-job validation workflow unchanged. No package archive, private signing material, credential, test output or unrelated worktree change is staged.
+- PR #51 opened at `586b84e63b3cb7a51e05e3f44488ac556e90077a`; its first remote run is not the final acceptance run because the owned-contract media-type follow-up adds one source file and 24 regression cases. Require fresh head and exact-main checks for the final commit.
+- The media-type follow-up also updates the existing exact-count assertion (17 to 19), bringing the complete branch to 27 files. Fresh Format and 101 focused API/Schema/primary/package tests pass, with zero failures or skips; full required gates must be rerun for this final head before merge.

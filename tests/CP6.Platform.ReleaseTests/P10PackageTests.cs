@@ -21,6 +21,17 @@ public sealed class P10PackageTests
                 Assert.NotEmpty(ReleaseSchemaTestData.ValidateCandidate(stem, root).PackageIds);
                 var result = ReleaseSchemaTestData.Evaluate(root, ReadSchema);
                 Assert.True(result.IsValid, ReleaseSchemaTestData.Errors(result));
+                foreach (var mediaType in new[]
+                {
+                    CP6.Platform.Release.Cp6ReleaseMediaTypes.FormalPackagePublication,
+                    CP6.Platform.Release.Cp6ReleaseMediaTypes.PinnedNuGetTrustStore
+                })
+                {
+                    root["evidence"]![0]!["mediaType"] = mediaType;
+                    Assert.NotEmpty(ReleaseSchemaTestData.ValidateCandidate(stem, root).PackageIds);
+                    var evidenceResult = ReleaseSchemaTestData.Evaluate(root, ReadSchema);
+                    Assert.True(evidenceResult.IsValid, ReleaseSchemaTestData.Errors(evidenceResult));
+                }
             }
         });
     }

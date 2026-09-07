@@ -63,7 +63,7 @@ public sealed class PrimaryCandidateValidationTests
     [Fact]
     public void Media_types_are_exact_unique_and_used_by_all_primary_object_references()
     {
-        Assert.Equal(17, Cp6ReleaseMediaTypes.All.Count);
+        Assert.Equal(19, Cp6ReleaseMediaTypes.All.Count);
         Assert.Equal(Cp6ReleaseMediaTypes.All.Count, Cp6ReleaseMediaTypes.All.Distinct(StringComparer.Ordinal).Count());
         Assert.Equal(Cp6ReleaseMediaTypes.All.Order(StringComparer.Ordinal), Cp6ReleaseMediaTypes.All);
 

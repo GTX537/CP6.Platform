@@ -45,6 +45,28 @@ public sealed class ReleaseSchemaParityTests
         Assert.Equal(Cp6ReleaseMediaTypes.All, schemaTypes);
     }
 
+    [Theory]
+    [MemberData(nameof(ContractMediaTypes))]
+    public void Candidate_API_can_reference_each_owned_contract(string mediaType)
+    {
+        var root = ReleaseSchemaTestData.Candidate("platform", "BytePreserving", "Rfc3161Required");
+        root["evidence"]![0]!["mediaType"] = mediaType;
+        Assert.NotEmpty(ReleaseSchemaTestData.ValidateCandidate("platform", root).PackageIds);
+    }
+
+    [Theory]
+    [MemberData(nameof(ContractMediaTypes))]
+    public void Candidate_Schema_can_reference_each_owned_contract(string mediaType)
+    {
+        var root = ReleaseSchemaTestData.Candidate("platform", "BytePreserving", "Rfc3161Required");
+        root["evidence"]![0]!["mediaType"] = mediaType;
+        var result = ReleaseSchemaTestData.Evaluate(root);
+        Assert.True(result.IsValid, ReleaseSchemaTestData.Errors(result));
+    }
+
+    public static TheoryData<string> ContractMediaTypes => new(
+        Cp6ReleaseContractIds.All.Select(id => $"application/vnd.cp6.{id[(id.LastIndexOf('/') + 1)..]}+json"));
+
     public static TheoryData<string, string, string, bool> PackagePolicyMatrix
     {
         get

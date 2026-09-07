@@ -38,6 +38,13 @@ API requirement. Regression tests evaluate both candidate lanes, every positive
 primary/supporting fixture, the media-type allowlist, and actual newly packed
 Schema assets. These local fixtures are tests, not production acceptance.
 
+S06 evidence planning also exposed that both media-type allowlists omitted the
+already-owned `formal-package-publication.v1` and `pinned-nuget-trust-store.v1`
+contracts. A 24-case owned-contract reference matrix initially produced four
+failures (two API and two Schema). The same forward patch adds their exact
+`application/vnd.cp6.*+json` media types; it does not allow arbitrary media
+types, reinterpret original evidence as another format, or bypass its validator.
+
 The forward-only repair version is the exact seven-package set `0.10.1`. The
 publication workflow and its prerequisite/pack/sign/push scripts accept only
 `0.10.1`; read-only verification and publication-record validation retain
