@@ -2,19 +2,22 @@
 
 ## Status and authority
 
-P10 Platform status: **S04 historical publication complete; 0.10.1 corrective publication pending**.
+P10 Platform status: **S04 complete; corrected 0.10.1 formally published**.
 
-P10 overall: **Candidate / No-Go pending corrected packages, S05 and S06**.
+P10 overall: **Candidate / No-Go pending S05 and S06**.
 
 The exact seven-package Platform set at version `0.10.0` was built once, signed
 with the pinned self-signed release identity, RFC 3161 timestamped, published to
 GitHub Packages, read back byte-for-byte, and independently verified on Windows
-and Linux. The immutable publication and recovery evidence is recorded below.
+and Linux. Its immutable publication and recovery evidence is retained below.
+The corrective seven-package `0.10.1` set has now also completed its one-build,
+signed, timestamped, byte-preserving publication and independent two-OS
+verification through the normal formal workflow.
 
 The current authority boundary is:
 
 - formal Platform package publication: complete for exactly `0.10.0`;
-- corrected seven-package publication: pending for exactly `0.10.1`;
+- corrected seven-package publication: complete for exactly `0.10.1`;
 - System candidate publication: not authorized pending S05 and S06;
 - Portal fabrication: not authorized;
 - R2 candidate or Locator publication: not authorized; and
@@ -53,12 +56,12 @@ versions, and prereleases fail closed. The historical recovery workflow remains
 fixed to `0.10.0` and read-only. No historical package bytes, publication record,
 signer, trust policy, or immutable artifact are changed.
 
-New publication requires the corrected PR and exact-main gates to pass, a fresh
-all-seven-versions-absent preflight, and the existing `p10-formal-release`
-Environment approval. The corrected source is still a publication candidate;
-`0.10.1` is not claimed published until actual signed feed read-back and both
-OS verification results are recorded. S05 must then consume the new immutable
-set before S06 can complete.
+The corrected PR and exact-main gates passed, followed by the fresh
+all-seven-versions-absent preflight and owner approval of the existing
+`p10-formal-release` Environment. Actual signed feed read-back and both OS
+verification results are recorded in the corrective-publication section below.
+S05 must consume this new immutable set before S06 can complete; CRM PR #46 is
+not accepted merely because the producer publication succeeded.
 
 The normal publication's final public Artifact retains five byte-preserved
 records: `formal-package-publication.v1.json`,
@@ -67,6 +70,95 @@ records: `formal-package-publication.v1.json`,
 `formal-package-verification.linux.v1.json`. S05/S06 must bind the actual new
 run, artifact digest and individual record hashes; they must not substitute the
 historical recovery workflow or claim unobserved publication evidence.
+
+## S04 corrective 0.10.1 publication evidence
+
+On 2026-09-07, [PR #51](https://github.com/GTX537/CP6.Platform/pull/51)
+merged the reviewed repair head `06ef5aefbcca71f3b9d00a111170ab46029eae55`
+as `main@3ff27e26962dcfd722887afb80a4306010dd9ee1`, with an identical Git
+tree. Final PR run `34123886765` and exact-main run `34125176309` each passed
+all five unchanged validation jobs, including real SQL, Dapr/Kafka and P09
+runtime gates.
+
+The owner explicitly approved Platform `main` branch protection before this
+publication. API read-back confirmed strict required checks for the same five
+GitHub Actions contexts, administrator enforcement, zero required approving
+reviews, and no force-push or deletion. The source was protected before the
+new release; historical `0.10.0` source protection is not asserted
+retroactively. [The PR audit](https://github.com/GTX537/CP6.Platform/pull/51#issuecomment-5571027543)
+records the approved settings.
+
+The [formal publication run](https://github.com/GTX537/CP6.Platform/actions/runs/34126521193)
+completed with `success`; both `sign-publish` and `verify-linux` completed with
+`success`, including public-evidence scans and unconditional private-material
+cleanup. No recovery run, rebuild, overwrite or republish was used.
+
+| Identity | Exact value |
+| --- | --- |
+| Formal version / source | `0.10.1` / `3ff27e26962dcfd722887afb80a4306010dd9ee1` |
+| Protected source ref | `refs/heads/main` in `GTX537/CP6.Platform` |
+| Workflow path / blob | `.github/workflows/p10-formal-packages.yml` / `01c94e11213231ef6f73d8f9a9cccd9f1563e185` |
+| Run / attempt / Environment | `34126521193` / `1` / `p10-formal-release` |
+| Build invocation | `p10-s04:3ff27e26962dcfd722887afb80a4306010dd9ee1:34126521193:1` |
+| Toolchain | .NET SDK `8.0.424`, NuGet `6.11.2.1`, `windows-2025` |
+| Final public artifact | ID `10020487845`, `p10-s04-final-publication-3ff27e26962dcfd722887afb80a4306010dd9ee1-1` |
+| Final archive digest | `sha256:27c1a3178ce694f0ba3f8be6b42d505d0c564fc1cb9a4772387f41ea20c85e33` |
+| Windows read-back artifact | ID `10020464999`, `p10-s04-windows-readback-3ff27e26962dcfd722887afb80a4306010dd9ee1-1` |
+| Windows archive digest | `sha256:00c8732f6fbbe3dbcf0df9e5074882837ca14ef48e4a0d31f67f524301e11e1d` |
+| Artifact expiry (both) | `2026-12-06T13:17:00Z` |
+
+Both raw ZIP archives were independently downloaded by artifact ID. Their
+SHA-256 values matched the API digests before extraction; metadata bound the
+same repository, source, run and non-expired state. The final artifact contains
+exactly the following five records. Hashes cover original bytes, without
+parse-and-reserialize substitution.
+
+| Record | SHA-256 |
+| --- | --- |
+| `formal-package-publication.v1.json` | `8b5fc47fd77902a3433d61b4cf181b67ef61ee994b60ea8286a690ab5084c961` |
+| `build-invocation-provenance.v1.json` | `6885eee1db5075faeb1a321684f579ef853166a32db8af1cf861c34c79ec64a9` |
+| `formal-package-readback.v1.json` | `8071956eb2848d9b2e9fd22d5617de7b13f5da94966cb3e3ae531a89673374bb` |
+| `formal-package-verification.windows.v1.json` | `2ce1772d60c1514fac2f1cc6c68e305eadfb7e8fcd0cd7267fb7c9286ea7fe5f` |
+| `formal-package-verification.linux.v1.json` | `64aac879a0591116dcbbeaa790becd739934851a22e7d196c078cae2f2f85fd5` |
+
+For every package below, the author-signed hash, fresh GitHub Packages
+read-back hash, provenance final subject and independently verified archive
+hash are equal. Each feed identity is the fixed GitHub service index plus the
+exact package ID and `/0.10.1`.
+
+| Package | Author-signed and published SHA-256 |
+| --- | --- |
+| `CP6.Platform.Abstractions` | `1319912dac5c3e12a5bb4885e64d92f43a6057e96d2f6c11c05db97b9fc7f1f7` |
+| `CP6.Platform.AspNetCore` | `2949e2149ca2c98fa1c935b89f96ce2dcf388186daa038f8a20bbe1d57f02b71` |
+| `CP6.Platform.Contracts` | `e2c63dd160fe189db1fbc9090da38cab1d67bd599edd1333afc992a93f4110eb` |
+| `CP6.Platform.Deployment` | `a218d220bd42ada3928e45a6245558b7f0d3b96fd4ea3d9173886bbe7c91e6c0` |
+| `CP6.Platform.EntityFramework` | `90a341401f9058be2997e40f61c2dd5ad0fc4717c8b63672abc9009118fc5a71` |
+| `CP6.Platform.Messaging` | `7ffa23acf9c1623cbf520d8dd7fdff104a77abf07832bd4e89102092ab9f4558` |
+| `CP6.Platform.Release` | `afe85eabe78965e0d7967f3f2cf54574c8adcb02141523aecd8a8bafc6d700e0` |
+
+The pinned NuGet policy remains version `1`, SHA-256
+`da359e3a8e9be2220541c53613d2da277cb2bb9a22a8770df30c808a033b953f`.
+The author remains the same DER fingerprint
+`1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d`,
+under `PinnedSelfSigned`, `publicCaTrusted=false`, `internallyTrusted=true`.
+The new real timestamp signer leaf is
+`2da09da7f4131f9fe72db6c5e6e9c9656755af043f1ea742cc0d2120e141ebfc`,
+with policy OID `2.16.840.1.114412.7.1`. Windows and Linux record their own
+valid normal-root paths. Their full chain arrays are not required to match;
+neither path receives the author's untrusted-root exception.
+
+Independent local verification of the seven downloaded packages also passed
+Current-mode author integrity/signature, public policy, real RFC3161 and
+provenance checks. The canonical formal-publication validator returned the
+same publication SHA-256 recorded above. The initial local invocation used an
+output directory outside the verifier's allowed `artifacts/p10-formal` boundary
+and was rejected before package verification; rerunning with the permitted
+output directory passed without changing code or weakening the boundary.
+
+The corrected set is ready for S05's actual Registry consumer verification.
+That downstream acceptance and S06 remain pending. This publication creates no
+R2 object, Locator, OCI image, System candidate or deployment and never changes
+the immutable `0.10.0` history.
 
 ## Package ownership and exact package set
 

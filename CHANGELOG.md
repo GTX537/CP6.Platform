@@ -2,14 +2,15 @@
 
 All notable changes to CP6.Platform are documented here.
 
-## 0.10.1.0 - 2026-09-07 (formal package publication pending)
+## 0.10.1.0 - 2026-09-07
 
 - Correct the shared candidate Schema to accept byte-preserving formal package identities only with RFC 3161 timestamps, matching the existing API rule; preserve semantic equal-hash enforcement.
 - Add cross-lane API/Schema policy tests, positive-fixture coverage, media-type allowlist comparison, and direct packaged-Schema regression coverage after CRM found the defect in real `0.10.0` feed bytes.
 - Complete the shared object-reference media-type allowlist for the owned formal-publication and pinned NuGet trust contracts; cover every owned contract through both the API and Schema so S06 can reference the original typed evidence.
-- Prepare the exact seven-package `0.10.1` forward patch. Pin all write entry points to the new version while retaining `0.10.0` read-only validation; reject mixed and unapproved versions without weakening publication, trust, timestamp, or protected-Environment gates.
+- Publish the exact seven-package `0.10.1` forward patch once from protected `main@3ff27e26962dcfd722887afb80a4306010dd9ee1` in run `34126521193`. Windows signing/read-back and independent Linux verification both succeeded. All write entry points remain fixed to the consumed new version, while historical `0.10.0` read-only validation is retained; no consumed version may be republished.
 - Retain the publication, build provenance, feed read-back, Windows verification and Linux verification records in the final public artifact so downstream consumers can audit the normal publication path without a recovery-workflow substitution.
-- Preserve immutable `0.10.0` publication history. CRM S05 remains paused and P10 remains Candidate / No-Go until corrected publication, fixed-version consumer verification, and S06 evidence complete.
+- Bind final artifact `10020487845`, both independently checked archive digests, five original record hashes, seven equal package hashes and the real RFC3161 signer in the P10 governance ledger. The same pinned self-signed author remains explicitly not publicly CA-trusted.
+- Preserve immutable `0.10.0` publication history. CRM S05 must retarget and verify the corrected real Registry set; P10 remains Candidate / No-Go pending S05 and S06, with no System candidate, R2 Locator, image or deployment produced by this publication.
 
 ## 0.10.0.0 - 2026-09-01
 
