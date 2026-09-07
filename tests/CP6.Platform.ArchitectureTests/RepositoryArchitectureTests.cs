@@ -750,13 +750,21 @@ public sealed class RepositoryArchitectureTests
 
         foreach (var required in new[]
         {
-            "P10 Platform status: **S04 historical publication complete; 0.10.1 corrective publication pending**",
-            "P10 overall: **Candidate / No-Go pending corrected packages, S05 and S06**",
+            "P10 Platform status: **S04 complete; corrected 0.10.1 formally published**",
+            "P10 overall: **Candidate / No-Go pending S05 and S06**",
             "deployable=false",
             "GitHub Packages",
             "S03",
             "90 days",
             "formal Platform package publication: complete for exactly `0.10.0`",
+            "corrected seven-package publication: complete for exactly `0.10.1`",
+            "34126521193",
+            "10020487845",
+            "8b5fc47fd77902a3433d61b4cf181b67ef61ee994b60ea8286a690ab5084c961",
+            "6885eee1db5075faeb1a321684f579ef853166a32db8af1cf861c34c79ec64a9",
+            "8071956eb2848d9b2e9fd22d5617de7b13f5da94966cb3e3ae531a89673374bb",
+            "2ce1772d60c1514fac2f1cc6c68e305eadfb7e8fcd0cd7267fb7c9286ea7fe5f",
+            "64aac879a0591116dcbbeaa790becd739934851a22e7d196c078cae2f2f85fd5",
             "PinnedSelfSigned",
             "publicCaTrusted=false",
             "S04_EXTERNAL_PREREQUISITES_READY=true",
