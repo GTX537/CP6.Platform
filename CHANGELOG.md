@@ -7,7 +7,8 @@ All notable changes to CP6.Platform are documented here.
 - Prepare strict access-token validation (`at+jwt`, literal kid and exact audience) after the actual CP6 issuer/fixed-consumer diagnostic reproduced four incorrect HTTP 200 responses, including use of a real ID Token as a bearer token.
 - Replace the bearer profile's unbounded default metadata fallback with Platform-owned cache deadlines, controlled refresh, bounded response handling and generic authentication failures. Signature validation remains in IdentityModel.
 - Check trust and retry deadlines after awaited retrieval completes; prevent framework fallback from restoring automatic redirects or cookies while retaining application transport ownership. Independent specification/quality reviews and 231 authentication tests passed.
-- Keep immutable historical packages unchanged. The forward package candidate is `0.10.2`; normal branch delivery, protected formal publication, fresh fixed-feed consumption and full C01 cross-repository acceptance remain pending.
+- Deliver the source repair through PR #54 and verified `main@31b92736b0f65afae4fa95020b6a11f258963b8d`; all five required PR/main jobs and the fresh merged-source 231-test authentication suite passed.
+- Keep immutable historical packages unchanged. The forward package candidate is `0.10.2`; protected formal publication, fresh fixed-feed consumption and full C01 cross-repository acceptance remain pending.
 
 ## 0.10.1.0 - 2026-09-07
 
