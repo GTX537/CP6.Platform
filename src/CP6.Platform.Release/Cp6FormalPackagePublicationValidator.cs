@@ -35,7 +35,7 @@ public static class Cp6FormalPackagePublicationValidator
         RequireExact(root, "$schemaId", Cp6ReleaseContractIds.FormalPackagePublication, "schema-id");
         var createdAtUtc = ParseUtc(root, "createdAtUtc");
         var version = Cp6ReleaseJsonRules.RequireString(root, "version", "package-version");
-        if (version is not ("0.10.0" or "0.10.1"))
+        if (version is not ("0.10.0" or "0.10.1" or "0.10.2"))
         {
             throw Error("package-version", "Formal publication version is not approved.");
         }

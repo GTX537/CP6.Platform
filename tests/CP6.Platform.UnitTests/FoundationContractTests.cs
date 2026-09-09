@@ -43,7 +43,7 @@ public sealed class FoundationContractTests
         Assert.Matches(new Regex(@"^\d+\.\d+\.\d+\.\d+$", RegexOptions.CultureInvariant), version);
         Assert.Contains($"repository `0.9.0.0` / package `{deploymentPackageVersion}`", p09DecisionRecord, StringComparison.Ordinal);
         Assert.Equal(string.Join('.', version.Split('.')[..3]), releaseVersionPrefix);
-        Assert.Equal("0.10.1-test.local.1", releasePackageVersion);
+        Assert.Equal("0.10.2-test.local.1", releasePackageVersion);
         Assert.Contains("The test version is `0.10.0-test.<first-12-source-sha>.<run-attempt>`", p10Governance, StringComparison.Ordinal);
         Assert.Contains($"## {version} -", changelog, StringComparison.Ordinal);
         Assert.Contains($"$packageVersion = '{packageVersion}'", verification, StringComparison.Ordinal);

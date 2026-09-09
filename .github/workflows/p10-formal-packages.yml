@@ -8,7 +8,7 @@ on:
         required: true
         type: string
       version:
-        description: Immutable formal patch version; must be exactly 0.10.1
+        description: Immutable formal patch version; must be exactly 0.10.2
         required: true
         type: string
 
@@ -41,7 +41,7 @@ jobs:
         run: |
           if ($env:P10_EVENT_REF -cne 'refs/heads/main') { throw 'Formal publication must be dispatched from main.' }
           if ($env:P10_EVENT_SHA -cne $env:P10_EXPECTED_COMMIT) { throw 'Expected commit differs from the dispatch event main SHA.' }
-          if ($env:P10_PACKAGE_VERSION -cne '0.10.1') { throw 'Formal package version must be exactly 0.10.1.' }
+          if ($env:P10_PACKAGE_VERSION -cne '0.10.2') { throw 'Formal package version must be exactly 0.10.2.' }
           if ((git rev-parse HEAD).Trim() -cne $env:P10_EVENT_SHA) { throw 'Checkout differs from the dispatch event SHA.' }
       - name: Build public release verifier
         shell: pwsh
@@ -212,7 +212,7 @@ jobs:
         run: |
           if ($env:P10_EVENT_REF -cne 'refs/heads/main') { throw 'Linux verification must use main.' }
           if ($env:P10_EVENT_SHA -cne $env:P10_EXPECTED_COMMIT) { throw 'Linux event SHA differs from the approved commit.' }
-          if ($env:P10_PACKAGE_VERSION -cne '0.10.1') { throw 'Linux verifier accepts only formal version 0.10.1.' }
+          if ($env:P10_PACKAGE_VERSION -cne '0.10.2') { throw 'Linux verifier accepts only formal version 0.10.2.' }
           if ((git rev-parse HEAD).Trim() -cne $env:P10_EXPECTED_COMMIT) { throw 'Linux checkout differs from the approved commit.' }
       - name: Download immutable Windows read-back evidence
         uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c

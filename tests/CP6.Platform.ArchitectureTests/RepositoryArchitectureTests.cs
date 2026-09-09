@@ -706,7 +706,7 @@ public sealed class RepositoryArchitectureTests
     [Fact]
     public void P10_Documentation_IsCompleteAndNonDeployable()
     {
-        Assert.Equal("0.10.1.0", File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim());
+        Assert.Equal("0.10.2.0", File.ReadAllText(Path.Combine(RepositoryRoot, "VERSION")).Trim());
 
         var readme = File.ReadAllText(Path.Combine(RepositoryRoot, "README.md"));
         Assert.Contains("docs/P10-RELEASE-GOVERNANCE.md", readme, StringComparison.Ordinal);

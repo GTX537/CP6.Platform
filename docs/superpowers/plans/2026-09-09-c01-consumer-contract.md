@@ -11,7 +11,7 @@ Design: [C01 consumer contract](../specs/2026-09-09-c01-consumer-contract.md).
 - [x] Add the bounded Platform metadata manager and register it through the actual bearer entry point. Preserve IdentityModel signature validation and P03's first-unknown-request failure behavior. Test concurrent fetch counts, cancellation, bounded streaming, invalid key/protocol invalidation and every cache deadline. Metadata failures must return actual HTTP 401 with the generic problem body, not 500.
 - [x] Run the complete affected authentication suite and obtain independent specification and quality reviews; fix all findings.
 - [x] Finish the seven repository gates and update local verification records.
-- [ ] Normally deliver the verified branch with all five required PR/main checks.
+- [x] Normally deliver the verified branch with all five required PR/main checks.
 
 ## Task 2: prepare and publish the immutable forward package
 
@@ -41,6 +41,8 @@ The final reviewed implementation is `9b26875b744cd51715d33881870d4984f691b64f`.
 
 The final local run for that implementation passed Format, Build, Unit, Integration, E2E, Contract and Security. Unit passed 124/124, Integration 231/231, E2E 31/31, Architecture 98/98 and Release contracts 216/216, all with zero failures or skips. Contract's 20 checks include both PowerShell contract suites, package-content safety and equal hashes for both builds of the five runtime and five symbol packages. Security reported no known vulnerable packages across the 17 projects from the configured nuget.org audit source. All seven machine summaries and JUnit files report Passed under the reviewed implementation SHA; retained copies are in `.artifacts/c01/final-gate-evidence-9b26875`. Subsequent changes for branch submission only update these documentation records. Required remote checks remain pending until normal PR/main delivery.
 
+Task 1 is now delivered by [PR #54](https://github.com/GTX537/CP6.Platform/pull/54), reviewed head `19c9d3af4cd6167870e13a610f79e740b3e9d8bb`, after [PR run 34404740669](https://github.com/GTX537/CP6.Platform/actions/runs/34404740669) passed all five required jobs. It merged normally to `main@31b92736b0f65afae4fa95020b6a11f258963b8d`; [exact-main run 34405918337](https://github.com/GTX537/CP6.Platform/actions/runs/34405918337) again passed Windows, Linux, real Dapr/Kafka, real SQL Server and P09 non-production runtime. The merge tree equals the reviewed head, remote main contains the task commits, and a fresh rebuild on the merged source passed all 231 ASP.NET Core tests without skips. Task 2 starts from this verified main in its own branch. These results complete source delivery, while formal publication and fixed-consumer acceptance remain pending.
+
 ## Task 2 registration review
 
 The independent read-only audit identified this exact implementation scope:
@@ -52,3 +54,32 @@ The independent read-only audit identified this exact implementation scope:
 - Keep historical `.0` recovery, `.1` publication evidence, S02 test candidate identities, P10 candidates/Locators, trust policy/certificate bytes and existing package bytes unchanged. The old `.1` Release package cannot validate a new `.2` publication record; C01 needs a new fixed `.2` evidence consumer while retaining historical CRM proof projects.
 
 Read-only external checks on 2026-09-09 confirmed strict Platform main protection with all five required validation contexts, administrator enforcement, force-push/deletion disabled, and the existing owner approval on `p10-formal-release`. All seven `0.10.2` version slots were absent at this preliminary check. The protected publication job must repeat the full fresh prerequisite gate; this observation neither consumes a version nor substitutes for approval or publication evidence.
+
+Registration implementation `6ecc3269c88f9f1bf9c2569f453695e61afb3088`
+passed all seven repository gates. Unit passed 124/124, Integration 231/231,
+E2E 31/31, Architecture 98/98 and Release 235/235, with zero failures or skips.
+The 20-check Contract gate includes both PowerShell suites and repeat-package
+hash comparisons; Build completed without warnings, and Security reported no
+known vulnerable packages across 17 projects from the configured audit source.
+Machine summaries and zero-skip gate JUnit files bind that exact commit under
+`.artifacts/c01/repository-gates-6ecc326`.
+
+Focused registration tests first rejected the new valid version in the API,
+source Schema and actual packed Schema. A separate inner read-back mutation
+reproduced the record generator accepting an inconsistent package identity.
+The isolated feed-newline case then exposed two further Schema acceptances;
+the corrected matrix passed 41/41. Evidence is under
+`.artifacts/c01/registration`. Independent specification review subsequently
+found that the wrong-feed-package-ID tests also changed the version, masking
+the intended boundary. Test-only commit
+`06a327d63e4e992f7ef1dc70d8971efa29829b9f` derives each fixture's unchanged
+version and changes only package ID. Removing only the ordinal package-ID
+constraints produced two expected Schema failures and 39 passes; restoring the
+original Schema bytes produced 41/41 passes. Format, specification re-review and
+fresh independent quality review passed at `06a327d`. The final affected
+Contract rerun passed all 20 checks at that exact commit: 235/235 Release and
+98/98 Architecture tests, both PowerShell contract suites, package content
+checks and equal hashes for both package builds, with zero failed or skipped.
+The copied summary and JUnit are under
+`.artifacts/c01/reviewed-contract-06a327d`. Normal PR/main delivery, formal
+publication and final fixed-consumer acceptance remain pending.

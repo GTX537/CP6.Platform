@@ -34,12 +34,20 @@ public sealed class FormalPackagePublicationTests
     {
         { "0.10.0", "0.10.0", "0.10.0", true },
         { "0.10.1", "0.10.1", "0.10.1", true },
+        { "0.10.2", "0.10.2", "0.10.2", true },
         { "0.10.0", "0.10.1", "0.10.1", false },
         { "0.10.1", "0.10.0", "0.10.0", false },
         { "0.10.0", "0.10.0", "0.10.1", false },
         { "0.10.1", "0.10.1", "0.10.0", false },
-        { "0.10.2", "0.10.2", "0.10.2", false },
-        { "0.10.1-preview.1", "0.10.1-preview.1", "0.10.1-preview.1", false }
+        { "0.10.2", "0.10.1", "0.10.2", false },
+        { "0.10.2", "0.10.2", "0.10.1", false },
+        { "0.10.1", "0.10.2", "0.10.2", false },
+        { "0.10.3", "0.10.3", "0.10.3", false },
+        { "0.10.2-preview.1", "0.10.2-preview.1", "0.10.2-preview.1", false },
+        { "0.10.2+build.1", "0.10.2+build.1", "0.10.2+build.1", false },
+        { "00.10.2", "00.10.2", "00.10.2", false },
+        { "0.10.2", "0.10.2", "0.10.2\n", false },
+        { "0.10.2\n", "0.10.2\n", "0.10.2\n", false }
     };
 
     [Fact]
@@ -88,6 +96,22 @@ public sealed class FormalPackagePublicationTests
         AssertCode("timestamp-chain", root => Package(root, 0)["timestampCertificateChainSha256"] = new JsonArray());
         AssertCode("verification", root => root["verification"]!["linux"] = "Failure");
         AssertCode("build-invocation", root => root["buildInvocationId"] = $"p10-s04:{new string('c', 40)}:123:1");
+    }
+
+    [Fact]
+    public void Publication_API_and_Schema_reject_a_feed_identity_for_a_different_package()
+    {
+        var fixture = CreatePublication();
+        var rootVersion = fixture.Root["version"]!.GetValue<string>();
+        Package(fixture.Root, 0)["feedIdentity"] =
+            $"https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/{rootVersion}";
+
+        var exception = Assert.Throws<Cp6ReleaseContractException>(() =>
+            Cp6FormalPackagePublicationValidator.ValidateFormalPackagePublication(
+                Canonical(fixture.Root), fixture.Policy, EvaluationUtc));
+        Assert.Equal("feed-identity", exception.Code);
+        var result = ReleaseSchemaTestData.Evaluate(fixture.Root);
+        Assert.False(result.IsValid, ReleaseSchemaTestData.Errors(result));
     }
 
     [Fact]

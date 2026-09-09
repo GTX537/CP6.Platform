@@ -4,7 +4,7 @@ param(
     [string]$PackagePath,
 
     [Parameter(Mandatory)]
-    [ValidatePattern('^0\.10\.1$')]
+    [ValidatePattern('^0\.10\.2\z')]
     [string]$PackageVersion,
 
     [Parameter(Mandatory)]

@@ -4,6 +4,61 @@ namespace CP6.Platform.ReleaseTests;
 public sealed class P10PackageTests
 {
     [Fact]
+    public void Packaged_formal_publication_Schema_accepts_only_coherent_registered_versions_and_feed_identities()
+    {
+        P10PackageTestHarness.PackReleasePackage("0.10.2-test.schema.1", archive =>
+        {
+            string ReadSchema(string name)
+            {
+                var entry = archive.GetEntry($"contracts/release/v1/{name}");
+                Assert.NotNull(entry);
+                using var reader = new StreamReader(entry.Open());
+                return reader.ReadToEnd();
+            }
+
+            var matrix = new (string Root, string Package, string Feed, bool Expected)[]
+            {
+                ("0.10.0", "0.10.0", "0.10.0", true),
+                ("0.10.1", "0.10.1", "0.10.1", true),
+                ("0.10.2", "0.10.2", "0.10.2", true),
+                ("0.10.2", "0.10.1", "0.10.2", false),
+                ("0.10.2", "0.10.2", "0.10.1", false),
+                ("0.10.1", "0.10.2", "0.10.2", false),
+                ("0.10.3", "0.10.3", "0.10.3", false),
+                ("0.10.2-preview.1", "0.10.2-preview.1", "0.10.2-preview.1", false),
+                ("0.10.2+build.1", "0.10.2+build.1", "0.10.2+build.1", false),
+                ("00.10.2", "00.10.2", "00.10.2", false),
+                ("0.10.2", "0.10.2", "0.10.2\n", false),
+                ("0.10.2\n", "0.10.2\n", "0.10.2\n", false)
+            };
+            foreach (var item in matrix)
+            {
+                var root = System.Text.Json.Nodes.JsonNode.Parse(
+                    ReleaseTestData.Fixture("supporting", "formal-package-publication.valid.json"))!.AsObject();
+                root["version"] = item.Root;
+                foreach (var packageNode in root["packages"]!.AsArray())
+                {
+                    var package = packageNode!.AsObject();
+                    package["version"] = item.Package;
+                    package["feedIdentity"] =
+                        $"https://nuget.pkg.github.com/GTX537/index.json#{package["packageId"]!.GetValue<string>()}/{item.Feed}";
+                }
+
+                var result = ReleaseSchemaTestData.Evaluate(root, ReadSchema);
+                Assert.True(result.IsValid == item.Expected, ReleaseSchemaTestData.Errors(result));
+            }
+
+            var wrongFeedPackage = System.Text.Json.Nodes.JsonNode.Parse(
+                ReleaseTestData.Fixture("supporting", "formal-package-publication.valid.json"))!.AsObject();
+            var rootVersion = wrongFeedPackage["version"]!.GetValue<string>();
+            wrongFeedPackage["packages"]![0]!["feedIdentity"] =
+                $"https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/{rootVersion}";
+            var wrongFeedResult = ReleaseSchemaTestData.Evaluate(wrongFeedPackage, ReadSchema);
+            Assert.False(wrongFeedResult.IsValid, ReleaseSchemaTestData.Errors(wrongFeedResult));
+        });
+    }
+
+    [Fact]
     public void Packaged_candidate_Schemas_accept_formal_byte_preserving_identities()
     {
         P10PackageTestHarness.PackReleasePackage("0.10.1-test.schema.1", archive =>
