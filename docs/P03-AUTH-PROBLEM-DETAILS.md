@@ -29,7 +29,7 @@
 - metadata 必须声明配置的 issuer，JWKS 只能位于同一 authority 的 `/.well-known/jwks.json`。默认 backchannel 不跟随重定向、不携带 Cookie/默认凭据；每个响应的 headers/body 总期限为 10 秒，正文最多 256 KiB。JWKS 限定为 1～32 个唯一 kid、至少 2048 位且不含私有参数的有效 RSA 公钥；
 - 缓存期限使用单调时钟。元数据不可用、协议失效或信任过期通过现有通用 Problem Details 返回 401；调用方取消继续传播。
 
-这些 C01 变更目前是待审查、待发布的源码修复，计划使用新的不可变 `0.10.2` 七包集合。下列 P03 历史包和证据不包含这些修复；实际固定包跨仓验收与 C01 关闭仍待完成。真实 CP6 issuer 返回 `max-age=60, must-revalidate`，因此其 60 秒刷新失败边界比 900 秒绝对上限更严格。
+这些 C01 源码修复已通过独立规范与质量审查、231/231 认证测试；正常分支交付与发布仍待完成，计划使用新的不可变 `0.10.2` 七包集合。下列 P03 历史包和证据不包含这些修复；实际固定包跨仓验收与 C01 关闭仍待完成。真实 CP6 issuer 返回 `max-age=60, must-revalidate`，因此其 60 秒刷新失败边界比 900 秒绝对上限更严格。
 
 P03 的验证器不信任 body/query/cookie 或外部 `X-User-*` / `X-Tenant-*` header，也不把 Permission/DataScope 放入 Token。后续 CRM03 仍须检查用户、租户、权限和撤销投影。
 
