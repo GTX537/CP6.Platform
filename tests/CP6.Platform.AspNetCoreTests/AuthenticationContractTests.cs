@@ -52,6 +52,95 @@ public sealed class AuthenticationContractTests
     }
 
     [Theory]
+    [InlineData("JWT")]
+    [InlineData("id+jwt")]
+    [InlineData("unrelated")]
+    public async Task TokenTypeOtherThanAccessToken_FailsClosed(string tokenType)
+    {
+        var key = CreateKey("key-type");
+        await using var provider = BuildProvider(new RotatingConfigurationManager(Configuration(key)));
+
+        var result = await AuthenticateAsync(provider, CreateToken(key, tokenType: tokenType));
+
+        Assert.False(result.Succeeded);
+    }
+
+    [Fact]
+    public async Task MissingTokenType_FailsClosed()
+    {
+        var key = CreateKey("key-missing-type");
+        await using var provider = BuildProvider(new RotatingConfigurationManager(Configuration(key)));
+
+        var result = await AuthenticateAsync(provider, CreateTokenWithoutType(key));
+
+        Assert.False(result.Succeeded);
+    }
+
+    [Fact]
+    public async Task UnknownKid_WithOtherwiseTrustedRsaMaterial_FailsClosed()
+    {
+        var trustedKey = CreateKey("known-kid");
+        var unknownKidKey = new RsaSecurityKey(trustedKey.Rsa!) { KeyId = "unknown-kid" };
+        await using var provider = BuildProvider(new RotatingConfigurationManager(Configuration(trustedKey)));
+
+        var result = await AuthenticateAsync(provider, CreateToken(unknownKidKey));
+
+        Assert.False(result.Succeeded);
+    }
+
+    [Theory]
+    [InlineData("CP6.Web", "CP6.Web/")]
+    [InlineData("CP6.Services", "CP6.Services/")]
+    public async Task AudienceWithTrailingSlash_FailsClosed(
+        string configuredAudience,
+        string trailingSlashAudience)
+    {
+        var key = CreateKey("key-audience-slash");
+        await using var provider = BuildProvider(
+            new RotatingConfigurationManager(Configuration(key)),
+            configuredAudience);
+
+        var validResult = await AuthenticateAsync(provider, CreateToken(key, audience: configuredAudience));
+        var trailingSlashResult = await AuthenticateAsync(
+            provider,
+            CreateToken(key, audience: trailingSlashAudience));
+
+        Assert.True(validResult.Succeeded);
+        Assert.False(trailingSlashResult.Succeeded);
+    }
+
+    [Fact]
+    public async Task UserAndServiceAudiences_AcceptTheirOwnTokens_AndMutuallyReject()
+    {
+        const string serviceAudience = "CP6.Services";
+        var key = CreateKey("key-audience-boundary");
+        var manager = new RotatingConfigurationManager(Configuration(key));
+        await using var userProvider = BuildProvider(manager, Audience);
+        await using var serviceProvider = BuildProvider(manager, serviceAudience);
+        var userToken = CreateToken(key, audience: Audience, subject: "user-123");
+        var serviceToken = CreateToken(key, audience: serviceAudience, subject: "service:inventory-worker");
+
+        Assert.True((await AuthenticateAsync(userProvider, userToken)).Succeeded);
+        Assert.False((await AuthenticateAsync(userProvider, serviceToken)).Succeeded);
+        Assert.True((await AuthenticateAsync(serviceProvider, serviceToken)).Succeeded);
+        Assert.False((await AuthenticateAsync(serviceProvider, userToken)).Succeeded);
+    }
+
+    [Fact]
+    public async Task BearerOptions_UseExactKeyAudienceAndTokenTypeBoundaries()
+    {
+        var key = CreateKey("key-options");
+        await using var provider = BuildProvider(new RotatingConfigurationManager(Configuration(key)));
+
+        var options = provider.GetRequiredService<IOptionsMonitor<JwtBearerOptions>>()
+            .Get(JwtBearerDefaults.AuthenticationScheme);
+
+        Assert.False(options.TokenValidationParameters.TryAllIssuerSigningKeys);
+        Assert.False(options.TokenValidationParameters.IgnoreTrailingSlashWhenValidatingAudience);
+        Assert.Equal(["at+jwt"], options.TokenValidationParameters.ValidTypes);
+    }
+
+    [Theory]
     [InlineData("sub")]
     [InlineData("tenant_id")]
     [InlineData("jti")]
@@ -264,11 +353,13 @@ public sealed class AuthenticationContractTests
         Assert.Throws<ArgumentException>(() => services.AddCp6JwtBearer(profile));
     }
 
-    private static ServiceProvider BuildProvider(IConfigurationManager<OpenIdConnectConfiguration> manager)
+    private static ServiceProvider BuildProvider(
+        IConfigurationManager<OpenIdConnectConfiguration> manager,
+        string audience = Audience)
     {
         var services = new ServiceCollection();
         services.AddLogging();
-        services.AddCp6JwtBearer(Profile());
+        services.AddCp6JwtBearer(Profile(audience));
         services.PostConfigure<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme, options =>
         {
             options.ConfigurationManager = manager;
@@ -276,11 +367,11 @@ public sealed class AuthenticationContractTests
         return services.BuildServiceProvider(new ServiceProviderOptions { ValidateOnBuild = true });
     }
 
-    private static Cp6JwtBearerProfile Profile() => new()
+    private static Cp6JwtBearerProfile Profile(string audience = Audience) => new()
     {
         Authority = Issuer,
         Issuer = Issuer,
-        Audiences = [Audience],
+        Audiences = [audience],
         ClockSkew = TimeSpan.Zero
     };
 
@@ -313,14 +404,16 @@ public sealed class AuthenticationContractTests
         string issuer = Issuer,
         string audience = Audience,
         DateTime? expiresAt = null,
-        DateTime? notBefore = null)
+        DateTime? notBefore = null,
+        string subject = "user-123",
+        string tokenType = "at+jwt")
     {
         var now = DateTime.UtcNow;
         var claims = new Dictionary<string, object>
         {
             ["iss"] = issuer,
             ["aud"] = audience,
-            ["sub"] = "user-123",
+            ["sub"] = subject,
             ["tenant_id"] = (tenantId ?? Guid.NewGuid()).ToString(),
             ["jti"] = Guid.NewGuid().ToString("N"),
             ["iat"] = Epoch(now),
@@ -335,9 +428,24 @@ public sealed class AuthenticationContractTests
         var descriptor = new SecurityTokenDescriptor
         {
             Claims = claims,
+            TokenType = tokenType,
             SigningCredentials = signingKey is null ? null : new SigningCredentials(signingKey, algorithm)
         };
         return new JsonWebTokenHandler { SetDefaultTimesOnTokenCreation = false }.CreateToken(descriptor);
+    }
+
+    private static string CreateTokenWithoutType(RsaSecurityKey signingKey)
+    {
+        var token = CreateToken(signingKey);
+        var segments = token.Split('.');
+        using var headerDocument = JsonDocument.Parse(Base64UrlEncoder.Decode(segments[0]));
+        var header = headerDocument.RootElement.EnumerateObject()
+            .Where(property => !string.Equals(property.Name, "typ", StringComparison.Ordinal))
+            .ToDictionary(property => property.Name, property => (object)property.Value.ToString());
+        var encodedHeader = Base64UrlEncoder.Encode(JsonSerializer.Serialize(header));
+        var signingInput = Encoding.ASCII.GetBytes($"{encodedHeader}.{segments[1]}");
+        var signature = signingKey.Rsa!.SignData(signingInput, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+        return $"{encodedHeader}.{segments[1]}.{Base64UrlEncoder.Encode(signature)}";
     }
 
     private static long Epoch(DateTime value) => new DateTimeOffset(value).ToUnixTimeSeconds();

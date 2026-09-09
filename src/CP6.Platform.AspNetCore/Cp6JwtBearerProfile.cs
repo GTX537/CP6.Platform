@@ -17,9 +17,9 @@ public sealed class Cp6JwtBearerProfile
 
     internal void Validate()
     {
-        if (!Uri.TryCreate(Authority, UriKind.Absolute, out var authority))
+        if (!TryCreateSafeConfigurationUri(Authority, out var authority))
         {
-            throw new ArgumentException("Authority must be an absolute URI.", nameof(Authority));
+            throw new ArgumentException("Authority must be an absolute HTTP or HTTPS URI without user information, query, or fragment.", nameof(Authority));
         }
 
         if (RequireHttpsMetadata && authority.Scheme != Uri.UriSchemeHttps)
@@ -27,9 +27,9 @@ public sealed class Cp6JwtBearerProfile
             throw new ArgumentException("Authority must use HTTPS when HTTPS metadata is required.", nameof(Authority));
         }
 
-        if (!Uri.TryCreate(Issuer, UriKind.Absolute, out var issuer))
+        if (!TryCreateSafeConfigurationUri(Issuer, out var issuer))
         {
-            throw new ArgumentException("Issuer must be an absolute URI.", nameof(Issuer));
+            throw new ArgumentException("Issuer must be an absolute HTTP or HTTPS URI without user information, query, or fragment.", nameof(Issuer));
         }
 
         if (RequireHttpsMetadata && issuer.Scheme != Uri.UriSchemeHttps)
@@ -51,5 +51,35 @@ public sealed class Cp6JwtBearerProfile
         {
             throw new ArgumentOutOfRangeException(nameof(ClockSkew), "Clock skew must be between zero and five minutes.");
         }
+    }
+
+    private static bool TryCreateSafeConfigurationUri(string value, out Uri uri)
+    {
+        if (!Uri.TryCreate(value, UriKind.Absolute, out uri!) ||
+            (uri.Scheme != Uri.UriSchemeHttp && uri.Scheme != Uri.UriSchemeHttps) ||
+            !string.IsNullOrEmpty(uri.UserInfo) ||
+            HasUserInfoDelimiter(value) ||
+            !string.IsNullOrEmpty(uri.Query) ||
+            !string.IsNullOrEmpty(uri.Fragment))
+        {
+            uri = null!;
+            return false;
+        }
+
+        return true;
+    }
+
+    private static bool HasUserInfoDelimiter(string value)
+    {
+        var authorityStart = value.IndexOf("://", StringComparison.Ordinal);
+        if (authorityStart < 0)
+        {
+            return false;
+        }
+
+        authorityStart += 3;
+        var authorityEnd = value.IndexOfAny(['/', '?', '#'], authorityStart);
+        var authority = authorityEnd < 0 ? value[authorityStart..] : value[authorityStart..authorityEnd];
+        return authority.Contains('@', StringComparison.Ordinal);
     }
 }

@@ -2,6 +2,13 @@
 
 All notable changes to CP6.Platform are documented here.
 
+## Unreleased — C01 consumer repair
+
+- Prepare strict access-token validation (`at+jwt`, literal kid and exact audience) after the actual CP6 issuer/fixed-consumer diagnostic reproduced four incorrect HTTP 200 responses, including use of a real ID Token as a bearer token.
+- Replace the bearer profile's unbounded default metadata fallback with Platform-owned cache deadlines, controlled refresh, bounded response handling and generic authentication failures. Signature validation remains in IdentityModel.
+- Check trust and retry deadlines after awaited retrieval completes; prevent framework fallback from restoring automatic redirects or cookies while retaining application transport ownership. Independent specification/quality reviews and 231 authentication tests passed.
+- Keep immutable historical packages unchanged. The forward package candidate is `0.10.2`; normal branch delivery, protected formal publication, fresh fixed-feed consumption and full C01 cross-repository acceptance remain pending.
+
 ## 0.10.1.0 - 2026-09-07
 
 - Isolate repository-local Release package-building tests in one nonparallel xUnit collection after exact-main Windows CI exposed a shared nuspec lock race; deterministic regression covers both classes. Published 0.10.1 packages and evidence are unchanged.

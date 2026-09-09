@@ -18,13 +18,18 @@
 消费者通过 `AddCp6JwtBearer(Cp6JwtBearerProfile)` 注册唯一验证边界：
 
 - metadata 默认必须使用 HTTPS；测试环境只有显式 `RequireHttpsMetadata=false` 才可使用 HTTP；
-- 只接受 `RS256`，要求签名、`kid`、配置的 issuer 和至少一个精确 audience；
+- C01 后续修复只接受 `RS256` 与 `typ=at+jwt`，要求签名、逐字匹配的 `kid`、配置的 issuer 和至少一个精确 audience（末尾 `/` 不作等价化）；ID Token 不能用作 bearer access token；
 - 需要 `iss`、`aud`、`sub`、`tenant_id`、`jti`、`iat`、`nbf`、`exp`；
 - `tenant_id` 必须是 non-empty UUID；单值 claim 重复、NumericDate 非法或 `iat/nbf > exp` 均失败关闭；
 - clock skew 只能配置在 0～5 分钟；默认 1 分钟；
 - `MapInboundClaims=false`，下游只能读取原始公共 claim 名称；
 - `RefreshOnIssuerKeyNotFound=true`。未知 `kid` 触发受控 JWKS refresh；刷新完成前当前请求失败，后续请求才可使用新 key；
-- JWKS 缓存、自动刷新和 Last Known Good 生命周期复用 Microsoft IdentityModel，不由业务服务复制缓存实现。未过期旧 key 可继续验证；新 key 在刷新失败时不能被猜测或默认接受。
+- C01 后续修复由 Platform 的 Discovery/JWKS manager 管理缓存期限，继续由 Microsoft IdentityModel 验证签名；不叠加可越过期限的 Last Known Good 回退。JWKS `max-age` 最多 300 秒，缺失时默认 300 秒，绝对信任年龄最多 900 秒，响应 `Age` 计入期限。`must-revalidate` 禁止过期回退，`no-cache` 要求重新验证，`no-store` 不复用已取回的 key；
+- 已知 key 仍新鲜时，未知 `kid` 的网络刷新失败不会破坏已有新鲜证据，但未知 key 始终拒绝。未知 `kid` 每 60 秒最多触发一次受控刷新，临时网络故障每 30 秒最多重试一次；协议/公钥错误清除旧信任。并发刷新串行处理并在取得锁后重查状态；
+- metadata 必须声明配置的 issuer，JWKS 只能位于同一 authority 的 `/.well-known/jwks.json`。默认 backchannel 不跟随重定向、不携带 Cookie/默认凭据；每个响应的 headers/body 总期限为 10 秒，正文最多 256 KiB。JWKS 限定为 1～32 个唯一 kid、至少 2048 位且不含私有参数的有效 RSA 公钥；
+- 缓存期限使用单调时钟。元数据不可用、协议失效或信任过期通过现有通用 Problem Details 返回 401；调用方取消继续传播。
+
+这些 C01 源码修复已通过独立规范与质量审查、231/231 认证测试；正常分支交付与发布仍待完成，计划使用新的不可变 `0.10.2` 七包集合。下列 P03 历史包和证据不包含这些修复；实际固定包跨仓验收与 C01 关闭仍待完成。真实 CP6 issuer 返回 `max-age=60, must-revalidate`，因此其 60 秒刷新失败边界比 900 秒绝对上限更严格。
 
 P03 的验证器不信任 body/query/cookie 或外部 `X-User-*` / `X-Tenant-*` header，也不把 Permission/DataScope 放入 Token。后续 CRM03 仍须检查用户、租户、权限和撤销投影。
 
@@ -51,8 +56,11 @@ P03 的验证器不信任 body/query/cookie 或外部 `X-User-*` / `X-Tenant-*` 
 | 情况 | 结果 |
 | --- | --- |
 | `alg=none`、HS256 或其他算法 | 401 |
+| ID Token、缺失或错误 `typ` | 401 |
 | 无签名、无 `kid`、未知 `kid` 且 refresh 尚未取得新 key | 401 |
 | issuer/audience 不匹配 | 401 |
+| audience 仅末尾 `/` 不同 | 401 |
+| 无可用 JWKS、过期后违反缓存指令、达到绝对信任期限或协议/公钥错误 | 通用 401 |
 | `exp` 缺失/过期、`nbf` 未到、时间 claim 非 NumericDate | 401 |
 | `sub`、`tenant_id`、`jti`、`iat`、`nbf` 或 `exp` 缺失 | 401 |
 | `tenant_id=Guid.Empty` 或重复单值 claim | 401 |
