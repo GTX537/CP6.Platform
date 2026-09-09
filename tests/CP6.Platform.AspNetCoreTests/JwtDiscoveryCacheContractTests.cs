@@ -776,16 +776,18 @@ public sealed class JwtDiscoveryCacheContractTests
         using var rsa = RSA.Create(2048);
         var clock = new AuthManualTimeProvider();
         var releaseBody = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var bodyReadStarted = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        using var observingHandler = new JwksBodyReadObservingHandler(bodyReadStarted);
         var state = new IdentityState(rsa, "key-no-store-completion")
         {
             CacheControl = "no-store",
             AgeSeconds = 899,
             JwksBodyDelayTask = releaseBody.Task
         };
-        await using var host = await AuthenticationHost.StartAsync(state, clock);
+        await using var host = await AuthenticationHost.StartAsync(state, clock, observingHandler);
 
         var request = host.GetProtectedAsync(CreateToken(rsa, state.KeyId, host.Issuer));
-        await state.JwksBodyStarted.Task.WaitAsync(TimeSpan.FromSeconds(5));
+        await bodyReadStarted.Task.WaitAsync(TimeSpan.FromSeconds(5));
         clock.Advance(TimeSpan.FromSeconds(1));
         releaseBody.SetResult();
         var response = await request.WaitAsync(TimeSpan.FromSeconds(5));
@@ -880,7 +882,8 @@ public sealed class JwtDiscoveryCacheContractTests
 
         public static async Task<AuthenticationHost> StartAsync(
             IdentityState state,
-            TimeProvider? timeProvider = null)
+            TimeProvider? timeProvider = null,
+            HttpMessageHandler? backchannelHandler = null)
         {
             var identityBuilder = CreateBuilder();
             var identity = identityBuilder.Build();
@@ -953,7 +956,6 @@ public sealed class JwtDiscoveryCacheContractTests
                 {
                     await context.Response.WriteAsync(body[..1]);
                     await context.Response.Body.FlushAsync(context.RequestAborted);
-                    state.JwksBodyStarted.TrySetResult();
                     await state.JwksBodyDelayTask.WaitAsync(context.RequestAborted);
                     body = body[1..];
                 }
@@ -977,6 +979,12 @@ public sealed class JwtDiscoveryCacheContractTests
                 RequireHttpsMetadata = false,
                 ClockSkew = TimeSpan.Zero
             });
+            if (backchannelHandler is not null)
+            {
+                resourceBuilder.Services.PostConfigure<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>(
+                    Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme,
+                    options => options.BackchannelHttpHandler = backchannelHandler);
+            }
             var resource = resourceBuilder.Build();
             resource.UseAuthentication();
             resource.UseAuthorization();
@@ -1053,7 +1061,6 @@ public sealed class JwtDiscoveryCacheContractTests
         public Task JwksBodyDelayTask { get; set; } = Task.CompletedTask;
         public TaskCompletionSource DiscoveryStarted { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
         public TaskCompletionSource DiscoveryBodyStarted { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
-        public TaskCompletionSource JwksBodyStarted { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
         public int DiscoveryRequests;
         public int JwksRequests;
         public int RedirectTargetRequests;
@@ -1152,6 +1159,104 @@ public sealed class JwtDiscoveryCacheContractTests
             RandomNumberGenerator.Fill(modulus.AsSpan(1));
             modulus[^1] |= 1;
             return modulus;
+        }
+    }
+
+    private sealed class JwksBodyReadObservingHandler(TaskCompletionSource bodyReadStarted)
+        : DelegatingHandler(new HttpClientHandler
+        {
+            AllowAutoRedirect = false,
+            UseCookies = false,
+            UseDefaultCredentials = false,
+            Credentials = null,
+            DefaultProxyCredentials = null
+        })
+    {
+        protected override async Task<HttpResponseMessage> SendAsync(
+            HttpRequestMessage request,
+            CancellationToken cancellationToken)
+        {
+            var response = await base.SendAsync(request, cancellationToken);
+            if (request.RequestUri?.AbsolutePath != "/.well-known/jwks.json" || response.Content is null)
+            {
+                return response;
+            }
+
+            var originalContent = response.Content;
+            var stream = await originalContent.ReadAsStreamAsync(cancellationToken);
+            var observingContent = new StreamContent(new ReadObservingStream(stream, bodyReadStarted));
+            foreach (var header in originalContent.Headers)
+            {
+                observingContent.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            }
+
+            response.Content = observingContent;
+            return response;
+        }
+    }
+
+    private sealed class ReadObservingStream(Stream inner, TaskCompletionSource readStarted) : Stream
+    {
+        public override bool CanRead => inner.CanRead;
+        public override bool CanSeek => inner.CanSeek;
+        public override bool CanWrite => inner.CanWrite;
+        public override long Length => inner.Length;
+        public override long Position
+        {
+            get => inner.Position;
+            set => inner.Position = value;
+        }
+
+        public override void Flush() => inner.Flush();
+
+        public override int Read(byte[] buffer, int offset, int count)
+        {
+            readStarted.TrySetResult();
+            return inner.Read(buffer, offset, count);
+        }
+
+        public override int Read(Span<byte> buffer)
+        {
+            readStarted.TrySetResult();
+            return inner.Read(buffer);
+        }
+
+        public override Task<int> ReadAsync(
+            byte[] buffer,
+            int offset,
+            int count,
+            CancellationToken cancellationToken)
+        {
+            readStarted.TrySetResult();
+            return inner.ReadAsync(buffer, offset, count, cancellationToken);
+        }
+
+        public override ValueTask<int> ReadAsync(
+            Memory<byte> buffer,
+            CancellationToken cancellationToken = default)
+        {
+            readStarted.TrySetResult();
+            return inner.ReadAsync(buffer, cancellationToken);
+        }
+
+        public override long Seek(long offset, SeekOrigin origin) => inner.Seek(offset, origin);
+        public override void SetLength(long value) => inner.SetLength(value);
+        public override void Write(byte[] buffer, int offset, int count) => inner.Write(buffer, offset, count);
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                inner.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        public override async ValueTask DisposeAsync()
+        {
+            await inner.DisposeAsync();
+            GC.SuppressFinalize(this);
         }
     }
 
