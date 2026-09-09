@@ -2,13 +2,16 @@
 
 All notable changes to CP6.Platform are documented here.
 
-## Unreleased — C01 consumer repair
+## 0.10.2.0 - 2026-09-09 (C01 registration; publication pending)
 
 - Prepare strict access-token validation (`at+jwt`, literal kid and exact audience) after the actual CP6 issuer/fixed-consumer diagnostic reproduced four incorrect HTTP 200 responses, including use of a real ID Token as a bearer token.
 - Replace the bearer profile's unbounded default metadata fallback with Platform-owned cache deadlines, controlled refresh, bounded response handling and generic authentication failures. Signature validation remains in IdentityModel.
 - Check trust and retry deadlines after awaited retrieval completes; prevent framework fallback from restoring automatic redirects or cookies while retaining application transport ownership. Independent specification/quality reviews and 231 authentication tests passed.
 - Deliver the source repair through PR #54 and verified `main@31b92736b0f65afae4fa95020b6a11f258963b8d`; all five required PR/main jobs and the fresh merged-source 231-test authentication suite passed.
 - Keep immutable historical packages unchanged. The forward package candidate is `0.10.2`; protected formal publication, fresh fixed-feed consumption and full C01 cross-repository acceptance remain pending.
+- Register only `0.10.2` for the existing formal writer chain, while read-only publication validation accepts exactly `0.10.0`, `0.10.1` and `0.10.2`. Bind every root/package/feed version in both the semantic API and source/packaged Schema.
+- Reject an inconsistent read-back package version or source before generating a publication record; valid root/feed fields cannot normalize away an invalid inner identity. The repository audit version advances to `0.10.2.0`; shared runtime development defaults and historical publication identities remain intact.
+- Pass specification and independent quality reviews for registration and field-isolated API/source/packed-Schema regressions. The complete gate run at `6ecc3269` passed 235 Release, 124 Unit, 231 authentication, 31 E2E and 98 Architecture tests without skips; the subsequent test-only correction passed its 41-case focused suite and final 20-check Contract gate at `06a327d`, including all 235 Release and 98 Architecture tests.
 
 ## 0.10.1.0 - 2026-09-07
 

@@ -1,5 +1,43 @@
 # P10 Release Governance
 
+## C01 forward publication registration — 2026-09-09
+
+The C01 consumer repair is delivered at verified Platform
+`main@31b92736b0f65afae4fa95020b6a11f258963b8d` through
+[PR #54](https://github.com/GTX537/CP6.Platform/pull/54). Both PR and exact-main
+validation passed all five required jobs. The following registration prepares
+the new immutable seven-package set `0.10.2`; that version is not yet published.
+
+The normal workflow and all four writer entry points accept only `0.10.2`.
+Read-only package/publication validation retains exactly `0.10.0`, `0.10.1`
+and `0.10.2`, rejecting other stable versions, prereleases, build metadata and
+mixed identities. The semantic validator and source/packaged publication
+Schema bind the root version to every package version and corresponding feed
+identity. Publication-record generation also checks each read-back package's
+own version and source before writing output, matching the existing independent
+Windows/Linux identity checks.
+
+The repository audit version is `0.10.2.0`, and Release's development default
+is `0.10.2-test.local.1`. Formal packing supplies the exact version explicitly;
+the shared runtime development baseline used by older gates is unchanged.
+Registration passed independent specification and quality reviews at
+`06a327d63e4e992f7ef1dc70d8971efa29829b9f`; the final affected Contract gate
+passed all 20 checks at that commit, including 235 Release and 98 Architecture
+tests without skips. Normal PR/main validation remains pending before formal
+publication. The protected
+`p10-formal-release` owner action,
+fresh source/trust/version-absence prerequisite gate, one build, pinned signing,
+RFC3161 timestamp, feed read-back and independent Windows/Linux verification
+remain required.
+
+Historical `0.10.0` recovery, `0.10.1` publication, S02 candidate identities,
+trust/certificate bytes and all existing package bytes remain unchanged. The
+sections below retain their original P10 milestone facts and authority bounds.
+After actual publication, C01 must record the new run/artifact identities and
+consume the exact feed bytes with the new Release validator and packaged Schema;
+the old `.1` proof cannot validate `.2` publication evidence. See the
+[implementation plan](superpowers/plans/2026-09-09-c01-consumer-contract.md).
+
 ## Status and authority
 
 P10 Platform status: **S04 complete; corrected 0.10.1 formally published**.
