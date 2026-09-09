@@ -7,8 +7,8 @@ Design: [C01 consumer contract](../specs/2026-09-09-c01-consumer-contract.md).
 ## Task 1: reproduce and close the Platform validation gaps
 
 - [x] Create an isolated branch from verified Platform main `808a201f0cf6f877f8ca9c804e304585a29c446a` and run the existing authentication baseline: 23/23, zero skips.
-- [ ] Add focused failing tests for token type, literal kid matching, exact audience including trailing-slash negatives, and actual HTTP metadata cache boundaries. Keep the original baseline cases, with successful access-token fixtures explicitly typed at+jwt; retain separate JWT identity fixtures as rejection cases.
-- [ ] Add the bounded Platform metadata manager and register it through the actual bearer entry point. Preserve IdentityModel signature validation and P03's first-unknown-request failure behavior. Test concurrent fetch counts, cancellation, bounded streaming, invalid key/protocol invalidation and every cache deadline. Metadata failures must return actual HTTP 401 with the generic problem body, not 500.
+- [x] Add focused failing tests for token type, literal kid matching, exact audience including trailing-slash negatives, and actual HTTP metadata cache boundaries. Keep the original baseline cases, with successful access-token fixtures explicitly typed at+jwt; retain separate JWT identity fixtures as rejection cases.
+- [x] Add the bounded Platform metadata manager and register it through the actual bearer entry point. Preserve IdentityModel signature validation and P03's first-unknown-request failure behavior. Test concurrent fetch counts, cancellation, bounded streaming, invalid key/protocol invalidation and every cache deadline. Metadata failures must return actual HTTP 401 with the generic problem body, not 500.
 - [ ] Run all affected authentication/gateway tests and appropriate Platform gates. Obtain independent specification and quality reviews, fix findings, update project records and normally deliver the verified branch.
 
 ## Task 2: prepare and publish the immutable forward package
@@ -32,6 +32,8 @@ Design: [C01 consumer contract](../specs/2026-09-09-c01-consumer-contract.md).
 - [ ] Update all four CP6 project records and corresponding consumer records only after remote main and final fixed-package checks pass. Then advance C02/C03; do not convert C04 prerequisites or production approval into implementation assumptions.
 
 Preparatory baseline evidence is under `artifacts/c01/baseline` and is not cross-repository acceptance. The first default PATH invocation found only SDK 10; the recorded passing baseline used the already-installed SDK 8.0.424 without changing global.json or installing a new toolchain.
+
+Task 1 implementation commit `01182493551512b421681b42e5eb6c979db8147e` passed the final post-format complete ASP.NET Core suite: 223/223, zero failures or skips, recorded in `.artifacts/c01/final-verification/consumer-final-verification.trx` with process exit 0. Initial token-boundary RED had 25 passes and seven expected failures; further failing regressions covered metadata/cache headers, RSA integer validity, URI/backchannel registration and unknown-kid throttling versus mandatory ordinary refresh. In particular, three healthy-metadata/no-reusable-cache requests initially returned incorrect 401 responses; the fix confines unknown-kid throttling to extra refreshes of reusable fresh trust. Full repository gates and independent reviews remain pending, as do immutable publication and real fixed-consumer acceptance.
 
 ## Task 2 registration review
 

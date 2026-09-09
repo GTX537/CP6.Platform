@@ -4,7 +4,7 @@ Status: implementation detail for the accepted CP6 C01 design; independent speci
 
 ## Inputs and observed baseline
 
-- CP6 producer: PR #96 passed all seven PR checks and normally merged as `22453814f7d465abbf48ff6cb03e794765e490b1` on 2026-09-09. Protected disclosure registration PR #97 and its exact-main checks passed. Producer post-merge checks are pending; final acceptance must bind the verified merged source.
+- CP6 producer: PR #96 passed all seven PR checks and normally merged as `22453814f7d465abbf48ff6cb03e794765e490b1` on 2026-09-09. All five exact-main workflows passed, including Windows/Web, Android and real SQL, and a fresh merged-source identity smoke passed 116/116 without skips. Protected disclosure registration PR #97 and its exact-main checks passed. Final acceptance must bind this verified merged source or a separately verified successor.
 - Platform main: `808a201f0cf6f877f8ca9c804e304585a29c446a`. Existing authentication tests pass 23/23, zero failures or skips, on .NET SDK 8.0.424.
 - CRM main: `7651f4a1c65cae8604a8347ae6b872e6819ba800`. The actual API consumes `CP6.Platform.AspNetCore [0.8.0-alpha.2]`; the separate P10 consumer proof does not upgrade that API.
 - The Platform bearer profile validates RS256, issuer, audience, lifetime and required claims, but does not constrain `typ`. CP6 user ID and access tokens share the CP6.Web audience. An actual issuer-to-consumer rejection test must establish this boundary before a fix is credited.
