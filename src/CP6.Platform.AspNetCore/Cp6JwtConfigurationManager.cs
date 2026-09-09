@@ -39,6 +39,38 @@ internal sealed class Cp6DeferredConfigurationManager : IConfigurationManager<Op
         (Volatile.Read(ref inner) ?? throw new Cp6JwtConfigurationException()).Value;
 }
 
+internal sealed class Cp6JwtBearerManagerGuard(string authenticationScheme)
+    : IPostConfigureOptions<JwtBearerOptions>
+{
+    public void PostConfigure(string? name, JwtBearerOptions options) =>
+        Restore(name, authenticationScheme, options);
+
+    internal static Cp6DeferredConfigurationManager? Restore(
+        string? name,
+        string authenticationScheme,
+        JwtBearerOptions options)
+    {
+        if (!string.Equals(name, authenticationScheme, StringComparison.Ordinal))
+        {
+            return null;
+        }
+
+        if (options.ConfigurationManager is Cp6DeferredConfigurationManager configured)
+        {
+            return configured;
+        }
+
+        if (options.ConfigurationManager is null or BaseConfigurationManager)
+        {
+            var deferred = new Cp6DeferredConfigurationManager();
+            options.ConfigurationManager = deferred;
+            return deferred;
+        }
+
+        return null;
+    }
+}
+
 internal sealed class Cp6JwtBearerPostConfigure(
     string authenticationScheme,
     Cp6JwtBearerProfile profile,
@@ -50,22 +82,8 @@ internal sealed class Cp6JwtBearerPostConfigure(
 
     public void PostConfigure(string? name, JwtBearerOptions options)
     {
-        if (!string.Equals(name, authenticationScheme, StringComparison.Ordinal))
-        {
-            return;
-        }
-
-        Cp6DeferredConfigurationManager deferred;
-        if (options.ConfigurationManager is Cp6DeferredConfigurationManager configured)
-        {
-            deferred = configured;
-        }
-        else if (options.ConfigurationManager is BaseConfigurationManager)
-        {
-            deferred = new Cp6DeferredConfigurationManager();
-            options.ConfigurationManager = deferred;
-        }
-        else
+        var deferred = Cp6JwtBearerManagerGuard.Restore(name, authenticationScheme, options);
+        if (deferred is null)
         {
             return;
         }

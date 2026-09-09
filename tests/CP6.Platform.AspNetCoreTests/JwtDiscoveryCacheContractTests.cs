@@ -62,12 +62,85 @@ public sealed class JwtDiscoveryCacheContractTests
             options => options.ConfigurationManager = null);
         using var provider = services.BuildServiceProvider();
 
-        var manager = provider.GetRequiredService<IOptionsMonitor<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>>()
-            .Get(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)
-            .ConfigurationManager;
+        var options = provider.GetRequiredService<
+            IOptionsMonitor<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>>()
+            .Get(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme);
+        var manager = options.ConfigurationManager;
 
         Assert.IsType<Cp6DeferredConfigurationManager>(manager);
         Assert.IsNotAssignableFrom<BaseConfigurationManager>(manager);
+        Assert.Null(options.Backchannel);
+    }
+
+    [Fact]
+    public void Registration_ProtectsMultipleSchemesWhenJwtBearerWasPreviouslyRegistered()
+    {
+        var services = new ServiceCollection();
+        services.AddLogging();
+        services.PostConfigure<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>(
+            "cp6-first",
+            options => options.ConfigurationManager = null);
+        services.AddAuthentication().AddJwtBearer("unrelated", _ => { });
+        var profile = new Cp6JwtBearerProfile
+        {
+            Authority = "https://identity.cp6.test",
+            Issuer = "https://identity.cp6.test",
+            Audiences = [Audience]
+        };
+        services.AddCp6JwtBearer(profile, "cp6-first");
+        services.AddCp6JwtBearer(profile, "cp6-second");
+        services.Configure<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>(
+            "cp6-first",
+            options => options.ConfigurationManager = null);
+        services.Configure<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>(
+            "cp6-second",
+            options => options.ConfigurationManager = null);
+        using var provider = services.BuildServiceProvider();
+        var options = provider.GetRequiredService<
+            IOptionsMonitor<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>>();
+
+        var first = options.Get("cp6-first");
+        var second = options.Get("cp6-second");
+        Assert.IsType<Cp6DeferredConfigurationManager>(first.ConfigurationManager);
+        Assert.IsType<Cp6DeferredConfigurationManager>(second.ConfigurationManager);
+        Assert.Null(first.Backchannel);
+        Assert.Null(second.Backchannel);
+        Assert.Null(options.Get("unrelated").ConfigurationManager);
+    }
+
+    [Fact]
+    public async Task RestoredNullManager_DoesNotFollowDiscoveryRedirect()
+    {
+        using var rsa = RSA.Create(2048);
+        var state = new IdentityState(rsa, "key-null-redirect")
+        {
+            DiscoveryRedirectLocation = "/redirect-target"
+        };
+        await using var host = await AuthenticationHost.StartAsync(state, configureManagerToNull: true);
+
+        var response = await host.GetProtectedAsync(CreateToken(rsa, state.KeyId, host.Issuer));
+
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+        Assert.Equal(1, state.DiscoveryRequests);
+        Assert.Equal(0, state.RedirectTargetRequests);
+    }
+
+    [Fact]
+    public async Task RestoredNullManager_DoesNotPropagateDiscoveryCookieToJwks()
+    {
+        using var rsa = RSA.Create(2048);
+        var state = new IdentityState(rsa, "key-null-cookie")
+        {
+            DiscoverySetCookie = "identity-session=must-not-propagate; Path=/"
+        };
+        await using var host = await AuthenticationHost.StartAsync(state, configureManagerToNull: true);
+
+        var response = await host.GetProtectedAsync(CreateToken(rsa, state.KeyId, host.Issuer));
+
+        Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        Assert.Equal(1, state.DiscoveryRequests);
+        Assert.Equal(1, state.JwksRequests);
+        Assert.False(state.SawJwksCookie);
     }
 
     [Fact]
@@ -99,6 +172,38 @@ public sealed class JwtDiscoveryCacheContractTests
         Assert.Equal(2, handler.RequestCount);
         await provider.DisposeAsync();
         Assert.False(handler.Disposed);
+    }
+
+    [Fact]
+    public async Task Registration_HonorsBackchannelHandlerConfiguredAfterAddCp6JwtBearer_WithoutTakingOwnership()
+    {
+        using var rsa = RSA.Create(2048);
+        var profile = new Cp6JwtBearerProfile
+        {
+            Authority = "https://identity.cp6.test",
+            Issuer = "https://identity.cp6.test",
+            Audiences = [Audience]
+        };
+        var handler = new TrackingMetadataHandler(rsa, "key-backchannel-handler", profile.Issuer);
+        var services = new ServiceCollection();
+        services.AddLogging();
+        services.AddCp6JwtBearer(profile);
+        services.PostConfigure<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>(
+            Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme,
+            options => options.BackchannelHttpHandler = handler);
+        var provider = services.BuildServiceProvider();
+        var manager = provider.GetRequiredService<
+            IOptionsMonitor<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>>()
+            .Get(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)
+            .ConfigurationManager!;
+
+        var configuration = await manager.GetConfigurationAsync(CancellationToken.None);
+
+        Assert.Single(configuration.SigningKeys);
+        Assert.Equal(2, handler.RequestCount);
+        await provider.DisposeAsync();
+        Assert.False(handler.Disposed);
+        handler.Dispose();
     }
 
     [Fact]
@@ -883,7 +988,8 @@ public sealed class JwtDiscoveryCacheContractTests
         public static async Task<AuthenticationHost> StartAsync(
             IdentityState state,
             TimeProvider? timeProvider = null,
-            HttpMessageHandler? backchannelHandler = null)
+            HttpMessageHandler? backchannelHandler = null,
+            bool configureManagerToNull = false)
         {
             var identityBuilder = CreateBuilder();
             var identity = identityBuilder.Build();
@@ -909,6 +1015,10 @@ public sealed class JwtDiscoveryCacheContractTests
                 }
 
                 context.Response.ContentType = "application/json";
+                if (state.DiscoverySetCookie is not null)
+                {
+                    context.Response.Headers.SetCookie = state.DiscoverySetCookie;
+                }
                 if (!state.BodyDelayTask.IsCompleted)
                 {
                     await context.Response.WriteAsync("{\"issuer\":\"");
@@ -931,6 +1041,7 @@ public sealed class JwtDiscoveryCacheContractTests
             {
                 Interlocked.Increment(ref state.JwksRequests);
                 state.SawCredentialHeader |= HasCredentials(context.Request);
+                state.SawJwksCookie |= context.Request.Headers.ContainsKey("Cookie");
                 context.Response.StatusCode = (int)state.JwksStatusCode;
                 if (state.JwksStatusCode != HttpStatusCode.OK)
                 {
@@ -984,6 +1095,12 @@ public sealed class JwtDiscoveryCacheContractTests
                 resourceBuilder.Services.PostConfigure<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>(
                     Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme,
                     options => options.BackchannelHttpHandler = backchannelHandler);
+            }
+            if (configureManagerToNull)
+            {
+                resourceBuilder.Services.Configure<Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerOptions>(
+                    Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme,
+                    options => options.ConfigurationManager = null);
             }
             var resource = resourceBuilder.Build();
             resource.UseAuthentication();
@@ -1054,6 +1171,7 @@ public sealed class JwtDiscoveryCacheContractTests
         public string? AgeHeaderOverride { get; set; }
         public string? JwksBodyOverride { get; set; }
         public string? DiscoveryBodyOverride { get; set; }
+        public string? DiscoverySetCookie { get; set; }
         public string? MetadataIssuerOverride { get; set; }
         public string? DiscoveryRedirectLocation { get; set; }
         public Task DelayTask { get; set; } = Task.CompletedTask;
@@ -1065,6 +1183,7 @@ public sealed class JwtDiscoveryCacheContractTests
         public int JwksRequests;
         public int RedirectTargetRequests;
         public bool SawCredentialHeader;
+        public bool SawJwksCookie;
 
         public void SetKey(RSA nextRsa, string nextKeyId)
         {

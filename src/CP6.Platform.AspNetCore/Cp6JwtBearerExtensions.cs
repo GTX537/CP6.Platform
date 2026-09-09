@@ -71,12 +71,35 @@ public static class Cp6JwtBearerExtensions
                 };
             });
 
+        InsertManagerGuardBeforeJwtPostConfigure(services, authenticationScheme);
         services.AddSingleton<IPostConfigureOptions<JwtBearerOptions>>(serviceProvider =>
             new Cp6JwtBearerPostConfigure(
                 authenticationScheme,
                 profile,
                 serviceProvider.GetService<TimeProvider>() ?? TimeProvider.System));
         return builder;
+    }
+
+    private static void InsertManagerGuardBeforeJwtPostConfigure(
+        IServiceCollection services,
+        string authenticationScheme)
+    {
+        var descriptor = ServiceDescriptor.Singleton(
+            typeof(IPostConfigureOptions<JwtBearerOptions>),
+            new Cp6JwtBearerManagerGuard(authenticationScheme));
+        // Prevent the framework post-configurer from creating its permissive default backchannel
+        // when a later Configure call clears the CP6 manager.
+        for (var index = 0; index < services.Count; index++)
+        {
+            if (services[index].ServiceType == typeof(IPostConfigureOptions<JwtBearerOptions>) &&
+                services[index].ImplementationType == typeof(JwtBearerPostConfigureOptions))
+            {
+                services.Insert(index, descriptor);
+                return;
+            }
+        }
+
+        services.Add(descriptor);
     }
 
     private static bool IsKnownConfigurationFailure(Exception exception)
