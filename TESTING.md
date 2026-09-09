@@ -1,5 +1,7 @@
 # Testing and verification
 
+The C01 authentication repair adds actual loopback HTTP metadata/resource tests in `JwtDiscoveryCacheContractTests`, alongside `AuthenticationContractTests`. Run the complete `CP6.Platform.AspNetCoreTests` project for the affected library boundary. Cache tests use controlled elapsed time and measured requests to distinguish cache expiry from token expiry; the real issuer's 60-second `must-revalidate` boundary and a separately labeled 900-second permitted-stale policy are distinct cases. These component tests do not replace final fixed-package acceptance against actual CP6 SQL/password/PKCE and client_credentials flows. The execution and publication plan is [C01 consumer contract](docs/superpowers/plans/2026-09-09-c01-consumer-contract.md).
+
 `eng/verify.ps1` 是本地与 CI 共用的验证入口。成功、失败和不适用都必须产生相同结构的机器证据。
 
 | Gate | 当前行为 |
