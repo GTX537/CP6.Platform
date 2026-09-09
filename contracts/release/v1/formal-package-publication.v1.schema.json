@@ -6,7 +6,7 @@
   "properties": {
     "$schemaId": { "const": "https://schemas.cp6.dev/release/formal-package-publication.v1" },
     "createdAtUtc": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/utcTimestamp" },
-    "version": { "enum": ["0.10.0", "0.10.1"] },
+    "version": { "enum": ["0.10.0", "0.10.1", "0.10.2"] },
     "sourceGitSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
     "buildInvocationId": { "type": "string", "pattern": "^p10-s04:[0-9a-f]{40}:[1-9][0-9]*:[1-9][0-9]*$" },
     "workflow": { "$ref": "#/$defs/workflow" },
@@ -15,13 +15,13 @@
     "packages": {
       "type": "array",
       "prefixItems": [
-        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Abstractions" } } }] },
-        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.AspNetCore" } } }] },
-        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Contracts" } } }] },
-        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Deployment" } } }] },
-        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.EntityFramework" } } }] },
-        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Messaging" } } }] },
-        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Release" } } }] }
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Abstractions" }, "feedIdentity": { "pattern": "#CP6\\.Platform\\.Abstractions/0\\.10\\.[012](?![\\s\\S])" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.AspNetCore" }, "feedIdentity": { "pattern": "#CP6\\.Platform\\.AspNetCore/0\\.10\\.[012](?![\\s\\S])" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Contracts" }, "feedIdentity": { "pattern": "#CP6\\.Platform\\.Contracts/0\\.10\\.[012](?![\\s\\S])" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Deployment" }, "feedIdentity": { "pattern": "#CP6\\.Platform\\.Deployment/0\\.10\\.[012](?![\\s\\S])" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.EntityFramework" }, "feedIdentity": { "pattern": "#CP6\\.Platform\\.EntityFramework/0\\.10\\.[012](?![\\s\\S])" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Messaging" }, "feedIdentity": { "pattern": "#CP6\\.Platform\\.Messaging/0\\.10\\.[012](?![\\s\\S])" } } }] },
+        { "allOf": [{ "$ref": "#/$defs/package" }, { "properties": { "packageId": { "const": "CP6.Platform.Release" }, "feedIdentity": { "pattern": "#CP6\\.Platform\\.Release/0\\.10\\.[012](?![\\s\\S])" } } }] }
       ],
       "items": false,
       "minItems": 7,
@@ -44,14 +44,21 @@
       "if": { "properties": { "version": { "const": "0.10.0" } }, "required": ["version"] },
       "then": { "properties": { "packages": { "items": { "properties": {
         "version": { "const": "0.10.0" },
-        "feedIdentity": { "pattern": "/0\\.10\\.0$" }
+        "feedIdentity": { "pattern": "/0\\.10\\.0(?![\\s\\S])" }
       } } } } }
     },
     {
       "if": { "properties": { "version": { "const": "0.10.1" } }, "required": ["version"] },
       "then": { "properties": { "packages": { "items": { "properties": {
         "version": { "const": "0.10.1" },
-        "feedIdentity": { "pattern": "/0\\.10\\.1$" }
+        "feedIdentity": { "pattern": "/0\\.10\\.1(?![\\s\\S])" }
+      } } } } }
+    },
+    {
+      "if": { "properties": { "version": { "const": "0.10.2" } }, "required": ["version"] },
+      "then": { "properties": { "packages": { "items": { "properties": {
+        "version": { "const": "0.10.2" },
+        "feedIdentity": { "pattern": "/0\\.10\\.2(?![\\s\\S])" }
       } } } } }
     }
   ],
@@ -101,11 +108,11 @@
       "required": ["packageId", "version", "sourceGitSha", "authorSignedPackageSha256", "publishedPackageSha256", "feedIdentity", "feedTransformation", "signerFingerprint", "timestampPolicy", "timestampPolicyOid", "timestampCertificateChainSha256"],
       "properties": {
         "packageId": { "enum": ["CP6.Platform.Abstractions", "CP6.Platform.AspNetCore", "CP6.Platform.Contracts", "CP6.Platform.Deployment", "CP6.Platform.EntityFramework", "CP6.Platform.Messaging", "CP6.Platform.Release"] },
-        "version": { "enum": ["0.10.0", "0.10.1"] },
+        "version": { "enum": ["0.10.0", "0.10.1", "0.10.2"] },
         "sourceGitSha": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/gitSha" },
         "authorSignedPackageSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
         "publishedPackageSha256": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
-        "feedIdentity": { "type": "string", "pattern": "^https://nuget\\.pkg\\.github\\.com/GTX537/index\\.json#CP6\\.Platform\\.[A-Za-z]+/0\\.10\\.[01]$" },
+        "feedIdentity": { "type": "string", "pattern": "^https://nuget\\.pkg\\.github\\.com/GTX537/index\\.json#CP6\\.Platform\\.[A-Za-z]+/0\\.10\\.[012](?![\\s\\S])" },
         "feedTransformation": { "const": "BytePreserving" },
         "signerFingerprint": { "$ref": "https://schemas.cp6.dev/release/release-common.v1#/$defs/sha256" },
         "timestampPolicy": { "const": "Rfc3161Required" },

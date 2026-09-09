@@ -37,6 +37,23 @@ public sealed class ReleaseSchemaAssetTests
     }
 
     [Fact]
+    public void Formal_publication_schema_registers_exactly_the_three_immutable_versions_at_every_layer()
+    {
+        var path = Path.Combine(Root, "contracts", "release", "v1", "formal-package-publication.v1.schema.json");
+        using var document = JsonDocument.Parse(File.ReadAllBytes(path));
+        var root = document.RootElement;
+        var expected = new[] { "0.10.0", "0.10.1", "0.10.2" };
+
+        Assert.Equal(expected, root.GetProperty("properties").GetProperty("version").GetProperty("enum")
+            .EnumerateArray().Select(item => item.GetString()).ToArray());
+        Assert.Equal(expected, root.GetProperty("$defs").GetProperty("package").GetProperty("properties")
+            .GetProperty("version").GetProperty("enum").EnumerateArray().Select(item => item.GetString()).ToArray());
+        Assert.Equal(expected, root.GetProperty("allOf").EnumerateArray()
+            .Select(item => item.GetProperty("if").GetProperty("properties").GetProperty("version").GetProperty("const").GetString())
+            .ToArray());
+    }
+
+    [Fact]
     public void Every_schema_is_draft_2020_12_closed_and_buildable()
     {
         var schemaRoot = Path.Combine(Root, "contracts", "release", "v1");

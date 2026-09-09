@@ -21,8 +21,10 @@ foreach ($entry in $versionEntryPoints.GetEnumerator()) {
     $command = Get-Command -Name (Join-Path $repositoryRoot $entry.Key)
     $patterns = @($command.Parameters[$entry.Value].Attributes | Where-Object { $_ -is [Management.Automation.ValidatePatternAttribute] })
     Assert-True ($patterns.Count -eq 1) "$($entry.Key) must pin one explicit version policy."
-    foreach ($version in @('0.10.0', '0.10.1', '0.10.2', '0.10.1-preview.1', '0.10.1+build.1', '00.10.1')) {
-        $expected = $version -ceq '0.10.1' -or ($reader -and $version -ceq '0.10.0')
+    foreach ($version in @(
+        '0.10.0', '0.10.1', '0.10.2', '0.10.3',
+        '0.10.2-preview.1', '0.10.2+build.1', '00.10.2', "0.10.2`n")) {
+        $expected = $version -ceq '0.10.2' -or ($reader -and $version -in '0.10.0', '0.10.1')
         $accepted = [regex]::IsMatch($version, $patterns[0].RegexPattern)
         Assert-True ($accepted -eq $expected) "$($entry.Key) has the wrong acceptance policy for $version."
     }
@@ -75,7 +77,7 @@ $formalProjects = @(
 foreach ($project in $formalProjects) {
     Assert-True ([regex]::Matches($packFormal, [regex]::Escape($project)).Count -eq 1) "Formal pack list must contain $project exactly once."
 }
-Assert-True ($packFormal.Contains("[ValidatePattern('^0\.10\.1$')]")) 'Formal package version must be exactly stable 0.10.1.'
+Assert-True ($packFormal.Contains("[ValidatePattern('^0\.10\.2\z')]")) 'Formal package version must be exactly stable 0.10.2.'
 Assert-True ($packFormal -cmatch '(?s)dotnet pack.*--no-build.*--no-restore') 'Formal pack must reuse the one solution build.'
 Assert-True ($packFormal -notmatch '(?i)nuget\s+push') 'Formal packing must not publish packages.'
 Assert-True ([regex]::Matches($newFormal, '(?m)^\s*& dotnet restore ').Count -eq 1) 'Formal orchestration must restore exactly once.'
@@ -355,7 +357,7 @@ if ($GhArguments[0] -ceq 'api') {
     }
     if ($endpoint -like '*/packages/nuget/*/versions*') {
         if ($env:CP6_TEST_EXISTING_PACKAGE -and $endpoint -like "*$($env:CP6_TEST_EXISTING_PACKAGE)*") {
-            '[{"name":"0.10.1"}]'
+            '[{"name":"0.10.2"}]'
         }
         else { '[]' }
         exit 0
@@ -378,7 +380,7 @@ exit 31
         $preflightArguments = @(
             '-Repository', 'GTX537/CP6.Platform',
             '-Environment', 'p10-formal-release',
-            '-PackageVersion', '0.10.1',
+            '-PackageVersion', '0.10.2',
             '-ExpectedCommit', $env:GITHUB_SHA,
             '-CheckoutCommit', $env:GITHUB_SHA,
             '-TrustPolicyPath', $syntheticPolicyPath,
@@ -420,7 +422,7 @@ exit 31
             'CP6.Platform.Deployment', 'CP6.Platform.EntityFramework', 'CP6.Platform.Messaging', 'CP6.Platform.Release'
         )
         foreach ($id in $formalIds) {
-            [IO.File]::WriteAllText((Join-Path $publisherPackageRoot "$id.0.10.1.nupkg"), "synthetic-$id", [Text.UTF8Encoding]::new($false))
+            [IO.File]::WriteAllText((Join-Path $publisherPackageRoot "$id.0.10.2.nupkg"), "synthetic-$id", [Text.UTF8Encoding]::new($false))
         }
         $fakeDotNet = Join-Path $testRoot 'publish-dotnet.ps1'
         $fakeDotNetText = @'
@@ -442,7 +444,7 @@ if ($command -ceq 'validate-nuget-trust') { 'policy'; exit 0 }
 if ($command -ceq 'canonicalize') { [IO.File]::Copy($ToolArguments[1], $ToolArguments[2]); exit 0 }
 if ($command -ceq 'download-package') {
     $id = $ToolArguments[2]
-    $source = Join-Path $env:CP6_TEST_PUBLISH_PACKAGES "$id.0.10.1.nupkg"
+    $source = Join-Path $env:CP6_TEST_PUBLISH_PACKAGES "$id.0.10.2.nupkg"
     [IO.File]::Copy($source, $ToolArguments[4])
     if ($env:CP6_TEST_HASH_MISMATCH -ceq $id) { [IO.File]::AppendAllText($ToolArguments[4], 'changed') }
     exit 0
@@ -452,7 +454,7 @@ if ($command -ceq 'verify-formal-package') {
     if ($env:CP6_TEST_WRONG_IDENTITY -ceq $id) { exit 43 }
     $hash = (Get-FileHash -LiteralPath $ToolArguments[1] -Algorithm SHA256).Hash.ToLowerInvariant()
     [pscustomobject]@{
-        packageId=$id;version='0.10.1';sourceGitSha=$ToolArguments[6]
+        packageId=$id;version='0.10.2';sourceGitSha=$ToolArguments[6]
         packageSha256=$hash;signerFingerprint=$env:CP6_TEST_SIGNER;spkiKeyId=$env:CP6_TEST_SPKI
         timestampPolicyOid='1.2.3.4';timestampUtc='2026-09-02T00:00:00.000Z'
         timestampCertificateChainSha256=@(('d' * 64))
@@ -487,7 +489,7 @@ exit 47
             try {
                 $caseText = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Publish-P10FormalPackageSet.ps1') `
                     -PackagePath $publisherPackageRoot `
-                    -PackageVersion '0.10.1' `
+                    -PackageVersion '0.10.2' `
                     -SourceGitSha $env:GITHUB_SHA `
                     -RunId 1 `
                     -RunAttempt 1 `
@@ -530,7 +532,7 @@ exit 47
         $verificationPackages = @($successfulReadBack.packages | ForEach-Object {
             [ordered]@{
                 packageId = [string]$_.packageId
-                version = '0.10.1'
+                version = '0.10.2'
                 sourceGitSha = $env:GITHUB_SHA
                 packageSha256 = [string]$_.publishedPackageSha256
                 signerFingerprint = [string]$_.signerFingerprint
@@ -540,7 +542,7 @@ exit 47
             }
         })
         $verificationEvidence = [ordered]@{
-            version = '0.10.1'
+            version = '0.10.2'
             sourceGitSha = $env:GITHUB_SHA
             mode = 'Current'
             packages = $verificationPackages
@@ -556,7 +558,7 @@ exit 47
             -WindowsVerificationPath $windowsEvidence `
             -LinuxVerificationEvidencePath $linuxEvidence `
             -LinuxVerification Success `
-            -PackageVersion '0.10.1' `
+            -PackageVersion '0.10.2' `
             -SourceGitSha $env:GITHUB_SHA `
             -WorkflowFileSha ('e' * 40) `
             -RunId 1 `
@@ -571,42 +573,89 @@ exit 47
         Assert-True ($LASTEXITCODE -eq 0) "Synthetic final publication record failed: $finalRecordText"
         Assert-True (Test-Path -LiteralPath $syntheticFinalRecord -PathType Leaf) 'Synthetic final publication record was not produced.'
 
-        # Historical reader compatibility only: never call a publisher for the consumed 0.10.0 version.
-        $historicalReadBack = Get-Content -LiteralPath $successfulReadBackPath -Raw | ConvertFrom-Json -Depth 30
-        $historicalReadBack.version = '0.10.0'
-        foreach ($package in $historicalReadBack.packages) {
-            $package.version = '0.10.0'
-            $package.feedIdentity = "https://nuget.pkg.github.com/GTX537/index.json#$($package.packageId)/0.10.0"
+        function Invoke-ReadBackInnerIdentityMutationCase(
+            [string]$Name,
+            [string]$PropertyName,
+            [bool]$RemoveProperty,
+            [string]$Value
+        ) {
+            $mutatedReadBack = Get-Content -LiteralPath $successfulReadBackPath -Raw | ConvertFrom-Json -Depth 30
+            if ($RemoveProperty) {
+                $mutatedReadBack.packages[0].PSObject.Properties.Remove($PropertyName)
+            }
+            else {
+                $mutatedReadBack.packages[0].$PropertyName = $Value
+            }
+            $mutatedReadBackPath = Join-Path $testRoot "synthetic-readback-$Name.json"
+            [IO.File]::WriteAllText(
+                $mutatedReadBackPath,
+                ($mutatedReadBack | ConvertTo-Json -Depth 30 -Compress),
+                [Text.UTF8Encoding]::new($false))
+            $rejectedRecord = Join-Path $testRoot "synthetic-formal-publication-readback-$Name.json"
+            $rejectedText = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/New-P10FormalPublicationRecord.ps1') `
+                -ReadBackPath $mutatedReadBackPath `
+                -WindowsVerificationPath $windowsEvidence `
+                -LinuxVerificationEvidencePath $linuxEvidence `
+                -LinuxVerification Success `
+                -PackageVersion '0.10.2' `
+                -SourceGitSha $env:GITHUB_SHA `
+                -WorkflowFileSha ('e' * 40) `
+                -RunId 1 `
+                -RunAttempt 1 `
+                -DotNetSdk '8.0.100' `
+                -NuGetClient '6.11.2' `
+                -RunnerImage 'synthetic-test-only' `
+                -TrustPolicyPath $syntheticPolicyPath `
+                -CertificateDirectory $syntheticCertificates `
+                -OutputPath $rejectedRecord `
+                -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
+            Assert-True ($LASTEXITCODE -ne 0) "Read-back inner $PropertyName mutation $Name must fail."
+            Assert-True (-not (Test-Path -LiteralPath $rejectedRecord)) "Rejected read-back mutation must create no final record: $rejectedText"
         }
-        $historicalReadBackPath = Join-Path $testRoot 'synthetic-historical-readback.json'
-        [IO.File]::WriteAllText($historicalReadBackPath, ($historicalReadBack | ConvertTo-Json -Depth 30 -Compress), [Text.UTF8Encoding]::new($false))
-        $historicalVerification = Get-Content -LiteralPath $windowsEvidence -Raw | ConvertFrom-Json -Depth 20
-        $historicalVerification.version = '0.10.0'
-        foreach ($package in $historicalVerification.packages) { $package.version = '0.10.0' }
-        $historicalVerificationPath = Join-Path $testRoot 'synthetic-historical-verification.json'
-        [IO.File]::WriteAllText($historicalVerificationPath, ($historicalVerification | ConvertTo-Json -Depth 20 -Compress), [Text.UTF8Encoding]::new($false))
-        $historicalFinalRecord = Join-Path $testRoot 'synthetic-historical-formal-publication.json'
-        $historicalRecordText = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/New-P10FormalPublicationRecord.ps1') `
-            -ReadBackPath $historicalReadBackPath `
-            -WindowsVerificationPath $historicalVerificationPath `
-            -LinuxVerificationEvidencePath $historicalVerificationPath `
-            -LinuxVerification Success `
-            -PackageVersion '0.10.0' `
-            -SourceGitSha $env:GITHUB_SHA `
-            -WorkflowFileSha ('e' * 40) `
-            -RunId 1 `
-            -RunAttempt 1 `
-            -DotNetSdk '8.0.100' `
-            -NuGetClient '6.11.2' `
-            -RunnerImage 'synthetic-test-only' `
-            -TrustPolicyPath $syntheticPolicyPath `
-            -CertificateDirectory $syntheticCertificates `
-            -OutputPath $historicalFinalRecord `
-            -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
-        Assert-True ($LASTEXITCODE -eq 0) "Historical 0.10.0 reader compatibility failed: $historicalRecordText"
-        $historicalRecord = Get-Content -LiteralPath $historicalFinalRecord -Raw | ConvertFrom-Json -Depth 20
-        Assert-True ($historicalRecord.version -ceq '0.10.0') 'Historical reader changed the publication identity.'
-        Assert-True (@($historicalRecord.packages | Where-Object { $_.version -cne '0.10.0' }).Count -eq 0) 'Historical reader produced mixed versions.'
+
+        Invoke-ReadBackInnerIdentityMutationCase 'wrong-version' 'version' $false '0.10.0'
+        Invoke-ReadBackInnerIdentityMutationCase 'missing-version' 'version' $true ''
+        Invoke-ReadBackInnerIdentityMutationCase 'wrong-source' 'sourceGitSha' $false ('c' * 40)
+        Invoke-ReadBackInnerIdentityMutationCase 'missing-source' 'sourceGitSha' $true ''
+
+        # Historical reader compatibility only: never call a publisher for either consumed version.
+        foreach ($historicalVersion in @('0.10.0', '0.10.1')) {
+            $historicalReadBack = Get-Content -LiteralPath $successfulReadBackPath -Raw | ConvertFrom-Json -Depth 30
+            $historicalReadBack.version = $historicalVersion
+            foreach ($package in $historicalReadBack.packages) {
+                $package.version = $historicalVersion
+                $package.feedIdentity = "https://nuget.pkg.github.com/GTX537/index.json#$($package.packageId)/$historicalVersion"
+            }
+            $historicalReadBackPath = Join-Path $testRoot "synthetic-historical-readback-$historicalVersion.json"
+            [IO.File]::WriteAllText($historicalReadBackPath, ($historicalReadBack | ConvertTo-Json -Depth 30 -Compress), [Text.UTF8Encoding]::new($false))
+            $historicalVerification = Get-Content -LiteralPath $windowsEvidence -Raw | ConvertFrom-Json -Depth 20
+            $historicalVerification.version = $historicalVersion
+            foreach ($package in $historicalVerification.packages) { $package.version = $historicalVersion }
+            $historicalVerificationPath = Join-Path $testRoot "synthetic-historical-verification-$historicalVersion.json"
+            [IO.File]::WriteAllText($historicalVerificationPath, ($historicalVerification | ConvertTo-Json -Depth 20 -Compress), [Text.UTF8Encoding]::new($false))
+            $historicalFinalRecord = Join-Path $testRoot "synthetic-historical-formal-publication-$historicalVersion.json"
+            $historicalRecordText = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/New-P10FormalPublicationRecord.ps1') `
+                -ReadBackPath $historicalReadBackPath `
+                -WindowsVerificationPath $historicalVerificationPath `
+                -LinuxVerificationEvidencePath $historicalVerificationPath `
+                -LinuxVerification Success `
+                -PackageVersion $historicalVersion `
+                -SourceGitSha $env:GITHUB_SHA `
+                -WorkflowFileSha ('e' * 40) `
+                -RunId 1 `
+                -RunAttempt 1 `
+                -DotNetSdk '8.0.100' `
+                -NuGetClient '6.11.2' `
+                -RunnerImage 'synthetic-test-only' `
+                -TrustPolicyPath $syntheticPolicyPath `
+                -CertificateDirectory $syntheticCertificates `
+                -OutputPath $historicalFinalRecord `
+                -ReleaseToolPath $releaseToolPath 2>&1 | Out-String
+            Assert-True ($LASTEXITCODE -eq 0) "Historical $historicalVersion reader compatibility failed: $historicalRecordText"
+            $historicalRecord = Get-Content -LiteralPath $historicalFinalRecord -Raw | ConvertFrom-Json -Depth 20
+            Assert-True ($historicalRecord.version -ceq $historicalVersion) 'Historical reader changed the publication identity.'
+            Assert-True (@($historicalRecord.packages | Where-Object { $_.version -cne $historicalVersion }).Count -eq 0) 'Historical reader produced mixed versions.'
+        }
 
         $platformSpecificLinux = Get-Content -LiteralPath $linuxEvidence -Raw | ConvertFrom-Json -Depth 20
         $sharedTimestampLeaf = [string]$platformSpecificLinux.packages[0].timestampCertificateChainSha256[0]
@@ -619,7 +668,7 @@ exit 47
             -WindowsVerificationPath $windowsEvidence `
             -LinuxVerificationEvidencePath $platformSpecificLinuxPath `
             -LinuxVerification Success `
-            -PackageVersion '0.10.1' `
+            -PackageVersion '0.10.2' `
             -SourceGitSha $env:GITHUB_SHA `
             -WorkflowFileSha ('e' * 40) `
             -RunId 1 `
@@ -644,7 +693,7 @@ exit 47
             -WindowsVerificationPath $windowsEvidence `
             -LinuxVerificationEvidencePath $mismatchedLeafLinuxPath `
             -LinuxVerification Success `
-            -PackageVersion '0.10.1' `
+            -PackageVersion '0.10.2' `
             -SourceGitSha $env:GITHUB_SHA `
             -WorkflowFileSha ('e' * 40) `
             -RunId 1 `
@@ -669,7 +718,7 @@ exit 47
             -WindowsVerificationPath $windowsEvidence `
             -LinuxVerificationEvidencePath $mismatchedLinuxPath `
             -LinuxVerification Success `
-            -PackageVersion '0.10.1' `
+            -PackageVersion '0.10.2' `
             -SourceGitSha $env:GITHUB_SHA `
             -WorkflowFileSha ('e' * 40) `
             -RunId 1 `
@@ -693,7 +742,7 @@ exit 47
             -SourceGitSha $sourceGitSha `
             -RunId 1 `
             -RunAttempt 1 `
-            -PackageVersion '0.10.1' `
+            -PackageVersion '0.10.2' `
             -OutputPath $syntheticOutput `
             -TrustPolicyPath $syntheticPolicyPath `
             -CertificateDirectory $syntheticCertificates `

@@ -14,7 +14,7 @@ param(
     [string]$LinuxVerification,
 
     [Parameter(Mandatory)]
-    [ValidatePattern('^0\.10\.[01]$')]
+    [ValidatePattern('^0\.10\.[012]\z')]
     [string]$PackageVersion,
 
     [Parameter(Mandatory)]
@@ -138,8 +138,10 @@ foreach ($packageId in $packageIds) {
         $publishedHash -cne [string]$linuxPackage.packageSha256 -or
         [string]$windowsPackage.packageId -cne $packageId -or
         [string]$linuxPackage.packageId -cne $packageId -or
+        [string]$readBackPackage.version -cne $PackageVersion -or
         [string]$windowsPackage.version -cne $PackageVersion -or
         [string]$linuxPackage.version -cne $PackageVersion -or
+        [string]$readBackPackage.sourceGitSha -cne $SourceGitSha -or
         [string]$windowsPackage.sourceGitSha -cne $SourceGitSha -or
         [string]$linuxPackage.sourceGitSha -cne $SourceGitSha -or
         [string]$readBackPackage.signerFingerprint -cne [string]$currentSigner[0].certificateSha256 -or

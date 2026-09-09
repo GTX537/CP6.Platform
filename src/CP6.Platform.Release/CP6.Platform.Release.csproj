@@ -5,7 +5,7 @@
     <Description>Deterministic release, evidence, trust, and candidate contracts for CP6.</Description>
     <PackageId>CP6.Platform.Release</PackageId>
     <IsPackable>true</IsPackable>
-    <VersionPrefix>0.10.1</VersionPrefix>
+    <VersionPrefix>0.10.2</VersionPrefix>
     <VersionSuffix>test.local.1</VersionSuffix>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
