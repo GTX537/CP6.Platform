@@ -50,8 +50,9 @@ public sealed class P10PackageTests
 
             var wrongFeedPackage = System.Text.Json.Nodes.JsonNode.Parse(
                 ReleaseTestData.Fixture("supporting", "formal-package-publication.valid.json"))!.AsObject();
+            var rootVersion = wrongFeedPackage["version"]!.GetValue<string>();
             wrongFeedPackage["packages"]![0]!["feedIdentity"] =
-                "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/0.10.1";
+                $"https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/{rootVersion}";
             var wrongFeedResult = ReleaseSchemaTestData.Evaluate(wrongFeedPackage, ReadSchema);
             Assert.False(wrongFeedResult.IsValid, ReleaseSchemaTestData.Errors(wrongFeedResult));
         });

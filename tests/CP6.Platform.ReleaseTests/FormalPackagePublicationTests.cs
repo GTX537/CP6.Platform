@@ -102,8 +102,9 @@ public sealed class FormalPackagePublicationTests
     public void Publication_API_and_Schema_reject_a_feed_identity_for_a_different_package()
     {
         var fixture = CreatePublication();
+        var rootVersion = fixture.Root["version"]!.GetValue<string>();
         Package(fixture.Root, 0)["feedIdentity"] =
-            "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/0.10.1";
+            $"https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/{rootVersion}";
 
         var exception = Assert.Throws<Cp6ReleaseContractException>(() =>
             Cp6FormalPackagePublicationValidator.ValidateFormalPackagePublication(
