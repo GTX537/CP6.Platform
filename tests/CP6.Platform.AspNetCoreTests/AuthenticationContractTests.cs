@@ -89,16 +89,24 @@ public sealed class AuthenticationContractTests
     }
 
     [Theory]
-    [InlineData("CP6.Web/")]
-    [InlineData("CP6.Services/")]
-    public async Task AudienceWithTrailingSlash_FailsClosed(string audience)
+    [InlineData("CP6.Web", "CP6.Web/")]
+    [InlineData("CP6.Services", "CP6.Services/")]
+    public async Task AudienceWithTrailingSlash_FailsClosed(
+        string configuredAudience,
+        string trailingSlashAudience)
     {
         var key = CreateKey("key-audience-slash");
-        await using var provider = BuildProvider(new RotatingConfigurationManager(Configuration(key)), Audience);
+        await using var provider = BuildProvider(
+            new RotatingConfigurationManager(Configuration(key)),
+            configuredAudience);
 
-        var result = await AuthenticateAsync(provider, CreateToken(key, audience: audience));
+        var validResult = await AuthenticateAsync(provider, CreateToken(key, audience: configuredAudience));
+        var trailingSlashResult = await AuthenticateAsync(
+            provider,
+            CreateToken(key, audience: trailingSlashAudience));
 
-        Assert.False(result.Succeeded);
+        Assert.True(validResult.Succeeded);
+        Assert.False(trailingSlashResult.Succeeded);
     }
 
     [Fact]

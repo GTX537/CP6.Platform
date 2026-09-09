@@ -239,6 +239,14 @@ internal sealed class Cp6JwtConfigurationManager : IConfigurationManager<OpenIdC
             try
             {
                 var fetched = await FetchAsync(cancel).ConfigureAwait(false);
+                var completedAt = timeProvider.GetTimestamp();
+                var elapsedDuringFetch = Elapsed(fetched.RetrievedAt, completedAt);
+                if (elapsedDuringFetch >= MaximumTrustAge ||
+                    fetched.ResponseAge >= MaximumTrustAge - elapsedDuringFetch)
+                {
+                    throw new Cp6JwtConfigurationProtocolException();
+                }
+
                 lastFailure = null;
                 if (fetched.NoStore)
                 {
@@ -248,7 +256,7 @@ internal sealed class Cp6JwtConfigurationManager : IConfigurationManager<OpenIdC
 
                 var entry = new CacheEntry(
                     fetched.Configuration,
-                    now,
+                    fetched.RetrievedAt,
                     fetched.ResponseAge,
                     fetched.Freshness,
                     fetched.NoCache,
@@ -258,13 +266,14 @@ internal sealed class Cp6JwtConfigurationManager : IConfigurationManager<OpenIdC
             }
             catch (Cp6JwtConfigurationUnavailableException)
             {
-                lastFailure = now;
-                return UseAfterUnavailable(snapshot, now);
+                var completedAt = timeProvider.GetTimestamp();
+                lastFailure = completedAt;
+                return UseAfterUnavailable(snapshot, completedAt);
             }
             catch (Cp6JwtConfigurationProtocolException)
             {
                 Volatile.Write(ref cache, null);
-                lastFailure = now;
+                lastFailure = timeProvider.GetTimestamp();
                 throw;
             }
         }
@@ -342,6 +351,7 @@ internal sealed class Cp6JwtConfigurationManager : IConfigurationManager<OpenIdC
             configuration,
             freshness,
             jwks.Age < TimeSpan.Zero ? TimeSpan.Zero : jwks.Age,
+            jwks.ReceivedAt,
             cacheControl?.NoStore == true,
             noCache,
             cacheControl?.MustRevalidate == true);
@@ -376,8 +386,11 @@ internal sealed class Cp6JwtConfigurationManager : IConfigurationManager<OpenIdC
                 throw new Cp6JwtConfigurationProtocolException();
             }
 
+            var receivedAt = timeProvider.GetTimestamp();
+            var cacheControl = ParseCacheControl(response.Headers);
+            var age = ParseAge(response.Headers);
             var body = await ReadBoundedBodyAsync(response.Content, linked.Token).ConfigureAwait(false);
-            return new FetchDocument(body, ParseCacheControl(response.Headers), ParseAge(response.Headers));
+            return new FetchDocument(body, cacheControl, age, receivedAt);
         }
         catch (OperationCanceledException) when (callerCancellation.IsCancellationRequested)
         {
@@ -615,11 +628,16 @@ internal sealed class Cp6JwtConfigurationManager : IConfigurationManager<OpenIdC
         OpenIdConnectConfiguration Configuration,
         TimeSpan Freshness,
         TimeSpan ResponseAge,
+        long RetrievedAt,
         bool NoStore,
         bool NoCache,
         bool MustRevalidate);
 
-    private sealed record FetchDocument(byte[] Body, CacheControlHeaderValue? CacheControl, TimeSpan Age);
+    private sealed record FetchDocument(
+        byte[] Body,
+        CacheControlHeaderValue? CacheControl,
+        TimeSpan Age,
+        long ReceivedAt);
 }
 
 internal class Cp6JwtConfigurationException : InvalidOperationException

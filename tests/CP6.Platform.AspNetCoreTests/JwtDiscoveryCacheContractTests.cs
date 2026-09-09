@@ -685,6 +685,117 @@ public sealed class JwtDiscoveryCacheContractTests
         Assert.Equal(0, state.JwksRequests);
     }
 
+    [Fact]
+    public async Task UnavailableRefresh_UsesCompletionTimeForHardAgeDecision()
+    {
+        using var rsa = RSA.Create(2048);
+        var clock = new AuthManualTimeProvider();
+        var state = new IdentityState(rsa, "key-completion-hard-age")
+        {
+            CacheControl = "public, max-age=60"
+        };
+        await using var host = await AuthenticationHost.StartAsync(state, clock);
+        var token = CreateToken(rsa, state.KeyId, host.Issuer);
+        Assert.Equal(HttpStatusCode.OK, (await host.GetProtectedAsync(token)).StatusCode);
+        clock.Advance(TimeSpan.FromSeconds(899));
+        state.BodyDelayTask = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously).Task;
+
+        var request = host.GetProtectedAsync(token);
+        await state.DiscoveryBodyStarted.Task.WaitAsync(TimeSpan.FromSeconds(5));
+        clock.Advance(Cp6JwtConfigurationManager.FetchTimeout);
+        var response = await request.WaitAsync(TimeSpan.FromSeconds(5));
+
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+        Assert.Equal("application/problem+json", response.Content.Headers.ContentType?.MediaType);
+        var problem = await response.Content.ReadFromJsonAsync<JsonElement>();
+        Assert.Equal("CP6_AUTHENTICATION_REQUIRED", problem.GetProperty("code").GetString());
+    }
+
+    [Fact]
+    public async Task MustRevalidateRefresh_UsesCompletionTimeForFreshnessDecision()
+    {
+        using var rsa = RSA.Create(2048);
+        var clock = new AuthManualTimeProvider();
+        var state = new IdentityState(rsa, "key-completion-must-revalidate")
+        {
+            CacheControl = "public, max-age=60, must-revalidate"
+        };
+        await using var host = await AuthenticationHost.StartAsync(state, clock);
+        var knownToken = CreateToken(rsa, state.KeyId, host.Issuer);
+        var unknownToken = CreateToken(rsa, "unknown-kid", host.Issuer);
+        Assert.Equal(HttpStatusCode.OK, (await host.GetProtectedAsync(knownToken)).StatusCode);
+        clock.Advance(TimeSpan.FromSeconds(59));
+        Assert.Equal(HttpStatusCode.Unauthorized, (await host.GetProtectedAsync(unknownToken)).StatusCode);
+        state.BodyDelayTask = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously).Task;
+
+        var request = host.GetProtectedAsync(knownToken);
+        await state.DiscoveryBodyStarted.Task.WaitAsync(TimeSpan.FromSeconds(5));
+        clock.Advance(Cp6JwtConfigurationManager.FetchTimeout);
+        var response = await request.WaitAsync(TimeSpan.FromSeconds(5));
+
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+        Assert.Equal("application/problem+json", response.Content.Headers.ContentType?.MediaType);
+        var problem = await response.Content.ReadFromJsonAsync<JsonElement>();
+        Assert.Equal("CP6_AUTHENTICATION_REQUIRED", problem.GetProperty("code").GetString());
+    }
+
+    [Fact]
+    public async Task FailureBackoff_StartsWhenTimedOutRefreshCompletes()
+    {
+        using var rsa = RSA.Create(2048);
+        var clock = new AuthManualTimeProvider();
+        var state = new IdentityState(rsa, "key-completion-backoff")
+        {
+            CacheControl = "public, max-age=60"
+        };
+        await using var host = await AuthenticationHost.StartAsync(state, clock);
+        var token = CreateToken(rsa, state.KeyId, host.Issuer);
+        Assert.Equal(HttpStatusCode.OK, (await host.GetProtectedAsync(token)).StatusCode);
+        clock.Advance(TimeSpan.FromSeconds(60));
+        state.BodyDelayTask = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously).Task;
+
+        var timedOutRequest = host.GetProtectedAsync(token);
+        await state.DiscoveryBodyStarted.Task.WaitAsync(TimeSpan.FromSeconds(5));
+        clock.Advance(Cp6JwtConfigurationManager.FetchTimeout);
+        Assert.Equal(HttpStatusCode.OK, (await timedOutRequest.WaitAsync(TimeSpan.FromSeconds(5))).StatusCode);
+        Assert.Equal(2, state.DiscoveryRequests);
+
+        state.BodyDelayTask = Task.CompletedTask;
+        clock.Advance(TimeSpan.FromSeconds(29));
+        Assert.Equal(HttpStatusCode.OK, (await host.GetProtectedAsync(token)).StatusCode);
+        Assert.Equal(2, state.DiscoveryRequests);
+        clock.Advance(TimeSpan.FromSeconds(1));
+        Assert.Equal(HttpStatusCode.OK, (await host.GetProtectedAsync(token)).StatusCode);
+        Assert.Equal(3, state.DiscoveryRequests);
+        Assert.Equal(2, state.JwksRequests);
+    }
+
+    [Fact]
+    public async Task SuccessfulNoStoreFetch_UsesBodyCompletionTimeForHardAgeDecision()
+    {
+        using var rsa = RSA.Create(2048);
+        var clock = new AuthManualTimeProvider();
+        var releaseBody = new TaskCompletionSource(TaskCreationOptions.RunContinuationsAsynchronously);
+        var state = new IdentityState(rsa, "key-no-store-completion")
+        {
+            CacheControl = "no-store",
+            AgeSeconds = 899,
+            JwksBodyDelayTask = releaseBody.Task
+        };
+        await using var host = await AuthenticationHost.StartAsync(state, clock);
+
+        var request = host.GetProtectedAsync(CreateToken(rsa, state.KeyId, host.Issuer));
+        await state.JwksBodyStarted.Task.WaitAsync(TimeSpan.FromSeconds(5));
+        clock.Advance(TimeSpan.FromSeconds(1));
+        releaseBody.SetResult();
+        var response = await request.WaitAsync(TimeSpan.FromSeconds(5));
+
+        Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
+        Assert.Equal("application/problem+json", response.Content.Headers.ContentType?.MediaType);
+        var problem = await response.Content.ReadFromJsonAsync<JsonElement>();
+        Assert.Equal("CP6_AUTHENTICATION_REQUIRED", problem.GetProperty("code").GetString());
+    }
+
     [Theory]
     [InlineData("https://user@identity.cp6.test")]
     [InlineData("https://identity.cp6.test?mode=test")]
@@ -837,7 +948,16 @@ public sealed class JwtDiscoveryCacheContractTests
                     context.Response.Headers.Age = state.AgeSeconds.Value.ToString();
                 }
                 context.Response.ContentType = "application/json";
-                await context.Response.WriteAsync(state.JwksBodyOverride ?? state.CreateJwks());
+                var body = state.JwksBodyOverride ?? state.CreateJwks();
+                if (!state.JwksBodyDelayTask.IsCompleted)
+                {
+                    await context.Response.WriteAsync(body[..1]);
+                    await context.Response.Body.FlushAsync(context.RequestAborted);
+                    state.JwksBodyStarted.TrySetResult();
+                    await state.JwksBodyDelayTask.WaitAsync(context.RequestAborted);
+                    body = body[1..];
+                }
+                await context.Response.WriteAsync(body);
             });
             await identity.StartAsync();
             var identityAddress = Address(identity);
@@ -930,8 +1050,10 @@ public sealed class JwtDiscoveryCacheContractTests
         public string? DiscoveryRedirectLocation { get; set; }
         public Task DelayTask { get; set; } = Task.CompletedTask;
         public Task BodyDelayTask { get; set; } = Task.CompletedTask;
+        public Task JwksBodyDelayTask { get; set; } = Task.CompletedTask;
         public TaskCompletionSource DiscoveryStarted { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
         public TaskCompletionSource DiscoveryBodyStarted { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
+        public TaskCompletionSource JwksBodyStarted { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
         public int DiscoveryRequests;
         public int JwksRequests;
         public int RedirectTargetRequests;
