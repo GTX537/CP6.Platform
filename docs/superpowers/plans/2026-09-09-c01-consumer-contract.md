@@ -16,8 +16,8 @@ Design: [C01 consumer contract](../specs/2026-09-09-c01-consumer-contract.md).
 ## Task 2: prepare and publish the immutable forward package
 
 - [x] Read the current formal release contract and inspect every exact-version guard before preparing 0.10.2. Independent read-only review completed on 2026-09-09; findings and exact scope are recorded below. Retain read-only verification of historical versions and all signing, provenance, timestamp, package-set and feed checks.
-- [ ] Test the new exact-version registration and failure cases; deliver it through normal review and PR/main gates. Do not broaden a version allowlist into arbitrary stable versions.
-- [ ] Run the concrete existing formal publication path from a protected verified main source. Respect the protected Environment's owner action. Verify all seven packages on Windows and Linux and record exact byte-preserving feed read-back evidence.
+- [x] Test the new exact-version registration and failure cases; deliver it through normal review and PR/main gates. Do not broaden a version allowlist into arbitrary stable versions.
+- [x] Run the concrete existing formal publication path from a protected verified main source. Respect the protected Environment's owner action. Verify all seven packages on Windows and Linux and record exact byte-preserving feed read-back evidence.
 
 ## Task 3: CRM compatibility and fixed-package consumption
 
@@ -81,5 +81,37 @@ Contract rerun passed all 20 checks at that exact commit: 235/235 Release and
 98/98 Architecture tests, both PowerShell contract suites, package content
 checks and equal hashes for both package builds, with zero failed or skipped.
 The copied summary and JUnit are under
-`.artifacts/c01/reviewed-contract-06a327d`. Normal PR/main delivery, formal
-publication and final fixed-consumer acceptance remain pending.
+`.artifacts/c01/reviewed-contract-06a327d`. Normal source delivery and formal
+publication subsequently completed as recorded below; final fixed-consumer
+acceptance remains pending.
+
+## Task 2 observed publication
+
+Registration [PR #55](https://github.com/GTX537/CP6.Platform/pull/55), head
+`0660001cb1357a5871d5f690e6a709163a66ccac`, passed all five required jobs in
+[run 34415260032](https://github.com/GTX537/CP6.Platform/actions/runs/34415260032)
+and merged normally to `fbcd21528078a04e5b53c42c5fdfebe6ffa9655f`. Its
+[exact-main run 34416274332](https://github.com/GTX537/CP6.Platform/actions/runs/34416274332)
+also passed all five jobs. Remote main contains the reviewed commits and its
+tree matches the reviewed head; a fresh merged-source registration smoke passed
+54/54 with zero failures or skips.
+
+Owner `GTX537` approved the existing protected Environment for
+[formal run 34417259187](https://github.com/GTX537/CP6.Platform/actions/runs/34417259187),
+attempt 1, at that exact source. Both signing/publication/read-back on Windows
+and independent verification on Linux passed. The seven `0.10.2` packages are
+now immutable consumed versions. The final publication record hash is
+`17fd39f5724ba118771eb95aeb18d78045ea2e576431957ab7c24b8d13719181`.
+Both raw downloaded archives matched their GitHub digests before extraction;
+their entry sets, all seven signed/read-back package hashes, the original
+publication API and signed-package verifier were rechecked locally.
+The [five original records and complete artifact/package identities](../../evidence/c01/0.10.2/README.md)
+preserve actual publication evidence. Producer SDK `8.0.425`, NuGet `6.11.2.1`
+and `windows-2025` are the recorded workflow toolchain, independently of local
+consumer SDK selection. Trust remains pinned self-signed and does not claim
+public CA trust. This record delivery still needs its own normal PR/main checks.
+
+CRM cache source has separately completed PR #54 and verified main
+`06d02b54c5e3df4da761f813a34cefb6ee1babd9`; its package-upgrade branch now starts
+from that verified baseline. Actual fixed-feed consumption and the final real
+issuer matrix remain pending, so C01 is not closed by package publication.
