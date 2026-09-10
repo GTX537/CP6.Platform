@@ -1,5 +1,9 @@
 # C01 consumer contract implementation plan
 
+Current result (2026-09-10): source delivery, immutable `0.10.2` publication, fixed consumption and actual C01 acceptance passed. The fifth real run completed 72/72 with zero failures/skips. [The original summary/JUnit and four failed attempts](https://github.com/GTX537/CP6.CRM/tree/main/docs/delivery/c01/real-identity-2026-09-10) bind Core `fb55a877de8ee8f9d27fd3bf8e73c824a21549e8`, actual CRM `37cf0e58ff146ed58582768cf2c91e3c9fbe81cf` and the published package hashes. CRM PR #58 integrates the identical tree at `c02055178d96acf4c15ece8c5ba0f51b01b86f2c`; source PR passed all seven applicable jobs, while six substantive main jobs passed and GitHub billing blocked the final aggregate job before startup. Overall main CI failed; delivery confirmation and evidence integration remain pending restoration of Actions. Execution and integration identities are never interchanged. The complete real rotation retained both publication and expiry/skew waits; owned SQL and processes were cleaned. C02 now proceeds under its approved design; the observations below are historical checkpoints.
+
+The user's later verification-budget instruction supersedes the original default double-agent review sequence: reuse unchanged passing evidence, review one complete diff, run required CI and confirm remote main. Documentation does not trigger another local business suite.
+
 > Execute with subagent-driven-development: one bounded implementation task at a time, followed by specification review and then quality review. Continue within the accepted C01 scope; do not claim completion before fixed-package and real cross-repository evidence.
 
 Design: [C01 consumer contract](../specs/2026-09-09-c01-consumer-contract.md).
