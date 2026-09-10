@@ -1,12 +1,17 @@
 # P10 Release Governance
 
-## C01 forward publication registration — 2026-09-09
+## C01 immutable 0.10.2 publication — 2026-09-09
 
 The C01 consumer repair is delivered at verified Platform
 `main@31b92736b0f65afae4fa95020b6a11f258963b8d` through
 [PR #54](https://github.com/GTX537/CP6.Platform/pull/54). Both PR and exact-main
-validation passed all five required jobs. The following registration prepares
-the new immutable seven-package set `0.10.2`; that version is not yet published.
+validation passed all five required jobs. The new immutable seven-package set
+`0.10.2` is now published from verified
+`main@fbcd21528078a04e5b53c42c5fdfebe6ffa9655f` through the owner-approved
+[formal run 34417259187](https://github.com/GTX537/CP6.Platform/actions/runs/34417259187),
+attempt 1. Windows signing/publication/read-back and independent Linux
+verification both succeeded. The [original publication records](evidence/c01/0.10.2/README.md)
+preserve all five final artifact files byte for byte.
 
 The normal workflow and all four writer entry points accept only `0.10.2`.
 Read-only package/publication validation retains exactly `0.10.0`, `0.10.1`
@@ -23,19 +28,33 @@ the shared runtime development baseline used by older gates is unchanged.
 Registration passed independent specification and quality reviews at
 `06a327d63e4e992f7ef1dc70d8971efa29829b9f`; the final affected Contract gate
 passed all 20 checks at that commit, including 235 Release and 98 Architecture
-tests without skips. Normal PR/main validation remains pending before formal
-publication. The protected
-`p10-formal-release` owner action,
-fresh source/trust/version-absence prerequisite gate, one build, pinned signing,
-RFC3161 timestamp, feed read-back and independent Windows/Linux verification
-remain required.
+tests without skips. Registration [PR #55](https://github.com/GTX537/CP6.Platform/pull/55),
+head `0660001cb1357a5871d5f690e6a709163a66ccac`, passed
+[PR run 34415260032](https://github.com/GTX537/CP6.Platform/actions/runs/34415260032)
+and merged normally to `fbcd21528078a04e5b53c42c5fdfebe6ffa9655f`.
+[Exact-main run 34416274332](https://github.com/GTX537/CP6.Platform/actions/runs/34416274332)
+passed all five required jobs. The merge tree matches the reviewed head; a
+fresh merged-source API/source-Schema/packed-Schema/workflow smoke passed
+54/54 with zero failures or skips.
+
+The protected `p10-formal-release` approval was recorded for owner `GTX537`.
+The normal workflow performed its fresh source/trust/version-absence gate,
+one build, pinned signing, RFC3161 timestamp and byte-preserving feed read-back.
+Both downloaded artifact archives matched their GitHub SHA-256 digests before
+opening or extraction. The exact 15-file Windows and five-file final entry sets,
+seven package hashes and the final publication API were rechecked locally;
+the signed-package verifier accepted all seven actual feed read-back packages.
+Trust remains pinned self-signed, `internallyTrusted=true` and
+`publicCaTrusted=false`. The recorded producer SDK is `8.0.425`; local consumer
+SDK selection is a separate verification identity.
 
 Historical `0.10.0` recovery, `0.10.1` publication, S02 candidate identities,
 trust/certificate bytes and all existing package bytes remain unchanged. The
 sections below retain their original P10 milestone facts and authority bounds.
-After actual publication, C01 must record the new run/artifact identities and
-consume the exact feed bytes with the new Release validator and packaged Schema;
-the old `.1` proof cannot validate `.2` publication evidence. See the
+The `0.10.2` slots are consumed and must not be republished or overwritten.
+C01 must now consume the exact feed bytes with the new Release validator and
+packaged Schema, then complete actual issuer-to-consumer acceptance. The old
+`.1` proof cannot validate `.2` publication evidence. See the
 [implementation plan](superpowers/plans/2026-09-09-c01-consumer-contract.md).
 
 ## Status and authority
