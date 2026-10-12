@@ -1,4 +1,5 @@
 using System.Text.Json;
+using CP6.Platform.Messaging.NativeContracts;
 using Json.Schema;
 
 namespace CP6.Platform.Messaging;
@@ -30,12 +31,9 @@ public sealed class Cp6CloudEventValidator
 
         try
         {
-            using var document = JsonDocument.Parse(structuredEvent, new JsonDocumentOptions
-            {
-                AllowTrailingCommas = false,
-                CommentHandling = JsonCommentHandling.Disallow,
-                MaxDepth = 64
-            });
+            // Validate and decode the same owned bytes. Preserve P08's root trace-context exception.
+            structuredEvent = structuredEvent.ToArray();
+            using var document = Cp6NativeJson.ParseCloudEvent(structuredEvent);
             var root = document.RootElement;
             if (root.ValueKind != JsonValueKind.Object ||
                 !TryGetRequiredString(root, "type", out var eventType) ||

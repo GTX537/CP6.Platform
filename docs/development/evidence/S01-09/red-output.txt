@@ -1,0 +1,1243 @@
+  Determining projects to restore...
+  Restored D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Abstractions\CP6.Platform.Abstractions.csproj (in 80 ms).
+  Restored D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Contracts\CP6.Platform.Contracts.csproj (in 71 ms).
+  Restored D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.EntityFramework\CP6.Platform.EntityFramework.csproj (in 532 ms).
+  Restored D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\CP6.Platform.Messaging.csproj (in 702 ms).
+  Restored D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.AspNetCore\CP6.Platform.AspNetCore.csproj (in 1.07 sec).
+  Restored D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Testing\CP6.Platform.Testing.csproj (in 1.07 sec).
+  Restored D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\CP6.Platform.UnitTests.csproj (in 1.11 sec).
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\bin\Debug\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.AspNetCore\bin\Debug\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Testing\bin\Debug\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.UnitTests -> D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll
+Test run for D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:01.32]     CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(json: "{\"a\":1,}") [FAIL]
+[xUnit.net 00:00:01.34]     CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(json: "/*comment*/{}") [FAIL]
+[xUnit.net 00:00:01.34]     CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(json: "{\"nested\":[{\"secret\":0,\"secret\":1}]}") [FAIL]
+[xUnit.net 00:00:01.34]     CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(json: "{\"a\":1,\"\\u0061\":1}") [FAIL]
+[xUnit.net 00:00:01.34]     CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(json: "") [FAIL]
+[xUnit.net 00:00:01.41]     CP6.Platform.UnitTests.NativeProfileContractTests.Catalog_RejectsManifestBytesOrPackageVersionDrift [FAIL]
+[xUnit.net 00:00:01.42]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-001", vector: {\n      "id": "JSON-001",\n      "profile_id": "strict-json",\n      "operation": "strict_json_parse",\n      "applicable_fields": [\n        "$ (every nested object)"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",\n        "line": 61\n      },\n      "input": "{\"a\":1,\"b\":{\"a\":2}}",\n      "expected": {\n        "accepted": true\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.42]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-002", vector: {\n      "id": "JSON-002",\n      "profile_id": "strict-json",\n      "operation": "strict_json_parse",\n      "applicable_fields": [\n        "$ (every nested object)"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",\n        "line": 61\n      },\n      "input": "{\"a\":1,\"a\":2}",\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(json: "{\"a\":1,}") [3 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.Text.Json.JsonException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(String json) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 139
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+----- Inner Stack Trace -----
+   at CP6.Platform.Messaging.NativeContracts.Cp6OriginalJson.Capture(ReadOnlyMemory`1 utf8) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6OriginalJson.cs:line 6
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass11_0.<InvalidJson_CannotBeCapturedOrCompared>b__0() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 139
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(json: "/*comment*/{}") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.Text.Json.JsonException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(String json) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 139
+   at InvokeStub_NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Messaging.NativeContracts.Cp6OriginalJson.Capture(ReadOnlyMemory`1 utf8) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6OriginalJson.cs:line 6
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass11_0.<InvalidJson_CannotBeCapturedOrCompared>b__0() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 139
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(json: "{\"nested\":[{\"secret\":0,\"secret\":1}]}") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.Text.Json.JsonException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(String json) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 139
+   at InvokeStub_NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Messaging.NativeContracts.Cp6OriginalJson.Capture(ReadOnlyMemory`1 utf8) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6OriginalJson.cs:line 6
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass11_0.<InvalidJson_CannotBeCapturedOrCompared>b__0() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 139
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(json: "{\"a\":1,\"\\u0061\":1}") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.Text.Json.JsonException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(String json) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 139
+   at InvokeStub_NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Messaging.NativeContracts.Cp6OriginalJson.Capture(ReadOnlyMemory`1 utf8) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6OriginalJson.cs:line 6
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass11_0.<InvalidJson_CannotBeCapturedOrCompared>b__0() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 139
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(json: "") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.Text.Json.JsonException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(String json) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 139
+   at InvokeStub_NativeProfileContractTests.InvalidJson_CannotBeCapturedOrCompared(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Messaging.NativeContracts.Cp6OriginalJson.Capture(ReadOnlyMemory`1 utf8) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6OriginalJson.cs:line 6
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass11_0.<InvalidJson_CannotBeCapturedOrCompared>b__0() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 139
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.Catalog_RejectsManifestBytesOrPackageVersionDrift [1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.IO.InvalidDataException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.Catalog_RejectsManifestBytesOrPackageVersionDrift() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 89
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+----- Inner Stack Trace -----
+   at CP6.Platform.Messaging.NativeContracts.Cp6NativeContractCatalog.LoadS01(ReadOnlyMemory`1 manifest) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeContractCatalog.cs:line 8
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass8_0.<Catalog_RejectsManifestBytesOrPackageVersionDrift>b__0() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 89
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-001", vector: {
+      "id": "JSON-001",
+      "profile_id": "strict-json",
+      "operation": "strict_json_parse",
+      "applicable_fields": [
+        "$ (every nested object)"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",
+        "line": 61
+      },
+      "input": "{\"a\":1,\"b\":{\"a\":2}}",
+      "expected": {
+        "accepted": true
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.Parse(ReadOnlyMemory`1 utf8) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 7
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass7_0.<FixedVector_UsesProductionBoundary>b__0() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 48
+   at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 152
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 48
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-002", vector: {
+      "id": "JSON-002",
+      "profile_id": "strict-json",
+      "operation": "strict_json_parse",
+      "applicable_fields": [
+        "$ (every nested object)"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",
+        "line": 61
+      },
+      "input": "{\"a\":1,\"a\":2}",
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 48
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-003", vector: {\n      "id": "JSON-003",\n      "profile_id": "strict-json",\n      "operation": "strict_json_parse",\n      "applicable_fields": [\n        "$ (every nested object)"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",\n        "line": 61\n      },\n      "input": "{\"outer\":{\"a\":1,\"a\":2}}",\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-004", vector: {\n      "id": "JSON-004",\n      "profile_id": "strict-json",\n      "operation": "strict_json_parse",\n      "applicable_fields": [\n        "$ (every nested object)"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",\n        "line": 61\n      },\n      "input": "{\"items\":[{\"a\":1,\"a\":2}]}",\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-005", vector: {\n      "id": "JSON-005",\n      "profile_id": "strict-json",\n      "operation": "strict_json_parse",\n      "applicable_fields": [\n        "$ (every nested object)"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",\n        "line": 61\n      },\n      "input": "{\"a\":1,\"\\u0061\":2}",\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-006", vector: {\n      "id": "JSON-006",\n      "profile_id": "strict-json",\n      "operation": "strict_json_parse",\n      "applicable_fields": [\n        "$ (every nested object)"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",\n        "line": 61\n      },\n      "input": "{\"outer\":{\"a\":1,\"\\u0061\":2}}",\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-007", vector: {\n      "id": "JSON-007",\n      "profile_id": "strict-json",\n      "operation": "strict_json_parse",\n      "applicable_fields": [\n        "$ (every nested object)"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",\n        "line": 61\n      },\n      "input": "{\"a\":1,\"A\":2}",\n      "expected": {\n        "accepted": true\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-001", vector: {\n      "id": "NULL-001",\n      "profile_id": "null-only",\n      "operation": "required_null_property",\n      "applicable_fields": [\n        "NullCarrier.fixedNull"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 8\n      },\n      "input": {\n        "raw_json": "{}",\n        "required_property": "fixedNull"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-002", vector: {\n      "id": "NULL-002",\n      "profile_id": "null-only",\n      "operation": "required_null_property",\n      "applicable_fields": [\n        "NullCarrier.fixedNull"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 7\n      },\n      "input": {\n        "raw_json": "{\"fixedNull\":null}",\n        "required_property": "fixedNull"\n      },\n      "expected": {\n        "accepted": true\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-003", vector: {\n      "id": "NULL-003",\n      "profile_id": "null-only",\n      "operation": "required_null_property",\n      "applicable_fields": [\n        "NullCarrier.fixedNull"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 8\n      },\n      "input": {\n        "raw_json": "{\"fixedNull\":0}",\n        "required_property": "fixedNull"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-004", vector: {\n      "id": "NULL-004",\n      "profile_id": "null-only",\n      "operation": "required_null_property",\n      "applicable_fields": [\n        "NullCarrier.fixedNull"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 8\n      },\n      "input": {\n        "raw_json": "{\"fixedNull\":1}",\n        "required_property": "fixedNull"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-005", vector: {\n      "id": "NULL-005",\n      "profile_id": "null-only",\n      "operation": "required_null_property",\n      "applicable_fields": [\n        "NullCarrier.fixedNull"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 8\n      },\n      "input": {\n        "raw_json": "{\"fixedNull\":false}",\n        "required_property": "fixedNull"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-003", vector: {
+      "id": "JSON-003",
+      "profile_id": "strict-json",
+      "operation": "strict_json_parse",
+      "applicable_fields": [
+        "$ (every nested object)"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",
+        "line": 61
+      },
+      "input": "{\"outer\":{\"a\":1,\"a\":2}}",
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 48
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-004", vector: {
+      "id": "JSON-004",
+      "profile_id": "strict-json",
+      "operation": "strict_json_parse",
+      "applicable_fields": [
+        "$ (every nested object)"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",
+        "line": 61
+      },
+      "input": "{\"items\":[{\"a\":1,\"a\":2}]}",
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 48
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-005", vector: {
+      "id": "JSON-005",
+      "profile_id": "strict-json",
+      "operation": "strict_json_parse",
+      "applicable_fields": [
+        "$ (every nested object)"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",
+        "line": 61
+      },
+      "input": "{\"a\":1,\"\\u0061\":2}",
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 48
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-006", vector: {
+      "id": "JSON-006",
+      "profile_id": "strict-json",
+      "operation": "strict_json_parse",
+      "applicable_fields": [
+        "$ (every nested object)"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",
+        "line": 61
+      },
+      "input": "{\"outer\":{\"a\":1,\"\\u0061\":2}}",
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 48
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "JSON-007", vector: {
+      "id": "JSON-007",
+      "profile_id": "strict-json",
+      "operation": "strict_json_parse",
+      "applicable_fields": [
+        "$ (every nested object)"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/superpowers/plans/2026-10-11-s01-task-breakdown.md",
+        "line": 61
+      },
+      "input": "{\"a\":1,\"A\":2}",
+      "expected": {
+        "accepted": true
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.Parse(ReadOnlyMemory`1 utf8) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 7
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass7_0.<FixedVector_UsesProductionBoundary>b__0() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 48
+   at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 152
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 48
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-001", vector: {
+      "id": "NULL-001",
+      "profile_id": "null-only",
+      "operation": "required_null_property",
+      "applicable_fields": [
+        "NullCarrier.fixedNull"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 8
+      },
+      "input": {
+        "raw_json": "{}",
+        "required_property": "fixedNull"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 51
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-002", vector: {
+      "id": "NULL-002",
+      "profile_id": "null-only",
+      "operation": "required_null_property",
+      "applicable_fields": [
+        "NullCarrier.fixedNull"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 7
+      },
+      "input": {
+        "raw_json": "{\"fixedNull\":null}",
+        "required_property": "fixedNull"
+      },
+      "expected": {
+        "accepted": true
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.RequireNullProperty(ReadOnlyMemory`1 utf8, String propertyName) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 8
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass7_0.<FixedVector_UsesProductionBoundary>b__1() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 51
+   at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 152
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 51
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-003", vector: {
+      "id": "NULL-003",
+      "profile_id": "null-only",
+      "operation": "required_null_property",
+      "applicable_fields": [
+        "NullCarrier.fixedNull"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 8
+      },
+      "input": {
+        "raw_json": "{\"fixedNull\":0}",
+        "required_property": "fixedNull"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 51
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-004", vector: {
+      "id": "NULL-004",
+      "profile_id": "null-only",
+      "operation": "required_null_property",
+      "applicable_fields": [
+        "NullCarrier.fixedNull"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 8
+      },
+      "input": {
+        "raw_json": "{\"fixedNull\":1}",
+        "required_property": "fixedNull"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 51
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-005", vector: {
+      "id": "NULL-005",
+      "profile_id": "null-only",
+      "operation": "required_null_property",
+      "applicable_fields": [
+        "NullCarrier.fixedNull"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 8
+      },
+      "input": {
+        "raw_json": "{\"fixedNull\":false}",
+        "required_property": "fixedNull"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 51
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-006", vector: {\n      "id": "NULL-006",\n      "profile_id": "null-only",\n      "operation": "required_null_property",\n      "applicable_fields": [\n        "NullCarrier.fixedNull"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 8\n      },\n      "input": {\n        "raw_json": "{\"fixedNull\":\"null\"}",\n        "required_property": "fixedNull"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-007", vector: {\n      "id": "NULL-007",\n      "profile_id": "null-only",\n      "operation": "required_null_property",\n      "applicable_fields": [\n        "NullCarrier.fixedNull"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 8\n      },\n      "input": {\n        "raw_json": "{\"fixedNull\":{}}",\n        "required_property": "fixedNull"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "INQ-VERSION-001", vector: {\n      "id": "INQ-VERSION-001",\n      "profile_id": "crm-inq-r3-v15",\n      "operation": "native_schema_identity",\n      "applicable_fields": [\n        "crm-inq.openapi.json:info.version",\n        "crm-inq.openapi.json#/components/schemas"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "eng/contracts/s01/profile-inputs.json",\n        "json_pointer": "/profiles/12/schema_or_type_identity"\n      },\n      "input": {\n        "openapi": "3.1.0",\n        "title": "CRM-INQ-01 RECOVERY-R3 V15",\n        "version": "1.0-recovery-r3",\n        "schema_root": "/components/schemas",\n        "schema_sha256": "740b840c697b60ebf51ceb0bd9a1898238814a49e36c2afe1d819c473b7df349"\n      },\n      "expected": {\n        "accepted": true\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "INQ-VERSION-002", vector: {\n      "id": "INQ-VERSION-002",\n      "profile_id": "crm-inq-r3-v15",\n      "operation": "native_schema_identity",\n      "applicable_fields": [\n        "crm-inq.openapi.json:info.version",\n        "crm-inq.openapi.json#/components/schemas"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "eng/contracts/s01/profile-inputs.json",\n        "json_pointer": "/profiles/12/schema_or_type_identity"\n      },\n      "input": {\n        "openapi": "3.1.0",\n        "title": "CRM-INQ-01 RECOVERY-R3 V15",\n        "version": "unknown-version",\n        "schema_root": "/components/schemas",\n        "schema_sha256": "740b840c697b60ebf51ceb0bd9a1898238814a49e36c2afe1d819c473b7df349"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "INQ-VERSION-003", vector: {\n      "id": "INQ-VERSION-003",\n      "profile_id": "crm-inq-r3-v15",\n      "operation": "native_schema_identity",\n      "applicable_fields": [\n        "crm-inq.openapi.json:info.version",\n        "crm-inq.openapi.json#/components/schemas"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "eng/contracts/s01/profile-inputs.json",\n        "json_pointer": "/profiles/12/schema_or_type_identity"\n      },\n      "input": {\n        "openapi": "3.1.0",\n        "title": "CRM-INQ-01 RECOVERY-R3 V15",\n        "version": "1.0-recovery-r3",\n        "schema_root": "/$defs",\n        "schema_sha256": "740b840c697b60ebf51ceb0bd9a1898238814a49e36c2afe1d819c473b7df349"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.44]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "INQ-VERSION-004", vector: {\n      "id": "INQ-VERSION-004",\n      "profile_id": "crm-inq-r3-v15",\n      "operation": "native_schema_identity",\n      "applicable_fields": [\n        "crm-inq.openapi.json:info.version",\n        "crm-inq.openapi.json#/components/schemas"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "eng/contracts/s01/profile-inputs.json",\n        "json_pointer": "/profiles/12/schema_or_type_identity"\n      },\n      "input": {\n        "openapi": "3.1.0",\n        "title": "CRM-INQ-01 RECOVERY-R3 V15",\n        "version": "1.0-recovery-r3",\n        "schema_root": "/components/schemas",\n        "schema_sha256": "0000000000000000000000000000000000000000000000000000000000000000"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-001", vector: {\n      "id": "EQUAL-001",\n      "profile_id": "json-semantic-equality",\n      "operation": "json_semantic_equality",\n      "applicable_fields": [\n        "JSON Schema const/enum/uniqueItems operands"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 14\n      },\n      "input": {\n        "left_raw_json": "{\"a\":1,\"b\":[true,null]}",\n        "right_raw_json": "{\"b\":[true,null],\"a\":1.0}"\n      },\n      "expected": {\n        "equal": true\n      }\n    }) [FAIL]
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-006", vector: {
+      "id": "NULL-006",
+      "profile_id": "null-only",
+      "operation": "required_null_property",
+      "applicable_fields": [
+        "NullCarrier.fixedNull"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 8
+      },
+      "input": {
+        "raw_json": "{\"fixedNull\":\"null\"}",
+        "required_property": "fixedNull"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 51
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-002", vector: {\n      "id": "EQUAL-002",\n      "profile_id": "json-semantic-equality",\n      "operation": "json_semantic_equality",\n      "applicable_fields": [\n        "JSON Schema const/enum/uniqueItems operands"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 15\n      },\n      "input": {\n        "left_raw_json": "[1,2]",\n        "right_raw_json": "[2,1]"\n      },\n      "expected": {\n        "equal": false\n      }\n    }) [FAIL]
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "NULL-007", vector: {
+      "id": "NULL-007",
+      "profile_id": "null-only",
+      "operation": "required_null_property",
+      "applicable_fields": [
+        "NullCarrier.fixedNull"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 8
+      },
+      "input": {
+        "raw_json": "{\"fixedNull\":{}}",
+        "required_property": "fixedNull"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-003", vector: {\n      "id": "EQUAL-003",\n      "profile_id": "json-semantic-equality",\n      "operation": "json_semantic_equality",\n      "applicable_fields": [\n        "JSON Schema const/enum/uniqueItems operands"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 16\n      },\n      "input": {\n        "left_raw_json": "\"1\"",\n        "right_raw_json": "1"\n      },\n      "expected": {\n        "equal": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-004", vector: {\n      "id": "EQUAL-004",\n      "profile_id": "json-semantic-equality",\n      "operation": "json_semantic_equality",\n      "applicable_fields": [\n        "JSON Schema const/enum/uniqueItems operands"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 17\n      },\n      "input": {\n        "left_raw_json": "-0.00",\n        "right_raw_json": "0e1000"\n      },\n      "expected": {\n        "equal": true\n      }\n    }) [FAIL]
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 51
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "INQ-VERSION-001", vector: {
+      "id": "INQ-VERSION-001",
+      "profile_id": "crm-inq-r3-v15",
+      "operation": "native_schema_identity",
+      "applicable_fields": [
+        "crm-inq.openapi.json:info.version",
+        "crm-inq.openapi.json#/components/schemas"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "eng/contracts/s01/profile-inputs.json",
+        "json_pointer": "/profiles/12/schema_or_type_identity"
+      },
+      "input": {
+        "openapi": "3.1.0",
+        "title": "CRM-INQ-01 RECOVERY-R3 V15",
+        "version": "1.0-recovery-r3",
+        "schema_root": "/components/schemas",
+        "schema_sha256": "740b840c697b60ebf51ceb0bd9a1898238814a49e36c2afe1d819c473b7df349"
+      },
+      "expected": {
+        "accepted": true
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeContractCatalog.LoadS01(ReadOnlyMemory`1 manifest) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeContractCatalog.cs:line 8
+   at CP6.Platform.UnitTests.NativeProfileContractTests.Catalog() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 16
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass7_0.<FixedVector_UsesProductionBoundary>b__2() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 58
+   at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 152
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 58
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "INQ-VERSION-002", vector: {
+      "id": "INQ-VERSION-002",
+      "profile_id": "crm-inq-r3-v15",
+      "operation": "native_schema_identity",
+      "applicable_fields": [
+        "crm-inq.openapi.json:info.version",
+        "crm-inq.openapi.json#/components/schemas"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "eng/contracts/s01/profile-inputs.json",
+        "json_pointer": "/profiles/12/schema_or_type_identity"
+      },
+      "input": {
+        "openapi": "3.1.0",
+        "title": "CRM-INQ-01 RECOVERY-R3 V15",
+        "version": "unknown-version",
+        "schema_root": "/components/schemas",
+        "schema_sha256": "740b840c697b60ebf51ceb0bd9a1898238814a49e36c2afe1d819c473b7df349"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 58
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "INQ-VERSION-003", vector: {
+      "id": "INQ-VERSION-003",
+      "profile_id": "crm-inq-r3-v15",
+      "operation": "native_schema_identity",
+      "applicable_fields": [
+        "crm-inq.openapi.json:info.version",
+        "crm-inq.openapi.json#/components/schemas"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "eng/contracts/s01/profile-inputs.json",
+        "json_pointer": "/profiles/12/schema_or_type_identity"
+      },
+      "input": {
+        "openapi": "3.1.0",
+        "title": "CRM-INQ-01 RECOVERY-R3 V15",
+        "version": "1.0-recovery-r3",
+        "schema_root": "/$defs",
+        "schema_sha256": "740b840c697b60ebf51ceb0bd9a1898238814a49e36c2afe1d819c473b7df349"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 58
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "INQ-VERSION-004", vector: {
+      "id": "INQ-VERSION-004",
+      "profile_id": "crm-inq-r3-v15",
+      "operation": "native_schema_identity",
+      "applicable_fields": [
+        "crm-inq.openapi.json:info.version",
+        "crm-inq.openapi.json#/components/schemas"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "eng/contracts/s01/profile-inputs.json",
+        "json_pointer": "/profiles/12/schema_or_type_identity"
+      },
+      "input": {
+        "openapi": "3.1.0",
+        "title": "CRM-INQ-01 RECOVERY-R3 V15",
+        "version": "1.0-recovery-r3",
+        "schema_root": "/components/schemas",
+        "schema_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 58
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-001", vector: {
+      "id": "EQUAL-001",
+      "profile_id": "json-semantic-equality",
+      "operation": "json_semantic_equality",
+      "applicable_fields": [
+        "JSON Schema const/enum/uniqueItems operands"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 14
+      },
+      "input": {
+        "left_raw_json": "{\"a\":1,\"b\":[true,null]}",
+        "right_raw_json": "{\"b\":[true,null],\"a\":1.0}"
+      },
+      "expected": {
+        "equal": true
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.SemanticallyEquals(ReadOnlyMemory`1 left, ReadOnlyMemory`1 right) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 9
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 54
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-002", vector: {
+      "id": "EQUAL-002",
+      "profile_id": "json-semantic-equality",
+      "operation": "json_semantic_equality",
+      "applicable_fields": [
+        "JSON Schema const/enum/uniqueItems operands"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 15
+      },
+      "input": {
+        "left_raw_json": "[1,2]",
+        "right_raw_json": "[2,1]"
+      },
+      "expected": {
+        "equal": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.SemanticallyEquals(ReadOnlyMemory`1 left, ReadOnlyMemory`1 right) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 9
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 54
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-005", vector: {\n      "id": "EQUAL-005",\n      "profile_id": "json-semantic-equality",\n      "operation": "json_semantic_equality",\n      "applicable_fields": [\n        "JSON Schema const/enum/uniqueItems operands"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 18\n      },\n      "input": {\n        "left_raw_json": "12345678901234567890123456789012345678",\n        "right_raw_json": "123456789012345678901234567890123456780e-1"\n      },\n      "expected": {\n        "equal": true\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-006", vector: {\n      "id": "EQUAL-006",\n      "profile_id": "json-semantic-equality",\n      "operation": "json_semantic_equality",\n      "applicable_fields": [\n        "JSON Schema const/enum/uniqueItems operands"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 19\n      },\n      "input": {\n        "left_raw_json": "1e1000",\n        "right_raw_json": "10e999"\n      },\n      "expected": {\n        "equal": true\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-007", vector: {\n      "id": "EQUAL-007",\n      "profile_id": "json-semantic-equality",\n      "operation": "json_semantic_equality",\n      "applicable_fields": [\n        "JSON Schema const/enum/uniqueItems operands"\n      ],\n      "verification_level": "CONTRACT_UNIT",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",\n        "line": 20\n      },\n      "input": {\n        "left_raw_json": "{\"a:b\":\"x,y\"}",\n        "right_raw_json": "{\"a\":\"b:x,y\"}"\n      },\n      "expected": {\n        "equal": false\n      }\n    }) [FAIL]
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-003", vector: {
+      "id": "EQUAL-003",
+      "profile_id": "json-semantic-equality",
+      "operation": "json_semantic_equality",
+      "applicable_fields": [
+        "JSON Schema const/enum/uniqueItems operands"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 16
+      },
+      "input": {
+        "left_raw_json": "\"1\"",
+        "right_raw_json": "1"
+      },
+      "expected": {
+        "equal": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.SemanticallyEquals(ReadOnlyMemory`1 left, ReadOnlyMemory`1 right) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 9
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 54
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-004", vector: {
+      "id": "EQUAL-004",
+      "profile_id": "json-semantic-equality",
+      "operation": "json_semantic_equality",
+      "applicable_fields": [
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-001", vector: {\n      "id": "VERSION-001",\n      "profile_id": "erp-credit-current-v1",\n      "operation": "native_registry_identity",\n      "applicable_fields": [\n        "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "codec namespace"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",\n        "json_pointer": "/patches/13"\n      },\n      "input": {\n        "codec_namespace": "Cp6.ErpCredit.CurrentV1.Generated",\n        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "schema_sha256": "564706ce0247d84dc8056002d540f17eccdcab7c5b5e4b123c09121ad407fbda"\n      },\n      "expected": {\n        "accepted": true\n      }\n    }) [FAIL]
+        "JSON Schema const/enum/uniqueItems operands"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-002", vector: {\n      "id": "VERSION-002",\n      "profile_id": "erp-credit-current-v1",\n      "operation": "native_registry_identity",\n      "applicable_fields": [\n        "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "codec namespace"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",\n        "json_pointer": "/patches/13"\n      },\n      "input": {\n        "codec_namespace": "Cp6.ErpCredit.CurrentV1.Generated",\n        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "schema_sha256": "62effa1e0542784a5fa936d11961465db4da522ed4d28fc9c9bb5351cf40b6f1"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 17
+      },
+      "input": {
+        "left_raw_json": "-0.00",
+        "right_raw_json": "0e1000"
+      },
+      "expected": {
+        "equal": true
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.SemanticallyEquals(ReadOnlyMemory`1 left, ReadOnlyMemory`1 right) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 9
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 54
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(marker: "\"type\"", duplicate: "\"\\u0074ype\":\"unknown\",") [FAIL]
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-005", vector: {
+      "id": "EQUAL-005",
+      "profile_id": "json-semantic-equality",
+      "operation": "json_semantic_equality",
+      "applicable_fields": [
+        "JSON Schema const/enum/uniqueItems operands"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 18
+      },
+      "input": {
+        "left_raw_json": "12345678901234567890123456789012345678",
+        "right_raw_json": "123456789012345678901234567890123456780e-1"
+      },
+      "expected": {
+        "equal": true
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.SemanticallyEquals(ReadOnlyMemory`1 left, ReadOnlyMemory`1 right) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 9
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 54
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-006", vector: {
+      "id": "EQUAL-006",
+      "profile_id": "json-semantic-equality",
+      "operation": "json_semantic_equality",
+      "applicable_fields": [
+        "JSON Schema const/enum/uniqueItems operands"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 19
+      },
+      "input": {
+        "left_raw_json": "1e1000",
+        "right_raw_json": "10e999"
+      },
+      "expected": {
+        "equal": true
+      }
+    }) [< 1 ms]
+  Error Message:
+[xUnit.net 00:00:01.45]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-003", vector: {\n      "id": "VERSION-003",\n      "profile_id": "erp-credit-current-v1",\n      "operation": "native_registry_identity",\n      "applicable_fields": [\n        "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "codec namespace"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",\n        "json_pointer": "/patches/13"\n      },\n      "input": {\n        "codec_namespace": "Cp6.ErpCredit.Generated",\n        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "schema_sha256": "564706ce0247d84dc8056002d540f17eccdcab7c5b5e4b123c09121ad407fbda"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-004", vector: {\n      "id": "VERSION-004",\n      "profile_id": "erp-credit-current-v1",\n      "operation": "native_registry_identity",\n      "applicable_fields": [\n        "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "codec namespace"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",\n        "json_pointer": "/patches/13"\n      },\n      "input": {\n        "codec_namespace": "Cp6.ErpCredit.CurrentV1.Generated",\n        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "schema_sha256": "0000000000000000000000000000000000000000000000000000000000000000"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-005", vector: {\n      "id": "VERSION-005",\n      "profile_id": "erp-credit-current-v1",\n      "operation": "native_registry_identity",\n      "applicable_fields": [\n        "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "codec namespace"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",\n        "json_pointer": "/patches/13"\n      },\n      "input": {\n        "codec_namespace": "Cp6.ErpCredit.CurrentV1.Generated",\n        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.unknown.json",\n        "schema_sha256": "564706ce0247d84dc8056002d540f17eccdcab7c5b5e4b123c09121ad407fbda"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.SemanticallyEquals(ReadOnlyMemory`1 left, ReadOnlyMemory`1 right) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 9
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 54
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "EQUAL-007", vector: {
+      "id": "EQUAL-007",
+      "profile_id": "json-semantic-equality",
+      "operation": "json_semantic_equality",
+      "applicable_fields": [
+        "JSON Schema const/enum/uniqueItems operands"
+      ],
+      "verification_level": "CONTRACT_UNIT",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/core-types/DesignTypesCheck.cs",
+        "line": 20
+      },
+      "input": {
+        "left_raw_json": "{\"a:b\":\"x,y\"}",
+        "right_raw_json": "{\"a\":\"b:x,y\"}"
+      },
+      "expected": {
+        "equal": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.SemanticallyEquals(ReadOnlyMemory`1 left, ReadOnlyMemory`1 right) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 9
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 54
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-001", vector: {
+      "id": "VERSION-001",
+      "profile_id": "erp-credit-current-v1",
+      "operation": "native_registry_identity",
+      "applicable_fields": [
+        "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "codec namespace"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",
+        "json_pointer": "/patches/13"
+      },
+      "input": {
+        "codec_namespace": "Cp6.ErpCredit.CurrentV1.Generated",
+        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "schema_sha256": "564706ce0247d84dc8056002d540f17eccdcab7c5b5e4b123c09121ad407fbda"
+      },
+      "expected": {
+        "accepted": true
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeContractCatalog.LoadS01(ReadOnlyMemory`1 manifest) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeContractCatalog.cs:line 8
+   at CP6.Platform.UnitTests.NativeProfileContractTests.Catalog() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 16
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass7_0.<FixedVector_UsesProductionBoundary>b__3() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 63
+   at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 152
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 63
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-002", vector: {
+      "id": "VERSION-002",
+      "profile_id": "erp-credit-current-v1",
+      "operation": "native_registry_identity",
+      "applicable_fields": [
+        "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "codec namespace"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",
+        "json_pointer": "/patches/13"
+      },
+      "input": {
+        "codec_namespace": "Cp6.ErpCredit.CurrentV1.Generated",
+        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "schema_sha256": "62effa1e0542784a5fa936d11961465db4da522ed4d28fc9c9bb5351cf40b6f1"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 63
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(marker: "\"type\"", duplicate: "\"\\u0074ype\":\"unknown\",") [279 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: MalformedJson
+Actual:   SchemaMismatch
+  Stack Trace:
+     at CP6.Platform.UnitTests.CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(String marker, String duplicate) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\CloudEventContractTests.cs:line 180
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-003", vector: {
+      "id": "VERSION-003",
+      "profile_id": "erp-credit-current-v1",
+      "operation": "native_registry_identity",
+      "applicable_fields": [
+        "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "codec namespace"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",
+        "json_pointer": "/patches/13"
+      },
+      "input": {
+        "codec_namespace": "Cp6.ErpCredit.Generated",
+        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "schema_sha256": "564706ce0247d84dc8056002d540f17eccdcab7c5b5e4b123c09121ad407fbda"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 63
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-004", vector: {
+      "id": "VERSION-004",
+      "profile_id": "erp-credit-current-v1",
+      "operation": "native_registry_identity",
+      "applicable_fields": [
+        "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "codec namespace"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",
+        "json_pointer": "/patches/13"
+      },
+      "input": {
+        "codec_namespace": "Cp6.ErpCredit.CurrentV1.Generated",
+        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "schema_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 63
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-005", vector: {
+      "id": "VERSION-005",
+      "profile_id": "erp-credit-current-v1",
+      "operation": "native_registry_identity",
+      "applicable_fields": [
+        "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "codec namespace"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",
+        "json_pointer": "/patches/13"
+      },
+      "input": {
+        "codec_namespace": "Cp6.ErpCredit.CurrentV1.Generated",
+        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.unknown.json",
+        "schema_sha256": "564706ce0247d84dc8056002d540f17eccdcab7c5b5e4b123c09121ad407fbda"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 63
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-006", vector: {\n      "id": "VERSION-006",\n      "profile_id": "erp-credit-frozen-r8",\n      "operation": "native_registry_identity",\n      "applicable_fields": [\n        "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "codec namespace"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",\n        "json_pointer": "/patches/13"\n      },\n      "input": {\n        "codec_namespace": "Cp6.ErpCredit.Generated",\n        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "schema_sha256": "62effa1e0542784a5fa936d11961465db4da522ed4d28fc9c9bb5351cf40b6f1"\n      },\n      "expected": {\n        "accepted": true\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-007", vector: {\n      "id": "VERSION-007",\n      "profile_id": "erp-credit-frozen-r8",\n      "operation": "native_registry_identity",\n      "applicable_fields": [\n        "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "codec namespace"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",\n        "json_pointer": "/patches/13"\n      },\n      "input": {\n        "codec_namespace": "Cp6.ErpCredit.Generated",\n        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "schema_sha256": "564706ce0247d84dc8056002d540f17eccdcab7c5b5e4b123c09121ad407fbda"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-008", vector: {\n      "id": "VERSION-008",\n      "profile_id": "erp-credit-frozen-r8",\n      "operation": "native_registry_identity",\n      "applicable_fields": [\n        "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "codec namespace"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",\n        "json_pointer": "/patches/13"\n      },\n      "input": {\n        "codec_namespace": "Cp6.ErpCredit.CurrentV1.Generated",\n        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",\n        "schema_sha256": "62effa1e0542784a5fa936d11961465db4da522ed4d28fc9c9bb5351cf40b6f1"\n      },\n      "expected": {\n        "accepted": false\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "BYTES-001", vector: {\n      "id": "BYTES-001",\n      "profile_id": "erp-credit-frozen-r8",\n      "operation": "original_utf8_retention",\n      "applicable_fields": [\n        "ERP-CREDIT-01_FIN-AR-R2-EXACT.schema.json#/$defs/PostInput (bytes only)"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/development/s01-input-index.json",\n        "json_pointer": "/sources/11"\n      },\n      "input": {\n        "native_schema_file": "ERP-CREDIT-01_FIN-AR-R2-EXACT.schema.json",\n        "native_schema_root": "PostInput",\n        "fixture_origin": "CONSTRUCTED_CONTRACT_UNIT_INPUT",\n        "original_utf8": "{ \"commandId\": \"00000000-0000-4000-8000-000000000001\", \"expectedRowVersion\": \"1\", \"reason\": \"fixture\", \"planRevision\": \"1\" }\r\n",\n        "replay_utf8": "{ \"commandId\": \"00000000-0000-4000-8000-000000000001\", \"expectedRowVersion\": \"1\", \"reason\": \"fixture\", \"planRevision\": \"1\" }\r\n"\n      },\n      "expected": {\n        "bytes_equal": true,\n        "digest_equal": true,\n        "original_sha256": "2146a8b0fe2836a1add75c17762009b4b9831ac9cea07a5e1cd107c3e87b03cb",\n        "replay_sha256": "2146a8b0fe2836a1add75c17762009b4b9831ac9cea07a5e1cd107c3e87b03cb"\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "BYTES-002", vector: {\n      "id": "BYTES-002",\n      "profile_id": "erp-credit-frozen-r8",\n      "operation": "original_utf8_retention",\n      "applicable_fields": [\n        "ERP-CREDIT-01_FIN-AR-R2-EXACT.schema.json#/$defs/PostInput (bytes only)"\n      ],\n      "verification_level": "CONTRACT_ROUTING",\n      "source_case_id": null,\n      "source_ref": {\n        "path": "docs/development/s01-input-index.json",\n        "json_pointer": "/sources/11"\n      },\n      "input": {\n        "native_schema_file": "ERP-CREDIT-01_FIN-AR-R2-EXACT.schema.json",\n        "native_schema_root": "PostInput",\n        "fixture_origin": "CONSTRUCTED_CONTRACT_UNIT_INPUT",\n        "original_utf8": "{ \"commandId\": \"00000000-0000-4000-8000-000000000001\", \"expectedRowVersion\": \"1\", \"reason\": \"fixture\", \"planRevision\": \"1\" }\r\n",\n        "replay_utf8": "{\"planRevision\":\"1\",\"reason\":\"fixture\",\"expectedRowVersion\":\"1\",\"commandId\":\"00000000-0000-4000-8000-000000000001\"}"\n      },\n      "expected": {\n        "bytes_equal": false,\n        "digest_equal": false,\n        "original_sha256": "2146a8b0fe2836a1add75c17762009b4b9831ac9cea07a5e1cd107c3e87b03cb",\n        "replay_sha256": "48eaac86c06f5dfd4cd4f4a1ff45bc1c84a0f441871cfdd5e74914ad9ded22da"\n      }\n    }) [FAIL]
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(profile: "erp-credit-current-v1", asset: "erp-current.registry.json") [FAIL]
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(profile: "crm-inq-r3-v15", asset: "crm-inq.openapi.json") [FAIL]
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(profile: "erp-credit-frozen-r8", asset: "erp-frozen.registry.json") [FAIL]
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.NullProjection_RejectsEscapedDuplicatesAndNonObjectRoot [FAIL]
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-006", vector: {
+      "id": "VERSION-006",
+      "profile_id": "erp-credit-frozen-r8",
+      "operation": "native_registry_identity",
+      "applicable_fields": [
+        "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "codec namespace"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",
+        "json_pointer": "/patches/13"
+      },
+      "input": {
+        "codec_namespace": "Cp6.ErpCredit.Generated",
+        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "schema_sha256": "62effa1e0542784a5fa936d11961465db4da522ed4d28fc9c9bb5351cf40b6f1"
+      },
+      "expected": {
+        "accepted": true
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeContractCatalog.LoadS01(ReadOnlyMemory`1 manifest) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeContractCatalog.cs:line 8
+   at CP6.Platform.UnitTests.NativeProfileContractTests.Catalog() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 16
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c__DisplayClass7_0.<FixedVector_UsesProductionBoundary>b__3() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 63
+   at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 152
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 63
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-007", vector: {
+      "id": "VERSION-007",
+      "profile_id": "erp-credit-frozen-r8",
+      "operation": "native_registry_identity",
+      "applicable_fields": [
+        "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "codec namespace"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",
+        "json_pointer": "/patches/13"
+      },
+      "input": {
+        "codec_namespace": "Cp6.ErpCredit.Generated",
+        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "schema_sha256": "564706ce0247d84dc8056002d540f17eccdcab7c5b5e4b123c09121ad407fbda"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 63
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "VERSION-008", vector: {
+      "id": "VERSION-008",
+      "profile_id": "erp-credit-frozen-r8",
+      "operation": "native_registry_identity",
+      "applicable_fields": [
+        "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "codec namespace"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/design-handbook/remediation/assets/commercial-fixtures/bounded-patches.json",
+        "json_pointer": "/patches/13"
+      },
+      "input": {
+        "codec_namespace": "Cp6.ErpCredit.CurrentV1.Generated",
+        "schema_file": "ERP-CREDIT-01_TYPE-REGISTRY.json",
+        "schema_sha256": "62effa1e0542784a5fa936d11961465db4da522ed4d28fc9c9bb5351cf40b6f1"
+      },
+      "expected": {
+        "accepted": false
+      }
+    }) [< 1 ms]
+  Error Message:
+   Expected a contract rejection.
+  Stack Trace:
+     at CP6.Platform.UnitTests.NativeProfileContractTests.CheckAccepted(JsonElement expected, Action operation) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 153
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 63
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "BYTES-001", vector: {
+      "id": "BYTES-001",
+      "profile_id": "erp-credit-frozen-r8",
+      "operation": "original_utf8_retention",
+      "applicable_fields": [
+        "ERP-CREDIT-01_FIN-AR-R2-EXACT.schema.json#/$defs/PostInput (bytes only)"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/development/s01-input-index.json",
+        "json_pointer": "/sources/11"
+      },
+      "input": {
+        "native_schema_file": "ERP-CREDIT-01_FIN-AR-R2-EXACT.schema.json",
+        "native_schema_root": "PostInput",
+        "fixture_origin": "CONSTRUCTED_CONTRACT_UNIT_INPUT",
+        "original_utf8": "{ \"commandId\": \"00000000-0000-4000-8000-000000000001\", \"expectedRowVersion\": \"1\", \"reason\": \"fixture\", \"planRevision\": \"1\" }\r\n",
+        "replay_utf8": "{ \"commandId\": \"00000000-0000-4000-8000-000000000001\", \"expectedRowVersion\": \"1\", \"reason\": \"fixture\", \"planRevision\": \"1\" }\r\n"
+      },
+      "expected": {
+        "bytes_equal": true,
+        "digest_equal": true,
+        "original_sha256": "2146a8b0fe2836a1add75c17762009b4b9831ac9cea07a5e1cd107c3e87b03cb",
+        "replay_sha256": "2146a8b0fe2836a1add75c17762009b4b9831ac9cea07a5e1cd107c3e87b03cb"
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6OriginalJson.Capture(ReadOnlyMemory`1 utf8) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6OriginalJson.cs:line 6
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 70
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(id: "BYTES-002", vector: {
+      "id": "BYTES-002",
+      "profile_id": "erp-credit-frozen-r8",
+      "operation": "original_utf8_retention",
+      "applicable_fields": [
+        "ERP-CREDIT-01_FIN-AR-R2-EXACT.schema.json#/$defs/PostInput (bytes only)"
+      ],
+      "verification_level": "CONTRACT_ROUTING",
+      "source_case_id": null,
+      "source_ref": {
+        "path": "docs/development/s01-input-index.json",
+        "json_pointer": "/sources/11"
+      },
+      "input": {
+        "native_schema_file": "ERP-CREDIT-01_FIN-AR-R2-EXACT.schema.json",
+        "native_schema_root": "PostInput",
+        "fixture_origin": "CONSTRUCTED_CONTRACT_UNIT_INPUT",
+        "original_utf8": "{ \"commandId\": \"00000000-0000-4000-8000-000000000001\", \"expectedRowVersion\": \"1\", \"reason\": \"fixture\", \"planRevision\": \"1\" }\r\n",
+        "replay_utf8": "{\"planRevision\":\"1\",\"reason\":\"fixture\",\"expectedRowVersion\":\"1\",\"commandId\":\"00000000-0000-4000-8000-000000000001\"}"
+      },
+      "expected": {
+        "bytes_equal": false,
+        "digest_equal": false,
+        "original_sha256": "2146a8b0fe2836a1add75c17762009b4b9831ac9cea07a5e1cd107c3e87b03cb",
+        "replay_sha256": "48eaac86c06f5dfd4cd4f4a1ff45bc1c84a0f441871cfdd5e74914ad9ded22da"
+      }
+    }) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6OriginalJson.Capture(ReadOnlyMemory`1 utf8) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6OriginalJson.cs:line 6
+   at CP6.Platform.UnitTests.NativeProfileContractTests.FixedVector_UsesProductionBoundary(String id, JsonElement vector) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 70
+   at InvokeStub_NativeProfileContractTests.FixedVector_UsesProductionBoundary(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(profile: "erp-credit-current-v1", asset: "erp-current.registry.json") [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeContractCatalog.LoadS01(ReadOnlyMemory`1 manifest) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeContractCatalog.cs:line 8
+   at CP6.Platform.UnitTests.NativeProfileContractTests.Catalog() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 16
+   at CP6.Platform.UnitTests.NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(String profile, String asset) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 100
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(profile: "crm-inq-r3-v15", asset: "crm-inq.openapi.json") [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeContractCatalog.LoadS01(ReadOnlyMemory`1 manifest) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeContractCatalog.cs:line 8
+   at CP6.Platform.UnitTests.NativeProfileContractTests.Catalog() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 16
+   at CP6.Platform.UnitTests.NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(String profile, String asset) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 100
+   at InvokeStub_NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(profile: "erp-credit-frozen-r8", asset: "erp-frozen.registry.json") [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6NativeContractCatalog.LoadS01(ReadOnlyMemory`1 manifest) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeContractCatalog.cs:line 8
+   at CP6.Platform.UnitTests.NativeProfileContractTests.Catalog() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 16
+   at CP6.Platform.UnitTests.NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(String profile, String asset) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 100
+   at InvokeStub_NativeProfileContractTests.IdentityRoutes_VerifyActualAssetBytesAndRejectUnknownProfile(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.NullProjection_RejectsEscapedDuplicatesAndNonObjectRoot [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(System.Text.Json.JsonException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.NativeProfileContractTests.OriginalBytes_AreOwnedAndNoMutableViewEscapes [FAIL]
+  Stack Trace:
+[xUnit.net 00:00:01.46]     CP6.Platform.UnitTests.CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(marker: "\"type\"", duplicate: "\"type\":\"unknown\",") [FAIL]
+     at CP6.Platform.UnitTests.NativeProfileContractTests.NullProjection_RejectsEscapedDuplicatesAndNonObjectRoot() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 146
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+----- Inner Stack Trace -----
+   at CP6.Platform.Messaging.NativeContracts.Cp6NativeJson.RequireNullProperty(ReadOnlyMemory`1 utf8, String propertyName) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6NativeJson.cs:line 8
+   at CP6.Platform.UnitTests.NativeProfileContractTests.<>c.<NullProjection_RejectsEscapedDuplicatesAndNonObjectRoot>b__12_0() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 146
+[xUnit.net 00:00:01.47]     CP6.Platform.UnitTests.CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(marker: "\"resourceId\"", duplicate: "\"resourceId\":\"ignored\",") [FAIL]
+  Failed CP6.Platform.UnitTests.NativeProfileContractTests.OriginalBytes_AreOwnedAndNoMutableViewEscapes [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Messaging.NativeContracts.Cp6OriginalJson.Capture(ReadOnlyMemory`1 utf8) in D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\NativeContracts\Cp6OriginalJson.cs:line 6
+   at CP6.Platform.UnitTests.NativeProfileContractTests.OriginalBytes_AreOwnedAndNoMutableViewEscapes() in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\NativeProfileContractTests.cs:line 120
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.UnitTests.CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(marker: "\"type\"", duplicate: "\"type\":\"unknown\",") [11 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: MalformedJson
+Actual:   SchemaMismatch
+  Stack Trace:
+     at CP6.Platform.UnitTests.CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(String marker, String duplicate) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\CloudEventContractTests.cs:line 180
+   at InvokeStub_CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.UnitTests.CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(marker: "\"resourceId\"", duplicate: "\"resourceId\":\"ignored\",") [10 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: MalformedJson
+Actual:   SchemaMismatch
+  Stack Trace:
+     at CP6.Platform.UnitTests.CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(String marker, String duplicate) in D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\CloudEventContractTests.cs:line 180
+   at InvokeStub_CloudEventContractTests.DuplicateProperties_FailBeforeInterpretation(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+Results File: D:\CP6.Platform-worktrees\s01-09-20261012\docs\development\evidence\S01-09\test-results\red.trx
+
+Failed!  - Failed:    49, Passed:    13, Skipped:     0, Total:    62, Duration: 894 ms - CP6.Platform.UnitTests.dll (net8.0)

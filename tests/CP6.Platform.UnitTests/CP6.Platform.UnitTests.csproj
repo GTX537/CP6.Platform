@@ -12,6 +12,9 @@
     <Using Include="Xunit" />
   </ItemGroup>
   <ItemGroup>
+    <None Update="TestData/S01/*.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="../../src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj" />
     <ProjectReference Include="../../src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj" />
     <ProjectReference Include="../../src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj" />

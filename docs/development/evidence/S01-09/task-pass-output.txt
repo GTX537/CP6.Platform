@@ -1,0 +1,15 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.AspNetCore\bin\Debug\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Messaging\bin\Debug\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\s01-09-20261012\src\CP6.Platform.Testing\bin\Debug\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.UnitTests -> D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll
+Test run for D:\CP6.Platform-worktrees\s01-09-20261012\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: D:\CP6.Platform-worktrees\s01-09-20261012\docs\development\evidence\S01-09\test-results\task-pass.trx
+
+Passed!  - Failed:     0, Passed:   110, Skipped:     0, Total:   110, Duration: 1 s - CP6.Platform.UnitTests.dll (net8.0)
