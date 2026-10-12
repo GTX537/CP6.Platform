@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using System.Security.Cryptography;
 using CP6.Platform.Messaging;
 
 namespace CP6.Platform.UnitTests;
@@ -164,6 +165,100 @@ public sealed class CloudEventContractTests
         {
             Directory.Delete(temporaryRoot, recursive: true);
         }
+    }
+
+    [Theory]
+    [InlineData("\"type\"", "\"type\":\"unknown\",")]
+    [InlineData("\"type\"", "\"\\u0074ype\":\"unknown\",")]
+    [InlineData("\"resourceId\"", "\"resourceId\":\"ignored\",")]
+    [InlineData("\"resourceId\"", "\"traceparent\":\"first\",\"traceparent\":\"second\",")]
+    public void DuplicateProperties_FailBeforeInterpretation(string marker, string duplicate)
+    {
+        var bundle = Cp6ContractBundle.Load(ContractRoot);
+        var raw = File.ReadAllText(bundle.GetAssetPath(Assert.Single(bundle.Entries).Examples[0].Path));
+        var changed = raw.Insert(raw.IndexOf(marker, StringComparison.Ordinal), duplicate);
+        var result = new Cp6CloudEventValidator(bundle).Validate(Encoding.UTF8.GetBytes(changed));
+        Assert.False(result.IsValid);
+        Assert.Equal(Cp6EventValidationFailure.MalformedJson, result.Failure);
+        Assert.Null(result.CloudEvent);
+    }
+
+    [Fact]
+    public void CorrectEventTypeWithWrongSchemaId_IsRejected()
+    {
+        var bundle = Cp6ContractBundle.Load(ContractRoot);
+        var entry = Assert.Single(bundle.Entries);
+        var raw = File.ReadAllText(bundle.GetAssetPath(entry.Examples[0].Path));
+        var changed = raw.Replace(entry.SchemaId, "https://contracts.cp6.uk/events/platform/other/v1/schema.json", StringComparison.Ordinal);
+        Assert.NotEqual(raw, changed);
+        var result = new Cp6CloudEventValidator(bundle).Validate(Encoding.UTF8.GetBytes(changed));
+        Assert.Equal(Cp6EventValidationFailure.UnknownContract, result.Failure);
+        Assert.Null(result.CloudEvent);
+    }
+
+    [Fact]
+    public void PinnedBundle_RequiresExactManifestAndVersion()
+    {
+        var bytes = File.ReadAllBytes(Path.Combine(ContractRoot, Cp6ContractBundle.IndexFileName));
+        var hash = Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
+        var pinned = Cp6ContractBundle.Load(ContractRoot, "1.0.0", hash);
+        Assert.Equal("1.0.0", pinned.BundleVersion);
+        Assert.Throws<InvalidDataException>(() => Cp6ContractBundle.Load(ContractRoot, "1.1.0", hash));
+        Assert.Throws<InvalidDataException>(() => Cp6ContractBundle.Load(ContractRoot, "1.0.0", new string('0', 64)));
+        WithCopiedBundle(root =>
+        {
+            File.AppendAllText(Path.Combine(root, Cp6ContractBundle.IndexFileName), " ");
+            Assert.Throws<InvalidDataException>(() => Cp6ContractBundle.Load(root, "1.0.0", hash));
+        });
+    }
+
+    [Fact]
+    public void Manifest_DuplicatePropertiesAreRejectedEvenWithoutExplicitPin()
+    {
+        WithCopiedBundle(root =>
+        {
+            var path = Path.Combine(root, Cp6ContractBundle.IndexFileName);
+            var raw = File.ReadAllText(path);
+            File.WriteAllText(path, raw.Insert(raw.IndexOf('"'), "\"bundleVersion\":\"9.0.0\","));
+            Assert.Throws<JsonException>(() => Cp6ContractBundle.Load(root));
+        });
+    }
+
+    [Theory]
+    [InlineData("schema")]
+    [InlineData("manifest")]
+    [InlineData("duplicate-type")]
+    public void OriginalBundleRules_RejectSchemaHashMetadataAndDuplicateType(string change)
+    {
+        WithCopiedBundle(root =>
+        {
+            var path = Path.Combine(root, Cp6ContractBundle.IndexFileName);
+            var manifest = System.Text.Json.Nodes.JsonNode.Parse(File.ReadAllText(path))!;
+            var entry = manifest["entries"]![0]!;
+            if (change == "schema") File.AppendAllText(Path.Combine(root, entry["schemaPath"]!.GetValue<string>()), " ");
+            else if (change == "manifest") entry["schemaId"] = "https://contracts.cp6.uk/events/platform/wrong/v1/schema.json";
+            else manifest["entries"]!.AsArray().Add(entry.DeepClone());
+            File.WriteAllText(path, manifest.ToJsonString());
+            var error = Record.Exception(() => Cp6ContractBundle.Load(root));
+            Assert.True(error is InvalidDataException or Json.Schema.JsonSchemaException);
+        });
+    }
+
+    private static void WithCopiedBundle(Action<string> test)
+    {
+        var root = Path.Combine(Path.GetTempPath(), $"cp6-s01-bundle-{Guid.NewGuid():N}");
+        Directory.CreateDirectory(root);
+        try
+        {
+            foreach (var source in Directory.GetFiles(ContractRoot, "*", SearchOption.AllDirectories))
+            {
+                var target = Path.Combine(root, Path.GetRelativePath(ContractRoot, source));
+                Directory.CreateDirectory(Path.GetDirectoryName(target)!);
+                File.Copy(source, target);
+            }
+            test(root);
+        }
+        finally { Directory.Delete(root, recursive: true); }
     }
 
     private static string FindContractRoot()

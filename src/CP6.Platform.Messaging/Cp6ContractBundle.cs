@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using CP6.Platform.Messaging.NativeContracts;
 using Json.Schema;
 
 namespace CP6.Platform.Messaging;
@@ -41,7 +42,16 @@ public sealed class Cp6ContractBundle
 
     public IReadOnlyList<Cp6ContractBundleEntry> Entries { get; }
 
-    public static Cp6ContractBundle Load(string rootDirectory)
+    public static Cp6ContractBundle Load(string rootDirectory, string expectedBundleVersion, string expectedManifestSha256)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(expectedBundleVersion);
+        ArgumentException.ThrowIfNullOrWhiteSpace(expectedManifestSha256);
+        return LoadCore(rootDirectory, expectedBundleVersion, expectedManifestSha256);
+    }
+
+    public static Cp6ContractBundle Load(string rootDirectory) => LoadCore(rootDirectory, null, null);
+
+    private static Cp6ContractBundle LoadCore(string rootDirectory, string? expectedBundleVersion, string? expectedManifestSha256)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(rootDirectory);
         var root = Path.GetFullPath(rootDirectory);
@@ -56,9 +66,19 @@ public sealed class Cp6ContractBundle
             throw new InvalidDataException($"Contract bundle index is missing: {IndexFileName}");
         }
 
-        var manifest = JsonSerializer.Deserialize<BundleManifest>(File.ReadAllText(indexPath), SerializerOptions)
+        var manifestBytes = File.ReadAllBytes(indexPath);
+        if (expectedManifestSha256 is not null)
+        {
+            VerifyHash(manifestBytes, expectedManifestSha256, IndexFileName);
+        }
+        using var manifestDocument = Cp6NativeJson.Parse(manifestBytes);
+        var manifest = manifestDocument.RootElement.Deserialize<BundleManifest>(SerializerOptions)
             ?? throw new InvalidDataException("Contract bundle index is empty.");
         ValidateManifest(manifest);
+        if (expectedBundleVersion is not null && manifest.BundleVersion != expectedBundleVersion)
+        {
+            throw new InvalidDataException("Contract bundle version does not match the configured version.");
+        }
 
         var entries = new List<Cp6ContractBundleEntry>(manifest.Entries.Count);
         var schemas = new Dictionary<string, JsonSchema>(StringComparer.Ordinal);
@@ -210,17 +230,19 @@ public sealed class Cp6ContractBundle
     }
 
     private static void VerifyHash(string path, string expectedHash)
+        => VerifyHash(File.ReadAllBytes(path), expectedHash, Path.GetFileName(path));
+
+    private static void VerifyHash(ReadOnlySpan<byte> bytes, string expectedHash, string assetName)
     {
         if (expectedHash.Length != 64 || expectedHash.Any(character => !Uri.IsHexDigit(character)))
         {
-            throw new InvalidDataException($"Asset hash is not a SHA-256 value: {Path.GetFileName(path)}");
+            throw new InvalidDataException($"Asset hash is not a SHA-256 value: {assetName}");
         }
 
-        using var stream = File.OpenRead(path);
-        var actualHash = Convert.ToHexString(SHA256.HashData(stream)).ToLowerInvariant();
+        var actualHash = Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant();
         if (!string.Equals(actualHash, expectedHash, StringComparison.Ordinal))
         {
-            throw new InvalidDataException($"Contract bundle asset hash mismatch: {Path.GetFileName(path)}");
+            throw new InvalidDataException($"Contract bundle asset hash mismatch: {assetName}");
         }
     }
 
