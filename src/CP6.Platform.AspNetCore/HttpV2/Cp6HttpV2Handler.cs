@@ -110,6 +110,7 @@ public sealed class Cp6HttpV2Handler : DelegatingHandler
                 var category = Cp6HttpV2Failure.None;
                 var observedUtc = operationClock.GetUtcNow(); var observedTimestamp = operationClock.GetTimestamp();
                 var observedResponse = false;
+                HttpStatusCode? observedStatus = null;
                 string[]? retryAfterValues = null;
                 try
                 {
@@ -146,6 +147,7 @@ public sealed class Cp6HttpV2Handler : DelegatingHandler
                             }
                             observedUtc = operationClock.GetUtcNow(); observedTimestamp = operationClock.GetTimestamp();
                             observedResponse = true;
+                            observedStatus = received.StatusCode;
                             retryAfterValues = received.Headers.TryGetValues("Retry-After", out var receivedValues) ? receivedValues.Take(2).ToArray() : null;
                             try
                             {
@@ -176,8 +178,10 @@ public sealed class Cp6HttpV2Handler : DelegatingHandler
                 if (failure is not null && !observedResponse)
                 { observedUtc = operationClock.GetUtcNow(); observedTimestamp = operationClock.GetTimestamp(); }
 
-                var transient = failure is HttpRequestException || category == Cp6HttpV2Failure.AttemptTimeout ||
-                    response is not null && IsTransient(response.StatusCode);
+                // A failed body cannot turn a known authorization/business rejection into a replayable failure.
+                var rejected = observedStatus is { } status && (int)status >= 400 && !IsTransient(status);
+                var transient = !rejected && (failure is HttpRequestException || category == Cp6HttpV2Failure.AttemptTimeout ||
+                    response is not null && IsTransient(response.StatusCode));
                 if (response is not null && !transient)
                 {
                     state = Cp6HttpOperationState.ResponseReceived;
