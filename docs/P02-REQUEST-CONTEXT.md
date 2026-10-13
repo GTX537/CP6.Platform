@@ -136,3 +136,9 @@ P02 只发布包含真实运行时程序集的三个包：
 ## 8. 后续边界
 
 P02 不验证 JWT、JWKS、issuer、audience 或签名，不生成 ProblemDetails，也不决定 API 资源授权；这些属于 P03 及业务模块。P02 只承载已经由可信边界形成的数据并阻止缺失上下文继续执行。
+
+## 9. WP02-01 独立可信绑定扩展（2026-10-13）
+
+本节记录后续源码能力，不改写上文 P02 的历史包版本/发布范围。新增 `ctx-binding-v1` 以 host verifier + 当前登记 authority 绑定 tenant/issuer/actor/effectiveActor、用途和最小 scope，供 HTTP、消息和后台显式选择。原 `ctx-v1` 七字段、resolver 签名、缺/非法 snapshot 403、JWT 与 CloudEvent 合同保留；旧入口不产生新版 evidence。
+
+原 HTTP 入口采用同一显式 scope 实现，支持嵌套恢复、异步隔离和 finally 清理。新入口的认证/拒绝/权威不可用仅在进入业务之前映射 401/403/503；最终业务授权仍由 Owner 负责。详细签名、依赖、采用前提、真实宿主 NOT_RUN 与测试证据见 [WP02-01](WP02-01-TRUSTED-CONTEXT.md)。本次没有发布包或迁移/部署任何宿主。

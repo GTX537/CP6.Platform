@@ -99,6 +99,53 @@ public sealed class RequestContextMiddlewareTests
         Assert.NotEqual(attackerTenant, observedTenant);
     }
 
+    [Fact]
+    public async Task NestedLegacyInvocation_RestoresOuterContext()
+    {
+        var snapshot = ValidSnapshot();
+        await using var provider = BuildProvider(snapshot);
+        await using var scope = provider.CreateAsyncScope();
+        var accessor = scope.ServiceProvider.GetRequiredService<IRequestContextAccessor>();
+        var resolver = scope.ServiceProvider.GetRequiredService<IRequestContextResolver>();
+        var outer = new RequestContextMiddleware(async _ =>
+        {
+            var original = accessor.Current;
+            var inner = new RequestContextMiddleware(_ =>
+            {
+                Assert.NotSame(original, accessor.Current);
+                return Task.CompletedTask;
+            });
+            await inner.InvokeAsync(new DefaultHttpContext(), resolver, accessor);
+            Assert.Same(original, accessor.Current);
+        });
+        await outer.InvokeAsync(new DefaultHttpContext(), resolver, accessor);
+        Assert.Null(accessor.Current);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public async Task HandlerExceptionOrCancellation_ClearsLegacyContext(bool cancel)
+    {
+        await using var provider = BuildProvider(ValidSnapshot());
+        await using var scope = provider.CreateAsyncScope();
+        var accessor = scope.ServiceProvider.GetRequiredService<IRequestContextAccessor>();
+        using var cts = new CancellationTokenSource();
+        var middleware = new RequestContextMiddleware(_ =>
+        {
+            Assert.NotNull(accessor.Current);
+            if (!cancel) throw new InvalidOperationException("fixture failure");
+            cts.Cancel();
+            cts.Token.ThrowIfCancellationRequested();
+            return Task.CompletedTask;
+        });
+        Task Run() => middleware.InvokeAsync(new DefaultHttpContext { RequestAborted = cts.Token },
+            scope.ServiceProvider.GetRequiredService<IRequestContextResolver>(), accessor);
+        if (cancel) await Assert.ThrowsAnyAsync<OperationCanceledException>(Run);
+        else await Assert.ThrowsAsync<InvalidOperationException>(Run);
+        Assert.Null(accessor.Current);
+    }
+
     private static ServiceProvider BuildProvider(RequestContextSnapshot? snapshot)
     {
         var services = new ServiceCollection();

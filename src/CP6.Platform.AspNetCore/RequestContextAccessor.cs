@@ -1,10 +1,11 @@
 using CP6.Platform.Abstractions;
+using CP6.Platform.Abstractions.Context;
 
 namespace CP6.Platform.AspNetCore;
 
-internal sealed class RequestContextAccessor : IRequestContextAccessor
+internal sealed class RequestContextAccessor(ContextScopeAccessorV1 scopes) : IRequestContextAccessor
 {
-    public IRequestContext? Current { get; private set; }
+    public IRequestContext? Current => scopes.Current;
 
-    internal void Set(IRequestContext? context) => Current = context;
+    internal ContextScopeAccessorV1 Scopes => scopes;
 }

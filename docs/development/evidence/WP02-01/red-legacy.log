@@ -1,0 +1,29 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.AspNetCoreTests -> D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.29]     CP6.Platform.AspNetCoreTests.RequestContextMiddlewareTests.NestedLegacyInvocation_RestoresOuterContext [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.RequestContextMiddlewareTests.NestedLegacyInvocation_RestoresOuterContext [4 ms]
+  Error Message:
+   Assert.Same() Failure: Values are not the same instance
+Expected: RequestContext { Audience = "audience", CorrelationId = "correlation", IsPublic = False, Subject = "subject", TenantId = 9b5360fb-6194-4dd6-b6e5-06835d898b70, ··· }
+Actual:   null
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.RequestContextMiddlewareTests.<>c__DisplayClass4_0.<<NestedLegacyInvocation_RestoresOuterContext>b__0>d.MoveNext() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.AspNetCoreTests\RequestContextMiddlewareTests.cs:line 119
+--- End of stack trace from previous location ---
+   at CP6.Platform.AspNetCore.RequestContextMiddleware.InvokeAsync(HttpContext httpContext, IRequestContextResolver resolver, IRequestContextAccessor accessor) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.AspNetCore\RequestContextMiddleware.cs:line 44
+   at CP6.Platform.AspNetCoreTests.RequestContextMiddlewareTests.NestedLegacyInvocation_RestoresOuterContext() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.AspNetCoreTests\RequestContextMiddlewareTests.cs:line 121
+   at CP6.Platform.AspNetCoreTests.RequestContextMiddlewareTests.NestedLegacyInvocation_RestoresOuterContext() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.AspNetCoreTests\RequestContextMiddlewareTests.cs:line 122
+   at CP6.Platform.AspNetCoreTests.RequestContextMiddlewareTests.NestedLegacyInvocation_RestoresOuterContext() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.AspNetCoreTests\RequestContextMiddlewareTests.cs:line 122
+--- End of stack trace from previous location ---
+Results File: D:\CP6.Platform-worktrees\wp02-01-20261012\docs\development\evidence\WP02-01\test-results\red-legacy.trx
+
+Failed!  - Failed:     1, Passed:     6, Skipped:     0, Total:     7, Duration: 92 ms - CP6.Platform.AspNetCoreTests.dll (net8.0)

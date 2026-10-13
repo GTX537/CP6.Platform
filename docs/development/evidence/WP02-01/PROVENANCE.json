@@ -1,0 +1,102 @@
+{
+  "task": "WP02-01",
+  "main_source": "e6ccc89b3e62c7ed2c3d4739757b6ae9f4490c47",
+  "assignment": "e20740e37e20bc0210e0b32c5670c2bce962002a",
+  "platform_baseline": "dc4c0ab216974339ab3c2cebaaf4bb92c9e9b351",
+  "input_package": "CP6-S01-CONTRACT-INPUTS/1.0.0",
+  "directly_assigned_fixed_vectors": 0,
+  "sources": [
+    {
+      "repository": "Main",
+      "commit": "e6ccc89b3e62c7ed2c3d4739757b6ae9f4490c47",
+      "path": "docs/development/assessments/20261011/catalogs/foundation.json",
+      "representation": "GIT_BLOB_BYTES",
+      "sha256": "6af601f92d8a3f3b347358313bd6d3c199581a0fd93650b3c6c7090249329417",
+      "verified": true
+    },
+    {
+      "repository": "Main",
+      "commit": "e6ccc89b3e62c7ed2c3d4739757b6ae9f4490c47",
+      "path": "docs/design-handbook/modules/PLT-CTX-01.md",
+      "representation": "GIT_BLOB_BYTES",
+      "sha256": "b7587dd2f62a2810212b8fdc7558cbac65262bd7e8a96418f6e5c0885cda97d4",
+      "verified": true
+    },
+    {
+      "repository": "Main",
+      "commit": "e6ccc89b3e62c7ed2c3d4739757b6ae9f4490c47",
+      "path": "docs/design-handbook/architecture/02-postgresql-tenancy.md",
+      "representation": "GIT_BLOB_BYTES",
+      "sha256": "dfcaea44365d92f7457db783908dd8eb6f1eaa7651c67016bdff68281a0148c3",
+      "verified": true
+    },
+    {
+      "repository": "Main",
+      "commit": "e6ccc89b3e62c7ed2c3d4739757b6ae9f4490c47",
+      "path": "docs/development/acceptance/postgresql-tenancy.json",
+      "representation": "GIT_BLOB_BYTES",
+      "sha256": "b56363bd547034d45e5556bf112b41f71cbb4d7b9dc565de25876d297deefbd5",
+      "verified": true
+    },
+    {
+      "repository": "Platform",
+      "commit": "dc4c0ab216974339ab3c2cebaaf4bb92c9e9b351",
+      "path": "src/CP6.Platform.AspNetCore/RequestContextMiddleware.cs",
+      "representation": "GIT_BLOB_BYTES",
+      "sha256": "0a586bbf0fe0b983514b4e45e8124729f38aa065ebee3b92a8c446e2dc95e211",
+      "verified": true
+    },
+    {
+      "repository": "Main",
+      "commit": "e20740e37e20bc0210e0b32c5670c2bce962002a",
+      "path": "docs/development/evidence/wave4-dispatch-20261013/WP02-01-admission.md",
+      "representation": "GIT_BLOB_BYTES",
+      "sha256": "dcae64d48bb43ab92bb2be81d37a33f38ee37edbc7ae293b298c08e5d78721ba",
+      "verified": true
+    },
+    {
+      "repository": "Main",
+      "commit": "e20740e37e20bc0210e0b32c5670c2bce962002a",
+      "path": "docs/development/evidence/wave4-dispatch-20261013/WP02-01-admission.json",
+      "representation": "GIT_BLOB_BYTES",
+      "sha256": "e9c80a5c5585152d8851c40948311614578439c32dc6b284fa933e7081bf490c",
+      "verified": true
+    },
+    {
+      "repository": "Main",
+      "commit": "e6ccc89b3e62c7ed2c3d4739757b6ae9f4490c47",
+      "path": "eng/contracts/s01/profile-inputs.json",
+      "representation": "GIT_BLOB_BYTES",
+      "sha256": "2c221a04333cd5e0beba8d12a7aecbb08cbc80caa5faa74b22313045ce420e5e",
+      "verified": true
+    },
+    {
+      "repository": "Main",
+      "commit": "e6ccc89b3e62c7ed2c3d4739757b6ae9f4490c47",
+      "path": "eng/contracts/s01/vectors.json",
+      "representation": "GIT_BLOB_BYTES",
+      "sha256": "b9a63a1512da2d2374e95d49d9f69c8636d06465f88a47862dc3604605d5be01",
+      "verified": true
+    },
+    {
+      "repository": "Main",
+      "commit": "e6ccc89b3e62c7ed2c3d4739757b6ae9f4490c47",
+      "path": "eng/contracts/s01/README.md",
+      "representation": "GIT_BLOB_BYTES",
+      "sha256": "9058ef80ee531bf7503adc3854e4ae3b4b3fea61ec0eaed65323d88b601b8ff3",
+      "verified": true
+    },
+    {
+      "repository": "Main archive",
+      "path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+      "representation": "ARCHIVE_RAW_BYTES",
+      "sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+      "verified": true
+    }
+  ],
+  "start_handoff": {
+    "commit": "bbfebdd46d97fee3ac6cf10dbbf6e937220e0c0b",
+    "raw_sha256": "c1d474e7132ae9da34d75a491d5607ea8dda643d3887089f8122e70de6ad4ed9",
+    "remote_raw_verified": true
+  }
+}

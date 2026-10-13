@@ -1,0 +1,287 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.UnitTests -> D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\bin\Release\net8.0\CP6.Platform.UnitTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\bin\Release\net8.0\CP6.Platform.UnitTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.43]     CP6.Platform.UnitTests.Context.ContextScopeTests.ResolutionMasksOuterContext_AndLegacyDoesNotInheritTrustedEvidence [FAIL]
+[xUnit.net 00:00:00.44]     CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "revoked") [FAIL]
+[xUnit.net 00:00:00.44]     CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "cross-actor") [FAIL]
+[xUnit.net 00:00:00.44]     CP6.Platform.UnitTests.Context.ContextScopeTests.ExceptionsDuringEachPhase_ClearScopeAndRestoreOuter(phase: "verifier") [FAIL]
+[xUnit.net 00:00:00.44]     CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "empty-tenant") [FAIL]
+[xUnit.net 00:00:00.44]     CP6.Platform.UnitTests.Context.ContextScopeTests.ExceptionsDuringEachPhase_ClearScopeAndRestoreOuter(phase: "authority") [FAIL]
+[xUnit.net 00:00:00.44]     CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "scope") [FAIL]
+[xUnit.net 00:00:00.44]     CP6.Platform.UnitTests.Context.ContextScopeTests.ExceptionsDuringEachPhase_ClearScopeAndRestoreOuter(phase: "handler") [FAIL]
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.ResolutionMasksOuterContext_AndLegacyDoesNotInheritTrustedEvidence [155 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.ResolutionMasksOuterContext_AndLegacyDoesNotInheritTrustedEvidence() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 133
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "revoked") [157 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Abstractions.Context.ContextResolutionExceptionV1)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(String invalid) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.TrustedContextTests.<>c__DisplayClass1_0.<UntrustedOrMismatchedBinding_RejectsBeforeHandler>b__0() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+  Failed CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "cross-actor") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Abstractions.Context.ContextResolutionExceptionV1)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(String invalid) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.TrustedContextTests.<>c__DisplayClass1_0.<UntrustedOrMismatchedBinding_RejectsBeforeHandler>b__0() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.ExceptionsDuringEachPhase_ClearScopeAndRestoreOuter(phase: "verifier") [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.ExceptionsDuringEachPhase_ClearScopeAndRestoreOuter(String phase) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 84
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "empty-tenant") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Abstractions.Context.ContextResolutionExceptionV1)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(String invalid) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.TrustedContextTests.<>c__DisplayClass1_0.<UntrustedOrMismatchedBinding_RejectsBeforeHandler>b__0() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.ExceptionsDuringEachPhase_ClearScopeAndRestoreOuter(phase: "authority") [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.ExceptionsDuringEachPhase_ClearScopeAndRestoreOuter(String phase) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 84
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "scope") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Abstractions.Context.ContextResolutionExceptionV1)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(String invalid) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.TrustedContextTests.<>c__DisplayClass1_0.<UntrustedOrMismatchedBinding_RejectsBeforeHandler>b__0() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.ExceptionsDuringEachPhase_ClearScopeAndRestoreOuter(phase: "handler") [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.ExceptionsDuringEachPhase_ClearScopeAndRestoreOuter(String phase) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 84
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:00.47]     CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "fake-issuer") [FAIL]
+[xUnit.net 00:00:00.47]     CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "unregistered-region") [FAIL]
+[xUnit.net 00:00:00.47]     CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "cross-tenant") [FAIL]
+[xUnit.net 00:00:00.47]     CP6.Platform.UnitTests.Context.ContextScopeTests.OverlappingAsyncOperations_OnSameAccessor_KeepSeparateTenants [FAIL]
+[xUnit.net 00:00:00.47]     CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "cross-effective-actor") [FAIL]
+[xUnit.net 00:00:00.47]     CP6.Platform.UnitTests.Context.TrustedContextTests.MissingAuthenticatedSource_RejectsWithoutAuthorityOrBusiness [FAIL]
+[xUnit.net 00:00:00.47]     CP6.Platform.UnitTests.Context.TrustedContextTests.ValidBinding_ExposesExactContextAndLeastScopes_ThenRevokes [FAIL]
+[xUnit.net 00:00:00.47]     CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(phase: "handler") [FAIL]
+[xUnit.net 00:00:00.48]     CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(phase: "verifier") [FAIL]
+  Failed CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "fake-issuer") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Abstractions.Context.ContextResolutionExceptionV1)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(String invalid) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.TrustedContextTests.<>c__DisplayClass1_0.<UntrustedOrMismatchedBinding_RejectsBeforeHandler>b__0() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+  Failed CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "unregistered-region") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Abstractions.Context.ContextResolutionExceptionV1)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(String invalid) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.TrustedContextTests.<>c__DisplayClass1_0.<UntrustedOrMismatchedBinding_RejectsBeforeHandler>b__0() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+  Failed CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "cross-tenant") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Abstractions.Context.ContextResolutionExceptionV1)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(String invalid) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.TrustedContextTests.<>c__DisplayClass1_0.<UntrustedOrMismatchedBinding_RejectsBeforeHandler>b__0() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.OverlappingAsyncOperations_OnSameAccessor_KeepSeparateTenants [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.<>c__DisplayClass1_0.<<OverlappingAsyncOperations_OnSameAccessor_KeepSeparateTenants>g__Observe|0>d.MoveNext() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 39
+--- End of stack trace from previous location ---
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.OverlappingAsyncOperations_OnSameAccessor_KeepSeparateTenants() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 49
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(invalid: "cross-effective-actor") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Abstractions.Context.ContextResolutionExceptionV1)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.TrustedContextTests.UntrustedOrMismatchedBinding_RejectsBeforeHandler(String invalid) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.TrustedContextTests.<>c__DisplayClass1_0.<UntrustedOrMismatchedBinding_RejectsBeforeHandler>b__0() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 62
+  Failed CP6.Platform.UnitTests.Context.TrustedContextTests.MissingAuthenticatedSource_RejectsWithoutAuthorityOrBusiness [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Abstractions.Context.ContextResolutionExceptionV1)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.TrustedContextTests.MissingAuthenticatedSource_RejectsWithoutAuthorityOrBusiness() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 73
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.TrustedContextTests.<>c__DisplayClass2_0.<MissingAuthenticatedSource_RejectsWithoutAuthorityOrBusiness>b__0() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 73
+  Failed CP6.Platform.UnitTests.Context.TrustedContextTests.ValidBinding_ExposesExactContextAndLeastScopes_ThenRevokes [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.TrustedContextTests.ValidBinding_ExposesExactContextAndLeastScopes_ThenRevokes() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\TrustedContextTests.cs:line 12
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(phase: "handler") [1 ms]
+  Error Message:
+   Assert.ThrowsAny() Failure: Exception type was not compatible
+Expected: typeof(System.OperationCanceledException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(String phase) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 118
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.<>c__DisplayClass4_0.<CancellationInEachPhase_PropagatesAndClears>b__2() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 118
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(phase: "verifier") [< 1 ms]
+  Error Message:
+   Assert.ThrowsAny() Failure: Exception type was not compatible
+Expected: typeof(System.OperationCanceledException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(String phase) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 118
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.<>c__DisplayClass4_0.<CancellationInEachPhase_PropagatesAndClears>b__2() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 118
+[xUnit.net 00:00:00.48]     CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(phase: "authority") [FAIL]
+[xUnit.net 00:00:00.48]     CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(phase: "before") [FAIL]
+[xUnit.net 00:00:00.48]     CP6.Platform.UnitTests.Context.ContextScopeTests.CapturedChildExecutionContext_IsRevokedAfterParentScopeEnds [FAIL]
+[xUnit.net 00:00:00.48]     CP6.Platform.UnitTests.Context.ContextScopeTests.LegacyNullOrInvalidSnapshot_DoesNotInvokeHandlerOrLeak(invalid: False) [FAIL]
+[xUnit.net 00:00:00.48]     CP6.Platform.UnitTests.Context.ContextScopeTests.LegacyNullOrInvalidSnapshot_DoesNotInvokeHandlerOrLeak(invalid: True) [FAIL]
+[xUnit.net 00:00:00.48]     CP6.Platform.UnitTests.Context.ContextScopeTests.SerialAndNested_ABA_RestoreOuterAndClearTopLevel [FAIL]
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(phase: "authority") [< 1 ms]
+  Error Message:
+   Assert.ThrowsAny() Failure: Exception type was not compatible
+Expected: typeof(System.OperationCanceledException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(String phase) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 118
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.<>c__DisplayClass4_0.<CancellationInEachPhase_PropagatesAndClears>b__2() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 118
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(phase: "before") [< 1 ms]
+  Error Message:
+   Assert.ThrowsAny() Failure: Exception type was not compatible
+Expected: typeof(System.OperationCanceledException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.UnitTests.Context.ContextScopeTests.CancellationInEachPhase_PropagatesAndClears(String phase) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 118
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.<>c__DisplayClass4_0.<CancellationInEachPhase_PropagatesAndClears>b__2() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 118
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.CapturedChildExecutionContext_IsRevokedAfterParentScopeEnds [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.CapturedChildExecutionContext_IsRevokedAfterParentScopeEnds() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 59
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.LegacyNullOrInvalidSnapshot_DoesNotInvokeHandlerOrLeak(invalid: False) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteLegacyAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs:line 13
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.LegacyNullOrInvalidSnapshot_DoesNotInvokeHandlerOrLeak(Boolean invalid) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 159
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.LegacyNullOrInvalidSnapshot_DoesNotInvokeHandlerOrLeak(invalid: True) [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteLegacyAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs:line 13
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.LegacyNullOrInvalidSnapshot_DoesNotInvokeHandlerOrLeak(Boolean invalid) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 159
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.UnitTests.Context.ContextScopeTests.SerialAndNested_ABA_RestoreOuterAndClearTopLevel [< 1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Abstractions.Context.TrustedContextExecutorV1.ExecuteAsync[TInput](ContextEntryKindV1 expectedKind, TInput input, IContextSourceVerifierV1`1 verifier, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\src\CP6.Platform.Abstractions\Context\TrustedContextExecutorV1.cs:line 16
+   at CP6.Platform.UnitTests.Context.ContextFixture.Run(Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextFixture.cs:line 54
+   at CP6.Platform.UnitTests.Context.ContextScopeTests.SerialAndNested_ABA_RestoreOuterAndClearTopLevel() in D:\CP6.Platform-worktrees\wp02-01-20261012\tests\CP6.Platform.UnitTests\Context\ContextScopeTests.cs:line 15
+--- End of stack trace from previous location ---
+Results File: D:\CP6.Platform-worktrees\wp02-01-20261012\docs\development\evidence\WP02-01\test-results\red-scope.trx
+
+Failed!  - Failed:    23, Passed:     0, Skipped:     0, Total:    23, Duration: 223 ms - CP6.Platform.UnitTests.dll (net8.0)

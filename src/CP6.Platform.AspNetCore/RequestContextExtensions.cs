@@ -1,6 +1,8 @@
 using CP6.Platform.Abstractions;
+using CP6.Platform.Abstractions.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace CP6.Platform.AspNetCore;
 
@@ -14,8 +16,10 @@ public static class RequestContextExtensions
     {
         ArgumentNullException.ThrowIfNull(services);
 
-        services.AddScoped<RequestContextAccessor>();
+        services.TryAddScoped<ContextScopeAccessorV1>();
+        services.TryAddScoped<RequestContextAccessor>();
         services.AddScoped<IRequestContextAccessor>(provider => provider.GetRequiredService<RequestContextAccessor>());
+        services.TryAddScoped<ITrustedContextAccessorV1>(provider => provider.GetRequiredService<ContextScopeAccessorV1>());
         services.AddScoped<IRequestContextResolver, TResolver>();
         return services;
     }

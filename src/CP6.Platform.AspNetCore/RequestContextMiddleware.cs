@@ -22,30 +22,11 @@ public sealed class RequestContextMiddleware(RequestDelegate next)
             throw new InvalidOperationException("The CP6 request context services were not registered correctly.");
         }
 
-        try
+        var established = await mutableAccessor.Scopes.ExecuteLegacyAsync(
+            ct => resolver.ResolveAsync(httpContext, ct), _ => next(httpContext), httpContext.RequestAborted);
+        if (!established)
         {
-            var snapshot = await resolver.ResolveAsync(httpContext, httpContext.RequestAborted);
-            if (snapshot is null)
-            {
-                httpContext.Response.StatusCode = StatusCodes.Status403Forbidden;
-                return;
-            }
-
-            try
-            {
-                mutableAccessor.Set(new RequestContext(snapshot));
-            }
-            catch (ArgumentException)
-            {
-                httpContext.Response.StatusCode = StatusCodes.Status403Forbidden;
-                return;
-            }
-
-            await next(httpContext);
-        }
-        finally
-        {
-            mutableAccessor.Set(null);
+            httpContext.Response.StatusCode = StatusCodes.Status403Forbidden;
         }
     }
 }

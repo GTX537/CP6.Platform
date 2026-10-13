@@ -1,0 +1,861 @@
+{
+  "task": "WP02-01",
+  "original_case_count": 28,
+  "original_cases": [
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX01-A1",
+        "source_case_id": "CTX01-A1",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 56,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "可信resolver成功时应用观察精确快照且结束Current为空",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "ValidBinding_ExposesExactContextAndLeastScopes_ThenRevokes",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "TrustedResolver_EstablishesReadOnlyContext_ThenClearsIt",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-http.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Main/CRM real verifier and precise runtime snapshot evidence",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX01-A2",
+        "source_case_id": "CTX01-A2",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 56,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "null/Empty tenant拒绝且业务未进入",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "UntrustedOrMismatchedBinding_RejectsBeforeHandler",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 8,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "LegacyNullOrInvalidSnapshot_DoesNotInvokeHandlerOrLeak",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 2,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "MissingContext_FailsClosed_AndDoesNotInvokeApplication",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-http.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Main/CRM actual business ingress rejection and PostgreSQL connection/write counts",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX01-A3",
+        "source_case_id": "CTX01-A3",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 56,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "异常和取消清理，不串下个请求",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "SerialAndNested_ABA_RestoreOuterAndClearTopLevel",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "OverlappingAsyncOperations_OnSameAccessor_KeepSeparateTenants",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "CapturedChildExecutionContext_IsRevokedAfterParentScopeEnds",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "ExceptionsDuringEachPhase_ClearScopeAndRestoreOuter",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 3,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "CancellationInEachPhase_PropagatesAndClears",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 4,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "PendingAuthorityCancellation_ClearsMaskedNestedScopeAndRestoresOuter",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Each real host's cancellation, exception and reuse paths",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX01-A4",
+        "source_case_id": "CTX01-A4",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 56,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "浏览器tenant/actor字段不能覆盖可信绑定",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "OptInRegistration_SharesAccessor_AndIgnoresCallerTenantIssuerActor",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 2,
+          "evidence": [
+            "full-http.trx"
+          ]
+        },
+        {
+          "test": "UntrustedOrMismatchedBinding_RejectsBeforeHandler",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 8,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Main/CRM trusted production adapters, authenticated actor to tenant mapping and UI requests",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX01-A5",
+        "source_case_id": "CTX01-A5",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 56,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "worker独立scope与当前service身份，历史requester不冒执行身份",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "EachRetry_ReverifiesCurrentServiceAndRegistration_NotHistoricalRequester",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 2,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "NonHttpEntry_RejectsHistoricalHumanOrPublicAsExecutor",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 4,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "EntryWrapper_RejectsCapturedHttpSource",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 2,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "MessageTraceAlone_CannotEstablishIdentity",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Real worker/job/producer credentials, queue retry adoption and current application registration",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX01-A6",
+        "source_case_id": "CTX01-A6",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 56,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "tenantless健康路径不构造假租户也不访问业务",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "ExplicitHealthBranch_BypassesBusinessContextWithoutInventingTenant",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-http.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Main/CRM actual health/business route split and zero business database connections",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX01-A7",
+        "source_case_id": "CTX01-A7",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 56,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "401/403/503分类和旧Host兼容准确，UI切组织后不回显旧资料",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "ResolutionFailures_FailClosedWithExplicitStatusAndNoSensitiveBody",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 3,
+          "evidence": [
+            "full-http.trx"
+          ]
+        },
+        {
+          "test": "HandlerTypedError_IsNotReclassifiedAsAuthenticationFailure",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-http.trx"
+          ]
+        },
+        {
+          "test": "MissingContext_FailsClosed_AndDoesNotInvokeApplication",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-http.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Actual JWT challenge and old host compatibility; UI organization switch/cache old-data regression",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX02-A1",
+        "source_case_id": "CTX02-A1",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 76,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "tenant GUID稳定且organizationId等值",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "InvalidCurrentRegistrationAndSource_NeverReachBusiness",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 20,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "IAM organization GUID lifecycle and tenant-directory persistence",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX02-A2",
+        "source_case_id": "CTX02-A2",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 76,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "未注册region或issuer不路由其他库",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "UntrustedOrMismatchedBinding_RejectsBeforeHandler",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 8,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "EvenMatchingRegistration_CannotLegalizeInvalidIssuer",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 7,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "IssuerComparison_IsExactAndDoesNotNormalizeTrailingSlashOrCase",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Authoritative registered region/issuer catalog and PostgreSQL routing/connection rejection",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX02-A3",
+        "source_case_id": "CTX02-A3",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 76,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "snapshot与数据库选择同登记版本可追溯",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "ValidBinding_ExposesExactContextAndLeastScopes_ThenRevokes",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "EachRetry_ReverifiesCurrentServiceAndRegistration_NotHistoricalRequester",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 2,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Owner DB resolver must use and trace the same registration version; not implemented by Context",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX02-A4",
+        "source_case_id": "CTX02-A4",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 76,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "暂停不改历史tenant，read与新作用分门",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "IAM suspension/history retention and Owner separate history-read/new-effect policies; do not globally disable legitimate reads",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX02-A5",
+        "source_case_id": "CTX02-A5",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 76,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "改slug不重建身份，改region不自动迁数据",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "IAM slug/region lifecycle and explicit data-migration process; no directory or migration implementation here",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX02-A6",
+        "source_case_id": "CTX02-A6",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 76,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "context snapshot保持原格式，旧消费者兼容缺evidence时不冒新版保证",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "Interface_IsExactlyTheApprovedReadOnlyContract",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "Constructor_PreservesTrustedValuesWithoutGeneratingDefaults",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "ResolutionMasksOuterContext_AndLegacyDoesNotInheritTrustedEvidence",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "HumanNullableIdentityAndOriginalStrings_ArePreservedWithoutNewLegacyLimits",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Old consumer serialized snapshot/CloudEvent/runtime adoption verification; evidence absence conveys no new guarantee",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX02-A7",
+        "source_case_id": "CTX02-A7",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 76,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "映射变化在提交门被识别，无同对象双库写",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "Owner final transaction gate, mapping epoch/version fencing and actual single-database writes",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX03-A1",
+        "source_case_id": "CTX03-A1",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "合法配置下有效service token经应用登记才获得相应范围",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "ValidBinding_ExposesExactContextAndLeastScopes_ThenRevokes",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "InvalidCurrentRegistrationAndSource_NeverReachBusiness",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 20,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "Collections_AreFrozenBeforeAuthorityAwait_AndEvidenceCannotBeMutated",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "P03 signature/profile and IAM actual service-token/application-registration integration",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX03-A2",
+        "source_case_id": "CTX03-A2",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "人类/服务audience分离且未知必需claim拒绝",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "InvalidCurrentRegistrationAndSource_NeverReachBusiness",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 20,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "NonHttpEntry_RejectsHistoricalHumanOrPublicAsExecutor",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 4,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Existing JWT required-claim enforcement and actual human/service distinct audience/profile configuration",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX03-A3",
+        "source_case_id": "CTX03-A3",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "过期/无有效key/不可用配置不扩大权限",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "InvalidCurrentRegistrationAndSource_NeverReachBusiness",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 20,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "AuthorityUnavailable_IsSafeTypedFailure_WithNoFallback",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "ExpiryIsCheckedAfterAuthorityAwait_NotBeforeIt",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Existing P03/JWKS key availability and real host configuration failure behavior",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX03-A4",
+        "source_case_id": "CTX03-A4",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "token signature有效但已撤销/tenant停用仍按当前应用门拒绝新作用",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "EachRetry_ReverifiesCurrentServiceAndRegistration_NotHistoricalRequester",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 2,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "UntrustedOrMismatchedBinding_RejectsBeforeHandler",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 8,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Real revocation provider and Owner final business gate for effects after context resolution",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX03-A5",
+        "source_case_id": "CTX03-A5",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "known rotation只在固定issuer/profile与有界缓存规则内",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "P03 existing fixed issuer/profile key rotation and bounded cache; no auth/cache changes",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX03-A6",
+        "source_case_id": "CTX03-A6",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "响应/日志无token/secret/PII泄露",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "ResolutionFailures_FailClosedWithExplicitStatusAndNoSensitiveBody",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 3,
+          "evidence": [
+            "full-http.trx"
+          ]
+        },
+        {
+          "test": "AuthorityUnavailable_IsSafeTypedFailure_WithNoFallback",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 1,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "All real host logs/traces/responses and PII audit; adapters must return opaque references, no credentials",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX03-A7",
+        "source_case_id": "CTX03-A7",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "原CRM browser与Main service profile没有被通用库误替换",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "CRM browser and Main service actual profile/runtime preservation; library does not register or replace authentication",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX04-A1",
+        "source_case_id": "CTX04-A1",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 114,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "同应用每个HTTP/worker/consumer入口各有精确adoption记录",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "Each actual HTTP/worker/consumer owner must create precise adoption record; see WP02-01 doc inventory",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX04-A2",
+        "source_case_id": "CTX04-A2",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 114,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "包/注册/启用/运行分层，RecordingStub不算生产",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "Package/reference/registration/enabled/runtime/business evidence separately required; fixture is not production",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX04-A3",
+        "source_case_id": "CTX04-A3",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 114,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "CRM浏览器、sidecar、Main service身份职责不混",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [
+        {
+          "test": "NonHttpEntry_RejectsHistoricalHumanOrPublicAsExecutor",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 4,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        },
+        {
+          "test": "EachRetry_ReverifiesCurrentServiceAndRegistration_NotHistoricalRequester",
+          "status": "PASS_LIBRARY_ONLY",
+          "matched_rows": 2,
+          "evidence": [
+            "full-unit.trx"
+          ]
+        }
+      ],
+      "remaining_owner_acceptance": "Real CRM browser/sidecar and Main service identity/profile boundaries",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX04-A4",
+        "source_case_id": "CTX04-A4",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 114,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "S6前置内容门之前无Duplicate/IgnoredOutOfOrder成功早退",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "Consumer S6 content gate ordering before Duplicate/IgnoredOutOfOrder; no consumer business change here",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX04-A5",
+        "source_case_id": "CTX04-A5",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 114,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "缺共同最终门只关闭相关新效果，合法历史读取保留",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "Owner missing-final-gate fail-closed new effects with legal historical reads retained",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX04-A6",
+        "source_case_id": "CTX04-A6",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 114,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "旧新单writer可追溯，不停旧consumer或自动发布包",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "Actual old/new writer inventory and transition proof; no old consumer stopped or package auto-published",
+      "original_acceptance_state": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-CTX-01::CTX04-A7",
+        "source_case_id": "CTX04-A7",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/26/265aecc406e50ca8__PLT-CTX-01_完整静态设计_v0.1.md",
+        "source_line": 114,
+        "source_sha256": "265aecc406e50ca8117d1823d09fac61fa5694894baecdaff31df87013f8eb6f",
+        "assertion": "typed replay三动作经应用Owner处理，Platform Context不能直接允许重排",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertions": [],
+      "remaining_owner_acceptance": "Owner typed replay three-action routing; no context permission to reorder",
+      "original_acceptance_state": "NOT_RUN"
+    }
+  ],
+  "postgresql_scenario": {
+    "id": "PGT-004",
+    "title": "缺失或伪造租户输入",
+    "actor": "无 tenant claim/非法 issuer 用户；A 用户自称 B",
+    "preconditions": [
+      "新业务路由与健康探针已分开"
+    ],
+    "request": "缺/空 tenant、未知 issuer/region、body/header schema 或 B tenant",
+    "steps": [
+      "分别请求新业务入口",
+      "再访问 tenantless 健康探针"
+    ],
+    "expected": [
+      "新业务在取得业务连接前拒绝，不回退 A1/public",
+      "健康探针不访问业务库",
+      "错误不泄露目录"
+    ],
+    "evidence_required": [
+      "安全响应",
+      "连接获取次数",
+      "实际 resolver 证据",
+      "无业务写集"
+    ],
+    "implementation_task": "WP02-01",
+    "source_scope": "CTX01-A2;CTX01-A4;CTX01-A6;CTX02-A2",
+    "status": "NOT_RUN",
+    "execution_evidence": []
+  },
+  "postgresql_execution": "NOT_RUN",
+  "target_done_claim": false
+}
