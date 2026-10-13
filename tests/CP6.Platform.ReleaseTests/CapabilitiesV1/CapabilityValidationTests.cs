@@ -46,6 +46,35 @@ public sealed class CapabilityValidationTests
         Assert.Throws<Cp6ReleaseContractException>(() => Cp6CapabilityValidator.ValidateShape(f.Bytes));
     }
 
+    [Theory]
+    [InlineData("x", true)]
+    [InlineData("xy", true)]
+    [InlineData("contracts/test.schema.json", true)]
+    [InlineData("", false)]
+    [InlineData("/", false)]
+    [InlineData("/x", false)]
+    [InlineData("x/", false)]
+    [InlineData("x//y", false)]
+    [InlineData(".", false)]
+    [InlineData("..", false)]
+    [InlineData("./x", false)]
+    [InlineData("x/./y", false)]
+    [InlineData("x/../y", false)]
+    [InlineData("x\\y", false)]
+    public void Packaged_schema_path_agrees_with_schema_and_actual_archive(string path, bool valid)
+    {
+        var f = valid ? new Fixture(packagedSchemaPath: path) : new Fixture();
+        f.Row["packagedSchemaPath"] = path;
+        var schema = JsonSchema.FromFile(Path.Combine(ReleaseTestData.RepositoryRoot,
+            "contracts/release/capabilities/v1/capability-matrix.v1.schema.json"),
+            new BuildOptions { SchemaRegistry = new SchemaRegistry() });
+        if (valid)
+            Assert.Equal(Cp6CompatibilityDecision.Allowed, f.Evaluate().Compatibility);
+        else
+            Assert.Throws<Cp6ReleaseContractException>(() => Cp6CapabilityValidator.ValidateShape(f.Bytes));
+        Assert.Equal(valid, schema.Evaluate(System.Text.Json.JsonSerializer.SerializeToElement(f.Root)).IsValid);
+    }
+
     [Fact]
     public void Lock_matches_its_closed_schema_and_does_not_encode_a_trust_grant()
     {
@@ -229,7 +258,7 @@ public sealed class CapabilityValidationTests
         internal string EvidenceHash { get; }
         internal byte[] Bytes => Canonical(Root);
         internal Cp6CapabilityApproval Approval => new(Cp6DeterministicJson.Sha256Hex(Bytes), Source);
-        internal Fixture(bool formal = false)
+        internal Fixture(bool formal = false, string packagedSchemaPath = "contracts/test.schema.json")
         {
             var version = formal ? "0.10.2" : Version;
             byte[] evidence = Encoding.UTF8.GetBytes("synthetic unit test evidence; not a real consumer qualification");
@@ -242,7 +271,7 @@ public sealed class CapabilityValidationTests
                 {
                     using (var writer = new StreamWriter(zip.CreateEntry(id + ".nuspec").Open()))
                         writer.Write($"<package><metadata><id>{id}</id><version>{version}</version><repository type=\"git\" url=\"https://github.com/GTX537/CP6.Platform\" commit=\"{Source}\" /></metadata></package>");
-                    using var schema = zip.CreateEntry("contracts/test.schema.json").Open(); schema.Write(evidence);
+                    using var schema = zip.CreateEntry(packagedSchemaPath).Open(); schema.Write(evidence);
                 }
                 var bytes = stream.ToArray(); Packages[id] = bytes;
                 packages.Add(new JsonObject { ["packageId"] = id, ["version"] = version, ["sourceGitSha"] = Source,
@@ -259,7 +288,7 @@ public sealed class CapabilityValidationTests
                     ["route"] = "unit-test-route", ["consumerApp"] = "unit-test-consumer", ["host"] = "unit-test-host",
                     ["consumerSourceGitSha"] = new string('b', 40), ["producerPackageId"] = "CP6.Platform.Contracts",
                     ["sdk"] = "8.0.424", ["runtimeFramework"] = "Microsoft.NETCore.App/8.0.28", ["os"] = "Windows/10.0.26200", ["architecture"] = "x64",
-                    ["sourceSchemaSha256"] = EvidenceHash, ["packagedSchemaSha256"] = EvidenceHash, ["packagedSchemaPath"] = "contracts/test.schema.json",
+                    ["sourceSchemaSha256"] = EvidenceHash, ["packagedSchemaSha256"] = EvidenceHash, ["packagedSchemaPath"] = packagedSchemaPath,
                     ["semanticValidatorIdentity"] = "unit-test-validator/1.0.0/sha256:" + EvidenceHash,
                     ["messageType"] = "native-test", ["schemaVersionsAccepted"] = new JsonArray("1.0.0"),
                     ["databaseProvider"] = "PostgreSQL", ["databaseDriver"] = "unit-test-driver/1.0.0", ["migrationSet"] = "sha256:" + EvidenceHash,

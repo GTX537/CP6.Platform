@@ -181,7 +181,10 @@ public sealed class RepositoryArchitectureTests
             .Select(item => (item.Attribute("Include")?.Value, GetItemValue(item, "PackagePath")))
             .ToArray();
         Assert.Equal(
-            [("../../contracts/release/v1/**/*", "contracts/release/v1/%(RecursiveDir)%(Filename)%(Extension)")],
+            [
+                ("../../contracts/release/capabilities/v1/**/*", "contracts/release/capabilities/v1/%(RecursiveDir)%(Filename)%(Extension)"),
+                ("../../contracts/release/v1/**/*", "contracts/release/v1/%(RecursiveDir)%(Filename)%(Extension)")
+            ],
             packed);
 
         foreach (var (packageId, project) in projects.Where(project => project.Key != "CP6.Platform.Release"))
@@ -415,7 +418,12 @@ public sealed class RepositoryArchitectureTests
             }
             else if (packageId == "CP6.Platform.Release")
             {
-                Assert.Equal(["contracts/release/v1/%(RecursiveDir)%(Filename)%(Extension)"], packedAssets);
+                Assert.Equal(
+                    [
+                        "contracts/release/capabilities/v1/%(RecursiveDir)%(Filename)%(Extension)",
+                        "contracts/release/v1/%(RecursiveDir)%(Filename)%(Extension)"
+                    ],
+                    packedAssets);
             }
             else
             {
