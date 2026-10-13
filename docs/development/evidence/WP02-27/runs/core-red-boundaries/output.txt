@@ -1,0 +1,29 @@
+  CP6.Platform.Release -> D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\bin\Debug\net8.0\CP6.Platform.Release.dll
+  CP6.Platform.ReleaseTool -> D:\CP6.Platform-worktrees\wp02-27-20261013\tools\CP6.Platform.ReleaseTool\bin\Debug\net8.0\CP6.Platform.ReleaseTool.dll
+  CP6.Platform.ReleaseTests -> D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Debug\net8.0\CP6.Platform.ReleaseTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Debug\net8.0\CP6.Platform.ReleaseTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.48]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Conflicting_decisions_for_one_exact_consumer_identity_are_rejected [FAIL]
+[xUnit.net 00:00:00.64]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Source_and_packaged_schema_must_preserve_original_bytes [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Conflicting_decisions_for_one_exact_consumer_identity_are_rejected [3 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Conflicting_decisions_for_one_exact_consumer_identity_are_rejected() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 18
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Source_and_packaged_schema_must_preserve_original_bytes [1 ms]
+  Error Message:
+   Assert.Throws() Failure: No exception was thrown
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Source_and_packaged_schema_must_preserve_original_bytes() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 25
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: D:\CP6.Platform-worktrees\wp02-27-20261013\artifacts\wp02-27\core-red-boundaries\red.trx
+
+Failed!  - Failed:     2, Passed:    38, Skipped:     0, Total:    40, Duration: 536 ms - CP6.Platform.ReleaseTests.dll (net8.0)

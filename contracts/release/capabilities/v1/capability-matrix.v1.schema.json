@@ -1,0 +1,836 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schemaId",
+    "repository",
+    "sourceGitSha",
+    "lane",
+    "version",
+    "packages",
+    "evidenceSha256",
+    "capabilities",
+    "compatibility"
+  ],
+  "properties": {
+    "$schemaId": {
+      "const": "https://schemas.cp6.dev/release/capabilities/v1/capability-matrix"
+    },
+    "repository": {
+      "const": "https://github.com/GTX537/CP6.Platform"
+    },
+    "sourceGitSha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$",
+      "minLength": 40,
+      "maxLength": 40
+    },
+    "lane": {
+      "enum": [
+        "TaskLocal",
+        "FormalPublished"
+      ]
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "packages": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "prefixItems": [
+        {
+          "allOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "packageId",
+                "version",
+                "sourceGitSha",
+                "sha256",
+                "feedIdentity"
+              ],
+              "properties": {
+                "packageId": {
+                  "enum": [
+                    "CP6.Platform.Abstractions",
+                    "CP6.Platform.AspNetCore",
+                    "CP6.Platform.Contracts",
+                    "CP6.Platform.Deployment",
+                    "CP6.Platform.EntityFramework",
+                    "CP6.Platform.Messaging",
+                    "CP6.Platform.Release"
+                  ]
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "sourceGitSha": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$",
+                  "minLength": 40,
+                  "maxLength": 40
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "minLength": 64,
+                  "maxLength": 64
+                },
+                "feedIdentity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            {
+              "properties": {
+                "packageId": {
+                  "const": "CP6.Platform.Abstractions"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "packageId",
+                "version",
+                "sourceGitSha",
+                "sha256",
+                "feedIdentity"
+              ],
+              "properties": {
+                "packageId": {
+                  "enum": [
+                    "CP6.Platform.Abstractions",
+                    "CP6.Platform.AspNetCore",
+                    "CP6.Platform.Contracts",
+                    "CP6.Platform.Deployment",
+                    "CP6.Platform.EntityFramework",
+                    "CP6.Platform.Messaging",
+                    "CP6.Platform.Release"
+                  ]
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "sourceGitSha": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$",
+                  "minLength": 40,
+                  "maxLength": 40
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "minLength": 64,
+                  "maxLength": 64
+                },
+                "feedIdentity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            {
+              "properties": {
+                "packageId": {
+                  "const": "CP6.Platform.AspNetCore"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "packageId",
+                "version",
+                "sourceGitSha",
+                "sha256",
+                "feedIdentity"
+              ],
+              "properties": {
+                "packageId": {
+                  "enum": [
+                    "CP6.Platform.Abstractions",
+                    "CP6.Platform.AspNetCore",
+                    "CP6.Platform.Contracts",
+                    "CP6.Platform.Deployment",
+                    "CP6.Platform.EntityFramework",
+                    "CP6.Platform.Messaging",
+                    "CP6.Platform.Release"
+                  ]
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "sourceGitSha": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$",
+                  "minLength": 40,
+                  "maxLength": 40
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "minLength": 64,
+                  "maxLength": 64
+                },
+                "feedIdentity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            {
+              "properties": {
+                "packageId": {
+                  "const": "CP6.Platform.Contracts"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "packageId",
+                "version",
+                "sourceGitSha",
+                "sha256",
+                "feedIdentity"
+              ],
+              "properties": {
+                "packageId": {
+                  "enum": [
+                    "CP6.Platform.Abstractions",
+                    "CP6.Platform.AspNetCore",
+                    "CP6.Platform.Contracts",
+                    "CP6.Platform.Deployment",
+                    "CP6.Platform.EntityFramework",
+                    "CP6.Platform.Messaging",
+                    "CP6.Platform.Release"
+                  ]
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "sourceGitSha": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$",
+                  "minLength": 40,
+                  "maxLength": 40
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "minLength": 64,
+                  "maxLength": 64
+                },
+                "feedIdentity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            {
+              "properties": {
+                "packageId": {
+                  "const": "CP6.Platform.Deployment"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "packageId",
+                "version",
+                "sourceGitSha",
+                "sha256",
+                "feedIdentity"
+              ],
+              "properties": {
+                "packageId": {
+                  "enum": [
+                    "CP6.Platform.Abstractions",
+                    "CP6.Platform.AspNetCore",
+                    "CP6.Platform.Contracts",
+                    "CP6.Platform.Deployment",
+                    "CP6.Platform.EntityFramework",
+                    "CP6.Platform.Messaging",
+                    "CP6.Platform.Release"
+                  ]
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "sourceGitSha": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$",
+                  "minLength": 40,
+                  "maxLength": 40
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "minLength": 64,
+                  "maxLength": 64
+                },
+                "feedIdentity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            {
+              "properties": {
+                "packageId": {
+                  "const": "CP6.Platform.EntityFramework"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "packageId",
+                "version",
+                "sourceGitSha",
+                "sha256",
+                "feedIdentity"
+              ],
+              "properties": {
+                "packageId": {
+                  "enum": [
+                    "CP6.Platform.Abstractions",
+                    "CP6.Platform.AspNetCore",
+                    "CP6.Platform.Contracts",
+                    "CP6.Platform.Deployment",
+                    "CP6.Platform.EntityFramework",
+                    "CP6.Platform.Messaging",
+                    "CP6.Platform.Release"
+                  ]
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "sourceGitSha": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$",
+                  "minLength": 40,
+                  "maxLength": 40
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "minLength": 64,
+                  "maxLength": 64
+                },
+                "feedIdentity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            {
+              "properties": {
+                "packageId": {
+                  "const": "CP6.Platform.Messaging"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "packageId",
+                "version",
+                "sourceGitSha",
+                "sha256",
+                "feedIdentity"
+              ],
+              "properties": {
+                "packageId": {
+                  "enum": [
+                    "CP6.Platform.Abstractions",
+                    "CP6.Platform.AspNetCore",
+                    "CP6.Platform.Contracts",
+                    "CP6.Platform.Deployment",
+                    "CP6.Platform.EntityFramework",
+                    "CP6.Platform.Messaging",
+                    "CP6.Platform.Release"
+                  ]
+                },
+                "version": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "sourceGitSha": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{40}$",
+                  "minLength": 40,
+                  "maxLength": 40
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "minLength": 64,
+                  "maxLength": 64
+                },
+                "feedIdentity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            },
+            {
+              "properties": {
+                "packageId": {
+                  "const": "CP6.Platform.Release"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "evidenceSha256": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$",
+        "minLength": 64,
+        "maxLength": 64
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "version",
+              "profiles",
+              "scope"
+            ],
+            "properties": {
+              "id": {
+                "const": "S01-09"
+              },
+              "version": {
+                "const": "1.0.0"
+              },
+              "profiles": {
+                "const": [
+                  "crm-inq-r3-v15",
+                  "erp-credit-current-v1",
+                  "erp-credit-frozen-r8"
+                ]
+              },
+              "scope": {
+                "const": [
+                  "native-contract-routing",
+                  "original-json-bytes"
+                ]
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "version",
+              "profiles",
+              "scope"
+            ],
+            "properties": {
+              "id": {
+                "const": "ctx-binding-v1"
+              },
+              "version": {
+                "const": "1.0.0"
+              },
+              "profiles": {
+                "const": [
+                  "ctx-v1"
+                ]
+              },
+              "scope": {
+                "const": [
+                  "Background",
+                  "Http",
+                  "Message"
+                ]
+              }
+            }
+          }
+        ]
+      }
+    },
+    "compatibility": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "route",
+          "consumerApp",
+          "host",
+          "producerPackageId",
+          "sdk",
+          "runtimeFramework",
+          "os",
+          "architecture",
+          "semanticValidatorIdentity",
+          "messageType",
+          "databaseDriver",
+          "migrationSet",
+          "requiredCapabilityId",
+          "requiredCapabilityVersion",
+          "profile",
+          "apiSignatureRef",
+          "registrationPointRef",
+          "consumerSourceGitSha",
+          "sourceSchemaSha256",
+          "packagedSchemaSha256",
+          "packagedSchemaPath",
+          "schemaVersionsAccepted",
+          "databaseProvider",
+          "configurationSha256",
+          "compatibilityDecision",
+          "evidenceSha256",
+          "disableReason"
+        ],
+        "properties": {
+          "route": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "consumerApp": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "host": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "producerPackageId": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "sdk": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "runtimeFramework": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "os": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "architecture": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "semanticValidatorIdentity": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "messageType": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "databaseDriver": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "migrationSet": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "requiredCapabilityId": {
+            "enum": [
+              "S01-09",
+              "ctx-binding-v1"
+            ]
+          },
+          "requiredCapabilityVersion": {
+            "const": "1.0.0"
+          },
+          "profile": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "apiSignatureRef": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "registrationPointRef": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "\\S"
+          },
+          "consumerSourceGitSha": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{40}$",
+            "minLength": 40,
+            "maxLength": 40
+          },
+          "sourceSchemaSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "packagedSchemaSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "packagedSchemaPath": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.{1,2}(?:/|$))(?!.*//).*[^/]$"
+          },
+          "schemaVersionsAccepted": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "databaseProvider": {
+            "const": "PostgreSQL"
+          },
+          "configurationSha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "minLength": 64,
+            "maxLength": 64
+          },
+          "compatibilityDecision": {
+            "enum": [
+              "Allowed",
+              "Blocked",
+              "Unknown"
+            ]
+          },
+          "evidenceSha256": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$",
+              "minLength": 64,
+              "maxLength": 64
+            }
+          },
+          "disableReason": {
+            "type": "string"
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "compatibilityDecision": {
+                  "const": "Allowed"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "disableReason": {
+                  "const": ""
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "disableReason": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "requiredCapabilityId": {
+                  "const": "S01-09"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "profile": {
+                  "enum": [
+                    "crm-inq-r3-v15",
+                    "erp-credit-current-v1",
+                    "erp-credit-frozen-r8"
+                  ]
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "profile": {
+                  "const": "ctx-v1"
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://schemas.cp6.dev/release/capabilities/v1/capability-matrix",
+  "description": "Closed WP02-27 shape only. Canonical bytes, ordinal sets, cross-document identity equality and external measured authority require Cp6CapabilityValidator; schema validation never proves crypto, current trust or adoption.",
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "lane": {
+            "const": "TaskLocal"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "version": {
+            "type": "string",
+            "pattern": "^0\\.10\\.3-wp02\\.27\\.g[0-9a-f]{40}\\.[1-9][0-9]*$"
+          },
+          "packages": {
+            "items": {
+              "properties": {
+                "version": {
+                  "type": "string",
+                  "pattern": "^0\\.10\\.3-wp02\\.27\\.g[0-9a-f]{40}\\.[1-9][0-9]*$"
+                },
+                "feedIdentity": {
+                  "type": "string",
+                  "pattern": "^task-local:wp02-27#CP6\\.Platform\\.[A-Za-z]+/[0-9].*$"
+                }
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "version": {
+            "enum": [
+              "0.10.0",
+              "0.10.1",
+              "0.10.2"
+            ]
+          },
+          "capabilities": {
+            "maxItems": 0
+          },
+          "compatibility": {
+            "maxItems": 0
+          },
+          "packages": {
+            "items": {
+              "properties": {
+                "version": {
+                  "enum": [
+                    "0.10.0",
+                    "0.10.1",
+                    "0.10.2"
+                  ]
+                },
+                "feedIdentity": {
+                  "type": "string",
+                  "pattern": "^https://nuget\\.pkg\\.github\\.com/GTX537/index\\.json#CP6\\.Platform\\.[A-Za-z]+/0\\.10\\.[012]$"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

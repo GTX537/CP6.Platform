@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="fd4cfa4a-0304-4560-b4ef-066bf3ed3022" name="tt@LAPTOP-3QQ44FJS 2026-10-13 09:40:45" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T09:40:45.5727221-04:00" queuing="2026-10-13T09:40:45.5727225-04:00" start="2026-10-13T09:40:44.1570029-04:00" finish="2026-10-13T09:40:45.8191063-04:00" />
+  <TestSettings name="default" id="aaf0010b-d238-4def-b87e-7cfdd76dd7f1">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-13_09_40_45" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="f33fb460-f8da-4a98-b231-6e8e1222c0fa" testId="d9c1bdb1-78b0-6231-92b9-6ef49be4ced8" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;/&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0414077" startTime="2026-10-13T09:40:45.4501742-04:00" endTime="2026-10-13T09:40:45.4915739-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f33fb460-f8da-4a98-b231-6e8e1222c0fa" />
+    <UnitTestResult executionId="8ae97d1e-8657-45ca-aee1-2b8ce419bf7e" testId="8cf66139-e3bd-571d-b757-94156fb3cc82" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;xy&quot;, valid: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0411069" startTime="2026-10-13T09:40:45.2553240-04:00" endTime="2026-10-13T09:40:45.2960178-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8ae97d1e-8657-45ca-aee1-2b8ce419bf7e" />
+    <UnitTestResult executionId="5b280992-58a1-41ee-9448-085eb9216f50" testId="2f9a8b01-189b-a37e-376d-2d6ed0cffd48" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;..&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0389598" startTime="2026-10-13T09:40:45.6892088-04:00" endTime="2026-10-13T09:40:45.7281495-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5b280992-58a1-41ee-9448-085eb9216f50" />
+    <UnitTestResult executionId="51a3bd6a-b674-434f-9820-d07eef966868" testId="68e8417e-3829-e5c0-1e58-6f9d47b58f1b" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/./y&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0639038" startTime="2026-10-13T09:40:45.6252433-04:00" endTime="2026-10-13T09:40:45.6890293-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="51a3bd6a-b674-434f-9820-d07eef966868" />
+    <UnitTestResult executionId="829bc281-9813-44c4-9c40-e8e5dff298b7" testId="6c3f1cbd-1c6b-e0c0-4135-fc3f4173f1e7" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;/x&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0365254" startTime="2026-10-13T09:40:45.3317837-04:00" endTime="2026-10-13T09:40:45.3683077-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="829bc281-9813-44c4-9c40-e8e5dff298b7" />
+    <UnitTestResult executionId="c4a6b715-f51c-4a16-be30-be91ef1d9aef" testId="cad10c1d-5b07-7786-65c5-62b5bc62a497" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0678771" startTime="2026-10-13T09:40:45.5253988-04:00" endTime="2026-10-13T09:40:45.5596387-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c4a6b715-f51c-4a16-be30-be91ef1d9aef" />
+    <UnitTestResult executionId="a9b4c2eb-7f4e-4b3a-bba3-d02458da8d86" testId="6824542c-8759-b5b7-85ef-42537a847ad2" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x\\y&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0653304" startTime="2026-10-13T09:40:45.5599402-04:00" endTime="2026-10-13T09:40:45.6250744-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a9b4c2eb-7f4e-4b3a-bba3-d02458da8d86" />
+    <UnitTestResult executionId="e4559a91-4f82-445c-b35c-c6e16d880603" testId="57d43b5b-9d89-a17e-c2a6-223d108ea2d0" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;./x&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0445911" startTime="2026-10-13T09:40:45.1899424-04:00" endTime="2026-10-13T09:40:45.2208883-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e4559a91-4f82-445c-b35c-c6e16d880603" />
+    <UnitTestResult executionId="9f565048-6ca2-4b8d-8885-96e0dd7b3cf4" testId="c2edcf65-aa82-2edd-4441-f72641379877" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;.&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0341489" startTime="2026-10-13T09:40:45.2215530-04:00" endTime="2026-10-13T09:40:45.2549277-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9f565048-6ca2-4b8d-8885-96e0dd7b3cf4" />
+    <UnitTestResult executionId="b9b79738-73cb-43bc-99d2-6e52dcab408b" testId="b096145c-feaa-b73f-b4d5-6f04c09a9908" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;contracts/test.schema.json&quot;, valid: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0410009" startTime="2026-10-13T09:40:45.4090970-04:00" endTime="2026-10-13T09:40:45.4500498-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b9b79738-73cb-43bc-99d2-6e52dcab408b" />
+    <UnitTestResult executionId="2fd965f5-0e34-4854-9a6b-bebfafb78acf" testId="9b66b3bb-c0f8-e288-e78d-183a2cfa09aa" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x//y&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0405349" startTime="2026-10-13T09:40:45.3684378-04:00" endTime="2026-10-13T09:40:45.4089690-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2fd965f5-0e34-4854-9a6b-bebfafb78acf" />
+    <UnitTestResult executionId="8b86ee27-7fdd-4589-9d89-97045a2a6273" testId="4b586bf0-419e-59e1-4e9c-e2d4e9d44ae3" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/../y&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0355028" startTime="2026-10-13T09:40:45.2961438-04:00" endTime="2026-10-13T09:40:45.3316478-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8b86ee27-7fdd-4589-9d89-97045a2a6273" />
+    <UnitTestResult executionId="dc6dab17-22b3-4c2a-8c2e-0b5236d98283" testId="84f9cdd5-6d0d-1b41-9e5f-efb9ba467c38" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0380624" startTime="2026-10-13T09:40:45.7283060-04:00" endTime="2026-10-13T09:40:45.7662964-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dc6dab17-22b3-4c2a-8c2e-0b5236d98283" />
+    <UnitTestResult executionId="4f30d3e7-662f-4778-8c77-2debfd8ee554" testId="26dcb079-8063-b471-27c9-fd95a68be5f2" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x&quot;, valid: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3057805" startTime="2026-10-13T09:40:44.8610520-04:00" endTime="2026-10-13T09:40:45.1761386-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4f30d3e7-662f-4778-8c77-2debfd8ee554">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: True&#xD;
+Actual:   False</Message>
+          <StackTrace>   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 75&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x//y&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="9b66b3bb-c0f8-e288-e78d-183a2cfa09aa">
+      <Execution id="2fd965f5-0e34-4854-9a6b-bebfafb78acf" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;xy&quot;, valid: True)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="8cf66139-e3bd-571d-b757-94156fb3cc82">
+      <Execution id="8ae97d1e-8657-45ca-aee1-2b8ce419bf7e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/./y&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="68e8417e-3829-e5c0-1e58-6f9d47b58f1b">
+      <Execution id="51a3bd6a-b674-434f-9820-d07eef966868" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x\\y&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="6824542c-8759-b5b7-85ef-42537a847ad2">
+      <Execution id="a9b4c2eb-7f4e-4b3a-bba3-d02458da8d86" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;/x&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="6c3f1cbd-1c6b-e0c0-4135-fc3f4173f1e7">
+      <Execution id="829bc281-9813-44c4-9c40-e8e5dff298b7" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;..&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="2f9a8b01-189b-a37e-376d-2d6ed0cffd48">
+      <Execution id="5b280992-58a1-41ee-9448-085eb9216f50" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;contracts/test.schema.json&quot;, valid: True)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="b096145c-feaa-b73f-b4d5-6f04c09a9908">
+      <Execution id="b9b79738-73cb-43bc-99d2-6e52dcab408b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x&quot;, valid: True)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="26dcb079-8063-b471-27c9-fd95a68be5f2">
+      <Execution id="4f30d3e7-662f-4778-8c77-2debfd8ee554" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;./x&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="57d43b5b-9d89-a17e-c2a6-223d108ea2d0">
+      <Execution id="e4559a91-4f82-445c-b35c-c6e16d880603" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="84f9cdd5-6d0d-1b41-9e5f-efb9ba467c38">
+      <Execution id="dc6dab17-22b3-4c2a-8c2e-0b5236d98283" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="cad10c1d-5b07-7786-65c5-62b5bc62a497">
+      <Execution id="c4a6b715-f51c-4a16-be30-be91ef1d9aef" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;.&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="c2edcf65-aa82-2edd-4441-f72641379877">
+      <Execution id="9f565048-6ca2-4b8d-8885-96e0dd7b3cf4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;/&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="d9c1bdb1-78b0-6231-92b9-6ef49be4ced8">
+      <Execution id="f33fb460-f8da-4a98-b231-6e8e1222c0fa" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/../y&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="4b586bf0-419e-59e1-4e9c-e2d4e9d44ae3">
+      <Execution id="8b86ee27-7fdd-4589-9d89-97045a2a6273" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="d9c1bdb1-78b0-6231-92b9-6ef49be4ced8" executionId="f33fb460-f8da-4a98-b231-6e8e1222c0fa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8cf66139-e3bd-571d-b757-94156fb3cc82" executionId="8ae97d1e-8657-45ca-aee1-2b8ce419bf7e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2f9a8b01-189b-a37e-376d-2d6ed0cffd48" executionId="5b280992-58a1-41ee-9448-085eb9216f50" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="68e8417e-3829-e5c0-1e58-6f9d47b58f1b" executionId="51a3bd6a-b674-434f-9820-d07eef966868" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6c3f1cbd-1c6b-e0c0-4135-fc3f4173f1e7" executionId="829bc281-9813-44c4-9c40-e8e5dff298b7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cad10c1d-5b07-7786-65c5-62b5bc62a497" executionId="c4a6b715-f51c-4a16-be30-be91ef1d9aef" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6824542c-8759-b5b7-85ef-42537a847ad2" executionId="a9b4c2eb-7f4e-4b3a-bba3-d02458da8d86" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="57d43b5b-9d89-a17e-c2a6-223d108ea2d0" executionId="e4559a91-4f82-445c-b35c-c6e16d880603" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c2edcf65-aa82-2edd-4441-f72641379877" executionId="9f565048-6ca2-4b8d-8885-96e0dd7b3cf4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b096145c-feaa-b73f-b4d5-6f04c09a9908" executionId="b9b79738-73cb-43bc-99d2-6e52dcab408b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9b66b3bb-c0f8-e288-e78d-183a2cfa09aa" executionId="2fd965f5-0e34-4854-9a6b-bebfafb78acf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4b586bf0-419e-59e1-4e9c-e2d4e9d44ae3" executionId="8b86ee27-7fdd-4589-9d89-97045a2a6273" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="84f9cdd5-6d0d-1b41-9e5f-efb9ba467c38" executionId="dc6dab17-22b3-4c2a-8c2e-0b5236d98283" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26dcb079-8063-b471-27c9-fd95a68be5f2" executionId="4f30d3e7-662f-4778-8c77-2debfd8ee554" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="14" executed="14" passed="13" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.08]   Discovering: CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:00.15]   Discovered:  CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:00.17]   Starting:    CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:00.50]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.50]       Expected: True&#xD;
+[xUnit.net 00:00:00.50]       Actual:   False&#xD;
+[xUnit.net 00:00:00.50]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.50]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(75,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.50]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.50]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.09]   Finished:    CP6.Platform.ReleaseTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:45.1779996-04:00">
+        <Text>[xUnit.net 00:00:00.50]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x", valid: True) [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

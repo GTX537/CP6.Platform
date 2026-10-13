@@ -1,0 +1,11 @@
+  CP6.Platform.Release -> D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\bin\Release\net8.0\CP6.Platform.Release.dll
+  CP6.Platform.ReleaseTool -> D:\CP6.Platform-worktrees\wp02-27-20261013\tools\CP6.Platform.ReleaseTool\bin\Release\net8.0\CP6.Platform.ReleaseTool.dll
+  CP6.Platform.ReleaseTests -> D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: D:\CP6.Platform-worktrees\wp02-27-20261013\artifacts\wp02-27\green-publication-evidence\capabilities.trx
+
+Passed!  - Failed:     0, Passed:    58, Skipped:     0, Total:    58, Duration: 6 s - CP6.Platform.ReleaseTests.dll (net8.0)

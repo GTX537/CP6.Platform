@@ -1,0 +1,348 @@
+{
+  "task": "WP02-27",
+  "issue": "https://github.com/GTX537/CP6.Platform/issues/60",
+  "captured_utc": "2026-10-13T13:45:05.290199+00:00",
+  "source_freeze": "7c59256e13c217fc0e8a66b8f3f46905222fdcbc",
+  "original_candidate": "0057261a9b3506484afcc981f513381b9268da81",
+  "files": [
+    {
+      "artifact": "coord-schema-path-red/run.json",
+      "sha256": "f997a6784901a90a3bcdb24c03b4430a34adebc5655a274b35cb92baa6c4c357",
+      "bytes": 76542,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-path-red/schema-path-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-path-red/schema-path.log",
+      "sha256": "e7bc12553a92aa59fb1318028146de2489cfbbd9883fa0916c3512ccfdfb5879",
+      "bytes": 23879,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-path-red/schema-path.trx",
+      "sha256": "aa31667e60ede0a7f1e74c971833de7fcae6f1f1548e0b416d7163600f632f41",
+      "bytes": 71943,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-path-red-isolated/run.json",
+      "sha256": "22b44c1762812633499485a1672b1ef1919af92a50c4647f8a3cf2cb4b7ab34c",
+      "bytes": 76597,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-path-red-isolated/schema-path-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-path-red-isolated/schema-path.log",
+      "sha256": "a628a93931edf62d3cd6d3e094cee752e1a3b8d61a52087cbd1fd3ed9cfec201",
+      "bytes": 2000,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-path-red-isolated/schema-path.trx",
+      "sha256": "8a8603c346ba8badc2000261e25f0c1eece453a97fdd4273c8988d4c4fbd8481",
+      "bytes": 25958,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-architecture-green/architecture-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-architecture-green/architecture.log",
+      "sha256": "4d781d5150c99b1c5bb7def0c15cbda64c2aaf32b3363990d0baebde370b2246",
+      "bytes": 737,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-architecture-green/architecture.trx",
+      "sha256": "97392c7b4b3821e1120c517d7ff216015ce7422ab8ddcee5e5ae0432d73902b4",
+      "bytes": 155894,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-architecture-green/release-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-architecture-green/release.log",
+      "sha256": "296d135943d054d1c2b3b701db9d32ed5e2e5e1ae008974aa1b27c2d841e9db9",
+      "bytes": 992,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-architecture-green/release.trx",
+      "sha256": "933edf7fabc51f4feb0b4711a901489b4bbc43c804e294ab3ce25b723c2fa46a",
+      "bytes": 204448,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-architecture-green/run.json",
+      "sha256": "76531e5ccbb1b47a62080b5be442b1c20d4ce28dbd60454c55890c2729332783",
+      "bytes": 78502,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/Abstractions-pack.log",
+      "sha256": "054fbc8cd59cbbcb90e83f417debe2cd49c854f90a9e4eb0dcc1e430341e6278",
+      "bytes": 532,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/Abstractions-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/AspNetCore-pack.log",
+      "sha256": "04970e74c8dbc1726b061ca21c9f616fc242f4472ce02706bf304bede0e18cab",
+      "bytes": 678,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/AspNetCore-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/Contracts-pack.log",
+      "sha256": "3311e7c4e6f9b0a2b72d6fa36b02e58ff8c29136ba78d1db3fc3fcfcfc3faeb2",
+      "bytes": 375,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/Contracts-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/Deployment-pack.log",
+      "sha256": "5a977be2c7fcd95fb31ed67c14d2b9367fbca0eb4cb7d9bb8242b776205f2841",
+      "bytes": 379,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/Deployment-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/EntityFramework-pack.log",
+      "sha256": "a7493aa3b761d671d3c781ef59185301c834244938bc3f1dc1b79ddcf0ed0227",
+      "bytes": 698,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/EntityFramework-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/inspection/approval-provenance.json",
+      "sha256": "93b2cb7522b8ac26f42dfe6a7229a72a73b8cb1f601389f0b7f1f87a7460f4ce",
+      "bytes": 347,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/inspection/archive-inspection.json",
+      "sha256": "a88127c4f9affc8621dc2c8328efa66445d28f70709014108e3602732cdf0bbb",
+      "bytes": 2760,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/inspection/archive-paths.json",
+      "sha256": "e0b1a4c3fdd3dbd13c24b5ed53e9b08b2a08b558e6fdf9b103b4d2cd110a0884",
+      "bytes": 1622,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/inspection/consumer-lock.json",
+      "sha256": "1fabaecefb24050d801a9fd894dcd908b8428f7bd486fe4d0a634ad97ffe0b01",
+      "bytes": 3410,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/inspection/evidence/54aeabc581130e2119597a44a9b72953ad5fc0db1b3ef282904e108acd9975a1.bin",
+      "sha256": "54aeabc581130e2119597a44a9b72953ad5fc0db1b3ef282904e108acd9975a1",
+      "bytes": 23074,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/inspection/evidence/a88127c4f9affc8621dc2c8328efa66445d28f70709014108e3602732cdf0bbb.bin",
+      "sha256": "a88127c4f9affc8621dc2c8328efa66445d28f70709014108e3602732cdf0bbb",
+      "bytes": 2760,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/inspection/evidence/e8868ed248000d2ec253d91819af61a175faa65a172011f45f39fbf0fe3c70fa.bin",
+      "sha256": "e8868ed248000d2ec253d91819af61a175faa65a172011f45f39fbf0fe3c70fa",
+      "bytes": 14114,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/inspection/matrix.json",
+      "sha256": "c018745e9c7989179a3003fc7ce5fe42a1627b2ccb160dc3ddeab5fb21ef656c",
+      "bytes": 3572,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/inspection/state.json",
+      "sha256": "14f4880686c9b040c60563c48a3894b73330071f8e99d999ec653ac6a4a3fba2",
+      "bytes": 401,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/inspector-build.log",
+      "sha256": "450fa52b393539af9d48b5adde32967c35724c69d5806a807e151c421b6e0af8",
+      "bytes": 335,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/local-inspection.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/Messaging-pack.log",
+      "sha256": "965b6d3d10180478d17f7a3f80bcd3c0a785e2d47207d07e7888436dedac7916",
+      "bytes": 674,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/Messaging-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/packages/CP6.Platform.Abstractions.0.10.3-wp02.27.g7c59256e13c217fc0e8a66b8f3f46905222fdcbc.20261013134250.nupkg",
+      "sha256": "e89880bae01bc6e94bad7cdb4b25917fe08ca0f3656793b3457c0036bfe290de",
+      "bytes": 17102,
+      "retained": false,
+      "reason": "Local unsigned package only; preserved in original task artifacts, never published"
+    },
+    {
+      "artifact": "coord-schema-local-pack/packages/CP6.Platform.AspNetCore.0.10.3-wp02.27.g7c59256e13c217fc0e8a66b8f3f46905222fdcbc.20261013134250.nupkg",
+      "sha256": "b4190c5dbcf7e5972d59e70e1ef6ae5d026172f1c331ec4b7f06ae9501ba2227",
+      "bytes": 54981,
+      "retained": false,
+      "reason": "Local unsigned package only; preserved in original task artifacts, never published"
+    },
+    {
+      "artifact": "coord-schema-local-pack/packages/CP6.Platform.Contracts.0.10.3-wp02.27.g7c59256e13c217fc0e8a66b8f3f46905222fdcbc.20261013134250.nupkg",
+      "sha256": "868def2318528f80cf1611242af992c72ffbf1497d0079af102856f5a17e5a12",
+      "bytes": 40836,
+      "retained": false,
+      "reason": "Local unsigned package only; preserved in original task artifacts, never published"
+    },
+    {
+      "artifact": "coord-schema-local-pack/packages/CP6.Platform.Deployment.0.10.3-wp02.27.g7c59256e13c217fc0e8a66b8f3f46905222fdcbc.20261013134250.nupkg",
+      "sha256": "b769ca35159456462fa6c72af68ad17797d7123405a276caaf937cc0202a338e",
+      "bytes": 66066,
+      "retained": false,
+      "reason": "Local unsigned package only; preserved in original task artifacts, never published"
+    },
+    {
+      "artifact": "coord-schema-local-pack/packages/CP6.Platform.EntityFramework.0.10.3-wp02.27.g7c59256e13c217fc0e8a66b8f3f46905222fdcbc.20261013134250.nupkg",
+      "sha256": "12f2f029568b59d364e2e1fef2535f0e3fa313dc784d656c77dcdf5eabdc59bf",
+      "bytes": 45856,
+      "retained": false,
+      "reason": "Local unsigned package only; preserved in original task artifacts, never published"
+    },
+    {
+      "artifact": "coord-schema-local-pack/packages/CP6.Platform.Messaging.0.10.3-wp02.27.g7c59256e13c217fc0e8a66b8f3f46905222fdcbc.20261013134250.nupkg",
+      "sha256": "fd439f96bfbdb4a4ebb922249fafa5d5dae2e26627d179fa4fe2622190551c8d",
+      "bytes": 50893,
+      "retained": false,
+      "reason": "Local unsigned package only; preserved in original task artifacts, never published"
+    },
+    {
+      "artifact": "coord-schema-local-pack/packages/CP6.Platform.Release.0.10.3-wp02.27.g7c59256e13c217fc0e8a66b8f3f46905222fdcbc.20261013134250.nupkg",
+      "sha256": "526eddb7a07e1b44ba3ba65077ed10cac43a905f0565fd5fcd1985d1831a56ea",
+      "bytes": 123036,
+      "retained": false,
+      "reason": "Local unsigned package only; preserved in original task artifacts, never published"
+    },
+    {
+      "artifact": "coord-schema-local-pack/Release-pack.log",
+      "sha256": "bdef3d5a265e49255a3d4258deafe41c951754ce303368a56d8ec2aa9e042923",
+      "bytes": 367,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/Release-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original bytes"
+    },
+    {
+      "artifact": "coord-schema-local-pack/run.json",
+      "sha256": "15d4b7d2714fd3388cf46f91ae38e5a6d00e808d6326d79d599c490a69f391d2",
+      "bytes": 90393,
+      "retained": true,
+      "reason": "Exact original bytes"
+    }
+  ],
+  "retained_count": 41,
+  "local_archive_count": 7,
+  "scope": "Additive coordinator correction evidence; preserves all earlier failure/success evidence and package bytes. No formal publication, current-trust rerun or downstream adoption."
+}

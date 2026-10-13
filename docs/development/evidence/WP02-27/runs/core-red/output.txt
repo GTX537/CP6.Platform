@@ -1,0 +1,7 @@
+  Determining projects to restore...
+  Restored D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CP6.Platform.Release.csproj (in 68 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-27-20261013\tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj (in 7.67 sec).
+  Restored D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CP6.Platform.ReleaseTests.csproj (in 7.67 sec).
+  CP6.Platform.Release -> D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\bin\Debug\net8.0\CP6.Platform.Release.dll
+  CP6.Platform.ReleaseTool -> D:\CP6.Platform-worktrees\wp02-27-20261013\tools\CP6.Platform.ReleaseTool\bin\Debug\net8.0\CP6.Platform.ReleaseTool.dll
+D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(150,49): error CS1503: Argument 1: cannot convert from 'System.Text.Json.Nodes.JsonObject' to 'System.Text.Json.JsonElement' [D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CP6.Platform.ReleaseTests.csproj]
