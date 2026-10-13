@@ -1,0 +1,54 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.AspNetCoreTests -> D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.76]     CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.JitterOnlyChangesLocalWait(sample: 1, local: 240) [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.JitterOnlyChangesLocalWait(sample: 1, local: 240) [3 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 00:00:00.2400000
+Actual:   00:00:00.2410000
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.JitterOnlyChangesLocalWait(Double sample, Int32 local) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\DeadlineDecisionTests.cs:line 96
+   at InvokeStub_DeadlineDecisionTests.JitterOnlyChangesLocalWait(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.88]     CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.UnrelatedOperationCancellationIsUnknownSource_NotAttemptTimeout [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.UnrelatedOperationCancellationIsUnknownSource_NotAttemptTimeout [1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: UnknownTimeoutSource
+Actual:   AttemptTimeout
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.UnrelatedOperationCancellationIsUnknownSource_NotAttemptTimeout() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\HandlerTests.cs:line 69
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:01.18]     CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.HiddenFieldIncludingEmptyMessagesFallsBackWithoutEcho(empty: True) [FAIL]
+[xUnit.net 00:00:01.19]     CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ParentBudgetWaitHonorsThisCallersCancellation [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.HiddenFieldIncludingEmptyMessagesFallsBackWithoutEcho(empty: True) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: GenericFallback
+Actual:   Written
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.HiddenFieldIncludingEmptyMessagesFallsBackWithoutEcho(Boolean empty) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\SafeProblemTests.cs:line 32
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ParentBudgetWaitHonorsThisCallersCancellation [312 ms]
+  Error Message:
+   Assert.Same() Failure: Values are not the same instance
+Expected: Task<HttpResponseMessage,<<SendAsync>g__Core|83_0>d> { Status = WaitingForActivation }
+Actual:   Task { Status = RanToCompletion }
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ParentBudgetWaitHonorsThisCallersCancellation() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\HandlerTests.cs:line 113
+--- End of stack trace from previous location ---
+Results File: D:\CP6.Platform-worktrees\wp02-11-20261013\docs\development\evidence\WP02-11\implementation\draft-regressions.trx
+
+Failed!  - Failed:     4, Passed:    80, Skipped:     0, Total:    84, Duration: 1 s - CP6.Platform.AspNetCoreTests.dll (net8.0)
