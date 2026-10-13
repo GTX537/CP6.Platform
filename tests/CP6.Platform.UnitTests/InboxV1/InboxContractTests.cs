@@ -37,9 +37,10 @@ public sealed class InboxContractTests
     [InlineData("{\"data\":null}", "null")]
     public void Bytes_and_digest_domains_remain_exact(string raw, string data)
     {
-        var d = Delivery(raw);
+        var callerBuffer = Encoding.UTF8.GetBytes(raw);
+        var d = Delivery(raw) with { Payload = callerBuffer };
         var i = new InboxInputV1(d, Binding);
-        Array.Fill(d.Payload.ToArray(), (byte)0);
+        Array.Fill(callerBuffer, (byte)0);
         Assert.Equal(Encoding.UTF8.GetBytes(raw), i.OriginalEnvelope.ToArray());
         Assert.Equal(Encoding.UTF8.GetBytes(data), i.OriginalDataPayload.ToArray());
         Assert.Equal(Convert.ToHexString(SHA256.HashData(Encoding.UTF8.GetBytes(data))).ToLowerInvariant(), i.DataPayloadSha256);
