@@ -1,0 +1,784 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="34ec645c-5c5e-4afe-af30-1f499f367d5f" name="tt@LAPTOP-3QQ44FJS 2026-10-13 09:46:36" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T09:46:36.0745650-04:00" queuing="2026-10-13T09:46:36.0745656-04:00" start="2026-10-13T09:46:34.6667589-04:00" finish="2026-10-13T09:46:36.1430122-04:00" />
+  <TestSettings name="default" id="4eb1f905-4d20-473d-a45b-9a0f0adaded1">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-13_09_46_36" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="5b29bbdf-5db8-497c-abfc-11befcca309b" testId="c71e8392-ab6c-7dfd-db41-2ba60a4f6308" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: False, fault: &quot;io&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0007493" startTime="2026-10-13T09:46:36.0304836-04:00" endTime="2026-10-13T09:46:36.0305279-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5b29bbdf-5db8-497c-abfc-11befcca309b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.IO.IOException)&#xD;
+---- System.IO.IOException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 124&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.AuthorizeReplayAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 137&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 210&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="64bc4c23-ec7f-46d7-8877-538056c039fe" testId="f89a5105-f30a-13af-7d4c-9259a8a66227" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;replay&quot;, signal: &quot;total&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0022293" startTime="2026-10-13T09:46:35.9707617-04:00" endTime="2026-10-13T09:46:35.9722600-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="64bc4c23-ec7f-46d7-8877-538056c039fe">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+---- System.Net.Http.HttpRequestException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 70&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 210&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c5563150-f541-421b-b601-f17383b06465" testId="7bdecad4-20f4-14cb-822c-dc784b3b91de" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: True, fault: &quot;transport&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0001929" startTime="2026-10-13T09:46:36.0383032-04:00" endTime="2026-10-13T09:46:36.0383471-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c5563150-f541-421b-b601-f17383b06465">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+---- System.Net.Http.HttpRequestException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 97&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="185e1aac-8b88-49ce-a254-b9306f924f44" testId="d4e5f820-c9d1-4977-9666-1db53b7ededc" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;verify&quot;, signal: &quot;total&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004066" startTime="2026-10-13T09:46:35.9730859-04:00" endTime="2026-10-13T09:46:35.9732805-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="185e1aac-8b88-49ce-a254-b9306f924f44">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+---- System.Net.Http.HttpRequestException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 70&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 97&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fd035671-9968-43b7-a935-3de36ffd9f23" testId="9e4c7f86-a306-19bc-add9-058c5a584218" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: True, fault: &quot;transport&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003407" startTime="2026-10-13T09:46:36.0367192-04:00" endTime="2026-10-13T09:46:36.0367617-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fd035671-9968-43b7-a935-3de36ffd9f23">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+---- System.Net.Http.HttpRequestException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 210&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fe43267f-1bd4-4f86-89c4-ce0254cc0c6e" testId="5c0ed578-ba14-3971-e9df-1c6b6df213aa" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;verify&quot;, signal: &quot;caller&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003813" startTime="2026-10-13T09:46:35.9750374-04:00" endTime="2026-10-13T09:46:35.9750810-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fe43267f-1bd4-4f86-89c4-ce0254cc0c6e">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.True() Failure&#xD;
+Expected: True&#xD;
+Actual:   False</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 76&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="852972ce-42c4-4b6b-b3a5-ce8efd59099c" testId="300080e9-ceb9-ec2e-d042-de2507ecd232" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.UnrelatedAuthorityCancellationRemainsUnknownSource(stage: &quot;replay&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0069211" startTime="2026-10-13T09:46:35.9762162-04:00" endTime="2026-10-13T09:46:35.9827142-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="852972ce-42c4-4b6b-b3a5-ce8efd59099c" />
+    <UnitTestResult executionId="6ca6a8dd-984c-4d7b-84fd-1a7a2528b839" testId="6940b081-718e-54bf-1595-00a156f6825a" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: False, fault: &quot;timeout&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003902" startTime="2026-10-13T09:46:36.0295791-04:00" endTime="2026-10-13T09:46:36.0296242-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6ca6a8dd-984c-4d7b-84fd-1a7a2528b839">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(Polly.Timeout.TimeoutRejectedException)&#xD;
+---- Polly.Timeout.TimeoutRejectedException : private timeout source</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 124&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.VerifyBindingAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 127&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 97&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="64ccdd46-ea15-4139-a775-9a6e34072f22" testId="f5331e79-8783-49a3-b729-933241786c71" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: False, fault: &quot;other&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003685" startTime="2026-10-13T09:46:36.0237526-04:00" endTime="2026-10-13T09:46:36.0238007-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="64ccdd46-ea15-4139-a775-9a6e34072f22">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.InvalidOperationException)&#xD;
+---- System.InvalidOperationException : private authority adapter failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 124&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.VerifyBindingAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 127&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 97&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0194f866-b0e4-43f4-a809-b017ad387fd2" testId="0259580a-be6f-69c8-2964-6b684a668468" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: True, fault: &quot;timeout&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002159" startTime="2026-10-13T09:46:36.0374921-04:00" endTime="2026-10-13T09:46:36.0375558-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0194f866-b0e4-43f4-a809-b017ad387fd2">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(Polly.Timeout.TimeoutRejectedException)&#xD;
+---- Polly.Timeout.TimeoutRejectedException : private timeout source</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 97&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="39659184-53e0-44c7-94a2-2442d1d6dd7d" testId="19ea5aa9-14f2-69f7-b7aa-3f0fff22ddc5" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: True, fault: &quot;other&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002120" startTime="2026-10-13T09:46:36.0351405-04:00" endTime="2026-10-13T09:46:36.0351725-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="39659184-53e0-44c7-94a2-2442d1d6dd7d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.InvalidOperationException)&#xD;
+---- System.InvalidOperationException : private authority adapter failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 97&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0556c7a9-5781-4eea-8ae9-10a111dee40c" testId="46be5a6c-3ec8-1a29-189d-5918f77fc26c" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;replay&quot;, signal: &quot;parent-caller&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0227679" startTime="2026-10-13T09:46:35.9569410-04:00" endTime="2026-10-13T09:46:35.9692222-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0556c7a9-5781-4eea-8ae9-10a111dee40c">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.ThrowsAny() Failure: Exception type was not compatible&#xD;
+Expected: typeof(System.OperationCanceledException)&#xD;
+Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+---- System.Net.Http.HttpRequestException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 74&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 210&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c49015b0-2e30-43fa-aec2-aa4ceb26ba97" testId="99c558b0-a663-5638-5ff6-5bfb2535b7ef" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: True, fault: &quot;io&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0007741" startTime="2026-10-13T09:46:36.0199151-04:00" endTime="2026-10-13T09:46:36.0199838-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c49015b0-2e30-43fa-aec2-aa4ceb26ba97">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.IO.IOException)&#xD;
+---- System.IO.IOException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 210&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="97a3139b-2e64-4c9e-b0d6-5715991808d7" testId="2484cb1d-6855-eb48-8b44-1bf22facf3a7" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: True, fault: &quot;other&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003566" startTime="2026-10-13T09:46:36.0320494-04:00" endTime="2026-10-13T09:46:36.0320899-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="97a3139b-2e64-4c9e-b0d6-5715991808d7">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.InvalidOperationException)&#xD;
+---- System.InvalidOperationException : private authority adapter failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 210&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="38df81ae-d52e-44e5-ac5f-75a3a8f87032" testId="1e89f58a-ddd3-c49d-e710-b484b6a26975" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: True, fault: &quot;io&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002790" startTime="2026-10-13T09:46:36.0286299-04:00" endTime="2026-10-13T09:46:36.0286807-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="38df81ae-d52e-44e5-ac5f-75a3a8f87032">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.IO.IOException)&#xD;
+---- System.IO.IOException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 97&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="bb812e81-0a28-43ed-a927-c901798e6a81" testId="b067000b-11c6-7618-6d8f-cceaf5f9b0a5" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: False, fault: &quot;transport&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003120" startTime="2026-10-13T09:46:36.0247769-04:00" endTime="2026-10-13T09:46:36.0248296-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bb812e81-0a28-43ed-a927-c901798e6a81">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+---- System.Net.Http.HttpRequestException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 124&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.VerifyBindingAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 127&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 97&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b74186d5-6252-47a6-8916-915be30609c2" testId="5d114484-ea84-f551-aa9e-cf3168012c58" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: False, fault: &quot;transport&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003282" startTime="2026-10-13T09:46:36.0343267-04:00" endTime="2026-10-13T09:46:36.0344002-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b74186d5-6252-47a6-8916-915be30609c2">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+---- System.Net.Http.HttpRequestException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 124&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.AuthorizeReplayAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 137&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 210&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="924abd27-1691-4f46-8050-793cc7463f7a" testId="6f66ccc1-2871-76c0-59a3-67e8fc9d747f" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.UnrelatedAuthorityCancellationRemainsUnknownSource(stage: &quot;verify&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0006622" startTime="2026-10-13T09:46:35.9835629-04:00" endTime="2026-10-13T09:46:35.9836534-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="924abd27-1691-4f46-8050-793cc7463f7a" />
+    <UnitTestResult executionId="9f2a0697-4c51-491e-8c61-6aae2787450d" testId="ad4d1c1b-261c-81b9-4c42-8248bdbe4383" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: False, fault: &quot;timeout&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002869" startTime="2026-10-13T09:46:36.0358195-04:00" endTime="2026-10-13T09:46:36.0358646-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9f2a0697-4c51-491e-8c61-6aae2787450d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(Polly.Timeout.TimeoutRejectedException)&#xD;
+---- Polly.Timeout.TimeoutRejectedException : private timeout source</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 124&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.AuthorizeReplayAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 137&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 210&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ebe1b55c-72a7-46f2-982a-164139d2bedb" testId="ef288d9f-64b2-7be6-a64c-7bff88bcfe19" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;verify&quot;, signal: &quot;parent-caller&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0569040" startTime="2026-10-13T09:46:35.8611090-04:00" endTime="2026-10-13T09:46:35.9454960-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ebe1b55c-72a7-46f2-982a-164139d2bedb">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.ThrowsAny() Failure: Exception type was not compatible&#xD;
+Expected: typeof(System.OperationCanceledException)&#xD;
+Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+---- System.Net.Http.HttpRequestException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 74&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 97&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="06e1b660-0e23-474a-acc7-fb9d2246873b" testId="249c5e43-8b21-167c-f93f-986a55f11e8a" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: False, fault: &quot;other&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002948" startTime="2026-10-13T09:46:36.0258520-04:00" endTime="2026-10-13T09:46:36.0258983-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06e1b660-0e23-474a-acc7-fb9d2246873b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.InvalidOperationException)&#xD;
+---- System.InvalidOperationException : private authority adapter failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 124&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.AuthorizeReplayAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 137&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 210&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3e747996-dd06-4847-9dbb-7d440618dd0d" testId="d01b9290-2f7e-fb2a-12d9-e6e3aee4dc37" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;replay&quot;, signal: &quot;caller&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0008533" startTime="2026-10-13T09:46:35.9740062-04:00" endTime="2026-10-13T09:46:35.9744156-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3e747996-dd06-4847-9dbb-7d440618dd0d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.True() Failure&#xD;
+Expected: True&#xD;
+Actual:   False</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 76&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8aa34537-039d-4a8c-b735-9901c07c4e0d" testId="a381bbd4-579c-5167-0d4a-a171731b6ec0" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: False, fault: &quot;io&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0013401" startTime="2026-10-13T09:46:35.9838265-04:00" endTime="2026-10-13T09:46:35.9852850-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8aa34537-039d-4a8c-b735-9901c07c4e0d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.IO.IOException)&#xD;
+---- System.IO.IOException : private authority dependency failure</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 124&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.VerifyBindingAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 127&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 97&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9cfa23ff-372f-429d-9450-c5b131a8af5f" testId="68ead3de-4977-e8b0-b8b5-27fdde901a2f" testName="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: True, fault: &quot;timeout&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004349" startTime="2026-10-13T09:46:36.0312416-04:00" endTime="2026-10-13T09:46:36.0312932-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9cfa23ff-372f-429d-9450-c5b131a8af5f">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(Polly.Timeout.TimeoutRejectedException)&#xD;
+---- Polly.Timeout.TimeoutRejectedException : private timeout source</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs:line 30&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 210&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: True, fault: &quot;timeout&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="0259580a-be6f-69c8-2964-6b684a668468">
+      <Execution id="0194f866-b0e4-43f4-a809-b017ad387fd2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: False, fault: &quot;io&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="a381bbd4-579c-5167-0d4a-a171731b6ec0">
+      <Execution id="8aa34537-039d-4a8c-b735-9901c07c4e0d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: True, fault: &quot;transport&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="7bdecad4-20f4-14cb-822c-dc784b3b91de">
+      <Execution id="c5563150-f541-421b-b601-f17383b06465" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;verify&quot;, signal: &quot;parent-caller&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ef288d9f-64b2-7be6-a64c-7bff88bcfe19">
+      <Execution id="ebe1b55c-72a7-46f2-982a-164139d2bedb" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;verify&quot;, signal: &quot;total&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="d4e5f820-c9d1-4977-9666-1db53b7ededc">
+      <Execution id="185e1aac-8b88-49ce-a254-b9306f924f44" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;replay&quot;, signal: &quot;total&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="f89a5105-f30a-13af-7d4c-9259a8a66227">
+      <Execution id="64bc4c23-ec7f-46d7-8877-538056c039fe" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: False, fault: &quot;other&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="249c5e43-8b21-167c-f93f-986a55f11e8a">
+      <Execution id="06e1b660-0e23-474a-acc7-fb9d2246873b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;verify&quot;, signal: &quot;caller&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="5c0ed578-ba14-3971-e9df-1c6b6df213aa">
+      <Execution id="fe43267f-1bd4-4f86-89c4-ce0254cc0c6e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.UnrelatedAuthorityCancellationRemainsUnknownSource(stage: &quot;replay&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="300080e9-ceb9-ec2e-d042-de2507ecd232">
+      <Execution id="852972ce-42c4-4b6b-b3a5-ce8efd59099c" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="UnrelatedAuthorityCancellationRemainsUnknownSource" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: False, fault: &quot;io&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="c71e8392-ab6c-7dfd-db41-2ba60a4f6308">
+      <Execution id="5b29bbdf-5db8-497c-abfc-11befcca309b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: True, fault: &quot;other&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="2484cb1d-6855-eb48-8b44-1bf22facf3a7">
+      <Execution id="97a3139b-2e64-4c9e-b0d6-5715991808d7" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: True, fault: &quot;io&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="1e89f58a-ddd3-c49d-e710-b484b6a26975">
+      <Execution id="38df81ae-d52e-44e5-ac5f-75a3a8f87032" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: True, fault: &quot;io&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="99c558b0-a663-5638-5ff6-5bfb2535b7ef">
+      <Execution id="c49015b0-2e30-43fa-aec2-aa4ceb26ba97" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;replay&quot;, signal: &quot;parent-caller&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="46be5a6c-3ec8-1a29-189d-5918f77fc26c">
+      <Execution id="0556c7a9-5781-4eea-8ae9-10a111dee40c" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: False, fault: &quot;transport&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="5d114484-ea84-f551-aa9e-cf3168012c58">
+      <Execution id="b74186d5-6252-47a6-8916-915be30609c2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: True, fault: &quot;timeout&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="68ead3de-4977-e8b0-b8b5-27fdde901a2f">
+      <Execution id="9cfa23ff-372f-429d-9450-c5b131a8af5f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: False, fault: &quot;transport&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="b067000b-11c6-7618-6d8f-cceaf5f9b0a5">
+      <Execution id="bb812e81-0a28-43ed-a927-c901798e6a81" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: True, fault: &quot;transport&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="9e4c7f86-a306-19bc-add9-058c5a584218">
+      <Execution id="fd035671-9968-43b7-a935-3de36ffd9f23" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: &quot;replay&quot;, signal: &quot;caller&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="d01b9290-2f7e-fb2a-12d9-e6e3aee4dc37">
+      <Execution id="3e747996-dd06-4847-9dbb-7d440618dd0d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: False, fault: &quot;timeout&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="6940b081-718e-54bf-1595-00a156f6825a">
+      <Execution id="6ca6a8dd-984c-4d7b-84fd-1a7a2528b839" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;replay&quot;, asynchronous: False, fault: &quot;timeout&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ad4d1c1b-261c-81b9-4c42-8248bdbe4383">
+      <Execution id="9f2a0697-4c51-491e-8c61-6aae2787450d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.UnrelatedAuthorityCancellationRemainsUnknownSource(stage: &quot;verify&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="6f66ccc1-2871-76c0-59a3-67e8fc9d747f">
+      <Execution id="924abd27-1691-4f46-8050-793cc7463f7a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="UnrelatedAuthorityCancellationRemainsUnknownSource" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: True, fault: &quot;other&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="19ea5aa9-14f2-69f7-b7aa-3f0fff22ddc5">
+      <Execution id="39659184-53e0-44c7-94a2-2442d1d6dd7d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: &quot;verify&quot;, asynchronous: False, fault: &quot;other&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="f5331e79-8783-49a3-b729-933241786c71">
+      <Execution id="64ccdd46-ea15-4139-a775-9a6e34072f22" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests" name="AuthorityFaultRetainsSafeOriginalOutcome" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="c71e8392-ab6c-7dfd-db41-2ba60a4f6308" executionId="5b29bbdf-5db8-497c-abfc-11befcca309b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f89a5105-f30a-13af-7d4c-9259a8a66227" executionId="64bc4c23-ec7f-46d7-8877-538056c039fe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7bdecad4-20f4-14cb-822c-dc784b3b91de" executionId="c5563150-f541-421b-b601-f17383b06465" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d4e5f820-c9d1-4977-9666-1db53b7ededc" executionId="185e1aac-8b88-49ce-a254-b9306f924f44" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9e4c7f86-a306-19bc-add9-058c5a584218" executionId="fd035671-9968-43b7-a935-3de36ffd9f23" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c0ed578-ba14-3971-e9df-1c6b6df213aa" executionId="fe43267f-1bd4-4f86-89c4-ce0254cc0c6e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="300080e9-ceb9-ec2e-d042-de2507ecd232" executionId="852972ce-42c4-4b6b-b3a5-ce8efd59099c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6940b081-718e-54bf-1595-00a156f6825a" executionId="6ca6a8dd-984c-4d7b-84fd-1a7a2528b839" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f5331e79-8783-49a3-b729-933241786c71" executionId="64ccdd46-ea15-4139-a775-9a6e34072f22" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0259580a-be6f-69c8-2964-6b684a668468" executionId="0194f866-b0e4-43f4-a809-b017ad387fd2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="19ea5aa9-14f2-69f7-b7aa-3f0fff22ddc5" executionId="39659184-53e0-44c7-94a2-2442d1d6dd7d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="46be5a6c-3ec8-1a29-189d-5918f77fc26c" executionId="0556c7a9-5781-4eea-8ae9-10a111dee40c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="99c558b0-a663-5638-5ff6-5bfb2535b7ef" executionId="c49015b0-2e30-43fa-aec2-aa4ceb26ba97" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2484cb1d-6855-eb48-8b44-1bf22facf3a7" executionId="97a3139b-2e64-4c9e-b0d6-5715991808d7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1e89f58a-ddd3-c49d-e710-b484b6a26975" executionId="38df81ae-d52e-44e5-ac5f-75a3a8f87032" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b067000b-11c6-7618-6d8f-cceaf5f9b0a5" executionId="bb812e81-0a28-43ed-a927-c901798e6a81" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5d114484-ea84-f551-aa9e-cf3168012c58" executionId="b74186d5-6252-47a6-8916-915be30609c2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6f66ccc1-2871-76c0-59a3-67e8fc9d747f" executionId="924abd27-1691-4f46-8050-793cc7463f7a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ad4d1c1b-261c-81b9-4c42-8248bdbe4383" executionId="9f2a0697-4c51-491e-8c61-6aae2787450d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef288d9f-64b2-7be6-a64c-7bff88bcfe19" executionId="ebe1b55c-72a7-46f2-982a-164139d2bedb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="249c5e43-8b21-167c-f93f-986a55f11e8a" executionId="06e1b660-0e23-474a-acc7-fb9d2246873b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d01b9290-2f7e-fb2a-12d9-e6e3aee4dc37" executionId="3e747996-dd06-4847-9dbb-7d440618dd0d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a381bbd4-579c-5167-0d4a-a171731b6ec0" executionId="8aa34537-039d-4a8c-b735-9901c07c4e0d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="68ead3de-4977-e8b0-b8b5-27fdde901a2f" executionId="9cfa23ff-372f-429d-9450-c5b131a8af5f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="24" executed="24" passed="2" failed="22" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.52]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.63]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.66]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.77]       Assert.ThrowsAny() Failure: Exception type was not compatible&#xD;
+[xUnit.net 00:00:00.77]       Expected: typeof(System.OperationCanceledException)&#xD;
+[xUnit.net 00:00:00.77]       Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+[xUnit.net 00:00:00.77]       ---- System.Net.Http.HttpRequestException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.77]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.77]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(74,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal)&#xD;
+[xUnit.net 00:00:00.77]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.77]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.77]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(97,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.77]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.79]       Assert.ThrowsAny() Failure: Exception type was not compatible&#xD;
+[xUnit.net 00:00:00.79]       Expected: typeof(System.OperationCanceledException)&#xD;
+[xUnit.net 00:00:00.79]       Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+[xUnit.net 00:00:00.79]       ---- System.Net.Http.HttpRequestException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(74,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal)&#xD;
+[xUnit.net 00:00:00.79]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.79]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(210,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.79]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.79]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.79]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.79]       Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+[xUnit.net 00:00:00.79]       ---- System.Net.Http.HttpRequestException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(70,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal)&#xD;
+[xUnit.net 00:00:00.79]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.79]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(210,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.79]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.79]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.79]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.79]       Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+[xUnit.net 00:00:00.79]       ---- System.Net.Http.HttpRequestException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(70,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal)&#xD;
+[xUnit.net 00:00:00.79]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.79]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(97,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.79]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.79]       Assert.True() Failure&#xD;
+[xUnit.net 00:00:00.79]       Expected: True&#xD;
+[xUnit.net 00:00:00.79]       Actual:   False&#xD;
+[xUnit.net 00:00:00.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(76,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal)&#xD;
+[xUnit.net 00:00:00.79]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.79]       Assert.True() Failure&#xD;
+[xUnit.net 00:00:00.79]       Expected: True&#xD;
+[xUnit.net 00:00:00.79]       Actual:   False&#xD;
+[xUnit.net 00:00:00.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(76,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(String stage, String signal)&#xD;
+[xUnit.net 00:00:00.79]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.80]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.80]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.80]       Actual:   typeof(System.IO.IOException)&#xD;
+[xUnit.net 00:00:00.80]       ---- System.IO.IOException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.80]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.80]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.80]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.80]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.80]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(124,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail()&#xD;
+[xUnit.net 00:00:00.80]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(127,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.VerifyBindingAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.80]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(97,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.80]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.84]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.84]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.84]       Actual:   typeof(System.IO.IOException)&#xD;
+[xUnit.net 00:00:00.84]       ---- System.IO.IOException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.84]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.84]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(210,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.84]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.84]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.84]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.84]       Actual:   typeof(System.InvalidOperationException)&#xD;
+[xUnit.net 00:00:00.84]       ---- System.InvalidOperationException : private authority adapter failure&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.84]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.84]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(124,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail()&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(127,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.VerifyBindingAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(97,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.84]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.84]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.84]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.84]       Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+[xUnit.net 00:00:00.84]       ---- System.Net.Http.HttpRequestException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.84]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.84]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(124,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail()&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(127,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.VerifyBindingAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(97,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.84]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.84]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.84]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.84]       Actual:   typeof(System.InvalidOperationException)&#xD;
+[xUnit.net 00:00:00.84]       ---- System.InvalidOperationException : private authority adapter failure&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.84]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.84]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(124,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail()&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(137,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.AuthorizeReplayAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(210,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.84]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.85]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.85]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.85]       Actual:   typeof(System.IO.IOException)&#xD;
+[xUnit.net 00:00:00.85]       ---- System.IO.IOException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.85]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(97,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.85]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.85]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.85]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.85]       Actual:   typeof(Polly.Timeout.TimeoutRejectedException)&#xD;
+[xUnit.net 00:00:00.85]       ---- Polly.Timeout.TimeoutRejectedException : private timeout source&#xD;
+[xUnit.net 00:00:00.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.85]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(124,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail()&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(127,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.VerifyBindingAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(97,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.85]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.85]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.85]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.85]       Actual:   typeof(System.IO.IOException)&#xD;
+[xUnit.net 00:00:00.85]       ---- System.IO.IOException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.85]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(124,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail()&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(137,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.AuthorizeReplayAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(210,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.85]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.85]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.85]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.85]       Actual:   typeof(Polly.Timeout.TimeoutRejectedException)&#xD;
+[xUnit.net 00:00:00.85]       ---- Polly.Timeout.TimeoutRejectedException : private timeout source&#xD;
+[xUnit.net 00:00:00.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.85]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(210,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.85]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.85]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.85]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.85]       Actual:   typeof(System.InvalidOperationException)&#xD;
+[xUnit.net 00:00:00.85]       ---- System.InvalidOperationException : private authority adapter failure&#xD;
+[xUnit.net 00:00:00.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.85]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(210,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.85]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.85]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.85]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.85]       Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+[xUnit.net 00:00:00.85]       ---- System.Net.Http.HttpRequestException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.85]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(124,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail()&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(137,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.AuthorizeReplayAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(210,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.85]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.85]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.85]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.85]       Actual:   typeof(System.InvalidOperationException)&#xD;
+[xUnit.net 00:00:00.85]       ---- System.InvalidOperationException : private authority adapter failure&#xD;
+[xUnit.net 00:00:00.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.85]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(97,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.85]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.85]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.85]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.85]       Actual:   typeof(Polly.Timeout.TimeoutRejectedException)&#xD;
+[xUnit.net 00:00:00.85]       ---- Polly.Timeout.TimeoutRejectedException : private timeout source&#xD;
+[xUnit.net 00:00:00.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.85]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(124,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.Fail()&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(137,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.FaultingAuthority.AuthorizeReplayAsync(Cp6HttpOperationIdentity operation, Cp6HttpRequestSnapshot request, Cp6HttpDeadline deadline, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(210,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.85]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.86]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.86]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.86]       Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+[xUnit.net 00:00:00.86]       ---- System.Net.Http.HttpRequestException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.86]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.86]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.86]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.86]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.86]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(210,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.86]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.86]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.86]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.86]       Actual:   typeof(Polly.Timeout.TimeoutRejectedException)&#xD;
+[xUnit.net 00:00:00.86]       ---- Polly.Timeout.TimeoutRejectedException : private timeout source&#xD;
+[xUnit.net 00:00:00.86]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.86]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.86]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.86]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.86]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(97,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.86]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.86]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.86]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.86]       Actual:   typeof(System.Net.Http.HttpRequestException)&#xD;
+[xUnit.net 00:00:00.86]       ---- System.Net.Http.HttpRequestException : private authority dependency failure&#xD;
+[xUnit.net 00:00:00.86]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.86]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\AuthorityFaultRegressionTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(String stage, Boolean asynchronous, String fault)&#xD;
+[xUnit.net 00:00:00.86]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.86]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.86]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(97,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.86]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.86]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:35.9479970-04:00">
+        <Text>[xUnit.net 00:00:00.77]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: "verify", signal: "parent-caller") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:35.9698465-04:00">
+        <Text>[xUnit.net 00:00:00.79]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: "replay", signal: "parent-caller") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:35.9726852-04:00">
+        <Text>[xUnit.net 00:00:00.79]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: "replay", signal: "total") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:35.9736019-04:00">
+        <Text>[xUnit.net 00:00:00.79]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: "verify", signal: "total") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:35.9747453-04:00">
+        <Text>[xUnit.net 00:00:00.79]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: "replay", signal: "caller") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:35.9756093-04:00">
+        <Text>[xUnit.net 00:00:00.79]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(stage: "verify", signal: "caller") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:35.9858052-04:00">
+        <Text>[xUnit.net 00:00:00.80]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "verify", asynchronous: False, fault: "io") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0843551-04:00">
+        <Text>[xUnit.net 00:00:00.84]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "replay", asynchronous: True, fault: "io") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0844463-04:00">
+        <Text>[xUnit.net 00:00:00.84]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "verify", asynchronous: False, fault: "other") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0845118-04:00">
+        <Text>[xUnit.net 00:00:00.84]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "verify", asynchronous: False, fault: "transport") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0845541-04:00">
+        <Text>[xUnit.net 00:00:00.84]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "replay", asynchronous: False, fault: "other") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0845991-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "verify", asynchronous: True, fault: "io") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0846416-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "verify", asynchronous: False, fault: "timeout") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0846958-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "replay", asynchronous: False, fault: "io") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0847537-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "replay", asynchronous: True, fault: "timeout") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0848004-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "replay", asynchronous: True, fault: "other") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0878863-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "replay", asynchronous: False, fault: "transport") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0880175-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "verify", asynchronous: True, fault: "other") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0881183-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "replay", asynchronous: False, fault: "timeout") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0882252-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "replay", asynchronous: True, fault: "transport") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0883248-04:00">
+        <Text>[xUnit.net 00:00:00.86]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "verify", asynchronous: True, fault: "timeout") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:46:36.0884159-04:00">
+        <Text>[xUnit.net 00:00:00.86]     CP6.Platform.AspNetCoreTests.HttpV2.AuthorityFaultRegressionTests.AuthorityFaultRetainsSafeOriginalOutcome(stage: "verify", asynchronous: True, fault: "transport") [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
