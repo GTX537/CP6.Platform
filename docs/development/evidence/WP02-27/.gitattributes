@@ -1,0 +1,6 @@
+*.json -text
+*.log -text
+*.trx -text
+*.txt -text
+*.bin -text
+*.cer -text

@@ -12,6 +12,9 @@
     <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="../../contracts/release/capabilities/v1/**/*"
+          Pack="true"
+          PackagePath="contracts/release/capabilities/v1/%(RecursiveDir)%(Filename)%(Extension)" />
     <None Include="../../contracts/release/v1/**/*"
           Pack="true"
           PackagePath="contracts/release/v1/%(RecursiveDir)%(Filename)%(Extension)" />
