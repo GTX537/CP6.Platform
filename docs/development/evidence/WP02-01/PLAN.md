@@ -120,8 +120,8 @@ C:/Users/tt/.dotnet/dotnet.exe test tests/CP6.Platform.AspNetCoreTests/CP6.Platf
 C:/Users/tt/.dotnet/dotnet.exe test tests/CP6.Platform.UnitTests/CP6.Platform.UnitTests.csproj --configuration Release
 ```
 
-- [ ] Write `docs/WP02-01-TRUSTED-CONTEXT.md`, append compatibility/adoption guidance to `docs/P02-REQUEST-CONTEXT.md`, and evidence `ACCEPTANCE.md`, `PROVENANCE.json`, `VALIDATION.md`, `DELIVERY.md`. Preserve all 28 original AC and PGT-004 as mapped obligations; report Main/CRM/PG/final-gate/real-host adoption separately and honestly.
-- [ ] Perform one concentrated review against latest confirmed main. Fix material issues and run affected regression only. Explicitly stage task files and create auditable commits.
+- [x] Write `docs/WP02-01-TRUSTED-CONTEXT.md`, append compatibility/adoption guidance to `docs/P02-REQUEST-CONTEXT.md`, and evidence `ACCEPTANCE.md`, `PROVENANCE.json`, `VALIDATION.md`, `DELIVERY.md`. Preserve all 28 original AC and PGT-004 as mapped obligations; report Main/CRM/PG/final-gate/real-host adoption separately and honestly.
+- [x] Perform one concentrated review against latest confirmed main. Fix material issues and run affected regression only. Explicitly stage task files and create auditable commits.
 - [ ] Before candidate/Handoff push inspect remote protected branch and candidate workflows/events/dependencies. Publish no Actions runs, packages, database changes or deployment. Deliver candidate SHA and fixed evidence to COORD; final merge/status/main containment remains the coordinator's window.
 
 ## Plan self-review
