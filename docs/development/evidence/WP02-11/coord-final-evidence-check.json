@@ -1,0 +1,145 @@
+{
+  "checked_at_utc": "2026-10-13T13:50:33.701705+00:00",
+  "source_head_at_final_run": "58e35c36e1987105c144a6dcc1955a524db8ca35",
+  "manifest": "docs/development/evidence/WP02-11/implementation/coord-final-after-fingerprints.json",
+  "manifest_sha256": "6f99832ec575b7507ae444bde0c958fbd4155c93ea5aff75ac929c5486861a6b",
+  "checks": {
+    "source": {
+      "count": 249,
+      "errors": [],
+      "before_after_equal": true
+    },
+    "restoredDependencies": {
+      "count": 8,
+      "errors": [],
+      "before_after_equal": true
+    },
+    "compiledArtifacts": {
+      "count": 25,
+      "errors": []
+    }
+  },
+  "runs": [
+    {
+      "path": "docs/development/evidence/WP02-11/implementation/coord-issue62-red.trx",
+      "sha256": "bc8eacdf41af1f42e83a420ee25c98cdc0fbcb9be5bcc669e12ccaeddc94ffe6",
+      "log_sha256": "faceb26752031a540aa7cee98ef6d46fd2aab67792fefe64fc4ed5a80ee754fd",
+      "counts": {
+        "total": "24",
+        "executed": "24",
+        "passed": "8",
+        "failed": "16",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "actual_result_count": 24
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/implementation/coord-issue62-green.trx",
+      "sha256": "73b4a4a85e1aa512196205d1201873bf43269b88b080537d71a9b8402b0976c6",
+      "log_sha256": "ef2a83ce8b158220f098bffa5bb3a130a67912bc9203efb0ef5b8bcbd4b8441e",
+      "counts": {
+        "total": "24",
+        "executed": "24",
+        "passed": "24",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "actual_result_count": 24
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/implementation/coord-issue63-red.trx",
+      "sha256": "b483d33d73bbcb1449d1e74e409ef0b9680a16423e57b4c805e1000115340802",
+      "log_sha256": "197da33841e3a16257c481c243f1fe5d2f6289a7f5eb8f91f61abe0c8c9fe56e",
+      "counts": {
+        "total": "24",
+        "executed": "24",
+        "passed": "2",
+        "failed": "22",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "actual_result_count": 24
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/implementation/coord-issue63-green.trx",
+      "sha256": "1bac1cd42fe9c89f929d6cf4fcaf7168af9bc381e73b762945a6f059520776a1",
+      "log_sha256": "a6f019d45e42f0d8e2756d275afb449dbd1e37a863890565b808b8c87fdb4050",
+      "counts": {
+        "total": "24",
+        "executed": "24",
+        "passed": "24",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "actual_result_count": 24
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/implementation/coord-final-http-v2.trx",
+      "sha256": "379d8e823e746b64466ee9a33e93730c8e907d8b8d83a6ed661c2a2d282551cd",
+      "log_sha256": "49db8bb48ef073d31b051cbc79c9521a460689c38473e73503b1040e6ff29ba2",
+      "counts": {
+        "total": "198",
+        "executed": "198",
+        "passed": "198",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "actual_result_count": 198
+    }
+  ],
+  "scope": "Current combined affected suite and exact working bytes; historical RED and original 98+98 remain original executions, not new runs."
+}

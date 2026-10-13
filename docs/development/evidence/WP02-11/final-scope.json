@@ -1,0 +1,195 @@
+{
+  "task": "WP02-11",
+  "baseline": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+  "head_at_check": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+  "pinned_assets": [
+    {
+      "path": "docs/development/evidence/WP02-11/inputs/PLT-HTTP-01-v0.2.md",
+      "sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f"
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/inputs/S6-INT-ID-OPS-v0.2.md",
+      "sha256": "d9b57a039e18a689615cfb48e181bb248dedecf957d8bdd7dd72d85a53a6dccc"
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/inputs/TASK.md",
+      "sha256": "0e17deaa22dcea6ec1038a4db9b374c41a2c21cba957603c00a2d89ddd5bb51a"
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/inputs/ADMISSION.md",
+      "sha256": "f1de6612255caf602211bde5d25e4d903278fc65d94f46bc6a38c4cca99f842a"
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/inputs/foundation.json",
+      "sha256": "6af601f92d8a3f3b347358313bd6d3c199581a0fd93650b3c6c7090249329417"
+    }
+  ],
+  "read_only_inputs": [
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceProfile.cs",
+      "unchanged": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpOperationKind.cs",
+      "unchanged": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpFailureCategory.cs",
+      "unchanged": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceException.cs",
+      "unchanged": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationId.cs",
+      "unchanged": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationMiddleware.cs",
+      "unchanged": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OutboundCorrelationHandler.cs",
+      "unchanged": true
+    },
+    {
+      "path": "tests/CP6.Platform.AspNetCoreTests/HttpResilienceTests.cs",
+      "unchanged": true
+    },
+    {
+      "path": "tests/CP6.Platform.AspNetCoreTests/GatewayContractTests.cs",
+      "unchanged": true
+    },
+    {
+      "path": "tests/CP6.Platform.AspNetCoreTests/AuthenticationContractTests.cs",
+      "unchanged": true
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/RepositoryArchitectureTests.cs",
+      "unchanged": true
+    },
+    {
+      "path": "Directory.Build.props",
+      "unchanged": true
+    },
+    {
+      "path": "Directory.Packages.props",
+      "unchanged": true
+    },
+    {
+      "path": "global.json",
+      "unchanged": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj",
+      "unchanged": true
+    },
+    {
+      "path": "tests/CP6.Platform.AspNetCoreTests/CP6.Platform.AspNetCoreTests.csproj",
+      "unchanged": true
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/CP6.Platform.ArchitectureTests.csproj",
+      "unchanged": true
+    }
+  ],
+  "changed_paths": [
+    "docs/WP02-11-HTTP-V2.md",
+    "docs/development/evidence/WP02-11/.gitattributes",
+    "docs/development/evidence/WP02-11/AC-SCOPE.md",
+    "docs/development/evidence/WP02-11/DELIVERY.md",
+    "docs/development/evidence/WP02-11/PLAN.md",
+    "docs/development/evidence/WP02-11/REVIEW.md",
+    "docs/development/evidence/WP02-11/ac-scope.json",
+    "docs/development/evidence/WP02-11/audit_workflows.py",
+    "docs/development/evidence/WP02-11/current-evidence-check.json",
+    "docs/development/evidence/WP02-11/final-scope.json",
+    "docs/development/evidence/WP02-11/implementation/RUNS.md",
+    "docs/development/evidence/WP02-11/implementation/after-final-fingerprints.json",
+    "docs/development/evidence/WP02-11/implementation/after-parent-cancellation-fix-fingerprints.json",
+    "docs/development/evidence/WP02-11/implementation/after-review-fixes-fingerprints.json",
+    "docs/development/evidence/WP02-11/implementation/before-final-fingerprints.json",
+    "docs/development/evidence/WP02-11/implementation/before-parent-cancellation-fix-fingerprints.json",
+    "docs/development/evidence/WP02-11/implementation/before-parent-cancellation-green-fingerprints.json",
+    "docs/development/evidence/WP02-11/implementation/before-review-fixes-fingerprints.json",
+    "docs/development/evidence/WP02-11/implementation/capture-evidence.ps1",
+    "docs/development/evidence/WP02-11/implementation/draft-regressions.log",
+    "docs/development/evidence/WP02-11/implementation/draft-regressions.trx",
+    "docs/development/evidence/WP02-11/implementation/final-architecture.log",
+    "docs/development/evidence/WP02-11/implementation/final-architecture.trx",
+    "docs/development/evidence/WP02-11/implementation/final-http-v2.log",
+    "docs/development/evidence/WP02-11/implementation/final-http-v2.trx",
+    "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.log",
+    "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+    "docs/development/evidence/WP02-11/implementation/https-fixture.log",
+    "docs/development/evidence/WP02-11/implementation/https-fixture.trx",
+    "docs/development/evidence/WP02-11/implementation/integrated-v2-fixed.log",
+    "docs/development/evidence/WP02-11/implementation/integrated-v2-fixed.trx",
+    "docs/development/evidence/WP02-11/implementation/integrated-v2.log",
+    "docs/development/evidence/WP02-11/implementation/integrated-v2.trx",
+    "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.log",
+    "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+    "docs/development/evidence/WP02-11/implementation/parent-cancellation-red.log",
+    "docs/development/evidence/WP02-11/implementation/parent-cancellation-red.trx",
+    "docs/development/evidence/WP02-11/implementation/parser-green.log",
+    "docs/development/evidence/WP02-11/implementation/parser-green.trx",
+    "docs/development/evidence/WP02-11/implementation/protocol-parser-red.log",
+    "docs/development/evidence/WP02-11/implementation/protocol-parser-red.trx",
+    "docs/development/evidence/WP02-11/implementation/protocol-parser-regressions.log",
+    "docs/development/evidence/WP02-11/implementation/red-parser.log",
+    "docs/development/evidence/WP02-11/implementation/red-parser.trx",
+    "docs/development/evidence/WP02-11/implementation/review-fixes-http-v2.log",
+    "docs/development/evidence/WP02-11/implementation/review-fixes-http-v2.trx",
+    "docs/development/evidence/WP02-11/implementation/review-fixes-red.log",
+    "docs/development/evidence/WP02-11/implementation/review-fixes-red.trx",
+    "docs/development/evidence/WP02-11/implementation/sdk.txt",
+    "docs/development/evidence/WP02-11/implementation/transport-boundary-green.log",
+    "docs/development/evidence/WP02-11/implementation/transport-boundary-green.trx",
+    "docs/development/evidence/WP02-11/implementation/transport-boundary-red.log",
+    "docs/development/evidence/WP02-11/implementation/transport-boundary-red.trx",
+    "docs/development/evidence/WP02-11/independent-evidence-check.json",
+    "docs/development/evidence/WP02-11/inputs/ADMISSION.md",
+    "docs/development/evidence/WP02-11/inputs/PLT-HTTP-01-v0.2.md",
+    "docs/development/evidence/WP02-11/inputs/S6-INT-ID-OPS-v0.2.md",
+    "docs/development/evidence/WP02-11/inputs/TASK.md",
+    "docs/development/evidence/WP02-11/inputs/foundation.json",
+    "docs/development/evidence/WP02-11/intake-audit-shape-failure.md",
+    "docs/development/evidence/WP02-11/intake-scope.json",
+    "docs/development/evidence/WP02-11/intake-workflows.json",
+    "docs/development/evidence/WP02-11/legacy-baseline.json",
+    "docs/development/evidence/WP02-11/map_acceptance.py",
+    "docs/development/evidence/WP02-11/precommit-workflows.json",
+    "docs/development/evidence/WP02-11/review-fix-evidence-check.json",
+    "docs/development/evidence/WP02-11/sources.json",
+    "docs/development/evidence/WP02-11/staged-check.json",
+    "docs/development/evidence/WP02-11/verify_execution_evidence.py",
+    "docs/development/evidence/WP02-11/verify_scope.py",
+    "src/CP6.Platform.AspNetCore/Cp6ProblemDetailsExtensions.cs",
+    "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpDeadline.cs",
+    "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpOperationBinding.cs",
+    "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Handler.cs",
+    "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Outcome.cs",
+    "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Profile.cs",
+    "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Registration.cs",
+    "src/CP6.Platform.AspNetCore/HttpV2/Cp6RetryAfter.cs",
+    "src/CP6.Platform.AspNetCore/HttpV2/Cp6RetryDecision.cs",
+    "src/CP6.Platform.AspNetCore/HttpV2/Cp6SafeProblemPolicy.cs",
+    "src/CP6.Platform.AspNetCore/HttpV2/Cp6SafeProblemWriter.cs",
+    "tests/CP6.Platform.AspNetCoreTests/HttpV2/DeadlineDecisionTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/HttpV2/HandlerTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/HttpV2/LoopbackTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/HttpV2/OwnerProtocolFixtureTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/HttpV2/ProfileRegistrationTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/HttpV2/RecoveryBudgetTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/HttpV2/RetryAfterTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/HttpV2/ReviewRegressionsTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/HttpV2/SafeProblemTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/HttpV2/TestClock.cs"
+  ],
+  "original_ac_count": 42,
+  "business_acceptance": "NOT_RUN",
+  "result": "PASS",
+  "errors": [],
+  "limits": "Scope/provenance check only; not compilation, behavior, additive-overload review, or real Owner acceptance."
+}

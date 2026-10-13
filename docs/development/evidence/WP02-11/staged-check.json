@@ -1,0 +1,55 @@
+{
+  "staged_file_count": 89,
+  "exact_bytes": 88,
+  "newline_normalization_only": 1,
+  "local_links": [
+    {
+      "document": "docs/development/evidence/WP02-11/DELIVERY.md",
+      "target": "../../../WP02-11-HTTP-V2.md",
+      "exists": true
+    },
+    {
+      "document": "docs/development/evidence/WP02-11/DELIVERY.md",
+      "target": "sources.json",
+      "exists": true
+    },
+    {
+      "document": "docs/development/evidence/WP02-11/DELIVERY.md",
+      "target": "implementation/RUNS.md",
+      "exists": true
+    },
+    {
+      "document": "docs/development/evidence/WP02-11/DELIVERY.md",
+      "target": "independent-evidence-check.json",
+      "exists": true
+    },
+    {
+      "document": "docs/development/evidence/WP02-11/DELIVERY.md",
+      "target": "current-evidence-check.json",
+      "exists": true
+    },
+    {
+      "document": "docs/development/evidence/WP02-11/DELIVERY.md",
+      "target": "final-scope.json",
+      "exists": true
+    },
+    {
+      "document": "docs/development/evidence/WP02-11/DELIVERY.md",
+      "target": "AC-SCOPE.md",
+      "exists": true
+    },
+    {
+      "document": "docs/development/evidence/WP02-11/DELIVERY.md",
+      "target": "ac-scope.json",
+      "exists": true
+    },
+    {
+      "document": "docs/development/evidence/WP02-11/DELIVERY.md",
+      "target": "REVIEW.md",
+      "exists": true
+    }
+  ],
+  "issues": [],
+  "result": "PASS",
+  "scope": "Candidate index vs disk, authored-document links (frozen original source links excluded), and recognizable token/private-key patterns; supplements manual review."
+}

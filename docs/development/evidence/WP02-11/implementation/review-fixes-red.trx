@@ -1,0 +1,433 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="b8f3ecc2-3b3e-46a6-85ce-31d7e4d4b96f" name="tt@LAPTOP-3QQ44FJS 2026-10-13 08:48:52" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T08:48:52.5621233-04:00" queuing="2026-10-13T08:48:52.5621237-04:00" start="2026-10-13T08:48:51.6604601-04:00" finish="2026-10-13T08:48:52.7808253-04:00" />
+  <TestSettings name="default" id="832878d3-0aba-4e94-87c3-a46467e13a7e">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-13_08_48_52" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="f81f9919-d8c0-41a4-ba6b-1af2a7debb8a" testId="7ac0e3ae-a946-40ef-caf6-a63aa749116e" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;query&quot;, answer: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002745" startTime="2026-10-13T08:48:52.5121900-04:00" endTime="2026-10-13T08:48:52.5122157-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f81f9919-d8c0-41a4-ba6b-1af2a7debb8a" />
+    <UnitTestResult executionId="5ad4fd6f-5756-42e6-996a-234f5930e4ce" testId="4db4492c-c633-671f-4cb8-c1fa2bb5d419" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(unavailable: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004468" startTime="2026-10-13T08:48:52.5341785-04:00" endTime="2026-10-13T08:48:52.5342170-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5ad4fd6f-5756-42e6-996a-234f5930e4ce">
+      <Output>
+        <ErrorInfo>
+          <Message>System.IO.IOException : fixture body read failed</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.&lt;&gt;c.&lt;ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable&gt;b__0_0() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 14&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ControlledStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 131&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.BufferResponseAsync(HttpResponseMessage response, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 283&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.&lt;&gt;c__DisplayClass8_2.&lt;&lt;SendAsync&gt;b__6&gt;d.MoveNext() in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 142&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Polly.ResiliencePipeline.&lt;&gt;c__10`1.&lt;&lt;ExecuteAsync&gt;b__10_0&gt;d.MoveNext()&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Polly.Outcome`1.GetResultOrRethrow()&#xD;
+   at Polly.ResiliencePipeline.ExecuteAsync[TResult](Func`2 callback, CancellationToken cancellationToken)&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 108&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(Boolean unavailable) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 28&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8e334475-c541-4074-9660-7dac336c4c72" testId="8494fd4a-af66-35e4-bfc6-3c2cdcd7f595" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;query&quot;, answer: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003063" startTime="2026-10-13T08:48:52.5110268-04:00" endTime="2026-10-13T08:48:52.5115909-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8e334475-c541-4074-9660-7dac336c4c72">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.ThrowsAny() Failure: Exception type was not compatible&#xD;
+Expected: typeof(System.OperationCanceledException)&#xD;
+Actual:   typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+---- CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception : The bounded HTTP operation did not complete. Inspect the typed safe outcome.</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(String stage, Boolean answer) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 106&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 201&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="433f518b-94a0-412c-b2c5-ef1a78c32559" testId="3dd508cf-b806-53ab-0507-8b3e656849fe" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(applied: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0012681" startTime="2026-10-13T08:48:52.5073288-04:00" endTime="2026-10-13T08:48:52.5073803-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="433f518b-94a0-412c-b2c5-ef1a78c32559">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(Boolean applied) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 63&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0f5bf799-e5c1-4b00-a337-6a9201ddbaa0" testId="07c76b41-33f1-bc52-3f23-fe8fc483fa3d" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.OriginalQueryBodyIoFailureRemainsUnknownAndDisposesBody" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0008349" startTime="2026-10-13T08:48:52.5364578-04:00" endTime="2026-10-13T08:48:52.5364831-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0f5bf799-e5c1-4b00-a337-6a9201ddbaa0" />
+    <UnitTestResult executionId="2343cd92-7df6-42ef-9721-42439d7cfc35" testId="3344b148-ad05-1549-32f0-afc2670de912" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;authorize&quot;, answer: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0006347" startTime="2026-10-13T08:48:52.5103866-04:00" endTime="2026-10-13T08:48:52.5104141-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2343cd92-7df6-42ef-9721-42439d7cfc35">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.ThrowsAny() Failure: Exception type was not compatible&#xD;
+Expected: typeof(System.OperationCanceledException)&#xD;
+Actual:   typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+---- CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception : The bounded HTTP operation did not complete. Inspect the typed safe outcome.</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(String stage, Boolean answer) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 106&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 201&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e6eb99e4-e71b-49e6-9bfa-6dfad92d0e69" testId="e9209e57-4b02-536d-ffb8-8ad3907e1e30" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(milliseconds: 101, expected: RecoveryUnavailable)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0008976" startTime="2026-10-13T08:48:52.5352459-04:00" endTime="2026-10-13T08:48:52.5352664-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e6eb99e4-e71b-49e6-9bfa-6dfad92d0e69">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(Int32 milliseconds, Cp6HttpV2Failure expected) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 80&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="994cdb95-aa74-40b5-b72f-a425d3e2cf50" testId="e71bb944-27c7-c9b4-6c5d-58418d5990c0" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;authorize&quot;, answer: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0019335" startTime="2026-10-13T08:48:52.5108571-04:00" endTime="2026-10-13T08:48:52.5109385-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="994cdb95-aa74-40b5-b72f-a425d3e2cf50" />
+    <UnitTestResult executionId="a07bfbf8-1bbe-41a2-8e52-174c2364075b" testId="5d3d892b-d91c-5619-6855-a7fa91e8bdde" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedVerificationBeyondTotalDoesNotReportBindingDeniedOrSend(answer: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0049768" startTime="2026-10-13T08:48:52.5351638-04:00" endTime="2026-10-13T08:48:52.5351867-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a07bfbf8-1bbe-41a2-8e52-174c2364075b" />
+    <UnitTestResult executionId="ec8886a8-6d98-40b1-8d38-b6a0bcd83591" testId="0602c17c-c482-af41-a130-3b5a2fb888f8" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(applied: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0525814" startTime="2026-10-13T08:48:52.4318226-04:00" endTime="2026-10-13T08:48:52.4982906-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec8886a8-6d98-40b1-8d38-b6a0bcd83591">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(Boolean applied) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 63&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9364c1d8-f8c8-4990-9004-1a39aaaaa92d" testId="e6e5f806-06a5-2f41-c10a-dfbce7db5c8c" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedVerificationBeyondTotalDoesNotReportBindingDeniedOrSend(answer: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0027291" startTime="2026-10-13T08:48:52.5348815-04:00" endTime="2026-10-13T08:48:52.5349058-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9364c1d8-f8c8-4990-9004-1a39aaaaa92d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: TotalTimeout&#xD;
+Actual:   BindingRejected</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedVerificationBeyondTotalDoesNotReportBindingDeniedOrSend(Boolean answer) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 121&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b91fb8d7-4547-425d-b876-993b15c7137e" testId="a52c792f-28b6-f4e1-2e7f-1a7a2f3bed26" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;verify&quot;, answer: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0057446" startTime="2026-10-13T08:48:52.5087118-04:00" endTime="2026-10-13T08:48:52.5089026-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b91fb8d7-4547-425d-b876-993b15c7137e" />
+    <UnitTestResult executionId="4971d80d-fe30-4ff0-aff7-7c4baf5f957e" testId="acdf4d18-486f-adb3-2aa1-809066556df6" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(unavailable: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0015302" startTime="2026-10-13T08:48:52.5332007-04:00" endTime="2026-10-13T08:48:52.5332468-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4971d80d-fe30-4ff0-aff7-7c4baf5f957e">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.IO.IOException)&#xD;
+---- System.IO.IOException : fixture body read failed</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(Boolean unavailable) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 22&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.&lt;&gt;c.&lt;ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable&gt;b__0_0() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 14&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ControlledStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 131&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.BufferResponseAsync(HttpResponseMessage response, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 283&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.&lt;&gt;c__DisplayClass8_2.&lt;&lt;SendAsync&gt;b__6&gt;d.MoveNext() in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 142&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Polly.ResiliencePipeline.&lt;&gt;c__10`1.&lt;&lt;ExecuteAsync&gt;b__10_0&gt;d.MoveNext()&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Polly.Outcome`1.GetResultOrRethrow()&#xD;
+   at Polly.ResiliencePipeline.ExecuteAsync[TResult](Func`2 callback, CancellationToken cancellationToken)&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 108&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="191c6059-4400-4ec3-a4c6-feb47d5d0d6f" testId="f4b0b397-68ad-6c80-fa7b-1729f0503ab2" testName="CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealTruncatedBodyIsTypedTransportFailureAfterHeadersWereObserved" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2676502" startTime="2026-10-13T08:48:52.4309260-04:00" endTime="2026-10-13T08:48:52.7054080-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="191c6059-4400-4ec3-a4c6-feb47d5d0d6f">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+Actual:   typeof(System.IO.IOException)&#xD;
+---- System.IO.IOException : Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..&#xD;
+-------- System.Net.Sockets.SocketException : An existing connection was forcibly closed by the remote host.</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealTruncatedBodyIsTypedTransportFailureAfterHeadersWereObserved() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\LoopbackTests.cs:line 35&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealTruncatedBodyIsTypedTransportFailureAfterHeadersWereObserved() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\LoopbackTests.cs:line 37&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)&#xD;
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource&lt;System.Int32&gt;.GetResult(Int16 token)&#xD;
+   at System.Net.Http.HttpConnection.ReadAsync(Memory`1 destination)&#xD;
+   at System.Net.Http.HttpConnection.ContentLengthReadStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken)&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.BufferResponseAsync(HttpResponseMessage response, CancellationToken token) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 283&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.&lt;&gt;c__DisplayClass8_2.&lt;&lt;SendAsync&gt;b__6&gt;d.MoveNext() in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 142&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Polly.ResiliencePipeline.&lt;&gt;c__10`1.&lt;&lt;ExecuteAsync&gt;b__10_0&gt;d.MoveNext()&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at Polly.Outcome`1.GetResultOrRethrow()&#xD;
+   at Polly.ResiliencePipeline.ExecuteAsync[TResult](Func`2 callback, CancellationToken cancellationToken)&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 108&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+----- Inner Stack Trace -----&#xD;
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5b9d389c-ca4f-40c1-a217-ff5423db6280" testId="3b558c50-1f74-a671-2c07-759a1b72f33a" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(milliseconds: 301, expected: TotalTimeout)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003973" startTime="2026-10-13T08:48:52.5354948-04:00" endTime="2026-10-13T08:48:52.5360907-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5b9d389c-ca4f-40c1-a217-ff5423db6280">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(Int32 milliseconds, Cp6HttpV2Failure expected) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 80&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="01740ea9-3d16-4e7e-a0f1-761ad0d67a8b" testId="fb6fa16a-0fa4-2bb0-79aa-500122caa130" testName="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;verify&quot;, answer: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0006869" startTime="2026-10-13T08:48:52.5095271-04:00" endTime="2026-10-13T08:48:52.5095561-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="01740ea9-3d16-4e7e-a0f1-761ad0d67a8b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.ThrowsAny() Failure: Exception type was not compatible&#xD;
+Expected: typeof(System.OperationCanceledException)&#xD;
+Actual:   typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+---- CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception : The bounded HTTP operation did not complete. Inspect the typed safe outcome.</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(String stage, Boolean answer) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 106&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 92&#xD;
+   at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(milliseconds: 101, expected: RecoveryUnavailable)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="e9209e57-4b02-536d-ffb8-8ad3907e1e30">
+      <Execution id="e6eb99e4-e71b-49e6-9bfa-6dfad92d0e69" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedVerificationBeyondTotalDoesNotReportBindingDeniedOrSend(answer: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="5d3d892b-d91c-5619-6855-a7fa91e8bdde">
+      <Execution id="a07bfbf8-1bbe-41a2-8e52-174c2364075b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="CompletedVerificationBeyondTotalDoesNotReportBindingDeniedOrSend" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealTruncatedBodyIsTypedTransportFailureAfterHeadersWereObserved" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="f4b0b397-68ad-6c80-fa7b-1729f0503ab2">
+      <Execution id="191c6059-4400-4ec3-a4c6-feb47d5d0d6f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests" name="RealTruncatedBodyIsTypedTransportFailureAfterHeadersWereObserved" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;query&quot;, answer: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="8494fd4a-af66-35e4-bfc6-3c2cdcd7f595">
+      <Execution id="8e334475-c541-4074-9660-7dac336c4c72" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="CompletedAuthorityCallbacksCannotOverrideCallerCancellation" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;authorize&quot;, answer: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="3344b148-ad05-1549-32f0-afc2670de912">
+      <Execution id="2343cd92-7df6-42ef-9721-42439d7cfc35" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="CompletedAuthorityCallbacksCannotOverrideCallerCancellation" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;verify&quot;, answer: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="a52c792f-28b6-f4e1-2e7f-1a7a2f3bed26">
+      <Execution id="b91fb8d7-4547-425d-b876-993b15c7137e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="CompletedAuthorityCallbacksCannotOverrideCallerCancellation" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(applied: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="0602c17c-c482-af41-a130-3b5a2fb888f8">
+      <Execution id="ec8886a8-6d98-40b1-8d38-b6a0bcd83591" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(unavailable: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="4db4492c-c633-671f-4cb8-c1fa2bb5d419">
+      <Execution id="5ad4fd6f-5756-42e6-996a-234f5930e4ce" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.OriginalQueryBodyIoFailureRemainsUnknownAndDisposesBody" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="07c76b41-33f1-bc52-3f23-fe8fc483fa3d">
+      <Execution id="0f5bf799-e5c1-4b00-a337-6a9201ddbaa0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="OriginalQueryBodyIoFailureRemainsUnknownAndDisposesBody" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(applied: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="3dd508cf-b806-53ab-0507-8b3e656849fe">
+      <Execution id="433f518b-94a0-412c-b2c5-ef1a78c32559" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(milliseconds: 301, expected: TotalTimeout)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="3b558c50-1f74-a671-2c07-759a1b72f33a">
+      <Execution id="5b9d389c-ca4f-40c1-a217-ff5423db6280" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;query&quot;, answer: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="7ac0e3ae-a946-40ef-caf6-a63aa749116e">
+      <Execution id="f81f9919-d8c0-41a4-ba6b-1af2a7debb8a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="CompletedAuthorityCallbacksCannotOverrideCallerCancellation" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;verify&quot;, answer: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="fb6fa16a-0fa4-2bb0-79aa-500122caa130">
+      <Execution id="01740ea9-3d16-4e7e-a0f1-761ad0d67a8b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="CompletedAuthorityCallbacksCannotOverrideCallerCancellation" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(unavailable: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="acdf4d18-486f-adb3-2aa1-809066556df6">
+      <Execution id="4971d80d-fe30-4ff0-aff7-7c4baf5f957e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedVerificationBeyondTotalDoesNotReportBindingDeniedOrSend(answer: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="e6e5f806-06a5-2f41-c10a-dfbce7db5c8c">
+      <Execution id="9364c1d8-f8c8-4990-9004-1a39aaaaa92d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="CompletedVerificationBeyondTotalDoesNotReportBindingDeniedOrSend" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: &quot;authorize&quot;, answer: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="e71bb944-27c7-c9b4-6c5d-58418d5990c0">
+      <Execution id="994cdb95-aa74-40b5-b72f-a425d3e2cf50" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests" name="CompletedAuthorityCallbacksCannotOverrideCallerCancellation" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="7ac0e3ae-a946-40ef-caf6-a63aa749116e" executionId="f81f9919-d8c0-41a4-ba6b-1af2a7debb8a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4db4492c-c633-671f-4cb8-c1fa2bb5d419" executionId="5ad4fd6f-5756-42e6-996a-234f5930e4ce" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8494fd4a-af66-35e4-bfc6-3c2cdcd7f595" executionId="8e334475-c541-4074-9660-7dac336c4c72" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3dd508cf-b806-53ab-0507-8b3e656849fe" executionId="433f518b-94a0-412c-b2c5-ef1a78c32559" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="07c76b41-33f1-bc52-3f23-fe8fc483fa3d" executionId="0f5bf799-e5c1-4b00-a337-6a9201ddbaa0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3344b148-ad05-1549-32f0-afc2670de912" executionId="2343cd92-7df6-42ef-9721-42439d7cfc35" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9209e57-4b02-536d-ffb8-8ad3907e1e30" executionId="e6eb99e4-e71b-49e6-9bfa-6dfad92d0e69" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e71bb944-27c7-c9b4-6c5d-58418d5990c0" executionId="994cdb95-aa74-40b5-b72f-a425d3e2cf50" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5d3d892b-d91c-5619-6855-a7fa91e8bdde" executionId="a07bfbf8-1bbe-41a2-8e52-174c2364075b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0602c17c-c482-af41-a130-3b5a2fb888f8" executionId="ec8886a8-6d98-40b1-8d38-b6a0bcd83591" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e6e5f806-06a5-2f41-c10a-dfbce7db5c8c" executionId="9364c1d8-f8c8-4990-9004-1a39aaaaa92d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a52c792f-28b6-f4e1-2e7f-1a7a2f3bed26" executionId="b91fb8d7-4547-425d-b876-993b15c7137e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="acdf4d18-486f-adb3-2aa1-809066556df6" executionId="4971d80d-fe30-4ff0-aff7-7c4baf5f957e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f4b0b397-68ad-6c80-fa7b-1729f0503ab2" executionId="191c6059-4400-4ec3-a4c6-feb47d5d0d6f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3b558c50-1f74-a671-2c07-759a1b72f33a" executionId="5b9d389c-ca4f-40c1-a217-ff5423db6280" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb6fa16a-0fa4-2bb0-79aa-500122caa130" executionId="01740ea9-3d16-4e7e-a0f1-761ad0d67a8b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="16" executed="16" passed="5" failed="11" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.11]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.19]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.21]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.30]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.30]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.30]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.30]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(63,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(Boolean applied)&#xD;
+[xUnit.net 00:00:00.30]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.31]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.31]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.31]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.31]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(63,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(Boolean applied)&#xD;
+[xUnit.net 00:00:00.31]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.31]       Assert.ThrowsAny() Failure: Exception type was not compatible&#xD;
+[xUnit.net 00:00:00.31]       Expected: typeof(System.OperationCanceledException)&#xD;
+[xUnit.net 00:00:00.31]       Actual:   typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.31]       ---- CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception : The bounded HTTP operation did not complete. Inspect the typed safe outcome.&#xD;
+[xUnit.net 00:00:00.31]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.31]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(106,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(String stage, Boolean answer)&#xD;
+[xUnit.net 00:00:00.31]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.31]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.31]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(92,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.31]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.31]       Assert.ThrowsAny() Failure: Exception type was not compatible&#xD;
+[xUnit.net 00:00:00.31]       Expected: typeof(System.OperationCanceledException)&#xD;
+[xUnit.net 00:00:00.31]       Actual:   typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.31]       ---- CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception : The bounded HTTP operation did not complete. Inspect the typed safe outcome.&#xD;
+[xUnit.net 00:00:00.31]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.31]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(106,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(String stage, Boolean answer)&#xD;
+[xUnit.net 00:00:00.31]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.31]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.31]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(201,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.31]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.31]       Assert.ThrowsAny() Failure: Exception type was not compatible&#xD;
+[xUnit.net 00:00:00.31]       Expected: typeof(System.OperationCanceledException)&#xD;
+[xUnit.net 00:00:00.31]       Actual:   typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.31]       ---- CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception : The bounded HTTP operation did not complete. Inspect the typed safe outcome.&#xD;
+[xUnit.net 00:00:00.31]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.31]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(106,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(String stage, Boolean answer)&#xD;
+[xUnit.net 00:00:00.31]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.31]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.31]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(201,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.31]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.33]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.33]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.33]       Actual:   typeof(System.IO.IOException)&#xD;
+[xUnit.net 00:00:00.33]       ---- System.IO.IOException : fixture body read failed&#xD;
+[xUnit.net 00:00:00.33]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.33]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(22,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(Boolean unavailable)&#xD;
+[xUnit.net 00:00:00.33]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.33]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.33]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(14,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.&lt;&gt;c.&lt;ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable&gt;b__0_0()&#xD;
+[xUnit.net 00:00:00.33]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(131,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ControlledStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.33]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(283,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.BufferResponseAsync(HttpResponseMessage response, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.33]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(142,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.&lt;&gt;c__DisplayClass8_2.&lt;&lt;SendAsync&gt;b__6&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:00.33]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.33]            at Polly.ResiliencePipeline.&lt;&gt;c__10`1.&lt;&lt;ExecuteAsync&gt;b__10_0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:00.33]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.33]            at Polly.Outcome`1.GetResultOrRethrow()&#xD;
+[xUnit.net 00:00:00.33]            at Polly.ResiliencePipeline.ExecuteAsync[TResult](Func`2 callback, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.33]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(108,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.33]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.34]       System.IO.IOException : fixture body read failed&#xD;
+[xUnit.net 00:00:00.34]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.34]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(14,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.&lt;&gt;c.&lt;ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable&gt;b__0_0()&#xD;
+[xUnit.net 00:00:00.34]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(131,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ControlledStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.34]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(283,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.BufferResponseAsync(HttpResponseMessage response, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.34]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(142,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.&lt;&gt;c__DisplayClass8_2.&lt;&lt;SendAsync&gt;b__6&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:00.34]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.34]            at Polly.ResiliencePipeline.&lt;&gt;c__10`1.&lt;&lt;ExecuteAsync&gt;b__10_0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:00.34]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.34]            at Polly.Outcome`1.GetResultOrRethrow()&#xD;
+[xUnit.net 00:00:00.34]            at Polly.ResiliencePipeline.ExecuteAsync[TResult](Func`2 callback, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.34]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(108,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.34]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.34]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(28,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(Boolean unavailable)&#xD;
+[xUnit.net 00:00:00.34]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.34]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.34]       Expected: TotalTimeout&#xD;
+[xUnit.net 00:00:00.34]       Actual:   BindingRejected&#xD;
+[xUnit.net 00:00:00.34]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.34]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(121,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedVerificationBeyondTotalDoesNotReportBindingDeniedOrSend(Boolean answer)&#xD;
+[xUnit.net 00:00:00.34]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.34]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.34]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.34]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.34]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(80,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(Int32 milliseconds, Cp6HttpV2Failure expected)&#xD;
+[xUnit.net 00:00:00.34]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.34]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.34]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.34]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.34]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs(80,0): at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(Int32 milliseconds, Cp6HttpV2Failure expected)&#xD;
+[xUnit.net 00:00:00.34]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.51]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:00.51]       Expected: typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)&#xD;
+[xUnit.net 00:00:00.51]       Actual:   typeof(System.IO.IOException)&#xD;
+[xUnit.net 00:00:00.51]       ---- System.IO.IOException : Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..&#xD;
+[xUnit.net 00:00:00.51]       -------- System.Net.Sockets.SocketException : An existing connection was forcibly closed by the remote host.&#xD;
+[xUnit.net 00:00:00.51]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.51]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\LoopbackTests.cs(35,0): at CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealTruncatedBodyIsTypedTransportFailureAfterHeadersWereObserved()&#xD;
+[xUnit.net 00:00:00.51]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\LoopbackTests.cs(37,0): at CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealTruncatedBodyIsTypedTransportFailureAfterHeadersWereObserved()&#xD;
+[xUnit.net 00:00:00.51]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.51]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.51]            at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.51]            at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource&lt;System.Int32&gt;.GetResult(Int16 token)&#xD;
+[xUnit.net 00:00:00.51]            at System.Net.Http.HttpConnection.ReadAsync(Memory`1 destination)&#xD;
+[xUnit.net 00:00:00.51]            at System.Net.Http.HttpConnection.ContentLengthReadStream.ReadAsync(Memory`1 buffer, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.51]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(283,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.BufferResponseAsync(HttpResponseMessage response, CancellationToken token)&#xD;
+[xUnit.net 00:00:00.51]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(142,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.&lt;&gt;c__DisplayClass8_2.&lt;&lt;SendAsync&gt;b__6&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:00.51]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.51]            at Polly.ResiliencePipeline.&lt;&gt;c__10`1.&lt;&lt;ExecuteAsync&gt;b__10_0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:00.51]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.51]            at Polly.Outcome`1.GetResultOrRethrow()&#xD;
+[xUnit.net 00:00:00.51]            at Polly.ResiliencePipeline.ExecuteAsync[TResult](Func`2 callback, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.51]         D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs(108,0): at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.51]            at System.Net.Http.HttpClient.&lt;SendAsync&gt;g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)&#xD;
+[xUnit.net 00:00:00.51]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:00.51]         &#xD;
+[xUnit.net 00:00:00.52]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.4999932-04:00">
+        <Text>[xUnit.net 00:00:00.30]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(applied: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.5077873-04:00">
+        <Text>[xUnit.net 00:00:00.31]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(applied: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.5099969-04:00">
+        <Text>[xUnit.net 00:00:00.31]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: "verify", answer: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.5105400-04:00">
+        <Text>[xUnit.net 00:00:00.31]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: "authorize", answer: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.5118471-04:00">
+        <Text>[xUnit.net 00:00:00.31]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: "query", answer: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.5674073-04:00">
+        <Text>[xUnit.net 00:00:00.33]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(unavailable: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.5674558-04:00">
+        <Text>[xUnit.net 00:00:00.34]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(unavailable: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.5675119-04:00">
+        <Text>[xUnit.net 00:00:00.34]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedVerificationBeyondTotalDoesNotReportBindingDeniedOrSend(answer: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.5675303-04:00">
+        <Text>[xUnit.net 00:00:00.34]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(milliseconds: 101, expected: RecoveryUnavailable) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.5675472-04:00">
+        <Text>[xUnit.net 00:00:00.34]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(milliseconds: 301, expected: TotalTimeout) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:48:52.7063263-04:00">
+        <Text>[xUnit.net 00:00:00.51]     CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealTruncatedBodyIsTypedTransportFailureAfterHeadersWereObserved [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

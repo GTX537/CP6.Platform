@@ -1,0 +1,159 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.AspNetCoreTests -> D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.64]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: True, timeout: False) [FAIL]
+[xUnit.net 00:00:00.64]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: False, timeout: False) [FAIL]
+[xUnit.net 00:00:00.64]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: True, timeout: True) [FAIL]
+[xUnit.net 00:00:00.64]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: False, timeout: True) [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: True, timeout: False) [2 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: False, timeout: False) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: True, timeout: True) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: False, timeout: True) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:00.66]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: True, timeout: True) [FAIL]
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: True, timeout: False) [FAIL]
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: False, timeout: True) [FAIL]
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: False, timeout: True) [FAIL]
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: False, timeout: False) [FAIL]
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: False, timeout: False) [FAIL]
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: False, timeout: True) [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: True, timeout: True) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: True, timeout: False) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: False, timeout: True) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: False, timeout: True) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: False, timeout: False) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: False, timeout: False) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: False, timeout: True) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: True, timeout: False) [FAIL]
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: True, timeout: False) [FAIL]
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: True, timeout: True) [FAIL]
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: True, timeout: True) [FAIL]
+[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: False, timeout: False) [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: True, timeout: False) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: True, timeout: False) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: True, timeout: True) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: True, timeout: True) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: False, timeout: False) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 1
+Actual:   3
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41
+--- End of stack trace from previous location ---
+Results File: D:\CP6.Platform-worktrees\wp02-11-20261013\docs\development\evidence\WP02-11\implementation\coord-issue62-red.trx
+
+Failed!  - Failed:    16, Passed:     8, Skipped:     0, Total:    24, Duration: 107 ms - CP6.Platform.AspNetCoreTests.dll (net8.0)
