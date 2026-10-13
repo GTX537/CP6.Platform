@@ -58,6 +58,20 @@ public sealed class Cp6HttpV2Handler : DelegatingHandler
             token.ThrowIfCancellationRequested();
             if (total.Remaining == TimeSpan.Zero) throw Failure(Cp6HttpV2Failure.TotalTimeout);
         }
+        async Task<bool> CheckAuthorityAsync(Func<ValueTask<bool>> check)
+        {
+            bool result;
+            try { result = await check().AsTask().WaitAsync(token).ConfigureAwait(false); }
+            catch (Exception exception) when (exception is not OperationCanceledException)
+            {
+                // Adapter dependency faults cannot erase an already sent operation or override cancellation.
+                EnsureTotalActive();
+                throw Failure(exception is TimeoutRejectedException ? Cp6HttpV2Failure.UnknownTimeoutSource :
+                    Cp6HttpV2Failure.RecoveryUnavailable, exception);
+            }
+            EnsureTotalActive();
+            return result;
+        }
         if (write ? !IsWrite(request.Method) : !IsRead(request.Method)) throw Failure(Cp6HttpV2Failure.OperationNotAllowed);
         var canRetry = profile.RetryMode == Cp6HttpRetryMode.OwnerProvenIdempotent && profile.RetryAttempts > 0;
         var canQuery = false;
@@ -94,8 +108,7 @@ public sealed class Cp6HttpV2Handler : DelegatingHandler
                     !headers.Where(h => h.Key.Equals("Idempotency-Key", StringComparison.OrdinalIgnoreCase)).SelectMany(h => h.Values).SequenceEqual([operation.Key]))
                     throw Failure(Cp6HttpV2Failure.BindingRejected);
                 snapshot = new Cp6HttpRequestSnapshot(method, uri!, headers, contentHeaders ?? [], body);
-                var verified = await authority.VerifyBindingAsync(operation, snapshot, total, token).AsTask().WaitAsync(token).ConfigureAwait(false);
-                EnsureTotalActive();
+                var verified = await CheckAuthorityAsync(() => authority.VerifyBindingAsync(operation, snapshot, total, token)).ConfigureAwait(false);
                 if (!verified)
                     throw Failure(Cp6HttpV2Failure.BindingRejected);
                 canQuery = true;
@@ -207,8 +220,7 @@ public sealed class Cp6HttpV2Handler : DelegatingHandler
                     }
                     if (canRetry && transient && retry < profile.RetryAttempts)
                     {
-                        var authorized = await authority.AuthorizeReplayAsync(operation, snapshot!, total, token).AsTask().WaitAsync(token).ConfigureAwait(false);
-                        EnsureTotalActive();
+                        var authorized = await CheckAuthorityAsync(() => authority.AuthorizeReplayAsync(operation, snapshot!, total, token)).ConfigureAwait(false);
                         if (!authorized) throw Failure(Cp6HttpV2Failure.ReplayDenied);
                     }
                 }
