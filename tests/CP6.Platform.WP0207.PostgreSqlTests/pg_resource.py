@@ -107,7 +107,12 @@ def main():
         args = ','.join(quote(x) for x in ['-D', c['DataDirectory'], '-l', directory/'server.log', '-w', 'start'])
         script = (f"Start-Process -FilePath {quote(BIN/'pg_ctl.exe')} -ArgumentList @({args}) -WindowStyle Hidden "
                   f"-RedirectStandardOutput {quote(directory/'start.stdout.log')} -RedirectStandardError {quote(directory/'start.stderr.log')}")
-        run(['powershell.exe', '-NoProfile', '-NonInteractive', '-Command', script])
+        # Do not wait on/capture a launcher whose descendants may retain Windows pipe handles.
+        # Readiness is the verified server identity, not the launcher's exit code.
+        with (directory/'launcher.log').open('w', encoding='utf-8') as launcher_log:
+            subprocess.Popen(['powershell.exe', '-NoProfile', '-NonInteractive', '-Command', script],
+                             stdin=subprocess.DEVNULL, stdout=launcher_log, stderr=launcher_log,
+                             creationflags=NO_WINDOW)
         for attempt in range(50):
             try:
                 identity(c, 'postgres')
