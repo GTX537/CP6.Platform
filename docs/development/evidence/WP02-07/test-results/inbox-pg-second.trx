@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="6379fda9-f72f-41cf-8bef-98f512c753e8" name="tt@LAPTOP-3QQ44FJS 2026-10-13 08:27:02" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T08:27:02.7995606-04:00" queuing="2026-10-13T08:27:02.7995612-04:00" start="2026-10-13T08:26:58.7257376-04:00" finish="2026-10-13T08:27:07.7996068-04:00" />
+  <TestSettings name="default" id="ae5ba480-db33-463a-93c3-4d2b554d9195">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-13_08_27_02" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="aba0a386-e827-4d85-8945-3b0b9cef833d" testId="cbb54ee1-6c98-cba0-3a4a-e45da16bec36" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Lost_commit_confirmation_queries_original_bytes_without_a_new_write_grant" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.4774642" startTime="2026-10-13T08:27:03.7254507-04:00" endTime="2026-10-13T08:27:04.2032771-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aba0a386-e827-4d85-8945-3b0b9cef833d">
+      <Output>
+        <StdOut>decision=FreshCandidate; receipt=2e8eeef5-bb25-404b-bc6e-0d8da4c9f1ca; original-key=1ca1e38fe0094296963630e04b81dd55:1</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0c5833d5-5f40-4e20-977d-206059c74458" testId="0e1fb95f-b9fd-6ff1-9fcd-8561d499fc3f" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Same_key_competition_recovers_whole_original_input_through_a_new_content_gate" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.6656609" startTime="2026-10-13T08:27:05.6328318-04:00" endTime="2026-10-13T08:27:06.2987529-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0c5833d5-5f40-4e20-977d-206059c74458">
+      <Output>
+        <StdOut>decision=FreshCandidate; receipt=13571b70-6c46-448b-8315-cb41bfc5a09f; original-key=05c9d36a03cc479f9e8458ae6c1fbdf5:1&#xD;
+real concurrency failure=23505&#xD;
+decision=TransportDuplicate; receipt=b7e70c0f-eda0-4e49-affc-01fb73f78356; original-key=05c9d36a03cc479f9e8458ae6c1fbdf5:1</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="90aaa385-0cbc-4f9d-8eb1-a76c71cda417" testId="1b1ee8f1-0af3-d35e-d978-1dedc273174c" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Real_transaction_locks_are_held_until_caller_rollback" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2353320" startTime="2026-10-13T08:27:03.4896899-04:00" endTime="2026-10-13T08:27:03.7251266-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="90aaa385-0cbc-4f9d-8eb1-a76c71cda417" />
+    <UnitTestResult executionId="2f4d3449-0440-409a-996b-a80f48dde53a" testId="3a6d8cbc-19a8-fc8e-f3cd-419460bd0901" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Wrong_lock_order_and_preheld_late_lock_are_not_accepted_as_proof" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2774084" startTime="2026-10-13T08:27:06.6759404-04:00" endTime="2026-10-13T08:27:06.9536502-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2f4d3449-0440-409a-996b-a80f48dde53a" />
+    <UnitTestResult executionId="f0a94249-0b24-4346-afcc-a231893474ee" testId="e03b9410-8950-2ef0-34df-0c385b3a9b70" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Pending_is_invisible_until_caller_commit_and_all_nine_tables_commit_together" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.6145443" startTime="2026-10-13T08:27:02.1350111-04:00" endTime="2026-10-13T08:27:02.7350394-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f0a94249-0b24-4346-afcc-a231893474ee">
+      <Output>
+        <StdOut>actual native identity=cp6_wp0207_20261013_e8b467c9:wp0207_runtime_e8b467c9:31912:784</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f5f58da8-5a0b-4cb4-b34a-eb860d1fc5dd" testId="229dc70c-c1fc-ef3b-fcbd-9adede4ded41" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Explicit_rollback_or_failure_after_owner_save_leaves_no_partial_graph(failure: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2695865" startTime="2026-10-13T08:27:02.7365853-04:00" endTime="2026-10-13T08:27:03.0048957-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f5f58da8-5a0b-4cb4-b34a-eb860d1fc5dd">
+      <Output>
+        <StdOut>decision=FreshCandidate; receipt=79e5962d-fde5-4ee3-918e-f10fcebdd984; original-key=1d3d83cf62514c1dac582268f91e80f9:1</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7352373b-e484-4bb5-8736-0f20b3079d27" testId="ccca4325-c311-858f-f367-7907196fa48b" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Cross_tenant_transport_collision_never_invokes_owner_mutation_on_incoming_aggregate" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.8647780" startTime="2026-10-13T08:27:01.2463086-04:00" endTime="2026-10-13T08:27:02.1179215-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7352373b-e484-4bb5-8736-0f20b3079d27">
+      <Output>
+        <StdOut>decision=FreshCandidate; receipt=95e701ba-e62d-4b81-9743-5caf2e6bcf58; original-key=5c940e310e9c4cd5b2836d8e420080ae:1&#xD;
+decision=TransportIdentityConflict; receipt=5e28ff89-326f-4629-8be3-21a21a48594a; original-key=41618b62ffc842478eef1b8d7c899d19:1</StdOut>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 0&#xD;
+Actual:   1</Message>
+          <StackTrace>   at CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Cross_tenant_transport_collision_never_invokes_owner_mutation_on_incoming_aggregate() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\AtomicInboxTests.cs:line 284&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1f1105b1-c296-4612-8257-ce0f7fa8e1b5" testId="ef68d916-e7f5-006e-c208-f4c400937a40" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Same_message_different_raw_or_binding_has_priority_and_preserves_original_result" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.7642735" startTime="2026-10-13T08:27:06.9539991-04:00" endTime="2026-10-13T08:27:07.7184694-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1f1105b1-c296-4612-8257-ce0f7fa8e1b5">
+      <Output>
+        <StdOut>decision=FreshCandidate; receipt=026086bd-406d-45c0-933f-ea4f72c07ee9; original-key=5c0946a6eaf64846aad93e13c29e0d92:1&#xD;
+decision=TransportIdentityConflict; receipt=b827c581-d263-4242-a4ed-98150f8fe4e4; original-key=5c0946a6eaf64846aad93e13c29e0d92:1&#xD;
+decision=TransportIdentityConflict; receipt=89340afd-1d43-498a-bed2-59223d68da2e; original-key=5c0946a6eaf64846aad93e13c29e0d92:1</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5d2d5b0c-6392-44ba-9b4e-057bbdf1d703" testId="e2800c4e-6089-a540-d523-849e09e54751" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Explicit_rollback_or_failure_after_owner_save_leaves_no_partial_graph(failure: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2060775" startTime="2026-10-13T08:27:03.0057419-04:00" endTime="2026-10-13T08:27:03.2115415-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5d2d5b0c-6392-44ba-9b4e-057bbdf1d703" />
+    <UnitTestResult executionId="d52b086d-f512-4793-a591-f86d15aee656" testId="d0f44df9-ae6e-67d7-e88f-1e45b49ca8bd" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Real_xmin_token_rejects_stale_checkpoint_update" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2772532" startTime="2026-10-13T08:27:03.2119069-04:00" endTime="2026-10-13T08:27:03.4893496-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d52b086d-f512-4793-a591-f86d15aee656">
+      <Output>
+        <StdOut>decision=FreshCandidate; receipt=bbd9f07e-d742-4335-8cf6-37166bb92ecf; original-key=10be6f00edea48cdbe97eb73ea11dff8:1</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="08ed29cd-15c8-48dd-8a55-8bcd56e5da83" testId="2934d527-57aa-de3c-a4cb-32b976e52599" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Missing_wrong_connection_ended_transaction_and_wrong_tenant_are_rejected" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3709673" startTime="2026-10-13T08:27:06.2991197-04:00" endTime="2026-10-13T08:27:06.6755609-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="08ed29cd-15c8-48dd-8a55-8bcd56e5da83" />
+    <UnitTestResult executionId="7072bd1b-23bc-4464-a4f3-4a90dfa79cd1" testId="986c9f7b-7881-a645-b82e-f5af67697b0d" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Unavailable_anchor_never_completes_duplicate_or_checkpoint" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2858582" startTime="2026-10-13T08:27:05.3462302-04:00" endTime="2026-10-13T08:27:05.6321928-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7072bd1b-23bc-4464-a4f3-4a90dfa79cd1">
+      <Output>
+        <StdOut>decision=FreshCandidate; receipt=a4d015c7-dc47-43d9-9cfc-ec0c56bb700f; original-key=d6d62a5d2c81494fa199a7511c333f9e:1&#xD;
+decision=DependencyUnavailable; receipt=00000000-0000-0000-0000-000000000000; original-key=d6d62a5d2c81494fa199a7511c333f9e:1</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8cfff47d-c464-4d9a-95c3-7319f42f50f9" testId="225a655d-b26c-ceaa-5d8d-d75cb3ab791a" testName="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Duplicate_old_equal_and_known_historical_conflict_all_pass_the_content_gate" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.1416599" startTime="2026-10-13T08:27:04.2036290-04:00" endTime="2026-10-13T08:27:05.3457094-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8cfff47d-c464-4d9a-95c3-7319f42f50f9">
+      <Output>
+        <StdOut>decision=FreshCandidate; receipt=b0be906f-4429-4818-b1ef-9fe3f52044a3; original-key=71026794453c434785cf59de70c13ac9:1&#xD;
+decision=TransportDuplicate; receipt=14929e20-1a64-4392-80b2-8f33c57a8338; original-key=71026794453c434785cf59de70c13ac9:1&#xD;
+decision=SameVersionEqual; receipt=707d2771-0974-4f53-b19c-7e1a1d08ba6b; original-key=71026794453c434785cf59de70c13ac9:1&#xD;
+decision=FreshCandidate; receipt=c157a488-6932-46a0-b973-30a5cefa1b3d; original-key=71026794453c434785cf59de70c13ac9:3&#xD;
+decision=OlderVersionIgnored; receipt=d62daa42-b9d5-4621-a922-a3572aebc5ba; original-key=71026794453c434785cf59de70c13ac9:1&#xD;
+decision=SameVersionConflict; receipt=99ce76ef-0fd7-4a89-b026-4e969d03ffc8; original-key=71026794453c434785cf59de70c13ac9:1&#xD;
+decision=SameVersionConflict; receipt=abc2d3aa-5dc2-4a01-a9ea-a53030fd316b; original-key=71026794453c434785cf59de70c13ac9:1</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Wrong_lock_order_and_preheld_late_lock_are_not_accepted_as_proof" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="3a6d8cbc-19a8-fc8e-f3cd-419460bd0901">
+      <Execution id="2f4d3449-0440-409a-996b-a80f48dde53a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Wrong_lock_order_and_preheld_late_lock_are_not_accepted_as_proof" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Real_transaction_locks_are_held_until_caller_rollback" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="1b1ee8f1-0af3-d35e-d978-1dedc273174c">
+      <Execution id="90aaa385-0cbc-4f9d-8eb1-a76c71cda417" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Real_transaction_locks_are_held_until_caller_rollback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Cross_tenant_transport_collision_never_invokes_owner_mutation_on_incoming_aggregate" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="ccca4325-c311-858f-f367-7907196fa48b">
+      <Execution id="7352373b-e484-4bb5-8736-0f20b3079d27" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Cross_tenant_transport_collision_never_invokes_owner_mutation_on_incoming_aggregate" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Same_key_competition_recovers_whole_original_input_through_a_new_content_gate" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="0e1fb95f-b9fd-6ff1-9fcd-8561d499fc3f">
+      <Execution id="0c5833d5-5f40-4e20-977d-206059c74458" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Same_key_competition_recovers_whole_original_input_through_a_new_content_gate" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Missing_wrong_connection_ended_transaction_and_wrong_tenant_are_rejected" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="2934d527-57aa-de3c-a4cb-32b976e52599">
+      <Execution id="08ed29cd-15c8-48dd-8a55-8bcd56e5da83" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Missing_wrong_connection_ended_transaction_and_wrong_tenant_are_rejected" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Duplicate_old_equal_and_known_historical_conflict_all_pass_the_content_gate" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="225a655d-b26c-ceaa-5d8d-d75cb3ab791a">
+      <Execution id="8cfff47d-c464-4d9a-95c3-7319f42f50f9" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Duplicate_old_equal_and_known_historical_conflict_all_pass_the_content_gate" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Explicit_rollback_or_failure_after_owner_save_leaves_no_partial_graph(failure: True)" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="e2800c4e-6089-a540-d523-849e09e54751">
+      <Execution id="5d2d5b0c-6392-44ba-9b4e-057bbdf1d703" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Explicit_rollback_or_failure_after_owner_save_leaves_no_partial_graph" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Same_message_different_raw_or_binding_has_priority_and_preserves_original_result" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="ef68d916-e7f5-006e-c208-f4c400937a40">
+      <Execution id="1f1105b1-c296-4612-8257-ce0f7fa8e1b5" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Same_message_different_raw_or_binding_has_priority_and_preserves_original_result" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Real_xmin_token_rejects_stale_checkpoint_update" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="d0f44df9-ae6e-67d7-e88f-1e45b49ca8bd">
+      <Execution id="d52b086d-f512-4793-a591-f86d15aee656" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Real_xmin_token_rejects_stale_checkpoint_update" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Explicit_rollback_or_failure_after_owner_save_leaves_no_partial_graph(failure: False)" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="229dc70c-c1fc-ef3b-fcbd-9adede4ded41">
+      <Execution id="f5f58da8-5a0b-4cb4-b34a-eb860d1fc5dd" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Explicit_rollback_or_failure_after_owner_save_leaves_no_partial_graph" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Pending_is_invisible_until_caller_commit_and_all_nine_tables_commit_together" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="e03b9410-8950-2ef0-34df-0c385b3a9b70">
+      <Execution id="f0a94249-0b24-4346-afcc-a231893474ee" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Pending_is_invisible_until_caller_commit_and_all_nine_tables_commit_together" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Unavailable_anchor_never_completes_duplicate_or_checkpoint" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="986c9f7b-7881-a645-b82e-f5af67697b0d">
+      <Execution id="7072bd1b-23bc-4464-a4f3-4a90dfa79cd1" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Unavailable_anchor_never_completes_duplicate_or_checkpoint" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Lost_commit_confirmation_queries_original_bytes_without_a_new_write_grant" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.wp0207.postgresqltests\bin\debug\net8.0\cp6.platform.wp0207.postgresqltests.dll" id="cbb54ee1-6c98-cba0-3a4a-e45da16bec36">
+      <Execution id="aba0a386-e827-4d85-8945-3b0b9cef833d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests" name="Lost_commit_confirmation_queries_original_bytes_without_a_new_write_grant" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="cbb54ee1-6c98-cba0-3a4a-e45da16bec36" executionId="aba0a386-e827-4d85-8945-3b0b9cef833d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0e1fb95f-b9fd-6ff1-9fcd-8561d499fc3f" executionId="0c5833d5-5f40-4e20-977d-206059c74458" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1b1ee8f1-0af3-d35e-d978-1dedc273174c" executionId="90aaa385-0cbc-4f9d-8eb1-a76c71cda417" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3a6d8cbc-19a8-fc8e-f3cd-419460bd0901" executionId="2f4d3449-0440-409a-996b-a80f48dde53a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e03b9410-8950-2ef0-34df-0c385b3a9b70" executionId="f0a94249-0b24-4346-afcc-a231893474ee" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="229dc70c-c1fc-ef3b-fcbd-9adede4ded41" executionId="f5f58da8-5a0b-4cb4-b34a-eb860d1fc5dd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ccca4325-c311-858f-f367-7907196fa48b" executionId="7352373b-e484-4bb5-8736-0f20b3079d27" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef68d916-e7f5-006e-c208-f4c400937a40" executionId="1f1105b1-c296-4612-8257-ce0f7fa8e1b5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e2800c4e-6089-a540-d523-849e09e54751" executionId="5d2d5b0c-6392-44ba-9b4e-057bbdf1d703" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d0f44df9-ae6e-67d7-e88f-1e45b49ca8bd" executionId="d52b086d-f512-4793-a591-f86d15aee656" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2934d527-57aa-de3c-a4cb-32b976e52599" executionId="08ed29cd-15c8-48dd-8a55-8bcd56e5da83" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="986c9f7b-7881-a645-b82e-f5af67697b0d" executionId="7072bd1b-23bc-4464-a4f3-4a90dfa79cd1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="225a655d-b26c-ceaa-5d8d-d75cb3ab791a" executionId="8cfff47d-c464-4d9a-95c3-7319f42f50f9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="13" executed="13" passed="12" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.08]   Discovering: CP6.Platform.WP0207.PostgreSqlTests&#xD;
+[xUnit.net 00:00:00.11]   Discovered:  CP6.Platform.WP0207.PostgreSqlTests&#xD;
+[xUnit.net 00:00:00.13]   Starting:    CP6.Platform.WP0207.PostgreSqlTests&#xD;
+[xUnit.net 00:00:03.00]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:03.00]       Expected: 0&#xD;
+[xUnit.net 00:00:03.00]       Actual:   1&#xD;
+[xUnit.net 00:00:03.00]       Stack Trace:&#xD;
+[xUnit.net 00:00:03.00]         D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\AtomicInboxTests.cs(284,0): at CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Cross_tenant_transport_collision_never_invokes_owner_mutation_on_incoming_aggregate()&#xD;
+[xUnit.net 00:00:03.00]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:03.00]       Output:&#xD;
+[xUnit.net 00:00:03.00]         decision=FreshCandidate; receipt=95e701ba-e62d-4b81-9743-5caf2e6bcf58; original-key=5c940e310e9c4cd5b2836d8e420080ae:1&#xD;
+[xUnit.net 00:00:03.00]         decision=TransportIdentityConflict; receipt=5e28ff89-326f-4629-8be3-21a21a48594a; original-key=41618b62ffc842478eef1b8d7c899d19:1&#xD;
+[xUnit.net 00:00:08.60]   Finished:    CP6.Platform.WP0207.PostgreSqlTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:27:02.1208495-04:00">
+        <Text>[xUnit.net 00:00:03.00]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Cross_tenant_transport_collision_never_invokes_owner_mutation_on_incoming_aggregate [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

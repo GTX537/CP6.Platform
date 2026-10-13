@@ -1,0 +1,478 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="5fdef154-d951-4b8f-afdb-2237b30cf802" name="tt@LAPTOP-3QQ44FJS 2026-10-13 09:43:32" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T09:43:32.2797826-04:00" queuing="2026-10-13T09:43:32.2797830-04:00" start="2026-10-13T09:43:30.8442388-04:00" finish="2026-10-13T09:43:32.3112846-04:00" />
+  <TestSettings name="default" id="3c0462b6-329d-4034-ad6f-6068fc47d9b7">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-13_09_43_32" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="26bb6288-ab0d-4b8e-9d94-e0ad6facb4d7" testId="9ca5f7a2-6cd3-d7f8-d177-59846e19c98d" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: True, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0021090" startTime="2026-10-13T09:43:32.2177949-04:00" endTime="2026-10-13T09:43:32.2220730-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="26bb6288-ab0d-4b8e-9d94-e0ad6facb4d7">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8a32bc24-88d8-4ac7-b506-beea4cbdceed" testId="fb375f24-8dee-b889-c23e-936b7ed07dc9" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: True, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004280" startTime="2026-10-13T09:43:32.2533977-04:00" endTime="2026-10-13T09:43:32.2534377-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8a32bc24-88d8-4ac7-b506-beea4cbdceed">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cf9e8ccc-7c8b-408d-9288-af661520ff08" testId="26fbffbb-9042-bf61-da1a-b20e8560fcc5" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: False, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003911" startTime="2026-10-13T09:43:32.2511564-04:00" endTime="2026-10-13T09:43:32.2511818-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cf9e8ccc-7c8b-408d-9288-af661520ff08">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1581667a-1594-4b5d-959a-1294fe43f82a" testId="3f432606-4daa-b63e-6f69-e0138e5c8567" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 200, write: False, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003950" startTime="2026-10-13T09:43:32.2547053-04:00" endTime="2026-10-13T09:43:32.2547316-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1581667a-1594-4b5d-959a-1294fe43f82a" />
+    <UnitTestResult executionId="db281762-bb67-48b9-920e-f250d944ec1b" testId="c3567e6b-427c-63d7-a050-7a94bf0072e1" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: True, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0005106" startTime="2026-10-13T09:43:32.2505231-04:00" endTime="2026-10-13T09:43:32.2505514-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="db281762-bb67-48b9-920e-f250d944ec1b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4a784250-32d3-4b08-83d6-17f1610ce4df" testId="822d4b9a-cb88-e79e-0717-eecd5bce9fdd" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 503, write: True, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004852" startTime="2026-10-13T09:43:32.2263305-04:00" endTime="2026-10-13T09:43:32.2263629-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4a784250-32d3-4b08-83d6-17f1610ce4df" />
+    <UnitTestResult executionId="f8418aa1-6454-4683-aca0-6b5da047e288" testId="310f3cbf-d834-d064-5ec4-f38e944f8300" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: False, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003106" startTime="2026-10-13T09:43:32.2515212-04:00" endTime="2026-10-13T09:43:32.2515452-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f8418aa1-6454-4683-aca0-6b5da047e288">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c06652c2-2506-4c88-9552-d9da32daa281" testId="03a22f22-0f1d-0a2d-5876-ed1feaac5458" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: False, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003448" startTime="2026-10-13T09:43:32.2508505-04:00" endTime="2026-10-13T09:43:32.2508761-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c06652c2-2506-4c88-9552-d9da32daa281">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ff2a9168-5ad5-477e-a80b-4bc6daa581e0" testId="10655272-729f-734b-c97c-cd6c588d3338" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 503, write: False, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004668" startTime="2026-10-13T09:43:32.2281808-04:00" endTime="2026-10-13T09:43:32.2282278-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ff2a9168-5ad5-477e-a80b-4bc6daa581e0" />
+    <UnitTestResult executionId="861252aa-dba0-4abb-ae55-2e3aafc54194" testId="a22b075b-acd1-8d0e-6b6a-f02c6501b076" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 200, write: False, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004217" startTime="2026-10-13T09:43:32.2283008-04:00" endTime="2026-10-13T09:43:32.2283285-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="861252aa-dba0-4abb-ae55-2e3aafc54194" />
+    <UnitTestResult executionId="eb5e5cd6-35ab-4dd9-9ff4-ba3955cf3b2b" testId="4778cc64-7a1a-0611-2133-431a2208e9d2" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 200, write: True, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0592432" startTime="2026-10-13T09:43:32.1478395-04:00" endTime="2026-10-13T09:43:32.2110569-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eb5e5cd6-35ab-4dd9-9ff4-ba3955cf3b2b" />
+    <UnitTestResult executionId="6bcacbfe-61c8-4020-8562-308615553820" testId="39b16dd7-6cb2-bae8-3ff7-1e8e2dff8279" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: True, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004819" startTime="2026-10-13T09:43:32.2543773-04:00" endTime="2026-10-13T09:43:32.2544068-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6bcacbfe-61c8-4020-8562-308615553820">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3dae30e4-aecc-4527-b075-efb2d6045907" testId="0a7c8fd5-cec6-651f-3b8c-1db5f2d58fbf" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: True, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004767" startTime="2026-10-13T09:43:32.2271097-04:00" endTime="2026-10-13T09:43:32.2272124-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3dae30e4-aecc-4527-b075-efb2d6045907">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d0e20bc3-7b11-40b9-94d2-55708c12fd87" testId="5fe49af5-049c-8f1a-0973-44d150a3a1bb" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: False, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003396" startTime="2026-10-13T09:43:32.2518893-04:00" endTime="2026-10-13T09:43:32.2519153-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d0e20bc3-7b11-40b9-94d2-55708c12fd87">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cdf1df34-a014-4761-832b-cf436d874100" testId="e96d928c-aa29-8113-ee14-5eaf318f5d84" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 503, write: True, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003876" startTime="2026-10-13T09:43:32.2497273-04:00" endTime="2026-10-13T09:43:32.2497773-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cdf1df34-a014-4761-832b-cf436d874100" />
+    <UnitTestResult executionId="6708267c-e15d-429d-904f-72958ba509d2" testId="6188f395-4209-3dd1-1ec8-e079eacbc6ec" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: False, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003409" startTime="2026-10-13T09:43:32.2550935-04:00" endTime="2026-10-13T09:43:32.2551187-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6708267c-e15d-429d-904f-72958ba509d2">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="3cb4e906-0dbc-4f4d-ab42-beaf8c39f840" testId="7de367fa-4e61-ab92-be4c-cd153e91d10a" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: False, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003801" startTime="2026-10-13T09:43:32.2276640-04:00" endTime="2026-10-13T09:43:32.2276954-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3cb4e906-0dbc-4f4d-ab42-beaf8c39f840">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b13ae854-0c9b-4b50-b4da-cb12f884878b" testId="06d6286b-09d9-943f-4975-70e22e1d25e6" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: True, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004101" startTime="2026-10-13T09:43:32.2547823-04:00" endTime="2026-10-13T09:43:32.2548070-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b13ae854-0c9b-4b50-b4da-cb12f884878b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9133b6dc-b65d-4fd7-bfb1-c342ee059287" testId="39ecef1d-4bb9-6fcc-c3b4-7bf4bb81f29e" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: False, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0008784" startTime="2026-10-13T09:43:32.2264189-04:00" endTime="2026-10-13T09:43:32.2264655-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9133b6dc-b65d-4fd7-bfb1-c342ee059287">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="77a9fd0f-7d73-4a00-b83d-36affad375d3" testId="01f64c0f-acba-746e-3d23-b5c37300e82b" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 503, write: False, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003328" startTime="2026-10-13T09:43:32.2514506-04:00" endTime="2026-10-13T09:43:32.2514751-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="77a9fd0f-7d73-4a00-b83d-36affad375d3" />
+    <UnitTestResult executionId="1ad01c41-3db9-4a0b-a997-92bc83c00db8" testId="7b7a6a36-178d-0dfd-e064-67c808e98638" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: True, timeout: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003774" startTime="2026-10-13T09:43:32.2538826-04:00" endTime="2026-10-13T09:43:32.2539122-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1ad01c41-3db9-4a0b-a997-92bc83c00db8">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c97a27fd-72cf-4f3e-8b29-87e929eae222" testId="76f094fa-9d85-cf49-676b-27db965d5fbd" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 200, write: True, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0013763" startTime="2026-10-13T09:43:32.2260066-04:00" endTime="2026-10-13T09:43:32.2260536-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c97a27fd-72cf-4f3e-8b29-87e929eae222" />
+    <UnitTestResult executionId="9c2a3b67-e13d-4f31-a6ca-d7ac2f0d939b" testId="2556585b-3c78-c8cb-2fed-77fe10ff5de5" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: False, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003348" startTime="2026-10-13T09:43:32.2522022-04:00" endTime="2026-10-13T09:43:32.2522269-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9c2a3b67-e13d-4f31-a6ca-d7ac2f0d939b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6b7c2ec6-0ece-43af-90b3-9f4d3c682ec5" testId="ed9bcad6-3441-f8f3-b7b4-7d1802d14c2b" testName="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: True, timeout: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004204" startTime="2026-10-13T09:43:32.2500468-04:00" endTime="2026-10-13T09:43:32.2500839-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b7c2ec6-0ece-43af-90b3-9f4d3c682ec5">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   3</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs:line 41&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: True, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="06d6286b-09d9-943f-4975-70e22e1d25e6">
+      <Execution id="b13ae854-0c9b-4b50-b4da-cb12f884878b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: False, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="2556585b-3c78-c8cb-2fed-77fe10ff5de5">
+      <Execution id="9c2a3b67-e13d-4f31-a6ca-d7ac2f0d939b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 200, write: False, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="a22b075b-acd1-8d0e-6b6a-f02c6501b076">
+      <Execution id="861252aa-dba0-4abb-ae55-2e3aafc54194" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: True, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ed9bcad6-3441-f8f3-b7b4-7d1802d14c2b">
+      <Execution id="6b7c2ec6-0ece-43af-90b3-9f4d3c682ec5" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: False, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="310f3cbf-d834-d064-5ec4-f38e944f8300">
+      <Execution id="f8418aa1-6454-4683-aca0-6b5da047e288" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 503, write: False, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="01f64c0f-acba-746e-3d23-b5c37300e82b">
+      <Execution id="77a9fd0f-7d73-4a00-b83d-36affad375d3" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: True, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="c3567e6b-427c-63d7-a050-7a94bf0072e1">
+      <Execution id="db281762-bb67-48b9-920e-f250d944ec1b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: True, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="9ca5f7a2-6cd3-d7f8-d177-59846e19c98d">
+      <Execution id="26bb6288-ab0d-4b8e-9d94-e0ad6facb4d7" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 200, write: True, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="4778cc64-7a1a-0611-2133-431a2208e9d2">
+      <Execution id="eb5e5cd6-35ab-4dd9-9ff4-ba3955cf3b2b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: False, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="26fbffbb-9042-bf61-da1a-b20e8560fcc5">
+      <Execution id="cf9e8ccc-7c8b-408d-9288-af661520ff08" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: False, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="39ecef1d-4bb9-6fcc-c3b4-7bf4bb81f29e">
+      <Execution id="9133b6dc-b65d-4fd7-bfb1-c342ee059287" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: False, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="6188f395-4209-3dd1-1ec8-e079eacbc6ec">
+      <Execution id="6708267c-e15d-429d-904f-72958ba509d2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: True, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="fb375f24-8dee-b889-c23e-936b7ed07dc9">
+      <Execution id="8a32bc24-88d8-4ac7-b506-beea4cbdceed" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 503, write: True, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="e96d928c-aa29-8113-ee14-5eaf318f5d84">
+      <Execution id="cdf1df34-a014-4761-832b-cf436d874100" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 200, write: False, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="3f432606-4daa-b63e-6f69-e0138e5c8567">
+      <Execution id="1581667a-1594-4b5d-959a-1294fe43f82a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 503, write: True, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="822d4b9a-cb88-e79e-0717-eecd5bce9fdd">
+      <Execution id="4a784250-32d3-4b08-83d6-17f1610ce4df" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: True, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="39b16dd7-6cb2-bae8-3ff7-1e8e2dff8279">
+      <Execution id="6bcacbfe-61c8-4020-8562-308615553820" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: False, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="03a22f22-0f1d-0a2d-5876-ed1feaac5458">
+      <Execution id="c06652c2-2506-4c88-9552-d9da32daa281" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: False, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="7de367fa-4e61-ab92-be4c-cd153e91d10a">
+      <Execution id="3cb4e906-0dbc-4f4d-ab42-beaf8c39f840" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: True, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="7b7a6a36-178d-0dfd-e064-67c808e98638">
+      <Execution id="1ad01c41-3db9-4a0b-a997-92bc83c00db8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: False, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="5fe49af5-049c-8f1a-0973-44d150a3a1bb">
+      <Execution id="d0e20bc3-7b11-40b9-94d2-55708c12fd87" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 503, write: False, timeout: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="10655272-729f-734b-c97c-cd6c588d3338">
+      <Execution id="ff2a9168-5ad5-477e-a80b-4bc6daa581e0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: True, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="0a7c8fd5-cec6-651f-3b8c-1db5f2d58fbf">
+      <Execution id="3dae30e4-aecc-4527-b075-efb2d6045907" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 200, write: True, timeout: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="76f094fa-9d85-cf49-676b-27db965d5fbd">
+      <Execution id="c97a27fd-72cf-4f3e-8b29-87e929eae222" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests" name="ObservedRejectionVetoesReplayAfterBodyFailure" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="9ca5f7a2-6cd3-d7f8-d177-59846e19c98d" executionId="26bb6288-ab0d-4b8e-9d94-e0ad6facb4d7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb375f24-8dee-b889-c23e-936b7ed07dc9" executionId="8a32bc24-88d8-4ac7-b506-beea4cbdceed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26fbffbb-9042-bf61-da1a-b20e8560fcc5" executionId="cf9e8ccc-7c8b-408d-9288-af661520ff08" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3f432606-4daa-b63e-6f69-e0138e5c8567" executionId="1581667a-1594-4b5d-959a-1294fe43f82a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c3567e6b-427c-63d7-a050-7a94bf0072e1" executionId="db281762-bb67-48b9-920e-f250d944ec1b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="822d4b9a-cb88-e79e-0717-eecd5bce9fdd" executionId="4a784250-32d3-4b08-83d6-17f1610ce4df" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="310f3cbf-d834-d064-5ec4-f38e944f8300" executionId="f8418aa1-6454-4683-aca0-6b5da047e288" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="03a22f22-0f1d-0a2d-5876-ed1feaac5458" executionId="c06652c2-2506-4c88-9552-d9da32daa281" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="10655272-729f-734b-c97c-cd6c588d3338" executionId="ff2a9168-5ad5-477e-a80b-4bc6daa581e0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a22b075b-acd1-8d0e-6b6a-f02c6501b076" executionId="861252aa-dba0-4abb-ae55-2e3aafc54194" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4778cc64-7a1a-0611-2133-431a2208e9d2" executionId="eb5e5cd6-35ab-4dd9-9ff4-ba3955cf3b2b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="39b16dd7-6cb2-bae8-3ff7-1e8e2dff8279" executionId="6bcacbfe-61c8-4020-8562-308615553820" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0a7c8fd5-cec6-651f-3b8c-1db5f2d58fbf" executionId="3dae30e4-aecc-4527-b075-efb2d6045907" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5fe49af5-049c-8f1a-0973-44d150a3a1bb" executionId="d0e20bc3-7b11-40b9-94d2-55708c12fd87" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e96d928c-aa29-8113-ee14-5eaf318f5d84" executionId="cdf1df34-a014-4761-832b-cf436d874100" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6188f395-4209-3dd1-1ec8-e079eacbc6ec" executionId="6708267c-e15d-429d-904f-72958ba509d2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7de367fa-4e61-ab92-be4c-cd153e91d10a" executionId="3cb4e906-0dbc-4f4d-ab42-beaf8c39f840" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="06d6286b-09d9-943f-4975-70e22e1d25e6" executionId="b13ae854-0c9b-4b50-b4da-cb12f884878b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="39ecef1d-4bb9-6fcc-c3b4-7bf4bb81f29e" executionId="9133b6dc-b65d-4fd7-bfb1-c342ee059287" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="01f64c0f-acba-746e-3d23-b5c37300e82b" executionId="77a9fd0f-7d73-4a00-b83d-36affad375d3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7b7a6a36-178d-0dfd-e064-67c808e98638" executionId="1ad01c41-3db9-4a0b-a997-92bc83c00db8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="76f094fa-9d85-cf49-676b-27db965d5fbd" executionId="c97a27fd-72cf-4f3e-8b29-87e929eae222" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2556585b-3c78-c8cb-2fed-77fe10ff5de5" executionId="9c2a3b67-e13d-4f31-a6ca-d7ac2f0d939b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ed9bcad6-3441-f8f3-b7b4-7d1802d14c2b" executionId="6b7c2ec6-0ece-43af-90b3-9f4d3c682ec5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="24" executed="24" passed="8" failed="16" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.44]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.52]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.55]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.64]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.64]       Expected: 1&#xD;
+[xUnit.net 00:00:00.64]       Actual:   3&#xD;
+[xUnit.net 00:00:00.64]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.64]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.64]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.64]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.64]       Expected: 1&#xD;
+[xUnit.net 00:00:00.64]       Actual:   3&#xD;
+[xUnit.net 00:00:00.64]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.64]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.64]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.64]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.64]       Expected: 1&#xD;
+[xUnit.net 00:00:00.64]       Actual:   3&#xD;
+[xUnit.net 00:00:00.64]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.64]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.64]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.64]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.64]       Expected: 1&#xD;
+[xUnit.net 00:00:00.64]       Actual:   3&#xD;
+[xUnit.net 00:00:00.64]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.64]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.64]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.67]       Expected: 1&#xD;
+[xUnit.net 00:00:00.67]       Actual:   3&#xD;
+[xUnit.net 00:00:00.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.67]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RejectedBodyRegressionTests.cs(41,0): at CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(Int32 status, Boolean write, Boolean timeout)&#xD;
+[xUnit.net 00:00:00.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.67]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2244441-04:00">
+        <Text>[xUnit.net 00:00:00.64]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: True, timeout: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2271620-04:00">
+        <Text>[xUnit.net 00:00:00.64]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: False, timeout: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2275112-04:00">
+        <Text>[xUnit.net 00:00:00.64]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: True, timeout: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2279264-04:00">
+        <Text>[xUnit.net 00:00:00.64]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: False, timeout: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2852603-04:00">
+        <Text>[xUnit.net 00:00:00.66]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: True, timeout: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2853048-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: True, timeout: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2853262-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: False, timeout: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2853446-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: False, timeout: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2853633-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: False, timeout: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2853910-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: False, timeout: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2854100-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: False, timeout: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2868442-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 422, write: True, timeout: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2869294-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 403, write: True, timeout: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2870147-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 409, write: True, timeout: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2871614-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: True, timeout: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:43:32.2872576-04:00">
+        <Text>[xUnit.net 00:00:00.67]     CP6.Platform.AspNetCoreTests.HttpV2.RejectedBodyRegressionTests.ObservedRejectionVetoesReplayAfterBodyFailure(status: 401, write: False, timeout: False) [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

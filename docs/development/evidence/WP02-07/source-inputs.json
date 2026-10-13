@@ -1,0 +1,252 @@
+[
+  {
+    "path": "AGENTS.md",
+    "git_blob": "eef8f4191d9956f8697f1ccf24fe841ad41ecbff",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "repository": "Main",
+    "git_bytes_sha256": "6478d5477bee4cd6e78b51ea226650170f422f1e15699d778e0c03c9d9490bd2"
+  },
+  {
+    "path": "docs/development/task-plans/WP02.md",
+    "git_blob": "bfb7d4e0e9281768b44ea98f541610a94fd8094c",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "repository": "Main",
+    "git_bytes_sha256": "db86355e7ab52e13be9e3de0223237ba0494b4c10d0dc263bad23c0c69813b05"
+  },
+  {
+    "path": "docs/development/08-postgresql-baseline.md",
+    "git_blob": "1956afc1e6e90719703a25e78a68e3a3a8e0877c",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "repository": "Main",
+    "git_bytes_sha256": "b07b25829750b6c25b22472ac6834f961a627cc80146e1750597af7654ab699c"
+  },
+  {
+    "path": "docs/development/09-parallel-development.md",
+    "git_blob": "2acb2a1935bec3283488523437d7b94764aaf9d2",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "repository": "Main",
+    "git_bytes_sha256": "5d5da99193c5c08df8774268a6eff59fbd9111601a0cfbf52b352c315b253c38"
+  },
+  {
+    "path": "docs/design-handbook/modules/PLT-DEL-01.md",
+    "git_blob": "1315781efd898e39c76e73654f99cd2980639921",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "repository": "Main",
+    "git_bytes_sha256": "89a72c635c743f9f95f33c0a62a14ac32674a8b92fb6313481b1d21f85a929e9"
+  },
+  {
+    "path": "docs/design-handbook/modules/PLT-HTTP-01.md",
+    "git_blob": "a20b2b45637de71d31d5e20964f68652f567696b",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "repository": "Main",
+    "git_bytes_sha256": "a47f667cd3f2d3055ed009433235f77c4065807092b6eeff1505557117f3b04d"
+  },
+  {
+    "path": "docs/design-handbook/remediation/03-transactions-and-recovery.md",
+    "git_blob": "601bb530c6c3a7d9c58b3b73f887a04c93facabb",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "repository": "Main",
+    "git_bytes_sha256": "a294263d13b8a4710cb66bad6c2e9365200042167274281cbf5fc57b07196da1"
+  },
+  {
+    "path": "docs/design-handbook/remediation/assets/finance-recovery/owner-adoption.json",
+    "git_blob": "465d522e2b47e787d0839b993827b54549b95db5",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "repository": "Main",
+    "git_bytes_sha256": "aa0c9f14976c7e377985d8477bdb213f93cfe364f0ecf90b09260c6f7ce7610b"
+  },
+  {
+    "path": "docs/development/evidence/wave4-integration-20261013/WP02-01/remote-main.json",
+    "git_blob": "cf5ff6cb51c583f8db8058db56764da7b8ee0773",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "repository": "Main",
+    "git_bytes_sha256": "29d857ebbefc0e18c10455d8b9345622e608fe258bcce5c11f83985a792ed1d1"
+  },
+  {
+    "path": "docs/development/evidence/wave2-integration-20261012/S01-09/remote-main.json",
+    "git_blob": "6a85e2994808887c58adbdf9a197a1e7ab96e650",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "repository": "Main",
+    "git_bytes_sha256": "43eaaaa5fca7cb227cc6ed39b733ee698cabc7f570ded98d9f7b16e8f2270bcd"
+  },
+  {
+    "path": "src/CP6.Platform.EntityFramework/Cp6InboxProcessor.cs",
+    "git_blob": "de4b9aa3d8366aa70dded6ebfa498380e4908410",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "9975e7a95d9759552c0fe88a753d2e0372177e323df369808803be986930e577"
+  },
+  {
+    "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingModelBuilderExtensions.cs",
+    "git_blob": "5459f5f3896a8bf9346466659b7124aabdde9662",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "ca15dd53295f441fe11797c98368de50b02b16341b633d624f8b0941c7e97264"
+  },
+  {
+    "path": "src/CP6.Platform.EntityFramework/Cp6OutboxStore.cs",
+    "git_blob": "c2d10c851bb2567da7dd7cafd8645864d49023f2",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "6719ee9fbd678ef907b0d92052b695a2785deae5788658d52a96ac433727a1ba"
+  },
+  {
+    "path": "src/CP6.Platform.EntityFramework/Cp6MessageRetentionService.cs",
+    "git_blob": "c682d6c5d599710c32bb20c84d2bc3a16c5b35df",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "777769155fe34deb711b3b6c7eeb21d35721a7b89f23006bb85bb0b67f45163e"
+  },
+  {
+    "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceServiceCollectionExtensions.cs",
+    "git_blob": "6700da329bf5974f6b72ecd238b8c4b0d35c2fde",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "ae6ad60283ac25b5e27d3932bb1f7c1c8b78f3171379e51cc6f542171c7ee698"
+  },
+  {
+    "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceProfile.cs",
+    "git_blob": "73ab6f7c5aee2980b5d9e8f7b3cfa90b10e8eb8a",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "07786251268a417db721092a880dcb4fb5c1d85abde6739deea6417b6f9e6ed7"
+  },
+  {
+    "path": "src/CP6.Platform.AspNetCore/Cp6ProblemDetailsExtensions.cs",
+    "git_blob": "b83b355653c0b382a79c97cbdeb83fc20a7492a5",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "5856a211a4625d464877ed51fb959d3eec57366a806eaa2182548804912297bc"
+  },
+  {
+    "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6NativeContractCatalog.cs",
+    "git_blob": "0436729bb3f3dd8131dd35fab38d0005f7d8f968",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "850a5c99bde76851353c6d2b51e58326c5894c8c36306e183c4c45cd255cf958"
+  },
+  {
+    "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6OriginalJson.cs",
+    "git_blob": "b52fcc9fd98294896a09c2c70763d95c19e7fabb",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "4a10ba1324500e9686a0c851a69214e2c32003ae087cc3cb61f5932c1a4dec36"
+  },
+  {
+    "path": "src/CP6.Platform.Abstractions/Context/TrustedContextExecutorV1.cs",
+    "git_blob": "94840cf64832d30af6455e833625a74d000deda8",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "b7108e3c703a3d62ec5ef85836a2dec6005d96480b44dbfd6273330154bff581"
+  },
+  {
+    "path": "Directory.Packages.props",
+    "git_blob": "768d4ae02403f682963025d762ff7ed022a9c18d",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "fdf8dd260f732e2d483db17feb9f02360576f8f2888d7b1698b0e4a12964ac65"
+  },
+  {
+    "path": "Directory.Build.props",
+    "git_blob": "42131cd740450f08305e95b08b855cfb981c022a",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "58a91dfb841b65889974f4a500d8d2fa3639253972b6d5fa96888ec19ddec0b4"
+  },
+  {
+    "path": "tests/CP6.Platform.UnitTests/CP6.Platform.UnitTests.csproj",
+    "git_blob": "951337940fa5a3d4a3be6709fb0041758b69ec76",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "5c0b801ba86d4888e03216841efbe7a8c3182eccdf6ac86e27a930d162a59a02"
+  },
+  {
+    "path": "tests/CP6.Platform.AspNetCoreTests/CP6.Platform.AspNetCoreTests.csproj",
+    "git_blob": "7f61240ebda42c85cc94d669414fe54d70e5db42",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "d2d05dccce7e78c5584c49bc3537c230708ac3591a7f04bfea6199bf04f0d1a1"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/RepositoryArchitectureTests.cs",
+    "git_blob": "37e82dfc18877052ba7a826f5ef2f67a5f371bf1",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "8514e34e52ec8b08ccba45784bcc3063ffe757c80d8994fad9254d2f4a949a96"
+  },
+  {
+    "path": "docs/WP02-01-TRUSTED-CONTEXT.md",
+    "git_blob": "7a7c5f50092349e10f6f7683def23a3695037fa5",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "14d6c611c3853fd9b230c6b09d50a8484ce4cc7efc82a7348cf19073e1a2a52e"
+  },
+  {
+    "path": "docs/development/evidence/S01-09/README.md",
+    "git_blob": "05dff70323d99312e6515976dd2af689d1cf6738",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "5ecd4e7f0aa101d4e23b40343238606b8814952280cebc199e5fe715a04f243a"
+  },
+  {
+    "path": ".github/workflows/p10-rfc3161-preflight.yml",
+    "git_blob": "00ffe45cf6867d8a4538c067e30e3ece93b4b97d",
+    "pin": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+    "repository": "Platform",
+    "git_bytes_sha256": "2660e87fc9a556be0cbc73f19f12a2ab58b4bda534e265ba398d257752272cf1"
+  },
+  {
+    "repository": "Main archive (raw working original)",
+    "path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+    "raw_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+    "bytes": 57043
+  },
+  {
+    "repository": "Main archive (raw working original)",
+    "path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d9/d9b57a039e18a689__S6_INT-ID_INT-OPS_完整设计候选_v0.2.md",
+    "raw_sha256": "d9b57a039e18a689615cfb48e181bb248dedecf957d8bdd7dd72d85a53a6dccc",
+    "bytes": 122794
+  },
+  {
+    "repository": "Main",
+    "path": "docs/design-handbook/remediation/assets/finance-recovery/contracts.schema.json",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "git_blob": "54399c2a57e760fb239fa32f9e610a4bd976b619",
+    "git_bytes_sha256": "e4089ec1c8c2bdd18ae5f4099c7e65adbdeb4a7f4e61fa64a51147fc0779b9c3"
+  },
+  {
+    "repository": "Main",
+    "path": "docs/development/assessments/20261011/catalogs/foundation.json",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "git_blob": "e0da267b79bf24cea6df4a6abd2d1e5c2cd068d4",
+    "git_bytes_sha256": "6af601f92d8a3f3b347358313bd6d3c199581a0fd93650b3c6c7090249329417"
+  },
+  {
+    "repository": "Main",
+    "path": "docs/development/assessments/20261011/implementation-assessment.json",
+    "pin": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+    "git_blob": "13b2ac31e0156861e5606d05308d6021b738aae3",
+    "git_bytes_sha256": "ebab2fbbc2ffdc02abcf58b4eb75358ea3db3d03e5529f47886dd58bce100cb8"
+  },
+  {
+    "repository": "Main",
+    "path": "docs/development/dispatch/20261013-wave5/WP02-07.md",
+    "pin": "47c9b12c796620effe41c62d16992ccd629ee949",
+    "git_blob": "e5b3c744f5bdeaea2e95f2916ce3fcfabb8d42ce",
+    "git_bytes_sha256": "3ed2c50ee83367d5cd2bcbe046b4830c669df3dabcb558e2e665bbc02bf7331f"
+  },
+  {
+    "repository": "Main",
+    "path": "docs/development/evidence/wave5-dispatch-20261013/admission-platform.md",
+    "pin": "47c9b12c796620effe41c62d16992ccd629ee949",
+    "git_blob": "4401ba117fd552e2c07050f3a324299e757a24f4",
+    "git_bytes_sha256": "f1de6612255caf602211bde5d25e4d903278fc65d94f46bc6a38c4cca99f842a"
+  },
+  {
+    "repository": "Main",
+    "path": "docs/development/evidence/wave5-dispatch-20261013/admission-platform.json",
+    "pin": "47c9b12c796620effe41c62d16992ccd629ee949",
+    "git_blob": "ac374984250c2141a7e6ed7c5c7ee246642ee888",
+    "git_bytes_sha256": "490b497a92a805967f24a9de29cb2a547b69844110a7bf88a5e366fbe6ee1e31"
+  }
+]

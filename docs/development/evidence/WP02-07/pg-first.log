@@ -1,0 +1,171 @@
+  Determining projects to restore...
+  Restored D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\CP6.Platform.WP0207.PostgreSqlTests.csproj (in 554 ms).
+  3 of 4 projects are up-to-date for restore.
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-07-20261013\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-07-20261013\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-07-20261013\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.WP0207.PostgreSqlTests -> D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:01.81]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Pending_is_invisible_until_caller_commit_and_all_nine_tables_commit_together [FAIL]
+[xUnit.net 00:00:01.83]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Explicit_rollback_or_failure_after_owner_save_leaves_no_partial_graph(failure: False) [FAIL]
+[xUnit.net 00:00:01.83]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Explicit_rollback_or_failure_after_owner_save_leaves_no_partial_graph(failure: True) [FAIL]
+[xUnit.net 00:00:01.84]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Real_xmin_token_rejects_stale_checkpoint_update [FAIL]
+[xUnit.net 00:00:01.84]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Real_transaction_locks_are_held_until_caller_rollback [FAIL]
+[xUnit.net 00:00:01.84]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Lost_commit_confirmation_queries_original_bytes_without_a_new_write_grant [FAIL]
+[xUnit.net 00:00:01.84]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Duplicate_old_equal_and_known_historical_conflict_all_pass_the_content_gate [FAIL]
+[xUnit.net 00:00:01.84]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Unavailable_anchor_never_completes_duplicate_or_checkpoint [FAIL]
+[xUnit.net 00:00:01.85]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Same_key_competition_recovers_whole_original_input_through_a_new_content_gate [FAIL]
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Pending_is_invisible_until_caller_commit_and_all_nine_tables_commit_together [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Explicit_rollback_or_failure_after_owner_save_leaves_no_partial_graph(failure: False) [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Explicit_rollback_or_failure_after_owner_save_leaves_no_partial_graph(failure: True) [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Real_xmin_token_rejects_stale_checkpoint_update [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Real_transaction_locks_are_held_until_caller_rollback [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Lost_commit_confirmation_queries_original_bytes_without_a_new_write_grant [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Duplicate_old_equal_and_known_historical_conflict_all_pass_the_content_gate [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Unavailable_anchor_never_completes_duplicate_or_checkpoint [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Same_key_competition_recovers_whole_original_input_through_a_new_content_gate [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+[xUnit.net 00:00:01.86]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Missing_wrong_connection_ended_transaction_and_wrong_tenant_are_rejected [FAIL]
+[xUnit.net 00:00:01.86]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Wrong_lock_order_and_preheld_late_lock_are_not_accepted_as_proof [FAIL]
+[xUnit.net 00:00:01.86]     CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Same_message_different_raw_or_binding_has_priority_and_preserves_original_result [FAIL]
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Missing_wrong_connection_ended_transaction_and_wrong_tenant_are_rejected [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Wrong_lock_order_and_preheld_late_lock_are_not_accepted_as_proof [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+  Failed CP6.Platform.WP0207.PostgreSqlTests.AtomicInboxTests.Same_message_different_raw_or_binding_has_priority_and_preserves_original_result [1 ms]
+  Error Message:
+   System.InvalidOperationException : The requested operation requires an element of type 'Number', but the target element has type 'String'.
+  Stack Trace:
+     at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+   at System.Text.Json.JsonDocument.TryGetValue(Int32 index, Int64& value)
+   at System.Text.Json.JsonElement.GetInt64()
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 78
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 82
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.VerifyAsync(NpgsqlConnection connection, Boolean admin) in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 89
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 46
+   at CP6.Platform.WP0207.PostgreSqlTests.PgFixture.InitializeAsync() in D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\PgFixture.cs:line 63
+Results File: D:\CP6.Platform-worktrees\wp02-07-20261013\docs\development\evidence\WP02-07\test-results\inbox-pg-first.trx
+
+Failed!  - Failed:    12, Passed:     0, Skipped:     0, Total:    12, Duration: 57 ms - CP6.Platform.WP0207.PostgreSqlTests.dll (net8.0)

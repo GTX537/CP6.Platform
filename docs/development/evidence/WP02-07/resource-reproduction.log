@@ -1,0 +1,8 @@
+Test run for D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.WP0207.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0207.PostgreSqlTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: D:\CP6.Platform-worktrees\wp02-07-20261013\docs\development\evidence\WP02-07\test-results\inbox-resource-reproduction.trx
+
+Passed!  - Failed:     0, Passed:     2, Skipped:     0, Total:     2, Duration: 1 s - CP6.Platform.WP0207.PostgreSqlTests.dll (net8.0)

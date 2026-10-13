@@ -1,0 +1,2 @@
+# Preserve actual log/TRX/identity bytes and their recorded SHA-256 through Git transport.
+* -text whitespace=cr-at-eol

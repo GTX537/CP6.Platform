@@ -1,0 +1,2925 @@
+{
+  "source_commit": "ed6ee2972d16ea747e706be3dce258dc299cd1b8",
+  "configuration": "Debug/net8.0",
+  "sources": [
+    {
+      "path": "Directory.Build.props",
+      "bytes": 1171,
+      "working_sha256": "be5ae2820e4d7c1a554336a50b06e5eef5d0f4dea9469f31d1b8c84e52c32d83",
+      "git_bytes_sha256": "58a91dfb841b65889974f4a500d8d2fa3639253972b6d5fa96888ec19ddec0b4",
+      "git_blob": "42131cd740450f08305e95b08b855cfb981c022a"
+    },
+    {
+      "path": "Directory.Packages.props",
+      "bytes": 1871,
+      "working_sha256": "e27010697c96f9ae86af011e6a7fd0f7b19dca60b71d49f393aaa4d6fc5f78b5",
+      "git_bytes_sha256": "fdf8dd260f732e2d483db17feb9f02360576f8f2888d7b1698b0e4a12964ac65",
+      "git_blob": "768d4ae02403f682963025d762ff7ed022a9c18d"
+    },
+    {
+      "path": "NuGet.config",
+      "bytes": 548,
+      "working_sha256": "4f4e0db54145bc7bb5429295242e0b96b88ee984cb1581fe7ca926ad1463060e",
+      "git_bytes_sha256": "bb4ea679b4c1d64f6220321702187bc3241f2e530d4551880f8a7aa6604ff881",
+      "git_blob": "7f55add0ec73ef552270b2fb024d410239c04f71"
+    },
+    {
+      "path": "contracts/contract-bundle.v1.json",
+      "bytes": 1865,
+      "working_sha256": "5a83e10f9454363d8e8c7f30fec7d84e1abd91347a7a1de3a6b5509790532344",
+      "git_bytes_sha256": "5a83e10f9454363d8e8c7f30fec7d84e1abd91347a7a1de3a6b5509790532344",
+      "git_blob": "02925e1d392c0403969e45b7b52454e3d5b61f20"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/missing-required.json",
+      "bytes": 680,
+      "working_sha256": "3ac54ecf5cd47a8112ab336fd430192f3185490949780f51be2b4a7831f49587",
+      "git_bytes_sha256": "3ac54ecf5cd47a8112ab336fd430192f3185490949780f51be2b4a7831f49587",
+      "git_blob": "ff36ed86548ffb28aab33c98bb1192d17bce8cb4"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/pii-negative.json",
+      "bytes": 760,
+      "working_sha256": "d1f2614d1f7960d72ce27b391b04c3a13975fde97c59b15fb638e3c1c2a52a1c",
+      "git_bytes_sha256": "d1f2614d1f7960d72ce27b391b04c3a13975fde97c59b15fb638e3c1c2a52a1c",
+      "git_blob": "7c70fd88e85ca7e7a30a1564c4e368f7f64ae0d6"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/unknown-optional.json",
+      "bytes": 817,
+      "working_sha256": "f02bb9b296e32258ee920e846d5d2ee4725ac5e12913ea1d8bd26872be6c644e",
+      "git_bytes_sha256": "f02bb9b296e32258ee920e846d5d2ee4725ac5e12913ea1d8bd26872be6c644e",
+      "git_blob": "48ad61583ecfe558cfa35a33d6f070d4167b2eb7"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/valid.json",
+      "bytes": 712,
+      "working_sha256": "8374408416c217e68a3a0defc71700ce3492cef1d2f96bf87d57b4406904a880",
+      "git_bytes_sha256": "8374408416c217e68a3a0defc71700ce3492cef1d2f96bf87d57b4406904a880",
+      "git_blob": "6d4f8ca387136cdbe7565a09530b17722c813903"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/wrong-type.json",
+      "bytes": 714,
+      "working_sha256": "f88878492dc25da8d1bfb3eacf1ea443a61c8bb3e72184694712099f267d789c",
+      "git_bytes_sha256": "f88878492dc25da8d1bfb3eacf1ea443a61c8bb3e72184694712099f267d789c",
+      "git_blob": "e8b8e3a5422d28eaa4ff584dace5d363d3da7893"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/schema.json",
+      "bytes": 2874,
+      "working_sha256": "889e3774a6dcfba8735e719dd207d2772372ccece6fefb01f9efe8f921489f76",
+      "git_bytes_sha256": "889e3774a6dcfba8735e719dd207d2772372ccece6fefb01f9efe8f921489f76",
+      "git_blob": "e3d5105a48d4bf4fe04905c19a40484d832d3403"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/assets.v1.json",
+      "bytes": 756,
+      "working_sha256": "2453e96bd7bb40c0460c52a02c40edfd7bd86dfad7d4e2b934917ae1354e2111",
+      "git_bytes_sha256": "2453e96bd7bb40c0460c52a02c40edfd7bd86dfad7d4e2b934917ae1354e2111",
+      "git_blob": "46ef68ece6ad60ca4f2110d602fdcc1a3b33e741"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/non-candidate-indeterminate.json",
+      "bytes": 1510,
+      "working_sha256": "1c9ede47cc017c632873c9e458766c21010ef6767c37eb88168d87db119435b0",
+      "git_bytes_sha256": "1c9ede47cc017c632873c9e458766c21010ef6767c37eb88168d87db119435b0",
+      "git_blob": "843817da35dd878b8a0651bb34acb3d8197a582c"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/partial-indeterminate.json",
+      "bytes": 1697,
+      "working_sha256": "a5a407fb4ba6453ae609434ac091f84c67234fd6bd893395c8b983c88fba8c9a",
+      "git_bytes_sha256": "a5a407fb4ba6453ae609434ac091f84c67234fd6bd893395c8b983c88fba8c9a",
+      "git_blob": "b1928fe64896b0afb4c8ace9a4b9f7101640e21b"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/pii-negative.json",
+      "bytes": 1744,
+      "working_sha256": "011c5dfa8b1bc10a59cce2a734a3f69b365c7b52cbdc7d06c8f2eff7d53176d2",
+      "git_bytes_sha256": "011c5dfa8b1bc10a59cce2a734a3f69b365c7b52cbdc7d06c8f2eff7d53176d2",
+      "git_blob": "6c5996f80bca4b97d06234da31f0f8bf69df3949"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/valid-pass.json",
+      "bytes": 1695,
+      "working_sha256": "089d08442f54942bbcc696865e4556a2ed2bcaf699bae69cdb334d1316bf0695",
+      "git_bytes_sha256": "089d08442f54942bbcc696865e4556a2ed2bcaf699bae69cdb334d1316bf0695",
+      "git_blob": "183040a3c68970e17a5d2c2c26ca79bdd4491dda"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/schema.json",
+      "bytes": 6852,
+      "working_sha256": "d07a9963c26277e09561d5afec2668bb6aa25b9c53124709c786d53af82262cb",
+      "git_bytes_sha256": "d07a9963c26277e09561d5afec2668bb6aa25b9c53124709c786d53af82262cb",
+      "git_blob": "c630e46fdc3ce42f01db2c1db0e8e206d84d9ec7"
+    },
+    {
+      "path": "contracts/p09/examples/non-production-runtime-profile.crm-topic.invalid.json",
+      "bytes": 2991,
+      "working_sha256": "62f371741da20f2143c405f3103528273021b333fae0acbcfb0f71f282e26226",
+      "git_bytes_sha256": "62f371741da20f2143c405f3103528273021b333fae0acbcfb0f71f282e26226",
+      "git_blob": "c326be6257d5a7834e67e5c76b6d399f65f6789a"
+    },
+    {
+      "path": "contracts/p09/examples/non-production-runtime-profile.plaintext-secret.invalid.json",
+      "bytes": 3038,
+      "working_sha256": "b560f95c6aafce43e72f20e0e885c10a0dad78693b231eca443da7f26868d2d5",
+      "git_bytes_sha256": "b560f95c6aafce43e72f20e0e885c10a0dad78693b231eca443da7f26868d2d5",
+      "git_blob": "1b1b52d24d3da37b2f90d705379e2325234ca43b"
+    },
+    {
+      "path": "contracts/p09/examples/non-production-runtime-profile.production.invalid.json",
+      "bytes": 3003,
+      "working_sha256": "45e19fa4405f1a306c25318e02dd44b12eeeb68272756cf29e8647827fe35259",
+      "git_bytes_sha256": "45e19fa4405f1a306c25318e02dd44b12eeeb68272756cf29e8647827fe35259",
+      "git_blob": "725a58b91fee1e707f4176890cf59bfef71d7e88"
+    },
+    {
+      "path": "contracts/p09/examples/non-production-runtime-profile.valid.json",
+      "bytes": 3406,
+      "working_sha256": "961f242ea780172090e5d450dcb8893b42e0cc4cf65066be8f17203604d5dee0",
+      "git_bytes_sha256": "961f242ea780172090e5d450dcb8893b42e0cc4cf65066be8f17203604d5dee0",
+      "git_blob": "2c6c2294fa6c4c08183af6383ff1401dd4125017"
+    },
+    {
+      "path": "contracts/p09/examples/rehearsal-evidence.secret.invalid.json",
+      "bytes": 3810,
+      "working_sha256": "bfd2b4e426612a38725bda4e69a1a1ad272a2b9db61406d28b258e2e56fd03c2",
+      "git_bytes_sha256": "bfd2b4e426612a38725bda4e69a1a1ad272a2b9db61406d28b258e2e56fd03c2",
+      "git_blob": "3938a8cbd1e533969c19109a8e0047827e481db1"
+    },
+    {
+      "path": "contracts/p09/examples/rehearsal-evidence.valid.json",
+      "bytes": 3781,
+      "working_sha256": "0426bc9167de62e7eab5d2c2519ec8d01e3d75c6ca57d095a1e90dc333cd6795",
+      "git_bytes_sha256": "0426bc9167de62e7eab5d2c2519ec8d01e3d75c6ca57d095a1e90dc333cd6795",
+      "git_blob": "257c3391461a1967a0fbd430ed6e43bed19e6651"
+    },
+    {
+      "path": "contracts/p09/non-production-runtime-profile.v1.schema.json",
+      "bytes": 11332,
+      "working_sha256": "f2ceef03b24185044b60bf41ea8c2c2fe1382e049e1bf2558a36ebca87b9ecdc",
+      "git_bytes_sha256": "f2ceef03b24185044b60bf41ea8c2c2fe1382e049e1bf2558a36ebca87b9ecdc",
+      "git_blob": "1c2af5c8c6ceab9b138e98b06a3f6360bb245aea"
+    },
+    {
+      "path": "contracts/p09/rehearsal-evidence.v1.schema.json",
+      "bytes": 14718,
+      "working_sha256": "78c698cb17147aeb2ba17b7017f24e60f801ff3451d87e7380f0ab26465fd20c",
+      "git_bytes_sha256": "78c698cb17147aeb2ba17b7017f24e60f801ff3451d87e7380f0ab26465fd20c",
+      "git_blob": "591cc53fdea6e272cae14e6495fbd8f1d5b8cbf1"
+    },
+    {
+      "path": "contracts/release/v1/assets.v1.json",
+      "bytes": 2476,
+      "working_sha256": "9b7326701033f26352ee7f942a6d1bc837ec45171b51d1d7994e8d21d702cf7f",
+      "git_bytes_sha256": "9b7326701033f26352ee7f942a6d1bc837ec45171b51d1d7994e8d21d702cf7f",
+      "git_blob": "0f7a90e85874ed04530eba9b35218e7a67ed36af"
+    },
+    {
+      "path": "contracts/release/v1/build-invocation-provenance.v1.schema.json",
+      "bytes": 2275,
+      "working_sha256": "4cec4bb534820a89bf3b1df644ce907782cb64b69507d7122eab16daa2d16a8b",
+      "git_bytes_sha256": "4cec4bb534820a89bf3b1df644ce907782cb64b69507d7122eab16daa2d16a8b",
+      "git_blob": "a9138ae4f4ff4c769f89e1f429b25cf75fdd771e"
+    },
+    {
+      "path": "contracts/release/v1/candidate-locator.v1.schema.json",
+      "bytes": 947,
+      "working_sha256": "cc531053e10eb769e37bdda5689d15fa194d0f175ddf98d5a424eda24ff5c263",
+      "git_bytes_sha256": "cc531053e10eb769e37bdda5689d15fa194d0f175ddf98d5a424eda24ff5c263",
+      "git_blob": "e8f83c2b04a0a8ed94f7b1012b24da0f0b979670"
+    },
+    {
+      "path": "contracts/release/v1/candidate-result.v2.schema.json",
+      "bytes": 1398,
+      "working_sha256": "4b078c2ce741c12f5949b9a376abebe3abdf9ad41521b2899c08f40ec5588a64",
+      "git_bytes_sha256": "4b078c2ce741c12f5949b9a376abebe3abdf9ad41521b2899c08f40ec5588a64",
+      "git_blob": "4db8f58fccffa63a2cc6f0690b9d7130ba4b9a2f"
+    },
+    {
+      "path": "contracts/release/v1/evidence-record.v1.schema.json",
+      "bytes": 1179,
+      "working_sha256": "8c742af3be9a69f920270c7a84b72ce2f0cf0bc03086c1e5f83300e887048922",
+      "git_bytes_sha256": "8c742af3be9a69f920270c7a84b72ce2f0cf0bc03086c1e5f83300e887048922",
+      "git_blob": "9c5842f7a31609ed2f704e75d822305c0d393c2b"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/deterministic/simple.canonical.json",
+      "bytes": 35,
+      "working_sha256": "c70d0dc4eaf50a576944851115bb0e81a935fc39c7893a992a6dd00092eafdb1",
+      "git_bytes_sha256": "c70d0dc4eaf50a576944851115bb0e81a935fc39c7893a992a6dd00092eafdb1",
+      "git_blob": "7814bf1a492c5c5262f29b8939c99c5b61ad8cd3"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/deterministic/simple.input.json",
+      "bytes": 32,
+      "working_sha256": "1aede7b610006db56c0b616aab5fcd742d8480a67daf331acea151c5eb39dbca",
+      "git_bytes_sha256": "1aede7b610006db56c0b616aab5fcd742d8480a67daf331acea151c5eb39dbca",
+      "git_blob": "d0cbdcf13a375dd2ace1cbddfcd43e334991b916"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/candidate-locator-platform.valid.json",
+      "bytes": 629,
+      "working_sha256": "bde21726f445c39bc1f6094df1ae1487ce782339eb16c5c972f0095f8f41194a",
+      "git_bytes_sha256": "bde21726f445c39bc1f6094df1ae1487ce782339eb16c5c972f0095f8f41194a",
+      "git_blob": "c48e6c979466758afe11279d5a858286dbe57b28"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/candidate-locator-system.valid.json",
+      "bytes": 606,
+      "working_sha256": "ee58798e85ac26ad04440cf5aa8ce6d72a2c015a679495d50e3d8858b0ef127a",
+      "git_bytes_sha256": "ee58798e85ac26ad04440cf5aa8ce6d72a2c015a679495d50e3d8858b0ef127a",
+      "git_blob": "f6064e5ff2a1ed4615c80cd0fcc8ed6b3d7a3400"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/candidate-result.valid.json",
+      "bytes": 1170,
+      "working_sha256": "47856239e6da3bbc5e41d0211af62cbb40b97e528ba79832ecc7262ba42b0525",
+      "git_bytes_sha256": "47856239e6da3bbc5e41d0211af62cbb40b97e528ba79832ecc7262ba42b0525",
+      "git_blob": "daf83eaedc208d564d2a81b3363e29b023994078"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-locator-missing.invalid.json",
+      "bytes": 587,
+      "working_sha256": "25e5b38793c68e2b15c7e7f18e40b78e9f1f88627d22541961ec273d1babe9cf",
+      "git_bytes_sha256": "25e5b38793c68e2b15c7e7f18e40b78e9f1f88627d22541961ec273d1babe9cf",
+      "git_blob": "5b7711d5c459f04724c3cb2b58908aa792b16c36"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-locator-unknown.invalid.json",
+      "bytes": 647,
+      "working_sha256": "0d8f30357defd4993b4538feb28568acddab430f51154acbc12193aecbeef6ac",
+      "git_bytes_sha256": "0d8f30357defd4993b4538feb28568acddab430f51154acbc12193aecbeef6ac",
+      "git_blob": "ceb4d9f80e80ec7db27c47a875f7f120d4343023"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-locator-wrong-kind.invalid.json",
+      "bytes": 607,
+      "working_sha256": "9f7374e399a13fd35d64baeffc0f1666c6677a06de14d76c5d52cc070e6ec6a5",
+      "git_bytes_sha256": "9f7374e399a13fd35d64baeffc0f1666c6677a06de14d76c5d52cc070e6ec6a5",
+      "git_blob": "48b7462511ef45f33ff152a5c072fb3bd4b07bb8"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-result-missing.invalid.json",
+      "bytes": 1140,
+      "working_sha256": "ffd7b76a09dafa9c64ee309e3570e26f89dc948d4d66756ac8e64fad95c7c18f",
+      "git_bytes_sha256": "ffd7b76a09dafa9c64ee309e3570e26f89dc948d4d66756ac8e64fad95c7c18f",
+      "git_blob": "618b4116dbe5b4e03ebdb0ca23c4519a008c9bb6"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-result-unknown.invalid.json",
+      "bytes": 1188,
+      "working_sha256": "930992479dcffaec5b1b769e20648558809092d72cf3375e49877ca0ed97fe8f",
+      "git_bytes_sha256": "930992479dcffaec5b1b769e20648558809092d72cf3375e49877ca0ed97fe8f",
+      "git_blob": "284f9f24ed41f1d2430dedca32838e1975671c50"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-result-wrong-kind.invalid.json",
+      "bytes": 1158,
+      "working_sha256": "d949edebef697f39ec1668cb0f4904ed36a68072367451eb0c65e47f8e85a7bb",
+      "git_bytes_sha256": "d949edebef697f39ec1668cb0f4904ed36a68072367451eb0c65e47f8e85a7bb",
+      "git_blob": "21ffa7b43d6806e53c80feba19eb9a3bc98414b9"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/platform-missing.invalid.json",
+      "bytes": 5694,
+      "working_sha256": "204474ebdc1b5855b8f2760a8a107cae071698b3705631624db528689c2f6131",
+      "git_bytes_sha256": "204474ebdc1b5855b8f2760a8a107cae071698b3705631624db528689c2f6131",
+      "git_blob": "76bd4e4fa95583300403c110f9c0c2ff839c46af"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/platform-unknown.invalid.json",
+      "bytes": 5754,
+      "working_sha256": "64bdb6ea3c9916cd7443bb3e8b540754cde1ca2ef08dc7c2f846f59083792652",
+      "git_bytes_sha256": "64bdb6ea3c9916cd7443bb3e8b540754cde1ca2ef08dc7c2f846f59083792652",
+      "git_blob": "2fa5a7156fe1fd3b59ee4322c3f15cb5112e0a30"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/platform-wrong-kind.invalid.json",
+      "bytes": 5714,
+      "working_sha256": "84dd00228381e8f5dda4a455b16b6f0e6a5bceffd887f9743adad6716f77ebb4",
+      "git_bytes_sha256": "84dd00228381e8f5dda4a455b16b6f0e6a5bceffd887f9743adad6716f77ebb4",
+      "git_blob": "cc822f85e19782f8e013e273305a79c299ef0b5c"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/system-missing.invalid.json",
+      "bytes": 1144,
+      "working_sha256": "3fae3b3e7d8c7ea1df14ef3526c45796a1d09bd069aae3b33fffa505ffb1973f",
+      "git_bytes_sha256": "3fae3b3e7d8c7ea1df14ef3526c45796a1d09bd069aae3b33fffa505ffb1973f",
+      "git_blob": "889e498ab42838595d6c3a02dd7b6c8f163db3c9"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/system-unknown.invalid.json",
+      "bytes": 1204,
+      "working_sha256": "a22a3a3880c87fcc8033f85991057da82615f5d311352ff1d1121097027d8eef",
+      "git_bytes_sha256": "a22a3a3880c87fcc8033f85991057da82615f5d311352ff1d1121097027d8eef",
+      "git_blob": "6383e75d9d68602252864463e7dedcc2560e8395"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/system-wrong-kind.invalid.json",
+      "bytes": 1164,
+      "working_sha256": "b53fe66a91a188c35ef01290cbade48f4936952d0efb866ec3af9ace596ec12a",
+      "git_bytes_sha256": "b53fe66a91a188c35ef01290cbade48f4936952d0efb866ec3af9ace596ec12a",
+      "git_blob": "2ececa44dad8579660776895f449f50a846a39cd"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/platform-as-system.invalid.json",
+      "bytes": 1197,
+      "working_sha256": "a5a8c4335e148132863447649c53507eb8ccf167771c78558f985f02330702d9",
+      "git_bytes_sha256": "a5a8c4335e148132863447649c53507eb8ccf167771c78558f985f02330702d9",
+      "git_blob": "174c2c5f66b179759a7732326c90e3900b47d000"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/platform-mixed-package-version.invalid.json",
+      "bytes": 5736,
+      "working_sha256": "d7527429a3e42694f04c0424ca70ca61458a95ad0a2261f4f3463a1138043d6b",
+      "git_bytes_sha256": "d7527429a3e42694f04c0424ca70ca61458a95ad0a2261f4f3463a1138043d6b",
+      "git_blob": "da31cb304a2f66566e4b8f8d6967715c6c8edc3e"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/platform.valid.json",
+      "bytes": 5736,
+      "working_sha256": "52e9acc1617addd3e272d9bd8fc7ac2af7fb21d2949570bde2372fca45c78a7c",
+      "git_bytes_sha256": "52e9acc1617addd3e272d9bd8fc7ac2af7fb21d2949570bde2372fca45c78a7c",
+      "git_blob": "3d4d4e1e7df06343428ac7765ad44f7e8e524e5f"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/system-missing-portal.invalid.json",
+      "bytes": 1173,
+      "working_sha256": "98ef571aacddc627c7bb5dd0ceb4877fa61dad89bf9b39c6918622fdc64fa5b1",
+      "git_bytes_sha256": "98ef571aacddc627c7bb5dd0ceb4877fa61dad89bf9b39c6918622fdc64fa5b1",
+      "git_blob": "559436dad62cf8f061a1f3efe8d231558d3a28e5"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/system.valid.json",
+      "bytes": 1186,
+      "working_sha256": "ea8f8b4677428d3e3fb59603a399a404c231ea7bacc7eafd26b2a1c1c3ceea18",
+      "git_bytes_sha256": "ea8f8b4677428d3e3fb59603a399a404c231ea7bacc7eafd26b2a1c1c3ceea18",
+      "git_blob": "477728a6247959b92ba4305d154dd446cbd66cff"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/build-provenance-missing.invalid.json",
+      "bytes": 4084,
+      "working_sha256": "7fadc12cc55d37eea9a953a83c68163e4530be3bd3d72b8d5174df334ce5b63c",
+      "git_bytes_sha256": "7fadc12cc55d37eea9a953a83c68163e4530be3bd3d72b8d5174df334ce5b63c",
+      "git_blob": "30c958693fd7bb0b7a6575b8772e5ce437a29f8b"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/build-provenance-mixed-invocation.invalid.json",
+      "bytes": 4126,
+      "working_sha256": "60f72659ce93579242eac8ac6331a36eea3c07b4ec68d1594b8675d96066a384",
+      "git_bytes_sha256": "60f72659ce93579242eac8ac6331a36eea3c07b4ec68d1594b8675d96066a384",
+      "git_blob": "96de7a0563a4cb01cf3f6caefdaf729bacecea9d"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/build-provenance-unknown.invalid.json",
+      "bytes": 4144,
+      "working_sha256": "575d721e71bf70b990de3fd79d4bf4324df214093436fae3d0be16bba20788ad",
+      "git_bytes_sha256": "575d721e71bf70b990de3fd79d4bf4324df214093436fae3d0be16bba20788ad",
+      "git_blob": "2288fe152956d8076d4c9e53624153116738c444"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/build-provenance-wrong-kind.invalid.json",
+      "bytes": 4104,
+      "working_sha256": "ba609c611ff399eab2937fa9f344133de16d0d3ec0c91fe5cd1293c462e2be56",
+      "git_bytes_sha256": "ba609c611ff399eab2937fa9f344133de16d0d3ec0c91fe5cd1293c462e2be56",
+      "git_blob": "8d40d490f9c5febcd63e47f916696220cde5aa89"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/build-provenance.valid.json",
+      "bytes": 4126,
+      "working_sha256": "a9ea1fc96d3197c4f8e97539ba108123744ce4faf7d748728f9bec37de24b5a2",
+      "git_bytes_sha256": "a9ea1fc96d3197c4f8e97539ba108123744ce4faf7d748728f9bec37de24b5a2",
+      "git_blob": "5f8101902841fc80421c52ca3b628f0d1cd4cde4"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/candidate-locator-time.invalid.json",
+      "bytes": 629,
+      "working_sha256": "bf6b1adcf7fc03f0b00c86510cd1b42c041f0e3a6720e2b7d2fe8bc58b4cc8c0",
+      "git_bytes_sha256": "bf6b1adcf7fc03f0b00c86510cd1b42c041f0e3a6720e2b7d2fe8bc58b4cc8c0",
+      "git_blob": "e8c9878c111cfd9ea85094893f550bca68f6212f"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence-authority.invalid.json",
+      "bytes": 1002,
+      "working_sha256": "c4d59b7fff5988696770c3c00ea8198323f1787aad9afb1b4622484cd7003b4b",
+      "git_bytes_sha256": "c4d59b7fff5988696770c3c00ea8198323f1787aad9afb1b4622484cd7003b4b",
+      "git_blob": "40ab82791b70f7bebdb470b4eb7a693ed87733e5"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence-missing.invalid.json",
+      "bytes": 960,
+      "working_sha256": "724f23ceb6d33b4fdde3cbb057fa98eb769efa3a9e0a29a9977fc808570249c7",
+      "git_bytes_sha256": "724f23ceb6d33b4fdde3cbb057fa98eb769efa3a9e0a29a9977fc808570249c7",
+      "git_blob": "287ff7ccd26a04625a38e5575ebaeb07f06c734e"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence-unbound.invalid.json",
+      "bytes": 1002,
+      "working_sha256": "52f6f198d534e05a6d24b6491d5b0dbaea6bde6541d0f7c9660ceff477e68227",
+      "git_bytes_sha256": "52f6f198d534e05a6d24b6491d5b0dbaea6bde6541d0f7c9660ceff477e68227",
+      "git_blob": "cfa156aa7179d3b1e7fee5367f4a771c00bffd69"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence-unknown.invalid.json",
+      "bytes": 1020,
+      "working_sha256": "3890d60a333e76ccdf49549defd0256617c62f02910faafe5ed9d484a7fadef6",
+      "git_bytes_sha256": "3890d60a333e76ccdf49549defd0256617c62f02910faafe5ed9d484a7fadef6",
+      "git_blob": "f3a1b87fc97ba169c2eab896dcb290cdda2a9c00"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence-wrong-kind.invalid.json",
+      "bytes": 980,
+      "working_sha256": "f872ef938092d1587d29fc01f066948315e1844a3cb00410b1e27217c7a9d685",
+      "git_bytes_sha256": "f872ef938092d1587d29fc01f066948315e1844a3cb00410b1e27217c7a9d685",
+      "git_blob": "35510753cc1db3cce1df54b7a7bed9fca92ccdf1"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence.valid.json",
+      "bytes": 1002,
+      "working_sha256": "957ae88fc15b489daac7cf7815bee51c588cc14ac8ca8f132480f7430f853bfe",
+      "git_bytes_sha256": "957ae88fc15b489daac7cf7815bee51c588cc14ac8ca8f132480f7430f853bfe",
+      "git_blob": "10b30971ab016a460eb12f40ecd47f53f8666891"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/formal-package-publication-changed-published-bytes.invalid.json",
+      "bytes": 6027,
+      "working_sha256": "2c2daef17f15b9bea99e1caa7ff79ac3f99c1a7c58f844243bab25875cc9800e",
+      "git_bytes_sha256": "2c2daef17f15b9bea99e1caa7ff79ac3f99c1a7c58f844243bab25875cc9800e",
+      "git_blob": "9ff32d3fc3f8a8ba7f9c9264e058b9ed17f0456d"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/formal-package-publication-missing-package.invalid.json",
+      "bytes": 5339,
+      "working_sha256": "3aec5f48fb51765be2dc71eedd39ffef349f23bd1a871db1fa2135c0eb37d725",
+      "git_bytes_sha256": "3aec5f48fb51765be2dc71eedd39ffef349f23bd1a871db1fa2135c0eb37d725",
+      "git_blob": "124fb8ac261c3a4d9662358743c0e1318fd72272"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/formal-package-publication-mixed-version.invalid.json",
+      "bytes": 6027,
+      "working_sha256": "ecccd4706277315c9d54e4ec90902b122785be734674670d2345b141f48df2bc",
+      "git_bytes_sha256": "ecccd4706277315c9d54e4ec90902b122785be734674670d2345b141f48df2bc",
+      "git_blob": "def561bccace3703f82b20f68cae741efb185e3b"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/formal-package-publication-test-timestamp-policy.invalid.json",
+      "bytes": 6024,
+      "working_sha256": "ab5b06578079e7013bc23bd6a6072256f8f071744d8c6ecbc4c261e58f1f5719",
+      "git_bytes_sha256": "ab5b06578079e7013bc23bd6a6072256f8f071744d8c6ecbc4c261e58f1f5719",
+      "git_blob": "50f1d886537d963b059247d2d71618a9dc16a6ab"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/formal-package-publication.valid.json",
+      "bytes": 6027,
+      "working_sha256": "9999c4f1cbbe9c601496bafbd54b402525a165b0870ba0ac62e9c99eed1b7315",
+      "git_bytes_sha256": "9999c4f1cbbe9c601496bafbd54b402525a165b0870ba0ac62e9c99eed1b7315",
+      "git_blob": "3875a260ea025fee28304f1c62c308f38c0de20a"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/lineage-bootstrap-missing.invalid.json",
+      "bytes": 689,
+      "working_sha256": "e07613b621bf9bf0b314de8847f6ae9930ed69df15368ece25d8bf7fbec17ccd",
+      "git_bytes_sha256": "e07613b621bf9bf0b314de8847f6ae9930ed69df15368ece25d8bf7fbec17ccd",
+      "git_blob": "1975a0e19eb2f678e13cddc8e5543e83caf4568c"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/lineage-bootstrap-unknown.invalid.json",
+      "bytes": 749,
+      "working_sha256": "c58b19f3b6e8beaa01fa8bc26f85e090c0bc1bb92d351a969c16c72f40b9c359",
+      "git_bytes_sha256": "c58b19f3b6e8beaa01fa8bc26f85e090c0bc1bb92d351a969c16c72f40b9c359",
+      "git_blob": "98302b0ccfc3fdfa53700e24a30ea277164dbd3e"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/lineage-bootstrap-unsigned.invalid.json",
+      "bytes": 722,
+      "working_sha256": "5d8d12784568d9f8e1e2de3a5cf88f6a5e25e8ec6850ddd1608e8a20e38fe4d2",
+      "git_bytes_sha256": "5d8d12784568d9f8e1e2de3a5cf88f6a5e25e8ec6850ddd1608e8a20e38fe4d2",
+      "git_blob": "35c2b219b9e9e266873d9239d107eb0db4a067f6"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/lineage-bootstrap-wrong-kind.invalid.json",
+      "bytes": 709,
+      "working_sha256": "8ec660afe537fb4d4f9dafbc9506fbfb9e3202ece9ac77198019df26f05dcfb0",
+      "git_bytes_sha256": "8ec660afe537fb4d4f9dafbc9506fbfb9e3202ece9ac77198019df26f05dcfb0",
+      "git_blob": "5d04e2c7fa24d463b03e964108c9418f5feb9938"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/lineage-bootstrap.valid.json",
+      "bytes": 731,
+      "working_sha256": "a0b864e739a20160af4a87a0a9ea3e9cd8b2b20217471d1d9a2c4f9370a58cb4",
+      "git_bytes_sha256": "a0b864e739a20160af4a87a0a9ea3e9cd8b2b20217471d1d9a2c4f9370a58cb4",
+      "git_blob": "c38efcc172c7c8cc63968123fb69b2ff80ecdf58"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-bad-fingerprint.invalid.json",
+      "bytes": 1035,
+      "working_sha256": "d6ba2a6ac498bf9eeb29acc0d29cd3d12d601fc080089d53d35552f44ff79231",
+      "git_bytes_sha256": "d6ba2a6ac498bf9eeb29acc0d29cd3d12d601fc080089d53d35552f44ff79231",
+      "git_blob": "0a62d5bf3bd9652613fce03b69f9d4f82a6c9c59"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-bad-status-fields.invalid.json",
+      "bytes": 1066,
+      "working_sha256": "7cdb1ce441f1040fd0bbfd6fc389a3f6f07970e4c519ace084cd1fa4b5aaf41b",
+      "git_bytes_sha256": "7cdb1ce441f1040fd0bbfd6fc389a3f6f07970e4c519ace084cd1fa4b5aaf41b",
+      "git_blob": "73a47eaec32c59225411394934534ee00fd9264d"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-noncanonical.invalid.json",
+      "bytes": 1212,
+      "working_sha256": "2614872963047455e30179f62d2e99cdc53e796e53ee93fad81a36b919ae6255",
+      "git_bytes_sha256": "2614872963047455e30179f62d2e99cdc53e796e53ee93fad81a36b919ae6255",
+      "git_blob": "69798019221a01be823f572a6114e9a6738231c0"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-public-ca.invalid.json",
+      "bytes": 1034,
+      "working_sha256": "006091bbc03697a89146e71339c06b01462fb292d34bd3a2aef7cc0e1323301c",
+      "git_bytes_sha256": "006091bbc03697a89146e71339c06b01462fb292d34bd3a2aef7cc0e1323301c",
+      "git_blob": "266c6aeb37c769f52b9ab766124812c36d48572f"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-two-current.invalid.json",
+      "bytes": 1591,
+      "working_sha256": "84f5f6326535b70c5924a3d11d15d0c3bf155176a28674834f22d3aa8d7e0306",
+      "git_bytes_sha256": "84f5f6326535b70c5924a3d11d15d0c3bf155176a28674834f22d3aa8d7e0306",
+      "git_blob": "570eff4c13598c7053fffb1f8054b7a01151d28e"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-wrong-package-set.invalid.json",
+      "bytes": 1035,
+      "working_sha256": "ee4a1c1d199cf9d07773c0654eb4bc72e3235a5799dc898536b59131b012615d",
+      "git_bytes_sha256": "ee4a1c1d199cf9d07773c0654eb4bc72e3235a5799dc898536b59131b012615d",
+      "git_blob": "705f9af071ccce3ca260d45176ec64c040213833"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust.valid.json",
+      "bytes": 1035,
+      "working_sha256": "352975344b7187e168788d02e741de3ef06b224496a55737d08aee6a2ab952ae",
+      "git_bytes_sha256": "352975344b7187e168788d02e741de3ef06b224496a55737d08aee6a2ab952ae",
+      "git_blob": "d3971fac7a08ff7644f2b41a20c57f36913eda85"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/release-gate-missing.invalid.json",
+      "bytes": 710,
+      "working_sha256": "4201d7da8b16149df55d8e099931f4c422252a745c5bd4d2d4d4a3cd827e4c30",
+      "git_bytes_sha256": "4201d7da8b16149df55d8e099931f4c422252a745c5bd4d2d4d4a3cd827e4c30",
+      "git_blob": "1420642d648d4026d9a62b01407cb9e81bc384a4"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/release-gate-unbound.invalid.json",
+      "bytes": 752,
+      "working_sha256": "d45970b6161ef551c3498c208338492298a38060324940a7c9dcf18a113bf158",
+      "git_bytes_sha256": "d45970b6161ef551c3498c208338492298a38060324940a7c9dcf18a113bf158",
+      "git_blob": "4ad8ed975bdf03314ac03056d6e0d75127b9e1cd"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/release-gate-unknown.invalid.json",
+      "bytes": 770,
+      "working_sha256": "9dab1f3d495c1c746d313a2ca18f9919e8537976a830d3672d77b3bcb5eb9527",
+      "git_bytes_sha256": "9dab1f3d495c1c746d313a2ca18f9919e8537976a830d3672d77b3bcb5eb9527",
+      "git_blob": "f0acb09c6340044d9bc74ae905b1e6462b8c473c"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/release-gate-wrong-kind.invalid.json",
+      "bytes": 730,
+      "working_sha256": "20015bedcf0ba0802465ec472d38148b39d1ad167f3e6941048c209b45bfb6b2",
+      "git_bytes_sha256": "20015bedcf0ba0802465ec472d38148b39d1ad167f3e6941048c209b45bfb6b2",
+      "git_blob": "f6ebb3ddd46110d82fce57a6b1f8ed9fd2af5910"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/release-gate.valid.json",
+      "bytes": 752,
+      "working_sha256": "bc1d3120844343fdfdf701d9137806d293a56ef4ff6185a33ba1dc3052f3ffc9",
+      "git_bytes_sha256": "bc1d3120844343fdfdf701d9137806d293a56ef4ff6185a33ba1dc3052f3ffc9",
+      "git_blob": "38cd3e405623d42923443b341b05d3b1843b8f37"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/system-successor.valid.json",
+      "bytes": 1502,
+      "working_sha256": "cf3a3e2c4187b4c1b083ff9c91847343ec55816cefd5a43d8a2696ec147532c3",
+      "git_bytes_sha256": "cf3a3e2c4187b4c1b083ff9c91847343ec55816cefd5a43d8a2696ec147532c3",
+      "git_blob": "c7efa10a4ca17f76a5c5e7614f13adad4f6bead3"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/transport-expired.invalid.json",
+      "bytes": 655,
+      "working_sha256": "8c6a38ca8b575b055cf309ecd1668ce89d03b77050c302c91e8ea5d2bc44a01c",
+      "git_bytes_sha256": "8c6a38ca8b575b055cf309ecd1668ce89d03b77050c302c91e8ea5d2bc44a01c",
+      "git_blob": "b8d63f0f9c0dc1f340bd25bcd6887066df450439"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/transport-missing.invalid.json",
+      "bytes": 613,
+      "working_sha256": "3272e9ecdbc0b6ffbc63e7bd86db007e989e086d21b522b936ba9ae1be0d9d5f",
+      "git_bytes_sha256": "3272e9ecdbc0b6ffbc63e7bd86db007e989e086d21b522b936ba9ae1be0d9d5f",
+      "git_blob": "07c55ce62f128844a6c5bbd4d0344d3b4f72d961"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/transport-unknown.invalid.json",
+      "bytes": 673,
+      "working_sha256": "4d22ed49087d12b7a89f1fe83e64d134502e0dce7e77b367efd4825206314669",
+      "git_bytes_sha256": "4d22ed49087d12b7a89f1fe83e64d134502e0dce7e77b367efd4825206314669",
+      "git_blob": "d244a09f718bb7c939c093fa5032b507484fb42b"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/transport-wrong-kind.invalid.json",
+      "bytes": 633,
+      "working_sha256": "d3fb15c9bf893c0df09951a5c9c7652e09ce7279fc178f6d1d1f093e73e708b6",
+      "git_bytes_sha256": "d3fb15c9bf893c0df09951a5c9c7652e09ce7279fc178f6d1d1f093e73e708b6",
+      "git_blob": "8b3050b87ea9252da0819c7c0363aa6461cc349b"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/transport.valid.json",
+      "bytes": 655,
+      "working_sha256": "713537e404e45035e2a1114a4cc2ebe03c607682edb67e90f67a4a400c134429",
+      "git_bytes_sha256": "713537e404e45035e2a1114a4cc2ebe03c607682edb67e90f67a4a400c134429",
+      "git_blob": "d2a7a421aad0f158395fccd59dfcfd204d091aca"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust-authority.invalid.json",
+      "bytes": 947,
+      "working_sha256": "e607894e8df72f13ce96bb7bfec4e88a79c1f3ae1af70ece6a574894b081b78d",
+      "git_bytes_sha256": "e607894e8df72f13ce96bb7bfec4e88a79c1f3ae1af70ece6a574894b081b78d",
+      "git_blob": "d843f3b27ac0cd3cc4b0f837e0c39f350ba9bb5e"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust-downgrade.invalid.json",
+      "bytes": 950,
+      "working_sha256": "a2d6a6d1b2f54adff21098a1db6cff948ed778f7aece9c1a15a7b99cb07f1cde",
+      "git_bytes_sha256": "a2d6a6d1b2f54adff21098a1db6cff948ed778f7aece9c1a15a7b99cb07f1cde",
+      "git_blob": "4a8adb46dcfb2a46eaead78b1b339d526e238476"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust-missing.invalid.json",
+      "bytes": 932,
+      "working_sha256": "2ae18ce5e29f87df13b06ff4c9b0c10c89a3acb916c2f05c0d59bfc020d8f545",
+      "git_bytes_sha256": "2ae18ce5e29f87df13b06ff4c9b0c10c89a3acb916c2f05c0d59bfc020d8f545",
+      "git_blob": "fd705744a1fdab8a979a09d34be163aa4d08c9c8"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust-unknown.invalid.json",
+      "bytes": 968,
+      "working_sha256": "24f5394f0ce0953488bd87dec8b6aa99e9411fa9080c999dc1a34dd49db27eff",
+      "git_bytes_sha256": "24f5394f0ce0953488bd87dec8b6aa99e9411fa9080c999dc1a34dd49db27eff",
+      "git_blob": "5666b067f78fad63578add42a5dffe64666369bc"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust-wrong-kind.invalid.json",
+      "bytes": 952,
+      "working_sha256": "66b0fd64760e1dcd807fa4e298a52a9bc5f9b5ac2adaf9376eac3b58a6573bb7",
+      "git_bytes_sha256": "66b0fd64760e1dcd807fa4e298a52a9bc5f9b5ac2adaf9376eac3b58a6573bb7",
+      "git_blob": "7a3d8c442aa568dc2487f951ef334b8eef623d7c"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust.revoked.valid.json",
+      "bytes": 1444,
+      "working_sha256": "27d89c62905a00d9bdda5d2703413b99c3d45fa5eb8ba7524dd73ca5adc58599",
+      "git_bytes_sha256": "27d89c62905a00d9bdda5d2703413b99c3d45fa5eb8ba7524dd73ca5adc58599",
+      "git_blob": "a055147d092ba853d0d5ff6185c73b374bd56792"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust.valid.json",
+      "bytes": 950,
+      "working_sha256": "40cb641cdea708c3674bf8fbfac32ddc26358f48188f0619694063545ae23cf9",
+      "git_bytes_sha256": "40cb641cdea708c3674bf8fbfac32ddc26358f48188f0619694063545ae23cf9",
+      "git_blob": "c551eeb66e842105132d3f1db3f42a128968c9b5"
+    },
+    {
+      "path": "contracts/release/v1/formal-package-publication.v1.schema.json",
+      "bytes": 7661,
+      "working_sha256": "4367323087073639828ebd4466f9dbf0b0b700d71123dc11d0fc91334d42d853",
+      "git_bytes_sha256": "4367323087073639828ebd4466f9dbf0b0b700d71123dc11d0fc91334d42d853",
+      "git_blob": "7c951b1ea788bd007b4593c029b7f84515e9f4e1"
+    },
+    {
+      "path": "contracts/release/v1/pinned-nuget-trust-store.v1.schema.json",
+      "bytes": 3786,
+      "working_sha256": "60680268aa24afbce2f43f0ae781438ca8af9f185a521c07dbd91b3c5a4f837d",
+      "git_bytes_sha256": "60680268aa24afbce2f43f0ae781438ca8af9f185a521c07dbd91b3c5a4f837d",
+      "git_blob": "7d22b1e1e006fd5e35df1417f17866b3cbc5e54c"
+    },
+    {
+      "path": "contracts/release/v1/pinned-trust-store.v1.schema.json",
+      "bytes": 3245,
+      "working_sha256": "c09f7cef3ef8f7824ca197ad5768d7f061db5a81c2dc98f213cc0d9d5b9a2e55",
+      "git_bytes_sha256": "c09f7cef3ef8f7824ca197ad5768d7f061db5a81c2dc98f213cc0d9d5b9a2e55",
+      "git_blob": "84f876a5bc173510231380f0ccad09b9b26e74dc"
+    },
+    {
+      "path": "contracts/release/v1/platform-release-candidate.v1.schema.json",
+      "bytes": 2166,
+      "working_sha256": "ae2dc7f7ad1404e24a42e5a555c03e4dbf67dc4faffddfe7c469e0db900a993d",
+      "git_bytes_sha256": "ae2dc7f7ad1404e24a42e5a555c03e4dbf67dc4faffddfe7c469e0db900a993d",
+      "git_blob": "930c033c763be19413956bb24cfb7a260417b805"
+    },
+    {
+      "path": "contracts/release/v1/release-common.v1.schema.json",
+      "bytes": 5549,
+      "working_sha256": "debb7779f1469d2266e3818f2cae72950efdbcb76d5be1d106c344308066ec4d",
+      "git_bytes_sha256": "debb7779f1469d2266e3818f2cae72950efdbcb76d5be1d106c344308066ec4d",
+      "git_blob": "3f8a7543bb6f7484b409d4dac0967cae83bd32dd"
+    },
+    {
+      "path": "contracts/release/v1/release-gate-result.v1.schema.json",
+      "bytes": 1343,
+      "working_sha256": "d7d5fe65525172fcad28f1c7be9426ca9bb57595739a8f089eb5c217562b30c0",
+      "git_bytes_sha256": "d7d5fe65525172fcad28f1c7be9426ca9bb57595739a8f089eb5c217562b30c0",
+      "git_blob": "5a8f453e6461a7745401ece79355422a110cb7f8"
+    },
+    {
+      "path": "contracts/release/v1/system-lineage-bootstrap-evidence.v1.schema.json",
+      "bytes": 971,
+      "working_sha256": "5b66546444ba13eefaeea931e2fa5f28e9d99a24d48925a0c83b6572fa2760bf",
+      "git_bytes_sha256": "5b66546444ba13eefaeea931e2fa5f28e9d99a24d48925a0c83b6572fa2760bf",
+      "git_blob": "a18d3a6a95a657c16b566b9810b34be6bd95030d"
+    },
+    {
+      "path": "contracts/release/v1/system-release-manifest.v1.schema.json",
+      "bytes": 2121,
+      "working_sha256": "447429a43b54cc988c25042e5d7d8b0d654a3ba7da3dd1dd42d30ba34cd97f9e",
+      "git_bytes_sha256": "447429a43b54cc988c25042e5d7d8b0d654a3ba7da3dd1dd42d30ba34cd97f9e",
+      "git_blob": "20fbbe1b2e4f7e660805a097ba6697c79fe4177b"
+    },
+    {
+      "path": "contracts/release/v1/test-package-transport.v1.schema.json",
+      "bytes": 1340,
+      "working_sha256": "83ae5a6b0a1f54f8606235fde0b8cdd8e16db991d90fd078eb22ea67dd57bfcb",
+      "git_bytes_sha256": "83ae5a6b0a1f54f8606235fde0b8cdd8e16db991d90fd078eb22ea67dd57bfcb",
+      "git_blob": "a1f965728f19c858fc0ec99de438cac1f2877daf"
+    },
+    {
+      "path": "global.json",
+      "bytes": 117,
+      "working_sha256": "12977d3e63d38bc51c22c4708ccbc351af024a310de7f25ac974468b731677b3",
+      "git_bytes_sha256": "84aa96f48aa20d14456121b5ac5f18967f29f7da504c6f886218c701687f47fa",
+      "git_blob": "4c4c3ae5ed709aa83aa03569d2c1f6792c553165"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj",
+      "bytes": 389,
+      "working_sha256": "0330506d22b02a69d8e841e446632c09e3d6bd13847013601c3540fc9f163a9a",
+      "git_bytes_sha256": "72694b721d9ded2d68a76ddaf75541128e369fede5a11cb206264d95b0882e82",
+      "git_blob": "33b1a90713ef06f20b60bed1590bdb90b7601614"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/BackgroundContextExecutorV1.cs",
+      "bytes": 602,
+      "working_sha256": "4cccf59c073893524c682397ca1abf8d23b7c4f335c0d9ead6e2152c926bd03f",
+      "git_bytes_sha256": "91bfd8eabbb9fadee91ca9ce26e089a61340b13921654f678e18ad42ec520088",
+      "git_blob": "00b2d113c47f243549ad345df1464255a0fa931b"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextBindingValidatorV1.cs",
+      "bytes": 5990,
+      "working_sha256": "4463b3f5fe8aaae23307e23450368859a6cc1e857fbfc6cce87e94e45fe0a82c",
+      "git_bytes_sha256": "3117a1df86b8b639388b653bd84b5cda8c67e1378ea6549837a5375e79f89324",
+      "git_blob": "20d0d50bfafabdb2c5288cb4e0b09717b7d95e5f"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextBoundariesV1.cs",
+      "bytes": 2517,
+      "working_sha256": "d2402fab0e6518ac95ced1dd00446753013702421757882ae22b704f9fb220ca",
+      "git_bytes_sha256": "ba9f3d52ec6dde335522f45702967be5eaf3e25021463777c756c0b14b92d7ef",
+      "git_blob": "6170302e84e5dcf43ea67dbb96f46b45a115fb4d"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextScopeAccessorV1.cs",
+      "bytes": 2688,
+      "working_sha256": "954a300185592f6e1e9ea3d0b342baa3e0fd52951e18cef5b9f91774c10d8e6c",
+      "git_bytes_sha256": "db6609eafca57b40364eade5d777fb2575d03d50c4bf7cd89f498e1175634a23",
+      "git_blob": "534ffeb5705a4d3cdadc6e7021f4796e17315fbe"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/TrustedContextExecutorV1.cs",
+      "bytes": 1846,
+      "working_sha256": "31903b51f6b5b46b89f16331c25b337ea5d896d37927cdb77d46b95848089993",
+      "git_bytes_sha256": "b7108e3c703a3d62ec5ef85836a2dec6005d96480b44dbfd6273330154bff581",
+      "git_blob": "94840cf64832d30af6455e833625a74d000deda8"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Cp6TelemetryConventions.cs",
+      "bytes": 3626,
+      "working_sha256": "b0c3a8a93b73e8ec875808494bea9504b540b40a0750ee2e0e44ababb2dec281",
+      "git_bytes_sha256": "903f94c89611165d27afe44bc0c07d6f0110508bb8045a5d478c7d1d3d2c2a27",
+      "git_blob": "62f978b5e127ae9b638f1874f35f8fcd564e291d"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/ICp6ReleaseIdentityAccessor.cs",
+      "bytes": 276,
+      "working_sha256": "4b9b8179a6cb7f0a2402556a0e07a249f2045f1521a34fc06f558f20a2ff91be",
+      "git_bytes_sha256": "9ce020ef36df7f6abfdc8791a770e12faec659db5773a4cd90c2f009c9ec141a",
+      "git_blob": "4dbe8d9577e8a1edec486ffa04cecbb43e8fc0dd"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/IRequestContext.cs",
+      "bytes": 409,
+      "working_sha256": "36c69005e469b28d553c3c4a469cb2148d6d4b5ff83b4f143b31ed6fc8eb2d9b",
+      "git_bytes_sha256": "d049811547ead73e0946766cd233050ba7ee33364b198379a158c5b082710cc3",
+      "git_blob": "70f93074560ea45c76d01ab1d98a85a2be8e47cf"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/IRequestContextAccessor.cs",
+      "bytes": 241,
+      "working_sha256": "0cbbb91ddd3db7d8875fd01423ca3344c4f7dcf2ba7de9cac15dc165a0ed916e",
+      "git_bytes_sha256": "9a4df440c38d6d2a57cbcb7ebbfebc14290cee8d0f2f6fb97ed7a713908583de",
+      "git_blob": "97b178a4f0ee3fc2c55fdba19b6736908e2f51bb"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/RequestContext.cs",
+      "bytes": 1664,
+      "working_sha256": "050a71b08f624e4da8769ba1c7929ab6e47ac1dc86b5b31a15da0166dc9f9f32",
+      "git_bytes_sha256": "c18d2aacd6a295de557ad9a97473360edc225f828fc47f8e56618c4b43ae4364",
+      "git_blob": "d24138b2770232013e1edb09001d35dc443d9eb9"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj",
+      "bytes": 1037,
+      "working_sha256": "7c2d830254c06aad4f4284f7e58c4926147f151703ddbd4eef40ffa3d94f472c",
+      "git_bytes_sha256": "a9464c3bc9c8da4048cd12e0ae56c4426cb2a9504573d7a23ccaa09b62260f4b",
+      "git_blob": "3b66a813bbab6ccf723ee7e12c9492389062040c"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Context/TrustedRequestContextExtensionsV1.cs",
+      "bytes": 1639,
+      "working_sha256": "cf0ae29902db8c37ff23e5bafca01bc4a6b31dbaa10ba253a377dd36df0c379a",
+      "git_bytes_sha256": "af5a6a520422a2e75148839c730f30bf9cc6fb7afa29612c46af22d6083e5908",
+      "git_blob": "aafabad8ae1c1c9ca7a4a193dd2807f975bbd100"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Context/TrustedRequestContextMiddlewareV1.cs",
+      "bytes": 1566,
+      "working_sha256": "82f5d37cabb58e1249a3c27222313f8b199be7c26a9637bdd704aa9c9845471a",
+      "git_bytes_sha256": "e92d8969eb50e31c82f5186912f4faa0f8025871559090c53cec55dffbbf42bc",
+      "git_blob": "88f27f9dd56aaca8ff42225986b179fae0bf6222"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationId.cs",
+      "bytes": 538,
+      "working_sha256": "ad428e0fa5272f2794b375ee390c6539d10f854b1857e32f7d6bf77abc6b4d82",
+      "git_bytes_sha256": "50de03531d503b19764fb8e6d726a3d5490c04c578e573900abb23ba779f6755",
+      "git_blob": "ed1daf3e0183f1915bd291dd1448ddb1ba9ca7da"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationMiddleware.cs",
+      "bytes": 896,
+      "working_sha256": "04ee6cd8ed16ea194b87e3ec6db72fce87b825257f72c66626b7e69ee0cb165f",
+      "git_bytes_sha256": "e847909cbd44b40683513f62ad590359267f706c21662fd92585fcfb5f227397",
+      "git_blob": "e76fcdda92998e4ecf085714d704276900875b54"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayExtensions.cs",
+      "bytes": 5377,
+      "working_sha256": "d5279439627e8a0b206e72e225d47a9c4fe587f7b40400f6b62e0acf7ba2b9bd",
+      "git_bytes_sha256": "63932266b47d0078bb3b665c4e9be9e3c259557d01fa3377bfb9f30f234487e2",
+      "git_blob": "0c5152addd12280e4ab9e1df6e4f83a8149a78b8"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayHeaders.cs",
+      "bytes": 975,
+      "working_sha256": "8cda8ab26bbd948f75967029ba3958862da9802ca7af8ae05d6af3f5b9352167",
+      "git_bytes_sha256": "af4ca77aee8195b61d45fc321aa2bc178fb6747e4b6953ebdaf8759e56d9b4a5",
+      "git_blob": "9177761c186e781124d11a94bc8b45fc6c59a80d"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayProfile.cs",
+      "bytes": 7746,
+      "working_sha256": "89ee088edb69ecaaeb77b0684f381f9b88e42137a7c9e7733ca0e810ee0b0e23",
+      "git_bytes_sha256": "14ca87d8055f43b3f6277f8fc0037b22a52f0bde999b6dbd06d1c6156f9028dc",
+      "git_blob": "d66c5c220a939802b0c96c11baabf8a13b042bd5"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpFailureCategory.cs",
+      "bytes": 287,
+      "working_sha256": "95dbdf39d0377fa9db2e72297f647d344aa24a8690ec3e5fd5ac4c3e27503a17",
+      "git_bytes_sha256": "3bb6630ffddb7359b7933d7e453e365f87717fc19ecf3c95c000d4e1b45c91f4",
+      "git_blob": "ece492312eb7989c664921469b686d4f1086a886"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpOperationKind.cs",
+      "bytes": 249,
+      "working_sha256": "a31557f72002e3d001b6267d320e41cbebeda2d1d6504b22861d09aed7e4bfd2",
+      "git_bytes_sha256": "fb5695e1a8192dd08443a4e44dc2dce1752bd9e51a672ea480397c2acae5e249",
+      "git_blob": "f1ba18d8425781e2ed83bfc62322066948949667"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceException.cs",
+      "bytes": 526,
+      "working_sha256": "2f7ac461974590b394d0078571f83d123ad683072836af379d2a42f2995e0024",
+      "git_bytes_sha256": "27d4aa9909d33c7ec2464b7bfc37094762f47b70663ca09e18825ffed61f9edb",
+      "git_blob": "a43c3f9a4a426c72665eb0aa4fcf91cfabb5a30c"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceProfile.cs",
+      "bytes": 3786,
+      "working_sha256": "eccd9e93122018651aff6baf46615e551c961673a67122b964d13545533602c5",
+      "git_bytes_sha256": "07786251268a417db721092a880dcb4fb5c1d85abde6739deea6417b6f9e6ed7",
+      "git_blob": "73ab6f7c5aee2980b5d9e8f7b3cfa90b10e8eb8a"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceServiceCollectionExtensions.cs",
+      "bytes": 7535,
+      "working_sha256": "6d5cb95e53a15803cc95fbdb55c5042dcecf9be7369a584c83b0c8f94b85e45d",
+      "git_bytes_sha256": "ae6ad60283ac25b5e27d3932bb1f7c1c8b78f3171379e51cc6f542171c7ee698",
+      "git_blob": "6700da329bf5974f6b72ecd238b8c4b0d35c2fde"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtBearerExtensions.cs",
+      "bytes": 5052,
+      "working_sha256": "86d8dd694bcba4f8afe144502c30f23e1a738e18e025ce7ef56fb7e8152e5e1d",
+      "git_bytes_sha256": "4c932ed3794cb01197e87f36a2841580b3b74864bb87375267a9878625ecf78f",
+      "git_blob": "0a0a70c79b631e68fdb6f0877328373419982a54"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtBearerProfile.cs",
+      "bytes": 3247,
+      "working_sha256": "bdb3fe136d3e294bc7c2b4dc56478ad3facdd30b03e4aec5fe7a78b595a6f0be",
+      "git_bytes_sha256": "3bac417d52c026df8cd8037ecaaca88a0ebc0f5d27c5d247f1ad36090b446771",
+      "git_blob": "61f5681f979fce6bdc82efd58b470e712e0e4ce9"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtClaimsValidator.cs",
+      "bytes": 2795,
+      "working_sha256": "b34a7e589bae712eb865ef4e31453ebce8da20704f5a8e80179af22093520a15",
+      "git_bytes_sha256": "4c58cb8f6869705a5841fe3d7652446c4ff04fb3a86730a0bd2f3f8586a585f4",
+      "git_blob": "9335e3be72d896d53611af075e329837c3dc7178"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtConfigurationManager.cs",
+      "bytes": 23391,
+      "working_sha256": "7c41df8c6551295ea43e2c711d1b18678911148433c15e12c80ae963fbb4fb5c",
+      "git_bytes_sha256": "6cfdd7fd969c17b685ebe5225158c2c6bc6b5bc8e3697939183f50a9dc19a1fe",
+      "git_blob": "ee2baaa9dfc714eb95a842a45c044044bd83f54e"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ObservabilityProfile.cs",
+      "bytes": 1958,
+      "working_sha256": "f371a8489f2f099f61369c6b1eacac2542ae3b9f2001113fcd661b310454c1bf",
+      "git_bytes_sha256": "57087bc058c2a37bcf72697646bd6faacfd39b14ca65fac569b0073f75858659",
+      "git_blob": "2c254df083f538afaaa82e4b16d19c3d7ab173af"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs",
+      "bytes": 3483,
+      "working_sha256": "1a0e077b4e24c208ec44c54ae5066009a2f84ff214f5111d1f1bbb67c8c483f2",
+      "git_bytes_sha256": "ff0e7fd09d62347ddd5615e7d297a032f8b5a092185fa8b610f9000ea3e99c20",
+      "git_blob": "f272165bcfd916ab1f64adae8150362a219eb1ae"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointProfile.cs",
+      "bytes": 3123,
+      "working_sha256": "a5a3f7cf1fa7c8e0e5c80c8d7f1c663383fce1866fecee3b1f256c7aae482181",
+      "git_bytes_sha256": "dea72acc15d89c8d65f1b324872f48ea278cd9f641a37ce2b3fd424f3ba180dc",
+      "git_blob": "8a40171b24772090cf2ecd9f208e73790f67f00b"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointRouteBuilderExtensions.cs",
+      "bytes": 3916,
+      "working_sha256": "181fc638fe54f1342cd668b724b34e040c407d41edade7d5201c603e1d0e56ce",
+      "git_bytes_sha256": "ef740a37c4971b6ee90dea6f61aeace6f5815ab9926185291cabf80369e9bff4",
+      "git_blob": "9c0ed1c129c15016b379f486054c96be0512de46"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OutboundCorrelationHandler.cs",
+      "bytes": 1476,
+      "working_sha256": "2a4d32baff3e9e1401e8a931c53b9273aebadfd3107c97d6ea5c1eb575e70946",
+      "git_bytes_sha256": "5d3562ec0be972233e690d7e4ec4bec5c520b4bcfb557f5ae64cb464e036af51",
+      "git_blob": "b67e2c42616c13a15c59b6f6172e51e5968bd321"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ProblemDetailsExtensions.cs",
+      "bytes": 3270,
+      "working_sha256": "cb5b337c61fa9a8001f018bdf4356d3c69c21337426fa12bff5bb25e1bfc41ab",
+      "git_bytes_sha256": "5856a211a4625d464877ed51fb959d3eec57366a806eaa2182548804912297bc",
+      "git_blob": "b83b355653c0b382a79c97cbdeb83fc20a7492a5"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ReleaseIdentityAccessor.cs",
+      "bytes": 367,
+      "working_sha256": "e9d03c96da65a849a833b2a4ae85af365c162f7b428e58e097ac189a0c5be6be",
+      "git_bytes_sha256": "b3455c75d77ed39ba859669767346c63aef406ee7c052e7c9e007d52ee3274e1",
+      "git_blob": "02d0950d435cc0893ea1d75aa7f18f2c256cf97c"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6SafeHealthResponseWriter.cs",
+      "bytes": 4522,
+      "working_sha256": "7d9d70614da59c2a93419d9643b2bdf3221575e200c22e190fed2842b3fc3e09",
+      "git_bytes_sha256": "03b46ab0bc2471c6ea8c9c6292bd33705866f72d1a29b442727a27438413ab36",
+      "git_blob": "92f70fb5c8018ea5aafa2258bc27de703c3675df"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6TraceContextDistributedPropagator.cs",
+      "bytes": 2355,
+      "working_sha256": "669b7043dc7463099b5a30e3c942901bd295b6fdfae29dbfb1927131c555547f",
+      "git_bytes_sha256": "cd30fb8b3c3762f8818be87066624d5b5b7fa66e068a394b75ce1132d69c326b",
+      "git_blob": "6a2eadb767e276e3dd329a28678db8571a9f3627"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/IRequestContextResolver.cs",
+      "bytes": 591,
+      "working_sha256": "79dd0d9f0fb5bc2711854e0952aaf553ac5390004f8e342bebb8fc910aadb729",
+      "git_bytes_sha256": "c77188c7d2c4f7a0dc15ef9ce2a2b0ffe45b9503409377bda480bbbca2b0500a",
+      "git_blob": "db5278fddcb5bdc8d124f7ef0c24467a9cb8ff32"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextAccessor.cs",
+      "bytes": 338,
+      "working_sha256": "8409c464b10bef5cb8c0a4e20209a1c645459f144ae9a04af9c458e26a53b6b5",
+      "git_bytes_sha256": "4b1a70aeea2d88c8cfac02199d6a1712167937bbb884d8006c77665b76b62c09",
+      "git_blob": "7af3466100101f218ce0fb888be62f27008c8e23"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextExtensions.cs",
+      "bytes": 1480,
+      "working_sha256": "b107caaa53071b6941872eb7397753b8d1d67e3a7b875df695647e9577e88651",
+      "git_bytes_sha256": "d6e3e38f06a4e3695d05e5c39a064baf728979113289de7901dad6ccb4bbfc83",
+      "git_blob": "de71430519928fb305826223ec5a46ad63f51bbb"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextMiddleware.cs",
+      "bytes": 1168,
+      "working_sha256": "4098aac92acdb77f09bcfb950a5310b8046415f600f24f1c658b24741e040f12",
+      "git_bytes_sha256": "027225b8b50fdca5dddd22b0d85f1776f8c5ab4fe66cb162c0d45f7de8260861",
+      "git_blob": "efcf240e6ead009566b647b5c69b82d2b2e578f0"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj",
+      "bytes": 444,
+      "working_sha256": "3c71927da98b44f52abb45e29f1da302b7bbfcab28077c365ad09bdfac8dd55c",
+      "git_bytes_sha256": "155913bd995dfd0eb2c787268358eeeac3d24a98f4c285ecc64e92bc4650dfe2",
+      "git_blob": "9ce69da3bb822a9adf040e13638d6e7e705755cf"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Context/ContextContractsV1.cs",
+      "bytes": 2784,
+      "working_sha256": "f9d8c18d7cab2bf7399039b108b54df5792d9b20c113fb99913a3a0bb2b25786",
+      "git_bytes_sha256": "2840946a04e1b7599236f4710b904024886a3630ecb867e579efd15231153922",
+      "git_blob": "b0d306b08c10780b1928a5273af902c96d41a09c"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6ProblemDefinition.cs",
+      "bytes": 2032,
+      "working_sha256": "b30a0dea1c2b634ce2b1c69d9268a7edc1c018b867d5e4fb70badb06fa898bd0",
+      "git_bytes_sha256": "dbfca67e40a2a8ff4f371a7592b01b988055aab4bf6d4d6bf0c584fbd0914b77",
+      "git_blob": "fdd17003e978a024c4ed0c2d197e4abd3de9c3b9"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6Problems.cs",
+      "bytes": 1001,
+      "working_sha256": "8204ca012c039a1513a71cc6d0e57783e20d3303f783dcd834f65be242f883b6",
+      "git_bytes_sha256": "2fe6964ffbfecd629b3c9e0d7089622723c41906dd21a352baf511d3fb27db37",
+      "git_blob": "6ed4b309d10c995407b60e009ecfbf600b53534e"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6ReleaseIdentity.cs",
+      "bytes": 5010,
+      "working_sha256": "c5c31863d44e1f07dabfe2be7dd7fdc4b13834c03309c7a642793f7e40b5c2ec",
+      "git_bytes_sha256": "df6fc44ab8d97f974f9a4aaa545aec60e1cdb376d363d2f38c1fb6edebf5a0c4",
+      "git_blob": "6e2f4451d835fa2958b373d2ad1047a199f71e8f"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6SloEvidenceDocument.cs",
+      "bytes": 11950,
+      "working_sha256": "a469783aaf986461422729306f6490912f40f8b88d47fe7bc4a04198f29b7953",
+      "git_bytes_sha256": "18c0d10f947ac74d33c7973de9f21f8e0a37e788e0986dfcc8bcbc08a8831bb5",
+      "git_blob": "a6e9df9aeab112ff4b94578be6247cf066bacadb"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6SloEvidenceEvaluator.cs",
+      "bytes": 1606,
+      "working_sha256": "a8cb9e07f68f65c357c3b9bbae218b6a37f3874cd1b4ab88f1528e063a6abf2e",
+      "git_bytes_sha256": "b2adb6f85729b8deded0b0e56c16a356204fcdd105cca0afb4894463d2d2aaf5",
+      "git_blob": "90667b6dd48d94986509bcadefd027e77e4ea815"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/RequestContextSnapshot.cs",
+      "bytes": 962,
+      "working_sha256": "713fc11b45bbd4e85487277a0f88fb2fb22619634ffb51b98f53007a330e150a",
+      "git_bytes_sha256": "7dfd733411eed22d6bf0c8f237f56dd8d7473c550987c553d163d8ce0c425b61",
+      "git_blob": "82f216485550e233bca4b2641cf17905df2c059a"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/CP6.Platform.Deployment.csproj",
+      "bytes": 1029,
+      "working_sha256": "0e6a3c90d2fb7123fe06c86b3702b658924bbdee61f306e4c9847ae8e12335b5",
+      "git_bytes_sha256": "0659da14a882462b6dc379ced5dd749de440202aeef96d8f95005f7210c13026",
+      "git_blob": "be65bb123e74c37c4d858e59b29402e9f1369fc6"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09ContractException.cs",
+      "bytes": 455,
+      "working_sha256": "5aec3379fec3b95600055790f444fb8391a20c3db4518223af06c3e45c89ee4d",
+      "git_bytes_sha256": "405513015216bbac7ee2fbd7c14ad4f554de8fecd839fbf1282a57958a4c3942",
+      "git_blob": "e1518d8434d904d6678b602bc97cd93373133d7e"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09Json.cs",
+      "bytes": 8540,
+      "working_sha256": "61bef9962d7f1726f0a35dff912036709299c7bbdb7e108df51c0560292287ce",
+      "git_bytes_sha256": "054c0d28d7197bf05b684f14abe791348b02a2df64657f976598c4b9bc7b9f8a",
+      "git_blob": "639baeea815cf83d5a794b96f1cab0a42c74e6e8"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09KubernetesValidator.cs",
+      "bytes": 32683,
+      "working_sha256": "961842dec5d803cbbe75d0bcc81e1eb111a3664059e392971b55c4f6325e297d",
+      "git_bytes_sha256": "27416e5452a4d8be8bd624776447b115a81cddca35b0b781cb0ae402fe7bc39f",
+      "git_blob": "c6bec056b4c100efa922537abe1920d98a8f68e7"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RehearsalEvidence.Safety.cs",
+      "bytes": 4922,
+      "working_sha256": "24c5add00779b2af16e71103a17a7978b1c4d8c9217615d263d38a51e38ae5ff",
+      "git_bytes_sha256": "30fcaf70bf1b2bd5457419b67542533a0bc80daaa735b5d74ea868b992d9f6fa",
+      "git_blob": "2d63aeb4cd7e37bad1fd4be42a0b3c59723d6cab"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RehearsalEvidence.Validator.cs",
+      "bytes": 17671,
+      "working_sha256": "831a39a6afadb07faf992249227a68b4e4788c389520dad413e4310711bbd972",
+      "git_bytes_sha256": "ca04314deeaafa00cd3675e6b971c192aff4f12d04045ff8a7287d01661e2445",
+      "git_blob": "4f269fd96da4098932a42f29701d45570d597992"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RehearsalEvidence.cs",
+      "bytes": 5282,
+      "working_sha256": "aab4cd878a3f6f86bab76652180c5710a0d0d83839aff7b07cdfbe5b0750fa46",
+      "git_bytes_sha256": "1b14227ab646d6e9a2402fa90855ac24e0c7878d82ab9f5d513f4ac0e22923ff",
+      "git_blob": "dcdaa9ba42d9bbdda75e333113372806b1a7133c"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RuntimeProfile.cs",
+      "bytes": 4016,
+      "working_sha256": "851584086c288678b45eefa1dcdb686a1cd6bb97f8d4a4cb4f5bfc15fe123639",
+      "git_bytes_sha256": "24ba4305ea17631433ddfb6ecde9edb46ff43c3421365cf6fc3fdce8f4a7ce5f",
+      "git_blob": "d9253d76f38b7c15ad9cdcfb1e32d6a91c7ef07b"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RuntimeProfileValidator.cs",
+      "bytes": 18295,
+      "working_sha256": "3893c153899f37a9cd6786eb8343a6faf0e834fd7448fedeef2b5bfefb9bb673",
+      "git_bytes_sha256": "28b9ec5c828e39c66c8c0b107a13085e4ef8159cf5fc96ddfe2fb96d67f8bb71",
+      "git_blob": "9acd79dbbdb36b7e680cd6d9718bdc8081cd9c6b"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj",
+      "bytes": 756,
+      "working_sha256": "78da574887a1a1ad1d421cf948572c589832472d48adbb3d90090771510645c7",
+      "git_bytes_sha256": "0974e3aa4f8c015a97b150f7057766efbfc5a5de52eef841b03abd56b157f890",
+      "git_blob": "30b7857046279e978db3e12d443d65bdecc242fb"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6EntityFrameworkTelemetry.cs",
+      "bytes": 8077,
+      "working_sha256": "05c18180ec76d3f2608946e66fc2cddb3236c8be5fa3c576ffc7a1c05ac8ca53",
+      "git_bytes_sha256": "a2eb82537fe23261b234b16aaa456b91360507cc88dfc50c2090021aa1116a74",
+      "git_blob": "fb18dce0809563bc366e9b8baa90f0acff5a5c89"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6InboxProcessor.cs",
+      "bytes": 16168,
+      "working_sha256": "9a9ae94a2dd2e192a4a727107dda6c34921fd6404ad921a34a3f6735f9830911",
+      "git_bytes_sha256": "9975e7a95d9759552c0fe88a753d2e0372177e323df369808803be986930e577",
+      "git_blob": "de4b9aa3d8366aa70dded6ebfa498380e4908410"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6MessageRetentionService.cs",
+      "bytes": 3186,
+      "working_sha256": "ded90a6e47cf0f35d1e447c3ef12c35c0dc3eaf89a87a1376d1e86050e25d79a",
+      "git_bytes_sha256": "777769155fe34deb711b3b6c7eeb21d35721a7b89f23006bb85bb0b67f45163e",
+      "git_blob": "c682d6c5d599710c32bb20c84d2bc3a16c5b35df"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6OutboxDispatcher.cs",
+      "bytes": 4559,
+      "working_sha256": "68e4bb3dd72ac2430fc396a4bcf0d89f4c06343565eaabdff474aa6ddb4ce04b",
+      "git_bytes_sha256": "dd36732855b1475252d3a306e17a367078f4b8b22687d112536171b60716bd7a",
+      "git_blob": "d74a85939bfafe8c7c0cc9d440c76d7a78b51b6e"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6OutboxStore.cs",
+      "bytes": 10243,
+      "working_sha256": "0f5c9ae3753408245ab0441d938a0f7ba3040a5aa5d27642125f4c4f5b325d3b",
+      "git_bytes_sha256": "6719ee9fbd678ef907b0d92052b695a2785deae5788658d52a96ac433727a1ba",
+      "git_blob": "c2d10c851bb2567da7dd7cafd8645864d49023f2"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingEntities.cs",
+      "bytes": 10530,
+      "working_sha256": "5ad6bc52594a434b16134a77ea3232c2d8da77e7183efa4d05f9e1e851ed7561",
+      "git_bytes_sha256": "c32242f04a47ad0007a690896973905fa79bba04d254510f3212ddeef4d07e2d",
+      "git_blob": "98f2018c17ecb39e9e990fa3feff6bf9ea881a67"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingModelBuilderExtensions.cs",
+      "bytes": 5454,
+      "working_sha256": "36688b990311da00fffd196adf0e1662afc7cca8269e3b031f8f0682065cd373",
+      "git_bytes_sha256": "ca15dd53295f441fe11797c98368de50b02b16341b633d624f8b0941c7e97264",
+      "git_blob": "5459f5f3896a8bf9346466659b7124aabdde9662"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingTypes.cs",
+      "bytes": 10202,
+      "working_sha256": "de89f6e51f0c304fc564b712ede0502c34ad55eeec54785a48a59c261e956259",
+      "git_bytes_sha256": "c15a04b3fc92245fea5aaedec18cb20389b85b161c8473453cbe286f4b930683",
+      "git_blob": "f9160b6ca6e86774b609d3b2142dc0894d882c0a"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/CallerTransactionInboxV1.cs",
+      "bytes": 12240,
+      "working_sha256": "60917e2582c92a1e302199540252f03db69b17973b569c656a119d953104de1b",
+      "git_bytes_sha256": "60917e2582c92a1e302199540252f03db69b17973b569c656a119d953104de1b",
+      "git_blob": "f0a22e4de8cecdd7985a857b89a90feb5049da84"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxContractsV1.cs",
+      "bytes": 10459,
+      "working_sha256": "b84a4f41e191ea1a1a35ac7988124edf218ebd23d650b622ea8c2cfe38bc69e7",
+      "git_bytes_sha256": "b84a4f41e191ea1a1a35ac7988124edf218ebd23d650b622ea8c2cfe38bc69e7",
+      "git_blob": "ef70330786e729c09128d1c2bf8712e06f53a42f"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxModelV1.cs",
+      "bytes": 6989,
+      "working_sha256": "109fad016ac38e9bbbca2433ce3513395931602059acc7a521d88346306215d2",
+      "git_bytes_sha256": "109fad016ac38e9bbbca2433ce3513395931602059acc7a521d88346306215d2",
+      "git_blob": "aed8024a4333e4926665cc3842df3ada6fb5adf9"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxTransactionV1.cs",
+      "bytes": 5893,
+      "working_sha256": "137a0c34019ad084fc361c4d2779bf30f7effbe7e430ac71d827f55b1188ee1a",
+      "git_bytes_sha256": "137a0c34019ad084fc361c4d2779bf30f7effbe7e430ac71d827f55b1188ee1a",
+      "git_blob": "2f8cb604fef3aae87c36bac07f309d4cda1f2776"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj",
+      "bytes": 1034,
+      "working_sha256": "6fde2bbeb23b1286ef4bd221d8981493d745520504221311097cd5f04ffda3b7",
+      "git_bytes_sha256": "0a96e08cd30b40637509f45f5a825fffca0e101d8ab6ae938f12af950480f8ca",
+      "git_blob": "0a735078a1562db562d72998172bd63cf6ab8934"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Context/MessageContextExecutorV1.cs",
+      "bytes": 875,
+      "working_sha256": "4a97e377c01b5682c191d7bbe15063900450c8e2a66f76580efc3b6b82962657",
+      "git_bytes_sha256": "22709a911572712eeee0ecb6d78462413dc315cbd74fa46e44f52f791575f13c",
+      "git_blob": "0e14ef0cd8145ac2d98684fa45979bb85a8c6fae"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventAttributes.cs",
+      "bytes": 3713,
+      "working_sha256": "427efdc2fb48560f85316327be23bfdcfec3a194dc1b6f18dda6018c2e984be0",
+      "git_bytes_sha256": "6bb482274ae9d886cc1d140be61702e197c8cab50f906288dc3d878185694aba",
+      "git_blob": "5fba25d9839569e6a2dc0a0723624ad11a0663fa"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventCodec.cs",
+      "bytes": 8508,
+      "working_sha256": "20b19e1e68da4a6ef5caaf2cc02597f1308559cb7c6673f2d0cc7d9b9ee0e82e",
+      "git_bytes_sha256": "d8aaec980fb6ac07c509bc225f0f6de3c5ba4f9bde35242b118d283d25133ccf",
+      "git_blob": "96173bddcbab9c1bc8acf28ba7fcf701d93370a3"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventDescriptor.cs",
+      "bytes": 487,
+      "working_sha256": "b534e70e9182c2f3b14783a6895601cbd410da831b0be978c4a914d719e7424c",
+      "git_bytes_sha256": "4ce9575a00ab0ca50c17be29f70c5a044b91b75954ebafd1d08b4e7e2bbe39c7",
+      "git_blob": "66535c45a4e1180ec7624e608c73be3eca76bf27"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventValidator.cs",
+      "bytes": 3922,
+      "working_sha256": "068e384ec9209a599f282f5710c122908a01b08123da3f90ba9aa0fd5a1fa93d",
+      "git_bytes_sha256": "ebf93a275474d06e82a229133070c6e3675f9937c039e6c0f513120444e2b44a",
+      "git_blob": "dabd5a07740227d94f2c9f3541e1a0326b851ccc"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6ContractBundle.cs",
+      "bytes": 13391,
+      "working_sha256": "de0475e5ecc35da365e946cbb0e6f90c999275ada14353d78e4f768e5fe0b725",
+      "git_bytes_sha256": "a8a9514749ae23b7b00def7425f1a7be73570b1cb50e2c82d4ebc38046de96cb",
+      "git_blob": "e40fa37cc7081102e453644c7e40df53bb6853db"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprDeliveryValidator.cs",
+      "bytes": 3177,
+      "working_sha256": "f608d49e095b37b03c4551e196532f602f8245608e85756dfb7bb59a858f2074",
+      "git_bytes_sha256": "fc9558cc8396b87d78846b1a1c80ad90430512da2804c3906bd555d38701f60c",
+      "git_blob": "d0dcfcc10bd6fd8d38d39dcd095fc6fb4185cd01"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprEventPublisher.cs",
+      "bytes": 3136,
+      "working_sha256": "73dc529f2e2491926448110d6cfb0bbe2a0e1f75a6645b6889a42d5fefb025a6",
+      "git_bytes_sha256": "632a5669a06bcbba0b2fd382a7cd689377bb446aa87e86e546da1f8b061e94ae",
+      "git_blob": "096eb7dba54bf118e46a618e614bf6213927cc70"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprKafkaConventions.cs",
+      "bytes": 2560,
+      "working_sha256": "7273f0a3e9efbaddf92a788934d27d9bde791ded2ca064cd91f7724d224af369",
+      "git_bytes_sha256": "c0f83b3af7c14723648bc23906c5d7d176f3025e1557fada10b0b137f6515878",
+      "git_blob": "b7923d2b307e1e527d375cb438e278198bd08276"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprServiceInvoker.cs",
+      "bytes": 1548,
+      "working_sha256": "de30d7156ee6d910e75fb865a4bc0c4ac83dd63c79cd46f0ccf21d2b2bfe6a41",
+      "git_bytes_sha256": "f00502f3c2ac784be70d15be32843968994a26583a852424e20bbeed9203f801",
+      "git_blob": "5e2ae20a3de6bb1b958ff83889c0e5994a0a7f9f"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprTransport.cs",
+      "bytes": 2042,
+      "working_sha256": "dcba1f0ca029008ae2967ab90a7f3fdfea45134feb9fc7a492ad7e26c2fbe979",
+      "git_bytes_sha256": "7b0a7ce3f0fdeefb532e444464b38744f6f80bd9effc4b1ebae056d289e4374f",
+      "git_blob": "95b1fe4c722af54eb9399cb0b936e08de33d0039"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6EventContractIdentity.cs",
+      "bytes": 1895,
+      "working_sha256": "3e3e935fc9ebbe6d6289582a7470f1477e2913c2d14ef1d5510b60d570ce667b",
+      "git_bytes_sha256": "d94ff88946a27cda0c764cb9b98dce748f3d354288e9f8ad4fbac25e440222f2",
+      "git_blob": "58787dfbd8a821c07c682a509f1af6e75acab8c9"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6EventValidationResult.cs",
+      "bytes": 962,
+      "working_sha256": "309b3e4b69b4a44116d4271aa588e3d173d0d27c183987766361192d97c27c5e",
+      "git_bytes_sha256": "f0ce9d136e6c435d6b1a24dba8b49646f37d193ead85ad93c33b68fd4f26c7ee",
+      "git_blob": "6d444617be10e44e5e0c09c80be6e1c84d1cc483"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6MessagingTelemetry.cs",
+      "bytes": 8429,
+      "working_sha256": "acac0f7735ab198f148ea868c4ccfd8dd48b1c6bd64d8c905ec9ef72ad921392",
+      "git_bytes_sha256": "2b645dae310e77087ecc0851d657881dfa0640e68079cdb0b495ab866894f5e6",
+      "git_blob": "56c90d45093f7ee3ef18c94c20b1affef7074f8f"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6SchemaCompatibility.cs",
+      "bytes": 8418,
+      "working_sha256": "3620a02a148c33b2c462609edf861ef3d6290d9a8b5d6dce5d213df61acedc4c",
+      "git_bytes_sha256": "cc2318d9421b6deb87539ec46450694a0b126b48a92c0f452abc575de20e3244",
+      "git_blob": "580e456dff89177e97b70c663207d13a4490c4c7"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6TraceContextCodec.cs",
+      "bytes": 5215,
+      "working_sha256": "dbfe37c02a30a989d675da4d59b78e8350de82a4e4eace208f8dfcb05d9b2c9a",
+      "git_bytes_sha256": "ada7402c0fca415245b83a0013779953e81ef3db753b7bc9ac61b50e5571cd22",
+      "git_blob": "09b98835b20bd430579662eae320e2293c40fd63"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/ICp6DaprTransport.cs",
+      "bytes": 734,
+      "working_sha256": "dcd1db21340781f5df6e3efe894cd7ba4f4a31e523aeb0ca34d4815f8221ea05",
+      "git_bytes_sha256": "3ce1facbf708df7ee8188808923a02411d925de9fa4c600af79e5513e2a9e9df",
+      "git_blob": "0f120b3dd7b365c6f17b0552a7b53e7cc830bcd7"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6NativeContractCatalog.cs",
+      "bytes": 3909,
+      "working_sha256": "165f6adc0ddb9bf4b2850a482d9e4b23a3550d87334cd824296536ee376203a5",
+      "git_bytes_sha256": "850a5c99bde76851353c6d2b51e58326c5894c8c36306e183c4c45cd255cf958",
+      "git_blob": "0436729bb3f3dd8131dd35fab38d0005f7d8f968"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6NativeJson.cs",
+      "bytes": 4959,
+      "working_sha256": "fd63eed2ffb5c1e373de9c68ecfd7680f952390addbe23763c8ba32b28a16b27",
+      "git_bytes_sha256": "2baa8c251f2766ff05730c6c6e3cca6b4863ca8a54959c0c0293ca1be6247e37",
+      "git_blob": "54517ba4810e61c99a80563abc1fa273d20f513f"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6OriginalJson.cs",
+      "bytes": 973,
+      "working_sha256": "d3545e5b96008bdc580ee1e9b475478ff01ce4602b3169199d9914f0388d232b",
+      "git_bytes_sha256": "4a10ba1324500e9686a0c851a69214e2c32003ae087cc3cb61f5932c1a4dec36",
+      "git_blob": "b52fcc9fd98294896a09c2c70763d95c19e7fabb"
+    },
+    {
+      "path": "src/CP6.Platform.Release/CP6.Platform.Release.csproj",
+      "bytes": 838,
+      "working_sha256": "f7fca75e59c34b83309242e6a70eb08bf1adcb78cc8638b2c3e66258f713c831",
+      "git_bytes_sha256": "a711243f18ed49874cc0032fc11f31938b4febdcb9e9425f63bfe9b57a5eeeb1",
+      "git_blob": "3004db6adbf1d6dfa0a53746fcca76ed7c598e11"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6CandidateLocatorKeys.cs",
+      "bytes": 831,
+      "working_sha256": "fb24f355f9b8f6d53849571e0aab362df46f737ad421d109b0a52be384f463d1",
+      "git_bytes_sha256": "535e0c113c805172a4667f606880857bae87031157897ac840e57fe3e11cb8bd",
+      "git_blob": "10722d585f6fbaca2e7d65ebb61370d43e58595b"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6DeterministicJson.cs",
+      "bytes": 14326,
+      "working_sha256": "df68f5bab7a538472cc50fba008f97c5d06b6323ebc9791b14a04fb7490d5c01",
+      "git_bytes_sha256": "68bd17c12aee82d2fa11c0e336a146ea997bf424e7d6dcec2e7ee41ee48deef9",
+      "git_blob": "147b5901af6ad6ee95d460119cf0ea45efd92b3e"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6FormalPackagePublicationValidator.cs",
+      "bytes": 13500,
+      "working_sha256": "2442f28094bdc626b4e217a899d840151e4f3f948245658cbcf9a569a4752472",
+      "git_bytes_sha256": "f1e4ac737793e57a7eb08f52b10f1250b002b90f4b791f870e4519455bd2b2ae",
+      "git_blob": "b8639c708f4b37ce061c0e521c0324b6a2d0acb5"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6NuGetCertificateProfile.cs",
+      "bytes": 4444,
+      "working_sha256": "bc0afed2edd3e3d33581b65db80a97a5a366dfac7460071d822434fc1c56fac5",
+      "git_bytes_sha256": "9650a8b7a3f5be7dc9df1610088c67e449753c73d6bab624a4a3130f361e1117",
+      "git_blob": "a4376ca0142e15c86a02b81d54f3f31c2113affd"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6PinnedNuGetTrustPolicy.cs",
+      "bytes": 15527,
+      "working_sha256": "fb8f37e5273acbe9684aa210f5977cff21f8f04f09668c1d9596be56521bcb64",
+      "git_bytes_sha256": "b7dd494849de5c350cc63af3b59d6ae11777c61b0989e018fda95b88f9a76225",
+      "git_blob": "4fabe39357bd94b8792e636f3be4efb918283299"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6PinnedTrustPolicy.cs",
+      "bytes": 17554,
+      "working_sha256": "203bf97697f4c37b72c0e9d27306de38cc13d49d30c905c6107de6e789f534da",
+      "git_bytes_sha256": "4946cc10acd29f7c86998254d677a81a4233d55a2fdeeb215db0356c65a33956",
+      "git_blob": "f36073de9f505029d7486bd7ac226ca8b43fcd94"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseContractException.cs",
+      "bytes": 297,
+      "working_sha256": "7cea3d16d835e9a41751b4a3f5436ffaeaa30a18e7268a154230cf0d8b611ed1",
+      "git_bytes_sha256": "085a299534e3090918d440277980da3d092adbb1ab4c7949804fb453cd1908f2",
+      "git_blob": "7162062e293d7848dfe8a0af797fa0970af80861"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseContractIds.cs",
+      "bytes": 1786,
+      "working_sha256": "4b26bee5ef08f9626d56330df85c1a82ca6b9032efd08f662248f7c16f8c2752",
+      "git_bytes_sha256": "39ac32b74fdfe871bdad851c8b883a0923bebcd1e9321886b0ec54795e27ff1c",
+      "git_blob": "f60bf2397a960ad090e02327493e620c12092950"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseJsonRules.cs",
+      "bytes": 4345,
+      "working_sha256": "5791a71e22a86b2b621a75e6589b34eb71fc61f3fea2c0f7d6d32ab3225cd713",
+      "git_bytes_sha256": "f5739741c7a3d9f78e3c52c1484aebcf67dd6d249f5a83a48e7cb081e1ada800",
+      "git_blob": "b0fc3dd30b3d1560a56ef411c23f65f267369c57"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseMediaTypes.cs",
+      "bytes": 2421,
+      "working_sha256": "17210158c834c4475c3fcca03a75bf5a7bed4a14c02e8f1b2e04898595d8e579",
+      "git_bytes_sha256": "b463d2200f2ea0d4e70690f07eeefad045488c02c3baac5829405464ad1530eb",
+      "git_blob": "db41c18a5ed6cf2eb547adc115e80828ed59a7f6"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseValidationMode.cs",
+      "bytes": 114,
+      "working_sha256": "896b0ae50c93a313c5214483ab83bcd2fbd48195ffed7e94888d844296be3595",
+      "git_bytes_sha256": "f060cd2a5b658c955fdc02d518d9e480458c9fe19565a13316d3106cdeed34d7",
+      "git_blob": "4a925e07a9937c1d0a060a43c2953f46c885eb8e"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseValidator.cs",
+      "bytes": 21559,
+      "working_sha256": "a30f7e7617f7d982f6b4289d7f13a12c3a677cb3c63d4317694211ba5576cb15",
+      "git_bytes_sha256": "6711de3c1f139001429cb9d7a83585e3bb1b4e8329b142c564d4e708f81e507e",
+      "git_blob": "a23b65d3d7898023c0ea340eb10ab20cb03cb517"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6SupportingContractValidator.cs",
+      "bytes": 23348,
+      "working_sha256": "065ff3f09d83d0220ca113e15b523a93089ee7cb4c7fc85c48bd7912e4808bbf",
+      "git_bytes_sha256": "5830824d1f444126ec16bf3aa74759b5789a334388bb550d6ec1cd592e39a9dc",
+      "git_blob": "d5a47911618a78e0ea84eb752027e51e62cebcd4"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ValidatedReleaseDocument.cs",
+      "bytes": 358,
+      "working_sha256": "1d444c9bc781970ff79dc1526ed3ad7a836876c586e815b39e047adaa324d185",
+      "git_bytes_sha256": "f10e1dfabc996beb582b86338d379385c8efc515d1e7c990abb4a830cc97e230",
+      "git_blob": "884b81e76a7f36d25abdca271d92b9e91f6c5489"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/CP6.Platform.Testing.csproj",
+      "bytes": 861,
+      "working_sha256": "dfc8d21583474e7ebed6d2d7c83e8b5010fde2663a24f385ace9b73e90c46044",
+      "git_bytes_sha256": "80a51d405364c3d503fcd9c44bb8afc8b46fcc02dab35ff8f0b07e1a5aee77a9",
+      "git_blob": "83b047c3e4095c6c58ac85008bc72a8c61f37938"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6FaultInjectionServiceCollectionExtensions.cs",
+      "bytes": 1560,
+      "working_sha256": "88a422790691b44d3884e3159d37122ad7dff59d67e13d615c0a92c196183057",
+      "git_bytes_sha256": "1b9249b9aaf1b58b564c74f3042c4626834e1c65ccd217b2d884832c529506b2",
+      "git_blob": "a11bdc32cc1088bfea82606a66371b5defb78798"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6HttpFaultHandler.cs",
+      "bytes": 1558,
+      "working_sha256": "11b8b26d7987b9aad1c7de4e642d326e52fa47561b956a71dc44714f5e9683fc",
+      "git_bytes_sha256": "7cc824f7af8af1f9b1ce0532f38087a18757d7f5145a6704db33b278dd5b0794",
+      "git_blob": "61e1f82d6f750140a16d211f1cfee2c409eeb4ac"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6HttpFaultScript.cs",
+      "bytes": 2579,
+      "working_sha256": "a9ea7ec30ca6c680d2e926e12e40a120e937b39c4ce8ee10c6976895cb1e983a",
+      "git_bytes_sha256": "0911827ee22e2b4b2d448f9b7c154cbb843a9ec052fd2d446b8112b82aa8a66a",
+      "git_blob": "9003b28a329295c039cea1eb1c0ae3f8ffc8b8b1"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6RecordedMetric.cs",
+      "bytes": 255,
+      "working_sha256": "4bf62f2a3ec5fe405c3677c18e66fba8dc2472a9097e5ca9c0247443922f8a2c",
+      "git_bytes_sha256": "617e9cc3a6d8666a4bc3e2e290ea948bbd19a3eb73057bbec4a787df1b1c8c87",
+      "git_blob": "e11b728ad77f8523cbf34d6b145680d440e834a3"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6TelemetryRecorder.cs",
+      "bytes": 9495,
+      "working_sha256": "7132e3a0c0ab51532531f5eea7aeabe85e3962c46e20cac82af7c8dce4a52b62",
+      "git_bytes_sha256": "b25960e1be076352c6366655fefa3b5a53836f6de839ff0c04e90bce15bdd312",
+      "git_blob": "87e73b822b99ef284e2cb0334b1c695cf787c48d"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/CP6.Platform.ArchitectureTests.csproj",
+      "bytes": 439,
+      "working_sha256": "0802eefe7ed179059344dc7414a846b30994fd6975d4a5e5b227fa479380667d",
+      "git_bytes_sha256": "8972bcb0dfe3f395b6047f03cbd4d8f14400c95c2e5fae3734b94e1dc06ffaef",
+      "git_blob": "263557f0901f3571c2cfe1ea52bdbc223398a319"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/RepositoryArchitectureTests.cs",
+      "bytes": 38570,
+      "working_sha256": "061b141c68b291f0ccf38a006aa35f46fb56e30cf14abf34f0fa487ae5ff943c",
+      "git_bytes_sha256": "8514e34e52ec8b08ccba45784bcc3063ffe757c80d8994fad9254d2f4a949a96",
+      "git_blob": "37e82dfc18877052ba7a826f5ef2f67a5f371bf1"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/CP6.Platform.UnitTests.csproj",
+      "bytes": 1092,
+      "working_sha256": "0719dcb4fd8f4a33a25bdb96ce8b80102776e5d2e78246efefedaf1aa3cadaa8",
+      "git_bytes_sha256": "5c0b801ba86d4888e03216841efbe7a8c3182eccdf6ac86e27a930d162a59a02",
+      "git_blob": "951337940fa5a3d4a3be6709fb0041758b69ec76"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/CloudEventContractTests.cs",
+      "bytes": 12252,
+      "working_sha256": "529b71a16a6f187d785cf76c738ac82d0017aa15265641708e14553809b6302d",
+      "git_bytes_sha256": "d205cbdfdddc84300c619625674a5d52185df0f7ec9969986241dbf8c9abeb2e",
+      "git_blob": "5b7fa0a55063046c10545422f3dd57a74f9a9138"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/Context/ContextEntryTests.cs",
+      "bytes": 4424,
+      "working_sha256": "0798f8254d69cd0155091081d528704f61a401c19cbdc8a4b9b9d341e6e95c6d",
+      "git_bytes_sha256": "49ecacc4005cc0b9079ad431397abb16cfc5fb3af205f40ea013b3bf6648b432",
+      "git_blob": "ed22c284857749d8d727bbf6ecac3d6df9e3185a"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/Context/ContextFixture.cs",
+      "bytes": 3324,
+      "working_sha256": "fb7842c3426799e3b1e04e0462f44ee0bf627e0ac6906e3381d2535300322544",
+      "git_bytes_sha256": "ace61c29dfe8a0d60f05dcd45b8dbf7ac8c17689a34e2400292ffca5abaa2114",
+      "git_blob": "f0d8a9f23a44fe6aaf4d3fcae1ff07e78a2cbe06"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/Context/ContextScopeTests.cs",
+      "bytes": 7612,
+      "working_sha256": "8be457318eb3590a96b1ec134d786495af5e23eb2a85074b9359a22db7bcf677",
+      "git_bytes_sha256": "f419ac8ea46c601223c70b8ee79c1b37307ba7d30369b65a8e87c069676cd3c3",
+      "git_blob": "5026ccecbb6f1c2b2a19fa722e545b08d3a2202e"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/Context/TrustedContextTests.cs",
+      "bytes": 15244,
+      "working_sha256": "7218ae0b378cb8bb13eaa9372d91a779d995671cb2a1440892b2a6178fffe2ba",
+      "git_bytes_sha256": "708af562855db5f2cff4fd688184bfcb500a08050531e257f2d23a4c4da93d77",
+      "git_blob": "d72566889214e303b6f4ab731f6db3087ada0061"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/Cp6ProblemDefinitionTests.cs",
+      "bytes": 1359,
+      "working_sha256": "47595368f02b8b473da890457e24daeffb4253600a30e6e5a542be2a5ee669b3",
+      "git_bytes_sha256": "c5e294365365b39a0680c5c3daee42839d5aa67662db32f67482ad617d21b29c",
+      "git_blob": "3f685864f17ab25b243a02051259f635adf9b58c"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/DaprKafkaContractTests.cs",
+      "bytes": 7366,
+      "working_sha256": "d3c5bb36a8a7987680a1dcfa67779112538f227974e7fe10b09cd8aaab443d7e",
+      "git_bytes_sha256": "a240a74dbfd743116e5236e9873f8ed963ee3919ec9a7d13f7ee644d2d857f90",
+      "git_blob": "5d3c0ae16b01257ffae737731e95c75833901a3f"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/FoundationContractTests.cs",
+      "bytes": 12211,
+      "working_sha256": "c2e9f455c62f081e7998ef9b21f49cac916d567f604224841c80b8238aa88430",
+      "git_bytes_sha256": "02c7447d00a6ebcb9f98a31ef289f153bc42dbc5c021d7ae8b8e799da3a5fb77",
+      "git_blob": "981f485202e0e69882d30872789842f0e6132e70"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/InboxV1/InboxContractTests.cs",
+      "bytes": 6668,
+      "working_sha256": "5ad2d6ff95b4a3df0ac6294bffd891bb8344218785ca3583b72267d4b916e6e6",
+      "git_bytes_sha256": "5ad2d6ff95b4a3df0ac6294bffd891bb8344218785ca3583b72267d4b916e6e6",
+      "git_blob": "74198279ef23c45d856b16a3b7b64ed4d452bef0"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/MessagingTelemetryTests.cs",
+      "bytes": 14363,
+      "working_sha256": "ef339d7306ff2703118baf96ae61b3614c5415fd30131ef0af8a6ab746ea426c",
+      "git_bytes_sha256": "ea3db90ed2b404fb2c7b0eb9bdd8b5e5102e76d37e6ed5a572e8ced265da4990",
+      "git_blob": "51c07aa6c8c89966abd8835bc8c5273422065600"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/NativeProfileContractTests.cs",
+      "bytes": 9936,
+      "working_sha256": "3cd8b5c20644d6c4286a67f989364716738b01618798bab92ed4453874de6061",
+      "git_bytes_sha256": "8c987f4cbcaeb12ea139323415ae66aa5a864683f0bb8c8b956396850f33cd46",
+      "git_blob": "3304505376a1569d7f0f30b0fcfe4e6448eb0e44"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/ReleaseIdentityTests.cs",
+      "bytes": 4149,
+      "working_sha256": "7de875d1ea30583af83a30c110c2836a8bdb828d1ed595e6d0638180550d5644",
+      "git_bytes_sha256": "688f7cbd1fcb00b52cb36c1dcafef00832b7739a8c272087f891c0fc4ecabf4c",
+      "git_blob": "11e3a1d8524b9532f16e06b4cf5d46b3276f6673"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/RequestContextTests.cs",
+      "bytes": 2866,
+      "working_sha256": "a36dcb8bd4c8b40cf102d0ff74ef7b8a16704b0888510e67f91fdfcd995bb119",
+      "git_bytes_sha256": "a43c9c6bd02cf230e1cb018a2ad269cb53ab2a542448dd281e814edc93479945",
+      "git_blob": "3a0c85ee1982493c019245d81871635bb5b1f93e"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/SchemaCompatibilityTests.cs",
+      "bytes": 2908,
+      "working_sha256": "a1fcbb1e0df043919164c6938b8e0a66c429e0c7a107ff402dfa68a378f4592f",
+      "git_bytes_sha256": "1628784627a892d027cc580c89ba5d625425a94bc8308032d50dc78044f2b173",
+      "git_blob": "8c405edc6fab00d3c35ef8969d857488a46f75a6"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/SloEvidenceContractTests.cs",
+      "bytes": 10317,
+      "working_sha256": "7f84526d3bfdad227de4d38b72f8117ef8dd5b32c023654e985149228086c58c",
+      "git_bytes_sha256": "f82707b269344fd70cfd01aacfe55e109d15c56ae903f84b8066f526d8788a8f",
+      "git_blob": "370a237c5b793aee8e48315738d759f8a445a0fb"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/TelemetryConventionTests.cs",
+      "bytes": 2580,
+      "working_sha256": "56e54767ca61c725fffe33ac562810d3456148dfe85903d00a666c8ea172ef27",
+      "git_bytes_sha256": "f5a5201f38a8566fe5e0bd3c7f6ee633050b2be31573ff9b2677c642f03e97e4",
+      "git_blob": "04ba9cb9a38fcaf73fffae095b64959868cf4dc5"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/TestData/S01/crm-inq.openapi.json",
+      "bytes": 239051,
+      "working_sha256": "740b840c697b60ebf51ceb0bd9a1898238814a49e36c2afe1d819c473b7df349",
+      "git_bytes_sha256": "740b840c697b60ebf51ceb0bd9a1898238814a49e36c2afe1d819c473b7df349",
+      "git_blob": "f6a9cc972609c60c8cc098ec230ad6401a266549"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/TestData/S01/erp-current.registry.json",
+      "bytes": 542116,
+      "working_sha256": "564706ce0247d84dc8056002d540f17eccdcab7c5b5e4b123c09121ad407fbda",
+      "git_bytes_sha256": "564706ce0247d84dc8056002d540f17eccdcab7c5b5e4b123c09121ad407fbda",
+      "git_blob": "94d2dd2ab20cfd19c4b3d5d80c7b8795aae48a26"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/TestData/S01/erp-frozen.registry.json",
+      "bytes": 232887,
+      "working_sha256": "62effa1e0542784a5fa936d11961465db4da522ed4d28fc9c9bb5351cf40b6f1",
+      "git_bytes_sha256": "62effa1e0542784a5fa936d11961465db4da522ed4d28fc9c9bb5351cf40b6f1",
+      "git_blob": "b49913873d47520f7eb22fa45232b0f1e38fc8c9"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/TestData/S01/profile-inputs.json",
+      "bytes": 113230,
+      "working_sha256": "2c221a04333cd5e0beba8d12a7aecbb08cbc80caa5faa74b22313045ce420e5e",
+      "git_bytes_sha256": "2c221a04333cd5e0beba8d12a7aecbb08cbc80caa5faa74b22313045ce420e5e",
+      "git_blob": "40ccbc25727e0815dcb139f8ed01cb419d194920"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/TestData/S01/vectors.json",
+      "bytes": 132820,
+      "working_sha256": "b9a63a1512da2d2374e95d49d9f69c8636d06465f88a47862dc3604605d5be01",
+      "git_bytes_sha256": "b9a63a1512da2d2374e95d49d9f69c8636d06465f88a47862dc3604605d5be01",
+      "git_blob": "0864b8e0d9d4be0b7487a9579e8fd06f5cc18bf2"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/TestingUtilityTests.cs",
+      "bytes": 9554,
+      "working_sha256": "35b0440ab2a61a7c7923a52893b87d7c3d07b4ff2f662f770e70d7588dfa2185",
+      "git_bytes_sha256": "00bd23236bd4ba8912eff762f148f60921ac833144a1f90cd2a1f15a3680e876",
+      "git_blob": "af94f3b34a1f35fa9a013c1195bd022eade21a39"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/TraceContextContractTests.cs",
+      "bytes": 9957,
+      "working_sha256": "74fae837032d22909f3955a1987896c9c9ebd5eabe61fc1e2372a35eee5f1dbe",
+      "git_bytes_sha256": "b5645b3ff8204b2295b3fb168f379ca3a63ace483a8a388437465b0ced95908f",
+      "git_blob": "8dbcf445557e99a7d46d7bf0b4c39ee515272e18"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/TransactionalMessagingContractTests.cs",
+      "bytes": 2904,
+      "working_sha256": "07b6fb412b5bdf9b937407e341fdb8a12df25bba50c4fb9666aab0854135cbf1",
+      "git_bytes_sha256": "26b536cd81a5514a9b6234244f9d384dd7da44ec4d7099bed6977b0bcc3ca32c",
+      "git_blob": "089fb3ae2917d004bdb5ea996de06bcff79947a7"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/TransactionalMessagingTelemetryTests.cs",
+      "bytes": 5544,
+      "working_sha256": "b556bc912ff8e5c70308842ded9d1793a095d54c7bc1ae2da8255e8319308b7a",
+      "git_bytes_sha256": "a5a55f321bf4c6f97a81c9974a047d22e388231105d1bb33f15af37fc1cf01d6",
+      "git_blob": "311abd0580c1b12f308700910eae679f53b57cc3"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/AtomicInboxTests.cs",
+      "bytes": 27400,
+      "working_sha256": "d9015bcd7da7f6317732a4f3f116e35b35bdec9c5b2a5a3e95118e2d8928d224",
+      "git_bytes_sha256": "d9015bcd7da7f6317732a4f3f116e35b35bdec9c5b2a5a3e95118e2d8928d224",
+      "git_blob": "e1eedaa3fdb5c6cdbdca7f80585f636868f9dcfb"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/CP6.Platform.WP0207.PostgreSqlTests.csproj",
+      "bytes": 642,
+      "working_sha256": "4662f202793a8185e088c793387b04c384c37ceb791dfd631da5f781cf8d1dc6",
+      "git_bytes_sha256": "4662f202793a8185e088c793387b04c384c37ceb791dfd631da5f781cf8d1dc6",
+      "git_blob": "bb657b86972c7d1d835c32c0e1c8a8d762860584"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/Directory.Packages.props",
+      "bytes": 248,
+      "working_sha256": "c5d73cd73f28635ed28e6b3aa3b4268ddd72a1ddb61357a952beca62f1585a39",
+      "git_bytes_sha256": "c5d73cd73f28635ed28e6b3aa3b4268ddd72a1ddb61357a952beca62f1585a39",
+      "git_blob": "af849691d05081de51fde82108a8f6b879e0f9c8"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/FixtureOwner.cs",
+      "bytes": 7999,
+      "working_sha256": "e99e593ebf5f5499e56bed37ae799dc883d1c58dbb44bfc503e5affe59ef6fce",
+      "git_bytes_sha256": "e99e593ebf5f5499e56bed37ae799dc883d1c58dbb44bfc503e5affe59ef6fce",
+      "git_blob": "4def53f9235464acf1547ea2834edeaa858a5163"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/PgFixture.cs",
+      "bytes": 10703,
+      "working_sha256": "a955a31dbf69ca6ab6210c8bdf1496261a7f630fd301ddc749f5fa6c21b5e80c",
+      "git_bytes_sha256": "a955a31dbf69ca6ab6210c8bdf1496261a7f630fd301ddc749f5fa6c21b5e80c",
+      "git_blob": "3ce4f1b0dc1feeec5bc0faca43f89cb5dbad3cfb"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/pg_resource.py",
+      "bytes": 9664,
+      "working_sha256": "109701796de4c100336bba1e50b4cb43de46045667f34c89d58c9ff5ab688cac",
+      "git_bytes_sha256": "109701796de4c100336bba1e50b4cb43de46045667f34c89d58c9ff5ab688cac",
+      "git_blob": "de724e48e009da42adbf4211d4215b9e10e5f1d3"
+    }
+  ],
+  "dependencies": [
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/obj/project.assets.json",
+      "sha256": "bdd81e237e08378d50e8a221ce991b77e917eea9c2f5284087465bbd23e62fbc",
+      "libraries": [
+        "CP6.Platform.Abstractions/0.8.0-alpha.2",
+        "CP6.Platform.Contracts/0.8.0-alpha.2",
+        "CP6.Platform.EntityFramework/0.8.0-alpha.2",
+        "Microsoft.CodeCoverage/17.14.1",
+        "Microsoft.EntityFrameworkCore.Abstractions/8.0.30",
+        "Microsoft.EntityFrameworkCore.Analyzers/8.0.30",
+        "Microsoft.EntityFrameworkCore.Relational/8.0.30",
+        "Microsoft.EntityFrameworkCore/8.0.30",
+        "Microsoft.Extensions.Caching.Abstractions/8.0.0",
+        "Microsoft.Extensions.Caching.Memory/8.0.1",
+        "Microsoft.Extensions.Configuration.Abstractions/8.0.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2",
+        "Microsoft.Extensions.DependencyInjection/8.0.1",
+        "Microsoft.Extensions.Logging.Abstractions/8.0.2",
+        "Microsoft.Extensions.Logging/8.0.1",
+        "Microsoft.Extensions.Options/8.0.2",
+        "Microsoft.Extensions.Primitives/8.0.0",
+        "Microsoft.NET.Test.Sdk/17.14.1",
+        "Microsoft.TestPlatform.ObjectModel/17.14.1",
+        "Microsoft.TestPlatform.TestHost/17.14.1",
+        "Newtonsoft.Json/13.0.3",
+        "Npgsql.EntityFrameworkCore.PostgreSQL/8.0.11",
+        "Npgsql/8.0.8",
+        "System.Collections.Immutable/8.0.0",
+        "System.Reflection.Metadata/8.0.0",
+        "xunit.abstractions/2.0.3",
+        "xunit.analyzers/1.18.0",
+        "xunit.assert/2.9.3",
+        "xunit.core/2.9.3",
+        "xunit.extensibility.core/2.9.3",
+        "xunit.extensibility.execution/2.9.3",
+        "xunit.runner.visualstudio/3.1.4",
+        "xunit/2.9.3"
+      ]
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/obj/project.assets.json",
+      "sha256": "6b8b6ba03280465729176360444ebf87539cf596002f8462a5e8220367d15d40",
+      "libraries": [
+        "CP6.Platform.Abstractions/0.8.0-alpha.2",
+        "CP6.Platform.AspNetCore/0.8.0-alpha.2",
+        "CP6.Platform.Contracts/0.8.0-alpha.2",
+        "CP6.Platform.EntityFramework/0.8.0-alpha.2",
+        "CP6.Platform.Messaging/0.8.0-alpha.2",
+        "CP6.Platform.Testing/0.8.0-alpha.2",
+        "CloudNative.CloudEvents.SystemTextJson/2.9.0",
+        "CloudNative.CloudEvents/2.9.0",
+        "Dapr.Client/1.18.5",
+        "Dapr.Common/1.18.5",
+        "Dapr.Protos/1.18.5",
+        "Google.Api.CommonProtos/2.17.0",
+        "Google.Protobuf/3.35.0",
+        "Grpc.Core.Api/2.80.0",
+        "Grpc.Net.Client/2.80.0",
+        "Grpc.Net.Common/2.80.0",
+        "Grpc.Reflection/2.80.0",
+        "Humanizer.Core/2.14.1",
+        "Json.More.Net/3.0.1",
+        "JsonPointer.Net/7.0.2",
+        "JsonSchema.Net/9.4.0",
+        "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.30",
+        "Microsoft.CodeCoverage/17.14.1",
+        "Microsoft.EntityFrameworkCore.Abstractions/8.0.30",
+        "Microsoft.EntityFrameworkCore.Analyzers/8.0.30",
+        "Microsoft.EntityFrameworkCore.Relational/8.0.30",
+        "Microsoft.EntityFrameworkCore/8.0.30",
+        "Microsoft.Extensions.AmbientMetadata.Application/10.9.0",
+        "Microsoft.Extensions.Caching.Abstractions/8.0.0",
+        "Microsoft.Extensions.Caching.Memory/8.0.1",
+        "Microsoft.Extensions.Compliance.Abstractions/10.9.0",
+        "Microsoft.Extensions.Configuration.Abstractions/10.0.8",
+        "Microsoft.Extensions.Configuration.Binder/10.0.8",
+        "Microsoft.Extensions.Configuration.EnvironmentVariables/8.0.0",
+        "Microsoft.Extensions.Configuration/10.0.8",
+        "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.8",
+        "Microsoft.Extensions.DependencyInjection.AutoActivation/10.9.0",
+        "Microsoft.Extensions.DependencyInjection/10.0.8",
+        "Microsoft.Extensions.Diagnostics.Abstractions/10.0.8",
+        "Microsoft.Extensions.Diagnostics.ExceptionSummarization/10.9.0",
+        "Microsoft.Extensions.Diagnostics/10.0.8",
+        "Microsoft.Extensions.FileProviders.Abstractions/8.0.0",
+        "Microsoft.Extensions.Hosting.Abstractions/8.0.1",
+        "Microsoft.Extensions.Http.Diagnostics/10.9.0",
+        "Microsoft.Extensions.Http.Resilience/10.9.0",
+        "Microsoft.Extensions.Http/10.0.8",
+        "Microsoft.Extensions.Logging.Abstractions/10.0.8",
+        "Microsoft.Extensions.Logging.Configuration/8.0.1",
+        "Microsoft.Extensions.Logging/10.0.8",
+        "Microsoft.Extensions.ObjectPool/8.0.30",
+        "Microsoft.Extensions.Options.ConfigurationExtensions/10.0.8",
+        "Microsoft.Extensions.Options/10.0.8",
+        "Microsoft.Extensions.Primitives/10.0.8",
+        "Microsoft.Extensions.Resilience/10.9.0",
+        "Microsoft.Extensions.Telemetry.Abstractions/10.9.0",
+        "Microsoft.Extensions.Telemetry/10.9.0",
+        "Microsoft.IdentityModel.Abstractions/7.7.3",
+        "Microsoft.IdentityModel.JsonWebTokens/7.7.3",
+        "Microsoft.IdentityModel.Logging/7.7.3",
+        "Microsoft.IdentityModel.Protocols.OpenIdConnect/7.7.3",
+        "Microsoft.IdentityModel.Protocols/7.7.3",
+        "Microsoft.IdentityModel.Tokens/7.7.3",
+        "Microsoft.NET.Test.Sdk/17.14.1",
+        "Microsoft.TestPlatform.ObjectModel/17.14.1",
+        "Microsoft.TestPlatform.TestHost/17.14.1",
+        "Newtonsoft.Json/13.0.3",
+        "OpenTelemetry.Api.ProviderBuilderExtensions/1.18.0",
+        "OpenTelemetry.Api/1.18.0",
+        "OpenTelemetry.Extensions.Hosting/1.18.0",
+        "OpenTelemetry.Instrumentation.AspNetCore/1.18.0",
+        "OpenTelemetry.Instrumentation.Http/1.18.0",
+        "OpenTelemetry/1.18.0",
+        "Polly.Core/8.4.2",
+        "Polly.Extensions/8.4.2",
+        "Polly.RateLimiting/8.4.2",
+        "System.Collections.Immutable/8.0.0",
+        "System.Diagnostics.DiagnosticSource/10.0.8",
+        "System.IO.Hashing/8.0.0",
+        "System.IO.Pipelines/8.0.0",
+        "System.IdentityModel.Tokens.Jwt/7.7.3",
+        "System.Reflection.Metadata/8.0.0",
+        "System.Threading.RateLimiting/8.0.0",
+        "Yarp.ReverseProxy/2.3.0",
+        "xunit.abstractions/2.0.3",
+        "xunit.analyzers/1.18.0",
+        "xunit.assert/2.9.3",
+        "xunit.core/2.9.3",
+        "xunit.extensibility.core/2.9.3",
+        "xunit.extensibility.execution/2.9.3",
+        "xunit.runner.visualstudio/3.1.4",
+        "xunit/2.9.3"
+      ]
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/obj/project.assets.json",
+      "sha256": "3da09cfaff1bd00f24267302b5b4c5c969fb8c0e98cc2072d925f771bd6f36a6",
+      "libraries": [
+        "Microsoft.CodeCoverage/17.14.1",
+        "Microsoft.NET.Test.Sdk/17.14.1",
+        "Microsoft.TestPlatform.ObjectModel/17.14.1",
+        "Microsoft.TestPlatform.TestHost/17.14.1",
+        "Newtonsoft.Json/13.0.3",
+        "System.Collections.Immutable/8.0.0",
+        "System.Reflection.Metadata/8.0.0",
+        "xunit.abstractions/2.0.3",
+        "xunit.analyzers/1.18.0",
+        "xunit.assert/2.9.3",
+        "xunit.core/2.9.3",
+        "xunit.extensibility.core/2.9.3",
+        "xunit.extensibility.execution/2.9.3",
+        "xunit.runner.visualstudio/3.1.4",
+        "xunit/2.9.3"
+      ]
+    },
+    {
+      "path": "src/CP6.Platform.Testing/obj/project.assets.json",
+      "sha256": "70088495ef5f1eb6838cdb849b6401015fd41fd482e6e876758be762a8cc5fcc",
+      "libraries": [
+        "CP6.Platform.Abstractions/0.8.0-alpha.2",
+        "CP6.Platform.AspNetCore/0.8.0-alpha.2",
+        "CP6.Platform.Contracts/0.8.0-alpha.2",
+        "CP6.Platform.EntityFramework/0.8.0-alpha.2",
+        "CP6.Platform.Messaging/0.8.0-alpha.2",
+        "CloudNative.CloudEvents.SystemTextJson/2.9.0",
+        "CloudNative.CloudEvents/2.9.0",
+        "Dapr.Client/1.18.5",
+        "Dapr.Common/1.18.5",
+        "Dapr.Protos/1.18.5",
+        "Google.Api.CommonProtos/2.17.0",
+        "Google.Protobuf/3.35.0",
+        "Grpc.Core.Api/2.80.0",
+        "Grpc.Net.Client/2.80.0",
+        "Grpc.Net.Common/2.80.0",
+        "Grpc.Reflection/2.80.0",
+        "Humanizer.Core/2.14.1",
+        "Json.More.Net/3.0.1",
+        "JsonPointer.Net/7.0.2",
+        "JsonSchema.Net/9.4.0",
+        "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.30",
+        "Microsoft.EntityFrameworkCore.Abstractions/8.0.30",
+        "Microsoft.EntityFrameworkCore.Analyzers/8.0.30",
+        "Microsoft.EntityFrameworkCore.Relational/8.0.30",
+        "Microsoft.EntityFrameworkCore/8.0.30",
+        "Microsoft.Extensions.AmbientMetadata.Application/10.9.0",
+        "Microsoft.Extensions.Caching.Abstractions/8.0.0",
+        "Microsoft.Extensions.Caching.Memory/8.0.1",
+        "Microsoft.Extensions.Compliance.Abstractions/10.9.0",
+        "Microsoft.Extensions.Configuration.Abstractions/10.0.8",
+        "Microsoft.Extensions.Configuration.Binder/10.0.8",
+        "Microsoft.Extensions.Configuration.EnvironmentVariables/8.0.0",
+        "Microsoft.Extensions.Configuration/10.0.8",
+        "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.8",
+        "Microsoft.Extensions.DependencyInjection.AutoActivation/10.9.0",
+        "Microsoft.Extensions.DependencyInjection/10.0.8",
+        "Microsoft.Extensions.Diagnostics.Abstractions/10.0.8",
+        "Microsoft.Extensions.Diagnostics.ExceptionSummarization/10.9.0",
+        "Microsoft.Extensions.Diagnostics/10.0.8",
+        "Microsoft.Extensions.FileProviders.Abstractions/8.0.0",
+        "Microsoft.Extensions.Hosting.Abstractions/8.0.1",
+        "Microsoft.Extensions.Http.Diagnostics/10.9.0",
+        "Microsoft.Extensions.Http.Resilience/10.9.0",
+        "Microsoft.Extensions.Http/10.0.8",
+        "Microsoft.Extensions.Logging.Abstractions/10.0.8",
+        "Microsoft.Extensions.Logging.Configuration/8.0.1",
+        "Microsoft.Extensions.Logging/10.0.8",
+        "Microsoft.Extensions.ObjectPool/8.0.30",
+        "Microsoft.Extensions.Options.ConfigurationExtensions/10.0.8",
+        "Microsoft.Extensions.Options/10.0.8",
+        "Microsoft.Extensions.Primitives/10.0.8",
+        "Microsoft.Extensions.Resilience/10.9.0",
+        "Microsoft.Extensions.Telemetry.Abstractions/10.9.0",
+        "Microsoft.Extensions.Telemetry/10.9.0",
+        "Microsoft.IdentityModel.Abstractions/7.7.3",
+        "Microsoft.IdentityModel.JsonWebTokens/7.7.3",
+        "Microsoft.IdentityModel.Logging/7.7.3",
+        "Microsoft.IdentityModel.Protocols.OpenIdConnect/7.7.3",
+        "Microsoft.IdentityModel.Protocols/7.7.3",
+        "Microsoft.IdentityModel.Tokens/7.7.3",
+        "OpenTelemetry.Api.ProviderBuilderExtensions/1.18.0",
+        "OpenTelemetry.Api/1.18.0",
+        "OpenTelemetry.Extensions.Hosting/1.18.0",
+        "OpenTelemetry.Instrumentation.AspNetCore/1.18.0",
+        "OpenTelemetry.Instrumentation.Http/1.18.0",
+        "OpenTelemetry/1.18.0",
+        "Polly.Core/8.4.2",
+        "Polly.Extensions/8.4.2",
+        "Polly.RateLimiting/8.4.2",
+        "System.Diagnostics.DiagnosticSource/10.0.8",
+        "System.IO.Hashing/8.0.0",
+        "System.IO.Pipelines/8.0.0",
+        "System.IdentityModel.Tokens.Jwt/7.7.3",
+        "System.Threading.RateLimiting/8.0.0",
+        "Yarp.ReverseProxy/2.3.0"
+      ]
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/obj/project.assets.json",
+      "sha256": "575a1040aebd410937466c4e60b36b3b0ff63f5ffd91cb7261f7f64e2273efb9",
+      "libraries": [
+        "CP6.Platform.Abstractions/0.8.0-alpha.2",
+        "CP6.Platform.Contracts/0.8.0-alpha.2",
+        "CloudNative.CloudEvents.SystemTextJson/2.9.0",
+        "CloudNative.CloudEvents/2.9.0",
+        "Dapr.Client/1.18.5",
+        "Dapr.Common/1.18.5",
+        "Dapr.Protos/1.18.5",
+        "Google.Api.CommonProtos/2.17.0",
+        "Google.Protobuf/3.35.0",
+        "Grpc.Core.Api/2.80.0",
+        "Grpc.Net.Client/2.80.0",
+        "Grpc.Net.Common/2.80.0",
+        "Grpc.Reflection/2.80.0",
+        "Humanizer.Core/2.14.1",
+        "Json.More.Net/3.0.1",
+        "JsonPointer.Net/7.0.2",
+        "JsonSchema.Net/9.4.0",
+        "Microsoft.Extensions.Configuration.Abstractions/10.0.8",
+        "Microsoft.Extensions.Configuration.Binder/10.0.8",
+        "Microsoft.Extensions.Configuration/10.0.8",
+        "Microsoft.Extensions.DependencyInjection.Abstractions/10.0.8",
+        "Microsoft.Extensions.DependencyInjection/10.0.8",
+        "Microsoft.Extensions.Diagnostics.Abstractions/10.0.8",
+        "Microsoft.Extensions.Diagnostics/10.0.8",
+        "Microsoft.Extensions.Http/10.0.8",
+        "Microsoft.Extensions.Logging.Abstractions/10.0.8",
+        "Microsoft.Extensions.Logging/10.0.8",
+        "Microsoft.Extensions.Options.ConfigurationExtensions/10.0.8",
+        "Microsoft.Extensions.Options/10.0.8",
+        "Microsoft.Extensions.Primitives/10.0.8",
+        "System.Diagnostics.DiagnosticSource/10.0.8"
+      ]
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/obj/project.assets.json",
+      "sha256": "2255d438e565ce517b8c4a133df053e1a215059bb18fe4155b8bf8b4641aa89b",
+      "libraries": [
+        "CP6.Platform.Abstractions/0.8.0-alpha.2",
+        "CP6.Platform.Contracts/0.8.0-alpha.2",
+        "Microsoft.EntityFrameworkCore.Abstractions/8.0.30",
+        "Microsoft.EntityFrameworkCore.Analyzers/8.0.30",
+        "Microsoft.EntityFrameworkCore.Relational/8.0.30",
+        "Microsoft.EntityFrameworkCore/8.0.30",
+        "Microsoft.Extensions.Caching.Abstractions/8.0.0",
+        "Microsoft.Extensions.Caching.Memory/8.0.1",
+        "Microsoft.Extensions.Configuration.Abstractions/8.0.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2",
+        "Microsoft.Extensions.DependencyInjection/8.0.1",
+        "Microsoft.Extensions.Logging.Abstractions/8.0.2",
+        "Microsoft.Extensions.Logging/8.0.1",
+        "Microsoft.Extensions.Options/8.0.2",
+        "Microsoft.Extensions.Primitives/8.0.0"
+      ]
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/obj/project.assets.json",
+      "sha256": "eb0b89f5f4d3217fea2f96653baba02ae92e88a2f0a0ac05e5de00d34124473c",
+      "libraries": []
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/obj/project.assets.json",
+      "sha256": "426086e14526ad1a471e2d7416173fd5c79e15808435f28609a3961633755c64",
+      "libraries": [
+        "CP6.Platform.Abstractions/0.8.0-alpha.2",
+        "CP6.Platform.Contracts/0.8.0-alpha.2",
+        "Microsoft.AspNetCore.Authentication.JwtBearer/8.0.30",
+        "Microsoft.Extensions.AmbientMetadata.Application/10.9.0",
+        "Microsoft.Extensions.Compliance.Abstractions/10.9.0",
+        "Microsoft.Extensions.Configuration.Abstractions/8.0.0",
+        "Microsoft.Extensions.Configuration.Binder/8.0.2",
+        "Microsoft.Extensions.Configuration.EnvironmentVariables/8.0.0",
+        "Microsoft.Extensions.Configuration/8.0.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions/8.0.2",
+        "Microsoft.Extensions.DependencyInjection.AutoActivation/10.9.0",
+        "Microsoft.Extensions.DependencyInjection/8.0.1",
+        "Microsoft.Extensions.Diagnostics.Abstractions/8.0.1",
+        "Microsoft.Extensions.Diagnostics.ExceptionSummarization/10.9.0",
+        "Microsoft.Extensions.Diagnostics/8.0.1",
+        "Microsoft.Extensions.FileProviders.Abstractions/8.0.0",
+        "Microsoft.Extensions.Hosting.Abstractions/8.0.1",
+        "Microsoft.Extensions.Http.Diagnostics/10.9.0",
+        "Microsoft.Extensions.Http.Resilience/10.9.0",
+        "Microsoft.Extensions.Http/8.0.1",
+        "Microsoft.Extensions.Logging.Abstractions/8.0.3",
+        "Microsoft.Extensions.Logging.Configuration/8.0.1",
+        "Microsoft.Extensions.Logging/8.0.1",
+        "Microsoft.Extensions.ObjectPool/8.0.30",
+        "Microsoft.Extensions.Options.ConfigurationExtensions/8.0.0",
+        "Microsoft.Extensions.Options/8.0.2",
+        "Microsoft.Extensions.Primitives/8.0.0",
+        "Microsoft.Extensions.Resilience/10.9.0",
+        "Microsoft.Extensions.Telemetry.Abstractions/10.9.0",
+        "Microsoft.Extensions.Telemetry/10.9.0",
+        "Microsoft.IdentityModel.Abstractions/7.7.3",
+        "Microsoft.IdentityModel.JsonWebTokens/7.7.3",
+        "Microsoft.IdentityModel.Logging/7.7.3",
+        "Microsoft.IdentityModel.Protocols.OpenIdConnect/7.7.3",
+        "Microsoft.IdentityModel.Protocols/7.7.3",
+        "Microsoft.IdentityModel.Tokens/7.7.3",
+        "OpenTelemetry.Api.ProviderBuilderExtensions/1.18.0",
+        "OpenTelemetry.Api/1.18.0",
+        "OpenTelemetry.Extensions.Hosting/1.18.0",
+        "OpenTelemetry.Instrumentation.AspNetCore/1.18.0",
+        "OpenTelemetry.Instrumentation.Http/1.18.0",
+        "OpenTelemetry/1.18.0",
+        "Polly.Core/8.4.2",
+        "Polly.Extensions/8.4.2",
+        "Polly.RateLimiting/8.4.2",
+        "System.Diagnostics.DiagnosticSource/10.0.0",
+        "System.IO.Hashing/8.0.0",
+        "System.IO.Pipelines/8.0.0",
+        "System.IdentityModel.Tokens.Jwt/7.7.3",
+        "System.Threading.RateLimiting/8.0.0",
+        "Yarp.ReverseProxy/2.3.0"
+      ]
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/obj/project.assets.json",
+      "sha256": "f680dd4f2603310ea37b6154ea7c28d5da2dc515764ff00311409444e961b43e",
+      "libraries": [
+        "CP6.Platform.Contracts/0.8.0-alpha.2"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CloudNative.CloudEvents.dll",
+      "bytes": 62464,
+      "sha256": "d0f0b3886002397c0b9b55cf50c308e6c98fd09cac07120a1b31f259bbcc6054"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CloudNative.CloudEvents.SystemTextJson.dll",
+      "bytes": 20992,
+      "sha256": "bdd3c3ffd09208bedfcc0521e27811a21a862e6dc948e57ee74db03fbb11926e"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.Abstractions.dll",
+      "bytes": 26624,
+      "sha256": "bc41797cf19dc8233ebd86cc8df10d54a91c2b3af922e83ebd85d62c0ab5b16d"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.Abstractions.pdb",
+      "bytes": 15876,
+      "sha256": "7842a1b18fade62939c95e3a50173b001eb7ef671177e5d214303caab8666e05"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.AspNetCore.dll",
+      "bytes": 120832,
+      "sha256": "92d63b7dd11e7bbdf57772c5e724c4663f90709d127eda00a98f5a066bdbe7d5"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.AspNetCore.pdb",
+      "bytes": 56660,
+      "sha256": "3a05c89bb1a9c09454e43c4881ea56cfc4163865b775065a8cc0cbe277815517"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.Contracts.dll",
+      "bytes": 84480,
+      "sha256": "17e290a240c8f447dfb42117ce2534ba2b1b68381ea4cf38585f9cfe9bdb0d9f"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.Contracts.pdb",
+      "bytes": 42932,
+      "sha256": "68af2ec8216917bb441586a28a77c233e13bedbfa22ec1bd22e6fe87dbc4df11"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.EntityFramework.dll",
+      "bytes": 175616,
+      "sha256": "56ae17c67d892378ee3c1bab70d0ad1447d449adddbcd498395650c37f7181ba"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.EntityFramework.pdb",
+      "bytes": 45000,
+      "sha256": "23c2468da864758b6c6ee56d31837c200413b89302bbab0785552c86a51b5038"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.Messaging.dll",
+      "bytes": 102400,
+      "sha256": "1af8a3c854ffba6a139c81cf111dbe294d7bc2ab93820e3d2f3c4a6f4954a3ff"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.Messaging.pdb",
+      "bytes": 47572,
+      "sha256": "fc2c0fee2d4d4d06377fa2995a066d33af77b0e9a2989d8088e797234fa5474f"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.Testing.dll",
+      "bytes": 33280,
+      "sha256": "b0e25c1e2b7ff823de4d6b59320a1699e262569a866ea88d54966480dcb5d8b5"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.Testing.pdb",
+      "bytes": 29276,
+      "sha256": "6d45f0022e3ab2088fcfbb68857c09dfbd7887ca57594dfa6bbebed09ee0b53d"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.UnitTests.deps.json",
+      "bytes": 75356,
+      "sha256": "ae57b124d1832441d30a6e71f3cfa34d6150e8f171f1faaf1838d8fbfe241d1d"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.UnitTests.dll",
+      "bytes": 203264,
+      "sha256": "3f02aa418c5e708f4533634cad8c3b8b724f467450cd8ae8c0bf197da488c826"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.UnitTests.pdb",
+      "bytes": 65796,
+      "sha256": "d82e298f99211f9894d5333c5ca6420e9fb8e501f1b08e4674f54e8b488520ea"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/CP6.Platform.UnitTests.runtimeconfig.json",
+      "bytes": 500,
+      "sha256": "2cc52a300b205f829e3408f03f3f6ed7f3b7e78512626673a9d052067bf0a882"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Dapr.Client.dll",
+      "bytes": 174080,
+      "sha256": "d827719966d8334bc3874b41ef3e13d221fe8550af45e60af7e54f28ef24daee"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Dapr.Common.dll",
+      "bytes": 77824,
+      "sha256": "6a30456a0813827fbd11feeb7f354aa37fc4787850d3bd943ad2a36c3df88b11"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Dapr.Protos.dll",
+      "bytes": 635904,
+      "sha256": "be1f11db9c7403b4b969d5c15f0703a1a6bfc355a7be5ff9e5700486c5e46a79"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Google.Api.CommonProtos.dll",
+      "bytes": 450048,
+      "sha256": "329cf0f2b66c5cbf675321f0d6b33c17d1092e5761f32d3d2c1307a110c0dbbd"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Google.Protobuf.dll",
+      "bytes": 501400,
+      "sha256": "e9b892ac667931162ffefa411ef8dc3eae777d634d8bfe8beddc28b1de95a612"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Grpc.Core.Api.dll",
+      "bytes": 70296,
+      "sha256": "5674c1203706b5a261e8bbd3499147d94fc80b5f077bf45f9934ca28a9c8574b"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Grpc.Net.Client.dll",
+      "bytes": 359064,
+      "sha256": "c1a0f38d3815c6b7e508d73dc322f05b2318a9ff5c7dffdc3657c3c269135c92"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Grpc.Net.Common.dll",
+      "bytes": 22168,
+      "sha256": "3f73ff2444130e120eb1741c1efbc77b9bbab991de88e944cd513439649b4b54"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Grpc.Reflection.dll",
+      "bytes": 77976,
+      "sha256": "87795d17c1385e7c05469c447ad8eecc883c3c71b4804319c5918a5a490c8d57"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Humanizer.dll",
+      "bytes": 355944,
+      "sha256": "d6853075547d7e303efd60354d911a2ff18edba582cda2fa59d91a2e5dcf9e98"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Json.More.dll",
+      "bytes": 55296,
+      "sha256": "574554f92f8c58c63fc767315c1fdf0fdf259ba7eef96f5458062ba1cd5cd647"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/JsonPointer.Net.dll",
+      "bytes": 26624,
+      "sha256": "2a01ecbfe23cb9f05c1867c8ba0c05330bdbc44f5924350232bb3f57610e0c8b"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/JsonSchema.Net.dll",
+      "bytes": 292352,
+      "sha256": "abfeaccc6cd0af3dd573924337434999e2e880b2fc978b05bd632f1613bb38ec"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll",
+      "bytes": 51496,
+      "sha256": "c81ab6aa73d2f224a133ceab663928f26e0c52aabe2d8d56b4f02478ec941d6e"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
+      "bytes": 34616,
+      "sha256": "ec81b528082d4d012178ea9f725d5b860c4e5c801ccdd8f1193b6e8729f6ed03"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll",
+      "bytes": 2535224,
+      "sha256": "ba583ae8fd64c7680da2d1e2886dcba31d81ce60bbc9cd7a9701d0d74228fe24"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll",
+      "bytes": 1995576,
+      "sha256": "4bc2d9ad587455ebe4b6e8d60b4639b556ab4af3f8a8c4a68dda00ecfe306a4e"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.AmbientMetadata.Application.dll",
+      "bytes": 34144,
+      "sha256": "48f0dcef561f7b9739e3fbb07ba048ad07a6e7da1f247e913200d22da85446f8"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll",
+      "bytes": 45832,
+      "sha256": "a6bc869c530a2ed7573575dd61e40f0a1079ef6074251afe9701f927c5355ca8"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Compliance.Abstractions.dll",
+      "bytes": 43832,
+      "sha256": "4c376e6dba7231e6d83a5600d2057ab434fc6ab3a1a2a296dbd062d9c44bbb65"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+      "bytes": 27472,
+      "sha256": "d9943874039e2190a36e1ff23436c1eca9bf4dc5a86ee2ee28a67614e92cca03"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Binder.dll",
+      "bytes": 42280,
+      "sha256": "c4e4b6116e7feb30a9b4a0c294b083172db870fcd236d38359868d513a1b4dd2"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Configuration.dll",
+      "bytes": 43304,
+      "sha256": "4f43fc53c114a963b8c4ee75c19d7fa91de23e1243f245ad12e4d0e5021c8cd4"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+      "bytes": 64848,
+      "sha256": "392e9b29bd2fda4426de916c7e3ed71d3e10984599d83ad96f4bbd6a13f0e7f6"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.AutoActivation.dll",
+      "bytes": 33592,
+      "sha256": "e3c6a492e7b9d191a2b05c80e6853402d228802e6bf4eaa84e23d343697aa751"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll",
+      "bytes": 94504,
+      "sha256": "c61126fa0a573f7736bb5544449b971a01778b709689b65979dc26b1bfffe613"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+      "bytes": 29992,
+      "sha256": "6a2aaf92bcdfe0b6feced6405e47b2101e1a6b6b5f8e954eb4ade1270be36bac"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Diagnostics.dll",
+      "bytes": 35112,
+      "sha256": "84347cfe978185d034afc94ffe4aeb335b7fae51d0ad7f2f586e36597070f1de"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Diagnostics.ExceptionSummarization.dll",
+      "bytes": 30008,
+      "sha256": "31a28f5b62a3b05edbae577aad0e7eaafb49fb6db4b7d38965c21de0d65e5fe5"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Hosting.Abstractions.dll",
+      "bytes": 51472,
+      "sha256": "27f074952005f74ba37fc62756690255e5f743ff3f7426fcdeb65a0d6ec9ff77"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Http.Diagnostics.dll",
+      "bytes": 118072,
+      "sha256": "4e19570650c4fe5a7bd20dab68d4f3d1ac743377947f22b63dd12281ba71a01e"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Http.dll",
+      "bytes": 91944,
+      "sha256": "831c1aee76e724f942ce6650aadfa84931bb8a8a8883bf309dbcdb7297b9e177"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Http.Resilience.dll",
+      "bytes": 135480,
+      "sha256": "889b652c2269a38c27f448d8d9c731ad5f8752faf8405b912882f945a522feed"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
+      "bytes": 65832,
+      "sha256": "b54c06bae479114565221ce27273555476b9c0edc3511eb6c8dc3913108e5167"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Logging.Configuration.dll",
+      "bytes": 27912,
+      "sha256": "372dcb44f6f9243346cb82db99bb01f27a0f3c8019902481bd45d65c311a732d"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll",
+      "bytes": 50472,
+      "sha256": "72e5e6453e068a4503de74c42406caac09fe937845da255c217ea32c758c8117"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.ObjectPool.dll",
+      "bytes": 22312,
+      "sha256": "bf41ffd61b07d9d10f47340a76093451625745fb66e7d8b090ec385e9bb27575"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+      "bytes": 21800,
+      "sha256": "f020ffe7f3a665432eadb1997c5b03c73d86f0fd126293ff629497398646ac3b"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Options.dll",
+      "bytes": 64296,
+      "sha256": "71a7d96f252253ec66e260b5f769adae57166e5713ae942950715965386d64bc"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll",
+      "bytes": 43856,
+      "sha256": "3e7725e55414df9cc486e66f0dfc3ceaba4b100ff4085199013d7598ecb08db0"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Resilience.dll",
+      "bytes": 33120,
+      "sha256": "513edc31cc123448d04ea93e6ea75261514d8e9918231dee75ad5b6dc6b79b8b"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Telemetry.Abstractions.dll",
+      "bytes": 58208,
+      "sha256": "9870eda772c6f2b9a1756feec9b0e0976fe7706bdcc0d3ccf74dc7dd48d89408"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.Extensions.Telemetry.dll",
+      "bytes": 134456,
+      "sha256": "f6d51cf6c40761aa1716b1dd3be574e4262725c2778f86806f769214d3952934"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll",
+      "bytes": 19296,
+      "sha256": "cd157762b9849308ae707beb4ddf6c07f6feb336cad997907ea9b95e78eb7a0a"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll",
+      "bytes": 137528,
+      "sha256": "bc3b9779dde1f9bd739167a0145e58077765a4349b387aea759f3b5144301658"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll",
+      "bytes": 36664,
+      "sha256": "0866e063f4d278156122e05d7e3a60ee22d8dba8595aebfe4deddcc818366d40"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll",
+      "bytes": 40760,
+      "sha256": "97c78cf6c8c219c317c1f63f0630bc71336e9bdc0e3aa1761e9b0481435bcd2e"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
+      "bytes": 127840,
+      "sha256": "fa0c01205f8b1ae20735d5cdceb4e37a6b575006300f3e43693b114e6066cddc"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll",
+      "bytes": 299872,
+      "sha256": "240321c4deab041c20ed316fc0a2d69e5449771ca60fc3de3e2e7bb44bfb4874"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.TestPlatform.CommunicationUtilities.dll",
+      "bytes": 137776,
+      "sha256": "e38a359aa502bb1867d6092dca9aba5c130dd6f9111decea8156aa746b2c69e6"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.TestPlatform.CoreUtilities.dll",
+      "bytes": 98336,
+      "sha256": "f6e2495c44640d8915b2aefc938f391c970300266da014350ff35512a448ee84"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.TestPlatform.CrossPlatEngine.dll",
+      "bytes": 316960,
+      "sha256": "d55399bc66dc5b451d60ad82662452ca4a5f735918135dfc91ca9b5e3e38a6ab"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.TestPlatform.PlatformAbstractions.dll",
+      "bytes": 51232,
+      "sha256": "7b919ce4429c3b7b8fa2c36fd641b70b2f459a30ecb7c65fd80f437673cec930"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.TestPlatform.Utilities.dll",
+      "bytes": 67104,
+      "sha256": "01ffd64d25a4bd905aef9594d2aa700e020273a90a77a8720af6bec8b4fd5444"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+      "bytes": 17464,
+      "sha256": "a753bc15f23a957f4f91a059376e4472c6bacd1503622de4b9b2b079ad8ea289"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.Common.dll",
+      "bytes": 248352,
+      "sha256": "059aa2f335c3f7b14ac3fb7caa1625bc2767581b9548e9ff53a246c7f2f94d6a"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+      "bytes": 334392,
+      "sha256": "f83e38ee9020baa42e284e2299e233070ffa86ce4b10213583f9b7c8a521bcd0"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Newtonsoft.Json.dll",
+      "bytes": 712464,
+      "sha256": "22c649f75fce5be7c7ccda8880473b634ef69ecf33f5d1ab8ad892caf47d5a07"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/OpenTelemetry.Api.dll",
+      "bytes": 81408,
+      "sha256": "853f5f441e08af932bcc6f9213ddcddd6f276795fc9e093ac530ef6c9c9e5e10"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/OpenTelemetry.Api.ProviderBuilderExtensions.dll",
+      "bytes": 23552,
+      "sha256": "07d14f395fb485642dc6248c109be6f89468480b11b48974b88f601ded0a52cb"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/OpenTelemetry.dll",
+      "bytes": 269824,
+      "sha256": "7e8235cebdfc4a30f97439daaa0027d883b748fb57fbc33cae96392eeda66719"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/OpenTelemetry.Extensions.Hosting.dll",
+      "bytes": 10752,
+      "sha256": "0bdb6032c9f85d364729504f3f83cd07ff33d54beaa27f88410f3f94a67f9547"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/OpenTelemetry.Instrumentation.AspNetCore.dll",
+      "bytes": 64000,
+      "sha256": "84e802f4332f8681d5996a58e875d8607b028e52e0bf7f83aa624cba64f12856"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/OpenTelemetry.Instrumentation.Http.dll",
+      "bytes": 66048,
+      "sha256": "5745c8ac7d19b8c05bc728a23b63eb8fff6b80e44c17bcfa9036ebfe3956124e"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Polly.Core.dll",
+      "bytes": 242736,
+      "sha256": "37762ea6fcf05154685b0a616461705c837c2f07d98e4037dc3a0e4b4c186ea5"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Polly.Extensions.dll",
+      "bytes": 57120,
+      "sha256": "8adac7a20cd056b9a8623efb6e6f9b99a82e18d3c7b7f6c788f7fc4b20ce5f18"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Polly.RateLimiting.dll",
+      "bytes": 28208,
+      "sha256": "afe3042cd4062438857d42880623845f32575375f460fd1ac07f705ea0211804"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/System.Diagnostics.DiagnosticSource.dll",
+      "bytes": 191784,
+      "sha256": "5de9dc5c14e36e7798b69805b57b6d2c4136a6c2266c6db2c2351eb8eda792f6"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll",
+      "bytes": 88888,
+      "sha256": "6a046fdcc71f6310e1dfa6fd1d5412bcbb9bd5839c29c1e1e3fa83522cbd2362"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/System.IO.Hashing.dll",
+      "bytes": 55560,
+      "sha256": "53726755857b538b3676cabc39989874be072028fd5b39360a7580d73a14e562"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/testhost.dll",
+      "bytes": 49696,
+      "sha256": "92cbdf52db5249112f9f53f1fcdaf9f9aa3fce467141c688a31a7fe095e4d304"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/xunit.abstractions.dll",
+      "bytes": 21928,
+      "sha256": "3166dc70323fb30ccf1cedb0fe86f2ad122c46d254542342d90386efc4c9285c"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/xunit.assert.dll",
+      "bytes": 187088,
+      "sha256": "bcd9711b22d227ac8cd4c1568e72433a0f576d2ec8aae64ac508081892015b1d"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/xunit.core.dll",
+      "bytes": 70352,
+      "sha256": "2f7feeec8c6dec7df684c25fb80aadb292b963d09723460f03d53c5ad2088acc"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/xunit.execution.dotnet.dll",
+      "bytes": 279760,
+      "sha256": "e70febe547c15f8155db3e2d95c3ba4445a59cbc21a3e7541ab22ed49d3dcf7b"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/xunit.runner.visualstudio.testadapter.dll",
+      "bytes": 1251840,
+      "sha256": "98a7395cd6abd03d0ac8eeb82d720c24db00602f047ca49bd6e88e77fc6d1153"
+    },
+    {
+      "path": "tests/CP6.Platform.UnitTests/bin/Debug/net8.0/Yarp.ReverseProxy.dll",
+      "bytes": 377904,
+      "sha256": "9605717516fe01c60d2a32d5a891f8d253ac83b50fb2434f0db36151c7662ada"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/CP6.Platform.ArchitectureTests.deps.json",
+      "bytes": 18330,
+      "sha256": "6a07a1649389be38cb221a10491681ea1528afc809d5b3fe6aef299b6a1cfd75"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/CP6.Platform.ArchitectureTests.dll",
+      "bytes": 53248,
+      "sha256": "2dd652b9d8a8602b21e1e290433443278514f9d633283537123acfae3c2b6d5a"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/CP6.Platform.ArchitectureTests.pdb",
+      "bytes": 20156,
+      "sha256": "ba7e12fd9015a518ac1fd11d6344dfd8ff0a257df188ba200a5bdef9efbddb36"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/CP6.Platform.ArchitectureTests.runtimeconfig.json",
+      "bytes": 316,
+      "sha256": "4a607ea9fd27fa7fbee5db308a9aa9325217a05436ec733ee79b38d851e99dbe"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/Microsoft.TestPlatform.CommunicationUtilities.dll",
+      "bytes": 137776,
+      "sha256": "e38a359aa502bb1867d6092dca9aba5c130dd6f9111decea8156aa746b2c69e6"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/Microsoft.TestPlatform.CoreUtilities.dll",
+      "bytes": 98336,
+      "sha256": "f6e2495c44640d8915b2aefc938f391c970300266da014350ff35512a448ee84"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/Microsoft.TestPlatform.CrossPlatEngine.dll",
+      "bytes": 316960,
+      "sha256": "d55399bc66dc5b451d60ad82662452ca4a5f735918135dfc91ca9b5e3e38a6ab"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/Microsoft.TestPlatform.PlatformAbstractions.dll",
+      "bytes": 51232,
+      "sha256": "7b919ce4429c3b7b8fa2c36fd641b70b2f459a30ecb7c65fd80f437673cec930"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/Microsoft.TestPlatform.Utilities.dll",
+      "bytes": 67104,
+      "sha256": "01ffd64d25a4bd905aef9594d2aa700e020273a90a77a8720af6bec8b4fd5444"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+      "bytes": 17464,
+      "sha256": "a753bc15f23a957f4f91a059376e4472c6bacd1503622de4b9b2b079ad8ea289"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.Common.dll",
+      "bytes": 248352,
+      "sha256": "059aa2f335c3f7b14ac3fb7caa1625bc2767581b9548e9ff53a246c7f2f94d6a"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+      "bytes": 334392,
+      "sha256": "f83e38ee9020baa42e284e2299e233070ffa86ce4b10213583f9b7c8a521bcd0"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/Newtonsoft.Json.dll",
+      "bytes": 712464,
+      "sha256": "22c649f75fce5be7c7ccda8880473b634ef69ecf33f5d1ab8ad892caf47d5a07"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/testhost.dll",
+      "bytes": 49696,
+      "sha256": "92cbdf52db5249112f9f53f1fcdaf9f9aa3fce467141c688a31a7fe095e4d304"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/xunit.abstractions.dll",
+      "bytes": 21928,
+      "sha256": "3166dc70323fb30ccf1cedb0fe86f2ad122c46d254542342d90386efc4c9285c"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/xunit.assert.dll",
+      "bytes": 187088,
+      "sha256": "bcd9711b22d227ac8cd4c1568e72433a0f576d2ec8aae64ac508081892015b1d"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/xunit.core.dll",
+      "bytes": 70352,
+      "sha256": "2f7feeec8c6dec7df684c25fb80aadb292b963d09723460f03d53c5ad2088acc"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/xunit.execution.dotnet.dll",
+      "bytes": 279760,
+      "sha256": "e70febe547c15f8155db3e2d95c3ba4445a59cbc21a3e7541ab22ed49d3dcf7b"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/bin/Debug/net8.0/xunit.runner.visualstudio.testadapter.dll",
+      "bytes": 1251840,
+      "sha256": "98a7395cd6abd03d0ac8eeb82d720c24db00602f047ca49bd6e88e77fc6d1153"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.Abstractions.dll",
+      "bytes": 26624,
+      "sha256": "bc41797cf19dc8233ebd86cc8df10d54a91c2b3af922e83ebd85d62c0ab5b16d"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.Abstractions.pdb",
+      "bytes": 15876,
+      "sha256": "7842a1b18fade62939c95e3a50173b001eb7ef671177e5d214303caab8666e05"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.Contracts.dll",
+      "bytes": 84480,
+      "sha256": "17e290a240c8f447dfb42117ce2534ba2b1b68381ea4cf38585f9cfe9bdb0d9f"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.Contracts.pdb",
+      "bytes": 42932,
+      "sha256": "68af2ec8216917bb441586a28a77c233e13bedbfa22ec1bd22e6fe87dbc4df11"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.EntityFramework.dll",
+      "bytes": 175616,
+      "sha256": "56ae17c67d892378ee3c1bab70d0ad1447d449adddbcd498395650c37f7181ba"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.EntityFramework.pdb",
+      "bytes": 45000,
+      "sha256": "23c2468da864758b6c6ee56d31837c200413b89302bbab0785552c86a51b5038"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.WP0207.PostgreSqlTests.deps.json",
+      "bytes": 31251,
+      "sha256": "bbd1aebf2a45305ca243bfad50485c88d56ee7b10b0db8ecf5f353839cf09bc1"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.WP0207.PostgreSqlTests.dll",
+      "bytes": 148480,
+      "sha256": "497222657f2cb77fd5463112ea5efb26234afd8befa48c043dc72eafe652c661"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.WP0207.PostgreSqlTests.pdb",
+      "bytes": 36280,
+      "sha256": "d2431235a1707c7edcfa8310b53d3a1e47e5b8755d23b0555a6d7e96d01f0fb1"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.WP0207.PostgreSqlTests.runtimeconfig.json",
+      "bytes": 385,
+      "sha256": "b9f6ae58ba9393a4833a54c1088ceeb2b6328e311b1be47945c55cfc4de3bc89"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
+      "bytes": 34616,
+      "sha256": "ec81b528082d4d012178ea9f725d5b860c4e5c801ccdd8f1193b6e8729f6ed03"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll",
+      "bytes": 2535224,
+      "sha256": "ba583ae8fd64c7680da2d1e2886dcba31d81ce60bbc9cd7a9701d0d74228fe24"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll",
+      "bytes": 1995576,
+      "sha256": "4bc2d9ad587455ebe4b6e8d60b4639b556ab4af3f8a8c4a68dda00ecfe306a4e"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Caching.Abstractions.dll",
+      "bytes": 31008,
+      "sha256": "31caebf834b6da88696a4a21ecb38eefff2623a531be925f6bd27719583ee3e2"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll",
+      "bytes": 45832,
+      "sha256": "a6bc869c530a2ed7573575dd61e40f0a1079ef6074251afe9701f927c5355ca8"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+      "bytes": 27936,
+      "sha256": "fefcdb267a73099cb90e5af56b5ef2bca59bed974339b3a6810352bde23537a6"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+      "bytes": 63768,
+      "sha256": "67fa4325000db017dc0c35829b416f024f042d24efb868bcf17a895ee6500a93"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll",
+      "bytes": 92952,
+      "sha256": "158761ce778e799949f3a3060c461b1055bb35f1f5a65eff0e42397849f09ecd"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
+      "bytes": 65320,
+      "sha256": "45c22524218541717e4a0ade36847c1cda4921f5945b4975a1c78ddfe023d0b1"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll",
+      "bytes": 50976,
+      "sha256": "b2cfba2e05ee89a91e9bc9cf112468a5f4fa05d1a77ea81c131ea656f3d133c2"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Options.dll",
+      "bytes": 64776,
+      "sha256": "5e01894cbc0661bacb8ca8f485a40d5ee4e02f28fef58007668a0276431b4693"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll",
+      "bytes": 43680,
+      "sha256": "446ff16e903e7479558816e213a3adee9a1c1adad65a56d853801b10933e29d7"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.TestPlatform.CommunicationUtilities.dll",
+      "bytes": 137776,
+      "sha256": "e38a359aa502bb1867d6092dca9aba5c130dd6f9111decea8156aa746b2c69e6"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.TestPlatform.CoreUtilities.dll",
+      "bytes": 98336,
+      "sha256": "f6e2495c44640d8915b2aefc938f391c970300266da014350ff35512a448ee84"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.TestPlatform.CrossPlatEngine.dll",
+      "bytes": 316960,
+      "sha256": "d55399bc66dc5b451d60ad82662452ca4a5f735918135dfc91ca9b5e3e38a6ab"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.TestPlatform.PlatformAbstractions.dll",
+      "bytes": 51232,
+      "sha256": "7b919ce4429c3b7b8fa2c36fd641b70b2f459a30ecb7c65fd80f437673cec930"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.TestPlatform.Utilities.dll",
+      "bytes": 67104,
+      "sha256": "01ffd64d25a4bd905aef9594d2aa700e020273a90a77a8720af6bec8b4fd5444"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+      "bytes": 17464,
+      "sha256": "a753bc15f23a957f4f91a059376e4472c6bacd1503622de4b9b2b079ad8ea289"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.Common.dll",
+      "bytes": 248352,
+      "sha256": "059aa2f335c3f7b14ac3fb7caa1625bc2767581b9548e9ff53a246c7f2f94d6a"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+      "bytes": 334392,
+      "sha256": "f83e38ee9020baa42e284e2299e233070ffa86ce4b10213583f9b7c8a521bcd0"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Newtonsoft.Json.dll",
+      "bytes": 712464,
+      "sha256": "22c649f75fce5be7c7ccda8880473b634ef69ecf33f5d1ab8ad892caf47d5a07"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Npgsql.dll",
+      "bytes": 1409024,
+      "sha256": "2083de510463c4f708fa433d68bf3da149f10e25cd99a86f4519360e3f59b70d"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
+      "bytes": 623616,
+      "sha256": "e0a329c94ca198007947d38e89b38fa7f332e65b8a63a2035d06143e759b7d3c"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/testhost.dll",
+      "bytes": 49696,
+      "sha256": "92cbdf52db5249112f9f53f1fcdaf9f9aa3fce467141c688a31a7fe095e4d304"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/xunit.abstractions.dll",
+      "bytes": 21928,
+      "sha256": "3166dc70323fb30ccf1cedb0fe86f2ad122c46d254542342d90386efc4c9285c"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/xunit.assert.dll",
+      "bytes": 187088,
+      "sha256": "bcd9711b22d227ac8cd4c1568e72433a0f576d2ec8aae64ac508081892015b1d"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/xunit.core.dll",
+      "bytes": 70352,
+      "sha256": "2f7feeec8c6dec7df684c25fb80aadb292b963d09723460f03d53c5ad2088acc"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/xunit.execution.dotnet.dll",
+      "bytes": 279760,
+      "sha256": "e70febe547c15f8155db3e2d95c3ba4445a59cbc21a3e7541ab22ed49d3dcf7b"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0207.PostgreSqlTests/bin/Debug/net8.0/xunit.runner.visualstudio.testadapter.dll",
+      "bytes": 1251840,
+      "sha256": "98a7395cd6abd03d0ac8eeb82d720c24db00602f047ca49bd6e88e77fc6d1153"
+    }
+  ]
+}
