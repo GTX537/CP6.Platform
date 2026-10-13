@@ -1,0 +1,3 @@
+The first local workflow-audit invocation exited 1 before writing a PASS report. Its deliberately restricted parser accepted only an empty `workflow_dispatch` mapping, so it rejected the existing manual inputs under `p10-formal-packages-recovery.yml` with `ValueError: Unreviewed trigger or filter`.
+
+The event is manual-only; its nested inputs do not add automatic triggers. The parser was corrected to allow indented manual-input properties while still rejecting any other event shape and requiring the RFC3161 PR block to match both exact existing paths. No workflow or repository setting changed. This was an audit-tool defect, not a product-test failure or a remote execution. The subsequent `intake-workflows.json` records the successful local audit.

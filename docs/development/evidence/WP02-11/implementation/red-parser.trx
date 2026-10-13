@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="aab878da-301f-4eab-8376-54c8f7e72a49" name="tt@LAPTOP-3QQ44FJS 2026-10-13 08:09:17" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T08:09:17.8723756-04:00" queuing="2026-10-13T08:09:17.8723767-04:00" start="2026-10-13T08:09:14.2924007-04:00" finish="2026-10-13T08:09:17.9875795-04:00" />
+  <TestSettings name="default" id="8f6c81cd-0b22-4f90-940e-74e0665b15b3">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-13_08_09_17" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="202f9428-ca12-4b3e-8f97-c3a4d7c2c82f" testId="0989dde3-e35d-f5aa-7a37-dd56a615c4cb" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;1, 2&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003237" startTime="2026-10-13T08:09:17.8172612-04:00" endTime="2026-10-13T08:09:17.8173107-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="202f9428-ca12-4b3e-8f97-c3a4d7c2c82f">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: InvalidRetryAfter&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 30&#xD;
+   at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cbf3523c-ed19-4703-b222-8a49acc6289a" testId="cbe20bf8-8a36-a285-4d6b-6349473d9dbd" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;1.5&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0001661" startTime="2026-10-13T08:09:17.8181339-04:00" endTime="2026-10-13T08:09:17.8181833-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cbf3523c-ed19-4703-b222-8a49acc6289a">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: InvalidRetryAfter&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 30&#xD;
+   at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="df884dbb-61a8-4fdb-9d43-809439d090ea" testId="42014aed-5eb2-7929-fecc-c9bb279957ad" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: &quot;Sun Nov  6 08:49:37 1994&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0005475" startTime="2026-10-13T08:09:17.8111556-04:00" endTime="2026-10-13T08:09:17.8112265-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="df884dbb-61a8-4fdb-9d43-809439d090ea">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Valid&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 17&#xD;
+   at InvokeStub_RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6f5f38a7-a06f-476e-ae1b-0f080ba8571a" testId="6f2089ca-94a9-5ddf-f44e-3b570a69658c" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.MissingValue_HasNoServerWait" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0012489" startTime="2026-10-13T08:09:17.8434540-04:00" endTime="2026-10-13T08:09:17.8438749-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6f5f38a7-a06f-476e-ae1b-0f080ba8571a" />
+    <UnitTestResult executionId="7dbd4be5-749b-48f4-8107-cb2282172798" testId="fb1b95ec-c0be-06b6-9528-c77bc336ae07" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;+1&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003039" startTime="2026-10-13T08:09:17.8366714-04:00" endTime="2026-10-13T08:09:17.8367804-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7dbd4be5-749b-48f4-8107-cb2282172798">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: InvalidRetryAfter&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 30&#xD;
+   at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="29b3eb25-0c90-4819-aede-0ab9db9f45a1" testId="92126fe5-af9a-ecd2-a60d-ef315a474a30" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: &quot;\t5 \t&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.1630606" startTime="2026-10-13T08:09:17.6366854-04:00" endTime="2026-10-13T08:09:17.7927205-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="29b3eb25-0c90-4819-aede-0ab9db9f45a1">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Valid&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 17&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="70f94df4-3acb-4e1d-b92d-8077fdf0ccdc" testId="5221a12d-359a-f302-c170-fdc6f77ddf62" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: &quot;Sun, 06 Nov 1994 08:49:37 GMT&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0001566" startTime="2026-10-13T08:09:17.8134421-04:00" endTime="2026-10-13T08:09:17.8135470-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="70f94df4-3acb-4e1d-b92d-8077fdf0ccdc">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Valid&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 17&#xD;
+   at InvokeStub_RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="155a7af6-9685-4db8-9cb3-6614f62bc511" testId="cec7c7c6-aa6b-e1ac-1019-bb2704a314e2" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;Sun, 32 Nov 1994 08:49:37 GMT&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0000595" startTime="2026-10-13T08:09:17.8198100-04:00" endTime="2026-10-13T08:09:17.8198438-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="155a7af6-9685-4db8-9cb3-6614f62bc511">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: InvalidRetryAfter&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 30&#xD;
+   at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4f9cec91-235a-46f8-a0ca-0a09f0096113" testId="06838600-f2aa-0107-fd7b-e5bb6f54c7fe" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;-1&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0000825" startTime="2026-10-13T08:09:17.8189867-04:00" endTime="2026-10-13T08:09:17.8190365-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4f9cec91-235a-46f8-a0ca-0a09f0096113">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: InvalidRetryAfter&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 30&#xD;
+   at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="55cd0aec-0f6a-4481-a60b-07dc208da5be" testId="9c4179b7-8f8d-f749-65ff-0b3d13d19895" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;\n1&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002407" startTime="2026-10-13T08:09:17.8164294-04:00" endTime="2026-10-13T08:09:17.8164821-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55cd0aec-0f6a-4481-a60b-07dc208da5be">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: InvalidRetryAfter&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 30&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="40320438-80ff-47b5-a7db-b2ed41a7617e" testId="b7a7d37e-7a1e-6687-7838-a442ac761361" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: &quot;Sunday, 06-Nov-94 08:49:37 GMT&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0001198" startTime="2026-10-13T08:09:17.8147433-04:00" endTime="2026-10-13T08:09:17.8147940-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="40320438-80ff-47b5-a7db-b2ed41a7617e">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Valid&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 17&#xD;
+   at InvokeStub_RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ce7f92e4-f811-45b7-a06f-b10f0678ab10" testId="d3693b40-cad4-a83b-5ce1-97a16d10a115" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(value: &quot;60&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002454" startTime="2026-10-13T08:09:17.8418050-04:00" endTime="2026-10-13T08:09:17.8418438-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ce7f92e4-f811-45b7-a06f-b10f0678ab10">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: StopServerWaitExceeded&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 40&#xD;
+   at InvokeStub_RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4bf291f1-21a1-4e29-8122-66b20c267943" testId="b66bc3a4-260e-9014-8a53-aeff699793ef" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;１&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0000553" startTime="2026-10-13T08:09:17.8347017-04:00" endTime="2026-10-13T08:09:17.8347767-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4bf291f1-21a1-4e29-8122-66b20c267943">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: InvalidRetryAfter&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 30&#xD;
+   at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6c32d478-64d2-4c84-a191-c5b539802cd6" testId="6539cc70-496b-295f-0652-9fff58e54b45" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(value: &quot;999999999999999999999999999999999999&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002077" startTime="2026-10-13T08:09:17.8401082-04:00" endTime="2026-10-13T08:09:17.8402642-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6c32d478-64d2-4c84-a191-c5b539802cd6">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: StopServerWaitExceeded&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 40&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="95c0fb2f-85ed-4157-9547-4d8db8aa09c8" testId="0e08304f-06b3-641f-e392-73446c3bc123" testName="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.DuplicateFields_AreInvalid" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0004156" startTime="2026-10-13T08:09:17.8378017-04:00" endTime="2026-10-13T08:09:17.8378495-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="95c0fb2f-85ed-4157-9547-4d8db8aa09c8">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: InvalidRetryAfter&#xD;
+Actual:   Absent</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.DuplicateFields_AreInvalid() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 33&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: &quot;\t5 \t&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="92126fe5-af9a-ecd2-a60d-ef315a474a30">
+      <Execution id="29b3eb25-0c90-4819-aede-0ab9db9f45a1" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="SingleHttpValue_UsesInvariantThreeDateFormsAndOws" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: &quot;Sunday, 06-Nov-94 08:49:37 GMT&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="b7a7d37e-7a1e-6687-7838-a442ac761361">
+      <Execution id="40320438-80ff-47b5-a7db-b2ed41a7617e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="SingleHttpValue_UsesInvariantThreeDateFormsAndOws" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;-1&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="06838600-f2aa-0107-fd7b-e5bb6f54c7fe">
+      <Execution id="4f9cec91-235a-46f8-a0ca-0a09f0096113" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="InvalidValues_AreNotServerWaits" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;Sun, 32 Nov 1994 08:49:37 GMT&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="cec7c7c6-aa6b-e1ac-1019-bb2704a314e2">
+      <Execution id="155a7af6-9685-4db8-9cb3-6614f62bc511" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="InvalidValues_AreNotServerWaits" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;1.5&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="cbe20bf8-8a36-a285-4d6b-6349473d9dbd">
+      <Execution id="cbf3523c-ed19-4703-b222-8a49acc6289a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="InvalidValues_AreNotServerWaits" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;+1&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="fb1b95ec-c0be-06b6-9528-c77bc336ae07">
+      <Execution id="7dbd4be5-749b-48f4-8107-cb2282172798" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="InvalidValues_AreNotServerWaits" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(value: &quot;999999999999999999999999999999999999&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="6539cc70-496b-295f-0652-9fff58e54b45">
+      <Execution id="6c32d478-64d2-4c84-a191-c5b539802cd6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="HugeLegalInteger_StopsInsteadOfFallingBack" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.MissingValue_HasNoServerWait" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="6f2089ca-94a9-5ddf-f44e-3b570a69658c">
+      <Execution id="6f5f38a7-a06f-476e-ae1b-0f080ba8571a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="MissingValue_HasNoServerWait" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: &quot;Sun, 06 Nov 1994 08:49:37 GMT&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="5221a12d-359a-f302-c170-fdc6f77ddf62">
+      <Execution id="70f94df4-3acb-4e1d-b92d-8077fdf0ccdc" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="SingleHttpValue_UsesInvariantThreeDateFormsAndOws" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;1, 2&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="0989dde3-e35d-f5aa-7a37-dd56a615c4cb">
+      <Execution id="202f9428-ca12-4b3e-8f97-c3a4d7c2c82f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="InvalidValues_AreNotServerWaits" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(value: &quot;60&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="d3693b40-cad4-a83b-5ce1-97a16d10a115">
+      <Execution id="ce7f92e4-f811-45b7-a06f-b10f0678ab10" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="HugeLegalInteger_StopsInsteadOfFallingBack" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: &quot;Sun Nov  6 08:49:37 1994&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="42014aed-5eb2-7929-fecc-c9bb279957ad">
+      <Execution id="df884dbb-61a8-4fdb-9d43-809439d090ea" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="SingleHttpValue_UsesInvariantThreeDateFormsAndOws" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.DuplicateFields_AreInvalid" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="0e08304f-06b3-641f-e392-73446c3bc123">
+      <Execution id="95c0fb2f-85ed-4157-9547-4d8db8aa09c8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="DuplicateFields_AreInvalid" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;１&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="b66bc3a4-260e-9014-8a53-aeff699793ef">
+      <Execution id="4bf291f1-21a1-4e29-8122-66b20c267943" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="InvalidValues_AreNotServerWaits" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: &quot;\n1&quot;)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="9c4179b7-8f8d-f749-65ff-0b3d13d19895">
+      <Execution id="55cd0aec-0f6a-4481-a60b-07dc208da5be" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests" name="InvalidValues_AreNotServerWaits" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="0989dde3-e35d-f5aa-7a37-dd56a615c4cb" executionId="202f9428-ca12-4b3e-8f97-c3a4d7c2c82f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cbe20bf8-8a36-a285-4d6b-6349473d9dbd" executionId="cbf3523c-ed19-4703-b222-8a49acc6289a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="42014aed-5eb2-7929-fecc-c9bb279957ad" executionId="df884dbb-61a8-4fdb-9d43-809439d090ea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6f2089ca-94a9-5ddf-f44e-3b570a69658c" executionId="6f5f38a7-a06f-476e-ae1b-0f080ba8571a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fb1b95ec-c0be-06b6-9528-c77bc336ae07" executionId="7dbd4be5-749b-48f4-8107-cb2282172798" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="92126fe5-af9a-ecd2-a60d-ef315a474a30" executionId="29b3eb25-0c90-4819-aede-0ab9db9f45a1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5221a12d-359a-f302-c170-fdc6f77ddf62" executionId="70f94df4-3acb-4e1d-b92d-8077fdf0ccdc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cec7c7c6-aa6b-e1ac-1019-bb2704a314e2" executionId="155a7af6-9685-4db8-9cb3-6614f62bc511" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="06838600-f2aa-0107-fd7b-e5bb6f54c7fe" executionId="4f9cec91-235a-46f8-a0ca-0a09f0096113" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9c4179b7-8f8d-f749-65ff-0b3d13d19895" executionId="55cd0aec-0f6a-4481-a60b-07dc208da5be" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b7a7d37e-7a1e-6687-7838-a442ac761361" executionId="40320438-80ff-47b5-a7db-b2ed41a7617e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d3693b40-cad4-a83b-5ce1-97a16d10a115" executionId="ce7f92e4-f811-45b7-a06f-b10f0678ab10" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b66bc3a4-260e-9014-8a53-aeff699793ef" executionId="4bf291f1-21a1-4e29-8122-66b20c267943" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6539cc70-496b-295f-0652-9fff58e54b45" executionId="6c32d478-64d2-4c84-a191-c5b539802cd6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0e08304f-06b3-641f-e392-73446c3bc123" executionId="95c0fb2f-85ed-4157-9547-4d8db8aa09c8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="15" executed="15" passed="1" failed="14" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:01.41]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:01.51]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:01.55]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:01.76]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.76]       Expected: Valid&#xD;
+[xUnit.net 00:00:01.76]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.77]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.77]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(17,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(String value)&#xD;
+[xUnit.net 00:00:01.77]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:01.77]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.78]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.78]       Expected: Valid&#xD;
+[xUnit.net 00:00:01.78]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.78]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.78]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(17,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(String value)&#xD;
+[xUnit.net 00:00:01.78]            at InvokeStub_RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.78]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.78]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.78]       Expected: Valid&#xD;
+[xUnit.net 00:00:01.78]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.78]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.78]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(17,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(String value)&#xD;
+[xUnit.net 00:00:01.78]            at InvokeStub_RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.78]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.78]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.78]       Expected: Valid&#xD;
+[xUnit.net 00:00:01.78]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.78]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.78]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(17,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(String value)&#xD;
+[xUnit.net 00:00:01.78]            at InvokeStub_RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.78]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.78]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.79]       Expected: InvalidRetryAfter&#xD;
+[xUnit.net 00:00:01.79]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value)&#xD;
+[xUnit.net 00:00:01.79]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:01.79]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.79]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.79]       Expected: InvalidRetryAfter&#xD;
+[xUnit.net 00:00:01.79]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value)&#xD;
+[xUnit.net 00:00:01.79]            at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.79]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.79]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.79]       Expected: InvalidRetryAfter&#xD;
+[xUnit.net 00:00:01.79]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value)&#xD;
+[xUnit.net 00:00:01.79]            at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.79]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.79]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.79]       Expected: InvalidRetryAfter&#xD;
+[xUnit.net 00:00:01.79]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value)&#xD;
+[xUnit.net 00:00:01.79]            at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.79]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.79]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.79]       Expected: InvalidRetryAfter&#xD;
+[xUnit.net 00:00:01.79]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.79]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value)&#xD;
+[xUnit.net 00:00:01.79]            at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.79]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.80]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.80]       Expected: InvalidRetryAfter&#xD;
+[xUnit.net 00:00:01.80]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.80]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.80]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value)&#xD;
+[xUnit.net 00:00:01.80]            at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.80]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.81]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.81]       Expected: InvalidRetryAfter&#xD;
+[xUnit.net 00:00:01.81]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.81]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.81]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(30,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(String value)&#xD;
+[xUnit.net 00:00:01.81]            at InvokeStub_RetryAfterTests.InvalidValues_AreNotServerWaits(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.81]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.81]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.81]       Expected: InvalidRetryAfter&#xD;
+[xUnit.net 00:00:01.81]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.81]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.81]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(33,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.DuplicateFields_AreInvalid()&#xD;
+[xUnit.net 00:00:01.81]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:01.81]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.81]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.81]       Expected: StopServerWaitExceeded&#xD;
+[xUnit.net 00:00:01.81]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.81]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.81]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(40,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(String value)&#xD;
+[xUnit.net 00:00:01.81]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:01.81]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.81]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.81]       Expected: StopServerWaitExceeded&#xD;
+[xUnit.net 00:00:01.81]       Actual:   Absent&#xD;
+[xUnit.net 00:00:01.81]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.81]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs(40,0): at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(String value)&#xD;
+[xUnit.net 00:00:01.81]            at InvokeStub_RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.81]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.82]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.7962663-04:00">
+        <Text>[xUnit.net 00:00:01.76]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: "\t5 \t") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8118267-04:00">
+        <Text>[xUnit.net 00:00:01.78]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: "Sun Nov  6 08:49:37 1994") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8138788-04:00">
+        <Text>[xUnit.net 00:00:01.78]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: "Sun, 06 Nov 1994 08:49:37 GMT") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8150770-04:00">
+        <Text>[xUnit.net 00:00:01.78]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: "Sunday, 06-Nov-94 08:49:37 GMT") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8168426-04:00">
+        <Text>[xUnit.net 00:00:01.78]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: "\n1") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8175428-04:00">
+        <Text>[xUnit.net 00:00:01.79]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: "1, 2") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8184182-04:00">
+        <Text>[xUnit.net 00:00:01.79]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: "1.5") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8192803-04:00">
+        <Text>[xUnit.net 00:00:01.79]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: "-1") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8200755-04:00">
+        <Text>[xUnit.net 00:00:01.79]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: "Sun, 32 Nov 1994 08:49:37 GMT") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8876819-04:00">
+        <Text>[xUnit.net 00:00:01.80]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: "１") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8882433-04:00">
+        <Text>[xUnit.net 00:00:01.81]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: "+1") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8884413-04:00">
+        <Text>[xUnit.net 00:00:01.81]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.DuplicateFields_AreInvalid [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8884787-04:00">
+        <Text>[xUnit.net 00:00:01.81]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(value: "999999999999999999999999999999999999") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:09:17.8885108-04:00">
+        <Text>[xUnit.net 00:00:01.81]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(value: "60") [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
