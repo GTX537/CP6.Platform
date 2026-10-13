@@ -1,0 +1,9 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\OwnerProtocolFixtureTests.cs(60,78): error CS1061: 'HttpRequestOptions' does not contain a definition for 'Get' and no accessible extension method 'Get' accepting a first argument of type 'HttpRequestOptions' could be found (are you missing a using directive or an assembly reference?) [D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\CP6.Platform.AspNetCoreTests.csproj]

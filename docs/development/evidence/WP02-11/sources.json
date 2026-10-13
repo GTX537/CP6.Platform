@@ -1,0 +1,45 @@
+{
+  "task": "WP02-11",
+  "platform_baseline": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+  "main_dispatch": "47c9b12c796620effe41c62d16992ccd629ee949",
+  "main_input_baseline": "a1824fec3d4824d45e27693f2e715b311ee5f665",
+  "assets": [
+    {
+      "path": "docs/development/evidence/WP02-11/inputs/PLT-HTTP-01-v0.2.md",
+      "sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+      "source": "D:\\CP6\\docs\\CP6_完整成果归档_20261009\\完整成果\\docs\\originals\\9d\\9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+      "basis": "exact original bytes"
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/inputs/S6-INT-ID-OPS-v0.2.md",
+      "sha256": "d9b57a039e18a689615cfb48e181bb248dedecf957d8bdd7dd72d85a53a6dccc",
+      "source": "D:\\CP6\\docs\\CP6_完整成果归档_20261009\\完整成果\\docs\\originals\\d9\\d9b57a039e18a689__S6_INT-ID_INT-OPS_完整设计候选_v0.2.md",
+      "basis": "exact original bytes"
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/inputs/TASK.md",
+      "sha256": "0e17deaa22dcea6ec1038a4db9b374c41a2c21cba957603c00a2d89ddd5bb51a",
+      "repository": "GTX537/CP6",
+      "source_commit": "47c9b12c796620effe41c62d16992ccd629ee949",
+      "source_path": "docs/development/dispatch/20261013-wave5/WP02-11.md",
+      "basis": "Git blob bytes"
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/inputs/ADMISSION.md",
+      "sha256": "f1de6612255caf602211bde5d25e4d903278fc65d94f46bc6a38c4cca99f842a",
+      "repository": "GTX537/CP6",
+      "source_commit": "47c9b12c796620effe41c62d16992ccd629ee949",
+      "source_path": "docs/development/evidence/wave5-dispatch-20261013/admission-platform.md",
+      "basis": "Git blob bytes"
+    },
+    {
+      "path": "docs/development/evidence/WP02-11/inputs/foundation.json",
+      "sha256": "6af601f92d8a3f3b347358313bd6d3c199581a0fd93650b3c6c7090249329417",
+      "repository": "GTX537/CP6",
+      "source_commit": "47c9b12c796620effe41c62d16992ccd629ee949",
+      "source_path": "docs/development/assessments/20261011/catalogs/foundation.json",
+      "basis": "Git blob bytes"
+    }
+  ],
+  "scope": "Library implementation sources; historical NOT_RUN/UNPROVEN unchanged. No production Owner adoption."
+}

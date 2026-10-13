@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="21b76602-4a64-4c26-9397-1b36b32acde4" name="tt@LAPTOP-3QQ44FJS 2026-10-13 08:36:43" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T08:36:43.4315886-04:00" queuing="2026-10-13T08:36:43.4315890-04:00" start="2026-10-13T08:36:41.8994523-04:00" finish="2026-10-13T08:36:43.4367653-04:00" />
+  <TestSettings name="default" id="1a03e9e5-4f88-44f6-8f8d-a8e14738dc5b">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-13_08_36_43" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="d0f015de-026e-4926-b999-038c223820f3" testId="2e766004-9ddb-dfef-bc84-272a92cd02f2" testName="CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(redirect: True, cookies: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0018313" startTime="2026-10-13T08:36:43.1426837-04:00" endTime="2026-10-13T08:36:43.1427520-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d0f015de-026e-4926-b999-038c223820f3">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.InvalidOperationException)</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(Boolean redirect, Boolean cookies) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ProfileRegistrationTests.cs:line 92&#xD;
+   at InvokeStub_ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="272301fa-59e9-48f7-aca5-c344905b9332" testId="e59428d4-9638-ee8e-fa49-b6e3fb76bf48" testName="CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(redirect: False, cookies: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0890055" startTime="2026-10-13T08:36:43.0256550-04:00" endTime="2026-10-13T08:36:43.1331424-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="272301fa-59e9-48f7-aca5-c344905b9332">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.InvalidOperationException)</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(Boolean redirect, Boolean cookies) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ProfileRegistrationTests.cs:line 92&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7cf7c1f6-c4b6-4cd6-954b-915c87496928" testId="c16c3745-35e5-5613-4916-3d5842a2ea02" testName="CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.OptInClientDoesNotFollowRedirectOrAcquireCookieCredentials" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2765811" startTime="2026-10-13T08:36:43.0247385-04:00" endTime="2026-10-13T08:36:43.3093192-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7cf7c1f6-c4b6-4cd6-954b-915c87496928">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 1&#xD;
+Actual:   51</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.OptInClientDoesNotFollowRedirectOrAcquireCookieCredentials() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\LoopbackTests.cs:line 109&#xD;
+   at CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.OptInClientDoesNotFollowRedirectOrAcquireCookieCredentials() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\LoopbackTests.cs:line 109&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.OptInClientDoesNotFollowRedirectOrAcquireCookieCredentials" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="c16c3745-35e5-5613-4916-3d5842a2ea02">
+      <Execution id="7cf7c1f6-c4b6-4cd6-954b-915c87496928" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests" name="OptInClientDoesNotFollowRedirectOrAcquireCookieCredentials" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(redirect: True, cookies: False)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="2e766004-9ddb-dfef-bc84-272a92cd02f2">
+      <Execution id="d0f015de-026e-4926-b999-038c223820f3" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests" name="RedirectAndCookieOverridesCannotBypassFrozenTransport" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(redirect: False, cookies: True)" storage="d:\cp6.platform-worktrees\wp02-11-20261013\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="e59428d4-9638-ee8e-fa49-b6e3fb76bf48">
+      <Execution id="272301fa-59e9-48f7-aca5-c344905b9332" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests" name="RedirectAndCookieOverridesCannotBypassFrozenTransport" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="2e766004-9ddb-dfef-bc84-272a92cd02f2" executionId="d0f015de-026e-4926-b999-038c223820f3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e59428d4-9638-ee8e-fa49-b6e3fb76bf48" executionId="272301fa-59e9-48f7-aca5-c344905b9332" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c16c3745-35e5-5613-4916-3d5842a2ea02" executionId="7cf7c1f6-c4b6-4cd6-954b-915c87496928" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="0" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.31]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.38]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.40]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.52]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.52]       Expected: typeof(System.InvalidOperationException)&#xD;
+[xUnit.net 00:00:00.52]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.53]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ProfileRegistrationTests.cs(92,0): at CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(Boolean redirect, Boolean cookies)&#xD;
+[xUnit.net 00:00:00.53]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.53]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.53]       Expected: typeof(System.InvalidOperationException)&#xD;
+[xUnit.net 00:00:00.53]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.53]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ProfileRegistrationTests.cs(92,0): at CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(Boolean redirect, Boolean cookies)&#xD;
+[xUnit.net 00:00:00.53]            at InvokeStub_ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.53]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.70]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.70]       Expected: 1&#xD;
+[xUnit.net 00:00:00.70]       Actual:   51&#xD;
+[xUnit.net 00:00:00.70]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.70]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\LoopbackTests.cs(109,0): at CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.OptInClientDoesNotFollowRedirectOrAcquireCookieCredentials()&#xD;
+[xUnit.net 00:00:00.70]         D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\LoopbackTests.cs(109,0): at CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.OptInClientDoesNotFollowRedirectOrAcquireCookieCredentials()&#xD;
+[xUnit.net 00:00:00.70]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.70]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:36:43.1351413-04:00">
+        <Text>[xUnit.net 00:00:00.52]     CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(redirect: False, cookies: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:36:43.1432029-04:00">
+        <Text>[xUnit.net 00:00:00.53]     CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.RedirectAndCookieOverridesCannotBypassFrozenTransport(redirect: True, cookies: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T08:36:43.3097549-04:00">
+        <Text>[xUnit.net 00:00:00.70]     CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.OptInClientDoesNotFollowRedirectOrAcquireCookieCredentials [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
