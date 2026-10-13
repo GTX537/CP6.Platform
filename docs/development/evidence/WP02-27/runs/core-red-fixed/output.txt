@@ -1,0 +1,410 @@
+  CP6.Platform.Release -> D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\bin\Debug\net8.0\CP6.Platform.Release.dll
+  CP6.Platform.ReleaseTool -> D:\CP6.Platform-worktrees\wp02-27-20261013\tools\CP6.Platform.ReleaseTool\bin\Debug\net8.0\CP6.Platform.ReleaseTool.dll
+  CP6.Platform.ReleaseTests -> D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Debug\net8.0\CP6.Platform.ReleaseTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Debug\net8.0\CP6.Platform.ReleaseTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.93]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "consumerApp") [FAIL]
+[xUnit.net 00:00:00.95]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "semanticValidatorIdentity") [FAIL]
+[xUnit.net 00:00:00.95]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "os") [FAIL]
+[xUnit.net 00:00:00.95]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "packagedSchemaSha256") [FAIL]
+[xUnit.net 00:00:00.95]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "architecture") [FAIL]
+[xUnit.net 00:00:00.95]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "sourceSchemaSha256") [FAIL]
+[xUnit.net 00:00:00.95]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "databaseProvider") [FAIL]
+[xUnit.net 00:00:00.96]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "runtimeFramework") [FAIL]
+[xUnit.net 00:00:00.96]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "databaseDriver") [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "consumerApp") [297 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "semanticValidatorIdentity") [2 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "os") [4 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "packagedSchemaSha256") [2 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "architecture") [2 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "sourceSchemaSha256") [5 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "databaseProvider") [1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "runtimeFramework") [1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "databaseDriver") [10 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:01.01]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "registrationPointRef") [FAIL]
+[xUnit.net 00:00:01.01]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "sdk") [FAIL]
+[xUnit.net 00:00:01.01]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "host") [FAIL]
+[xUnit.net 00:00:01.01]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "route") [FAIL]
+[xUnit.net 00:00:01.01]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "messageType") [FAIL]
+[xUnit.net 00:00:01.01]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "consumerSourceGitSha") [FAIL]
+[xUnit.net 00:00:01.01]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "configurationSha256") [FAIL]
+[xUnit.net 00:00:01.01]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "migrationSet") [FAIL]
+[xUnit.net 00:00:01.02]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "lane", value: "Unknown") [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "registrationPointRef") [5 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "sdk") [2 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "host") [4 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "route") [1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "messageType") [1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "consumerSourceGitSha") [3 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "configurationSha256") [3 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "migrationSet") [3 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 44
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "lane", value: "Unknown") [3 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(String field, String value) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass5_0.<Mutable_or_wrong_identity_is_rejected>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+[xUnit.net 00:00:01.03]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "sourceGitSha", value: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA") [FAIL]
+[xUnit.net 00:00:01.03]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "sourceGitSha", value: "main") [FAIL]
+[xUnit.net 00:00:01.03]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "version", value: "latest") [FAIL]
+[xUnit.net 00:00:01.03]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "repository", value: "https://github.com/other/repo") [FAIL]
+[xUnit.net 00:00:01.03]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "version", value: "0.10.2") [FAIL]
+[xUnit.net 00:00:01.03]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Actual_archive_bytes_and_exact_package_set_are_required [FAIL]
+[xUnit.net 00:00:01.03]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(input: "{} ") [FAIL]
+[xUnit.net 00:00:01.03]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(input: "{\"x\":NaN}") [FAIL]
+[xUnit.net 00:00:01.03]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(input: "{\"x\":1,\"x\":2}") [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "sourceGitSha", value: "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA") [1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(String field, String value) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+   at InvokeStub_CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass5_0.<Mutable_or_wrong_identity_is_rejected>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "sourceGitSha", value: "main") [1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(String field, String value) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+   at InvokeStub_CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass5_0.<Mutable_or_wrong_identity_is_rejected>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "version", value: "latest") [7 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(String field, String value) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+   at InvokeStub_CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass5_0.<Mutable_or_wrong_identity_is_rejected>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "repository", value: "https://github.com/other/repo") [1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(String field, String value) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+   at InvokeStub_CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass5_0.<Mutable_or_wrong_identity_is_rejected>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(field: "version", value: "0.10.2") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(String field, String value) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+   at InvokeStub_CapabilityValidationTests.Mutable_or_wrong_identity_is_rejected(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass5_0.<Mutable_or_wrong_identity_is_rejected>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 90
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Actual_archive_bytes_and_exact_package_set_are_required [2 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Actual_archive_bytes_and_exact_package_set_are_required() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 74
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass4_0.<Actual_archive_bytes_and_exact_package_set_are_required>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 74
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(input: "{} ") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(String input) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 122
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass7_0.<Duplicate_malformed_and_noncanonical_bytes_are_rejected>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 122
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(input: "{\"x\":NaN}") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(String input) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 122
+   at InvokeStub_CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass7_0.<Duplicate_malformed_and_noncanonical_bytes_are_rejected>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 122
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(input: "{\"x\":1,\"x\":2}") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(String input) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 122
+   at InvokeStub_CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+[xUnit.net 00:00:01.03]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(input: "{\"x\":1,\"\\u0078\":2}") [FAIL]
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass7_0.<Duplicate_malformed_and_noncanonical_bytes_are_rejected>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 122
+[xUnit.net 00:00:01.04]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mixed_packages_hash_aliases_wrong_feed_and_unknown_capabilities_fail_closed [FAIL]
+[xUnit.net 00:00:01.04]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Local_bytes_and_shape_do_not_grant_trust_or_adoption [FAIL]
+[xUnit.net 00:00:01.24]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Source_schema_and_semantic_shape_agree_for_closed_contract_mutations [FAIL]
+[xUnit.net 00:00:01.24]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Approval_is_external_and_matrix_source_evidence_bytes_are_immutable [FAIL]
+[xUnit.net 00:00:01.24]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unknown_schema_set_is_not_inferred_from_major_version [FAIL]
+[xUnit.net 00:00:01.25]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Lock_is_deterministic_binds_exact_bytes_and_is_defensively_owned [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(input: "{\"x\":1,\"\\u0078\":2}") [< 1 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(String input) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 122
+   at InvokeStub_CapabilityValidationTests.Duplicate_malformed_and_noncanonical_bytes_are_rejected(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass7_0.<Duplicate_malformed_and_noncanonical_bytes_are_rejected>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 122
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mixed_packages_hash_aliases_wrong_feed_and_unknown_capabilities_fail_closed [8 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Mixed_packages_hash_aliases_wrong_feed_and_unknown_capabilities_fail_closed() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 114
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 6
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass6_0.<Mixed_packages_hash_aliases_wrong_feed_and_unknown_capabilities_fail_closed>b__12() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 114
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Local_bytes_and_shape_do_not_grant_trust_or_adoption [5 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Local_bytes_and_shape_do_not_grant_trust_or_adoption() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 16
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Source_schema_and_semantic_shape_agree_for_closed_contract_mutations [209 ms]
+  Error Message:
+   System.IO.DirectoryNotFoundException : Could not find a part of the path 'D:\CP6.Platform-worktrees\wp02-27-20261013\contracts\release\capabilities\v1\capability-matrix.v1.schema.json'.
+  Stack Trace:
+     at Microsoft.Win32.SafeHandles.SafeFileHandle.CreateFile(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options)
+   at Microsoft.Win32.SafeHandles.SafeFileHandle.Open(String fullPath, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.OSFileStreamStrategy..ctor(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.Strategies.FileStreamHelpers.ChooseStrategyCore(String path, FileMode mode, FileAccess access, FileShare share, FileOptions options, Int64 preallocationSize, Nullable`1 unixCreateMode)
+   at System.IO.StreamReader.ValidateArgsAndOpenPath(String path, Encoding encoding, Int32 bufferSize)
+   at System.IO.File.ReadAllText(String path, Encoding encoding)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Source_schema_and_semantic_shape_agree_for_closed_contract_mutations() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 140
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Approval_is_external_and_matrix_source_evidence_bytes_are_immutable [2 ms]
+  Error Message:
+   Assert.Throws() Failure: Exception type was not an exact match
+Expected: typeof(CP6.Platform.Release.Cp6ReleaseContractException)
+Actual:   typeof(System.NotImplementedException)
+---- System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Approval_is_external_and_matrix_source_evidence_bytes_are_immutable() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 62
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+----- Inner Stack Trace -----
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.<>c__DisplayClass3_0.<Approval_is_external_and_matrix_source_evidence_bytes_are_immutable>b__0() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 62
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unknown_schema_set_is_not_inferred_from_major_version [1 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unknown_schema_set_is_not_inferred_from_major_version() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 53
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Lock_is_deterministic_binds_exact_bytes_and_is_defensively_owned [2 ms]
+  Error Message:
+   System.NotImplementedException : The method or operation is not implemented.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 12
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 203
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Lock_is_deterministic_binds_exact_bytes_and_is_defensively_owned() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 127
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: D:\CP6.Platform-worktrees\wp02-27-20261013\artifacts\wp02-27\core-red-fixed\red.trx
+
+Failed!  - Failed:    34, Passed:     0, Skipped:     0, Total:    34, Duration: 640 ms - CP6.Platform.ReleaseTests.dll (net8.0)

@@ -1,0 +1,33 @@
+  CP6.Platform.ArchitectureTests -> D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ArchitectureTests\bin\Release\net8.0\CP6.Platform.ArchitectureTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ArchitectureTests\bin\Release\net8.0\CP6.Platform.ArchitectureTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.74]     CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Release_package_is_independent_and_owns_only_release_contract_assets [FAIL]
+[xUnit.net 00:00:00.78]     CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_PackageEvidenceAndProductionSafetyGuards_AreEncoded [FAIL]
+  Failed CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Release_package_is_independent_and_owns_only_release_contract_assets [11 ms]
+  Error Message:
+   Assert.Equal() Failure: Collections differ
+           ↓ (pos 0)
+Expected: [Tuple ("../../contracts/release/v1/**/*", "contracts/release/v1/%(RecursiveDir)%(Filename)%(E"···)]
+Actual:   [Tuple ("../../contracts/release/capabilities/v1/**/*", "contracts/release/capabilities/v1/%(RecursiveDir)%"···), Tuple ("../../contracts/release/v1/**/*", "contracts/release/v1/%(RecursiveDir)%(Filename)%(E"···)]
+           ↑ (pos 0)
+  Stack Trace:
+     at CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Release_package_is_independent_and_owns_only_release_contract_assets() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ArchitectureTests\RepositoryArchitectureTests.cs:line 183
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_PackageEvidenceAndProductionSafetyGuards_AreEncoded [36 ms]
+  Error Message:
+   Assert.Equal() Failure: Collections differ
+           ↓ (pos 0)
+Expected: ["contracts/release/v1/%(RecursiveDir)%(Filename)%(E"···]
+Actual:   ["contracts/release/capabilities/v1/%(RecursiveDir)%"···, "contracts/release/v1/%(RecursiveDir)%(Filename)%(E"···]
+           ↑ (pos 0)
+  Stack Trace:
+     at CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_PackageEvidenceAndProductionSafetyGuards_AreEncoded() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ArchitectureTests\RepositoryArchitectureTests.cs:line 418
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: D:\CP6.Platform-worktrees\wp02-27-20261013\artifacts\wp02-27\release-architecture-1\architecture.trx
+
+Failed!  - Failed:     2, Passed:    96, Skipped:     0, Total:    98, Duration: 331 ms - CP6.Platform.ArchitectureTests.dll (net8.0)

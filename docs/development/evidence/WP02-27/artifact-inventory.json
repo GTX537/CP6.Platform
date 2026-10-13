@@ -1,0 +1,1428 @@
+{
+  "captured_utc": "2026-10-13T12:50:26.247560+00:00",
+  "task": "WP02-27",
+  "files": [
+    {
+      "artifact": "core-green/green.trx",
+      "sha256": "041c9836b5c514a3df747222d31b3d82066a3bae92536f51c65255f23d9ba9ad",
+      "bytes": 290449,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-green/output.txt",
+      "sha256": "5f8aa685b73c14332cc3a333d81cb3eff3c090fd559dc9dc2da69ac9159fba0b",
+      "bytes": 961,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-green-initial/green.trx",
+      "sha256": "20c30d0254d20b89ca48fbc775ee9276978cf6fb2c6ac127452da0344ce6b27d",
+      "bytes": 54228,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-green-initial/output.txt",
+      "sha256": "86b58da9d10c5b2b43ca2148b8e6a2e925946e21f978b4baa365fbcccea7ff06",
+      "bytes": 971,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-green-source-version/green.trx",
+      "sha256": "ca111cbbfe5487d7a477bf4562150fa2b8cece94e36ac198652716efd887c35a",
+      "bytes": 85092,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-green-source-version/output.txt",
+      "sha256": "5325815a2ed0868adacc1188a806e9fefcf4d68bf0a96789fbb7d0f4c62b7eb8",
+      "bytes": 975,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-red/output.txt",
+      "sha256": "70391bc24fe4cb7af4c4d3d9af75b9507a8f65aee7d0a185a398bcd0ee1eb425",
+      "bytes": 1069,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-red-boundaries/output.txt",
+      "sha256": "92032b2c4709844ca2168608481c5587288a2fc8d54921e2fa3518aaa826ee85",
+      "bytes": 2869,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-red-boundaries/red.trx",
+      "sha256": "1492d88dcd2cb78ab44411db1078678224982a00432a5302afe8743454b555d4",
+      "bytes": 67346,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-red-fixed/output.txt",
+      "sha256": "021dc8c86f3b66354d14f3589131c4304bd3f92f30506963ca2ae4fc5db6f71e",
+      "bytes": 60492,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-red-fixed/red.trx",
+      "sha256": "ce1564a6298fe2b65c15fde360295707ec9c20efb023e8eb1f9d6440ae0a3bb5",
+      "bytes": 176049,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-red-source-version/output.txt",
+      "sha256": "a28c054e5b17ea43d9f3faf468ef846414361aa07b02b8c9a04564c882a5d974",
+      "bytes": 44257,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-red-source-version/red.trx",
+      "sha256": "45f75920d58f6cf4329a6ead4a70e8cee89724c8f6edbb1ee2979ce79e8225a7",
+      "bytes": 172868,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-red-trust/output.txt",
+      "sha256": "dfd87bb2f16ee17a7f3a05bf902a38e71cad1a7ea405949ee4a7efe37ae7c9f0",
+      "bytes": 1865,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "core-red-trust/red.trx",
+      "sha256": "c325fbab1c9155ee80afd98b647ffb7ab4bcac658641e4e910cf75c82624b429",
+      "bytes": 83944,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/approval-provenance.json",
+      "sha256": "1e4a7e96e7526e60f9573ee59a5af959d5346cd546b09918dec75ad62e0de74c",
+      "bytes": 576,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/consumer-lock.json",
+      "sha256": "c5319440d666f35147af67147471057fc484bc0fb7dbe87130b4523951d0ca9f",
+      "bytes": 2753,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Abstractions.call.json",
+      "sha256": "28b548958f63dde868d1d2819a3cbfe34477aabf9db7230ffb9cadc96008df64",
+      "bytes": 1113,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Abstractions.nupkg",
+      "sha256": "e838ba9c9c6e434f8c8a2bf41e9da7d931a962400435aabb2189f40628c17103",
+      "bytes": 18925,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Abstractions.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Abstractions.stdout.txt",
+      "sha256": "fd9a5d15d6ecc790c11e967993c876875498004aa6dee5980a3c1474c92078f3",
+      "bytes": 768,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.AspNetCore.call.json",
+      "sha256": "4b2db0ff855461be3bebc79195c776d1dfd08920779f935fb953c3fa2010cd2a",
+      "bytes": 1109,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.AspNetCore.nupkg",
+      "sha256": "5dc9cee4335e69f463361afc89d36587650b896059472570753ef485787fec73",
+      "bytes": 62801,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.AspNetCore.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.AspNetCore.stdout.txt",
+      "sha256": "262f7b20aae05eea06d92e148812b02826d6319ca24c477749e992da4374ea9d",
+      "bytes": 766,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Contracts.call.json",
+      "sha256": "fa408f657a0974e093ea1144f40a99c7a2da5e99b9c2b5aee2ed837277bb921c",
+      "bytes": 1107,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Contracts.nupkg",
+      "sha256": "84b62cad23d0ce09a4af545ac5ae73cd625fce33eb77d022740350dac0364570",
+      "bytes": 41910,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Contracts.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Contracts.stdout.txt",
+      "sha256": "cd237fcc8331972f8ef831a146fa2a29e274ebe0902fa57ed26d9689d00fa9fe",
+      "bytes": 765,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Deployment.call.json",
+      "sha256": "b4f89d18330f1694ea5c45976c03a17bb643aaea0ae9d3441a6bbb29d2d3a61c",
+      "bytes": 1109,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Deployment.nupkg",
+      "sha256": "231a7cb3e18fd8ba9a7d60bbe01195ca7676c33b55b542a294c4a76c0fff066b",
+      "bytes": 75087,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Deployment.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Deployment.stdout.txt",
+      "sha256": "113e65b6351ba4b486cb3eb73ed7b4e039318eb677d6ac5ad1a180f1ff1c09c2",
+      "bytes": 766,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.EntityFramework.call.json",
+      "sha256": "186fb07c052236fd724bbed442aca2a20166276fb7dae8b6fd67a425379512c4",
+      "bytes": 1119,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.EntityFramework.nupkg",
+      "sha256": "cc780ce1b454c62f96caa990eb2e0462563b1917e8c505b11100a4555d5b4544",
+      "bytes": 54883,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.EntityFramework.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.EntityFramework.stdout.txt",
+      "sha256": "66faf4c2a9e913a35a7c95a1d46cbdb9b998c8273f51b68ddc2540863c2e7c8e",
+      "bytes": 771,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Messaging.call.json",
+      "sha256": "a706b9d34b908ce6b4654dd1001c11f2fe9544b872f591f2e279c8e646003dfc",
+      "bytes": 1107,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Messaging.nupkg",
+      "sha256": "878994735a171194b8944c58fa919508380fa7d0707aa09176427295d0aab235",
+      "bytes": 55133,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Messaging.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Messaging.stdout.txt",
+      "sha256": "e9d03dab6aed75dadc586d5beb6c7557e0b58d4d4e7a28abb841f20e83b1234c",
+      "bytes": 765,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Release.call.json",
+      "sha256": "5ec2153bf022e13bdfc0f17c8d50a1e2268f239b9f54b92846e9ab0a8f6f250f",
+      "bytes": 1103,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Release.nupkg",
+      "sha256": "0b8fd3b332c837e6f1c0cbe9c312e87a671c4f119d2128768f7284d4fa26a8f1",
+      "bytes": 116423,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Release.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/CP6.Platform.Release.stdout.txt",
+      "sha256": "44a29000e07bf04e08bc1d755dc964b8158df9079924477cb0e9a34deb8cf820",
+      "bytes": 763,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/policy.json",
+      "sha256": "da359e3a8e9be2220541c53613d2da277cb2bb9a22a8770df30c808a033b953f",
+      "bytes": 1035,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/current-verification/publication.json",
+      "sha256": "17fd39f5724ba118771eb95aeb18d78045ea2e576431957ab7c24b8d13719181",
+      "bytes": 7550,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/evidence/17fd39f5724ba118771eb95aeb18d78045ea2e576431957ab7c24b8d13719181.bin",
+      "sha256": "17fd39f5724ba118771eb95aeb18d78045ea2e576431957ab7c24b8d13719181",
+      "bytes": 7550,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/evidence/aa4203a385eb0563679a20e9620cbbc0a7ac88156fba5ed4901ded361c57cd89.bin",
+      "sha256": "aa4203a385eb0563679a20e9620cbbc0a7ac88156fba5ed4901ded361c57cd89",
+      "bytes": 9529,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/matrix.json",
+      "sha256": "c9098dfd193e56a35992191d2140e88d7727de6bdde1fd10214851bec6a5d065",
+      "bytes": 2460,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-1/state.json",
+      "sha256": "05d52cc3d2516b5a66e713abbbedd0e1a21da9797d5027a86013533ab999cecc",
+      "bytes": 422,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/formal-current.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/approval-provenance.json",
+      "sha256": "6e989a6c5950b87c5d469ad4431c70f6bb3ec430ecc206f905244ef20744df7c",
+      "bytes": 576,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/consumer-lock.json",
+      "sha256": "c5319440d666f35147af67147471057fc484bc0fb7dbe87130b4523951d0ca9f",
+      "bytes": 2753,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Abstractions.call.json",
+      "sha256": "25ec4bcb6097d87ce8c138b0ed1f68a18a0ffbde067f401ab5d3c488934166a0",
+      "bytes": 1149,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Abstractions.nupkg",
+      "sha256": "e838ba9c9c6e434f8c8a2bf41e9da7d931a962400435aabb2189f40628c17103",
+      "bytes": 18925,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Abstractions.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Abstractions.stdout.txt",
+      "sha256": "fd9a5d15d6ecc790c11e967993c876875498004aa6dee5980a3c1474c92078f3",
+      "bytes": 768,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.AspNetCore.call.json",
+      "sha256": "4163637e483aa3e9e63f4e188b088f311acc7d9b84dcb8abc5d08a3774b07fd4",
+      "bytes": 1145,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.AspNetCore.nupkg",
+      "sha256": "5dc9cee4335e69f463361afc89d36587650b896059472570753ef485787fec73",
+      "bytes": 62801,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.AspNetCore.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.AspNetCore.stdout.txt",
+      "sha256": "262f7b20aae05eea06d92e148812b02826d6319ca24c477749e992da4374ea9d",
+      "bytes": 766,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Contracts.call.json",
+      "sha256": "6b2a31f81026e14d764acc610a23486eca64c717b4f7560cfe057bd1f4c8cc6b",
+      "bytes": 1143,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Contracts.nupkg",
+      "sha256": "84b62cad23d0ce09a4af545ac5ae73cd625fce33eb77d022740350dac0364570",
+      "bytes": 41910,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Contracts.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Contracts.stdout.txt",
+      "sha256": "cd237fcc8331972f8ef831a146fa2a29e274ebe0902fa57ed26d9689d00fa9fe",
+      "bytes": 765,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Deployment.call.json",
+      "sha256": "ba07654242517d3fe703a23a42bdce0a5fee9f2d5c0aeff4172991ccce1f9955",
+      "bytes": 1145,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Deployment.nupkg",
+      "sha256": "231a7cb3e18fd8ba9a7d60bbe01195ca7676c33b55b542a294c4a76c0fff066b",
+      "bytes": 75087,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Deployment.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Deployment.stdout.txt",
+      "sha256": "113e65b6351ba4b486cb3eb73ed7b4e039318eb677d6ac5ad1a180f1ff1c09c2",
+      "bytes": 766,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.EntityFramework.call.json",
+      "sha256": "194973966f12c9137e7ea3921b39220e04c8983e59709f6a19af0db274dec053",
+      "bytes": 1155,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.EntityFramework.nupkg",
+      "sha256": "cc780ce1b454c62f96caa990eb2e0462563b1917e8c505b11100a4555d5b4544",
+      "bytes": 54883,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.EntityFramework.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.EntityFramework.stdout.txt",
+      "sha256": "66faf4c2a9e913a35a7c95a1d46cbdb9b998c8273f51b68ddc2540863c2e7c8e",
+      "bytes": 771,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Messaging.call.json",
+      "sha256": "c82a032c707ced77c2c0ebdc1c592ee037876bf6ed4749548817c2221118c891",
+      "bytes": 1143,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Messaging.nupkg",
+      "sha256": "878994735a171194b8944c58fa919508380fa7d0707aa09176427295d0aab235",
+      "bytes": 55133,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Messaging.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Messaging.stdout.txt",
+      "sha256": "e9d03dab6aed75dadc586d5beb6c7557e0b58d4d4e7a28abb841f20e83b1234c",
+      "bytes": 765,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Release.call.json",
+      "sha256": "efbb85d5624ccc6f7151035e456a2ee8d60e08a1d0fa997ad5151bfce945770a",
+      "bytes": 1139,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Release.nupkg",
+      "sha256": "0b8fd3b332c837e6f1c0cbe9c312e87a671c4f119d2128768f7284d4fa26a8f1",
+      "bytes": 116423,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Release.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/CP6.Platform.Release.stdout.txt",
+      "sha256": "44a29000e07bf04e08bc1d755dc964b8158df9079924477cb0e9a34deb8cf820",
+      "bytes": 763,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/policy.json",
+      "sha256": "da359e3a8e9be2220541c53613d2da277cb2bb9a22a8770df30c808a033b953f",
+      "bytes": 1035,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/current-verification/publication.json",
+      "sha256": "17fd39f5724ba118771eb95aeb18d78045ea2e576431957ab7c24b8d13719181",
+      "bytes": 7550,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/evidence/17fd39f5724ba118771eb95aeb18d78045ea2e576431957ab7c24b8d13719181.bin",
+      "sha256": "17fd39f5724ba118771eb95aeb18d78045ea2e576431957ab7c24b8d13719181",
+      "bytes": 7550,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/evidence/aa4203a385eb0563679a20e9620cbbc0a7ac88156fba5ed4901ded361c57cd89.bin",
+      "sha256": "aa4203a385eb0563679a20e9620cbbc0a7ac88156fba5ed4901ded361c57cd89",
+      "bytes": 9529,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/matrix.json",
+      "sha256": "c9098dfd193e56a35992191d2140e88d7727de6bdde1fd10214851bec6a5d065",
+      "bytes": 2460,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspection/state.json",
+      "sha256": "05d52cc3d2516b5a66e713abbbedd0e1a21da9797d5027a86013533ab999cecc",
+      "bytes": 422,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/inspector-build.log",
+      "sha256": "7a35db2286169b80cbbc6e89272ca776affecd0a5da12e08f007b3f57794f81b",
+      "bytes": 335,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "formal-current-2/run.json",
+      "sha256": "b00583703a5ad787905415feceabf4937de452ec29a24ddfa77ea52bab7dc0c0",
+      "bytes": 82566,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "green-publication-evidence/capabilities-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "green-publication-evidence/capabilities.log",
+      "sha256": "d7f470836eb61e98761a63d3f69d7562be540f4c0e6fc09a28102da9973a0397",
+      "bytes": 991,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "green-publication-evidence/capabilities.trx",
+      "sha256": "b5e7649e35513941906191b525723787b292db88c3bcab036b1b9c5fd81a243e",
+      "bytes": 91539,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "green-publication-evidence/run.json",
+      "sha256": "139c5d24da72c3c66d4756b18af0ff795492204afdccd7082b2af64e6714bfac",
+      "bytes": 76394,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-build/output.txt",
+      "sha256": "b18d62ee7de7a2d35fd7dbf8167207b13a27bec3018e0cc24030f3b931acce5b",
+      "bytes": 998,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-build-final/output.txt",
+      "sha256": "d323fb93f2161fe86214dab7aa899ab562fa3ad4af14f9c4d7f0fb54a2a34484",
+      "bytes": 335,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-build-fixed/output.txt",
+      "sha256": "80f1d009d89b1225457f372eedcb53f263c4c95d8466d5ae77a479b749ea9bdd",
+      "bytes": 335,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/bad-timestamp.nupkg",
+      "sha256": "e0ccede0469b754a4c0f98735e77a946bfe083db064d576b060e214f738ccf31",
+      "bytes": 109439,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/Current/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/Current/policy.json",
+      "sha256": "da359e3a8e9be2220541c53613d2da277cb2bb9a22a8770df30c808a033b953f",
+      "bytes": 1035,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/fixtures.json",
+      "sha256": "7c68dbd17f5b1c984b4658387f2f9b63e41838077b22ae7999eb46a1d3e4edbe",
+      "bytes": 2042,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/Historical/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/Historical/certificates/39586664feb087c319bd07652b7d159876198ac036e367b244cf01345b7294dd.cer",
+      "sha256": "39586664feb087c319bd07652b7d159876198ac036e367b244cf01345b7294dd",
+      "bytes": 1064,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/Historical/policy.json",
+      "sha256": "07b96ca768222607aab9d81c0f7b96a542158ab65a959cc00e6a512e2a770a62",
+      "bytes": 1594,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/missing-timestamp.nupkg",
+      "sha256": "ec346a4563536aaf824afce0035bbddac3bdfd245a539be081bb4d84831574b9",
+      "bytes": 109420,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/Revoked/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/Revoked/certificates/39586664feb087c319bd07652b7d159876198ac036e367b244cf01345b7294dd.cer",
+      "sha256": "39586664feb087c319bd07652b7d159876198ac036e367b244cf01345b7294dd",
+      "bytes": 1064,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/Revoked/policy.json",
+      "sha256": "18094a707f4c3bf736d1994d524b96648e74cf35c9bfb56a78670ceb2bdcf441",
+      "bytes": 1672,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/UnknownSigner/certificates/39586664feb087c319bd07652b7d159876198ac036e367b244cf01345b7294dd.cer",
+      "sha256": "39586664feb087c319bd07652b7d159876198ac036e367b244cf01345b7294dd",
+      "bytes": 1064,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "inspector-fixtures-smoke/UnknownSigner/policy.json",
+      "sha256": "8ab8f9b06b00e9ce309328365c11383118e854a61b27afba61f79dfeccd903ad",
+      "bytes": 1035,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/Abstractions-pack.log",
+      "sha256": "43f9064db4addd5cf037f086157b7fc1a1c8036a9c2c9f20a319bd1dc62fe5ee",
+      "bytes": 521,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/Abstractions-restore.log",
+      "sha256": "f80e8c463b6ab1be0bd18fa7735ec9ada7e4cd909d3e82b076e5ca58e09b2f50",
+      "bytes": 292,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/AspNetCore-pack.log",
+      "sha256": "ec2e03eec0865acf9b403cfabbd24d528255e176965f6e2e031354b1ac3e02aa",
+      "bytes": 667,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/AspNetCore-restore.log",
+      "sha256": "c326928cd3a5c68d27f99bb1894ca27f575ea9b5a397e067c1c856d3a36e0e71",
+      "bytes": 212,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/Contracts-pack.log",
+      "sha256": "bb0f8916ab71d0c5133e887a56681ee196b1bba79121aeed41d1def0986391ed",
+      "bytes": 364,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/Contracts-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/Deployment-pack.log",
+      "sha256": "69177a7336d9d4fa300b67e7299d34e04f26b0319cf2515497f9bca27ddfe130",
+      "bytes": 368,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/Deployment-restore.log",
+      "sha256": "eac8b2cf0aaa90f7231b32ac1e2688bb75050f6991318896bdbac3ce3c593d9e",
+      "bytes": 164,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/EntityFramework-pack.log",
+      "sha256": "dff54dfd7c38f83d2219fc8a952ba5123aa70e35dde36f096df77f87b52ec1a1",
+      "bytes": 687,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/EntityFramework-restore.log",
+      "sha256": "2ec9e5dff36820c3bdec18c1c775a21d998152409282c4c398668c5ccd2df5f6",
+      "bytes": 222,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/inspection/approval-provenance.json",
+      "sha256": "b13d35a6c255fb2509eee028dda52cb966fe15cbb16c75bc5c464b058135d302",
+      "bytes": 347,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/inspection/archive-inspection.json",
+      "sha256": "21d39a780ba4875a97643cb0d61ee5592a6024a6a36dd2d34874a521050ea352",
+      "bytes": 2760,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/inspection/archive-paths.json",
+      "sha256": "4f91c07e100479a36cb3bfd7bbd6287652913ce7d8135c9adeaf16dcffa89f23",
+      "bytes": 1545,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/inspection/consumer-lock.json",
+      "sha256": "f6985dac4e4941db166267619b0b9dacf555cd549dbc60ce12991f1213fbc7a7",
+      "bytes": 3410,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/inspection/evidence/21d39a780ba4875a97643cb0d61ee5592a6024a6a36dd2d34874a521050ea352.bin",
+      "sha256": "21d39a780ba4875a97643cb0d61ee5592a6024a6a36dd2d34874a521050ea352",
+      "bytes": 2760,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/inspection/evidence/89020635abf2e954b294c93a9056b869192e07ec8c613f68201018645ad46bc6.bin",
+      "sha256": "89020635abf2e954b294c93a9056b869192e07ec8c613f68201018645ad46bc6",
+      "bytes": 23074,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/inspection/evidence/e8868ed248000d2ec253d91819af61a175faa65a172011f45f39fbf0fe3c70fa.bin",
+      "sha256": "e8868ed248000d2ec253d91819af61a175faa65a172011f45f39fbf0fe3c70fa",
+      "bytes": 14114,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/inspection/matrix.json",
+      "sha256": "9a56a8aeab7738845f89c69d76697a53e35504d50397739a778079fe567a47f4",
+      "bytes": 3572,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/inspection/state.json",
+      "sha256": "14f4880686c9b040c60563c48a3894b73330071f8e99d999ec653ac6a4a3fba2",
+      "bytes": 401,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/inspector-build.log",
+      "sha256": "2d658262a62ae5cc1162095d01416e2c80958c6a34a2bee031b1ceb4e2cc8ffb",
+      "bytes": 335,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/local-inspection.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/Messaging-pack.log",
+      "sha256": "4e8dace28ddecdb9dcde2b94963d43766bddb3368a7b0ec40a4299ee889f6697",
+      "bytes": 663,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/Messaging-restore.log",
+      "sha256": "3b382fca85c46475e2fb1237220d869f20592702e1a9693cd731e8a118f2d47d",
+      "bytes": 210,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/packages/CP6.Platform.Abstractions.0.10.3-wp02.27.g77fbf0311ffa4d4b1220861fd7624c7a1d20c405.20261013124916.nupkg",
+      "sha256": "9b1ba19771d79b1766e4ced698644d2955fda8d41d4d1c874f1065f61e93a68a",
+      "bytes": 17102,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "local-pack-1/packages/CP6.Platform.AspNetCore.0.10.3-wp02.27.g77fbf0311ffa4d4b1220861fd7624c7a1d20c405.20261013124916.nupkg",
+      "sha256": "891481e491227e367cf9ed964d393f4b42184a0214bb6431757b4fcf28a7885f",
+      "bytes": 54985,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "local-pack-1/packages/CP6.Platform.Contracts.0.10.3-wp02.27.g77fbf0311ffa4d4b1220861fd7624c7a1d20c405.20261013124916.nupkg",
+      "sha256": "ac4bc9376a672e5ec0ac5e22164959d15d60902b1dbfa1b528b85f80b4a275e9",
+      "bytes": 40841,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "local-pack-1/packages/CP6.Platform.Deployment.0.10.3-wp02.27.g77fbf0311ffa4d4b1220861fd7624c7a1d20c405.20261013124916.nupkg",
+      "sha256": "7f519d8c12b3933c99907db67325b4820285fa43694f8f92d09c81b3e7472aed",
+      "bytes": 66067,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "local-pack-1/packages/CP6.Platform.EntityFramework.0.10.3-wp02.27.g77fbf0311ffa4d4b1220861fd7624c7a1d20c405.20261013124916.nupkg",
+      "sha256": "edeeb5afcdd3906f34c6d815a8ba4e450b00f589db9f6c0fbd6a752616ef95c1",
+      "bytes": 45857,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "local-pack-1/packages/CP6.Platform.Messaging.0.10.3-wp02.27.g77fbf0311ffa4d4b1220861fd7624c7a1d20c405.20261013124916.nupkg",
+      "sha256": "16df9a838244ae3be4f320147d8bfb495dc7d67e52585b10e6a302cb56b49c62",
+      "bytes": 50901,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "local-pack-1/packages/CP6.Platform.Release.0.10.3-wp02.27.g77fbf0311ffa4d4b1220861fd7624c7a1d20c405.20261013124916.nupkg",
+      "sha256": "107cbabc3b91cb612f9f7881bd225985f889ffd6bc176932c558618c93b4fa64",
+      "bytes": 123003,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "local-pack-1/Release-pack.log",
+      "sha256": "6f5fc01f153fa6070fcc9ab198cc30caa3585823b9110491b9a3a769fdd73b16",
+      "bytes": 356,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/Release-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "local-pack-1/run.json",
+      "sha256": "a6582dba02a596c3a8af2315c8dc7eedd3db7fe1dcad0848b9fd58222864ae97",
+      "bytes": 89932,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "red-publication-evidence/capabilities-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "red-publication-evidence/capabilities.log",
+      "sha256": "75f5ed3bd894cac2620277096d794c965de2dbffd4421c38ae798e5f6ef40aa4",
+      "bytes": 5034,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "red-publication-evidence/capabilities.trx",
+      "sha256": "f2e9ef3cea21994bb8f8c42df5e4ba3275d2785b916ba9861be6c5ea35e83523",
+      "bytes": 99515,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "red-publication-evidence-py314/capabilities-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "red-publication-evidence-py314/capabilities.log",
+      "sha256": "c2b82d4f61ca1813dcc92e4c384474b17d19abb1d0936336d9e76075b07b74ea",
+      "bytes": 5040,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "red-publication-evidence-py314/capabilities.trx",
+      "sha256": "4d0d01644103f6c8f0c9ff6dcf18d90a6c145771bc891c555ea81c3c24be1111",
+      "bytes": 99515,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "red-publication-evidence-py314/run.json",
+      "sha256": "eef3521c18236869f6abe00dcc599d5192f7104c5bf28b3f537941d2c69e1679",
+      "bytes": 76561,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-architecture-1/architecture-restore.log",
+      "sha256": "19f5786228958930ed64b54ce9612c0e6fed920bde50eae8c8031b50df658198",
+      "bytes": 181,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-architecture-1/architecture.log",
+      "sha256": "1bab55cae55e07107755496b5ccc49f9089c2bdd14d09868e5448235db520663",
+      "bytes": 3071,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-architecture-1/architecture.trx",
+      "sha256": "e185d1b3c9e961b707935cdf7bf761ef8343e25fa02afa4b9e3c41b4cec68306",
+      "bytes": 160887,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-architecture-1/release-restore.log",
+      "sha256": "32336dfe4f33a70b3026eb58aee38cf46b3ba233520c396f9a62a5613bcc46f4",
+      "bytes": 422,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-architecture-1/release.log",
+      "sha256": "78da07dc3ee03c0b03ee3b02c210a95bbe4d3f06c98b0914e70ff666166be0e3",
+      "bytes": 983,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-architecture-1/release.trx",
+      "sha256": "4b25fcb1e3d90696722e1a7686905298720d2361d8cc9984e918b22bf1af9b09",
+      "bytes": 175915,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-architecture-1/run.json",
+      "sha256": "8f2a49649cb1c5db029681633767bb46207d30d84d15d273cf0001b676ed662d",
+      "bytes": 78337,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-publication-fix-2/release-restore.log",
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc",
+      "bytes": 82,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-publication-fix-2/release.log",
+      "sha256": "ab4064dbe0cbe02c8b72dfccaaaffd02459fa3744adc9aaf9b362100e5cf9049",
+      "bytes": 986,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-publication-fix-2/release.trx",
+      "sha256": "156afc7c3d253c24f147fb45f5c20750c1ad1610c42d0bc41d3e69933d210270",
+      "bytes": 182146,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "release-publication-fix-2/run.json",
+      "sha256": "8350a0de6c4ccb2d19f92aca9262738c4b53c30113478e7c319a6ef7837c3da0",
+      "bytes": 76482,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/bad-timestamp.log",
+      "sha256": "ac43a3cbb94f16dc8c024435b9190ed1235b137969f45742ce7d482ac9193f35",
+      "bytes": 29,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/bad-timestamp.nupkg",
+      "sha256": "a2cf8f2a6bfc5d2daca3cc1bf4171c84dc48379e859fe064c5d288100db2ec38",
+      "bytes": 11942,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/Current/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/Current/policy.json",
+      "sha256": "da359e3a8e9be2220541c53613d2da277cb2bb9a22a8770df30c808a033b953f",
+      "bytes": 1035,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/fixtures.json",
+      "sha256": "2f7539ce76ed7f39b82f544eac5072653ccc7a07aa53dc5a56f224f3ce6a74ab",
+      "bytes": 2066,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/Historical/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/Historical/certificates/5a45dfec788bf6bab98807f81e5c454c1bc6b08ccf7ea8bf5310af28fe490386.cer",
+      "sha256": "5a45dfec788bf6bab98807f81e5c454c1bc6b08ccf7ea8bf5310af28fe490386",
+      "bytes": 1064,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/Historical/policy.json",
+      "sha256": "559a15ba0b10c92a3f78d4b36f1bd4cb786ccb0ccf26688496299be4942dfec8",
+      "bytes": 1594,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/missing-timestamp.nupkg",
+      "sha256": "aeb9887653c9ac0dfae788ade6682679b4d3d6fc2d3aa079332d89dfa038615d",
+      "bytes": 11923,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/Revoked/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/Revoked/certificates/5a45dfec788bf6bab98807f81e5c454c1bc6b08ccf7ea8bf5310af28fe490386.cer",
+      "sha256": "5a45dfec788bf6bab98807f81e5c454c1bc6b08ccf7ea8bf5310af28fe490386",
+      "bytes": 1064,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/Revoked/policy.json",
+      "sha256": "a835e0b08ccc25d40f24033e1b22390676c7b032674d5230d2b50c418bdd4e99",
+      "bytes": 1672,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/tampered.nupkg",
+      "sha256": "62d96c5857d800259f40222aed70a765551ab3d462e9998141fc78d7f75f06cf",
+      "bytes": 18841,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/UnknownSigner/certificates/5a45dfec788bf6bab98807f81e5c454c1bc6b08ccf7ea8bf5310af28fe490386.cer",
+      "sha256": "5a45dfec788bf6bab98807f81e5c454c1bc6b08ccf7ea8bf5310af28fe490386",
+      "bytes": 1064,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures/UnknownSigner/policy.json",
+      "sha256": "eb859fe26dff6993277c26146f4274ac8dcbdbc507ecc181230d01efac5d95f8",
+      "bytes": 1035,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/fixtures.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/historical-audit.log",
+      "sha256": "fd9a5d15d6ecc790c11e967993c876875498004aa6dee5980a3c1474c92078f3",
+      "bytes": 768,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/historical-current.log",
+      "sha256": "844e8fd7ee59b958f80e9b1653f21f23a5448cd60a36653be556d61760a5d878",
+      "bytes": 71,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/missing-timestamp.log",
+      "sha256": "f1a20427b6750dcfea6708372e8cf4d3bd72738fa4bfec88edecd9ec3bf41d39",
+      "bytes": 73,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/revoked-current.log",
+      "sha256": "259ecd5bc212ac076307b3cc1f4d6f032c1c6ea76b42c6234d78df047cba699a",
+      "bytes": 70,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/run.json",
+      "sha256": "4f14571d98d3bc3576a7ea4bc18dfc65d546d8fdfd7001cd4765d557f60228d7",
+      "bytes": 86216,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/tampered.log",
+      "sha256": "ac43a3cbb94f16dc8c024435b9190ed1235b137969f45742ce7d482ac9193f35",
+      "bytes": 29,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-negatives-1/unknown-signer.log",
+      "sha256": "79d993c83019da8cf863cec36e0f2c177d3e0f6d51906076da157c4425ebaab1",
+      "bytes": 55,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/bad-timestamp.nupkg",
+      "sha256": "a9e5bf284aa710f961748680686ead5479b1c2f20f62a58ed15be4da6b506d1c",
+      "bytes": 11942,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/Current/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/Current/policy.json",
+      "sha256": "da359e3a8e9be2220541c53613d2da277cb2bb9a22a8770df30c808a033b953f",
+      "bytes": 1035,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/fixtures.json",
+      "sha256": "033c2c4ede2dc86b58fd080bbf0dd170d39c1c3b2bb27e0648d16957db82ce21",
+      "bytes": 2058,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/Historical/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/Historical/certificates/4dbdcbb1fcf058de9494122a5ff9a25a7b5cd6697363d5cebe50ef19223b45f2.cer",
+      "sha256": "4dbdcbb1fcf058de9494122a5ff9a25a7b5cd6697363d5cebe50ef19223b45f2",
+      "bytes": 1064,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/Historical/policy.json",
+      "sha256": "b6a341588f37a6c31974aab647f584761d4102884d9e16a3b5018a56d67f93c7",
+      "bytes": 1594,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/missing-timestamp.nupkg",
+      "sha256": "38739700aebe4834d5df31fd8d3097cdfa04aaeb68c778957d681c6cdd18b4e3",
+      "bytes": 11923,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/Revoked/certificates/1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d.cer",
+      "sha256": "1debfb8ff286ea51192b7f259d1ac823c105c4188eac40148598d37f0e20ff0d",
+      "bytes": 1073,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/Revoked/certificates/4dbdcbb1fcf058de9494122a5ff9a25a7b5cd6697363d5cebe50ef19223b45f2.cer",
+      "sha256": "4dbdcbb1fcf058de9494122a5ff9a25a7b5cd6697363d5cebe50ef19223b45f2",
+      "bytes": 1064,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/Revoked/policy.json",
+      "sha256": "8ff08d94c7561fec092ad567c49d98d27b77f32a0bde7495eeefc092afde40bd",
+      "bytes": 1672,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/tampered.nupkg",
+      "sha256": "62d96c5857d800259f40222aed70a765551ab3d462e9998141fc78d7f75f06cf",
+      "bytes": 18841,
+      "retained": false,
+      "reason": "Local archive/binary retained in task artifacts only; never published"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/UnknownSigner/certificates/4dbdcbb1fcf058de9494122a5ff9a25a7b5cd6697363d5cebe50ef19223b45f2.cer",
+      "sha256": "4dbdcbb1fcf058de9494122a5ff9a25a7b5cd6697363d5cebe50ef19223b45f2",
+      "bytes": 1064,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures/UnknownSigner/policy.json",
+      "sha256": "08d6f8066c2ebdc707831165ed52d815521ea6922ee9de029b37b05d30fe5b0b",
+      "bytes": 1035,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/fixtures.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/run.json",
+      "sha256": "bef6e2a0180a0bab2637ab57e0c9802181911a7f79f3983d2b5792916f60a74a",
+      "bytes": 79022,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    },
+    {
+      "artifact": "trust-tampered-2/tampered.log",
+      "sha256": "ac43a3cbb94f16dc8c024435b9190ed1235b137969f45742ce7d482ac9193f35",
+      "bytes": 29,
+      "retained": true,
+      "reason": "Exact original evidence bytes"
+    }
+  ],
+  "scope": "No nupkg/private material committed; DER fixtures are public certificates; bin evidence is JSON only"
+}

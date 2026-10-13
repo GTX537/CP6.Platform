@@ -1,0 +1,252 @@
+  CP6.Platform.Release -> D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\bin\Debug\net8.0\CP6.Platform.Release.dll
+  CP6.Platform.ReleaseTool -> D:\CP6.Platform-worktrees\wp02-27-20261013\tools\CP6.Platform.ReleaseTool\bin\Debug\net8.0\CP6.Platform.ReleaseTool.dll
+  CP6.Platform.ReleaseTests -> D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Debug\net8.0\CP6.Platform.ReleaseTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Debug\net8.0\CP6.Platform.ReleaseTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.52]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "consumerApp") [FAIL]
+[xUnit.net 00:00:00.53]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "semanticValidatorIdentity") [FAIL]
+[xUnit.net 00:00:00.53]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "os") [FAIL]
+[xUnit.net 00:00:00.54]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "packagedSchemaSha256") [FAIL]
+[xUnit.net 00:00:00.54]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "architecture") [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "consumerApp") [4 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "semanticValidatorIdentity") [5 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "os") [6 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "packagedSchemaSha256") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "architecture") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+[xUnit.net 00:00:00.57]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "sourceSchemaSha256") [FAIL]
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+[xUnit.net 00:00:00.57]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "databaseProvider") [FAIL]
+[xUnit.net 00:00:00.58]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "runtimeFramework") [FAIL]
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.58]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "databaseDriver") [FAIL]
+[xUnit.net 00:00:00.58]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "registrationPointRef") [FAIL]
+[xUnit.net 00:00:00.58]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "sdk") [FAIL]
+[xUnit.net 00:00:00.58]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "host") [FAIL]
+[xUnit.net 00:00:00.58]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "route") [FAIL]
+[xUnit.net 00:00:00.58]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "messageType") [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "sourceSchemaSha256") [4 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "databaseProvider") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "runtimeFramework") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "databaseDriver") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "registrationPointRef") [4 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "sdk") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "host") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "route") [5 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "messageType") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.59]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "consumerSourceGitSha") [FAIL]
+[xUnit.net 00:00:00.59]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "configurationSha256") [FAIL]
+[xUnit.net 00:00:00.59]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "migrationSet") [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "consumerSourceGitSha") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "configurationSha256") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(property: "migrationSet") [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(String property) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 109
+   at InvokeStub_CapabilityValidationTests.Unmeasured_exact_combination_is_unknown(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.69]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Lock_matches_its_closed_schema_and_does_not_encode_a_trust_grant [FAIL]
+[xUnit.net 00:00:00.72]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Local_bytes_and_shape_do_not_grant_trust_or_adoption [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Lock_matches_its_closed_schema_and_does_not_encode_a_trust_grant [58 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Lock_matches_its_closed_schema_and_does_not_encode_a_trust_grant() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 52
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Local_bytes_and_shape_do_not_grant_trust_or_adoption [3 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Local_bytes_and_shape_do_not_grant_trust_or_adoption() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 81
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unknown_schema_set_is_not_inferred_from_major_version [FAIL]
+[xUnit.net 00:00:00.86]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Lock_is_deterministic_binds_exact_bytes_and_is_defensively_owned [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unknown_schema_set_is_not_inferred_from_major_version [2 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Unknown_schema_set_is_not_inferred_from_major_version() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 118
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Lock_is_deterministic_binds_exact_bytes_and_is_defensively_owned [10 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Fixture.Evaluate(Cp6CapabilityApproval approval, Byte[] request) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 273
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Lock_is_deterministic_binds_exact_bytes_and_is_defensively_owned() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 192
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:03.54]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityTrustTests.Task_local_lane_cannot_be_promoted_by_an_external_success [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityTrustTests.Task_local_lane_cannot_be_promoted_by_an_external_success [375 ms]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Task-local packages require an exact unique WP02-27 prerelease identity.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 36
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityTrustTests.Task_local_lane_cannot_be_promoted_by_an_external_success() in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityTrustTests.cs:line 37
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: D:\CP6.Platform-worktrees\wp02-27-20261013\artifacts\wp02-27\core-red-source-version\red.trx
+
+Failed!  - Failed:    22, Passed:    32, Skipped:     0, Total:    54, Duration: 3 s - CP6.Platform.ReleaseTests.dll (net8.0)
