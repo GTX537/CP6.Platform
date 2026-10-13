@@ -1,0 +1,38 @@
+{
+  "task": "WP02-01",
+  "baseline": "dc4c0ab216974339ab3c2cebaaf4bb92c9e9b351",
+  "candidate_review_tree": "83bf1296739c0788b9fbbd16a29dc5adc7c19193",
+  "checks": {
+    "allowlist": "PASS: every staged task file checked against fixed wave4 dispatch allowlist",
+    "git_diff_check": "PASS",
+    "sensitive_material": "PASS: scanned explicit task files for private keys and GitHub token formats; fixtures are synthetic",
+    "local_doc_links": "PASS: WP02-01, ACCEPTANCE and VALIDATION relative links resolve",
+    "source_matches_full_test_inputs": "PASS: 197 source/project file raw hashes unchanged",
+    "original_ac_count": 28,
+    "original_ac_statuses": "NOT_RUN",
+    "PGT_004_status": "NOT_RUN",
+    "mapped_test_references": "PASS: every named library assertion found and Passed in final two TRX files"
+  },
+  "read_only_byte_checks": {
+    "src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj": "72694b721d9ded2d68a76ddaf75541128e369fede5a11cb206264d95b0882e82",
+    "src/CP6.Platform.Abstractions/IRequestContext.cs": "d049811547ead73e0946766cd233050ba7ee33364b198379a158c5b082710cc3",
+    "src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj": "a9464c3bc9c8da4048cd12e0ae56c4426cb2a9504573d7a23ccaa09b62260f4b",
+    "src/CP6.Platform.AspNetCore/Cp6JwtBearerExtensions.cs": "4c932ed3794cb01197e87f36a2841580b3b74864bb87375267a9878625ecf78f",
+    "src/CP6.Platform.AspNetCore/Cp6JwtBearerProfile.cs": "3bac417d52c026df8cd8037ecaaca88a0ebc0f5d27c5d247f1ad36090b446771",
+    "src/CP6.Platform.AspNetCore/Cp6JwtClaimsValidator.cs": "4c58cb8f6869705a5841fe3d7652446c4ff04fb3a86730a0bd2f3f8586a585f4",
+    "src/CP6.Platform.AspNetCore/Cp6JwtConfigurationManager.cs": "6cfdd7fd969c17b685ebe5225158c2c6bc6b5bc8e3697939183f50a9dc19a1fe",
+    "src/CP6.Platform.AspNetCore/IRequestContextResolver.cs": "c77188c7d2c4f7a0dc15ef9ce2a2b0ffe45b9503409377bda480bbbca2b0500a",
+    "src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj": "155913bd995dfd0eb2c787268358eeeac3d24a98f4c285ecc64e92bc4650dfe2",
+    "src/CP6.Platform.Contracts/RequestContextSnapshot.cs": "7dfd733411eed22d6bf0c8f237f56dd8d7473c550987c553d163d8ce0c425b61",
+    "src/CP6.Platform.Deployment/CP6.Platform.Deployment.csproj": "0659da14a882462b6dc379ced5dd749de440202aeef96d8f95005f7210c13026",
+    "src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj": "0974e3aa4f8c015a97b150f7057766efbfc5a5de52eef841b03abd56b157f890",
+    "src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj": "0a96e08cd30b40637509f45f5a825fffca0e101d8ab6ae938f12af950480f8ca",
+    "src/CP6.Platform.Messaging/Cp6CloudEventAttributes.cs": "6bb482274ae9d886cc1d140be61702e197c8cab50f906288dc3d878185694aba",
+    "src/CP6.Platform.Messaging/Cp6CloudEventCodec.cs": "d8aaec980fb6ac07c509bc225f0f6de3c5ba4f9bde35242b118d283d25133ccf",
+    "src/CP6.Platform.Messaging/Cp6CloudEventDescriptor.cs": "4ce9575a00ab0ca50c17be29f70c5a044b91b75954ebafd1d08b4e7e2bbe39c7",
+    "src/CP6.Platform.Messaging/Cp6CloudEventValidator.cs": "ebf93a275474d06e82a229133070c6e3675f9937c039e6c0f513120444e2b44a",
+    "src/CP6.Platform.Release/CP6.Platform.Release.csproj": "a711243f18ed49874cc0032fc11f31938b4febdcb9e9425f63bfe9b57a5eeeb1",
+    "src/CP6.Platform.Testing/CP6.Platform.Testing.csproj": "80a51d405364c3d503fcd9c44bb8afc8b46fcc02dab35ff8f0b07e1a5aee77a9"
+  },
+  "real_host_database_release": "NOT_RUN"
+}

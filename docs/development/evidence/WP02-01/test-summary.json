@@ -1,0 +1,263 @@
+[
+  {
+    "file": "docs/development/evidence/WP02-01/test-results/boundary-check.trx",
+    "sha256": "3bd45ca1acbb6ab5f47a1d8ab27c5c88344079936be2ed75bd6f558160527614",
+    "counters": {
+      "total": "70",
+      "executed": "70",
+      "passed": "69",
+      "failed": "1",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "times": {
+      "creation": "2026-10-13T01:30:54.4340465-04:00",
+      "queuing": "2026-10-13T01:30:54.4340467-04:00",
+      "start": "2026-10-13T01:30:53.4971639-04:00",
+      "finish": "2026-10-13T01:30:54.4733301-04:00"
+    },
+    "context_rows": 70
+  },
+  {
+    "file": "docs/development/evidence/WP02-01/test-results/full-http.trx",
+    "sha256": "b8f6f643a5b1090f5ef14845fb55d0534c7767636a6449a355526da4b129d910",
+    "counters": {
+      "total": "243",
+      "executed": "243",
+      "passed": "243",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "times": {
+      "creation": "2026-10-13T01:36:37.9674692-04:00",
+      "queuing": "2026-10-13T01:36:37.9674697-04:00",
+      "start": "2026-10-13T01:36:36.6312229-04:00",
+      "finish": "2026-10-13T01:36:47.4554073-04:00"
+    },
+    "context_rows": 16
+  },
+  {
+    "file": "docs/development/evidence/WP02-01/test-results/full-unit.trx",
+    "sha256": "234bdf9115f50ccba28195ace819f9b75afe5f1987695669da6a31df6e91a528",
+    "counters": {
+      "total": "259",
+      "executed": "259",
+      "passed": "259",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "times": {
+      "creation": "2026-10-13T01:37:22.5340846-04:00",
+      "queuing": "2026-10-13T01:37:22.5340850-04:00",
+      "start": "2026-10-13T01:37:21.7472035-04:00",
+      "finish": "2026-10-13T01:37:24.1217352-04:00"
+    },
+    "context_rows": 79
+  },
+  {
+    "file": "docs/development/evidence/WP02-01/test-results/green-core.trx",
+    "sha256": "7399db57e576b3a2b92bc259dec3b3871b0e64feb20f68da1fee2ee6e16fc6b7",
+    "counters": {
+      "total": "23",
+      "executed": "23",
+      "passed": "23",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "times": {
+      "creation": "2026-10-13T01:24:39.4969280-04:00",
+      "queuing": "2026-10-13T01:24:39.4969284-04:00",
+      "start": "2026-10-13T01:24:38.3229850-04:00",
+      "finish": "2026-10-13T01:24:39.5299842-04:00"
+    },
+    "context_rows": 23
+  },
+  {
+    "file": "docs/development/evidence/WP02-01/test-results/green-http.trx",
+    "sha256": "9b196921d9310526d29612caa29a1aedbcd8916aab77fc67f5f09309f61fa290",
+    "counters": {
+      "total": "16",
+      "executed": "16",
+      "passed": "16",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "times": {
+      "creation": "2026-10-13T01:28:45.8994279-04:00",
+      "queuing": "2026-10-13T01:28:45.8994282-04:00",
+      "start": "2026-10-13T01:28:44.9138373-04:00",
+      "finish": "2026-10-13T01:28:45.9252113-04:00"
+    },
+    "context_rows": 16
+  },
+  {
+    "file": "docs/development/evidence/WP02-01/test-results/red-bindings.trx",
+    "sha256": "0d8e6f72550250fe6241648fff130e3007bd1873e4469745bcb98d0dbc9551a0",
+    "counters": {
+      "total": "10",
+      "executed": "10",
+      "passed": "0",
+      "failed": "10",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "times": {
+      "creation": "2026-10-13T01:21:47.5731698-04:00",
+      "queuing": "2026-10-13T01:21:47.5731706-04:00",
+      "start": "2026-10-13T01:21:44.6643596-04:00",
+      "finish": "2026-10-13T01:21:47.6132695-04:00"
+    },
+    "context_rows": 10
+  },
+  {
+    "file": "docs/development/evidence/WP02-01/test-results/red-http.trx",
+    "sha256": "55ea88be4659744103ad8989d4ca42c66e3be95ab96d40a4f06f8f60c0937c0d",
+    "counters": {
+      "total": "9",
+      "executed": "9",
+      "passed": "1",
+      "failed": "8",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "times": {
+      "creation": "2026-10-13T01:26:29.1277869-04:00",
+      "queuing": "2026-10-13T01:26:29.1277883-04:00",
+      "start": "2026-10-13T01:26:25.6244399-04:00",
+      "finish": "2026-10-13T01:26:29.1340200-04:00"
+    },
+    "context_rows": 9
+  },
+  {
+    "file": "docs/development/evidence/WP02-01/test-results/red-legacy.trx",
+    "sha256": "98b078cb9da00301a97eb9361e6d1d694860848f57959f1ef1ec15ddcb975d11",
+    "counters": {
+      "total": "7",
+      "executed": "7",
+      "passed": "6",
+      "failed": "1",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "times": {
+      "creation": "2026-10-13T01:28:05.6411554-04:00",
+      "queuing": "2026-10-13T01:28:05.6411558-04:00",
+      "start": "2026-10-13T01:28:04.6031880-04:00",
+      "finish": "2026-10-13T01:28:05.6496184-04:00"
+    },
+    "context_rows": 7
+  },
+  {
+    "file": "docs/development/evidence/WP02-01/test-results/red-scope.trx",
+    "sha256": "b64671a0332ba2e5268a66e39778a54e98790bd8097069c125550edb6e541de8",
+    "counters": {
+      "total": "23",
+      "executed": "23",
+      "passed": "0",
+      "failed": "23",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "times": {
+      "creation": "2026-10-13T01:23:18.3929898-04:00",
+      "queuing": "2026-10-13T01:23:18.3929903-04:00",
+      "start": "2026-10-13T01:23:17.4084278-04:00",
+      "finish": "2026-10-13T01:23:18.4294618-04:00"
+    },
+    "context_rows": 23
+  }
+]

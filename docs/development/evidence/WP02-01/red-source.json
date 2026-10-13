@@ -1,0 +1,13 @@
+{
+  "stage": "RED compilable seams before implementation",
+  "baseline": "dc4c0ab216974339ab3c2cebaaf4bb92c9e9b351",
+  "files": {
+    "src/CP6.Platform.Abstractions/Context/ContextBoundariesV1.cs": "ba9f3d52ec6dde335522f45702967be5eaf3e25021463777c756c0b14b92d7ef",
+    "src/CP6.Platform.Abstractions/Context/ContextScopeAccessorV1.cs": "0602a1181f09975af6218ea84d8c0beec614d158bb7e23f40eda07ac0dc0e7e6",
+    "src/CP6.Platform.Abstractions/Context/TrustedContextExecutorV1.cs": "c7d464c9866ce3d8c97d6c3a90f862defdc1247a4f6a5cd92e7cdd1f904a38b9",
+    "src/CP6.Platform.Contracts/Context/ContextContractsV1.cs": "2840946a04e1b7599236f4710b904024886a3630ecb867e579efd15231153922",
+    "tests/CP6.Platform.UnitTests/Context/ContextFixture.cs": "a4f6ff44209c9183817831a14e41d89791507850677075cf3bb7327f403e13be",
+    "tests/CP6.Platform.UnitTests/Context/ContextScopeTests.cs": "c2d1af82daa86738c3172da43888931eb409b4a6fbba70df31947cdbed0d988e",
+    "tests/CP6.Platform.UnitTests/Context/TrustedContextTests.cs": "2274d15774f498ca1110601ca999e7088e8b64abb9fc407ced1899ec748d44bf"
+  }
+}
