@@ -1,0 +1,12 @@
+{
+  "Owner": "96a5576f1545a120a8e9c07ad86cc42a",
+  "Marker": "CP6-WP02-07:96a5576f1545a120a8e9c07ad86cc42a",
+  "Port": 55427,
+  "Database": "cp6_wp0207_20261013_96a5576f",
+  "Admin": "wp0207_admin_96a5576f",
+  "Runtime": "wp0207_runtime_96a5576f",
+  "RunDirectory": "D:\\CP6-local-test\\WP02-07\\96a5576f1545a120a8e9c07ad86cc42a",
+  "DataDirectory": "D:\\CP6-local-test\\WP02-07\\96a5576f1545a120a8e9c07ad86cc42a\\data",
+  "SystemIdentifier": "7696132026083204824",
+  "DatabaseOid": "16389"
+}

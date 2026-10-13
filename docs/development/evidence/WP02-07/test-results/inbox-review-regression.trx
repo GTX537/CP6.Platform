@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="c6b699c2-f340-46d0-90e6-b47e31084590" name="tt@LAPTOP-3QQ44FJS 2026-10-13 08:41:49" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T08:41:49.2041588-04:00" queuing="2026-10-13T08:41:49.2041592-04:00" start="2026-10-13T08:41:47.7829141-04:00" finish="2026-10-13T08:41:49.2088934-04:00" />
+  <TestSettings name="default" id="234345f1-deeb-43f2-96e8-0419aa3d3f15">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-13_08_41_49" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="3dac6c1f-1f48-45ff-b1ba-21c868b9cbaf" testId="d70eb844-637e-08cb-d8e4-e2f40c16d2c8" testName="CP6.Platform.UnitTests.InboxV1.InboxContractTests.Bytes_and_digest_domains_remain_exact(raw: &quot; { \&quot;meta\&quot;: 1, \&quot;data\&quot; : [ 1,2.00 ] } &quot;, data: &quot;[ 1,2.00 ]&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002315" startTime="2026-10-13T08:41:49.0928463-04:00" endTime="2026-10-13T08:41:49.0929080-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3dac6c1f-1f48-45ff-b1ba-21c868b9cbaf" />
+    <UnitTestResult executionId="9823198b-528e-4967-9936-a8c9bc0becf2" testId="9808eb43-9d78-605b-ffec-6f82fbe5ff8b" testName="CP6.Platform.UnitTests.InboxV1.InboxContractTests.Bytes_and_digest_domains_remain_exact(raw: &quot;{\&quot;data\&quot;:\&quot;\\u4f60\&quot;}&quot;, data: &quot;\&quot;\\u4f60\&quot;&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0000281" startTime="2026-10-13T08:41:49.0932797-04:00" endTime="2026-10-13T08:41:49.0933126-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9823198b-528e-4967-9936-a8c9bc0becf2" />
+    <UnitTestResult executionId="1445fe06-7715-47f6-9244-7c490ca212c5" testId="1efd0cfa-feab-c90c-d911-c346ce72c328" testName="CP6.Platform.UnitTests.InboxV1.InboxContractTests.Bytes_and_digest_domains_remain_exact(raw: &quot;{\&quot;data\&quot;:null}&quot;, data: &quot;null&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.1181516" startTime="2026-10-13T08:41:48.9615848-04:00" endTime="2026-10-13T08:41:49.0857706-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1445fe06-7715-47f6-9244-7c490ca212c5" />
+    <UnitTestResult executionId="10eb048b-de63-47dc-a437-4fbb8148e5de" testId="6c2452c1-76fa-258f-ea7d-94055a8e48f8" testName="CP6.Platform.UnitTests.InboxV1.InboxContractTests.Bytes_and_digest_domains_remain_exact(raw: &quot;{\&quot;data\&quot;:{\&quot;n\&quot;:1.00}}&quot;, data: &quot;{\&quot;n\&quot;:1.00}&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0000136" startTime="2026-10-13T08:41:49.0933794-04:00" endTime="2026-10-13T08:41:49.0934053-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="10eb048b-de63-47dc-a437-4fbb8148e5de" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.UnitTests.InboxV1.InboxContractTests.Bytes_and_digest_domains_remain_exact(raw: &quot; { \&quot;meta\&quot;: 1, \&quot;data\&quot; : [ 1,2.00 ] } &quot;, data: &quot;[ 1,2.00 ]&quot;)" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="d70eb844-637e-08cb-d8e4-e2f40c16d2c8">
+      <Execution id="3dac6c1f-1f48-45ff-b1ba-21c868b9cbaf" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.InboxV1.InboxContractTests" name="Bytes_and_digest_domains_remain_exact" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.InboxV1.InboxContractTests.Bytes_and_digest_domains_remain_exact(raw: &quot;{\&quot;data\&quot;:null}&quot;, data: &quot;null&quot;)" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="1efd0cfa-feab-c90c-d911-c346ce72c328">
+      <Execution id="1445fe06-7715-47f6-9244-7c490ca212c5" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.InboxV1.InboxContractTests" name="Bytes_and_digest_domains_remain_exact" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.InboxV1.InboxContractTests.Bytes_and_digest_domains_remain_exact(raw: &quot;{\&quot;data\&quot;:{\&quot;n\&quot;:1.00}}&quot;, data: &quot;{\&quot;n\&quot;:1.00}&quot;)" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="6c2452c1-76fa-258f-ea7d-94055a8e48f8">
+      <Execution id="10eb048b-de63-47dc-a437-4fbb8148e5de" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.InboxV1.InboxContractTests" name="Bytes_and_digest_domains_remain_exact" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.InboxV1.InboxContractTests.Bytes_and_digest_domains_remain_exact(raw: &quot;{\&quot;data\&quot;:\&quot;\\u4f60\&quot;}&quot;, data: &quot;\&quot;\\u4f60\&quot;&quot;)" storage="d:\cp6.platform-worktrees\wp02-07-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="9808eb43-9d78-605b-ffec-6f82fbe5ff8b">
+      <Execution id="9823198b-528e-4967-9936-a8c9bc0becf2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-07-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.InboxV1.InboxContractTests" name="Bytes_and_digest_domains_remain_exact" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="d70eb844-637e-08cb-d8e4-e2f40c16d2c8" executionId="3dac6c1f-1f48-45ff-b1ba-21c868b9cbaf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9808eb43-9d78-605b-ffec-6f82fbe5ff8b" executionId="9823198b-528e-4967-9936-a8c9bc0becf2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1efd0cfa-feab-c90c-d911-c346ce72c328" executionId="1445fe06-7715-47f6-9244-7c490ca212c5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6c2452c1-76fa-258f-ea7d-94055a8e48f8" executionId="10eb048b-de63-47dc-a437-4fbb8148e5de" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.47]   Discovering: CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.63]   Discovered:  CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.65]   Starting:    CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.80]   Finished:    CP6.Platform.UnitTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
