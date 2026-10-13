@@ -1,0 +1,216 @@
+  CP6.Platform.Release -> D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Release\bin\Release\net8.0\CP6.Platform.Release.dll
+  CP6.Platform.ReleaseTool -> D:\CP6.Platform-worktrees\wp02-27-20261013\tools\CP6.Platform.ReleaseTool\bin\Release\net8.0\CP6.Platform.ReleaseTool.dll
+  CP6.Platform.ReleaseTests -> D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.76]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x", valid: True) [FAIL]
+[xUnit.net 00:00:00.77]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "./x", valid: False) [FAIL]
+[xUnit.net 00:00:00.77]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: ".", valid: False) [FAIL]
+[xUnit.net 00:00:00.77]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "xy", valid: True) [FAIL]
+[xUnit.net 00:00:00.77]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x/../y", valid: False) [FAIL]
+[xUnit.net 00:00:00.78]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "/x", valid: False) [FAIL]
+[xUnit.net 00:00:00.79]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x//y", valid: False) [FAIL]
+[xUnit.net 00:00:00.80]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "contracts/test.schema.json", valid: True) [FAIL]
+[xUnit.net 00:00:00.80]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "/", valid: False) [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x", valid: True) [340 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: True
+Actual:   False
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 74
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "./x", valid: False) [9 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: ".", valid: False) [2 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "xy", valid: True) [2 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x/../y", valid: False) [3 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "/x", valid: False) [8 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x//y", valid: False) [4 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "contracts/test.schema.json", valid: True) [7 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "/", valid: False) [8 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "", valid: False) [FAIL]
+[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x\\y", valid: False) [FAIL]
+[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x/./y", valid: False) [FAIL]
+[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "..", valid: False) [FAIL]
+[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x/", valid: False) [FAIL]
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "", valid: False) [4 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x\\y", valid: False) [3 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x/./y", valid: False) [10 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "..", valid: False) [3 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x/", valid: False) [6 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+Results File: D:\CP6.Platform-worktrees\wp02-27-20261013\artifacts\wp02-27\coord-schema-path-red\schema-path.trx
+
+Failed!  - Failed:    14, Passed:     0, Skipped:     0, Total:    14, Duration: 438 ms - CP6.Platform.ReleaseTests.dll (net8.0)

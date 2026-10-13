@@ -1,0 +1,4 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-27-20261013\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  Successfully created package 'D:\CP6.Platform-worktrees\wp02-27-20261013\artifacts\wp02-27\coord-schema-local-pack\packages\CP6.Platform.Messaging.0.10.3-wp02.27.g7c59256e13c217fc0e8a66b8f3f46905222fdcbc.20261013134250.nupkg'.

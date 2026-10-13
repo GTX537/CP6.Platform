@@ -1,0 +1,538 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="35ab3186-7d98-407d-8bd6-48af8d83c12e" name="tt@LAPTOP-3QQ44FJS 2026-10-13 09:40:06" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-13T09:40:06.8564005-04:00" queuing="2026-10-13T09:40:06.8564014-04:00" start="2026-10-13T09:40:05.3510013-04:00" finish="2026-10-13T09:40:06.9013565-04:00" />
+  <TestSettings name="default" id="58e5d16a-eaed-4f9d-b26a-68348f0f1c14">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-13_09_40_06" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="04cd4346-17dd-4fae-828e-647a62169cfa" testId="2f9a8b01-189b-a37e-376d-2d6ed0cffd48" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;..&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0034220" startTime="2026-10-13T09:40:06.8186922-04:00" endTime="2026-10-13T09:40:06.8187195-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="04cd4346-17dd-4fae-828e-647a62169cfa">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c0d2451e-909e-4a3b-9b80-00c0679dfec2" testId="8cf66139-e3bd-571d-b757-94156fb3cc82" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;xy&quot;, valid: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0029800" startTime="2026-10-13T09:40:06.7484993-04:00" endTime="2026-10-13T09:40:06.7485284-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c0d2451e-909e-4a3b-9b80-00c0679dfec2">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2f5b8b5c-732e-404a-9097-cd338b233272" testId="84f9cdd5-6d0d-1b41-9e5f-efb9ba467c38" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0062755" startTime="2026-10-13T09:40:06.8192491-04:00" endTime="2026-10-13T09:40:06.8192757-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2f5b8b5c-732e-404a-9097-cd338b233272">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="cf9d5564-827d-43bf-8784-51d799ad68ba" testId="b096145c-feaa-b73f-b4d5-6f04c09a9908" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;contracts/test.schema.json&quot;, valid: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0078438" startTime="2026-10-13T09:40:06.7655794-04:00" endTime="2026-10-13T09:40:06.7715782-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cf9d5564-827d-43bf-8784-51d799ad68ba">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7dd666f7-fb42-49f6-9d28-2ddf773a9a30" testId="9b66b3bb-c0f8-e288-e78d-183a2cfa09aa" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x//y&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0040766" startTime="2026-10-13T09:40:06.7608426-04:00" endTime="2026-10-13T09:40:06.7636214-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7dd666f7-fb42-49f6-9d28-2ddf773a9a30">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5f9de008-1503-4701-8cb6-aeea50285aa9" testId="6824542c-8759-b5b7-85ef-42537a847ad2" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x\\y&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0032771" startTime="2026-10-13T09:40:06.8175312-04:00" endTime="2026-10-13T09:40:06.8175635-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5f9de008-1503-4701-8cb6-aeea50285aa9">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1bc0be09-8d78-4832-88d2-f70e47851c33" testId="c2edcf65-aa82-2edd-4441-f72641379877" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;.&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0028080" startTime="2026-10-13T09:40:06.7477639-04:00" endTime="2026-10-13T09:40:06.7477962-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1bc0be09-8d78-4832-88d2-f70e47851c33">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="58520a4e-8efa-4820-8b6d-643153447721" testId="d9c1bdb1-78b0-6231-92b9-6ef49be4ced8" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;/&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0087157" startTime="2026-10-13T09:40:06.7749958-04:00" endTime="2026-10-13T09:40:06.7805082-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="58520a4e-8efa-4820-8b6d-643153447721">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="990ccb21-5ed5-4743-93e0-8d3dc2f452b9" testId="26dcb079-8063-b471-27c9-fd95a68be5f2" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x&quot;, valid: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3407196" startTime="2026-10-13T09:40:06.3807006-04:00" endTime="2026-10-13T09:40:06.7308760-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="990ccb21-5ed5-4743-93e0-8d3dc2f452b9">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: True&#xD;
+Actual:   False</Message>
+          <StackTrace>   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 74&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d151b828-6a94-4762-9093-b21fe43db0b8" testId="4b586bf0-419e-59e1-4e9c-e2d4e9d44ae3" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/../y&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0034017" startTime="2026-10-13T09:40:06.7491671-04:00" endTime="2026-10-13T09:40:06.7505119-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d151b828-6a94-4762-9093-b21fe43db0b8">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="36ac077c-a4ef-4a71-bda2-6a251985d132" testId="57d43b5b-9d89-a17e-c2a6-223d108ea2d0" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;./x&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0097262" startTime="2026-10-13T09:40:06.7464863-04:00" endTime="2026-10-13T09:40:06.7465495-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="36ac077c-a4ef-4a71-bda2-6a251985d132">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c4aa36fa-340a-484e-b0a2-2670c902a6ca" testId="cad10c1d-5b07-7786-65c5-62b5bc62a497" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0047777" startTime="2026-10-13T09:40:06.8165024-04:00" endTime="2026-10-13T09:40:06.8165612-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c4aa36fa-340a-484e-b0a2-2670c902a6ca">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="434671bb-aa73-4813-ac1b-b4d276c8a517" testId="6c3f1cbd-1c6b-e0c0-4135-fc3f4173f1e7" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;/x&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0085608" startTime="2026-10-13T09:40:06.7559950-04:00" endTime="2026-10-13T09:40:06.7592957-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="434671bb-aa73-4813-ac1b-b4d276c8a517">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="19e49ab6-5821-47cb-b14d-0b857e318572" testId="68e8417e-3829-e5c0-1e58-6f9d47b58f1b" testName="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/./y&quot;, valid: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0101337" startTime="2026-10-13T09:40:06.8181245-04:00" endTime="2026-10-13T09:40:06.8181524-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="19e49ab6-5821-47cb-b14d-0b857e318572">
+      <Output>
+        <ErrorInfo>
+          <Message>Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.</Message>
+          <StackTrace>   at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid) in D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs:line 68&#xD;
+   at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x//y&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="9b66b3bb-c0f8-e288-e78d-183a2cfa09aa">
+      <Execution id="7dd666f7-fb42-49f6-9d28-2ddf773a9a30" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;xy&quot;, valid: True)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="8cf66139-e3bd-571d-b757-94156fb3cc82">
+      <Execution id="c0d2451e-909e-4a3b-9b80-00c0679dfec2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/./y&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="68e8417e-3829-e5c0-1e58-6f9d47b58f1b">
+      <Execution id="19e49ab6-5821-47cb-b14d-0b857e318572" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x\\y&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="6824542c-8759-b5b7-85ef-42537a847ad2">
+      <Execution id="5f9de008-1503-4701-8cb6-aeea50285aa9" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;/x&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="6c3f1cbd-1c6b-e0c0-4135-fc3f4173f1e7">
+      <Execution id="434671bb-aa73-4813-ac1b-b4d276c8a517" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;..&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="2f9a8b01-189b-a37e-376d-2d6ed0cffd48">
+      <Execution id="04cd4346-17dd-4fae-828e-647a62169cfa" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;contracts/test.schema.json&quot;, valid: True)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="b096145c-feaa-b73f-b4d5-6f04c09a9908">
+      <Execution id="cf9d5564-827d-43bf-8784-51d799ad68ba" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x&quot;, valid: True)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="26dcb079-8063-b471-27c9-fd95a68be5f2">
+      <Execution id="990ccb21-5ed5-4743-93e0-8d3dc2f452b9" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;./x&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="57d43b5b-9d89-a17e-c2a6-223d108ea2d0">
+      <Execution id="36ac077c-a4ef-4a71-bda2-6a251985d132" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="84f9cdd5-6d0d-1b41-9e5f-efb9ba467c38">
+      <Execution id="2f5b8b5c-732e-404a-9097-cd338b233272" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="cad10c1d-5b07-7786-65c5-62b5bc62a497">
+      <Execution id="c4aa36fa-340a-484e-b0a2-2670c902a6ca" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;.&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="c2edcf65-aa82-2edd-4441-f72641379877">
+      <Execution id="1bc0be09-8d78-4832-88d2-f70e47851c33" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;/&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="d9c1bdb1-78b0-6231-92b9-6ef49be4ced8">
+      <Execution id="58520a4e-8efa-4820-8b6d-643153447721" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: &quot;x/../y&quot;, valid: False)" storage="d:\cp6.platform-worktrees\wp02-27-20261013\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="4b586bf0-419e-59e1-4e9c-e2d4e9d44ae3">
+      <Execution id="d151b828-6a94-4762-9093-b21fe43db0b8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests" name="Packaged_schema_path_agrees_with_schema_and_actual_archive" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="2f9a8b01-189b-a37e-376d-2d6ed0cffd48" executionId="04cd4346-17dd-4fae-828e-647a62169cfa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8cf66139-e3bd-571d-b757-94156fb3cc82" executionId="c0d2451e-909e-4a3b-9b80-00c0679dfec2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="84f9cdd5-6d0d-1b41-9e5f-efb9ba467c38" executionId="2f5b8b5c-732e-404a-9097-cd338b233272" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b096145c-feaa-b73f-b4d5-6f04c09a9908" executionId="cf9d5564-827d-43bf-8784-51d799ad68ba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9b66b3bb-c0f8-e288-e78d-183a2cfa09aa" executionId="7dd666f7-fb42-49f6-9d28-2ddf773a9a30" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6824542c-8759-b5b7-85ef-42537a847ad2" executionId="5f9de008-1503-4701-8cb6-aeea50285aa9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c2edcf65-aa82-2edd-4441-f72641379877" executionId="1bc0be09-8d78-4832-88d2-f70e47851c33" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d9c1bdb1-78b0-6231-92b9-6ef49be4ced8" executionId="58520a4e-8efa-4820-8b6d-643153447721" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26dcb079-8063-b471-27c9-fd95a68be5f2" executionId="990ccb21-5ed5-4743-93e0-8d3dc2f452b9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4b586bf0-419e-59e1-4e9c-e2d4e9d44ae3" executionId="d151b828-6a94-4762-9093-b21fe43db0b8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="57d43b5b-9d89-a17e-c2a6-223d108ea2d0" executionId="36ac077c-a4ef-4a71-bda2-6a251985d132" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cad10c1d-5b07-7786-65c5-62b5bc62a497" executionId="c4aa36fa-340a-484e-b0a2-2670c902a6ca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6c3f1cbd-1c6b-e0c0-4135-fc3f4173f1e7" executionId="434671bb-aa73-4813-ac1b-b4d276c8a517" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="68e8417e-3829-e5c0-1e58-6f9d47b58f1b" executionId="19e49ab6-5821-47cb-b14d-0b857e318572" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="14" executed="14" passed="0" failed="14" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.30]   Discovering: CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:00.37]   Discovered:  CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:00.39]   Starting:    CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:00.76]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.76]       Expected: True&#xD;
+[xUnit.net 00:00:00.76]       Actual:   False&#xD;
+[xUnit.net 00:00:00.76]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.76]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(74,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.76]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.76]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.77]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.77]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.77]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.77]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.77]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.77]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.77]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.77]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.77]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.77]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.77]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.77]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.77]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.77]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.77]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.77]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.78]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.78]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.78]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.78]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.78]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.78]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.78]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.78]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.78]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.78]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.78]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.79]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.79]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.79]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.79]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.79]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.79]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.79]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.79]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.79]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.79]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.79]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.80]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.80]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.80]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.80]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.80]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.80]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.80]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.80]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.80]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.80]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.80]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.80]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.81]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.81]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.81]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.81]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.81]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.81]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.81]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.81]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.81]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.81]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.81]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.81]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.84]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.84]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.84]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.84]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.84]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.84]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.84]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.84]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.84]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.84]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.84]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.84]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.84]       Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.SchemaRegistry.Register(IBaseDocument document)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)&#xD;
+[xUnit.net 00:00:00.84]            at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-27-20261013\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityValidationTests.cs(68,0): at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(String path, Boolean valid)&#xD;
+[xUnit.net 00:00:00.84]            at InvokeStub_CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.84]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.85]   Finished:    CP6.Platform.ReleaseTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.7330615-04:00">
+        <Text>[xUnit.net 00:00:00.76]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x", valid: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.7471627-04:00">
+        <Text>[xUnit.net 00:00:00.77]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "./x", valid: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.7481178-04:00">
+        <Text>[xUnit.net 00:00:00.77]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: ".", valid: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.7487203-04:00">
+        <Text>[xUnit.net 00:00:00.77]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "xy", valid: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.7510262-04:00">
+        <Text>[xUnit.net 00:00:00.77]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x/../y", valid: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.7598684-04:00">
+        <Text>[xUnit.net 00:00:00.78]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "/x", valid: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.7642096-04:00">
+        <Text>[xUnit.net 00:00:00.79]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x//y", valid: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.7740109-04:00">
+        <Text>[xUnit.net 00:00:00.80]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "contracts/test.schema.json", valid: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.7816350-04:00">
+        <Text>[xUnit.net 00:00:00.80]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "/", valid: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.8651228-04:00">
+        <Text>[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "", valid: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.8651712-04:00">
+        <Text>[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x\\y", valid: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.8652309-04:00">
+        <Text>[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x/./y", valid: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.8652977-04:00">
+        <Text>[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "..", valid: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-13T09:40:06.8653567-04:00">
+        <Text>[xUnit.net 00:00:00.84]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityValidationTests.Packaged_schema_path_agrees_with_schema_and_actual_archive(path: "x/", valid: False) [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
