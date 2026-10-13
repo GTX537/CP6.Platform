@@ -74,14 +74,14 @@ Process saves the Owner tracked changes + new technical rows in the caller trans
 
 Lost HTTP responses can lose the pending receipt id as well. Add `ReadOriginalOperationAsync(DbContext, DbTransaction, owner, operationKey, requestVersion, inputDomain, inputCodec, inputDigest, IInboxResultReaderV1, CancellationToken)` returning `CommittedOriginalResultV1?` with only original key, filtered bytes and original hash, **no transport mapping**. It queries the immutable Owner-key slot in a READ ONLY transaction. Delivery confirmation still requires its precise receipt id; reading an old business result cannot acknowledge a newly conflicting delivery. Add original-operation binding digest to the immutable transport identity so an unchanged message cannot be rebound to a replacement Owner operation.
 
-- [ ] `InboxV1/InboxContractsV1.cs`: closed decisions, trusted adapter interfaces, immutable byte-carrying inputs/results and safe exceptions.
-- [ ] `InboxV1/InboxTransactionV1.cs`: actual native binding, readonly/write isolation checks, native identity checks and ordered lock execution/proof.
-- [ ] `InboxV1/InboxModelV1.cs`: four opt-in technical entities/mappings, uint xmin and independent tables. Conflict outcomes retain evidence separately and cannot overwrite or mint an Owner result; same original key with different input fails before a Fresh effect.
-- [ ] `InboxV1/CallerTransactionInboxV1.cs`: strict original-byte extraction, content classifier, owner same-transaction write set, pending result and readonly recovery.
-- [ ] `tests/...UnitTests/InboxV1/InboxContractTests.cs`: executable reflection RED for absent API, then seven-decision classifier, hash domains/byte preservation, malformed data, locked-order/public pending shape.
-- [ ] `tests/CP6.Platform.WP0207.PostgreSqlTests/`: nonpackable private project, imported central versions, guarded environment/provision helper, fixture Owner/projection/journal/conflict tables and real transaction scenarios.
-- [ ] `docs/WP02-07-CALLER-TRANSACTION-INBOX.md`: host integration, disabled adoption boundary, full retry/unknown/read protocol.
-- [ ] Evidence: all60AC mapping from fixed source, source/dependency/artifact manifests, actual TRX/logs, failure evidence, database ownership and identity, review and delivery.
+- [x] `InboxV1/InboxContractsV1.cs`: closed decisions, trusted adapter interfaces, immutable byte-carrying inputs/results and safe exceptions.
+- [x] `InboxV1/InboxTransactionV1.cs`: actual native binding, readonly/write isolation checks, native identity checks and ordered lock execution/proof.
+- [x] `InboxV1/InboxModelV1.cs`: four opt-in technical entities/mappings, uint xmin and independent tables. Conflict outcomes retain evidence separately and cannot overwrite or mint an Owner result; same original key with different input fails before a Fresh effect.
+- [x] `InboxV1/CallerTransactionInboxV1.cs`: strict original-byte extraction, content classifier, owner same-transaction write set, pending result and readonly recovery.
+- [x] `tests/...UnitTests/InboxV1/InboxContractTests.cs`: executable reflection RED for absent API, then seven-decision classifier, hash domains/byte preservation, malformed data, locked-order/public pending shape.
+- [x] `tests/CP6.Platform.WP0207.PostgreSqlTests/`: nonpackable private project, imported central versions, guarded environment/provision helper, fixture Owner/projection/journal/conflict tables and real transaction scenarios.
+- [x] `docs/WP02-07-CALLER-TRANSACTION-INBOX.md`: host integration, disabled adoption boundary, full retry/unknown/read protocol.
+- [x] Evidence: all60AC mapping from fixed source, source/dependency/artifact manifests, actual TRX/logs, failure evidence, database ownership and identity, review and delivery.
 
 Write tests before each behavior and retain expected RED. First unit test uses assembly reflection so missing feature is a failing assertion, not a compiler error. Real PostgreSQL tests assert commit/rollback of every fixture table, strict transaction/tenant rejection, immutable raw/result bytes, all decisions, native locks and shared-writer contention, same-key parallelism, 40001/23505 recovery through a new gate, readonly original query after suppressed commit confirmation, new-write denial with allowed read, and real xmin concurrency rejection. No InMemory/SQLite, skips or synthetic business-acceptance claims.
 

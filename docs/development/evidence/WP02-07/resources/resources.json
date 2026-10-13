@@ -1,0 +1,121 @@
+[
+  {
+    "owner": "e8b467c96024233c0cf94af6e3654fd2",
+    "scope": "all main PostgreSQL scenario runs",
+    "owned_server_stopped": true,
+    "cleanup": "smart stop after exact identity and zero-other-client-session checks; no recursive deletion",
+    "evidence": [
+      {
+        "path": "e8b467c96024233c0cf94af6e3654fd2-ownership.json",
+        "bytes": 503,
+        "sha256": "333abf15497e82704d9065a899117273e59549411280f1a94b9e115e70ce2085"
+      },
+      {
+        "path": "e8b467c96024233c0cf94af6e3654fd2-stopped.json",
+        "bytes": 306,
+        "sha256": "b6bba2bae33e0fdebea577551e3ca0e17c02d951b9b685e136fc6b90ec8ff566"
+      },
+      {
+        "path": "e8b467c96024233c0cf94af6e3654fd2-server.log",
+        "bytes": 7215,
+        "sha256": "aa960835c12871e12e987fae4e62184ce010457518f49296b6eef0c051d31e3f"
+      },
+      {
+        "path": "e8b467c96024233c0cf94af6e3654fd2-init.log",
+        "bytes": 966,
+        "sha256": "f205806602bf30e96ab821c5458414b06fa4d2dd84bfe47f2e6b8bf102d7579d"
+      },
+      {
+        "path": "e8b467c96024233c0cf94af6e3654fd2-start.stdout.log",
+        "bytes": 54,
+        "sha256": "46038efb813fbca18a92272496901190638dea3f97b51f7af0daa1ca2eb13818"
+      },
+      {
+        "path": "e8b467c96024233c0cf94af6e3654fd2-start.stderr.log",
+        "bytes": 72,
+        "sha256": "aea019a160b266dc59e5772b3a4f0b6cf5e1fb91b2f00d59a64c9c9a02dd9a41"
+      }
+    ]
+  },
+  {
+    "owner": "96a5576f1545a120a8e9c07ad86cc42a",
+    "scope": "startup-pipe diagnosis and owned resume/stop; no business test run",
+    "owned_server_stopped": true,
+    "cleanup": "smart stop after exact identity and zero-other-client-session checks; no recursive deletion",
+    "evidence": [
+      {
+        "path": "96a5576f1545a120a8e9c07ad86cc42a-ownership.json",
+        "bytes": 503,
+        "sha256": "b19410d21d1b195c4d3e3667737a3740af94ad5bb2bf068ded0871312689e51d"
+      },
+      {
+        "path": "96a5576f1545a120a8e9c07ad86cc42a-stopped.json",
+        "bytes": 306,
+        "sha256": "7dcd758cbf5f2e05f21999575293359b0d7772f25a7d9a5673c83edd31cdd183"
+      },
+      {
+        "path": "96a5576f1545a120a8e9c07ad86cc42a-server.log",
+        "bytes": 1139,
+        "sha256": "ef9102adb48fc18992108d20a48d9b2b06085b1fcfea1e7751902423663b4507"
+      },
+      {
+        "path": "96a5576f1545a120a8e9c07ad86cc42a-init.log",
+        "bytes": 966,
+        "sha256": "bf20e8fc140ac08b589c087c3c51f71216f72bd35b0823334f9a63745994d477"
+      },
+      {
+        "path": "96a5576f1545a120a8e9c07ad86cc42a-start.stdout.log",
+        "bytes": 54,
+        "sha256": "46038efb813fbca18a92272496901190638dea3f97b51f7af0daa1ca2eb13818"
+      },
+      {
+        "path": "96a5576f1545a120a8e9c07ad86cc42a-start.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  {
+    "owner": "7b2e37eff86b2d6c6400dd000951d3e5",
+    "scope": "corrected helper fresh create + two real PostgreSQL smoke cases + smart stop",
+    "owned_server_stopped": true,
+    "cleanup": "smart stop after exact identity and zero-other-client-session checks; no recursive deletion",
+    "evidence": [
+      {
+        "path": "7b2e37eff86b2d6c6400dd000951d3e5-ownership.json",
+        "bytes": 503,
+        "sha256": "c558b25628fbf2f3d6a4356ea25b36d50c67b67bfbec18610b729ea3deb32e73"
+      },
+      {
+        "path": "7b2e37eff86b2d6c6400dd000951d3e5-stopped.json",
+        "bytes": 306,
+        "sha256": "40ce3061529c19225922f62f5a5dacc6b5d84da5f32d0a64d9402eaee628db72"
+      },
+      {
+        "path": "7b2e37eff86b2d6c6400dd000951d3e5-server.log",
+        "bytes": 1139,
+        "sha256": "83766a22c5658b07eb6e912d7136c11c63dbd58a248ba8f2dec7c4ddff097b84"
+      },
+      {
+        "path": "7b2e37eff86b2d6c6400dd000951d3e5-init.log",
+        "bytes": 966,
+        "sha256": "a786cdd6d01b70c9c3086b08bbaa5d4455eb5f57296d772f04dc6f2fa449e54b"
+      },
+      {
+        "path": "7b2e37eff86b2d6c6400dd000951d3e5-start.stdout.log",
+        "bytes": 54,
+        "sha256": "46038efb813fbca18a92272496901190638dea3f97b51f7af0daa1ca2eb13818"
+      },
+      {
+        "path": "7b2e37eff86b2d6c6400dd000951d3e5-start.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "7b2e37eff86b2d6c6400dd000951d3e5-launcher.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  }
+]
