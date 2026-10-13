@@ -1,0 +1,102 @@
+{
+  "observed_at": "2026-10-13T12:12:26.287295+00:00",
+  "baseline": "9259a45d39bae7e98ca804a74778a588c1ad4619",
+  "scope": "Baseline original implementation and dependencies. Existing tests/config remain read-only. Exact old overload content compared at delivery.",
+  "files": [
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceServiceCollectionExtensions.cs",
+      "git_bytes_sha256": "ae6ad60283ac25b5e27d3932bb1f7c1c8b78f3171379e51cc6f542171c7ee698",
+      "permitted_change": "Add explicit compatible overload only"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ProblemDetailsExtensions.cs",
+      "git_bytes_sha256": "5856a211a4625d464877ed51fb959d3eec57366a806eaa2182548804912297bc",
+      "permitted_change": "Add explicit compatible overload only"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceProfile.cs",
+      "git_bytes_sha256": "07786251268a417db721092a880dcb4fb5c1d85abde6739deea6417b6f9e6ed7",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpOperationKind.cs",
+      "git_bytes_sha256": "fb5695e1a8192dd08443a4e44dc2dce1752bd9e51a672ea480397c2acae5e249",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpFailureCategory.cs",
+      "git_bytes_sha256": "3bb6630ffddb7359b7933d7e453e365f87717fc19ecf3c95c000d4e1b45c91f4",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceException.cs",
+      "git_bytes_sha256": "27d4aa9909d33c7ec2464b7bfc37094762f47b70663ca09e18825ffed61f9edb",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationId.cs",
+      "git_bytes_sha256": "50de03531d503b19764fb8e6d726a3d5490c04c578e573900abb23ba779f6755",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationMiddleware.cs",
+      "git_bytes_sha256": "e847909cbd44b40683513f62ad590359267f706c21662fd92585fcfb5f227397",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OutboundCorrelationHandler.cs",
+      "git_bytes_sha256": "5d3562ec0be972233e690d7e4ec4bec5c520b4bcfb557f5ae64cb464e036af51",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "tests/CP6.Platform.AspNetCoreTests/HttpResilienceTests.cs",
+      "git_bytes_sha256": "14691e9dbccdf0dbfe11382c7e2bfe0e0e22cf93a5668dfc957e94a45bbc666b",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "tests/CP6.Platform.AspNetCoreTests/GatewayContractTests.cs",
+      "git_bytes_sha256": "43c0cd4753b98b79f50cce47e1acc19b6462fcf8437888a9b34dab156f469064",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "tests/CP6.Platform.AspNetCoreTests/AuthenticationContractTests.cs",
+      "git_bytes_sha256": "22ac20d199835b0240542f5b7621527d7df433e798fc65e84d4f38b7dc83db73",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/RepositoryArchitectureTests.cs",
+      "git_bytes_sha256": "8514e34e52ec8b08ccba45784bcc3063ffe757c80d8994fad9254d2f4a949a96",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "Directory.Build.props",
+      "git_bytes_sha256": "58a91dfb841b65889974f4a500d8d2fa3639253972b6d5fa96888ec19ddec0b4",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "Directory.Packages.props",
+      "git_bytes_sha256": "fdf8dd260f732e2d483db17feb9f02360576f8f2888d7b1698b0e4a12964ac65",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "global.json",
+      "git_bytes_sha256": "84aa96f48aa20d14456121b5ac5f18967f29f7da504c6f886218c701687f47fa",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj",
+      "git_bytes_sha256": "a9464c3bc9c8da4048cd12e0ae56c4426cb2a9504573d7a23ccaa09b62260f4b",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "tests/CP6.Platform.AspNetCoreTests/CP6.Platform.AspNetCoreTests.csproj",
+      "git_bytes_sha256": "d2d05dccce7e78c5584c49bc3537c230708ac3591a7f04bfea6199bf04f0d1a1",
+      "permitted_change": "READ_ONLY"
+    },
+    {
+      "path": "tests/CP6.Platform.ArchitectureTests/CP6.Platform.ArchitectureTests.csproj",
+      "git_bytes_sha256": "8972bcb0dfe3f395b6047f03cbd4d8f14400c95c2e5fae3734b94e1dc06ffaef",
+      "permitted_change": "READ_ONLY"
+    }
+  ]
+}

@@ -1,0 +1,2137 @@
+{
+  "task": "WP02-11",
+  "target": "PLT-HTTP-01",
+  "original_case_count": 42,
+  "scope": "Task-local partial assertion map; does not change original catalog/roadmap or imply all 42 complete business AC pass.",
+  "cases": [
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP01-A1",
+        "source_case_id": "HTTP01-A1",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 41,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "原三技术定义及字段稳定且Content-Type一致",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "原三种定义、旧writer与新安全writer的字段/Content-Type兼容",
+      "host_owner_responsibility": "各真实Host的错误字典与实际消费者签收",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.ProblemWriter_ProducesSafeRfc9457Profile",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.RegisteredTextOnly_TraceAndCorrelationAreSafe_AndInputNeverEchoes",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP01-A2",
+        "source_case_id": "HTTP01-A2",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 41,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "errors白名单/上限和异常脱敏",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "端点字段/安全消息白名单、32×4×256和实际16KiB正文限制；不回显异常或输入",
+      "host_owner_responsibility": "Host登记文本与字段可见性权威、实际业务错误映射",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.HiddenFieldIncludingEmptyMessagesFallsBackWithoutEcho(empty: True)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.HiddenFieldIncludingEmptyMessagesFallsBackWithoutEcho(empty: False)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.ArbitraryExceptionOrUserTextCannotBecomeRegisteredMessage",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.CountCharacterAndSerializedUtf8LimitsProduceWholeGenericJson(fieldCount: 1, messages: 5, length: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.CountCharacterAndSerializedUtf8LimitsProduceWholeGenericJson(fieldCount: 33, messages: 1, length: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.CountCharacterAndSerializedUtf8LimitsProduceWholeGenericJson(fieldCount: 32, messages: 4, length: 256)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.CountCharacterAndSerializedUtf8LimitsProduceWholeGenericJson(fieldCount: 1, messages: 1, length: 257)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.ForeignOrUnregisteredPolicyCannotBeBorrowedByEndpoint",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP01-A3",
+        "source_case_id": "HTTP01-A3",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 41,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "trace与correlation有效且不成为权限",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "32位trace及安全correlation生成/保留，不读取它们作为授权",
+      "host_owner_responsibility": "真实Host因果链、日志访问及隐私策略",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.RegisteredTextOnly_TraceAndCorrelationAreSafe_AndInputNeverEchoes",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.MultipleCorrelationValues_AreReplaced",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP01-A4",
+        "source_case_id": "HTTP01-A4",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 41,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "Response.HasStarted/取消无第二正文或假成功",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "已开始/取消/断连不追加第二正文；写入失败不能伪造成功",
+      "host_owner_responsibility": "Host部分响应的中止与低敏审计",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.StartedAndAbortedResponsesNeverAppendSecondBody",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP01-A5",
+        "source_case_id": "HTTP01-A5",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 41,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "原CRM/业务码兼容保留",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "旧API保留，仅新增显式入口，运行既有认证/HTTP回归",
+      "host_owner_responsibility": "真实CRM about:blank、业务码、CSRF/OIDC端到端兼容",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.ProblemWriter_ProducesSafeRfc9457Profile",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.AuthenticationChallenge_UsesTheSameSafeProblemProfile",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP01-A6",
+        "source_case_id": "HTTP01-A6",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 41,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "unknown/504不变业务终态且UI查原operation",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "技术Unknown与确定结果区分，原operation查询优先的库协议",
+      "host_owner_responsibility": "应用状态DTO、UI恢复与真实Owner结果",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Pending, expected: Pending)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Applied, expected: Applied)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Rejected, expected: Rejected)",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP01-A7",
+        "source_case_id": "HTTP01-A7",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 41,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "同tenant/read mask访问原结果，不跨租户泄漏",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "可信绑定保tenant/action/key，历史查询和新写授权分离的fixture",
+      "host_owner_responsibility": "真实历史read/字段mask和跨租户防枚举权威",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"destination\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"digest\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"method\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"body\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"tenant\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"client\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"version\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"key\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"credential\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"epoch\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.VerifiedHistoricalQuerySurvivesDisabledOrZeroRetries(mode: Disabled, retries: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.VerifiedHistoricalQuerySurvivesDisabledOrZeroRetries(mode: OwnerProvenIdempotent, retries: 0)",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP01-A8",
+        "source_case_id": "HTTP01-A8",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 41,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "事务已提交但写响应失败仍可读原结果",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "发送后响应丢失保持原身份并查询结果的fixture",
+      "host_owner_responsibility": "真实Owner提交、receipt与响应失败后的数据库证据",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Pending, expected: Pending)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Applied, expected: Applied)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Rejected, expected: Rejected)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(unavailable: True)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(unavailable: False)",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP02-A1",
+        "source_case_id": "HTTP02-A1",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 61,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "原profile边界及引用完整",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "既有GatewayContractTests回归，不修改网关profile",
+      "host_owner_responsibility": "每Host实际route/cluster/目的登记",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.GatewayContractTests.GatewayProfile_RejectsInsecureProductionDestination",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.GatewayContractTests.GatewayProfile_RejectsUnknownCluster",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.GatewayContractTests.GatewayProfile_RejectsUnsafePathOrLimit(matchPath: \"/crm/{**remainder}?tenant=attacker\", permitLimit: 10)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.GatewayContractTests.GatewayProfile_RejectsUnsafePathOrLimit(matchPath: \"/crm/{**remainder}\", permitLimit: 10001)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.GatewayContractTests.GatewayProfile_RejectsUnsafePathOrLimit(matchPath: \"/crm/{**remainder}\", permitLimit: 0)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.GatewayContractTests.GatewayProfile_RejectsUnsafePathOrLimit(matchPath: \"crm/{**remainder}\", permitLimit: 10)",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP02-A2",
+        "source_case_id": "HTTP02-A2",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 61,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "两类header集合清除且下游无header身份fallback",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "既有网关头清理回归；HttpV2不从外部header授写去重能力",
+      "host_owner_responsibility": "真实下游无身份header fallback与部署代理信任",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.GatewayContractTests.Proxy_StripsForgedIdentityMetadata_AndBuildsForwardedMetadata",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.HeaderAndSelfDescribedDtoWithoutAuthorityCannotConferProof",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP02-A3",
+        "source_case_id": "HTTP02-A3",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 61,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "受保护route显式policy/methods/allowlist",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "本任务不新增/启用网关route",
+      "host_owner_responsibility": "Host新受保护route必须显式policy、methods和目的allowlist",
+      "library_evidence": [],
+      "library_verification": "NOT_RUN",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP02-A4",
+        "source_case_id": "HTTP02-A4",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 61,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "correlation单值、非法替换、出站覆盖及后台因果区别",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "安全correlation及已有网关/出站关联回归",
+      "host_owner_responsibility": "后台因果引用和真实Host的关联传递",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.CorrelationMiddleware_PropagatesOnlySafeValues(supplied: \"good-correlation\", expected: \"good-correlation\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.CorrelationMiddleware_PropagatesOnlySafeValues(supplied: \"\", expected: null)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.CorrelationMiddleware_PropagatesOnlySafeValues(supplied: \"contains space\", expected: null)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.MultipleCorrelationValues_AreReplaced",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP02-A5",
+        "source_case_id": "HTTP02-A5",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 61,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "限流按实际进程/IP范围描述，多副本不伪全局",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "保留已有进程/IP限流回归，不声称全局额度",
+      "host_owner_responsibility": "实际代理IP来源、多副本配额和共享出口策略",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.GatewayContractTests.RouteRateLimit_ReturnsSafeProblemDetailsBeforeDestinationCall",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP02-A6",
+        "source_case_id": "HTTP02-A6",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 61,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "可信代理未登记则不采信身份/客户端IP声明",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "本任务不改变ForwardedHeaders或可信代理配置",
+      "host_owner_responsibility": "部署Owner当前代理登记及客户端IP来源验证",
+      "library_evidence": [],
+      "library_verification": "NOT_RUN",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP02-A7",
+        "source_case_id": "HTTP02-A7",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 61,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "routeEpoch切换不双发到两个写域",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "操作绑定固定目的和route epoch，不透明切另一个写域",
+      "host_owner_responsibility": "真实路由切流/回退及跨区域同一Owner去重域证明",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"destination\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"digest\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"method\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"body\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"tenant\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"client\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"version\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"key\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"credential\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"epoch\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.RetriesKeepExactBodyKeyTenantVersionDigestAndCredentialSnapshot",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP02-A8",
+        "source_case_id": "HTTP02-A8",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 61,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "TLS/依赖失败不降级匿名/明文且诊断脱敏",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "新绑定不因失败改目的/凭据，安全错误无原异常正文",
+      "host_owner_responsibility": "真实TLS、证书、代理与认证失败集成",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.RetriesKeepExactBodyKeyTenantVersionDigestAndCredentialSnapshot",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.ArbitraryExceptionOrUserTextCannotBecomeRegisteredMessage",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.OptInClientDoesNotFollowRedirectOrAcquireCookieCredentials",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP03-A1",
+        "source_case_id": "HTTP03-A1",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 81,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "原范围/默认准确及新attempt≤total门",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "legacy默认/范围保留，新profile强制attempt≤total",
+      "host_owner_responsibility": "Host批准的具体client预算及外层重试清单",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.DefaultsPreserveBounds_AndRequireExplicitEnablement",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 6, attemptMilliseconds: 100, totalMilliseconds: 250, samplingSeconds: 1, minimumThroughput: 2, breakSeconds: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 1, attemptMilliseconds: 100, totalMilliseconds: 120001, samplingSeconds: 1, minimumThroughput: 2, breakSeconds: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 1, attemptMilliseconds: 100, totalMilliseconds: 250, samplingSeconds: 121, minimumThroughput: 2, breakSeconds: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 1, attemptMilliseconds: 100, totalMilliseconds: 250, samplingSeconds: 1, minimumThroughput: 2, breakSeconds: 0)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 1, attemptMilliseconds: 100, totalMilliseconds: 250, samplingSeconds: 1, minimumThroughput: 2, breakSeconds: 301)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 1, attemptMilliseconds: 100, totalMilliseconds: 249, samplingSeconds: 1, minimumThroughput: 2, breakSeconds: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 1, attemptMilliseconds: 100, totalMilliseconds: 250, samplingSeconds: 0, minimumThroughput: 2, breakSeconds: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 1, attemptMilliseconds: 100, totalMilliseconds: 250, samplingSeconds: 1, minimumThroughput: 1001, breakSeconds: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: -1, attemptMilliseconds: 100, totalMilliseconds: 250, samplingSeconds: 1, minimumThroughput: 2, breakSeconds: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 1, attemptMilliseconds: 30001, totalMilliseconds: 31000, samplingSeconds: 1, minimumThroughput: 2, breakSeconds: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 1, attemptMilliseconds: 99, totalMilliseconds: 250, samplingSeconds: 1, minimumThroughput: 2, breakSeconds: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Profile_RejectsValuesOutsideApprovedBounds(retries: 1, attemptMilliseconds: 100, totalMilliseconds: 250, samplingSeconds: 1, minimumThroughput: 1, breakSeconds: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.InvalidRangesFail(retries: 2, attempt: 99, total: 250)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.InvalidRangesFail(retries: 2, attempt: 30001, total: 120000)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.InvalidRangesFail(retries: 2, attempt: 100, total: 120001)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.InvalidRangesFail(retries: 6, attempt: 100, total: 250)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.InvalidRangesFail(retries: 2, attempt: 251, total: 250)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.InvalidRangesFail(retries: -1, attempt: 100, total: 250)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.InvalidRangesFail(retries: 2, attempt: 100, total: 249)",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP03-A2",
+        "source_case_id": "HTTP03-A2",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 81,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "各阶段预算与嵌套剩余预算不扩张",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "单调预算覆盖连接/发送/正文/等待；子deadline不扩张",
+      "host_owner_responsibility": "实际嵌套服务跨进程可信deadline传递",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.ChildNeverResetsBudget_AndUtcRollbackDoesNotExtendIt",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.FullResponseBodyIsInsideAttemptBudget_EvenHeadersReadMode",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.ParseAndQueueTimeCounts_EqualityAllowsFullAttempt_AndUtcChangesDoNotMoveEarliest",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealResponseHeadersDoNotEscapeTotalBodyDeadline",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP03-A3",
+        "source_case_id": "HTTP03-A3",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 81,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "同值timeout按v2来源精确分类，旧差距明确",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "equal-duration按明确strategy来源分类，未知来源停止",
+      "host_owner_responsibility": "Host对最终安全错误的版本化映射",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ExplicitDeadlineSource_DistinguishesEqualDurations(attemptMs: 250, totalMs: 250, expected: TotalTimeout)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ExplicitDeadlineSource_DistinguishesEqualDurations(attemptMs: 100, totalMs: 300, expected: AttemptTimeout)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.UnrelatedOperationCancellationIsUnknownSource_NotAttemptTimeout",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.HttpRequestExceptionRetries_UnknownPollyTimeoutDoesNot",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP03-A4",
+        "source_case_id": "HTTP03-A4",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 81,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "caller取消不重试、不伪撤单",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "caller取消原样传播，等待取消零后续attempt",
+      "host_owner_responsibility": "业务取消命令与撤单由Owner独立定义",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ParentBudgetWaitHonorsThisCallersCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.CancelledWaitNeverAuthorizesAnotherAttempt",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.CallerCancellation_PropagatesWithoutRetryOrTranslation",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealCallerCancellationDuringServerWaitHasNoLaterSend",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: \"verify\", answer: False)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: \"authorize\", answer: False)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: \"query\", answer: True)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: \"verify\", answer: True)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: \"query\", answer: False)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedAuthorityCallbacksCannotOverrideCallerCancellation(stage: \"authorize\", answer: True)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(stage: \"send\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(stage: \"wait\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(stage: \"query\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedTimerExpiryRemainsTotalTimeoutRatherThanCallerCancellation",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP03-A5",
+        "source_case_id": "HTTP03-A5",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 81,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "已提交后超时保持Unknown并取原结果",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "发送后未知保持同operation并先查原结果的fixture",
+      "host_owner_responsibility": "真实业务提交/丢响应/receipt数据库恢复",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Pending, expected: Pending)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Applied, expected: Applied)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Rejected, expected: Rejected)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.HttpsFixtureOnly_OwnerQueryPrecedesReplay_AndWireBytesAndKeyStayIdentical",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP03-A6",
+        "source_case_id": "HTTP03-A6",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 81,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "未证未送达不记NotSent",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "一般传输异常不证明NotSent；已有Unknown不被CircuitOpen降级",
+      "host_owner_responsibility": "真实transport未送达证明由实际adapter提供",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownStaysUnknownWhenRetryHitsOpenCircuit",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.CircuitCountsActualTransientAttempts_AndRejectsNextNewCallAsNotSent",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP03-A7",
+        "source_case_id": "HTTP03-A7",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 81,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "时钟回拨不扩大单调预算",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "UTC回拨不增加预算或提前已锚定等待",
+      "host_owner_responsibility": "部署机器时钟观测和真实长生命周期恢复",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.ChildNeverResetsBudget_AndUtcRollbackDoesNotExtendIt",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.ParseAndQueueTimeCounts_EqualityAllowsFullAttempt_AndUtcChangesDoNotMoveEarliest",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP03-A8",
+        "source_case_id": "HTTP03-A8",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 81,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "原结果read优先于当前新写门且查询不可用保持待确认",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "原结果查询先于新写授权；不可用保Unknown，查询受剩余预算约束",
+      "host_owner_responsibility": "真实历史读取权限和Owner查询服务可用性",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.VerifiedHistoricalQuerySurvivesDisabledOrZeroRetries(mode: Disabled, retries: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.VerifiedHistoricalQuerySurvivesDisabledOrZeroRetries(mode: OwnerProvenIdempotent, retries: 0)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnavailableOrNotFoundQueryPreservesUnknownWithoutAnotherSend(result: Unknown)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnavailableOrNotFoundQueryPreservesUnknownWithoutAnotherSend(result: NotFound)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ProvenNotAppliedStillNeedsNewEffectPermission",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RecoveryBudgetTests.QueryUsesRemainingParentBudget_AndCannotCreateAnotherSend",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RecoveryBudgetTests.OriginalResultBodyCannotEscapeQueryDeadline",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(applied: False)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(applied: True)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(milliseconds: 301, expected: TotalTimeout)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.NoncooperativeCompletedQueryBodyCannotEscapeChildOrTotal(milliseconds: 101, expected: RecoveryUnavailable)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.OriginalQueryBodyIoFailureRemainsUnknownAndDisposesBody",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP04-A1",
+        "source_case_id": "HTTP04-A1",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 109,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "三种方法和唯一键约束准确",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "GET/HEAD/OPTIONS与四类写方法准确；唯一key不是去重证明",
+      "host_owner_responsibility": "Host逐操作分类和原业务键域",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.DisabledReadIsOneAttempt(method: \"HEAD\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.DisabledReadIsOneAttempt(method: \"GET\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.DisabledReadIsOneAttempt(method: \"OPTIONS\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"PATCH\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"PUT\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"DELETE\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"POST\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.MethodClassMismatchStopsBeforeNetwork(kind: IdempotentRead, method: \"POST\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.MethodClassMismatchStopsBeforeNetwork(kind: NonIdempotent, method: \"HEAD\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.MethodClassMismatchStopsBeforeNetwork(kind: IdempotentWrite, method: \"GET\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"destination\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"digest\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"method\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"body\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"tenant\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"client\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"version\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"key\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"credential\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"epoch\")",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP04-A2",
+        "source_case_id": "HTTP04-A2",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 109,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "NonIdempotent零重试含code兑换等动作",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "NonIdempotent和未证明写入零自动重试",
+      "host_owner_responsibility": "真实code兑换/登录/支付端点分类与注册",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"PATCH\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"PUT\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"DELETE\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"POST\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.OneTimeCredentialExchangeCannotEnableReplay",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealReadRetriesAreBounded_AndNoProofWriteHasZeroRetries",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP04-A3",
+        "source_case_id": "HTTP04-A3",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 109,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "原transient集合和timeout排除保真",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "legacy transient集合/TimeoutRejectedException排除不变；新来源明确",
+      "host_owner_responsibility": "各Host额外业务拒绝分类必须受控",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.ApprovedTransientStatuses_AreRetried(statusCode: ServiceUnavailable)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.ApprovedTransientStatuses_AreRetried(statusCode: GatewayTimeout)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.ApprovedTransientStatuses_AreRetried(statusCode: InternalServerError)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.ApprovedTransientStatuses_AreRetried(statusCode: TooManyRequests)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.ApprovedTransientStatuses_AreRetried(statusCode: BadGateway)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.ApprovedTransientStatuses_AreRetried(statusCode: RequestTimeout)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.UnapprovedStatuses_AreNotRetried(statusCode: BadRequest)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.UnapprovedStatuses_AreNotRetried(statusCode: NotImplemented)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.UnapprovedStatuses_AreNotRetried(statusCode: HttpVersionNotSupported)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.UnapprovedStatuses_AreNotRetried(statusCode: NotFound)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 403, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 422, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 500, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 502, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 408, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 409, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 504, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 200, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 503, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 401, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 400, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 429, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.HttpRequestExceptionRetries_UnknownPollyTimeoutDoesNot",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP04-A4",
+        "source_case_id": "HTTP04-A4",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 109,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "v2按本节唯一合成及固定子例，服务器最早时刻不被2秒/jitter缩短，超30秒或完整attempt预算不足即停止，日期/重复/非法/取消各预期确定",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "固定S/L/R/A子例、一次jitter、三日期、cap、双预算门、早迟醒和取消",
+      "host_owner_responsibility": "实际网络/代理对Retry-After的完整传输",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.FrozenExamples_UseMaxServerLocalAndReserveFullAttempt(serverMs: 60000, remainingMs: 100000, waitMs: 200, stop: StopServerWaitExceeded)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.FrozenExamples_UseMaxServerLocalAndReserveFullAttempt(serverMs: 0, remainingMs: 1999, waitMs: 200, stop: StopBudgetInsufficient)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.FrozenExamples_UseMaxServerLocalAndReserveFullAttempt(serverMs: 5000, remainingMs: 10000, waitMs: 5000, stop: None)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.FrozenExamples_UseMaxServerLocalAndReserveFullAttempt(serverMs: 100, remainingMs: 10000, waitMs: 200, stop: None)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.FrozenExamples_UseMaxServerLocalAndReserveFullAttempt(serverMs: 15000, remainingMs: 10000, waitMs: 15000, stop: StopBudgetInsufficient)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.FrozenExamples_UseMaxServerLocalAndReserveFullAttempt(serverMs: 9000, remainingMs: 10000, waitMs: 9000, stop: StopBudgetInsufficient)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.FrozenExamples_UseMaxServerLocalAndReserveFullAttempt(serverMs: 8000, remainingMs: 10000, waitMs: 8000, stop: None)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.EarlyWake_KeepsSameSample_AndLateWakeRechecksBudget",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.JitterOnlyChangesLocalWait(sample: 0.5, local: 200)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.JitterOnlyChangesLocalWait(sample: 1, local: 240)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.JitterOnlyChangesLocalWait(sample: 0, local: 160)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: \"Sun Nov  6 08:49:37 1994\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: \"\\t5 \\t\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: \"Sunday, 06-Nov-94 08:49:37 GMT\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.SingleHttpValue_UsesInvariantThreeDateFormsAndOws(value: \"Sun, 06 Nov 1994 08:49:37 GMT\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: \"Sun, 32 Nov 1994 08:49:37 GMT\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: \"1, 2\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: \"-1\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: \"１\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: \"1.5\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: \"\\n1\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.InvalidValues_AreNotServerWaits(value: \"+1\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.DuplicateFields_AreInvalid",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(value: \"999999999999999999999999999999999999\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.HugeLegalInteger_StopsInsteadOfFallingBack(value: \"60\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.DeadlineDecisionTests.CancelledWaitNeverAuthorizesAnotherAttempt",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.RealServerWaitAboveCapStopsImmediately",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP04-A5",
+        "source_case_id": "HTTP04-A5",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 109,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "同key/digest/body不变，差异冲突不覆盖",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "可信绑定及每次请求的tenant/key/body/digest/version/epoch不变",
+      "host_owner_responsibility": "远端原键冲突/不可变原结果的真实持久化",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.RetriesKeepExactBodyKeyTenantVersionDigestAndCredentialSnapshot",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"destination\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"digest\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"method\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"body\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"tenant\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"client\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"version\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"key\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"credential\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"epoch\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.SnapshotCopiesCallerBytesAndFactoryIdentityIsPartOfRegistration",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.LoopbackTests.HttpsFixtureOnly_OwnerQueryPrecedesReplay_AndWireBytesAndKeyStayIdentical",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP04-A6",
+        "source_case_id": "HTTP04-A6",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 109,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "超限/stream不自动重放",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "stream/超限体不自动重放，不因buffer自证业务幂等",
+      "host_owner_responsibility": "大流量端点的独立non-replay合同",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.StreamOrOversizeCannotBecomeReplayableByBuffering(stream: True)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.StreamOrOversizeCannotBecomeReplayableByBuffering(stream: False)",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP04-A7",
+        "source_case_id": "HTTP04-A7",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 109,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "并发同键远端只一业务效果且Unknown先查",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "Unknown先查原结果，fixture最多证明客户端协议次序",
+      "host_owner_responsibility": "真实远端并发原子去重与单一业务效果：NOT_RUN",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Pending, expected: Pending)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Applied, expected: Applied)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownQueriesOriginalBeforeNewWritePermission_AndReturnsSameResult(original: Rejected, expected: Rejected)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnavailableOrNotFoundQueryPreservesUnknownWithoutAnotherSend(result: Unknown)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnavailableOrNotFoundQueryPreservesUnknownWithoutAnotherSend(result: NotFound)",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP04-A8",
+        "source_case_id": "HTTP04-A8",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 109,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "circuit各状态不生成新业务/清DLQ",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "熔断不生成新operation，开路不丢Unknown，探测次数受底层策略控制",
+      "host_owner_responsibility": "真实Owner并发/半开和DLQ治理",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.UnknownStaysUnknownWhenRetryHitsOpenCircuit",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.CircuitCountsActualTransientAttempts_AndRejectsNextNewCallAsNotSent",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpResilienceTests.Circuit_Opens_HalfOpens_AndRecoversWithManualTime",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP04-A9",
+        "source_case_id": "HTTP04-A9",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 109,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "多层retry上界可证且无乘法风暴",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "一个v2总预算与retry owner，拒绝冲突/叠加注册，库内attempt有界",
+      "host_owner_responsibility": "Host、SDK、gateway、sidecar、worker实际多层清单与总上界",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.SameRegistrationIsIdempotent_DifferentProfileOrClientFails",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.LegacyAndV2CannotStackInEitherOrder(legacyFirst: False)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.LegacyAndV2CannotStackInEitherOrder(legacyFirst: True)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.OtherRetryPipelineAndCompetingClientTimeoutFail",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 403, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 422, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 500, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 502, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 408, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 409, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 504, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 200, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 503, expected: 3)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 401, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 400, expected: 1)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(status: 429, expected: 3)",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP04-A10",
+        "source_case_id": "HTTP04-A10",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 109,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "当前权限不足不阻合法原结果read也不授新作用",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "有历史read权但无当前new-effect权时允许原查询而不授新写的fixture",
+      "host_owner_responsibility": "真实Owner最终权限共同fence和字段mask",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ProvenNotAppliedStillNeedsNewEffectPermission",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.VerifiedHistoricalQuerySurvivesDisabledOrZeroRetries(mode: Disabled, retries: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.VerifiedHistoricalQuerySurvivesDisabledOrZeroRetries(mode: OwnerProvenIdempotent, retries: 0)",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP05-A1",
+        "source_case_id": "HTTP05-A1",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 127,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "每入口八层证据独立",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "交付分列源码/包/Host/配置/端点/运行/业务/独立接受状态",
+      "host_owner_responsibility": "真实Host八层采用证据与包供应链",
+      "library_evidence": [],
+      "library_verification": "NOT_RUN",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP05-A2",
+        "source_case_id": "HTTP05-A2",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 127,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "CRM OIDC只读/兑换分流且旧安全选项保留",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "不改CRM或旧client默认，NonIdempotent零重试规则供显式消费",
+      "host_owner_responsibility": "CRM拆分OIDC只读与code兑换、原安全选项端到端验证",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.OneTimeCredentialExchangeCannotEnableReplay",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"PATCH\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"PUT\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"DELETE\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.HandlerTests.NoProofWriteAndNonIdempotentAreNeverRetried(method: \"POST\")",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP05-A3",
+        "source_case_id": "HTTP05-A3",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 127,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "middleware顺序、service/browser认证不互换",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "旧认证回归、显式安全writer和client注册入口",
+      "host_owner_responsibility": "每Host实际中间件顺序与service/browser绑定",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.AuthenticationChallenge_UsesTheSameSafeProblemProfile",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.UserAndServiceAudiences_AcceptTheirOwnTokens_AndMutuallyReject",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.ForeignOrUnregisteredPolicyCannotBeBorrowedByEndpoint",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP05-A4",
+        "source_case_id": "HTTP05-A4",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 127,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "旧错误/客户端兼容窗口及安全字段",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "新增版本入口保留旧writer/client合同，安全字段单独启用",
+      "host_owner_responsibility": "真实客户端兼容窗口和切换接受",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/final-legacy-http-gateway-auth.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.AuthenticationContractTests.ProblemWriter_ProducesSafeRfc9457Profile",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.RegisteredTextOnly_TraceAndCorrelationAreSafe_AndInputNeverEchoes",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP05-A5",
+        "source_case_id": "HTTP05-A5",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 127,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "原operation历史读取与新写授权分离",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "原结果读权与产生新效果的当前权威判定分层",
+      "host_owner_responsibility": "各Owner真实历史operation读取策略",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.VerifiedHistoricalQuerySurvivesDisabledOrZeroRetries(mode: Disabled, retries: 2)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.VerifiedHistoricalQuerySurvivesDisabledOrZeroRetries(mode: OwnerProvenIdempotent, retries: 0)",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ProvenNotAppliedStillNeedsNewEffectPermission",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP05-A6",
+        "source_case_id": "HTTP05-A6",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 127,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "缺Required按对应能力精确关闭",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "无可信proof的写retry关闭，错误policy未绑定时不披露字段",
+      "host_owner_responsibility": "全部Required-HTTP门由实际Host逐项关闭/验收",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.ProfileRegistrationTests.EnabledWriteWithoutTrustedRegistrationFails",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.SafeProblemTests.ForeignOrUnregisteredPolicyCannotBeBorrowedByEndpoint",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP05-A7",
+        "source_case_id": "HTTP05-A7",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 127,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "route切换/回退不清历史、不双发、不强改Main内部传输",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "本任务无切流/回退/Main内部传输变更，库内身份/epoch固定",
+      "host_owner_responsibility": "真实单route切换/回退、历史可读、无双发",
+      "library_evidence": [
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"destination\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"digest\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"method\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"body\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"tenant\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"client\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"version\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"key\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"credential\")",
+          "outcome": "Passed"
+        },
+        {
+          "run": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.HttpV2.OwnerProtocolFixtureTests.ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(conflict: \"epoch\")",
+          "outcome": "Passed"
+        }
+      ],
+      "library_verification": "PARTIAL_PASS",
+      "business_acceptance": "NOT_RUN"
+    },
+    {
+      "original": {
+        "id": "PLT-HTTP-01::HTTP05-A8",
+        "source_case_id": "HTTP05-A8",
+        "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/9d/9d1416cbd7d0ea6e__PLT-HTTP-01_完整静态设计_v0.2.md",
+        "source_line": 127,
+        "source_sha256": "9d1416cbd7d0ea6e58a0da79de80dcb2a4e675890345dfb4558194c61048eb3f",
+        "assertion": "真实Host证据与fixture严格区别",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      "library_subassertion": "全部fixture、loopback、本地库结果与生产采用明确分开记录",
+      "host_owner_responsibility": "真实Host授权环境运行及独立业务接受：NOT_RUN",
+      "library_evidence": [],
+      "library_verification": "NOT_RUN",
+      "business_acceptance": "NOT_RUN"
+    }
+  ]
+}

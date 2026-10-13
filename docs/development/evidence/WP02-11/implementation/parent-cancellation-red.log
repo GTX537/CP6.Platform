@@ -1,0 +1,65 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.AspNetCoreTests -> D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.32]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(stage: "query") [FAIL]
+[xUnit.net 00:00:00.33]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(stage: "wait") [FAIL]
+[xUnit.net 00:00:00.33]     CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(stage: "send") [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(stage: "query") [55 ms]
+  Error Message:
+   Assert.ThrowsAny() Failure: Exception type was not compatible
+Expected: typeof(System.OperationCanceledException)
+Actual:   typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)
+---- CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception : The bounded HTTP operation did not complete. Inspect the typed safe outcome.
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(String stage) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 149
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(stage: "wait") [7 ms]
+  Error Message:
+   Assert.ThrowsAny() Failure: Exception type was not compatible
+Expected: typeof(System.OperationCanceledException)
+Actual:   typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)
+---- CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception : The bounded HTTP operation did not complete. Inspect the typed safe outcome.
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(String stage) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 149
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(stage: "send") [< 1 ms]
+  Error Message:
+   Assert.ThrowsAny() Failure: Exception type was not compatible
+Expected: typeof(System.OperationCanceledException)
+Actual:   typeof(CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception)
+---- CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception : The bounded HTTP operation did not complete. Inspect the typed safe outcome.
+-------- CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Exception : The bounded HTTP operation did not complete. Inspect the typed safe outcome.
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.ReviewRegressionsTests.InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(String stage) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\ReviewRegressionsTests.cs:line 149
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 174
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+----- Inner Stack Trace -----
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.<>c__DisplayClass8_2.<<SendAsync>b__7>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Polly.ResiliencePipeline.<>c__10`1.<<ExecuteAsync>b__10_0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Polly.Outcome`1.GetResultOrRethrow()
+   at Polly.ResiliencePipeline.ExecuteAsync[TResult](Func`2 callback, CancellationToken cancellationToken)
+   at CP6.Platform.AspNetCore.HttpV2.Cp6HttpV2Handler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6HttpV2Handler.cs:line 116
+Results File: D:\CP6.Platform-worktrees\wp02-11-20261013\docs\development\evidence\WP02-11\implementation\parent-cancellation-red.trx
+
+Failed!  - Failed:     3, Passed:     1, Skipped:     0, Total:     4, Duration: 89 ms - CP6.Platform.AspNetCoreTests.dll (net8.0)

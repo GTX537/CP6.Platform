@@ -1,0 +1,37 @@
+{
+  "verified_at_utc": "2026-10-13T13:02:23.805287+00:00",
+  "manifest": "docs/development/evidence/WP02-11/implementation/after-parent-cancellation-fix-fingerprints.json",
+  "manifest_sha256": "5147dd29f33bfbcc8f82e4de9c32b381eb3e700a7066fa4f8d8ef82f64565341",
+  "input_counts": {
+    "source": 236,
+    "restoredDependencies": 8,
+    "compiledArtifacts": 25
+  },
+  "gates": [
+    {
+      "path": "docs/development/evidence/WP02-11/implementation/parent-cancellation-http-v2.trx",
+      "counters": {
+        "total": "150",
+        "executed": "150",
+        "passed": "150",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "sha256": "402b5db617ae39264b1850343a9820c02ad4d995dfdc911c66ff9941a31860eb"
+    }
+  ],
+  "errors": [],
+  "result": "PASS",
+  "scope": "Independent current disk and retained execution evidence check; not test execution or business acceptance."
+}

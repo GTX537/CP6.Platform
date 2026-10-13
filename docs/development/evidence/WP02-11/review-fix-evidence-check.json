@@ -1,0 +1,37 @@
+{
+  "verified_at_utc": "2026-10-13T12:50:54.725266+00:00",
+  "manifest": "docs/development/evidence/WP02-11/implementation/after-review-fixes-fingerprints.json",
+  "manifest_sha256": "b39d80bfbee74c52c065dd142373be51f4863e649510a436551240203c1aaaa6",
+  "input_counts": {
+    "source": 236,
+    "restoredDependencies": 8,
+    "compiledArtifacts": 25
+  },
+  "gates": [
+    {
+      "path": "docs/development/evidence/WP02-11/implementation/review-fixes-http-v2.trx",
+      "counters": {
+        "total": "146",
+        "executed": "146",
+        "passed": "146",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "sha256": "132ff6b933d69f2a0f738af862b23a1e2ed56bea0b54c004fd50c7229c85eb67"
+    }
+  ],
+  "errors": [],
+  "result": "PASS",
+  "scope": "Independent current disk and retained execution evidence check; not test execution or business acceptance."
+}

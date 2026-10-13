@@ -1,0 +1,50 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.AspNetCoreTests -> D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.52]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.UnicodeDateDigitsAreInvalidWithoutThrowing(value: "Sunday, 06-Nov-٩٤ 08:49:37 GMT") [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.UnicodeDateDigitsAreInvalidWithoutThrowing(value: "Sunday, 06-Nov-٩٤ 08:49:37 GMT") [1 ms]
+  Error Message:
+   System.FormatException : The input string '٩٤' was not in a correct format.
+  Stack Trace:
+     at System.Number.ThrowFormatException[TChar](ReadOnlySpan`1 value)
+   at System.Int32.Parse(String s, IFormatProvider provider)
+   at CP6.Platform.AspNetCore.HttpV2.Cp6RetryAfter.Parse(IEnumerable`1 values, DateTimeOffset observedUtc) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6RetryAfter.cs:line 34
+   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.UnicodeDateDigitsAreInvalidWithoutThrowing(String value) in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 49
+   at InvokeStub_RetryAfterTests.UnicodeDateDigitsAreInvalidWithoutThrowing(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:00.52]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.ExtremeObservedUtcDoesNotOverflowRfc850Pivot [FAIL]
+[xUnit.net 00:00:00.53]     CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.LeapSecondPreservesFutureServerWait [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.ExtremeObservedUtcDoesNotOverflowRfc850Pivot [< 1 ms]
+  Error Message:
+   System.ArgumentOutOfRangeException : The added or subtracted value results in an un-representable DateTime. (Parameter 'value')
+  Stack Trace:
+     at System.DateTime.ThrowDateArithmetic(Int32 param)
+   at System.DateTime.AddYears(Int32 value)
+   at System.DateTimeOffset.AddYears(Int32 years)
+   at CP6.Platform.AspNetCore.HttpV2.Cp6RetryAfter.Parse(IEnumerable`1 values, DateTimeOffset observedUtc) in D:\CP6.Platform-worktrees\wp02-11-20261013\src\CP6.Platform.AspNetCore\HttpV2\Cp6RetryAfter.cs:line 39
+   at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.ExtremeObservedUtcDoesNotOverflowRfc850Pivot() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 63
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.LeapSecondPreservesFutureServerWait [1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: Valid
+Actual:   InvalidRetryAfter
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.HttpV2.RetryAfterTests.LeapSecondPreservesFutureServerWait() in D:\CP6.Platform-worktrees\wp02-11-20261013\tests\CP6.Platform.AspNetCoreTests\HttpV2\RetryAfterTests.cs:line 57
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: D:\CP6.Platform-worktrees\wp02-11-20261013\docs\development\evidence\WP02-11\implementation\protocol-parser-red.trx
+
+Failed!  - Failed:     3, Passed:   111, Skipped:     0, Total:   114, Duration: 115 ms - CP6.Platform.AspNetCoreTests.dll (net8.0)
