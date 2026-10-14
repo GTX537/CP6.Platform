@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="3a416124-9ecc-465f-8bf6-616e4bc77d1f" name="tt@LAPTOP-3QQ44FJS 2026-10-14 03:25:41" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T03:25:41.9308032-04:00" queuing="2026-10-14T03:25:41.9308036-04:00" start="2026-10-14T03:25:38.2531806-04:00" finish="2026-10-14T03:25:43.9200669-04:00" />
+  <TestSettings name="default" id="6eaeff2f-1ad0-4697-acc6-1b5326552c2d">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_03_25_41" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="60c5ae02-125f-4d49-ac7d-f33d04870458" testId="921e3b14-7c4c-9838-fed7-afe6a050af32" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.2428193" startTime="2026-10-14T03:25:41.8011555-04:00" endTime="2026-10-14T03:25:43.0335247-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="60c5ae02-125f-4d49-ac7d-f33d04870458" />
+    <UnitTestResult executionId="e21cbdb6-a913-4591-949b-0581cf1e7a8d" testId="4c84f383-3742-d30d-8a2c-b99ee4f02c22" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.1906439" startTime="2026-10-14T03:25:41.9944471-04:00" endTime="2026-10-14T03:25:43.1850832-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e21cbdb6-a913-4591-949b-0581cf1e7a8d" />
+    <UnitTestResult executionId="23acc66e-7b3e-44ca-a56e-2f8a8ec4193f" testId="0c52b09b-6040-26cf-c1db-f58c1a484c8e" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2030392" startTime="2026-10-14T03:25:43.0337143-04:00" endTime="2026-10-14T03:25:43.2370964-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="23acc66e-7b3e-44ca-a56e-2f8a8ec4193f" />
+    <UnitTestResult executionId="cb54e4c0-a054-4573-b553-8301f34ea0ce" testId="a18ba068-8859-60d4-3ea5-24372ecd0dfa" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.WriteOnlyDependencyFailurePreservesReadRouteAndHiddenFailureKeepsOverall503" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0169287" startTime="2026-10-14T03:25:43.2072616-04:00" endTime="2026-10-14T03:25:43.2244868-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cb54e4c0-a054-4573-b553-8301f34ea0ce" />
+    <UnitTestResult executionId="851963be-0e52-4f46-a8b3-66ae7c5425df" testId="ea105f9f-9d69-ffe1-468d-1e9f3dee14c9" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;configuration&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0905019" startTime="2026-10-14T03:25:42.1084016-04:00" endTime="2026-10-14T03:25:42.1988255-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="851963be-0e52-4f46-a8b3-66ae7c5425df" />
+    <UnitTestResult executionId="3cb23614-db41-4657-9707-c5bba3a28256" testId="ef77c317-38e7-bb59-0ff2-9f52f2d5dfeb" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.DependencyEndpoints_FilterTags_RedactDetails_AndFailOnAnyNonHealthy(path: &quot;/health/ready&quot;, selectedTag: &quot;ready&quot;, selectedStatus: Unhealthy)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0088161" startTime="2026-10-14T03:25:43.2910214-04:00" endTime="2026-10-14T03:25:43.3000295-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3cb23614-db41-4657-9707-c5bba3a28256" />
+    <UnitTestResult executionId="6dbd68c9-74a9-4a4a-886b-1d00c7480af5" testId="33bc8ce9-7c29-f3c9-be4e-5bf1b30622a4" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;version&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0681972" startTime="2026-10-14T03:25:42.2000022-04:00" endTime="2026-10-14T03:25:42.2671032-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6dbd68c9-74a9-4a4a-886b-1d00c7480af5" />
+    <UnitTestResult executionId="12e19fab-d627-4a94-abdb-0ac9d38dda1a" testId="4dde2e3c-cf3c-d15c-2e68-b16b7b9f1c15" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ProcessImage)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0023456" startTime="2026-10-14T03:25:42.4769517-04:00" endTime="2026-10-14T03:25:42.4793093-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="12e19fab-d627-4a94-abdb-0ac9d38dda1a" />
+    <UnitTestResult executionId="e4669ad1-a480-4f39-8d96-d7cf804ce4b2" testId="a2db5f2b-a169-224a-05fb-6ab8c081b9bd" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingEqualProfileTwice_IsIdempotent" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.2544772" startTime="2026-10-14T03:25:41.9164517-04:00" endTime="2026-10-14T03:25:43.1562796-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e4669ad1-a480-4f39-8d96-d7cf804ce4b2" />
+    <UnitTestResult executionId="c8b3d819-d666-4dc2-a724-ae8f6723e705" testId="ab952d6c-d9f2-5bd2-9ffb-fc94e3e2bd43" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0639643" startTime="2026-10-14T03:25:42.2033940-04:00" endTime="2026-10-14T03:25:42.2673328-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c8b3d819-d666-4dc2-a724-ae8f6723e705" />
+    <UnitTestResult executionId="1580c094-18f7-4bcd-9c03-04a8ac89ecc4" testId="34bab70c-e6a7-e0b5-5ab6-8905f3ced84f" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: &quot;component name&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0000291" startTime="2026-10-14T03:25:41.9163019-04:00" endTime="2026-10-14T03:25:41.9163355-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1580c094-18f7-4bcd-9c03-04a8ac89ecc4" />
+    <UnitTestResult executionId="21855d83-8ac5-4331-90a6-2867b570a991" testId="1ba48eff-2a67-d4ff-4323-8efb1f9a47fd" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.4674320" startTime="2026-10-14T03:25:41.8018431-04:00" endTime="2026-10-14T03:25:43.2583206-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="21855d83-8ac5-4331-90a6-2867b570a991" />
+    <UnitTestResult executionId="4b8ca34b-1778-443f-8f25-8ed7794c611a" testId="e68b48b4-b14b-2d78-462a-f26ee46b7020" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.2867594" startTime="2026-10-14T03:25:41.9159959-04:00" endTime="2026-10-14T03:25:43.1884269-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4b8ca34b-1778-443f-8f25-8ed7794c611a" />
+    <UnitTestResult executionId="824f84e3-d915-4893-a59d-66d4ae7b2b17" testId="fee0b017-f30f-630e-6ee7-1bbe73e4d2e4" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0020152" startTime="2026-10-14T03:25:42.2672892-04:00" endTime="2026-10-14T03:25:42.2692230-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="824f84e3-d915-4893-a59d-66d4ae7b2b17" />
+    <UnitTestResult executionId="3035317f-beef-43a2-b401-a0bd293bf304" testId="b306a055-6ea0-c865-6497-c719996220c3" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_ReturnsCompleteCandidateIdentity" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0076952" startTime="2026-10-14T03:25:43.3001692-04:00" endTime="2026-10-14T03:25:43.3080312-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3035317f-beef-43a2-b401-a0bd293bf304" />
+    <UnitTestResult executionId="d5e0cdce-92e2-4431-9a30-44a8cc1df89f" testId="5ce4b657-96d7-358a-2e1e-e2a3c325c48d" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FutureObserverTimestampIsUnprovenAtEvaluationTime" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0019829" startTime="2026-10-14T03:25:42.2674251-04:00" endTime="2026-10-14T03:25:42.2691760-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d5e0cdce-92e2-4431-9a30-44a8cc1df89f" />
+    <UnitTestResult executionId="385c29af-0ed4-466d-9300-8089e0985ca4" testId="50be50d5-4d21-8395-ffec-f19387095232" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.UnpublishedUnsafeCheck_AffectsAggregateButIsOmitted" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0680579" startTime="2026-10-14T03:25:43.1580867-04:00" endTime="2026-10-14T03:25:43.2252100-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="385c29af-0ed4-466d-9300-8089e0985ca4" />
+    <UnitTestResult executionId="696a3ec6-5d71-4b2b-bdec-e5f86bff2e36" testId="a589e719-3b71-3171-6c10-3f6a1e6ca27d" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;git&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0023326" startTime="2026-10-14T03:25:42.3092774-04:00" endTime="2026-10-14T03:25:42.3116434-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="696a3ec6-5d71-4b2b-bdec-e5f86bff2e36" />
+    <UnitTestResult executionId="a75da12d-e404-4daf-9cec-f980c0ea84f8" testId="ad313685-7184-38cc-e774-419d8ce9e6a7" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002395" startTime="2026-10-14T03:25:42.2930158-04:00" endTime="2026-10-14T03:25:42.2931407-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a75da12d-e404-4daf-9cec-f980c0ea84f8" />
+    <UnitTestResult executionId="e3949451-71f0-454c-985b-a1e96c2ac464" testId="5330b063-3622-a576-ac89-d85e2ef852e6" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.SourceRevisionIsReadFromLoadedAssemblyMetadataAndWrongPinCannotMatch" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0498745" startTime="2026-10-14T03:25:42.3683755-04:00" endTime="2026-10-14T03:25:42.4181496-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e3949451-71f0-454c-985b-a1e96c2ac464" />
+    <UnitTestResult executionId="02a0e786-cec5-4c90-95df-9779a075440e" testId="0ad8a7f5-5510-6134-a2c8-98e8934462e2" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0131820" startTime="2026-10-14T03:25:42.4813061-04:00" endTime="2026-10-14T03:25:42.4945494-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="02a0e786-cec5-4c90-95df-9779a075440e" />
+    <UnitTestResult executionId="f94fb4a2-33dc-4cb7-9084-74d5ab14efff" testId="bf5be1c5-bd0d-9b99-df97-659cbd2e22e6" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 120)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0325292" startTime="2026-10-14T03:25:42.0670658-04:00" endTime="2026-10-14T03:25:42.0992386-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f94fb4a2-33dc-4cb7-9084-74d5ab14efff" />
+    <UnitTestResult executionId="3a4df7cf-c597-4dd3-a55c-618cfe4932f3" testId="f2e14b4e-dcff-3548-9038-a5ec8f96ffcb" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;identity&quot;, failedDependency: False, expected: OK)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0184747" startTime="2026-10-14T03:25:43.1886250-04:00" endTime="2026-10-14T03:25:43.2074025-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3a4df7cf-c597-4dd3-a55c-618cfe4932f3">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:51726/ /ops/v1/identity: HTTP 200; Cache-Control=no-store; dependencyFailed=False.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d04b1da3-865c-4c34-9fed-ed4dba0a7008" testId="23e788ec-c77b-75e1-20de-9a756bb0742b" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.FreshEvidenceRemainsMatchUntilTheMonotonicBudgetIsExceeded" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0027502" startTime="2026-10-14T03:25:43.2045594-04:00" endTime="2026-10-14T03:25:43.2072967-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d04b1da3-865c-4c34-9fed-ed4dba0a7008" />
+    <UnitTestResult executionId="388fabfc-a2e1-4b62-8e1e-1d5789d7a3c3" testId="6aa0d326-4173-c060-70de-e645382b4099" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;startup&quot;, failedDependency: True, expected: ServiceUnavailable)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0330286" startTime="2026-10-14T03:25:43.1549653-04:00" endTime="2026-10-14T03:25:43.1885564-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="388fabfc-a2e1-4b62-8e1e-1d5789d7a3c3">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:51720/ /ops/v1/startup: HTTP 503; Cache-Control=no-store; dependencyFailed=True.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9b19508c-32dd-4162-bc0c-3c9932bd9ede" testId="84c28ef5-784d-2d93-f073-602e547a18ca" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.LiveEndpoint_DoesNotRunRegisteredChecks" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0085919" startTime="2026-10-14T03:25:43.2254558-04:00" endTime="2026-10-14T03:25:43.2341219-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9b19508c-32dd-4162-bc0c-3c9932bd9ede" />
+    <UnitTestResult executionId="8da56a0e-06b8-4290-9313-e93553d71895" testId="88a6278b-3df2-713a-0d04-958d7f83a71c" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;ready&quot;, failedDependency: False, expected: OK)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0110755" startTime="2026-10-14T03:25:43.2179789-04:00" endTime="2026-10-14T03:25:43.2284732-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8da56a0e-06b8-4290-9313-e93553d71895">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:51732/ /ops/v1/ready: HTTP 200; Cache-Control=no-store; dependencyFailed=False.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="271c7c2a-ffb9-45f4-92d7-53ef8c6a3688" testId="710f5996-fa5f-074c-7b4e-57532bf0699d" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;environment&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0511027" startTime="2026-10-14T03:25:42.3145711-04:00" endTime="2026-10-14T03:25:42.3656217-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="271c7c2a-ffb9-45f4-92d7-53ef8c6a3688" />
+    <UnitTestResult executionId="e6a197f9-429d-4c74-9ff0-21856ff99f1e" testId="d1132f38-3730-66b7-1fb8-1c16ad2f7a16" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;live&quot;, failedDependency: False, expected: OK)" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.3622726" startTime="2026-10-14T03:25:41.8018566-04:00" endTime="2026-10-14T03:25:43.1546681-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e6a197f9-429d-4c74-9ff0-21856ff99f1e">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:51706/ /ops/v1/live: HTTP 200; Cache-Control=no-store; dependencyFailed=False.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2931d1cd-dc30-47d5-91e5-5040a443d432" testId="7abc56bb-0f40-7355-f0e8-83fdbe8af310" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;deployment&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0233736" startTime="2026-10-14T03:25:42.2930368-04:00" endTime="2026-10-14T03:25:42.3062847-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2931d1cd-dc30-47d5-91e5-5040a443d432" />
+    <UnitTestResult executionId="8b653198-ca72-452f-a8bd-6dd20e40f30b" testId="14e3a3f5-e84b-21e7-75f6-d1f58acddd59" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;start&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0164524" startTime="2026-10-14T03:25:42.3064187-04:00" endTime="2026-10-14T03:25:42.3091384-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8b653198-ca72-452f-a8bd-6dd20e40f30b" />
+    <UnitTestResult executionId="a1502d60-c6fa-4ff9-bb88-38abd5cd1c40" testId="296a231c-7e22-b8ec-9269-850c5b9346a0" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.MissingEmptyDuplicateUnknownAndWrongPurposeRouteCheckInventoriesFailClosed" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2034138" startTime="2026-10-14T03:25:41.8018705-04:00" endTime="2026-10-14T03:25:41.9940917-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a1502d60-c6fa-4ff9-bb88-38abd5cd1c40" />
+    <UnitTestResult executionId="cb8caef0-af07-4baa-9232-ba3770ebf333" testId="7e2ad774-a957-9df8-d49d-9aaf4166e8b6" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_ReturnsExplicitNonCandidateIdentityWithoutEmptyDigests" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0174348" startTime="2026-10-14T03:25:43.2450178-04:00" endTime="2026-10-14T03:25:43.2621268-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cb8caef0-af07-4baa-9232-ba3770ebf333" />
+    <UnitTestResult executionId="4ebb4c52-a92d-4055-b3d4-513ea6bd47d1" testId="f1dc2511-fe3b-b826-7d6e-594a358f00c9" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: &quot;wrong-tag&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0018299" startTime="2026-10-14T03:25:43.2425320-04:00" endTime="2026-10-14T03:25:43.2449522-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4ebb4c52-a92d-4055-b3d4-513ea6bd47d1" />
+    <UnitTestResult executionId="1c70be27-52b5-4cbc-b4b3-bb32612b4cd6" testId="eb88151f-98f0-5125-77e9-089224741207" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;epoch&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0296769" startTime="2026-10-14T03:25:42.1003095-04:00" endTime="2026-10-14T03:25:42.1299334-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1c70be27-52b5-4cbc-b4b3-bb32612b4cd6" />
+    <UnitTestResult executionId="c54b5227-2691-4b4b-84c2-98dee06051ed" testId="13eca260-5aa0-b0b1-e3df-9aac2694d7d5" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingDifferentProfile_FailsBeforeStartup" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0032161" startTime="2026-10-14T03:25:43.3082434-04:00" endTime="2026-10-14T03:25:43.3113731-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c54b5227-2691-4b4b-84c2-98dee06051ed" />
+    <UnitTestResult executionId="af853162-0650-440a-8d17-6c28dccf5b5d" testId="49da5992-b1fc-c5a2-07b8-ce3cf3db2c41" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0681324" startTime="2026-10-14T03:25:42.2001550-04:00" endTime="2026-10-14T03:25:42.2671540-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="af853162-0650-440a-8d17-6c28dccf5b5d" />
+    <UnitTestResult executionId="1d808831-9983-4752-9976-a798fcca4f41" testId="438030c4-4bf3-4160-dd09-7677716d673f" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.9349395" startTime="2026-10-14T03:25:42.2930534-04:00" endTime="2026-10-14T03:25:43.2044056-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1d808831-9983-4752-9976-a798fcca4f41">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:51709/: fresh ready=200, expired ready=503, UTC rollback ready=503; read remains available, effect and identity remain Unproven; real system clock unchanged.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="69e0c05f-1112-4188-9b1d-cbe1b3da3603" testId="081a9b20-b69a-e973-d88f-03d8779ca907" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;epoch&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0180301" startTime="2026-10-14T03:25:42.0989565-04:00" endTime="2026-10-14T03:25:42.1082723-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="69e0c05f-1112-4188-9b1d-cbe1b3da3603" />
+    <UnitTestResult executionId="b40bf49d-0538-45ee-8db7-76a4358473d7" testId="b74a2db5-d628-f97b-4428-78d0334a3e40" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 10)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0995643" startTime="2026-10-14T03:25:42.0999772-04:00" endTime="2026-10-14T03:25:42.2000486-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b40bf49d-0538-45ee-8db7-76a4358473d7" />
+    <UnitTestResult executionId="bc1f7b22-1f88-402d-90f3-e52227a2d31d" testId="ca9a0fbf-5c51-d6c8-7eb8-64577084378c" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: PackageSet)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0023170" startTime="2026-10-14T03:25:42.4761663-04:00" endTime="2026-10-14T03:25:42.4768486-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bc1f7b22-1f88-402d-90f3-e52227a2d31d" />
+    <UnitTestResult executionId="6c498d9b-ecec-4a27-ae59-7827bc059003" testId="fa152358-a5ad-278d-8ed5-c0bb748035a9" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: &quot;collision&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0051237" startTime="2026-10-14T03:25:43.2372747-04:00" endTime="2026-10-14T03:25:43.2424110-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6c498d9b-ecec-4a27-ae59-7827bc059003" />
+    <UnitTestResult executionId="82546333-b9fb-4c72-8554-3a3a461d6644" testId="c316a1d4-3300-956e-9504-20292f5c68c8" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;region&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2396867" startTime="2026-10-14T03:25:41.8018218-04:00" endTime="2026-10-14T03:25:42.0303538-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="82546333-b9fb-4c72-8554-3a3a461d6644" />
+    <UnitTestResult executionId="7f42e5cf-8603-4538-bfe0-b4bf62aec860" testId="983added-d322-90c1-12b9-2168b53f9ec4" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: &quot;Unsafe_Component&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002408" startTime="2026-10-14T03:25:41.9083695-04:00" endTime="2026-10-14T03:25:41.9160530-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7f42e5cf-8603-4538-bfe0-b4bf62aec860" />
+    <UnitTestResult executionId="4fa080ec-c36f-4550-b6ce-6c2e597ee9f6" testId="e6065bc6-197d-e7fa-b25f-cadd50018291" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: &quot;missing-check&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0083823" startTime="2026-10-14T03:25:43.2450720-04:00" endTime="2026-10-14T03:25:43.2529885-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4fa080ec-c36f-4550-b6ce-6c2e597ee9f6" />
+    <UnitTestResult executionId="8c3f749a-555f-4266-a615-906f62ec1b0e" testId="709ef29e-e54f-e36d-daed-d5a5bd27487d" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_RejectsValidButDriftedIdentity" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0149876" startTime="2026-10-14T03:25:43.2628118-04:00" endTime="2026-10-14T03:25:43.2777259-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8c3f749a-555f-4266-a615-906f62ec1b0e" />
+    <UnitTestResult executionId="6784193f-c323-408c-af70-043dc70fe912" testId="cb493280-97aa-3378-106b-6f28f61fb31a" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0720431" startTime="2026-10-14T03:25:42.1310415-04:00" endTime="2026-10-14T03:25:42.2031043-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6784193f-c323-408c-af70-043dc70fe912">
+      <Output>
+        <StdOut>Actual owned loader digest sha256:37636c410d6bc946d4c960fd2851d81c5a1447f0423ed57d9ce990417235b8a0; pinned sha256:37636c410d6bc946d4c960fd2851d81c5a1447f0423ed57d9ce990417235b8a0; verdict Match; scope owned-managed-modules-only</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c0128b9a-b805-4c19-9b39-1e6700ddbe30" testId="f2258330-4f75-d750-75ca-268bfa246dcc" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: &quot;missing-policy&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0019446" startTime="2026-10-14T03:25:43.2532537-04:00" endTime="2026-10-14T03:25:43.2547463-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c0128b9a-b805-4c19-9b39-1e6700ddbe30" />
+    <UnitTestResult executionId="159bcc09-6d71-4051-a671-083337bed488" testId="02ffa52f-f022-8e63-a4a7-d0dba1e006d1" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;ready&quot;, failedDependency: True, expected: ServiceUnavailable)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0092593" startTime="2026-10-14T03:25:43.2074625-04:00" endTime="2026-10-14T03:25:43.2171250-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="159bcc09-6d71-4051-a671-083337bed488">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:51728/ /ops/v1/ready: HTTP 503; Cache-Control=no-store; dependencyFailed=True.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0d595d3e-6eb0-4cc0-accf-3079d142fb83" testId="e940b0a4-5a86-369a-801b-67dab9d2e9ac" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0562033" startTime="2026-10-14T03:25:42.4183204-04:00" endTime="2026-10-14T03:25:42.4745076-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0d595d3e-6eb0-4cc0-accf-3079d142fb83" />
+    <UnitTestResult executionId="b5b33cd1-8b78-43a0-9cab-e14333c35afd" testId="e825c7d6-0f65-0720-5d35-774475d7c16a" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;process&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0026527" startTime="2026-10-14T03:25:42.3119302-04:00" endTime="2026-10-14T03:25:42.3143909-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b5b33cd1-8b78-43a0-9cab-e14333c35afd" />
+    <UnitTestResult executionId="fc1f0bed-4ad5-42c5-802f-1b37b284684b" testId="cdd4afbf-0b37-0f8b-0a21-2e2d487f4299" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ContainerImage)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0017864" startTime="2026-10-14T03:25:42.4794321-04:00" endTime="2026-10-14T03:25:42.4811615-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fc1f0bed-4ad5-42c5-802f-1b37b284684b" />
+    <UnitTestResult executionId="92f79d8d-774a-4fcd-9339-f47d0ff66b1b" testId="bc0bf864-7a0d-5371-9efc-5962447e835f" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.DependencyEndpoints_FilterTags_RedactDetails_AndFailOnAnyNonHealthy(path: &quot;/health/startup&quot;, selectedTag: &quot;startup&quot;, selectedStatus: Degraded)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0127925" startTime="2026-10-14T03:25:43.2778698-04:00" endTime="2026-10-14T03:25:43.2908987-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="92f79d8d-774a-4fcd-9339-f47d0ff66b1b" />
+    <UnitTestResult executionId="c38d6522-6ecf-48de-8529-40f5228e47f2" testId="16b9e3df-3073-2864-87ba-dfeb2288aa17" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.MonotonicClockFailureCannotProducePositiveEvidenceOrExposeException" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2757171" startTime="2026-10-14T03:25:41.8018840-04:00" endTime="2026-10-14T03:25:42.0667544-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c38d6522-6ecf-48de-8529-40f5228e47f2" />
+    <UnitTestResult executionId="06cf1b50-acf3-4f57-ae6d-5522215cbded" testId="fed43476-7281-5c04-a915-24fd4ce9b7c9" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.1086763" startTime="2026-10-14T03:25:41.8012011-04:00" endTime="2026-10-14T03:25:41.9012857-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06cf1b50-acf3-4f57-ae6d-5522215cbded" />
+    <UnitTestResult executionId="e1a89270-0fed-4cdc-bca1-91ceb6fb509b" testId="f1cb0b22-24ba-8c16-59b2-3d145bdaa4ba" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_RejectsInvalidIdentityWithoutEchoingIt" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0097193" startTime="2026-10-14T03:25:43.2342799-04:00" endTime="2026-10-14T03:25:43.2442484-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e1a89270-0fed-4cdc-bca1-91ceb6fb509b" />
+    <UnitTestResult executionId="62745253-9795-49dd-9b67-df7bd0488ab9" testId="735804a1-8feb-3192-e54e-c322b234a200" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0138141" startTime="2026-10-14T03:25:43.8404228-04:00" endTime="2026-10-14T03:25:43.8545171-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="62745253-9795-49dd-9b67-df7bd0488ab9" />
+    <UnitTestResult executionId="e800b825-dd28-4772-b04a-e4766331c2f5" testId="1c7bf44b-bbd7-879a-8041-dd7aa2176934" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;offset&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0005835" startTime="2026-10-14T03:25:42.1300640-04:00" endTime="2026-10-14T03:25:42.1305817-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e800b825-dd28-4772-b04a-e4766331c2f5" />
+    <UnitTestResult executionId="99675f42-9bb2-4304-b45c-0c65ba76ebe9" testId="ea70cd42-c86f-87a6-078d-e5d3d8e7047f" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;startup&quot;, failedDependency: False, expected: OK)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0248888" startTime="2026-10-14T03:25:43.2285809-04:00" endTime="2026-10-14T03:25:43.2538240-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="99675f42-9bb2-4304-b45c-0c65ba76ebe9">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:51736/ /ops/v1/startup: HTTP 200; Cache-Control=no-store; dependencyFailed=False.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="37327ec2-cd4c-4c1e-9534-3318a3b4b2cd" testId="04be0b08-3e66-8b14-2b9e-cd80a90b8040" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;minimum&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0003167" startTime="2026-10-14T03:25:42.1306921-04:00" endTime="2026-10-14T03:25:42.1309418-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="37327ec2-cd4c-4c1e-9534-3318a3b4b2cd" />
+    <UnitTestResult executionId="0677d5a3-ee99-4f11-990c-879b8bf31567" testId="573e83f9-f072-a455-fa41-db1603222c2f" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;service&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0596831" startTime="2026-10-14T03:25:42.0305082-04:00" endTime="2026-10-14T03:25:42.0901982-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0677d5a3-ee99-4f11-990c-879b8bf31567" />
+    <UnitTestResult executionId="140dca26-6723-4016-816b-f2e6828aae9c" testId="70fa5120-b861-4bc7-a6e7-6e227bdc1894" testName="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: &quot;component/child&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.1088289" startTime="2026-10-14T03:25:41.8002348-04:00" endTime="2026-10-14T03:25:41.9036980-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="140dca26-6723-4016-816b-f2e6828aae9c" />
+    <UnitTestResult executionId="9e14a9cf-f5ee-4042-a61b-028a4a555926" testId="bd6b029b-8ac4-a943-9558-0c67acea10eb" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0216293" startTime="2026-10-14T03:25:43.1853249-04:00" endTime="2026-10-14T03:25:43.2070882-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9e14a9cf-f5ee-4042-a61b-028a4a555926" />
+    <UnitTestResult executionId="50ea046b-07f1-4530-a8eb-efdce8b9dda4" testId="ab8d0862-52cb-3758-487b-ab7eea863217" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.5785897" startTime="2026-10-14T03:25:43.2607290-04:00" endTime="2026-10-14T03:25:43.8395253-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="50ea046b-07f1-4530-a8eb-efdce8b9dda4">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:51745/ dependency http://127.0.0.1:51744/; up ServiceUnavailable; stopped ServiceUnavailable; live {"contractVersion":"1.0.0","status":"live"}&#xD;
+Dependency restarted on same loopback port; read restored; no Owner writes, migrations or replay configured; hosts disposed.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f67a5cdf-b703-4708-a928-217d6c999e79" testId="6f3d5403-4aa3-b9e3-f17d-c31e12c7786e" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3094478" startTime="2026-10-14T03:25:41.8012165-04:00" endTime="2026-10-14T03:25:42.1001785-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f67a5cdf-b703-4708-a928-217d6c999e79" />
+    <UnitTestResult executionId="ed47bcaa-2516-4a8e-9c4b-2f6b3d9f7f16" testId="2335abac-6092-a72a-c2cd-476cec07a544" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0387244" startTime="2026-10-14T03:25:43.2550141-04:00" endTime="2026-10-14T03:25:43.2937796-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ed47bcaa-2516-4a8e-9c4b-2f6b3d9f7f16" />
+    <UnitTestResult executionId="7ac9c154-fdbe-4c6b-84a3-8681a286a38b" testId="d12b1a4b-2f8b-8f88-5b32-8b0df99f1323" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;schema&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0025496" startTime="2026-10-14T03:25:42.3657688-04:00" endTime="2026-10-14T03:25:42.3682093-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7ac9c154-fdbe-4c6b-84a3-8681a286a38b" />
+    <UnitTestResult executionId="d811f183-159f-47a9-a52c-2877bcdc158d" testId="95583029-c02d-b4bc-f6f2-c48951a5c330" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;packages&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0020091" startTime="2026-10-14T03:25:42.2673030-04:00" endTime="2026-10-14T03:25:42.2692371-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d811f183-159f-47a9-a52c-2877bcdc158d" />
+    <UnitTestResult executionId="65bfa770-10e8-4ab1-b330-b3b67feba0cd" testId="e9159e36-af02-b064-2924-64dfacabe9da" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0021415" startTime="2026-10-14T03:25:43.2584572-04:00" endTime="2026-10-14T03:25:43.2605999-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="65bfa770-10e8-4ab1-b330-b3b67feba0cd" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: False)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="49da5992-b1fc-c5a2-07b8-ce3cf3db2c41">
+      <Execution id="af853162-0650-440a-8d17-6c28dccf5b5d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;packages&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="95583029-c02d-b4bc-f6f2-c48951a5c330">
+      <Execution id="d811f183-159f-47a9-a52c-2877bcdc158d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;service&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="573e83f9-f072-a455-fa41-db1603222c2f">
+      <Execution id="0677d5a3-ee99-4f11-990c-879b8bf31567" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="0c52b09b-6040-26cf-c1db-f58c1a484c8e">
+      <Execution id="23acc66e-7b3e-44ca-a56e-2f8a8ec4193f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests" name="StaleCacheRefreshesAndHiddenFailureStillChangesAggregate" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;ready&quot;, failedDependency: True, expected: ServiceUnavailable)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="02ffa52f-f022-8e63-a4a7-d0dba1e006d1">
+      <Execution id="159bcc09-6d71-4051-a671-083337bed488" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;configuration&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ea105f9f-9d69-ffe1-468d-1e9f3dee14c9">
+      <Execution id="851963be-0e52-4f46-a8b3-66ae7c5425df" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;startup&quot;, failedDependency: True, expected: ServiceUnavailable)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="6aa0d326-4173-c060-70de-e645382b4099">
+      <Execution id="388fabfc-a2e1-4b62-8e1e-1d5789d7a3c3" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.FreshEvidenceRemainsMatchUntilTheMonotonicBudgetIsExceeded" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="23e788ec-c77b-75e1-20de-9a756bb0742b">
+      <Execution id="d04b1da3-865c-4c34-9fed-ed4dba0a7008" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="FreshEvidenceRemainsMatchUntilTheMonotonicBudgetIsExceeded" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="438030c4-4bf3-4160-dd09-7677716d673f">
+      <Execution id="1d808831-9983-4752-9976-a798fcca4f41" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="1ba48eff-2a67-d4ff-4323-8efb1f9a47fd">
+      <Execution id="21855d83-8ac5-4331-90a6-2867b570a991" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests" name="BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;epoch&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="eb88151f-98f0-5125-77e9-089224741207">
+      <Execution id="1c70be27-52b5-4cbc-b4b3-bb32612b4cd6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="InvalidObserverTimestampCannotBecomePositiveEvidence" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: &quot;missing-policy&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="f2258330-4f75-d750-75ca-268bfa246dcc">
+      <Execution id="c0128b9a-b805-4c19-9b39-1e6700ddbe30" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests" name="RegistrationFailsClosed" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_ReturnsExplicitNonCandidateIdentityWithoutEmptyDigests" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="7e2ad774-a957-9df8-d49d-9aaf4166e8b6">
+      <Execution id="cb8caef0-af07-4baa-9232-ba3770ebf333" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="ReleaseEndpoint_ReturnsExplicitNonCandidateIdentityWithoutEmptyDigests" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;git&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="a589e719-3b71-3171-6c10-3f6a1e6ca27d">
+      <Execution id="696a3ec6-5d71-4b2b-bdec-e5f86bff2e36" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: True)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="4c84f383-3742-d30d-8a2c-b99ee4f02c22">
+      <Execution id="e21cbdb6-a913-4591-949b-0581cf1e7a8d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests" name="ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_RejectsInvalidIdentityWithoutEchoingIt" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="f1cb0b22-24ba-8c16-59b2-3d145bdaa4ba">
+      <Execution id="e1a89270-0fed-4cdc-bca1-91ceb6fb509b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="ReleaseEndpoint_RejectsInvalidIdentityWithoutEchoingIt" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;start&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="14e3a3f5-e84b-21e7-75f6-d1f58acddd59">
+      <Execution id="8b653198-ca72-452f-a8bd-6dd20e40f30b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;deployment&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="7abc56bb-0f40-7355-f0e8-83fdbe8af310">
+      <Execution id="2931d1cd-dc30-47d5-91e5-5040a443d432" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.MissingEmptyDuplicateUnknownAndWrongPurposeRouteCheckInventoriesFailClosed" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="296a231c-7e22-b8ec-9269-850c5b9346a0">
+      <Execution id="a1502d60-c6fa-4ff9-bb88-38abd5cd1c40" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests" name="MissingEmptyDuplicateUnknownAndWrongPurposeRouteCheckInventoriesFailClosed" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="735804a1-8feb-3192-e54e-c322b234a200">
+      <Execution id="62745253-9795-49dd-9b67-df7bd0488ab9" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests" name="HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: &quot;component/child&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="70fa5120-b861-4bc7-a6e7-6e227bdc1894">
+      <Execution id="140dca26-6723-4016-816b-f2e6828aae9c" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="Profile_RejectsUnsafePublishedComponentName" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: &quot;collision&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="fa152358-a5ad-278d-8ed5-c0bb748035a9">
+      <Execution id="6c498d9b-ecec-4a27-ae59-7827bc059003" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests" name="RegistrationFailsClosed" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: PackageSet)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ca9a0fbf-5c51-d6c8-7eb8-64577084378c">
+      <Execution id="bc1f7b22-1f88-402d-90f3-e52227a2d31d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.UnpublishedUnsafeCheck_AffectsAggregateButIsOmitted" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="50be50d5-4d21-8395-ffec-f19387095232">
+      <Execution id="385c29af-0ed4-466d-9300-8089e0985ca4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="UnpublishedUnsafeCheck_AffectsAggregateButIsOmitted" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: &quot;wrong-tag&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="f1dc2511-fe3b-b826-7d6e-594a358f00c9">
+      <Execution id="4ebb4c52-a92d-4055-b3d4-513ea6bd47d1" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests" name="RegistrationFailsClosed" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="0ad8a7f5-5510-6134-a2c8-98e8934462e2">
+      <Execution id="02a0e786-cec5-4c90-95df-9779a075440e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.DependencyEndpoints_FilterTags_RedactDetails_AndFailOnAnyNonHealthy(path: &quot;/health/ready&quot;, selectedTag: &quot;ready&quot;, selectedStatus: Unhealthy)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ef77c317-38e7-bb59-0ff2-9f52f2d5dfeb">
+      <Execution id="3cb23614-db41-4657-9707-c5bba3a28256" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="DependencyEndpoints_FilterTags_RedactDetails_AndFailOnAnyNonHealthy" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingEqualProfileTwice_IsIdempotent" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="a2db5f2b-a169-224a-05fb-6ab8c081b9bd">
+      <Execution id="e4669ad1-a480-4f39-8d96-d7cf804ce4b2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="MappingEqualProfileTwice_IsIdempotent" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="cb493280-97aa-3378-106b-6f28f61fb31a">
+      <Execution id="6784193f-c323-408c-af70-043dc70fe912" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: False)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="bd6b029b-8ac4-a943-9558-0c67acea10eb">
+      <Execution id="9e14a9cf-f5ee-4042-a61b-028a4a555926" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests" name="ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;schema&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="d12b1a4b-2f8b-8f88-5b32-8b0df99f1323">
+      <Execution id="7ac9c154-fdbe-4c6b-84a3-8681a286a38b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;offset&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="1c7bf44b-bbd7-879a-8041-dd7aa2176934">
+      <Execution id="e800b825-dd28-4772-b04a-e4766331c2f5" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="InvalidObserverTimestampCannotBecomePositiveEvidence" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ad313685-7184-38cc-e774-419d8ce9e6a7">
+      <Execution id="a75da12d-e404-4daf-9cec-f980c0ea84f8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FutureObserverTimestampIsUnprovenAtEvaluationTime" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="5ce4b657-96d7-358a-2e1e-e2a3c325c48d">
+      <Execution id="d5e0cdce-92e2-4431-9a30-44a8cc1df89f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="FutureObserverTimestampIsUnprovenAtEvaluationTime" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.SourceRevisionIsReadFromLoadedAssemblyMetadataAndWrongPinCannotMatch" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="5330b063-3622-a576-ac89-d85e2ef852e6">
+      <Execution id="e3949451-71f0-454c-985b-a1e96c2ac464" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="SourceRevisionIsReadFromLoadedAssemblyMetadataAndWrongPinCannotMatch" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;version&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="33bc8ce9-7c29-f3c9-be4e-5bf1b30622a4">
+      <Execution id="6dbd68c9-74a9-4a4a-886b-1d00c7480af5" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.LiveEndpoint_DoesNotRunRegisteredChecks" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="84c28ef5-784d-2d93-f073-602e547a18ca">
+      <Execution id="9b19508c-32dd-4162-bc0c-3c9932bd9ede" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="LiveEndpoint_DoesNotRunRegisteredChecks" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;environment&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="710f5996-fa5f-074c-7b4e-57532bf0699d">
+      <Execution id="271c7c2a-ffb9-45f4-92d7-53ef8c6a3688" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_ReturnsCompleteCandidateIdentity" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="b306a055-6ea0-c865-6497-c719996220c3">
+      <Execution id="3035317f-beef-43a2-b401-a0bd293bf304" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="ReleaseEndpoint_ReturnsCompleteCandidateIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;ready&quot;, failedDependency: False, expected: OK)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="88a6278b-3df2-713a-0d04-958d7f83a71c">
+      <Execution id="8da56a0e-06b8-4290-9313-e93553d71895" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: &quot;missing-check&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="e6065bc6-197d-e7fa-b25f-cadd50018291">
+      <Execution id="4fa080ec-c36f-4550-b6ce-6c2e597ee9f6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests" name="RegistrationFailsClosed" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.MonotonicClockFailureCannotProducePositiveEvidenceOrExposeException" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="16b9e3df-3073-2864-87ba-dfeb2288aa17">
+      <Execution id="c38d6522-6ecf-48de-8529-40f5228e47f2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="MonotonicClockFailureCannotProducePositiveEvidenceOrExposeException" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;process&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="e825c7d6-0f65-0720-5d35-774475d7c16a">
+      <Execution id="b5b33cd1-8b78-43a0-9cab-e14333c35afd" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="fed43476-7281-5c04-a915-24fd4ce9b7c9">
+      <Execution id="06cf1b50-acf3-4f57-ae6d-5522215cbded" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests" name="EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="6f3d5403-4aa3-b9e3-f17d-c31e12c7786e">
+      <Execution id="f67a5cdf-b703-4708-a928-217d6c999e79" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;epoch&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="081a9b20-b69a-e973-d88f-03d8779ca907">
+      <Execution id="69e0c05f-1112-4188-9b1d-cbe1b3da3603" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ProcessImage)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="4dde2e3c-cf3c-d15c-2e68-b16b7b9f1c15">
+      <Execution id="12e19fab-d627-4a94-abdb-0ac9d38dda1a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ab952d6c-d9f2-5bd2-9ffb-fc94e3e2bd43">
+      <Execution id="c8b3d819-d666-4dc2-a724-ae8f6723e705" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="FreshnessIsEvaluatedOnEveryObservation" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;minimum&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="04be0b08-3e66-8b14-2b9e-cd80a90b8040">
+      <Execution id="37327ec2-cd4c-4c1e-9534-3318a3b4b2cd" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="InvalidObserverTimestampCannotBecomePositiveEvidence" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: &quot;region&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="c316a1d4-3300-956e-9504-20292f5c68c8">
+      <Execution id="82546333-b9fb-4c72-8554-3a3a461d6644" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="WrongExpectedBindingCannotMatchOwnedRunningModules" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="2335abac-6092-a72a-c2cd-476cec07a544">
+      <Execution id="ed47bcaa-2516-4a8e-9c4b-2f6b3d9f7f16" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests" name="ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="e940b0a4-5a86-369a-801b-67dab9d2e9ac">
+      <Execution id="0d595d3e-6eb0-4cc0-accf-3079d142fb83" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: &quot;Unsafe_Component&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="983added-d322-90c1-12b9-2168b53f9ec4">
+      <Execution id="7f42e5cf-8603-4538-bfe0-b4bf62aec860" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="Profile_RejectsUnsafePublishedComponentName" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 10)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="b74a2db5-d628-f97b-4428-78d0334a3e40">
+      <Execution id="b40bf49d-0538-45ee-8db7-76a4358473d7" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="ExpiredIdentityCannotReviveWhenUtcRollsBack" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.WriteOnlyDependencyFailurePreservesReadRouteAndHiddenFailureKeepsOverall503" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="a18ba068-8859-60d4-3ea5-24372ecd0dfa">
+      <Execution id="cb54e4c0-a054-4573-b553-8301f34ea0ce" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests" name="WriteOnlyDependencyFailurePreservesReadRouteAndHiddenFailureKeepsOverall503" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="e68b48b4-b14b-2d78-462a-f26ee46b7020">
+      <Execution id="4b8ca34b-1778-443f-8f25-8ed7794c611a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests" name="IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="e9159e36-af02-b064-2924-64dfacabe9da">
+      <Execution id="65bfa770-10e8-4ab1-b330-b3b67feba0cd" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests" name="MissingWrongTagAndRouteCollisionsAreRejected" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 120)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="bf5be1c5-bd0d-9b99-df97-659cbd2e22e6">
+      <Execution id="f94fb4a2-33dc-4cb7-9084-74d5ab14efff" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="ExpiredIdentityCannotReviveWhenUtcRollsBack" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;startup&quot;, failedDependency: False, expected: OK)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ea70cd42-c86f-87a6-078d-e5d3d8e7047f">
+      <Execution id="99675f42-9bb2-4304-b45c-0c65ba76ebe9" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="921e3b14-7c4c-9838-fed7-afe6a050af32">
+      <Execution id="60c5ae02-125f-4d49-ac7d-f33d04870458" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests" name="LaterRouteCollisionFailsAtHostStart" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingDifferentProfile_FailsBeforeStartup" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="13eca260-5aa0-b0b1-e3df-9aac2694d7d5">
+      <Execution id="c54b5227-2691-4b4b-84c2-98dee06051ed" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="MappingDifferentProfile_FailsBeforeStartup" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;live&quot;, failedDependency: False, expected: OK)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="d1132f38-3730-66b7-1fb8-1c16ad2f7a16">
+      <Execution id="e6a197f9-429d-4c74-9ff0-21856ff99f1e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ContainerImage)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="cdd4afbf-0b37-0f8b-0a21-2e2d487f4299">
+      <Execution id="fc1f0bed-4ad5-42c5-802f-1b37b284684b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests" name="FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: &quot;component name&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="34bab70c-e6a7-e0b5-5ab6-8905f3ced84f">
+      <Execution id="1580c094-18f7-4bcd-9c03-04a8ac89ecc4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="Profile_RejectsUnsafePublishedComponentName" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.DependencyEndpoints_FilterTags_RedactDetails_AndFailOnAnyNonHealthy(path: &quot;/health/startup&quot;, selectedTag: &quot;startup&quot;, selectedStatus: Degraded)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="bc0bf864-7a0d-5371-9efc-5962447e835f">
+      <Execution id="92f79d8d-774a-4fcd-9339-f47d0ff66b1b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="DependencyEndpoints_FilterTags_RedactDetails_AndFailOnAnyNonHealthy" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_RejectsValidButDriftedIdentity" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="709ef29e-e54f-e36d-daed-d5a5bd27487d">
+      <Execution id="8c3f749a-555f-4266-a615-906f62ec1b0e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.OperationalEndpointTests" name="ReleaseEndpoint_RejectsValidButDriftedIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;identity&quot;, failedDependency: False, expected: OK)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="f2e14b4e-dcff-3548-9038-a5ec8f96ffcb">
+      <Execution id="3a4df7cf-c597-4dd3-a55c-618cfe4932f3" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ab8d0862-52cb-3758-487b-ab7eea863217">
+      <Execution id="50ea046b-07f1-4530-a8eb-efdce8b9dda4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests" name="RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: True)" storage="d:\cp6.platform-worktrees\wp02-25-corrected-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="fee0b017-f30f-630e-6ee7-1bbe73e4d2e4">
+      <Execution id="824f84e3-d915-4893-a59d-66d4ae7b2b17" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="921e3b14-7c4c-9838-fed7-afe6a050af32" executionId="60c5ae02-125f-4d49-ac7d-f33d04870458" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4c84f383-3742-d30d-8a2c-b99ee4f02c22" executionId="e21cbdb6-a913-4591-949b-0581cf1e7a8d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0c52b09b-6040-26cf-c1db-f58c1a484c8e" executionId="23acc66e-7b3e-44ca-a56e-2f8a8ec4193f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a18ba068-8859-60d4-3ea5-24372ecd0dfa" executionId="cb54e4c0-a054-4573-b553-8301f34ea0ce" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea105f9f-9d69-ffe1-468d-1e9f3dee14c9" executionId="851963be-0e52-4f46-a8b3-66ae7c5425df" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef77c317-38e7-bb59-0ff2-9f52f2d5dfeb" executionId="3cb23614-db41-4657-9707-c5bba3a28256" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="33bc8ce9-7c29-f3c9-be4e-5bf1b30622a4" executionId="6dbd68c9-74a9-4a4a-886b-1d00c7480af5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4dde2e3c-cf3c-d15c-2e68-b16b7b9f1c15" executionId="12e19fab-d627-4a94-abdb-0ac9d38dda1a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a2db5f2b-a169-224a-05fb-6ab8c081b9bd" executionId="e4669ad1-a480-4f39-8d96-d7cf804ce4b2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab952d6c-d9f2-5bd2-9ffb-fc94e3e2bd43" executionId="c8b3d819-d666-4dc2-a724-ae8f6723e705" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="34bab70c-e6a7-e0b5-5ab6-8905f3ced84f" executionId="1580c094-18f7-4bcd-9c03-04a8ac89ecc4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1ba48eff-2a67-d4ff-4323-8efb1f9a47fd" executionId="21855d83-8ac5-4331-90a6-2867b570a991" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e68b48b4-b14b-2d78-462a-f26ee46b7020" executionId="4b8ca34b-1778-443f-8f25-8ed7794c611a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fee0b017-f30f-630e-6ee7-1bbe73e4d2e4" executionId="824f84e3-d915-4893-a59d-66d4ae7b2b17" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b306a055-6ea0-c865-6497-c719996220c3" executionId="3035317f-beef-43a2-b401-a0bd293bf304" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5ce4b657-96d7-358a-2e1e-e2a3c325c48d" executionId="d5e0cdce-92e2-4431-9a30-44a8cc1df89f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="50be50d5-4d21-8395-ffec-f19387095232" executionId="385c29af-0ed4-466d-9300-8089e0985ca4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a589e719-3b71-3171-6c10-3f6a1e6ca27d" executionId="696a3ec6-5d71-4b2b-bdec-e5f86bff2e36" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ad313685-7184-38cc-e774-419d8ce9e6a7" executionId="a75da12d-e404-4daf-9cec-f980c0ea84f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5330b063-3622-a576-ac89-d85e2ef852e6" executionId="e3949451-71f0-454c-985b-a1e96c2ac464" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0ad8a7f5-5510-6134-a2c8-98e8934462e2" executionId="02a0e786-cec5-4c90-95df-9779a075440e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bf5be1c5-bd0d-9b99-df97-659cbd2e22e6" executionId="f94fb4a2-33dc-4cb7-9084-74d5ab14efff" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f2e14b4e-dcff-3548-9038-a5ec8f96ffcb" executionId="3a4df7cf-c597-4dd3-a55c-618cfe4932f3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="23e788ec-c77b-75e1-20de-9a756bb0742b" executionId="d04b1da3-865c-4c34-9fed-ed4dba0a7008" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6aa0d326-4173-c060-70de-e645382b4099" executionId="388fabfc-a2e1-4b62-8e1e-1d5789d7a3c3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="84c28ef5-784d-2d93-f073-602e547a18ca" executionId="9b19508c-32dd-4162-bc0c-3c9932bd9ede" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="88a6278b-3df2-713a-0d04-958d7f83a71c" executionId="8da56a0e-06b8-4290-9313-e93553d71895" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="710f5996-fa5f-074c-7b4e-57532bf0699d" executionId="271c7c2a-ffb9-45f4-92d7-53ef8c6a3688" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d1132f38-3730-66b7-1fb8-1c16ad2f7a16" executionId="e6a197f9-429d-4c74-9ff0-21856ff99f1e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7abc56bb-0f40-7355-f0e8-83fdbe8af310" executionId="2931d1cd-dc30-47d5-91e5-5040a443d432" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="14e3a3f5-e84b-21e7-75f6-d1f58acddd59" executionId="8b653198-ca72-452f-a8bd-6dd20e40f30b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="296a231c-7e22-b8ec-9269-850c5b9346a0" executionId="a1502d60-c6fa-4ff9-bb88-38abd5cd1c40" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7e2ad774-a957-9df8-d49d-9aaf4166e8b6" executionId="cb8caef0-af07-4baa-9232-ba3770ebf333" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f1dc2511-fe3b-b826-7d6e-594a358f00c9" executionId="4ebb4c52-a92d-4055-b3d4-513ea6bd47d1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eb88151f-98f0-5125-77e9-089224741207" executionId="1c70be27-52b5-4cbc-b4b3-bb32612b4cd6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="13eca260-5aa0-b0b1-e3df-9aac2694d7d5" executionId="c54b5227-2691-4b4b-84c2-98dee06051ed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="49da5992-b1fc-c5a2-07b8-ce3cf3db2c41" executionId="af853162-0650-440a-8d17-6c28dccf5b5d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="438030c4-4bf3-4160-dd09-7677716d673f" executionId="1d808831-9983-4752-9976-a798fcca4f41" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="081a9b20-b69a-e973-d88f-03d8779ca907" executionId="69e0c05f-1112-4188-9b1d-cbe1b3da3603" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b74a2db5-d628-f97b-4428-78d0334a3e40" executionId="b40bf49d-0538-45ee-8db7-76a4358473d7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ca9a0fbf-5c51-d6c8-7eb8-64577084378c" executionId="bc1f7b22-1f88-402d-90f3-e52227a2d31d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fa152358-a5ad-278d-8ed5-c0bb748035a9" executionId="6c498d9b-ecec-4a27-ae59-7827bc059003" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c316a1d4-3300-956e-9504-20292f5c68c8" executionId="82546333-b9fb-4c72-8554-3a3a461d6644" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="983added-d322-90c1-12b9-2168b53f9ec4" executionId="7f42e5cf-8603-4538-bfe0-b4bf62aec860" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e6065bc6-197d-e7fa-b25f-cadd50018291" executionId="4fa080ec-c36f-4550-b6ce-6c2e597ee9f6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="709ef29e-e54f-e36d-daed-d5a5bd27487d" executionId="8c3f749a-555f-4266-a615-906f62ec1b0e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cb493280-97aa-3378-106b-6f28f61fb31a" executionId="6784193f-c323-408c-af70-043dc70fe912" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f2258330-4f75-d750-75ca-268bfa246dcc" executionId="c0128b9a-b805-4c19-9b39-1e6700ddbe30" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="02ffa52f-f022-8e63-a4a7-d0dba1e006d1" executionId="159bcc09-6d71-4051-a671-083337bed488" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e940b0a4-5a86-369a-801b-67dab9d2e9ac" executionId="0d595d3e-6eb0-4cc0-accf-3079d142fb83" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e825c7d6-0f65-0720-5d35-774475d7c16a" executionId="b5b33cd1-8b78-43a0-9cab-e14333c35afd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cdd4afbf-0b37-0f8b-0a21-2e2d487f4299" executionId="fc1f0bed-4ad5-42c5-802f-1b37b284684b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bc0bf864-7a0d-5371-9efc-5962447e835f" executionId="92f79d8d-774a-4fcd-9339-f47d0ff66b1b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="16b9e3df-3073-2864-87ba-dfeb2288aa17" executionId="c38d6522-6ecf-48de-8529-40f5228e47f2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fed43476-7281-5c04-a915-24fd4ce9b7c9" executionId="06cf1b50-acf3-4f57-ae6d-5522215cbded" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f1cb0b22-24ba-8c16-59b2-3d145bdaa4ba" executionId="e1a89270-0fed-4cdc-bca1-91ceb6fb509b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="735804a1-8feb-3192-e54e-c322b234a200" executionId="62745253-9795-49dd-9b67-df7bd0488ab9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1c7bf44b-bbd7-879a-8041-dd7aa2176934" executionId="e800b825-dd28-4772-b04a-e4766331c2f5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ea70cd42-c86f-87a6-078d-e5d3d8e7047f" executionId="99675f42-9bb2-4304-b45c-0c65ba76ebe9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="04be0b08-3e66-8b14-2b9e-cd80a90b8040" executionId="37327ec2-cd4c-4c1e-9534-3318a3b4b2cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="573e83f9-f072-a455-fa41-db1603222c2f" executionId="0677d5a3-ee99-4f11-990c-879b8bf31567" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="70fa5120-b861-4bc7-a6e7-6e227bdc1894" executionId="140dca26-6723-4016-816b-f2e6828aae9c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bd6b029b-8ac4-a943-9558-0c67acea10eb" executionId="9e14a9cf-f5ee-4042-a61b-028a4a555926" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab8d0862-52cb-3758-487b-ab7eea863217" executionId="50ea046b-07f1-4530-a8eb-efdce8b9dda4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6f3d5403-4aa3-b9e3-f17d-c31e12c7786e" executionId="f67a5cdf-b703-4708-a928-217d6c999e79" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2335abac-6092-a72a-c2cd-476cec07a544" executionId="ed47bcaa-2516-4a8e-9c4b-2f6b3d9f7f16" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d12b1a4b-2f8b-8f88-5b32-8b0df99f1323" executionId="7ac9c154-fdbe-4c6b-84a3-8681a286a38b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="95583029-c02d-b4bc-f6f2-c48951a5c330" executionId="d811f183-159f-47a9-a52c-2877bcdc158d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9159e36-af02-b064-2924-64dfacabe9da" executionId="65bfa770-10e8-4ab1-b330-b3b67feba0cd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="69" executed="69" passed="69" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:01.51]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:01.60]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:01.63]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://127.0.0.1:51712&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Production&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]&#xD;
+      Request starting HTTP/1.1 GET http://127.0.0.1:51712/health/live - - -&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]&#xD;
+      Executing endpoint 'HTTP: GET /health/live'&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]&#xD;
+      Executed endpoint 'HTTP: GET /health/live'&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]&#xD;
+      Request finished HTTP/1.1 GET http://127.0.0.1:51712/health/live - 200 - application/json;+charset=utf-8 15.5277ms&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://127.0.0.1:51722&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Production&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]&#xD;
+      Request starting HTTP/1.1 GET http://127.0.0.1:51722/health/ready - - -&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]&#xD;
+      Executing endpoint 'Health checks'&#xD;
+fail: Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService[103]&#xD;
+      Health check Unsafe_Component with status Unhealthy completed after 0.2406ms with message 'connection-string-must-not-appear'&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]&#xD;
+      Executed endpoint 'Health checks'&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]&#xD;
+      Request finished HTTP/1.1 GET http://127.0.0.1:51722/health/ready - 503 - application/json;+charset=utf-8 28.2162ms&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://127.0.0.1:51734&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Production&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]&#xD;
+      Request starting HTTP/1.1 GET http://127.0.0.1:51734/health/live - - -&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]&#xD;
+      Executing endpoint 'HTTP: GET /health/live'&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]&#xD;
+      Executed endpoint 'HTTP: GET /health/live'&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]&#xD;
+      Request finished HTTP/1.1 GET http://127.0.0.1:51734/health/live - 200 - application/json;+charset=utf-8 0.3774ms&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://127.0.0.1:51738&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Production&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]&#xD;
+      Request starting HTTP/1.1 GET http://127.0.0.1:51738/health/release - - -&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]&#xD;
+      Executing endpoint 'HTTP: GET /health/release'&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]&#xD;
+      Executed endpoint 'HTTP: GET /health/release'&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]&#xD;
+      Request finished HTTP/1.1 GET http://127.0.0.1:51738/health/release - 503 - application/json;+charset=utf-8 1.5664ms&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://127.0.0.1:51740&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Production&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]&#xD;
+      Request starting HTTP/1.1 GET http://127.0.0.1:51740/health/release - - -&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]&#xD;
+      Executing endpoint 'HTTP: GET /health/release'&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]&#xD;
+      Executed endpoint 'HTTP: GET /health/release'&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]&#xD;
+      Request finished HTTP/1.1 GET http://127.0.0.1:51740/health/release - 200 - application/json;+charset=utf-8 0.7429ms&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://127.0.0.1:51746&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Production&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]&#xD;
+      Request starting HTTP/1.1 GET http://127.0.0.1:51746/health/release - - -&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]&#xD;
+      Executing endpoint 'HTTP: GET /health/release'&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]&#xD;
+      Executed endpoint 'HTTP: GET /health/release'&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]&#xD;
+      Request finished HTTP/1.1 GET http://127.0.0.1:51746/health/release - 503 - application/json;+charset=utf-8 0.5297ms&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://127.0.0.1:51752&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Production&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]&#xD;
+      Request starting HTTP/1.1 GET http://127.0.0.1:51752/health/startup - - -&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]&#xD;
+      Executing endpoint 'Health checks'&#xD;
+warn: Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService[103]&#xD;
+      Health check Unsafe_Component with status Degraded completed after 0.0871ms with message 'unsafe-name-connection-string-must-not-appear'&#xD;
+warn: Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService[103]&#xD;
+      Health check approved-component with status Degraded completed after 0.0937ms with message 'connection-string-must-not-appear'&#xD;
+      System.InvalidOperationException: exception-connection-string-must-not-appear&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]&#xD;
+      Executed endpoint 'Health checks'&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]&#xD;
+      Request finished HTTP/1.1 GET http://127.0.0.1:51752/health/startup - 503 - application/json;+charset=utf-8 3.1871ms&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://127.0.0.1:51754&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Production&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]&#xD;
+      Request starting HTTP/1.1 GET http://127.0.0.1:51754/health/ready - - -&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]&#xD;
+      Executing endpoint 'Health checks'&#xD;
+fail: Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService[103]&#xD;
+      Health check Unsafe_Component with status Unhealthy completed after 0.0029ms with message 'unsafe-name-connection-string-must-not-appear'&#xD;
+fail: Microsoft.Extensions.Diagnostics.HealthChecks.DefaultHealthCheckService[103]&#xD;
+      Health check approved-component with status Unhealthy completed after 0.006ms with message 'connection-string-must-not-appear'&#xD;
+      System.InvalidOperationException: exception-connection-string-must-not-appear&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]&#xD;
+      Executed endpoint 'Health checks'&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]&#xD;
+      Request finished HTTP/1.1 GET http://127.0.0.1:51754/health/ready - 503 - application/json;+charset=utf-8 1.1566ms&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+info: Microsoft.Hosting.Lifetime[14]&#xD;
+      Now listening on: http://127.0.0.1:51756&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application started. Press Ctrl+C to shut down.&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Hosting environment: Production&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Content root path: D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[1]&#xD;
+      Request starting HTTP/1.1 GET http://127.0.0.1:51756/health/release - - -&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]&#xD;
+      Executing endpoint 'HTTP: GET /health/release'&#xD;
+info: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]&#xD;
+      Executed endpoint 'HTTP: GET /health/release'&#xD;
+info: Microsoft.AspNetCore.Hosting.Diagnostics[2]&#xD;
+      Request finished HTTP/1.1 GET http://127.0.0.1:51756/health/release - 200 - application/json;+charset=utf-8 0.4517ms&#xD;
+info: Microsoft.Hosting.Lifetime[0]&#xD;
+      Application is shutting down...&#xD;
+[xUnit.net 00:00:03.72]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
