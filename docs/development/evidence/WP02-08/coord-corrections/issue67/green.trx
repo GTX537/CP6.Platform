@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="8b1e9e9e-4075-46e4-be68-279620a8be96" name="tt@LAPTOP-3QQ44FJS 2026-10-14 03:27:18" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T03:27:18.5229726-04:00" queuing="2026-10-14T03:27:18.5229730-04:00" start="2026-10-14T03:27:14.8790881-04:00" finish="2026-10-14T03:27:31.3833379-04:00" />
+  <TestSettings name="default" id="8f2c952f-335b-4c6a-9b81-d66405f8489d">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_03_27_18" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="b781523b-a93b-4652-b277-8e048932985f" testId="b5f8cc42-f1a6-f8f2-e4c9-6312fcc9836e" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_enter_publisher_when_cancelled_after_send_commit" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3546449" startTime="2026-10-14T03:27:22.1692025-04:00" endTime="2026-10-14T03:27:22.5234972-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b781523b-a93b-4652-b277-8e048932985f" />
+    <UnitTestResult executionId="06466ab8-b879-4328-8f62-1509253fd6df" testId="fe110e96-e58e-82d1-bdb2-87fdb37988b1" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.8680094" startTime="2026-10-14T03:27:18.5069500-04:00" endTime="2026-10-14T03:27:19.3592312-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="06466ab8-b879-4328-8f62-1509253fd6df" />
+    <UnitTestResult executionId="81c9c1f7-91df-4c3c-83e9-fa9f97521f2b" testId="8349bcb3-1d7c-2621-4846-0064bde52196" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry" computerName="LAPTOP-3QQ44FJS" duration="00:00:02.6934017" startTime="2026-10-14T03:27:23.4142636-04:00" endTime="2026-10-14T03:27:26.1077273-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="81c9c1f7-91df-4c3c-83e9-fa9f97521f2b" />
+    <UnitTestResult executionId="ba33461c-63c0-4a75-b5aa-b95601c760fd" testId="67ee57aa-a8ba-3348-0c74-eab982f4a5ee" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease" computerName="LAPTOP-3QQ44FJS" duration="00:00:02.8082949" startTime="2026-10-14T03:27:19.3603149-04:00" endTime="2026-10-14T03:27:22.1684328-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ba33461c-63c0-4a75-b5aa-b95601c760fd" />
+    <UnitTestResult executionId="220736da-200e-4535-82a8-551cddbe1980" testId="d64c947f-62f7-022d-4c45-33f16e81caae" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.6517229" startTime="2026-10-14T03:27:16.8578301-04:00" endTime="2026-10-14T03:27:18.4905091-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="220736da-200e-4535-82a8-551cddbe1980" />
+    <UnitTestResult executionId="b2b49400-9ded-4ffa-9131-9112a4c6ffe6" testId="671654e4-fc7e-21d3-a430-62a1ce57b15c" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_after_short_send_commit_delay_within_budget" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.8902030" startTime="2026-10-14T03:27:22.5236887-04:00" endTime="2026-10-14T03:27:23.4140168-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b2b49400-9ded-4ffa-9131-9112a4c6ffe6" />
+    <UnitTestResult executionId="65c1a7ab-a162-4548-97b2-f8d3b94572dd" testId="0300df08-8d35-21be-cb61-6f47936116da" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_deducts_send_commit_latency_from_publish_timeout" computerName="LAPTOP-3QQ44FJS" duration="00:00:05.2163001" startTime="2026-10-14T03:27:26.1086207-04:00" endTime="2026-10-14T03:27:31.3243967-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="65c1a7ab-a162-4548-97b2-f8d3b94572dd" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_enter_publisher_when_cancelled_after_send_commit" storage="d:\cp6.platform-worktrees\bug-67-outbox-budget-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="b5f8cc42-f1a6-f8f2-e4c9-6312fcc9836e">
+      <Execution id="b781523b-a93b-4652-b277-8e048932985f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_does_not_enter_publisher_when_cancelled_after_send_commit" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: True)" storage="d:\cp6.platform-worktrees\bug-67-outbox-budget-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="d64c947f-62f7-022d-4c45-33f16e81caae">
+      <Execution id="220736da-200e-4535-82a8-551cddbe1980" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_deducts_send_commit_latency_from_publish_timeout" storage="d:\cp6.platform-worktrees\bug-67-outbox-budget-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="0300df08-8d35-21be-cb61-6f47936116da">
+      <Execution id="65c1a7ab-a162-4548-97b2-f8d3b94572dd" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_deducts_send_commit_latency_from_publish_timeout" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: False)" storage="d:\cp6.platform-worktrees\bug-67-outbox-budget-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="fe110e96-e58e-82d1-bdb2-87fdb37988b1">
+      <Execution id="06466ab8-b879-4328-8f62-1509253fd6df" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease" storage="d:\cp6.platform-worktrees\bug-67-outbox-budget-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="67ee57aa-a8ba-3348-0c74-eab982f4a5ee">
+      <Execution id="ba33461c-63c0-4a75-b5aa-b95601c760fd" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_after_short_send_commit_delay_within_budget" storage="d:\cp6.platform-worktrees\bug-67-outbox-budget-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="671654e4-fc7e-21d3-a430-62a1ce57b15c">
+      <Execution id="b2b49400-9ded-4ffa-9131-9112a4c6ffe6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_publishes_after_short_send_commit_delay_within_budget" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry" storage="d:\cp6.platform-worktrees\bug-67-outbox-budget-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="8349bcb3-1d7c-2621-4846-0064bde52196">
+      <Execution id="81c9c1f7-91df-4c3c-83e9-fa9f97521f2b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="b5f8cc42-f1a6-f8f2-e4c9-6312fcc9836e" executionId="b781523b-a93b-4652-b277-8e048932985f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fe110e96-e58e-82d1-bdb2-87fdb37988b1" executionId="06466ab8-b879-4328-8f62-1509253fd6df" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8349bcb3-1d7c-2621-4846-0064bde52196" executionId="81c9c1f7-91df-4c3c-83e9-fa9f97521f2b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="67ee57aa-a8ba-3348-0c74-eab982f4a5ee" executionId="ba33461c-63c0-4a75-b5aa-b95601c760fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d64c947f-62f7-022d-4c45-33f16e81caae" executionId="220736da-200e-4535-82a8-551cddbe1980" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="671654e4-fc7e-21d3-a430-62a1ce57b15c" executionId="b2b49400-9ded-4ffa-9131-9112a4c6ffe6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0300df08-8d35-21be-cb61-6f47936116da" executionId="65c1a7ab-a162-4548-97b2-f8d3b94572dd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="7" executed="7" passed="7" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.15]   Discovering: CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:00.19]   Discovered:  CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:00.21]   Starting:    CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:15.99]   Finished:    CP6.Platform.WP0208.PostgreSqlTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

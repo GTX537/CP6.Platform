@@ -1,0 +1,6 @@
+  Determining projects to restore...
+  Restored D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\CP6.Platform.WP0208.PostgreSqlTests.csproj (in 512 ms).
+  3 of 4 projects are up-to-date for restore.
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.EntityFramework\OutboxV2\LegacyOutboxFenceV2.cs(24,28): error EF1002: Method 'FromSqlRaw' inserts interpolated strings directly into the SQL, without any protection against SQL injection. Consider using 'FromSql' instead, which protects against SQL injection, or make sure that the value is sanitized and suppress the warning. [D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.EntityFramework\CP6.Platform.EntityFramework.csproj]

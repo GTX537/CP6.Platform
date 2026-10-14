@@ -1,0 +1,1539 @@
+{
+  "task": "WP02-08",
+  "target": "PLT-DEL-01",
+  "catalog": {
+    "path": "docs/development/assessments/20261011/catalogs/foundation.json",
+    "raw_sha256": "be0c0ebd8bd961aa912994ba98536bbfa4c46064759b91e54ff1a812882028ea",
+    "main_baseline_commit": "1ab2d031e3c501662ecb89a33839fac1cba55d33"
+  },
+  "case_count": 60,
+  "source_sets": [
+    {
+      "archive_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "covered_scope": "本目标原AC完整声明列表；不把别的目标的共享文件条目纳入本目标",
+      "expected_count": 60,
+      "observed_count": 60
+    }
+  ],
+  "original_business_summary": {
+    "NOT_RUN": 60
+  },
+  "boundary": "Original IDs, assertion text, source pointers and SHA256 values copied unchanged. Library evidence is separate. Main/CRM Owner adoption and actual broker/host acceptance remain NOT_RUN.",
+  "cases": [
+    {
+      "id": "PLT-DEL-01::DEL01-A1",
+      "source_case_id": "DEL01-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 63,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "业务+原receipt+outbox+必需audit同commit或同rollback",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Dlq_mutation_rolls_back_native_binding_receipt_dlq_audit_and_seal"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL01-A2",
+      "source_case_id": "DEL01-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 63,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "Enqueue不保存且不同库拒称原子",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph"
+        ],
+        "evidence": [
+          "tests/09-mapping-final.trx",
+          "tests/pg-agent-additions-03/pg-agent-additions-03.trx",
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL01-A3",
+      "source_case_id": "DEL01-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 63,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "同operation同输入复用原结果，异输入冲突不新事件",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL01-A4",
+      "source_case_id": "DEL01-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 63,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "发布后标记未知会同message重投而无重复业务效果",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL01-A5",
+      "source_case_id": "DEL01-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 63,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "producer transaction内无不可回滚远程作用",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL01-A6",
+      "source_case_id": "DEL01-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 63,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "优先撤权queue独立预算，普通堵塞不借机跳鉴权",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL01-A7",
+      "source_case_id": "DEL01-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 63,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "transport Published与consumer/业务采纳分层",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL01-A8",
+      "source_case_id": "DEL01-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 63,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "Cancel/timeout保持原operation可查且零盲新建",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Real_commit_then_suppressed_ack_recovers_original_mutation_after_write_revocation"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL02-A1",
+      "source_case_id": "DEL02-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 100,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "所有Duplicate/checkpoint/并发重读早退前运行内容门",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL02-A2",
+      "source_case_id": "DEL02-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 100,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "同版同data幂等、同版异data隔离且保原内容",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL02-A3",
+      "source_case_id": "DEL02-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 100,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "冲突/DRIFT/Published不可用/Inbox/audit同commit失败不SUCCESS",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL02-A4",
+      "source_case_id": "DEL02-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 100,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "低版不回退且已知历史冲突不被覆盖",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL02-A5",
+      "source_case_id": "DEL02-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 100,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "caller事务/连接/共同锁序一致且Platform不commit",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL02-A6",
+      "source_case_id": "DEL02-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 100,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "commit UNKNOWN只回查同message，不先SUCCESS",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL02-A7",
+      "source_case_id": "DEL02-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 100,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "source snapshot不伪造真实撤权origin",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL02-A8",
+      "source_case_id": "DEL02-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 100,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "恢复CAS不清新冲突且缺门关闭新授权",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL02-A9",
+      "source_case_id": "DEL02-A9",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 100,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "ERP command原journal优先，不被Platform checkpoint吞掉业务幂等",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL02-A10",
+      "source_case_id": "DEL02-A10",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 100,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "UI技术消费成功不等于授权或业务完成",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL03-A1",
+      "source_case_id": "DEL03-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 122,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "四表原PK/索引/长度/rowversion保持",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Every_legacy_writer_excludes_bound_rows_while_unbound_claim_complete_and_retention_work",
+          "Native_codec_preserves_unsigned_bits_and_network_order"
+        ],
+        "evidence": [
+          "tests/07-unit-final.trx",
+          "tests/pg-agent-additions-03/pg-agent-additions-03.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL03-A2",
+      "source_case_id": "DEL03-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 122,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "应用新证据字段不变第二主账",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Retention_rolls_back_exact_graph_then_commits_deletion_with_original_receipts_preserved"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL03-A3",
+      "source_case_id": "DEL03-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 122,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "真实provider/driver/shared connection组合分别证明，未知不借fixture背书",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Ticket_uses_actual_post_write_xmin_and_native_and_binding_are_sealed"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL03-A4",
+      "source_case_id": "DEL03-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 122,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "旧数据unknown/origin保真不猜造",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL03-A5",
+      "source_case_id": "DEL03-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 122,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "迁移前新版能力关闭，旧API合同不破坏",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Actual_catalog_guard_predicate_and_unique_index_are_required",
+          "Altered_companion_token_or_root_mapping_is_rejected_before_dml",
+          "Missing_actual_owner_authority_row_fence_disables_write_binding"
+        ],
+        "evidence": [
+          "tests/09-mapping-final.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL03-A6",
+      "source_case_id": "DEL03-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 122,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "并发唯一冲突回查原tuple不改key重试",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Actual_23505_aborts_transaction_and_original_key_retry_returns_original_ticket"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL03-A7",
+      "source_case_id": "DEL03-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 122,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "migration/配置诊断受控且无秘密",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Root_identity_does_not_have_delimiter_ambiguity_and_ticket_diagnostics_are_redacted"
+        ],
+        "evidence": [
+          "tests/07-unit-final.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL04-A1",
+      "source_case_id": "DEL04-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 180,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "claim后真实native/Binding版本及持久epoch进入commit确认ticket，未确认不publish",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph",
+          "Ticket_uses_actual_post_write_xmin_and_native_and_binding_are_sealed"
+        ],
+        "evidence": [
+          "tests/09-mapping-final.trx",
+          "tests/pg-agent-additions-03/pg-agent-additions-03.trx",
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL04-A2",
+      "source_case_id": "DEL04-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 180,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "到期claim恢复保原message/业务键",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Epoch_and_completion_serialize_in_both_lock_orderings",
+          "Same_claim_key_replays_exact_tuple_and_changed_tuple_has_empty_write_set"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL04-A3",
+      "source_case_id": "DEL04-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 180,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "完成/失败/续约共同根，旧token、旧RV、旧epoch或门点过期均拒绝，禁止重取最新token代expected",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Current_native_binding_hash_tenant_and_epoch_are_rechecked",
+          "Renewal_mints_post_write_ticket_and_old_worker_ticket_loses_authority",
+          "Database_fence_is_strict_at_expiry_and_compares_instants",
+          "Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry"
+        ],
+        "evidence": [
+          "tests/07-unit-final.trx",
+          "tests/08-expiry-final.trx",
+          "tests/pg-agent-additions-03/pg-agent-additions-03.trx",
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established.",
+        "expiry_boundary": "Exact before/equal/after instants verified in unit contract; realPG verifies current DB-clock expiry after the boundary. Final SQL uses strict <, no claim that wall-clock test hit the exact same microsecond."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL04-A4",
+      "source_case_id": "DEL04-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 180,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "publish确认前后崩溃分别恢复且不误称exactly-once",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes"
+        ],
+        "evidence": [
+          "tests/pg-agent-additions-03/pg-agent-additions-03.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL04-A5",
+      "source_case_id": "DEL04-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 180,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "非重试错误/上限进DLQ与状态/receipt同commit",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Dlq_mutation_rolls_back_native_binding_receipt_dlq_audit_and_seal"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL04-A6",
+      "source_case_id": "DEL04-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 180,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "多层重试总预算有界，UNKNOWN不承诺零写或回滚，只查原技术/业务结果不盲重试，并满足下列原编号文字子例",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Real_commit_then_suppressed_ack_recovers_original_mutation_after_write_revocation",
+          "Current_native_binding_hash_tenant_and_epoch_are_rechecked",
+          "Actual_23505_aborts_transaction_and_original_key_retry_returns_original_ticket",
+          "Concurrent_serializable_claim_loser_gets_40001_then_original_request_can_reenter"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL04-A7",
+      "source_case_id": "DEL04-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 180,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "完成先于切epoch或切epoch先于完成各有唯一结果，取消/Draining不丢原记录",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Epoch_and_completion_serialize_in_both_lock_orderings",
+          "Drain_denies_claim_and_renew_but_allows_current_completion_then_epoch_advance",
+          "Unknown_handover_blocks_epoch_and_caller_rollback_restores_root_and_history"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL04-A8",
+      "source_case_id": "DEL04-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 180,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "旧claimDTO无RV/epoch、新profile迁移/全writer/provider证明独立，gate失败不落旧MarkFailed。A1/A3/A6/A7/A8的定点子例均仍属于原AC，未新增编号或运行结果",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Every_legacy_writer_excludes_bound_rows_while_unbound_claim_complete_and_retention_work",
+          "Direct_legacy_DML_cannot_bypass_database_guard",
+          "Missing_guard_and_unsupported_provider_fail_closed"
+        ],
+        "evidence": [
+          "tests/pg-agent-additions-03/pg-agent-additions-03.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL05-A1",
+      "source_case_id": "DEL05-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 222,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "public原语不直接开放且tenant/actor/Owner权在应用层",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL05-A2",
+      "source_case_id": "DEL05-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 222,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "三action/nativeType/digest域精确且bridge无伪raw",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL05-A3",
+      "source_case_id": "DEL05-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 222,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "原operation查询优先于新写/active tenant/旧eligibility/新queue条件",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Real_commit_then_suppressed_ack_recovers_original_mutation_after_write_revocation"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL05-A4",
+      "source_case_id": "DEL05-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 222,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "同operation异tuple冲突，响应丢和queue改版后同义回原结果",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL05-A5",
+      "source_case_id": "DEL05-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 222,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "caller-owned seam不commit，audit/operation/queue同commit",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL05-A6",
+      "source_case_id": "DEL05-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 222,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "DLQ必须本tenant唯一匹配，歧义阻断",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL05-A7",
+      "source_case_id": "DEL05-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 222,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "原结果重投不新建业务，原请求UNKNOWN无真实未应用证明不重排",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL05-A8",
+      "source_case_id": "DEL05-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 222,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "缺最终门按动作分类关闭新效果并保历史读",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL05-A9",
+      "source_case_id": "DEL05-A9",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 222,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "inbound有真实原payload调度来源，重置状态不冒投递已发生",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL05-A10",
+      "source_case_id": "DEL05-A10",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 222,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "UI三动作/同ID/UNKNOWN/旧COMPENSATED语义正确",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL06-A1",
+      "source_case_id": "DEL06-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 240,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "7/30/90被标技术默认且生产policy独立",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL06-A2",
+      "source_case_id": "DEL06-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 240,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "未决/hold/UNKNOWN/required consumer义务未结不删",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Exact_retention_checks_current_owner_obligations"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL06-A3",
+      "source_case_id": "DEL06-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 240,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "clean与replay/hold竞争共享根且rowversion重验",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Hold_and_cleanup_use_same_root_in_both_lock_orderings"
+        ],
+        "evidence": [
+          "tests/pg-agent-hold-05/pg-agent-hold-05.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL06-A4",
+      "source_case_id": "DEL06-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 240,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "去重窗口/业务幂等不足时不删必要identity证据",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Retention_rolls_back_exact_graph_then_commits_deletion_with_original_receipts_preserved"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL06-A5",
+      "source_case_id": "DEL06-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 240,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "payload去除不抹原结果/审计、不凭查无推未执行",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Retention_rolls_back_exact_graph_then_commits_deletion_with_original_receipts_preserved"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL06-A6",
+      "source_case_id": "DEL06-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 240,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "revoke origin未知保真，tombstone不提前失效",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL06-A7",
+      "source_case_id": "DEL06-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 240,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "存档hash/restore/权限可核才称可恢复",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Exact_retention_checks_current_owner_obligations"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL06-A8",
+      "source_case_id": "DEL06-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 240,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "清理报告/缺policy页面不冒执行成功",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Exact_retention_checks_current_owner_obligations"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL07-A1",
+      "source_case_id": "DEL07-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 265,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "每route明确A/B/C事务ownership，禁止旧Requeue嵌套伪原子",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph",
+          "Every_legacy_writer_excludes_bound_rows_while_unbound_claim_complete_and_retention_work"
+        ],
+        "evidence": [
+          "tests/09-mapping-final.trx",
+          "tests/pg-agent-additions-03/pg-agent-additions-03.trx",
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL07-A2",
+      "source_case_id": "DEL07-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 265,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "多context同物理连接/tx/provider证明，跨库不宣称原子",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL07-A3",
+      "source_case_id": "DEL07-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 265,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "原业务/receipt/audit/outbox完整写集同commit",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Dlq_mutation_rolls_back_native_binding_receipt_dlq_audit_and_seal"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL07-A4",
+      "source_case_id": "DEL07-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 265,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "所有安全与业务writer共同最终门，缺门阻新效果",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Hold_and_cleanup_use_same_root_in_both_lock_orderings",
+          "Missing_actual_owner_authority_row_fence_disables_write_binding"
+        ],
+        "evidence": [
+          "tests/pg-agent-hold-05/pg-agent-hold-05.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL07-A5",
+      "source_case_id": "DEL07-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 265,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "ERP command/CRM identity/旧Bridge各原Owner语义保持",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL07-A6",
+      "source_case_id": "DEL07-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 265,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "UNKNOWN/取消/序列化冲突恢复保持同operation不重复",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Real_commit_then_suppressed_ack_recovers_original_mutation_after_write_revocation",
+          "Concurrent_serializable_claim_loser_gets_40001_then_original_request_can_reenter"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL07-A7",
+      "source_case_id": "DEL07-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 265,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "单writer切换与旧存量移交可查，v2全部queue writer/epoch切换同根同事务，不满足则精确关闭新保证",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Actual_catalog_guard_predicate_and_unique_index_are_required",
+          "Epoch_and_completion_serialize_in_both_lock_orderings"
+        ],
+        "evidence": [
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL07-A8",
+      "source_case_id": "DEL07-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 265,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "切换/回退不覆盖原结果或清历史",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "VERIFIED_LIBRARY_SUBASSERTIONS_ONLY",
+        "tests": [
+          "Retention_rolls_back_exact_graph_then_commits_deletion_with_original_receipts_preserved",
+          "Epoch_and_completion_serialize_in_both_lock_orderings"
+        ],
+        "evidence": [
+          "tests/pg-agent-core-02/pg-agent-core-02.trx",
+          "tests/pg-agent-races-04/pg-agent-races-04.trx",
+          "tests/pg-agent-review-06/pg-agent-review-06.trx"
+        ],
+        "scope": "Only the named fixture/library assertions are verified. Actual Owner policy, archive restore, writer inventory, full transaction graph, broker and original business acceptance are not established."
+      }
+    },
+    {
+      "id": "PLT-DEL-01::DEL07-A9",
+      "source_case_id": "DEL07-A9",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/64/642a2fbc35d17fbf__PLT-DEL-01_完整静态设计_v0.2.1.md",
+      "source_line": 265,
+      "source_sha256": "642a2fbc35d17fbfaa0bcc51617e24654cbe193e0f907674a3e6f4c41c47eb84",
+      "assertion": "八层采用证据真实独立，不以单测/RecordingStub替代生产",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": {
+        "state": "NOT_RUN",
+        "evidence": [],
+        "responsibility": "Main/CRM authoritative Owner and host: actual migration, all writers, trusted tenant/route authority, broker transport, complete business transaction and consumer/reference closure."
+      },
+      "library_subassertions": {
+        "state": "PRESERVED_OR_OUTSIDE_TASK_NOT_RUN",
+        "tests": [],
+        "evidence": [],
+        "scope": "Existing InboxV1/legacy technical behavior and original Owner responsibility preserved; no new execution or acceptance claim for this AC."
+      }
+    }
+  ]
+}
