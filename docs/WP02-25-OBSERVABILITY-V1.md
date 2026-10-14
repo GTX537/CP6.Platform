@@ -44,7 +44,10 @@ Host source and individual package/module sources may legitimately differ.
 The observer validates its own timestamp before loading modules: nonzero offsets,
 epoch/minimum timestamps and clock exceptions cannot mint evidence. Evaluation
 also rejects future observation times. Freshness is rechecked on **every response**, against the original byte-load
-observation time. This adapter deliberately does not renew stale proof merely
+observation time using both UTC metadata and the observer's original monotonic clock.
+The evaluator retains expiry once either time boundary is exceeded; UTC rollback,
+a frozen wall clock or a different evaluator clock cannot renew stale evidence.
+This adapter deliberately does not renew stale proof merely
 because it can still read a file or compare cached declarations. A consumer must
 create a new independently bound observation when its freshness window expires;
 this local adapter is not a long-lived production attestation service.

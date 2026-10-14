@@ -11,14 +11,18 @@ public sealed class OwnedModuleObserverV1 : IDisposable
 {
     private readonly AssemblyLoadContext context = new("cp6-owned-observation", isCollectible: true);
     private readonly List<(byte[] Bytes, Assembly Assembly)> modules = [];
+    private readonly TimeProvider clock;
+    private readonly long observedTimestamp;
     private int disposed;
     public OwnedModuleObserverV1(RuntimeIdentityBindingV1 binding, string source, IEnumerable<byte[]> images, TimeProvider? timeProvider = null)
     {
         ArgumentNullException.ThrowIfNull(binding); ArgumentNullException.ThrowIfNull(images);
         Binding = binding; Source = ObservabilityValueV1.Identifier(source);
+        clock = timeProvider ?? TimeProvider.System;
         try
         {
-            ObservedUtc = ObservabilityValueV1.Utc((timeProvider ?? TimeProvider.System).GetUtcNow());
+            observedTimestamp = clock.GetTimestamp();
+            ObservedUtc = ObservabilityValueV1.Utc(clock.GetUtcNow());
             foreach (var image in images.Take(33))
             {
                 if (modules.Count >= 32 || image is null || image.Length is < 1 or > 16_777_216 || modules.Sum(m => (long)m.Bytes.Length) + image.Length > 33_554_432)
@@ -41,6 +45,8 @@ public sealed class OwnedModuleObserverV1 : IDisposable
     internal RuntimeIdentityBindingV1 Binding { get; }
     internal string Source { get; }
     internal DateTimeOffset ObservedUtc { get; }
+    // Use the observer's clock and original byte-load timestamp, never an evaluator's new epoch.
+    internal TimeSpan ElapsedSinceObservation() => clock.GetElapsedTime(observedTimestamp);
     internal IReadOnlyList<ModulePinV1>? Snapshot()
     {
         if (Volatile.Read(ref disposed) != 0) return null;
@@ -85,16 +91,25 @@ public sealed class RuntimeIdentityObservationV1
 /// <summary>Only the sealed byte loader can supply positive scoped evidence; arbitrary caller reports cannot.</summary>
 public sealed class RuntimeIdentityEvaluatorV1(RuntimeManifestV1? expected, OwnedModuleObserverV1? observer, TimeProvider? timeProvider = null)
 {
+    private int expired;
+
     public RuntimeIdentityObservationV1 Observe(CancellationToken cancellationToken = default)
     {
         var now = DateTimeOffset.UtcNow;
         try
         {
             now = ObservabilityValueV1.Utc((timeProvider ?? TimeProvider.System).GetUtcNow());
-            if (cancellationToken.IsCancellationRequested || expected is null || observer is null || expected.Kind != ObservedArtifactKindV1.OwnedManagedModule)
+            if (cancellationToken.IsCancellationRequested || Volatile.Read(ref expired) != 0 || expected is null || observer is null || expected.Kind != ObservedArtifactKindV1.OwnedManagedModule)
                 return new(IdentityVerdictV1.Unproven, now);
+            var elapsed = observer.ElapsedSinceObservation();
+            if (elapsed < TimeSpan.Zero || elapsed > expected.Binding.Freshness || now - observer.ObservedUtc > expected.Binding.Freshness)
+            {
+                // UTC jumps may expire evidence early. A later clock correction cannot renew it.
+                Interlocked.Exchange(ref expired, 1);
+                return new(IdentityVerdictV1.Unproven, now);
+            }
             var actual = observer.Snapshot();
-            if (actual is null || observer.ObservedUtc.Offset != TimeSpan.Zero || observer.ObservedUtc <= DateTimeOffset.UnixEpoch || observer.ObservedUtc > now || now - observer.ObservedUtc > expected.Binding.Freshness ||
+            if (actual is null || observer.ObservedUtc.Offset != TimeSpan.Zero || observer.ObservedUtc <= DateTimeOffset.UnixEpoch || observer.ObservedUtc > now ||
                 observer.Binding.StartedUtc > observer.ObservedUtc || observer.Binding.StartedUtc > now)
                 return new(IdentityVerdictV1.Unproven, now);
             var commonBindingMatches = observer.Source == expected.Source && SameBinding(expected.Binding, observer.Binding);
@@ -102,6 +117,7 @@ public sealed class RuntimeIdentityEvaluatorV1(RuntimeManifestV1? expected, Owne
                 commonBindingMatches && actual.Any(module => module.AssemblyName == pin.AssemblyName && module.AssemblyVersion == pin.AssemblyVersion && module.Digest == pin.Digest &&
                     (pin.SourceRevision is null || pin.SourceRevision == module.SourceRevision)) ? IdentityVerdictV1.Match : IdentityVerdictV1.Mismatch, StringComparer.Ordinal);
             var matches = commonBindingMatches && actual.Count == expected.Modules.Count && moduleVerdicts.Values.All(verdict => verdict == IdentityVerdictV1.Match);
+            if (Volatile.Read(ref expired) != 0) return new(IdentityVerdictV1.Unproven, now);
             return new(matches ? IdentityVerdictV1.Match : IdentityVerdictV1.Mismatch, observer.ObservedUtc, actual, moduleVerdicts);
         }
         catch { return new(IdentityVerdictV1.Unproven, now); }
