@@ -1,0 +1,8 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Messaging\bin\Debug\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\bin\Debug\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Testing\bin\Debug\net8.0\CP6.Platform.Testing.dll
+D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\HealthBindingTests.cs(91,65): error CS1729: 'CapabilityRouteV1' does not contain a constructor that takes 3 arguments [D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\CP6.Platform.AspNetCoreTests.csproj]
+D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\HealthIdentityAndPermissionTests.cs(33,69): error CS1729: 'CapabilityRouteV1' does not contain a constructor that takes 3 arguments [D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\CP6.Platform.AspNetCoreTests.csproj]

@@ -1,0 +1,218 @@
+{
+  "captured_at": "2026-10-14T05:39:17.143362+00:00",
+  "records": [
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/04-contract-green/results.trx",
+      "sha256": "fba5809b1d1f3d383e6e2683f775ac585556d5aaa2b3beb4974e9a9484258057",
+      "outcome": "Completed",
+      "counters": {
+        "total": "4",
+        "executed": "4",
+        "passed": "4",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/06-runtime-health-green/results.trx",
+      "sha256": "a34e31ab0529aea36ceff71caa7e5485123bc16bce38e57fb671f28a4b3d1fe8",
+      "outcome": "Failed",
+      "counters": {
+        "total": "6",
+        "executed": "6",
+        "passed": "5",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/09-runtime-telemetry-green/results.trx",
+      "sha256": "892772a2c9ebb52b193ce5a980b1795b83bbfff7063d29c030cce8a6780fb95a",
+      "outcome": "Failed",
+      "counters": {
+        "total": "9",
+        "executed": "9",
+        "passed": "7",
+        "failed": "2",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/10-telemetry-regression/results.trx",
+      "sha256": "1c26314f18aa32f7564f251943ec0244af6472ed01b9780eaf9cfcfd30177b5f",
+      "outcome": "Completed",
+      "counters": {
+        "total": "9",
+        "executed": "9",
+        "passed": "9",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit",
+          "outcome": "Passed"
+        }
+      ]
+    }
+  ],
+  "note": "Includes intermediate failures; each run keeps its original scope."
+}

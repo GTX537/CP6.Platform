@@ -1,0 +1,2847 @@
+{
+  "captured_at": "2026-10-14T06:13:45.082774+00:00",
+  "records": [
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/architecture/wp02-25-architecture.trx",
+      "sha256": "19a5260206d5d0d5c7a85eecff71192c611c39805394186c8ad5f9417e242e91",
+      "outcome": "Completed",
+      "counters": {
+        "total": "98",
+        "executed": "98",
+        "passed": "98",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo-Exporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TEMPO-ENDPOINT\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOExporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.SourceProjects_UseOnlyApprovedExternalDependenciesAndFrameworks",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoexporteroptions\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_DependencyAndPackageBoundary_IsExact",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_PublicationWorkflow_AlwaysPreservesCompleteEvidence",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempoExporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"temporaryDirectoryRemoved\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo.Endpoint\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoSettings\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Deployment_HasNoExternalInternalOrFrameworkDependencies",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo_Exporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TemporarilyRemoved\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoendpoint\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoclient\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P09EvidenceImplementation_SeparatesFacadeValidationAndSafetyPolicy",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoBackend\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoExporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempoclient\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P10_Documentation_IsCompleteAndNonDeployable",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Temposervice\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempobackend\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempo backend\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoexporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.NuGetConfiguration_MapsPrivatePackagesWithoutCredentials",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempoconfig\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempo\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOConfig\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoCollector\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempo backend\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOBackend\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo backend\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_PackageEvidenceAndProductionSafetyGuards_AreEncoded",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempocollector\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOExporterOptions\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TEMPO\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"addTempoExporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TemporalWindow\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Deployment_IsOnlyProjectPackingP09ContractsAndDeploymentAssets",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"temporalWindow\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"temporaryTempoDirectory\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoSink\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoExporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOSettings\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TEMPO_ENDPOINT\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Contracts_HasNoExternalOrInternalDependencies",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOSink\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoconfig\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo/Exporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsGrafanaAndPrometheusCaseInsensitively",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_Documentation_IsCompleteAndSafe",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"OpenTelemetryTempo:4317\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TemporaryFileRemoved\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoClient\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempo.Endpoint\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempoexporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempo-client\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoConfig\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"temposink\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempo:4317\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOEndpoint\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.SourceProjects_ExactlyMatchApprovedRuntimeAndTestingSet",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"tempOffset\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProjectReferences_ExactlyMatchApprovedDependencyDirection",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoService\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TemporaryDirectoryRemoved\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"http://tempo:4317\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempobackend\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempo_endpoint\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOService\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"tempOutput\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TempOutput\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Release_package_is_independent_and_owns_only_release_contract_assets",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.OtherSourceProjects_DoNotReferenceDeployment",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Temposink\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"temporaryFileRemoved\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempocollector\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"temporallyConsistent\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"temposettings\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoEndpoint\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"OpenTelemetryTempoExporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempo/Exporter\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempo\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"temposervice\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TemporallyConsistent\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOCollector\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOClient\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempoendpoint\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"UseTempo:4317\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoExporterOptions\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"contemporaneousOperation\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Temposettings\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempoClient\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProjectReferences_StayInsideSourceTree_AndGraphIsAcyclic",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempoexporteroptions\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"contemporaryOperation\")",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+      "sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646",
+      "outcome": "Completed",
+      "counters": {
+        "total": "100",
+        "executed": "100",
+        "passed": "100",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.EventLinkBaggageStatusDisplayNameAndCaseVariantSeedsNeverEnterFinalSink",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_AcceptsNonCandidateWithoutImmutableDigests",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: False)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.Circuit_OpensWithoutTransportAndRecoversOnManualClock",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"version\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.CallerCancellation_StopsFaultDelayAndPreservesCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: True)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.SourceRevisionIsReadFromLoadedAssemblyMetadataAndWrongPinCannotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.DependencyEndpoints_FilterTags_RedactDetails_AndFailOnAnyNonHealthy(path: \"/health/startup\", selectedTag: \"startup\", selectedStatus: Degraded)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.MetricsAreSanitizedBeforeSdkAggregationAndSeriesAndRecordBudgetsAreEnforced",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"configuration\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"epoch\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-check\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"start\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.NonIdempotentAndMissingKey_FailClosedBeforeExtraTransportAttempts",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.UnpublishedUnsafeCheck_AffectsAggregateButIsOmitted",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ProcessImage)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.SynchronousSinkBlockAcrossRepeatedDisposalsIsGloballyBounded",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ContainerImage)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.TraceContextDistributedPropagatorTests.Inject_EmitsOnlyW3cTraceFieldsWhenInnerPropagatorEmitsLegacyBaggage",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingDifferentProfile_FailsBeforeStartup",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_RejectsInvalidCandidateIdentity",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"service\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_ReturnsExplicitNonCandidateIdentityWithoutEmptyDigests",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_OmitsEmptyNonCandidateIdentityAttributes",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_RejectsInvalidIdentityWithoutEchoingIt",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.RepeatedLifecycleRestoresGlobalsAndOtelReplacementDisablesExportWithoutClobberingReplacement",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_RejectsNonCanonicalDeploymentDimensions(environmentName: \"test\", region: \"US-EAST\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_RejectsProfileDrift",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.SpoofedIdentityAndBaggageNeverBecomeTelemetryData",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_SubscribesOnlyToStableCp6ActivitySources",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.DuplicateAndDriftedRegistrationAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_IsIdempotentForEqualProfile",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.TraceContextDistributedPropagatorTests.NullCallbacks_AreSafeAndProduceNoExtractedContext",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.LiveEndpoint_DoesNotRunRegisteredChecks",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_RejectsValidButDriftedIdentity",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_AcceptsCandidateAndExposesReleaseIdentity",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"offset\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"environment\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"git\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FutureObserverTimestampIsUnprovenAtEvaluationTime",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_RejectsMissingCandidateIdentity",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_ReturnsCompleteCandidateIdentity",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_SubscribesOnlyToStableCp6Meters",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"minimum\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_AllowsBusinessRequestWithoutExporter",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"deployment\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.TraceContextDistributedPropagatorTests.Fields_AreReadOnlyAndContainOnlyW3cTraceFields",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.TransportFailure_ReturnsFailureWithoutFallbackSuccess",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_RejectsNonCanonicalDeploymentDimensions(environmentName: \"Production\", region: \"us-east\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.MissingEmptyDuplicateUnknownAndWrongPurposeRouteCheckInventoriesFailClosed",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: \"Unsafe_Component\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"packages\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.ThrowingBatchExporter_CannotChangeBusinessResponse",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"collision\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.TwoHosts_ProduceOneW3cTraceWithIndependentCorrelationAndSafeResources",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingEqualProfileTwice_IsIdempotent",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_DoesNotExtractLegacyRequestId",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"epoch\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_ProvidesRequiredResourceAttributes",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"region\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.WriteOnlyDependencyFailurePreservesReadRouteAndHiddenFailureKeepsOverall503",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LoggerNeverInvokesCallerFormatterStateScopeOrExceptionFormatting",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_RejectsNonCanonicalDeploymentDimensions(environmentName: \"test\", region: \"region-name-that-is-longer-than-32\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.InvalidAndDuplicateTraceHeaders_CreateFreshTraceRoots",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"schema\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"wrong-tag\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"process\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.TraceContextDistributedPropagatorTests.ExtractTraceIdAndState_DoesNotExposeLegacyRequestIdToInnerPropagator",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: PackageSet)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.IdempotentRead_RetriesTwoScriptedFailuresThenSucceeds",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_UsesTraceContextWithoutBaggage",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LocalQueueBoundsBatchLifetimeRecordCountRetentionSizeAndPostDisposeWrites",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_InjectsOnlyW3cTraceFields",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-policy\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: \"component/child\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_DoesNotRegisterAnExporter",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityRegistrationTests.AddCp6Observability_RejectsProfileReleaseMismatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.DependencyEndpoints_FilterTags_RedactDetails_AndFailOnAnyNonHealthy(path: \"/health/ready\", selectedTag: \"ready\", selectedStatus: Unhealthy)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: \"component name\")",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+      "sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf",
+      "outcome": "Completed",
+      "counters": {
+        "total": "57",
+        "executed": "57",
+        "passed": "57",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.ValidationFailure_DoesNotEchoRejectedIdentity",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.SchemaExamples_MatchDeclaredOutcomes",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.MetricTags_RejectHighCardinalityOrSensitiveNames(tag: \"event.id\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_ReturnsIndeterminateForZeroSamplesOrCoverageGap",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.SourcesAndMeters_UseTheExactApprovedNames",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\n\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RequiresImmutableIdentity",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Partial, thresholdMet: True, expected: Indeterminate)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"SECRET\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.rejected\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.attempts\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"1 invalid\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.MetricTags_RejectHighCardinalityOrSensitiveNames(tag: \"url.full\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.MetricTags_RejectHighCardinalityOrSensitiveNames(tag: \"exception.message\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.HealthTags_UseTheExactApprovedNames",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\0\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"CRM-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.MetricTags_RejectHighCardinalityOrSensitiveNames(tag: \"server.address\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Parse_RejectsClaimedPassWhenSourceDigestDrifts",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.MetricTags_RejectHighCardinalityOrSensitiveNames(tag: \"correlation.id\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ReleaseIdentity_SerializesOnlyTheApprovedWireShape",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"a/../b\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.Operations_UseTheExactApprovedNames",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\t\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.MetricTags_RejectHighCardinalityOrSensitiveNames(tag: \"user.id\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.MetricTags_AreAnExactLowCardinalityAllowlist",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"partial-indeterminate.json\", expected: Indeterminate)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\r\\n\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"non-candidate-indeterminate.json\", expected: Indeterminate)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.NonCandidate_AllowsExplicitLocalIdentityWithoutDigests",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0+local\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"valid-pass.json\", expected: Pass)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: True, expected: Pass)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: False, expected: Fail)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha512:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.trace_context.rejected\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.AssetManifest_DetectsSchemaOrFixtureDrift",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.MetricTags_RejectHighCardinalityOrSensitiveNames(tag: \"tenant.id\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.MetricTags_RejectHighCardinalityOrSensitiveNames(tag: \"trace.id\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.duration\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.TelemetryConventionTests.MetricTags_RejectHighCardinalityOrSensitiveNames(tag: \"resource.id\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_ReturnsIndeterminateForDefinitionReleaseOrExclusionDrift",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Parse_RejectsDuplicateJsonPropertiesWithoutEchoingValues",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: False, completeness: Complete, thresholdMet: True, expected: Indeterminate)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.outbox.oldest_available.age\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:cccc\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ReleaseIdentityTests.NonCandidate_ValidatesAnyDigestThatIsPresent",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/04-contract-green/results.trx",
+      "sha256": "fba5809b1d1f3d383e6e2683f775ac585556d5aaa2b3beb4974e9a9484258057",
+      "outcome": "Completed",
+      "counters": {
+        "total": "4",
+        "executed": "4",
+        "passed": "4",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/06-runtime-health-green/results.trx",
+      "sha256": "a34e31ab0529aea36ceff71caa7e5485123bc16bce38e57fb671f28a4b3d1fe8",
+      "outcome": "Failed",
+      "counters": {
+        "total": "6",
+        "executed": "6",
+        "passed": "5",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/09-runtime-telemetry-green/results.trx",
+      "sha256": "892772a2c9ebb52b193ce5a980b1795b83bbfff7063d29c030cce8a6780fb95a",
+      "outcome": "Failed",
+      "counters": {
+        "total": "9",
+        "executed": "9",
+        "passed": "7",
+        "failed": "2",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/10-telemetry-regression/results.trx",
+      "sha256": "1c26314f18aa32f7564f251943ec0244af6472ed01b9780eaf9cfcfd30177b5f",
+      "outcome": "Completed",
+      "counters": {
+        "total": "9",
+        "executed": "9",
+        "passed": "9",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/11-telemetry-bounds-red/results.trx",
+      "sha256": "ac0b61a905a3134a0bb73ede2c541fad3b3a93d82107688489421f6dbab6ea1a",
+      "outcome": "Failed",
+      "counters": {
+        "total": "6",
+        "executed": "6",
+        "passed": "5",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.DuplicateAndDriftedRegistrationAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.SynchronousSinkBlockAcrossRepeatedDisposalsIsGloballyBounded",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.MetricsAreSanitizedBeforeSdkAggregationAndSeriesAndRecordBudgetsAreEnforced",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LoggerNeverInvokesCallerFormatterStateScopeOrExceptionFormatting",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.RepeatedLifecycleRestoresGlobalsAndOtelReplacementDisablesExportWithoutClobberingReplacement",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.EventLinkBaggageStatusDisplayNameAndCaseVariantSeedsNeverEnterFinalSink",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/12-negative-matrix/results.trx",
+      "sha256": "95f8af1304ec2c8cd46754a8b46f15d1276c78e2ef764ec55dac8db6d51f4af3",
+      "outcome": "Failed",
+      "counters": {
+        "total": "38",
+        "executed": "38",
+        "passed": "37",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"deployment\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ProcessImage)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"region\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"schema\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"process\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"wrong-tag\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.SynchronousSinkBlockAcrossRepeatedDisposalsIsGloballyBounded",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ContainerImage)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"start\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.RepeatedLifecycleRestoresGlobalsAndOtelReplacementDisablesExportWithoutClobberingReplacement",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"service\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"epoch\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.EventLinkBaggageStatusDisplayNameAndCaseVariantSeedsNeverEnterFinalSink",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LoggerNeverInvokesCallerFormatterStateScopeOrExceptionFormatting",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"configuration\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-check\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"packages\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"version\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.DuplicateAndDriftedRegistrationAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.MetricsAreSanitizedBeforeSdkAggregationAndSeriesAndRecordBudgetsAreEnforced",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"collision\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: PackageSet)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-policy\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"environment\")",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/13-route-collision-green/results.trx",
+      "sha256": "6811fac09607b4fb01305184cf406d08aed70dbaa851ec46e8cb7ff930738af7",
+      "outcome": "Completed",
+      "counters": {
+        "total": "13",
+        "executed": "13",
+        "passed": "13",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.MetricsAreSanitizedBeforeSdkAggregationAndSeriesAndRecordBudgetsAreEnforced",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.DuplicateAndDriftedRegistrationAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"wrong-tag\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-check\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LoggerNeverInvokesCallerFormatterStateScopeOrExceptionFormatting",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.SynchronousSinkBlockAcrossRepeatedDisposalsIsGloballyBounded",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.EventLinkBaggageStatusDisplayNameAndCaseVariantSeedsNeverEnterFinalSink",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.RepeatedLifecycleRestoresGlobalsAndOtelReplacementDisablesExportWithoutClobberingReplacement",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-policy\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"collision\")",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/15-source-metadata-green/results.trx",
+      "sha256": "e38a9ba4e026ccd6f928c9be539c2f4798be14f7f3a59688bc5d6e7fcbd79e77",
+      "outcome": "Completed",
+      "counters": {
+        "total": "18",
+        "executed": "18",
+        "passed": "18",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"service\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"environment\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ProcessImage)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"start\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"region\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"configuration\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: PackageSet)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"deployment\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.SourceRevisionIsReadFromLoadedAssemblyMetadataAndWrongPinCannotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"epoch\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"schema\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ContainerImage)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"version\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"git\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"process\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"packages\")",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/17-capability-binding-green/results.trx",
+      "sha256": "1e4052a4711046b9b4ef28ae71f1c244de87b9625c51381623fdcd644fa338af",
+      "outcome": "Completed",
+      "counters": {
+        "total": "5",
+        "executed": "5",
+        "passed": "5",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/18-envelope-validation-red/results.trx",
+      "sha256": "4fac6672aa3d116b966ca51125a2d7f96e8de0a1f327a390e36fcff8a9694e69",
+      "outcome": "Failed",
+      "counters": {
+        "total": "9",
+        "executed": "9",
+        "passed": "8",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"SECRET\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"1 invalid\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"a/../b\")",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/19-envelope-green/results.trx",
+      "sha256": "1c0768c1868d9f395e16ceeb6e6f010080e1502f1c7d1610148a74de3b88bab6",
+      "outcome": "Completed",
+      "counters": {
+        "total": "9",
+        "executed": "9",
+        "passed": "9",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"1 invalid\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"a/../b\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"SECRET\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/20-clock-definitions-red/aspnet.trx",
+      "sha256": "0aa66c9f831d7e8b0923b93391fb346911fdaa1e2d201b063b607cc04f38162a",
+      "outcome": "Failed",
+      "counters": {
+        "total": "1",
+        "executed": "1",
+        "passed": "0",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping",
+          "outcome": "Failed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/20-clock-definitions-red/unit.trx",
+      "sha256": "006ad228585730879f57e2edac68923d46a17580b0d88a393a69781e5b4c7e99",
+      "outcome": "Failed",
+      "counters": {
+        "total": "5",
+        "executed": "5",
+        "passed": "0",
+        "failed": "5",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.rejected\")",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.outbox.oldest_available.age\")",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.attempts\")",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.duration\")",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.trace_context.rejected\")",
+          "outcome": "Failed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/21-final-targeted/aspnet.trx",
+      "sha256": "2d7e01fcac32c798f879b40fcd3c4da10ddd91c38df6ac58c48669eabc3841c2",
+      "outcome": "Completed",
+      "counters": {
+        "total": "43",
+        "executed": "43",
+        "passed": "43",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.SynchronousSinkBlockAcrossRepeatedDisposalsIsGloballyBounded",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-check\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"collision\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ContainerImage)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LoggerNeverInvokesCallerFormatterStateScopeOrExceptionFormatting",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.DuplicateAndDriftedRegistrationAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ProcessImage)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"git\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.SourceRevisionIsReadFromLoadedAssemblyMetadataAndWrongPinCannotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"region\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: PackageSet)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-policy\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"service\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"deployment\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"configuration\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"process\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.EventLinkBaggageStatusDisplayNameAndCaseVariantSeedsNeverEnterFinalSink",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"start\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.RepeatedLifecycleRestoresGlobalsAndOtelReplacementDisablesExportWithoutClobberingReplacement",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"packages\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"version\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"environment\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"epoch\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"wrong-tag\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"schema\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.MetricsAreSanitizedBeforeSdkAggregationAndSeriesAndRecordBudgetsAreEnforced",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/21-final-targeted/unit.trx",
+      "sha256": "13c22f898703e4018020f0179e59a1c1c73d33af7fc3837ab59c2a72e7e62d77",
+      "outcome": "Completed",
+      "counters": {
+        "total": "14",
+        "executed": "14",
+        "passed": "14",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.duration\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"SECRET\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.trace_context.rejected\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"1 invalid\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"a/../b\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.attempts\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.rejected\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.outbox.oldest_available.age\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/22-batch-final-regression/results.trx",
+      "sha256": "64a83e3c127ce1975944459f8875ebe2f53f607058ccbc1aad9a77a40ada9f27",
+      "outcome": "Completed",
+      "counters": {
+        "total": "10",
+        "executed": "10",
+        "passed": "10",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.MetricsAreSanitizedBeforeSdkAggregationAndSeriesAndRecordBudgetsAreEnforced",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.SynchronousSinkBlockAcrossRepeatedDisposalsIsGloballyBounded",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.DuplicateAndDriftedRegistrationAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.RepeatedLifecycleRestoresGlobalsAndOtelReplacementDisablesExportWithoutClobberingReplacement",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.EventLinkBaggageStatusDisplayNameAndCaseVariantSeedsNeverEnterFinalSink",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LocalQueueBoundsBatchLifetimeRecordCountRetentionSizeAndPostDisposeWrites",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LoggerNeverInvokesCallerFormatterStateScopeOrExceptionFormatting",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/23-canonical-clock-red/aspnet.trx",
+      "sha256": "4384b5611544f865fbdda6a64356c1f6943413f8914050eb30601f35c79834db",
+      "outcome": "Failed",
+      "counters": {
+        "total": "4",
+        "executed": "4",
+        "passed": "1",
+        "failed": "3",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"epoch\")",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"offset\")",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FutureObserverTimestampIsUnprovenAtEvaluationTime",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"minimum\")",
+          "outcome": "Failed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/23-canonical-clock-red/unit.trx",
+      "sha256": "b28ff5454e384636d66a069505feeedc1c01633f0fca9c5d5d9e0130067433c6",
+      "outcome": "Failed",
+      "counters": {
+        "total": "4",
+        "executed": "4",
+        "passed": "3",
+        "failed": "1",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\t\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\n\")",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\r\\n\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\0\")",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/25-review-corrections-green/aspnet.trx",
+      "sha256": "e8ef6f8f38d5662a472079b4676ec730a034daf8e653b1143e3ffc7a9ef3fe58",
+      "outcome": "Completed",
+      "counters": {
+        "total": "42",
+        "executed": "42",
+        "passed": "42",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: True)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"version\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"process\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"epoch\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.WriteOnlyDependencyFailurePreservesReadRouteAndHiddenFailureKeepsOverall503",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: False)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"schema\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"git\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"service\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.MissingEmptyDuplicateUnknownAndWrongPurposeRouteCheckInventoriesFailClosed",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"collision\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"minimum\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-check\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"epoch\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"wrong-tag\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"region\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"environment\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"packages\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"offset\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.SourceRevisionIsReadFromLoadedAssemblyMetadataAndWrongPinCannotMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"configuration\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: PackageSet)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-policy\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ProcessImage)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ContainerImage)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"deployment\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FutureObserverTimestampIsUnprovenAtEvaluationTime",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"start\")",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/25-review-corrections-green/unit.trx",
+      "sha256": "93858b0290f573bcbce6fb18fa971e5b6b3f7fee802d3d05c18ddd8ad40e6690",
+      "outcome": "Completed",
+      "counters": {
+        "total": "18",
+        "executed": "18",
+        "passed": "18",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\t\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.attempts\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\0\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"1 invalid\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.outbox.oldest_available.age\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"SECRET\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: \"a/../b\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.duration\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\r\\n\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.trace_context.rejected\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.rejected\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: \"\\n\")",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/26-quality-boundary-red/results.trx",
+      "sha256": "36a7626d02bf04f50c3279f40d927fb8ceae3dd5208b47ec05f9fc5df606288e",
+      "outcome": "Failed",
+      "counters": {
+        "total": "3",
+        "executed": "3",
+        "passed": "0",
+        "failed": "3",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller",
+          "outcome": "Failed"
+        }
+      ]
+    },
+    {
+      "path": "docs/development/evidence/WP02-25/20261014T052841Z/implementation/27-quality-boundary-green/results.trx",
+      "sha256": "8649e47d3d7904e598b7c95cb7a22dccc8233a629216a117a993d3202b0b2ee1",
+      "outcome": "Completed",
+      "counters": {
+        "total": "29",
+        "executed": "29",
+        "passed": "29",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "results": [
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.MetricsAreSanitizedBeforeSdkAggregationAndSeriesAndRecordBudgetsAreEnforced",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: True)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-check\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"wrong-tag\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LoggerNeverInvokesCallerFormatterStateScopeOrExceptionFormatting",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LocalQueueBoundsBatchLifetimeRecordCountRetentionSizeAndPostDisposeWrites",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"collision\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: False)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.DuplicateAndDriftedRegistrationAreRejected",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.SynchronousSinkBlockAcrossRepeatedDisposalsIsGloballyBounded",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-policy\")",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.RepeatedLifecycleRestoresGlobalsAndOtelReplacementDisablesExportWithoutClobberingReplacement",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.WriteOnlyDependencyFailurePreservesReadRouteAndHiddenFailureKeepsOverall503",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.EventLinkBaggageStatusDisplayNameAndCaseVariantSeedsNeverEnterFinalSink",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.MissingEmptyDuplicateUnknownAndWrongPurposeRouteCheckInventoriesFailClosed",
+          "outcome": "Passed"
+        }
+      ]
+    }
+  ],
+  "note": "Includes intermediate failures; each run keeps its original scope."
+}
