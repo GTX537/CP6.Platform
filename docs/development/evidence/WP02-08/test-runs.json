@@ -1,0 +1,1168 @@
+[
+  {
+    "path": "tests/01-contract-red.trx",
+    "sha256": "8fe9b5d9ee3b51c36049da4d80de64355b3e8fc9c81f182b6ffdb88846972b41",
+    "times": {
+      "creation": "2026-10-14T01:33:05.9741824-04:00",
+      "queuing": "2026-10-14T01:33:05.9741827-04:00",
+      "start": "2026-10-14T01:33:03.1547760-04:00",
+      "finish": "2026-10-14T01:33:05.9776679-04:00"
+    },
+    "counters": {
+      "total": "2",
+      "executed": "2",
+      "passed": "1",
+      "failed": "1",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Versioned_protocol_has_separate_prepared_and_committed_types",
+        "outcome": "Failed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Legacy_claim_remains_without_epoch_or_fabricated_native_version",
+        "outcome": "Passed"
+      }
+    ]
+  },
+  {
+    "path": "tests/04-unit.trx",
+    "sha256": "26c829e018f154b7be0725d72a353c5226c8653cfa556afcef84eb58fc2352f2",
+    "times": {
+      "creation": "2026-10-14T01:47:17.1967406-04:00",
+      "queuing": "2026-10-14T01:47:17.1967411-04:00",
+      "start": "2026-10-14T01:47:14.3186634-04:00",
+      "finish": "2026-10-14T01:47:17.2019689-04:00"
+    },
+    "counters": {
+      "total": "8",
+      "executed": "8",
+      "passed": "8",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingContractTests.Options_RejectUnboundedOrNonPositiveValues",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingContractTests.Defaults_FreezeApprovedLeaseRetryAndRetentionPolicy",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Legacy_claim_remains_without_epoch_or_fabricated_native_version",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingTelemetryTests.AgeAndAttempts_AreMeasurementsAndNeverLabels",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingContractTests.TelemetryContract_FreezesEntityFrameworkSourceMeterAndOperations",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Versioned_protocol_has_separate_prepared_and_committed_types",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingTelemetryTests.OutboxAndInbox_EmitStableActivitiesAndMetricsForEveryDisposition",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingContractTests.Exceptions_ExposeOnlyContentSafeFailureMetadata",
+        "outcome": "Passed"
+      }
+    ]
+  },
+  {
+    "path": "tests/05-architecture.trx",
+    "sha256": "06468e092184bd2848d4cb5cb57417dc3c3f9ca0f0cf6ab390305caec36bd3e4",
+    "times": {
+      "creation": "2026-10-14T01:52:39.9439183-04:00",
+      "queuing": "2026-10-14T01:52:39.9439184-04:00",
+      "start": "2026-10-14T01:52:37.6027351-04:00",
+      "finish": "2026-10-14T01:52:40.5397788-04:00"
+    },
+    "counters": {
+      "total": "98",
+      "executed": "98",
+      "passed": "98",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOSettings\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOBackend\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoExporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoBackend\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"tempOffset\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P09EvidenceImplementation_SeparatesFacadeValidationAndSafetyPolicy",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOEndpoint\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TEMPO-ENDPOINT\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_DependencyAndPackageBoundary_IsExact",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoEndpoint\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"tempOutput\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoexporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"temporallyConsistent\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Temposink\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoCollector\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TempOutput\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Contracts_HasNoExternalOrInternalDependencies",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsGrafanaAndPrometheusCaseInsensitively",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"temposettings\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.SourceProjects_UseOnlyApprovedExternalDependenciesAndFrameworks",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"http://tempo:4317\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TemporaryFileRemoved\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempo.Endpoint\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempo\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoconfig\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoConfig\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"temporaryTempoDirectory\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Deployment_IsOnlyProjectPackingP09ContractsAndDeploymentAssets",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoexporteroptions\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempocollector\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProjectReferences_ExactlyMatchApprovedDependencyDirection",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo/Exporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.NuGetConfiguration_MapsPrivatePackagesWithoutCredentials",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOConfig\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TEMPO\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoExporterOptions\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempoconfig\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOClient\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoService\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempo\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"temposink\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempoexporteroptions\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TemporalWindow\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempo backend\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOExporterOptions\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempoexporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempobackend\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"temporaryDirectoryRemoved\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempoExporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TemporaryDirectoryRemoved\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"OpenTelemetryTempoExporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoExporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_Documentation_IsCompleteAndSafe",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"UseTempo:4317\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"addTempoExporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"temporalWindow\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempoendpoint\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoSettings\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo backend\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOService\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempoClient\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOCollector\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.SourceProjects_ExactlyMatchApprovedRuntimeAndTestingSet",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"contemporaneousOperation\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"temporaryFileRemoved\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoendpoint\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_PackageEvidenceAndProductionSafetyGuards_AreEncoded",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo.Endpoint\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempo/Exporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempocollector\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.OtherSourceProjects_DoNotReferenceDeployment",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"contemporaryOperation\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempo-client\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOSink\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoClient\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TemporallyConsistent\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P08_PublicationWorkflow_AlwaysPreservesCompleteEvidence",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempoclient\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"OpenTelemetryTempo:4317\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProjectReferences_StayInsideSourceTree_AndGraphIsAcyclic",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo-Exporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Tempoclient\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TEMPO_ENDPOINT\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempobackend\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TempoSink\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempo backend\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempo:4317\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"TeMpOExporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Temposettings\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.P10_Documentation_IsCompleteAndNonDeployable",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_AllowsTemporaryAndTemporalVocabulary(value: \"TemporarilyRemoved\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"Temposervice\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Deployment_HasNoExternalInternalOrFrameworkDependencies",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.Release_package_is_independent_and_owns_only_release_contract_assets",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"tempo_endpoint\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"AddTempo_Exporter\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.ArchitectureTests.RepositoryArchitectureTests.ProductionBackendGuard_RejectsTempoTokensAndCamelIdentifiers(value: \"temposervice\")",
+        "outcome": "Passed"
+      }
+    ]
+  },
+  {
+    "path": "tests/07-unit-final.trx",
+    "sha256": "e4b6ec7162c5299a560e9c147fb9f316de8bf779877cd549e89939f8128dd396",
+    "times": {
+      "creation": "2026-10-14T01:55:38.3897928-04:00",
+      "queuing": "2026-10-14T01:55:38.3897932-04:00",
+      "start": "2026-10-14T01:55:37.4912938-04:00",
+      "finish": "2026-10-14T01:55:38.4176352-04:00"
+    },
+    "counters": {
+      "total": "15",
+      "executed": "15",
+      "passed": "15",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Database_fence_is_strict_at_expiry_and_compares_instants(ticks: 0, live: False)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingTelemetryTests.OutboxAndInbox_EmitStableActivitiesAndMetricsForEveryDisposition",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingContractTests.Options_RejectUnboundedOrNonPositiveValues",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingContractTests.TelemetryContract_FreezesEntityFrameworkSourceMeterAndOperations",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Database_fence_is_strict_at_expiry_and_compares_instants(ticks: -10, live: True)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Native_codec_preserves_unsigned_bits_and_network_order(value: 16909060)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingTelemetryTests.AgeAndAttempts_AreMeasurementsAndNeverLabels",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Root_identity_does_not_have_delimiter_ambiguity_and_ticket_diagnostics_are_redacted",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Database_fence_is_strict_at_expiry_and_compares_instants(ticks: 10, live: False)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Legacy_claim_remains_without_epoch_or_fabricated_native_version",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingContractTests.Defaults_FreezeApprovedLeaseRetryAndRetentionPolicy",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Versioned_protocol_has_separate_prepared_and_committed_types",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.TransactionalMessagingContractTests.Exceptions_ExposeOnlyContentSafeFailureMetadata",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Native_codec_preserves_unsigned_bits_and_network_order(value: 0)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Native_codec_preserves_unsigned_bits_and_network_order(value: 4294967295)",
+        "outcome": "Passed"
+      }
+    ]
+  },
+  {
+    "path": "tests/08-expiry-final.trx",
+    "sha256": "8711373c42ef6d01ad4d7cde99088756c096536d43968044d6d8c36505370e80",
+    "times": {
+      "creation": "2026-10-14T01:56:17.3283128-04:00",
+      "queuing": "2026-10-14T01:56:17.3283133-04:00",
+      "start": "2026-10-14T01:56:11.9643520-04:00",
+      "finish": "2026-10-14T01:56:17.3316902-04:00"
+    },
+    "counters": {
+      "total": "1",
+      "executed": "1",
+      "passed": "1",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry",
+        "outcome": "Passed"
+      }
+    ]
+  },
+  {
+    "path": "tests/09-mapping-final.trx",
+    "sha256": "4d2751d608f861d58f00fe7398f0ab85ba3017875d9a844bd91fb593a5e66a74",
+    "times": {
+      "creation": "2026-10-14T01:57:08.6769831-04:00",
+      "queuing": "2026-10-14T01:57:08.6769837-04:00",
+      "start": "2026-10-14T01:57:04.8241749-04:00",
+      "finish": "2026-10-14T01:57:10.0010078-04:00"
+    },
+    "counters": {
+      "total": "5",
+      "executed": "5",
+      "passed": "5",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: \"binding-token\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: \"ignored-root-token\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: \"ignored-binding-token\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: \"root-column\")",
+        "outcome": "Passed"
+      }
+    ]
+  },
+  {
+    "path": "tests/pg-agent-additions-03/pg-agent-additions-03.trx",
+    "sha256": "5f312cdc981ee947f7548386d5fe38a374b566908705196281c04f665acb3b82",
+    "times": {
+      "creation": "2026-10-14T01:47:44.5554599-04:00",
+      "queuing": "2026-10-14T01:47:44.5554603-04:00",
+      "start": "2026-10-14T01:47:40.8067967-04:00",
+      "finish": "2026-10-14T01:47:51.4088600-04:00"
+    },
+    "counters": {
+      "total": "7",
+      "executed": "7",
+      "passed": "6",
+      "failed": "1",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Every_legacy_writer_excludes_bound_rows_while_unbound_claim_complete_and_retention_work",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Direct_legacy_DML_cannot_bypass_database_guard",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Missing_guard_and_unsupported_provider_fail_closed",
+        "outcome": "Failed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: False)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: True)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph",
+        "outcome": "Passed"
+      }
+    ]
+  },
+  {
+    "path": "tests/pg-agent-core-02/pg-agent-core-02.trx",
+    "sha256": "8716c820670a4ca9a9d79bfc74ab9412c58ea145a0512854c9a7ff4d2d448553",
+    "times": {
+      "creation": "2026-10-14T01:44:32.5896597-04:00",
+      "queuing": "2026-10-14T01:44:32.5896602-04:00",
+      "start": "2026-10-14T01:44:26.2459643-04:00",
+      "finish": "2026-10-14T01:44:48.1461957-04:00"
+    },
+    "counters": {
+      "total": "23",
+      "executed": "23",
+      "passed": "23",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Retention_rolls_back_exact_graph_then_commits_deletion_with_original_receipts_preserved",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Current_native_binding_hash_tenant_and_epoch_are_rechecked(tamper: \"binding\", expected: Conflict)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Renewal_mints_post_write_ticket_and_old_worker_ticket_loses_authority",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Actual_23505_aborts_transaction_and_original_key_retry_returns_original_ticket",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Same_claim_key_replays_exact_tuple_and_changed_tuple_has_empty_write_set(count: 0)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Exact_retention_checks_current_owner_obligations(reason: \"hold\", decision: Retained)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dlq_mutation_rolls_back_native_binding_receipt_dlq_audit_and_seal",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Drain_denies_claim_and_renew_but_allows_current_completion_then_epoch_advance",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Current_native_binding_hash_tenant_and_epoch_are_rechecked(tamper: \"hash\", expected: Conflict)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Exact_retention_checks_current_owner_obligations(reason: \"consumer\", decision: Retained)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Same_claim_key_replays_exact_tuple_and_changed_tuple_has_empty_write_set(count: 1)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Exact_retention_checks_current_owner_obligations(reason: \"unknown\", decision: Retained)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Missing_root_and_wrong_mapping_fail_closed",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Current_native_binding_hash_tenant_and_epoch_are_rechecked(tamper: \"tenant\", expected: Conflict)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Current_native_binding_hash_tenant_and_epoch_are_rechecked(tamper: \"native\", expected: Conflict)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Ticket_uses_actual_post_write_xmin_and_native_and_binding_are_sealed",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Current_native_binding_hash_tenant_and_epoch_are_rechecked(tamper: \"epoch\", expected: RouteEpochChanged)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Unknown_handover_blocks_epoch_and_caller_rollback_restores_root_and_history",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Concurrent_serializable_claim_loser_gets_40001_then_original_request_can_reenter",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Real_commit_then_suppressed_ack_recovers_original_mutation_after_write_revocation",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Exact_retention_checks_current_owner_obligations(reason: \"policy\", decision: PolicyUnavailable)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Exact_retention_checks_current_owner_obligations(reason: \"reference\", decision: Retained)",
+        "outcome": "Passed"
+      }
+    ]
+  },
+  {
+    "path": "tests/pg-agent-hold-05/pg-agent-hold-05.trx",
+    "sha256": "98718942e08862ef501bc152baaa5a25073df0dc4bbf77897ca7e26c6369accf",
+    "times": {
+      "creation": "2026-10-14T01:50:29.0617049-04:00",
+      "queuing": "2026-10-14T01:50:29.0617053-04:00",
+      "start": "2026-10-14T01:50:25.5184617-04:00",
+      "finish": "2026-10-14T01:50:29.9097228-04:00"
+    },
+    "counters": {
+      "total": "2",
+      "executed": "2",
+      "passed": "2",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Hold_and_cleanup_use_same_root_in_both_lock_orderings(holdFirst: False)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Hold_and_cleanup_use_same_root_in_both_lock_orderings(holdFirst: True)",
+        "outcome": "Passed"
+      }
+    ]
+  },
+  {
+    "path": "tests/pg-agent-races-04/pg-agent-races-04.trx",
+    "sha256": "fb7ed3e1b8bd3e3c3c6f371a12d8ae3b9c3747a44ef51161e978d4aa3fbec5d7",
+    "times": {
+      "creation": "2026-10-14T01:49:49.1501618-04:00",
+      "queuing": "2026-10-14T01:49:49.1501625-04:00",
+      "start": "2026-10-14T01:49:45.3790579-04:00",
+      "finish": "2026-10-14T01:49:58.1614642-04:00"
+    },
+    "counters": {
+      "total": "10",
+      "executed": "10",
+      "passed": "9",
+      "failed": "1",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Epoch_and_completion_serialize_in_both_lock_orderings(advanceFirst: True)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Unknown_handover_blocks_epoch_and_caller_rollback_restores_root_and_history",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Missing_guard_and_unsupported_provider_fail_closed",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Renewal_mints_post_write_ticket_and_old_worker_ticket_loses_authority",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Epoch_and_completion_serialize_in_both_lock_orderings(advanceFirst: False)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Hold_and_cleanup_use_same_root_in_both_lock_orderings(holdFirst: False)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Hold_and_cleanup_use_same_root_in_both_lock_orderings(holdFirst: True)",
+        "outcome": "Failed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Real_commit_then_suppressed_ack_recovers_original_mutation_after_write_revocation",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Drain_denies_claim_and_renew_but_allows_current_completion_then_epoch_advance",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dlq_mutation_rolls_back_native_binding_receipt_dlq_audit_and_seal",
+        "outcome": "Passed"
+      }
+    ]
+  },
+  {
+    "path": "tests/pg-agent-review-06/pg-agent-review-06.trx",
+    "sha256": "ffa7e0641061c5fd82db8385dbcf82ef23c885f3aaead55991a4459c07945d99",
+    "times": {
+      "creation": "2026-10-14T01:53:39.6881627-04:00",
+      "queuing": "2026-10-14T01:53:39.6881632-04:00",
+      "start": "2026-10-14T01:53:36.0052319-04:00",
+      "finish": "2026-10-14T01:54:09.4572463-04:00"
+    },
+    "counters": {
+      "total": "38",
+      "executed": "38",
+      "passed": "38",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Missing_guard_and_unsupported_provider_fail_closed",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Unknown_handover_blocks_epoch_and_caller_rollback_restores_root_and_history",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: True)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Drain_denies_claim_and_renew_but_allows_current_completion_then_epoch_advance",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Hold_and_cleanup_use_same_root_in_both_lock_orderings(holdFirst: True)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Current_native_binding_hash_tenant_and_epoch_are_rechecked(tamper: \"tenant\", expected: Conflict)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Current_native_binding_hash_tenant_and_epoch_are_rechecked(tamper: \"binding\", expected: Conflict)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Same_claim_key_replays_exact_tuple_and_changed_tuple_has_empty_write_set(count: 1)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Ticket_uses_actual_post_write_xmin_and_native_and_binding_are_sealed",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Missing_root_and_wrong_mapping_fail_closed",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Actual_catalog_guard_predicate_and_unique_index_are_required(mutation: \"missing-unique-index\", code: \"CP6_OUTBOX_INDEX_MIGRATION_REQUIRED\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Epoch_and_completion_serialize_in_both_lock_orderings(advanceFirst: False)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Exact_retention_checks_current_owner_obligations(reason: \"hold\", decision: Retained)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Exact_retention_checks_current_owner_obligations(reason: \"unknown\", decision: Retained)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Exact_retention_checks_current_owner_obligations(reason: \"policy\", decision: PolicyUnavailable)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Current_native_binding_hash_tenant_and_epoch_are_rechecked(tamper: \"native\", expected: Conflict)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Current_native_binding_hash_tenant_and_epoch_are_rechecked(tamper: \"hash\", expected: Conflict)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Exact_retention_checks_current_owner_obligations(reason: \"reference\", decision: Retained)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Retention_rolls_back_exact_graph_then_commits_deletion_with_original_receipts_preserved",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Real_commit_then_suppressed_ack_recovers_original_mutation_after_write_revocation",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: \"root-column\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Missing_actual_owner_authority_row_fence_disables_write_binding",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Actual_23505_aborts_transaction_and_original_key_retry_returns_original_ticket",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: False)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Direct_legacy_DML_cannot_bypass_database_guard",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Exact_retention_checks_current_owner_obligations(reason: \"consumer\", decision: Retained)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dlq_mutation_rolls_back_native_binding_receipt_dlq_audit_and_seal",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Hold_and_cleanup_use_same_root_in_both_lock_orderings(holdFirst: False)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Actual_catalog_guard_predicate_and_unique_index_are_required(mutation: \"false-guard\", code: \"CP6_OUTBOX_GUARD_MIGRATION_REQUIRED\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Same_claim_key_replays_exact_tuple_and_changed_tuple_has_empty_write_set(count: 0)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Current_native_binding_hash_tenant_and_epoch_are_rechecked(tamper: \"epoch\", expected: RouteEpochChanged)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Every_legacy_writer_excludes_bound_rows_while_unbound_claim_complete_and_retention_work",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: \"binding-token\")",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Epoch_and_completion_serialize_in_both_lock_orderings(advanceFirst: True)",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Renewal_mints_post_write_ticket_and_old_worker_ticket_loses_authority",
+        "outcome": "Passed"
+      },
+      {
+        "testName": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Concurrent_serializable_claim_loser_gets_40001_then_original_request_can_reenter",
+        "outcome": "Passed"
+      }
+    ]
+  }
+]

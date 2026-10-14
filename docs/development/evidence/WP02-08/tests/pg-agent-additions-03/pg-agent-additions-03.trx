@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="ac3d82e8-1409-4b30-9519-eff08620dd17" name="tt@LAPTOP-3QQ44FJS 2026-10-14 01:47:44" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T01:47:44.5554599-04:00" queuing="2026-10-14T01:47:44.5554603-04:00" start="2026-10-14T01:47:40.8067967-04:00" finish="2026-10-14T01:47:51.4088600-04:00" />
+  <TestSettings name="default" id="4530644c-fa25-4823-aeca-1cadd161b3d9">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_01_47_44" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="fbd00a30-6b23-4fc9-9491-3e7812b46f2e" testId="8349bcb3-1d7c-2621-4846-0064bde52196" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry" computerName="LAPTOP-3QQ44FJS" duration="00:00:02.6610269" startTime="2026-10-14T01:47:48.6605087-04:00" endTime="2026-10-14T01:47:51.3218521-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fbd00a30-6b23-4fc9-9491-3e7812b46f2e" />
+    <UnitTestResult executionId="fa677017-6eb8-4225-bcf7-e3ce2a18757c" testId="0bd89361-e8ea-9190-c6cd-5cb66de20ff8" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Every_legacy_writer_excludes_bound_rows_while_unbound_claim_complete_and_retention_work" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.0832196" startTime="2026-10-14T01:47:46.8347499-04:00" endTime="2026-10-14T01:47:47.9123465-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fa677017-6eb8-4225-bcf7-e3ce2a18757c" />
+    <UnitTestResult executionId="ebabc878-6a0f-4798-8d6a-99547261511b" testId="afaf0d7b-b9bb-3ec1-2230-c615f3cafe21" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Direct_legacy_DML_cannot_bypass_database_guard" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.7450335" startTime="2026-10-14T01:47:47.9125409-04:00" endTime="2026-10-14T01:47:48.6602314-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ebabc878-6a0f-4798-8d6a-99547261511b" />
+    <UnitTestResult executionId="5cf171ed-3c1c-42c7-a481-c4bfd39756ea" testId="2e7d679f-0b77-4c66-002f-ddf38d9f2bfe" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Missing_guard_and_unsupported_provider_fail_closed" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3193553" startTime="2026-10-14T01:47:46.4864514-04:00" endTime="2026-10-14T01:47:46.8291492-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5cf171ed-3c1c-42c7-a481-c4bfd39756ea">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(CP6.Platform.EntityFramework.OutboxV2.OutboxProtocolExceptionV2)&#xD;
+Actual:   typeof(System.InvalidOperationException)&#xD;
+---- System.InvalidOperationException : No database provider has been configured for this DbContext. A provider can be configured by overriding the 'DbContext.OnConfiguring' method or by using 'AddDbContext' on the application service provider. If 'AddDbContext' is used, then also ensure that your DbContext type accepts a DbContextOptions&lt;TContext&gt; object in its constructor and passes it to the base constructor for DbContext.</Message>
+          <StackTrace>   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Missing_guard_and_unsupported_provider_fail_closed&gt;b__30_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids) in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 494&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Missing_guard_and_unsupported_provider_fail_closed&gt;b__30_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids) in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 496&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Missing_guard_and_unsupported_provider_fail_closed&gt;b__30_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids) in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 496&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Missing_guard_and_unsupported_provider_fail_closed&gt;b__30_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids) in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 496&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;&gt;c__DisplayClass2_0.&lt;&lt;Scenario&gt;b__0&gt;d.MoveNext() in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 22&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteScopedAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs:line 49&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Scenario(Int32 rows, Func`4 body) in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 17&#xD;
+--- End of stack trace from previous location ---&#xD;
+----- Inner Stack Trace -----&#xD;
+   at Microsoft.EntityFrameworkCore.Internal.DbContextServices.Initialize(IServiceProvider scopedProvider, DbContextOptions contextOptions, DbContext context)&#xD;
+   at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()&#xD;
+   at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()&#xD;
+   at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure&lt;System.IServiceProvider&gt;.get_Instance()&#xD;
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService(IInfrastructure`1 accessor, Type serviceType)&#xD;
+   at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService[TService](IInfrastructure`1 accessor)&#xD;
+   at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetService[TService](IInfrastructure`1 accessor)&#xD;
+   at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_ProviderName()&#xD;
+   at CP6.Platform.EntityFramework.OutboxV2.OutboxTransactionV2.Bind(DbContext db, DbTransaction native, ITrustedContextAccessorV1 accessor, IOutboxOwnerV2 owner, OutboxRootKeyV2 root, Boolean readOnly, CancellationToken ct) in D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.EntityFramework\OutboxV2\OutboxTransactionV2.cs:line 36</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c88e40c9-5228-4ac9-994a-54a9fcfae947" testId="fe110e96-e58e-82d1-bdb2-87fdb37988b1" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.1002549" startTime="2026-10-14T01:47:45.3863128-04:00" endTime="2026-10-14T01:47:46.4861480-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c88e40c9-5228-4ac9-994a-54a9fcfae947" />
+    <UnitTestResult executionId="33282d7c-2b30-45ee-9be7-3aa6f5649f70" testId="d64c947f-62f7-022d-4c45-33f16e81caae" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.8572990" startTime="2026-10-14T01:47:44.5411697-04:00" endTime="2026-10-14T01:47:45.3856235-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="33282d7c-2b30-45ee-9be7-3aa6f5649f70" />
+    <UnitTestResult executionId="b1632621-4864-40a6-b0ba-c42a96cf925b" testId="f852638e-6ea5-a675-33d1-42d4472ae03e" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.6233562" startTime="2026-10-14T01:47:42.9315450-04:00" endTime="2026-10-14T01:47:44.5267218-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b1632621-4864-40a6-b0ba-c42a96cf925b" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: True)" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="d64c947f-62f7-022d-4c45-33f16e81caae">
+      <Execution id="33282d7c-2b30-45ee-9be7-3aa6f5649f70" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: False)" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="fe110e96-e58e-82d1-bdb2-87fdb37988b1">
+      <Execution id="c88e40c9-5228-4ac9-994a-54a9fcfae947" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Missing_guard_and_unsupported_provider_fail_closed" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="2e7d679f-0b77-4c66-002f-ddf38d9f2bfe">
+      <Execution id="5cf171ed-3c1c-42c7-a481-c4bfd39756ea" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Missing_guard_and_unsupported_provider_fail_closed" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="f852638e-6ea5-a675-33d1-42d4472ae03e">
+      <Execution id="b1632621-4864-40a6-b0ba-c42a96cf925b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Direct_legacy_DML_cannot_bypass_database_guard" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="afaf0d7b-b9bb-3ec1-2230-c615f3cafe21">
+      <Execution id="ebabc878-6a0f-4798-8d6a-99547261511b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Direct_legacy_DML_cannot_bypass_database_guard" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="8349bcb3-1d7c-2621-4846-0064bde52196">
+      <Execution id="fbd00a30-6b23-4fc9-9491-3e7812b46f2e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Every_legacy_writer_excludes_bound_rows_while_unbound_claim_complete_and_retention_work" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="0bd89361-e8ea-9190-c6cd-5cb66de20ff8">
+      <Execution id="fa677017-6eb8-4225-bcf7-e3ce2a18757c" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Every_legacy_writer_excludes_bound_rows_while_unbound_claim_complete_and_retention_work" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="8349bcb3-1d7c-2621-4846-0064bde52196" executionId="fbd00a30-6b23-4fc9-9491-3e7812b46f2e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0bd89361-e8ea-9190-c6cd-5cb66de20ff8" executionId="fa677017-6eb8-4225-bcf7-e3ce2a18757c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="afaf0d7b-b9bb-3ec1-2230-c615f3cafe21" executionId="ebabc878-6a0f-4798-8d6a-99547261511b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2e7d679f-0b77-4c66-002f-ddf38d9f2bfe" executionId="5cf171ed-3c1c-42c7-a481-c4bfd39756ea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fe110e96-e58e-82d1-bdb2-87fdb37988b1" executionId="c88e40c9-5228-4ac9-994a-54a9fcfae947" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d64c947f-62f7-022d-4c45-33f16e81caae" executionId="33282d7c-2b30-45ee-9be7-3aa6f5649f70" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f852638e-6ea5-a675-33d1-42d4472ae03e" executionId="b1632621-4864-40a6-b0ba-c42a96cf925b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="7" executed="7" passed="6" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.18]   Discovering: CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:00.23]   Discovered:  CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:00.26]   Starting:    CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:05.61]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:05.61]       Expected: typeof(CP6.Platform.EntityFramework.OutboxV2.OutboxProtocolExceptionV2)&#xD;
+[xUnit.net 00:00:05.61]       Actual:   typeof(System.InvalidOperationException)&#xD;
+[xUnit.net 00:00:05.61]       ---- System.InvalidOperationException : No database provider has been configured for this DbContext. A provider can be configured by overriding the 'DbContext.OnConfiguring' method or by using 'AddDbContext' on the application service provider. If 'AddDbContext' is used, then also ensure that your DbContext type accepts a DbContextOptions&lt;TContext&gt; object in its constructor and passes it to the base constructor for DbContext.&#xD;
+[xUnit.net 00:00:05.61]       Stack Trace:&#xD;
+[xUnit.net 00:00:05.61]         D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(494,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Missing_guard_and_unsupported_provider_fail_closed&gt;b__30_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids)&#xD;
+[xUnit.net 00:00:05.61]         D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(496,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Missing_guard_and_unsupported_provider_fail_closed&gt;b__30_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids)&#xD;
+[xUnit.net 00:00:05.61]         D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(496,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Missing_guard_and_unsupported_provider_fail_closed&gt;b__30_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids)&#xD;
+[xUnit.net 00:00:05.61]         D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(496,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Missing_guard_and_unsupported_provider_fail_closed&gt;b__30_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids)&#xD;
+[xUnit.net 00:00:05.61]         D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(22,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;&gt;c__DisplayClass2_0.&lt;&lt;Scenario&gt;b__0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:05.61]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:05.61]         D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs(49,0): at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteScopedAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:05.61]         D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(17,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Scenario(Int32 rows, Func`4 body)&#xD;
+[xUnit.net 00:00:05.61]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:05.61]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:05.61]            at Microsoft.EntityFrameworkCore.Internal.DbContextServices.Initialize(IServiceProvider scopedProvider, DbContextOptions contextOptions, DbContext context)&#xD;
+[xUnit.net 00:00:05.61]            at Microsoft.EntityFrameworkCore.DbContext.get_ContextServices()&#xD;
+[xUnit.net 00:00:05.61]            at Microsoft.EntityFrameworkCore.DbContext.get_InternalServiceProvider()&#xD;
+[xUnit.net 00:00:05.61]            at Microsoft.EntityFrameworkCore.DbContext.Microsoft.EntityFrameworkCore.Infrastructure.IInfrastructure&lt;System.IServiceProvider&gt;.get_Instance()&#xD;
+[xUnit.net 00:00:05.61]            at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService(IInfrastructure`1 accessor, Type serviceType)&#xD;
+[xUnit.net 00:00:05.61]            at Microsoft.EntityFrameworkCore.Infrastructure.Internal.InfrastructureExtensions.GetService[TService](IInfrastructure`1 accessor)&#xD;
+[xUnit.net 00:00:05.61]            at Microsoft.EntityFrameworkCore.Infrastructure.AccessorExtensions.GetService[TService](IInfrastructure`1 accessor)&#xD;
+[xUnit.net 00:00:05.61]            at Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade.get_ProviderName()&#xD;
+[xUnit.net 00:00:05.61]         D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.EntityFramework\OutboxV2\OutboxTransactionV2.cs(36,0): at CP6.Platform.EntityFramework.OutboxV2.OutboxTransactionV2.Bind(DbContext db, DbTransaction native, ITrustedContextAccessorV1 accessor, IOutboxOwnerV2 owner, OutboxRootKeyV2 root, Boolean readOnly, CancellationToken ct)&#xD;
+[xUnit.net 00:00:10.11]   Finished:    CP6.Platform.WP0208.PostgreSqlTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T01:47:46.8311112-04:00">
+        <Text>[xUnit.net 00:00:05.61]     CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Missing_guard_and_unsupported_provider_fail_closed [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
