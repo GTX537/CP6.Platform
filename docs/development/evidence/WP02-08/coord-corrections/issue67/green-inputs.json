@@ -1,0 +1,953 @@
+{
+  "utc": "2026-10-14T07:27:11.596291+00:00",
+  "working_directory": "D:\\CP6.Platform-worktrees\\bug-67-outbox-budget-20261014",
+  "input_git_head": "6176a2af32eb5d773344e87ddcf9967f72f8eaf3",
+  "input_status": "M docs/WP02-08-OUTBOX-V2.md\n M src/CP6.Platform.EntityFramework/OutboxV2/OutboxDispatcherV2.cs\n M tests/CP6.Platform.WP0208.PostgreSqlTests/OutboxTransactionTests.cs\n?? docs/development/evidence/WP02-08/coord-corrections/",
+  "command": [
+    "C:/Users/tt/.dotnet/dotnet.exe",
+    "test",
+    "tests/CP6.Platform.WP0208.PostgreSqlTests/CP6.Platform.WP0208.PostgreSqlTests.csproj",
+    "--filter",
+    "FullyQualifiedName~Dispatcher_|FullyQualifiedName~Database_wall_clock_expiry",
+    "--logger",
+    "trx;LogFileName=green.trx",
+    "--results-directory",
+    "D:\\CP6.Platform-worktrees\\bug-67-outbox-budget-20261014\\docs\\development\\evidence\\WP02-08\\coord-corrections\\issue67"
+  ],
+  "sources": [
+    {
+      "path": "src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj",
+      "bytes": 389,
+      "sha256": "0330506d22b02a69d8e841e446632c09e3d6bd13847013601c3540fc9f163a9a"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Cp6TelemetryConventions.cs",
+      "bytes": 3626,
+      "sha256": "b0c3a8a93b73e8ec875808494bea9504b540b40a0750ee2e0e44ababb2dec281"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/ICp6ReleaseIdentityAccessor.cs",
+      "bytes": 276,
+      "sha256": "4b9b8179a6cb7f0a2402556a0e07a249f2045f1521a34fc06f558f20a2ff91be"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/IRequestContext.cs",
+      "bytes": 409,
+      "sha256": "36c69005e469b28d553c3c4a469cb2148d6d4b5ff83b4f143b31ed6fc8eb2d9b"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/IRequestContextAccessor.cs",
+      "bytes": 241,
+      "sha256": "0cbbb91ddd3db7d8875fd01423ca3344c4f7dcf2ba7de9cac15dc165a0ed916e"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/RequestContext.cs",
+      "bytes": 1664,
+      "sha256": "050a71b08f624e4da8769ba1c7929ab6e47ac1dc86b5b31a15da0166dc9f9f32"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj",
+      "bytes": 1037,
+      "sha256": "7c2d830254c06aad4f4284f7e58c4926147f151703ddbd4eef40ffa3d94f472c"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationId.cs",
+      "bytes": 538,
+      "sha256": "ad428e0fa5272f2794b375ee390c6539d10f854b1857e32f7d6bf77abc6b4d82"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationMiddleware.cs",
+      "bytes": 896,
+      "sha256": "04ee6cd8ed16ea194b87e3ec6db72fce87b825257f72c66626b7e69ee0cb165f"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayExtensions.cs",
+      "bytes": 5377,
+      "sha256": "d5279439627e8a0b206e72e225d47a9c4fe587f7b40400f6b62e0acf7ba2b9bd"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayHeaders.cs",
+      "bytes": 975,
+      "sha256": "8cda8ab26bbd948f75967029ba3958862da9802ca7af8ae05d6af3f5b9352167"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayProfile.cs",
+      "bytes": 7746,
+      "sha256": "89ee088edb69ecaaeb77b0684f381f9b88e42137a7c9e7733ca0e810ee0b0e23"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpFailureCategory.cs",
+      "bytes": 287,
+      "sha256": "95dbdf39d0377fa9db2e72297f647d344aa24a8690ec3e5fd5ac4c3e27503a17"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpOperationKind.cs",
+      "bytes": 249,
+      "sha256": "a31557f72002e3d001b6267d320e41cbebeda2d1d6504b22861d09aed7e4bfd2"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceException.cs",
+      "bytes": 526,
+      "sha256": "2f7ac461974590b394d0078571f83d123ad683072836af379d2a42f2995e0024"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceProfile.cs",
+      "bytes": 3786,
+      "sha256": "eccd9e93122018651aff6baf46615e551c961673a67122b964d13545533602c5"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceServiceCollectionExtensions.cs",
+      "bytes": 7535,
+      "sha256": "6d5cb95e53a15803cc95fbdb55c5042dcecf9be7369a584c83b0c8f94b85e45d"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtBearerExtensions.cs",
+      "bytes": 5052,
+      "sha256": "86d8dd694bcba4f8afe144502c30f23e1a738e18e025ce7ef56fb7e8152e5e1d"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtBearerProfile.cs",
+      "bytes": 3247,
+      "sha256": "bdb3fe136d3e294bc7c2b4dc56478ad3facdd30b03e4aec5fe7a78b595a6f0be"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtClaimsValidator.cs",
+      "bytes": 2795,
+      "sha256": "b34a7e589bae712eb865ef4e31453ebce8da20704f5a8e80179af22093520a15"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtConfigurationManager.cs",
+      "bytes": 23391,
+      "sha256": "7c41df8c6551295ea43e2c711d1b18678911148433c15e12c80ae963fbb4fb5c"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ObservabilityProfile.cs",
+      "bytes": 1958,
+      "sha256": "f371a8489f2f099f61369c6b1eacac2542ae3b9f2001113fcd661b310454c1bf"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs",
+      "bytes": 3483,
+      "sha256": "1a0e077b4e24c208ec44c54ae5066009a2f84ff214f5111d1f1bbb67c8c483f2"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointProfile.cs",
+      "bytes": 3123,
+      "sha256": "a5a3f7cf1fa7c8e0e5c80c8d7f1c663383fce1866fecee3b1f256c7aae482181"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointRouteBuilderExtensions.cs",
+      "bytes": 3916,
+      "sha256": "181fc638fe54f1342cd668b724b34e040c407d41edade7d5201c603e1d0e56ce"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OutboundCorrelationHandler.cs",
+      "bytes": 1476,
+      "sha256": "2a4d32baff3e9e1401e8a931c53b9273aebadfd3107c97d6ea5c1eb575e70946"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ProblemDetailsExtensions.cs",
+      "bytes": 4478,
+      "sha256": "e90e7b2c62bd5b80079f27dec02f45b4140710f058b49f8d0961ea81371f02bc"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ReleaseIdentityAccessor.cs",
+      "bytes": 367,
+      "sha256": "e9d03c96da65a849a833b2a4ae85af365c162f7b428e58e097ac189a0c5be6be"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6SafeHealthResponseWriter.cs",
+      "bytes": 4522,
+      "sha256": "7d9d70614da59c2a93419d9643b2bdf3221575e200c22e190fed2842b3fc3e09"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6TraceContextDistributedPropagator.cs",
+      "bytes": 2355,
+      "sha256": "669b7043dc7463099b5a30e3c942901bd295b6fdfae29dbfb1927131c555547f"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/IRequestContextResolver.cs",
+      "bytes": 591,
+      "sha256": "79dd0d9f0fb5bc2711854e0952aaf553ac5390004f8e342bebb8fc910aadb729"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextAccessor.cs",
+      "bytes": 338,
+      "sha256": "8409c464b10bef5cb8c0a4e20209a1c645459f144ae9a04af9c458e26a53b6b5"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextExtensions.cs",
+      "bytes": 1480,
+      "sha256": "b107caaa53071b6941872eb7397753b8d1d67e3a7b875df695647e9577e88651"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextMiddleware.cs",
+      "bytes": 1168,
+      "sha256": "4098aac92acdb77f09bcfb950a5310b8046415f600f24f1c658b24741e040f12"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj",
+      "bytes": 444,
+      "sha256": "3c71927da98b44f52abb45e29f1da302b7bbfcab28077c365ad09bdfac8dd55c"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6ProblemDefinition.cs",
+      "bytes": 2032,
+      "sha256": "b30a0dea1c2b634ce2b1c69d9268a7edc1c018b867d5e4fb70badb06fa898bd0"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6Problems.cs",
+      "bytes": 1001,
+      "sha256": "8204ca012c039a1513a71cc6d0e57783e20d3303f783dcd834f65be242f883b6"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6ReleaseIdentity.cs",
+      "bytes": 5010,
+      "sha256": "c5c31863d44e1f07dabfe2be7dd7fdc4b13834c03309c7a642793f7e40b5c2ec"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6SloEvidenceDocument.cs",
+      "bytes": 11950,
+      "sha256": "a469783aaf986461422729306f6490912f40f8b88d47fe7bc4a04198f29b7953"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6SloEvidenceEvaluator.cs",
+      "bytes": 1606,
+      "sha256": "a8cb9e07f68f65c357c3b9bbae218b6a37f3874cd1b4ab88f1528e063a6abf2e"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/RequestContextSnapshot.cs",
+      "bytes": 962,
+      "sha256": "713fc11b45bbd4e85487277a0f88fb2fb22619634ffb51b98f53007a330e150a"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/CP6.Platform.Deployment.csproj",
+      "bytes": 1029,
+      "sha256": "0e6a3c90d2fb7123fe06c86b3702b658924bbdee61f306e4c9847ae8e12335b5"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09ContractException.cs",
+      "bytes": 455,
+      "sha256": "5aec3379fec3b95600055790f444fb8391a20c3db4518223af06c3e45c89ee4d"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09Json.cs",
+      "bytes": 8540,
+      "sha256": "61bef9962d7f1726f0a35dff912036709299c7bbdb7e108df51c0560292287ce"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09KubernetesValidator.cs",
+      "bytes": 32683,
+      "sha256": "961842dec5d803cbbe75d0bcc81e1eb111a3664059e392971b55c4f6325e297d"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RehearsalEvidence.cs",
+      "bytes": 5282,
+      "sha256": "aab4cd878a3f6f86bab76652180c5710a0d0d83839aff7b07cdfbe5b0750fa46"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RehearsalEvidence.Safety.cs",
+      "bytes": 4922,
+      "sha256": "24c5add00779b2af16e71103a17a7978b1c4d8c9217615d263d38a51e38ae5ff"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RehearsalEvidence.Validator.cs",
+      "bytes": 17671,
+      "sha256": "831a39a6afadb07faf992249227a68b4e4788c389520dad413e4310711bbd972"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RuntimeProfile.cs",
+      "bytes": 4016,
+      "sha256": "851584086c288678b45eefa1dcdb686a1cd6bb97f8d4a4cb4f5bfc15fe123639"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RuntimeProfileValidator.cs",
+      "bytes": 18295,
+      "sha256": "3893c153899f37a9cd6786eb8343a6faf0e834fd7448fedeef2b5bfefb9bb673"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj",
+      "bytes": 756,
+      "sha256": "78da574887a1a1ad1d421cf948572c589832472d48adbb3d90090771510645c7"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6EntityFrameworkTelemetry.cs",
+      "bytes": 8077,
+      "sha256": "05c18180ec76d3f2608946e66fc2cddb3236c8be5fa3c576ffc7a1c05ac8ca53"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6InboxProcessor.cs",
+      "bytes": 16168,
+      "sha256": "9a9ae94a2dd2e192a4a727107dda6c34921fd6404ad921a34a3f6735f9830911"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6MessageRetentionService.cs",
+      "bytes": 3518,
+      "sha256": "c24ba07d8d05e2991c9562d4c8b945295c98db8fc8db7fa5456dfff538a36411"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6OutboxDispatcher.cs",
+      "bytes": 4559,
+      "sha256": "68e4bb3dd72ac2430fc396a4bcf0d89f4c06343565eaabdff474aa6ddb4ce04b"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6OutboxStore.cs",
+      "bytes": 10515,
+      "sha256": "11c9836079377b7aef056b7355b2e80d7fa6d83641a9158a02cfba67e298d1ca"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingEntities.cs",
+      "bytes": 10530,
+      "sha256": "5ad6bc52594a434b16134a77ea3232c2d8da77e7183efa4d05f9e1e851ed7561"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingModelBuilderExtensions.cs",
+      "bytes": 5454,
+      "sha256": "36688b990311da00fffd196adf0e1662afc7cca8269e3b031f8f0682065cd373"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingTypes.cs",
+      "bytes": 10202,
+      "sha256": "de89f6e51f0c304fc564b712ede0502c34ad55eeec54785a48a59c261e956259"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj",
+      "bytes": 1034,
+      "sha256": "6fde2bbeb23b1286ef4bd221d8981493d745520504221311097cd5f04ffda3b7"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventAttributes.cs",
+      "bytes": 3713,
+      "sha256": "427efdc2fb48560f85316327be23bfdcfec3a194dc1b6f18dda6018c2e984be0"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventCodec.cs",
+      "bytes": 8508,
+      "sha256": "20b19e1e68da4a6ef5caaf2cc02597f1308559cb7c6673f2d0cc7d9b9ee0e82e"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventDescriptor.cs",
+      "bytes": 487,
+      "sha256": "b534e70e9182c2f3b14783a6895601cbd410da831b0be978c4a914d719e7424c"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventValidator.cs",
+      "bytes": 3922,
+      "sha256": "068e384ec9209a599f282f5710c122908a01b08123da3f90ba9aa0fd5a1fa93d"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6ContractBundle.cs",
+      "bytes": 13391,
+      "sha256": "de0475e5ecc35da365e946cbb0e6f90c999275ada14353d78e4f768e5fe0b725"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprDeliveryValidator.cs",
+      "bytes": 3177,
+      "sha256": "f608d49e095b37b03c4551e196532f602f8245608e85756dfb7bb59a858f2074"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprEventPublisher.cs",
+      "bytes": 3136,
+      "sha256": "73dc529f2e2491926448110d6cfb0bbe2a0e1f75a6645b6889a42d5fefb025a6"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprKafkaConventions.cs",
+      "bytes": 2560,
+      "sha256": "7273f0a3e9efbaddf92a788934d27d9bde791ded2ca064cd91f7724d224af369"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprServiceInvoker.cs",
+      "bytes": 1548,
+      "sha256": "de30d7156ee6d910e75fb865a4bc0c4ac83dd63c79cd46f0ccf21d2b2bfe6a41"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprTransport.cs",
+      "bytes": 2042,
+      "sha256": "dcba1f0ca029008ae2967ab90a7f3fdfea45134feb9fc7a492ad7e26c2fbe979"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6EventContractIdentity.cs",
+      "bytes": 1895,
+      "sha256": "3e3e935fc9ebbe6d6289582a7470f1477e2913c2d14ef1d5510b60d570ce667b"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6EventValidationResult.cs",
+      "bytes": 962,
+      "sha256": "309b3e4b69b4a44116d4271aa588e3d173d0d27c183987766361192d97c27c5e"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6MessagingTelemetry.cs",
+      "bytes": 8429,
+      "sha256": "acac0f7735ab198f148ea868c4ccfd8dd48b1c6bd64d8c905ec9ef72ad921392"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6SchemaCompatibility.cs",
+      "bytes": 8418,
+      "sha256": "3620a02a148c33b2c462609edf861ef3d6290d9a8b5d6dce5d213df61acedc4c"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6TraceContextCodec.cs",
+      "bytes": 5215,
+      "sha256": "dbfe37c02a30a989d675da4d59b78e8350de82a4e4eace208f8dfcb05d9b2c9a"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/ICp6DaprTransport.cs",
+      "bytes": 734,
+      "sha256": "dcd1db21340781f5df6e3efe894cd7ba4f4a31e523aeb0ca34d4815f8221ea05"
+    },
+    {
+      "path": "src/CP6.Platform.Release/CP6.Platform.Release.csproj",
+      "bytes": 1028,
+      "sha256": "da851661b9f172616304f7863c23a0536d0babfd7e4315888d5515dfd641f5ff"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6CandidateLocatorKeys.cs",
+      "bytes": 831,
+      "sha256": "fb24f355f9b8f6d53849571e0aab362df46f737ad421d109b0a52be384f463d1"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6DeterministicJson.cs",
+      "bytes": 14326,
+      "sha256": "df68f5bab7a538472cc50fba008f97c5d06b6323ebc9791b14a04fb7490d5c01"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6FormalPackagePublicationValidator.cs",
+      "bytes": 13500,
+      "sha256": "2442f28094bdc626b4e217a899d840151e4f3f948245658cbcf9a569a4752472"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6NuGetCertificateProfile.cs",
+      "bytes": 4444,
+      "sha256": "bc0afed2edd3e3d33581b65db80a97a5a366dfac7460071d822434fc1c56fac5"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6PinnedNuGetTrustPolicy.cs",
+      "bytes": 15527,
+      "sha256": "fb8f37e5273acbe9684aa210f5977cff21f8f04f09668c1d9596be56521bcb64"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6PinnedTrustPolicy.cs",
+      "bytes": 17554,
+      "sha256": "203bf97697f4c37b72c0e9d27306de38cc13d49d30c905c6107de6e789f534da"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseContractException.cs",
+      "bytes": 297,
+      "sha256": "7cea3d16d835e9a41751b4a3f5436ffaeaa30a18e7268a154230cf0d8b611ed1"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseContractIds.cs",
+      "bytes": 1786,
+      "sha256": "4b26bee5ef08f9626d56330df85c1a82ca6b9032efd08f662248f7c16f8c2752"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseJsonRules.cs",
+      "bytes": 4345,
+      "sha256": "5791a71e22a86b2b621a75e6589b34eb71fc61f3fea2c0f7d6d32ab3225cd713"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseMediaTypes.cs",
+      "bytes": 2421,
+      "sha256": "17210158c834c4475c3fcca03a75bf5a7bed4a14c02e8f1b2e04898595d8e579"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseValidationMode.cs",
+      "bytes": 114,
+      "sha256": "896b0ae50c93a313c5214483ab83bcd2fbd48195ffed7e94888d844296be3595"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseValidator.cs",
+      "bytes": 21559,
+      "sha256": "a30f7e7617f7d982f6b4289d7f13a12c3a677cb3c63d4317694211ba5576cb15"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6SupportingContractValidator.cs",
+      "bytes": 23348,
+      "sha256": "065ff3f09d83d0220ca113e15b523a93089ee7cb4c7fc85c48bd7912e4808bbf"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ValidatedReleaseDocument.cs",
+      "bytes": 358,
+      "sha256": "1d444c9bc781970ff79dc1526ed3ad7a836876c586e815b39e047adaa324d185"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/CP6.Platform.Testing.csproj",
+      "bytes": 861,
+      "sha256": "dfc8d21583474e7ebed6d2d7c83e8b5010fde2663a24f385ace9b73e90c46044"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6FaultInjectionServiceCollectionExtensions.cs",
+      "bytes": 1560,
+      "sha256": "88a422790691b44d3884e3159d37122ad7dff59d67e13d615c0a92c196183057"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6HttpFaultHandler.cs",
+      "bytes": 1558,
+      "sha256": "11b8b26d7987b9aad1c7de4e642d326e52fa47561b956a71dc44714f5e9683fc"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6HttpFaultScript.cs",
+      "bytes": 2579,
+      "sha256": "a9ea7ec30ca6c680d2e926e12e40a120e937b39c4ce8ee10c6976895cb1e983a"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6RecordedMetric.cs",
+      "bytes": 255,
+      "sha256": "4bf62f2a3ec5fe405c3677c18e66fba8dc2472a9097e5ca9c0247443922f8a2c"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6TelemetryRecorder.cs",
+      "bytes": 9495,
+      "sha256": "7132e3a0c0ab51532531f5eea7aeabe85e3962c46e20cac82af7c8dce4a52b62"
+    },
+    {
+      "path": "src/CP6.Platform.Release/CapabilitiesV1/Cp6CapabilityContracts.cs",
+      "bytes": 2858,
+      "sha256": "1a9afad32601d838d93fc1624f209da0e3c5825fdf84ea1a266344fe84fe090e"
+    },
+    {
+      "path": "src/CP6.Platform.Release/CapabilitiesV1/Cp6CapabilityValidator.cs",
+      "bytes": 18989,
+      "sha256": "c9f61b01091d5aea5f67ed9588e04020342a9bdd1304bc7c9163ef3e4d89bc72"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Context/MessageContextExecutorV1.cs",
+      "bytes": 875,
+      "sha256": "4a97e377c01b5682c191d7bbe15063900450c8e2a66f76580efc3b6b82962657"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6NativeContractCatalog.cs",
+      "bytes": 3909,
+      "sha256": "165f6adc0ddb9bf4b2850a482d9e4b23a3550d87334cd824296536ee376203a5"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6NativeJson.cs",
+      "bytes": 4959,
+      "sha256": "fd63eed2ffb5c1e373de9c68ecfd7680f952390addbe23763c8ba32b28a16b27"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6OriginalJson.cs",
+      "bytes": 973,
+      "sha256": "d3545e5b96008bdc580ee1e9b475478ff01ce4602b3169199d9914f0388d232b"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/CallerTransactionInboxV1.cs",
+      "bytes": 12421,
+      "sha256": "a2cfad3bad83dcf6f4bb5ae1b4255f20325c2890089374c0b0cbd59ecc2bfbdb"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxContractsV1.cs",
+      "bytes": 10655,
+      "sha256": "88769491504c8d2946316684d646b6ae8883fe47a623d5303d137cd635945485"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxModelV1.cs",
+      "bytes": 7114,
+      "sha256": "e57e3b64f94e70f1e881b86c3203abe64ff58db409b79002d9f692f22fcb304b"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxTransactionV1.cs",
+      "bytes": 5996,
+      "sha256": "ce472e4e88dac5baea304c80df180ab63c73680ff2667ee73abcddd0fe8d699b"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/CallerTransactionOutboxV2.cs",
+      "bytes": 21778,
+      "sha256": "9e0e8d540fc437ab7e59cb51e0ae451a94b21d83329bf74c32d1fa33a47684cb"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/LegacyOutboxFenceV2.cs",
+      "bytes": 2073,
+      "sha256": "e1aa3dc0c1b6601e5f4fd90ff9a61549df66accdf3e0f8e40a53c9ebd3ef7aad"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxContractsV2.cs",
+      "bytes": 7539,
+      "sha256": "c9dc3a43adab466f88fd3ab96f4f951e427c7c1e78676412c57baeca0586759e"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxDispatcherV2.cs",
+      "bytes": 8152,
+      "sha256": "ff952fd8bfb99c7913d1318b026eacb6d4b4b916e173820c7d53496e8ec5a468"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxLifecycleV2.cs",
+      "bytes": 11707,
+      "sha256": "524790900d643a1e9fb6b56a9e414e407e4c255134a93e01c8231f9b0736b9ec"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxModelV2.cs",
+      "bytes": 9336,
+      "sha256": "0bc6044f73fb34e341dbabe4c2fc84327bd3e91fd799177b812b73a35d484349"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxPostgreSqlV2.cs",
+      "bytes": 8132,
+      "sha256": "beb41e8c152dd2735a4ecb50ce978a21fb252d772e6829431a79624c9767c9c7"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxTransactionV2.cs",
+      "bytes": 8961,
+      "sha256": "c870718d92943f892281daafd7a1a373ef6bd864dfc49fd8cdffcdb1a77a4e9c"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Context/ContextContractsV1.cs",
+      "bytes": 2784,
+      "sha256": "f9d8c18d7cab2bf7399039b108b54df5792d9b20c113fb99913a3a0bb2b25786"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Context/TrustedRequestContextExtensionsV1.cs",
+      "bytes": 1639,
+      "sha256": "cf0ae29902db8c37ff23e5bafca01bc4a6b31dbaa10ba253a377dd36df0c379a"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Context/TrustedRequestContextMiddlewareV1.cs",
+      "bytes": 1566,
+      "sha256": "82f5d37cabb58e1249a3c27222313f8b199be7c26a9637bdd704aa9c9845471a"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpDeadline.cs",
+      "bytes": 2803,
+      "sha256": "31a04faea8df87f139d999c45a40080d3e2c2020b7d00521fc4ff99f5566bce0"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpOperationBinding.cs",
+      "bytes": 7825,
+      "sha256": "4dd8426bbf1409f79ea3f9fa4cbd23b75e7df0a5e962fef6d99c873314aa02b2"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Handler.cs",
+      "bytes": 22446,
+      "sha256": "0efe04799f477f969512c5abde916cb65a874e279964107ae528b8ef9c444526"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Outcome.cs",
+      "bytes": 1173,
+      "sha256": "e9f70cf87414e265adea2daa389f86b0aa76764460f7aed61fe0e63a1229b833"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Profile.cs",
+      "bytes": 3585,
+      "sha256": "9e9d65b45534f7f5352bf2ebe3b77332a1861bacb1f771de0cf3d35f0f96f81d"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Registration.cs",
+      "bytes": 4496,
+      "sha256": "f49894511de671068ea05a3af742547747a674bde1f187520d1dc36b1b34b142"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6RetryAfter.cs",
+      "bytes": 3783,
+      "sha256": "1fe6217898878db2cd2b07ef39d858553c397eee675ecaa2d62ac8596a22478c"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6RetryDecision.cs",
+      "bytes": 2694,
+      "sha256": "a41446e4b6738633431ef1d5401bce57b69500788be2be4f2c5f8a9b3ba62971"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6SafeProblemPolicy.cs",
+      "bytes": 1824,
+      "sha256": "08f5dd1875bbd9ec13302eeb52e28a8c218b659b7b7034137842b46ede861201"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6SafeProblemWriter.cs",
+      "bytes": 4091,
+      "sha256": "7f81b464e36500f15e1918b4ee407db9b8463eba138a32afdd121c9fca43e406"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/BackgroundContextExecutorV1.cs",
+      "bytes": 602,
+      "sha256": "4cccf59c073893524c682397ca1abf8d23b7c4f335c0d9ead6e2152c926bd03f"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextBindingValidatorV1.cs",
+      "bytes": 5990,
+      "sha256": "4463b3f5fe8aaae23307e23450368859a6cc1e857fbfc6cce87e94e45fe0a82c"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextBoundariesV1.cs",
+      "bytes": 2517,
+      "sha256": "d2402fab0e6518ac95ced1dd00446753013702421757882ae22b704f9fb220ca"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextScopeAccessorV1.cs",
+      "bytes": 2688,
+      "sha256": "954a300185592f6e1e9ea3d0b342baa3e0fd52951e18cef5b9f91774c10d8e6c"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/TrustedContextExecutorV1.cs",
+      "bytes": 1846,
+      "sha256": "31903b51f6b5b46b89f16331c25b337ea5d896d37927cdb77d46b95848089993"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/CP6.Platform.WP0208.PostgreSqlTests.csproj",
+      "bytes": 657,
+      "sha256": "f2c4e9ea290d8553c56accc8411028fd25e79c7d698c4ec04a46946d08cd448a"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/Directory.Packages.props",
+      "bytes": 255,
+      "sha256": "c1a2cb4b23472621aeb48d4ff6bb2cff80a262f8d8a541f12a910c6831e68f17"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/FixtureOwner.cs",
+      "bytes": 7276,
+      "sha256": "9c5ecd4eec70deab565bee28a6c68277cfcb309017d744771b3cfeafbcc9832e"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/OutboxTransactionTests.cs",
+      "bytes": 54799,
+      "sha256": "cd0a80bcb87fe601ac5ff68182194280f9ddf23157a9f37f72f15b5e3c3c5251"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/PgFixture.cs",
+      "bytes": 10911,
+      "sha256": "fb1b223c2b1230771ef6f0a958e21afc61486729c4b204beab99d98402e1aa67"
+    },
+    {
+      "path": "Directory.Build.props",
+      "bytes": 1171,
+      "sha256": "be5ae2820e4d7c1a554336a50b06e5eef5d0f4dea9469f31d1b8c84e52c32d83"
+    },
+    {
+      "path": "Directory.Packages.props",
+      "bytes": 1871,
+      "sha256": "e27010697c96f9ae86af011e6a7fd0f7b19dca60b71d49f393aaa4d6fc5f78b5"
+    },
+    {
+      "path": "global.json",
+      "bytes": 117,
+      "sha256": "12977d3e63d38bc51c22c4708ccbc351af024a310de7f25ac974468b731677b3"
+    },
+    {
+      "path": "NuGet.config",
+      "bytes": 548,
+      "sha256": "4f4e0db54145bc7bb5429295242e0b96b88ee984cb1581fe7ca926ad1463060e"
+    }
+  ],
+  "provenance": "Exact working input bytes captured before execution. Dirty inputs are not attributed to the HEAD commit. Artifacts below captured after execution.",
+  "exit_code": 0,
+  "elapsed_seconds": 19.719131299993023,
+  "dependencies": [
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/obj/project.assets.json",
+      "bytes": 84331,
+      "sha256": "7c9b46a759f4a483589ca3f4f480c6fa8ad56da3a5aa2c10b8e56bbc4c4bb7b0"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/obj/project.assets.json",
+      "bytes": 36855,
+      "sha256": "6e32edad3b155f900b2fd36a0dbaa405d009d8928438e448eef33e5fec4d73af"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/obj/project.assets.json",
+      "bytes": 3839,
+      "sha256": "bcdcb4bc45e55dcd2d0958b7804a96b43135aac4dca2ae20bd279147fda9124f"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/obj/project.assets.json",
+      "bytes": 4795,
+      "sha256": "31357988ed1d189cc0e97ec76ac3c481352991f645934bb3be29c9c8640fb7b1"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.Abstractions.dll",
+      "bytes": 26624,
+      "sha256": "5823fd3e090048996beeb8875596d4f8c34952a3d8e81d5ef234666196c2420c"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.Abstractions.pdb",
+      "bytes": 15900,
+      "sha256": "e718daf2bff67729c31f3bd9ff630c4b5d6fbe71634a8bd7df25fcc316cd4784"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.Contracts.dll",
+      "bytes": 84992,
+      "sha256": "c54ae68deb1120371ddf0c854bff3ac4431facea847e9fa229c0a8a949858c07"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.Contracts.pdb",
+      "bytes": 42956,
+      "sha256": "ef9aa226edf61dd383925e451bf795381815570cee2589a01e065bf62e5b7ce6"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.EntityFramework.dll",
+      "bytes": 362496,
+      "sha256": "2f09973245f000973caab9155fe8801bbb59466b0b091e6be29e81beabc2b895"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.EntityFramework.pdb",
+      "bytes": 73668,
+      "sha256": "b935a15ebb21aaa71406866ee2ece75b15eb67d906f47482480877a25f38e04a"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.WP0208.PostgreSqlTests.deps.json",
+      "bytes": 31251,
+      "sha256": "510720435192bd32797ce8e7944d3e0e28cabb76cd84c1f75edc886aac62a993"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.WP0208.PostgreSqlTests.dll",
+      "bytes": 237056,
+      "sha256": "967b6f82c3d7d076ce1b1e2b81419eb3de6281e6bc777dd540d45a4822a9adc9"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.WP0208.PostgreSqlTests.pdb",
+      "bytes": 48452,
+      "sha256": "6aac005a26573369ada28d63415a76ccac0ee5e6194725359c00a057b0927ee6"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.WP0208.PostgreSqlTests.runtimeconfig.json",
+      "bytes": 385,
+      "sha256": "b9f6ae58ba9393a4833a54c1088ceeb2b6328e311b1be47945c55cfc4de3bc89"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
+      "bytes": 34616,
+      "sha256": "ec81b528082d4d012178ea9f725d5b860c4e5c801ccdd8f1193b6e8729f6ed03"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.dll",
+      "bytes": 2535224,
+      "sha256": "ba583ae8fd64c7680da2d1e2886dcba31d81ce60bbc9cd7a9701d0d74228fe24"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.EntityFrameworkCore.Relational.dll",
+      "bytes": 1995576,
+      "sha256": "4bc2d9ad587455ebe4b6e8d60b4639b556ab4af3f8a8c4a68dda00ecfe306a4e"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Caching.Abstractions.dll",
+      "bytes": 31008,
+      "sha256": "31caebf834b6da88696a4a21ecb38eefff2623a531be925f6bd27719583ee3e2"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Caching.Memory.dll",
+      "bytes": 45832,
+      "sha256": "a6bc869c530a2ed7573575dd61e40f0a1079ef6074251afe9701f927c5355ca8"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+      "bytes": 27936,
+      "sha256": "fefcdb267a73099cb90e5af56b5ef2bca59bed974339b3a6810352bde23537a6"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+      "bytes": 63768,
+      "sha256": "67fa4325000db017dc0c35829b416f024f042d24efb868bcf17a895ee6500a93"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.DependencyInjection.dll",
+      "bytes": 92952,
+      "sha256": "158761ce778e799949f3a3060c461b1055bb35f1f5a65eff0e42397849f09ecd"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
+      "bytes": 65320,
+      "sha256": "45c22524218541717e4a0ade36847c1cda4921f5945b4975a1c78ddfe023d0b1"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Logging.dll",
+      "bytes": 50976,
+      "sha256": "b2cfba2e05ee89a91e9bc9cf112468a5f4fa05d1a77ea81c131ea656f3d133c2"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Options.dll",
+      "bytes": 64776,
+      "sha256": "5e01894cbc0661bacb8ca8f485a40d5ee4e02f28fef58007668a0276431b4693"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.Extensions.Primitives.dll",
+      "bytes": 43680,
+      "sha256": "446ff16e903e7479558816e213a3adee9a1c1adad65a56d853801b10933e29d7"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.TestPlatform.CommunicationUtilities.dll",
+      "bytes": 137776,
+      "sha256": "e38a359aa502bb1867d6092dca9aba5c130dd6f9111decea8156aa746b2c69e6"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.TestPlatform.CoreUtilities.dll",
+      "bytes": 98336,
+      "sha256": "f6e2495c44640d8915b2aefc938f391c970300266da014350ff35512a448ee84"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.TestPlatform.CrossPlatEngine.dll",
+      "bytes": 316960,
+      "sha256": "d55399bc66dc5b451d60ad82662452ca4a5f735918135dfc91ca9b5e3e38a6ab"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.TestPlatform.PlatformAbstractions.dll",
+      "bytes": 51232,
+      "sha256": "7b919ce4429c3b7b8fa2c36fd641b70b2f459a30ecb7c65fd80f437673cec930"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.TestPlatform.Utilities.dll",
+      "bytes": 67104,
+      "sha256": "01ffd64d25a4bd905aef9594d2aa700e020273a90a77a8720af6bec8b4fd5444"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+      "bytes": 17464,
+      "sha256": "a753bc15f23a957f4f91a059376e4472c6bacd1503622de4b9b2b079ad8ea289"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.Common.dll",
+      "bytes": 248352,
+      "sha256": "059aa2f335c3f7b14ac3fb7caa1625bc2767581b9548e9ff53a246c7f2f94d6a"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+      "bytes": 334392,
+      "sha256": "f83e38ee9020baa42e284e2299e233070ffa86ce4b10213583f9b7c8a521bcd0"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Newtonsoft.Json.dll",
+      "bytes": 712464,
+      "sha256": "22c649f75fce5be7c7ccda8880473b634ef69ecf33f5d1ab8ad892caf47d5a07"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Npgsql.dll",
+      "bytes": 1409024,
+      "sha256": "2083de510463c4f708fa433d68bf3da149f10e25cd99a86f4519360e3f59b70d"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
+      "bytes": 623616,
+      "sha256": "e0a329c94ca198007947d38e89b38fa7f332e65b8a63a2035d06143e759b7d3c"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/testhost.dll",
+      "bytes": 49696,
+      "sha256": "92cbdf52db5249112f9f53f1fcdaf9f9aa3fce467141c688a31a7fe095e4d304"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/xunit.abstractions.dll",
+      "bytes": 21928,
+      "sha256": "3166dc70323fb30ccf1cedb0fe86f2ad122c46d254542342d90386efc4c9285c"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/xunit.assert.dll",
+      "bytes": 187088,
+      "sha256": "bcd9711b22d227ac8cd4c1568e72433a0f576d2ec8aae64ac508081892015b1d"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/xunit.core.dll",
+      "bytes": 70352,
+      "sha256": "2f7feeec8c6dec7df684c25fb80aadb292b963d09723460f03d53c5ad2088acc"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/xunit.execution.dotnet.dll",
+      "bytes": 279760,
+      "sha256": "e70febe547c15f8155db3e2d95c3ba4445a59cbc21a3e7541ab22ed49d3dcf7b"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/xunit.runner.visualstudio.testadapter.dll",
+      "bytes": 1251840,
+      "sha256": "98a7395cd6abd03d0ac8eeb82d720c24db00602f047ca49bd6e88e77fc6d1153"
+    }
+  ],
+  "log_sha256": "481fe27506d4e328554129bcea15e7df99849e1a8c230145c9250a56acaf3424",
+  "trx_sha256": "7e3615425cf4cec91e951d7f7a5a637a9610e559d00920870f5f5561d194ed08"
+}

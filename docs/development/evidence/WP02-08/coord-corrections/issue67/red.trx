@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="034968b9-e2aa-4f27-9c4f-dfa0d7c1b49d" name="tt@LAPTOP-3QQ44FJS 2026-10-14 03:24:04" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T03:24:04.2836516-04:00" queuing="2026-10-14T03:24:04.2836522-04:00" start="2026-10-14T03:23:55.1552901-04:00" finish="2026-10-14T03:24:12.6554849-04:00" />
+  <TestSettings name="default" id="f6e94f68-d266-4048-a9d1-d211d08b5e14">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_03_24_04" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="e3dec0b1-7275-49cf-b06a-c31888835252" testId="0300df08-8d35-21be-cb61-6f47936116da" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_deducts_send_commit_latency_from_publish_timeout" computerName="LAPTOP-3QQ44FJS" duration="00:00:07.4635756" startTime="2026-10-14T03:24:05.1385199-04:00" endTime="2026-10-14T03:24:12.6013377-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e3dec0b1-7275-49cf-b06a-c31888835252">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.InRange() Failure: Value not in range&#xD;
+Range:  (0.01 - 4.5)&#xD;
+Actual: 5.0109877000000003</Message>
+          <StackTrace>   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Dispatcher_deducts_send_commit_latency_from_publish_timeout&gt;b__29_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids) in D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 506&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;&gt;c__DisplayClass2_0.&lt;&lt;Scenario&gt;b__0&gt;d.MoveNext() in D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 25&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteScopedAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs:line 49&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Scenario(Int32 rows, Func`4 body) in D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 20&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="74ed7c29-850b-4e4f-8dd0-265e2f944a76" testId="67ee57aa-a8ba-3348-0c74-eab982f4a5ee" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease" computerName="LAPTOP-3QQ44FJS" duration="00:00:03.8596685" startTime="2026-10-14T03:24:00.3744055-04:00" endTime="2026-10-14T03:24:04.2434547-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="74ed7c29-850b-4e4f-8dd0-265e2f944a76">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: 0&#xD;
+Actual:   1</Message>
+          <StackTrace>   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease&gt;b__28_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids) in D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 482&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease&gt;b__28_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids) in D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 492&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease&gt;b__28_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids) in D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 492&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;&gt;c__DisplayClass2_0.&lt;&lt;Scenario&gt;b__0&gt;d.MoveNext() in D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 25&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteScopedAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs:line 49&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Scenario(Int32 rows, Func`4 body) in D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 20&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8352737a-e087-41de-8544-7f20af88586a" testId="671654e4-fc7e-21d3-a430-62a1ce57b15c" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_after_short_send_commit_delay_within_budget" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.8921167" startTime="2026-10-14T03:24:04.2636684-04:00" endTime="2026-10-14T03:24:05.1375647-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8352737a-e087-41de-8544-7f20af88586a" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_deducts_send_commit_latency_from_publish_timeout" storage="d:\cp6.platform-worktrees\bug-67-outbox-budget-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="0300df08-8d35-21be-cb61-6f47936116da">
+      <Execution id="e3dec0b1-7275-49cf-b06a-c31888835252" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_deducts_send_commit_latency_from_publish_timeout" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease" storage="d:\cp6.platform-worktrees\bug-67-outbox-budget-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="67ee57aa-a8ba-3348-0c74-eab982f4a5ee">
+      <Execution id="74ed7c29-850b-4e4f-8dd0-265e2f944a76" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_after_short_send_commit_delay_within_budget" storage="d:\cp6.platform-worktrees\bug-67-outbox-budget-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="671654e4-fc7e-21d3-a430-62a1ce57b15c">
+      <Execution id="8352737a-e087-41de-8544-7f20af88586a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Dispatcher_publishes_after_short_send_commit_delay_within_budget" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="0300df08-8d35-21be-cb61-6f47936116da" executionId="e3dec0b1-7275-49cf-b06a-c31888835252" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="67ee57aa-a8ba-3348-0c74-eab982f4a5ee" executionId="74ed7c29-850b-4e4f-8dd0-265e2f944a76" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="671654e4-fc7e-21d3-a430-62a1ce57b15c" executionId="8352737a-e087-41de-8544-7f20af88586a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="1" failed="2" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:01.00]   Discovering: CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:01.11]   Discovered:  CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:01.13]   Starting:    CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:07.29]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:07.29]       Expected: 0&#xD;
+[xUnit.net 00:00:07.29]       Actual:   1&#xD;
+[xUnit.net 00:00:07.29]       Stack Trace:&#xD;
+[xUnit.net 00:00:07.29]         D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(482,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease&gt;b__28_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids)&#xD;
+[xUnit.net 00:00:07.29]         D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(492,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease&gt;b__28_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids)&#xD;
+[xUnit.net 00:00:07.29]         D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(492,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease&gt;b__28_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids)&#xD;
+[xUnit.net 00:00:07.29]         D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(25,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;&gt;c__DisplayClass2_0.&lt;&lt;Scenario&gt;b__0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:07.29]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:07.29]         D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs(49,0): at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteScopedAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:07.29]         D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(20,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Scenario(Int32 rows, Func`4 body)&#xD;
+[xUnit.net 00:00:07.29]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:15.64]       Assert.InRange() Failure: Value not in range&#xD;
+[xUnit.net 00:00:15.64]       Range:  (0.01 - 4.5)&#xD;
+[xUnit.net 00:00:15.64]       Actual: 5.0109877000000003&#xD;
+[xUnit.net 00:00:15.64]       Stack Trace:&#xD;
+[xUnit.net 00:00:15.64]         D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(506,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Dispatcher_deducts_send_commit_latency_from_publish_timeout&gt;b__29_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids)&#xD;
+[xUnit.net 00:00:15.64]         D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(25,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;&gt;c__DisplayClass2_0.&lt;&lt;Scenario&gt;b__0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:15.64]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:15.64]         D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs(49,0): at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteScopedAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:15.64]         D:\CP6.Platform-worktrees\bug-67-outbox-budget-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(20,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Scenario(Int32 rows, Func`4 body)&#xD;
+[xUnit.net 00:00:15.64]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:15.65]   Finished:    CP6.Platform.WP0208.PostgreSqlTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T03:24:04.2457178-04:00">
+        <Text>[xUnit.net 00:00:07.29]     CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T03:24:12.6017944-04:00">
+        <Text>[xUnit.net 00:00:15.64]     CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_deducts_send_commit_latency_from_publish_timeout [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
