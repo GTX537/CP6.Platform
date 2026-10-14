@@ -1,0 +1,14 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.WP0208.PostgreSqlTests -> D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: D:\CP6.Platform-worktrees\wp02-08-20261013\docs\development\evidence\WP02-08\tests\08-expiry-final.trx
+
+Passed!  - Failed:     0, Passed:     1, Skipped:     0, Total:     1, Duration: 3 s - CP6.Platform.WP0208.PostgreSqlTests.dll (net8.0)

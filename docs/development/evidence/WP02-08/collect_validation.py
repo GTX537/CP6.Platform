@@ -52,7 +52,7 @@ write('validation-reuse.json', dict(full_pg_run='tests/pg-agent-review-06/pg-age
     later_checks=['tests/07-unit-final.trx:15/15 (strict instant equality, codec and related legacy regression)',
         'tests/08-expiry-final.trx:1/1 (actual DB clock expiry after equivalent helper extraction)',
         'tests/09-mapping-final.trx:5/5 (required-property presence; four malformed mappings and real successful claim)'],
-    reuse_reason='Only strict comparison helper extraction and mandatory EF property presence plus two new mapping cases changed after full PG run. Relevant expiry/mapping/positive regressions passed; other PG results reused from their recorded source. Architecture 98/98 from05 reused; no dependency/public shared-contract/project-root changes since it.',
+    reuse_reason='Only strict comparison helper extraction and mandatory EF property presence plus two new mapping cases changed after full PG run; trailing blank lines at EOF were subsequently removed in two test files, without executable changes. Relevant expiry/mapping/positive regressions passed; other PG results reused from their recorded source. Architecture 98/98 from05 reused; no dependency/public shared-contract/project-root changes since it.',
     distinct_successes=dict(unit_and_related=15, postgresql=40, architecture=98, total=153),
     not_run=['real Main/CRM Owner/host adoption', 'actual broker/network end-to-end', 'production migration/cutover', 'original 60 business AC', 'formal package/release/deploy']))
 mapping=json.loads((HERE/'acceptance-map.json').read_text(encoding='utf-8-sig'))

@@ -1,0 +1,54 @@
+[
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\src\\CP6.Platform.EntityFramework\\OutboxV2\\CallerTransactionOutboxV2.cs",
+    "SHA256": "C2615B9CD17156AE4CCF95738B72F1F98934AC2CB08A87175F58E7AD8FA97B55"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\src\\CP6.Platform.EntityFramework\\OutboxV2\\LegacyOutboxFenceV2.cs",
+    "SHA256": "1A4A609EB56D225C6224E70C8DE63CCD85F95817759060DBDB674C1783BD6E88"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\src\\CP6.Platform.EntityFramework\\OutboxV2\\OutboxContractsV2.cs",
+    "SHA256": "CB5A087CCF5916AECC8C05CB4D2A74C710CB8E748773FB22394B5CC8CCB966C9"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\src\\CP6.Platform.EntityFramework\\OutboxV2\\OutboxDispatcherV2.cs",
+    "SHA256": "701E7371BFB757E8961A8B8464DCBB38E56E32FBEBD7665D614A8F225843CEF1"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\src\\CP6.Platform.EntityFramework\\OutboxV2\\OutboxLifecycleV2.cs",
+    "SHA256": "E158A64DCD6ACB5C5E02860D06A29A381B13D8E8B3C9EA94CB1E4E905CE5D1C8"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\src\\CP6.Platform.EntityFramework\\OutboxV2\\OutboxModelV2.cs",
+    "SHA256": "9BDDB6F96B1D285073BFEDED4F3E8B6F59F98447F6591A3FF213333E666A597D"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\src\\CP6.Platform.EntityFramework\\OutboxV2\\OutboxPostgreSqlV2.cs",
+    "SHA256": "69EE56A11DC03B99A2CAEEAF5E0C4E9ED27D12853FE8CEC73C5BB6C569F59978"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\src\\CP6.Platform.EntityFramework\\OutboxV2\\OutboxTransactionV2.cs",
+    "SHA256": "BB82FD13A1AF91B20B2617BEF9312EAC4A773B3A56AD63D4D0F5445A736583E2"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\tests\\CP6.Platform.WP0208.PostgreSqlTests\\FixtureOwner.cs",
+    "SHA256": "13A80F1514E939260BD35828C50CC21A5F9248D110F77B978ADC20ED2CEEC379"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\tests\\CP6.Platform.WP0208.PostgreSqlTests\\OutboxTransactionTests.cs",
+    "SHA256": "FF255063C8AD2572E8F4C7AF0F674383B2FD2FDD15F9B80289BF76F206931394"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\tests\\CP6.Platform.WP0208.PostgreSqlTests\\PgFixture.cs",
+    "SHA256": "438A12B0369FC2A8713B2004BECF0337E0299A45B8AC3359C189FEE079623670"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\tests\\CP6.Platform.WP0208.PostgreSqlTests\\bin\\Debug\\net8.0\\CP6.Platform.WP0208.PostgreSqlTests.dll",
+    "SHA256": "AD94BDF162273AF46972FDDBA3962BA5F5CB6E770C3884C8C720173A203B50A8"
+  },
+  {
+    "Path": "D:\\CP6.Platform-worktrees\\wp02-08-20261013\\tests\\CP6.Platform.WP0208.PostgreSqlTests\\bin\\Debug\\net8.0\\CP6.Platform.EntityFramework.dll",
+    "SHA256": "3F9D988178786D783D25C531954A7B5C855190F48502AB6832653252ABE2356B"
+  }
+]

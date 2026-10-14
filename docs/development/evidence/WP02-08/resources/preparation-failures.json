@@ -1,0 +1,22 @@
+{
+  "task": "WP02-08",
+  "scope": "Preparation tooling failures, not product test outcomes",
+  "failures": [
+    {
+      "attempt": "Initial inline source-evidence generator",
+      "exit_code": 1,
+      "error": "git show 1ab2d031e3c501662ecb89a33839fac1cba55d33:<original PLT-DEL archive path> returned exit 128: path exists on disk, but not in the commit",
+      "effect": "Generator stopped before writing source-inputs.json or acceptance-map.json",
+      "resolution": "Original/retention archive entries use exact accepted local raw SHA256 and explicit non-Git-blob provenance; tracked sources retain fixed Git blob hashes",
+      "targeted_verification": "Corrected generator completed with 36 source entries and 60 exact original cases"
+    },
+    {
+      "attempt": "Initial resources/verify-resource-helper.py invocation",
+      "exit_code": 1,
+      "error": "FileNotFoundError resolving docs/tests/CP6.Platform.WP0208.PostgreSqlTests/pg_resource.py",
+      "effect": "Failed importing helper before settings were read or resource operations were invoked",
+      "resolution": "Changed helper script repository ancestor from parents[4] to parents[5]",
+      "targeted_verification": "Corrected verification completed all 10 checks and retained the running resource with zero other clients"
+    }
+  ]
+}

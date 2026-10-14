@@ -1,0 +1,56 @@
+{
+  "full_pg_run": "tests/pg-agent-review-06/pg-agent-review-06.trx",
+  "full_pg_result": "38 passed / 0 failed / 0 skipped",
+  "source_artifact_snapshot": "tests/pg-agent-review-06-hashes.json",
+  "differences_after_full_run": [
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/CallerTransactionOutboxV2.cs",
+      "full_pg_run_sha256": "c2615b9cd17156ae4ccf95738b72f1f98934ac2cb08a87175f58e7ad8fa97b55",
+      "final_sha256": "b59d3d1df22479b20e8ebdcaf278c0b7e3e1353b267a25a29d75e86351872aa4"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxModelV2.cs",
+      "full_pg_run_sha256": "9bddb6f96b1d285073bfeded4f3e8b6f59f98447f6591a3ff213333e666a597d",
+      "final_sha256": "58b3d5b8ab800c3dd2d27d05d2f4010e06783299e6ee3cf2673e328201325bc0"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/OutboxTransactionTests.cs",
+      "full_pg_run_sha256": "ff255063c8ad2572e8f4c7af0f674383b2fd2fdd15f9b80289bf76f206931394",
+      "final_sha256": "d2d7f18df0da52aad4ffab16a7cbaa8eb991a314fb7fcfea4883a8a6e7d9da3f"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/PgFixture.cs",
+      "full_pg_run_sha256": "438a12b0369fc2a8713b2004becf0337e0299a45b8ac3359c189fee079623670",
+      "final_sha256": "fb1b223c2b1230771ef6f0a958e21afc61486729c4b204beab99d98402e1aa67"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.WP0208.PostgreSqlTests.dll",
+      "full_pg_run_sha256": "ad94bdf162273af46972fddba3962ba5f5cb6e770c3884c8c720173a203b50a8",
+      "final_sha256": "00029e4f394cb63af0ec26f57837e01e3fffbd13e1148c503714985af283818f"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.EntityFramework.dll",
+      "full_pg_run_sha256": "3f9d988178786d783d25c531954a7b5c855190f48502ab6832653252abe2356b",
+      "final_sha256": "ee481a168b633e0db49eae351038174145153c714454bde1b8302744a254ec34"
+    }
+  ],
+  "later_checks": [
+    "tests/07-unit-final.trx:15/15 (strict instant equality, codec and related legacy regression)",
+    "tests/08-expiry-final.trx:1/1 (actual DB clock expiry after equivalent helper extraction)",
+    "tests/09-mapping-final.trx:5/5 (required-property presence; four malformed mappings and real successful claim)"
+  ],
+  "reuse_reason": "Only strict comparison helper extraction and mandatory EF property presence plus two new mapping cases changed after full PG run. Relevant expiry/mapping/positive regressions passed; other PG results reused from their recorded source. Architecture 98/98 from05 reused; no dependency/public shared-contract/project-root changes since it. EOF-only blank-line removal in two test files has no executable effect.",
+  "distinct_successes": {
+    "unit_and_related": 15,
+    "postgresql": 40,
+    "architecture": 98,
+    "total": 153
+  },
+  "not_run": [
+    "real Main/CRM Owner/host adoption",
+    "actual broker/network end-to-end",
+    "production migration/cutover",
+    "original 60 business AC",
+    "formal package/release/deploy"
+  ]
+}
