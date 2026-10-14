@@ -1,0 +1,269 @@
+{
+  "task": "WP02-08",
+  "utc": "2026-10-14T07:34:33.898936+00:00",
+  "original_candidate": "3e4c078434ff4ae066f20d83e134fb268663700c",
+  "fresh_main": "e5c63a28c94bae4cc66ec50fbe6079553c03d0d0",
+  "tested_combined_source_commit": "17886458022bcbbb49d63890e52eccd897ac7256",
+  "fixes": [
+    {
+      "issue": 66,
+      "branch": "codex/bug-66-outbox-blocked-20261014",
+      "commit": "6e580bb4f77d943dcdaeeafd3450891f791aef9e",
+      "worktree": "D:/CP6.Platform-worktrees/bug-66-outbox-blocked-20261014"
+    },
+    {
+      "issue": 67,
+      "branch": "codex/bug-67-outbox-budget-20261014",
+      "commit": "f17b8669b9dde1826bb231358a0106d16232640b",
+      "worktree": "D:/CP6.Platform-worktrees/bug-67-outbox-budget-20261014"
+    }
+  ],
+  "aggregate": {
+    "branch": "codex/wp02-08-corrected-20261014",
+    "worktree": "D:\\CP6.Platform-worktrees\\wp02-08-corrected-20261014",
+    "source_commit": "17886458022bcbbb49d63890e52eccd897ac7256"
+  },
+  "runs": [
+    {
+      "manifest": "integrated/smoke-inputs.json",
+      "input_head": "17886458022bcbbb49d63890e52eccd897ac7256",
+      "exit_code": 0,
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "dd590d3407dfb0f3f59029b40ed5f043c4fe02075c9a9486e59e6b7aade4ded8",
+      "cases": [
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_after_short_send_commit_delay_within_budget",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_deducts_send_commit_latency_from_publish_timeout",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "manifest": "issue66/green-inputs.json",
+      "input_head": "0fb86dcb3bc3de3cb1d11ef7338bad14cbbf9bd7",
+      "exit_code": 0,
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "74797b65a7cc9626bc03f9cb66842919aa08e9ec287f9bacc052afccd83feddd",
+      "cases": [
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Epoch_and_completion_serialize_in_both_lock_orderings(advanceFirst: True)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Epoch_and_completion_serialize_in_both_lock_orderings(advanceFirst: False)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Unknown_handover_blocks_epoch_and_caller_rollback_restores_root_and_history",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Drain_denies_claim_and_renew_but_allows_current_completion_then_epoch_advance",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "manifest": "issue66/red-inputs.json",
+      "input_head": "0fb86dcb3bc3de3cb1d11ef7338bad14cbbf9bd7",
+      "exit_code": 1,
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "sha256": "003d7f8b08cdac83c43e11f9c035a673e704a89a073c4c7d3706b4dae0807798",
+      "cases": [
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement",
+          "outcome": "Failed"
+        }
+      ]
+    },
+    {
+      "manifest": "issue67/green-inputs.json",
+      "input_head": "6176a2af32eb5d773344e87ddcf9967f72f8eaf3",
+      "exit_code": 0,
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "7e3615425cf4cec91e951d7f7a5a637a9610e559d00920870f5f5561d194ed08",
+      "cases": [
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_enter_publisher_when_cancelled_after_send_commit",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: False)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_without_locks_and_ambiguous_or_unconfirmed_completion_never_republishes(transportThrows: True)",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_after_short_send_commit_delay_within_budget",
+          "outcome": "Passed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_deducts_send_commit_latency_from_publish_timeout",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "manifest": "issue67/green-probe-inputs.json",
+      "input_head": "6176a2af32eb5d773344e87ddcf9967f72f8eaf3",
+      "exit_code": 0,
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "sha256": "6d2133dead04c1c78fd1ee4d26c515a1c982d2efd0d505e81b303d760a943e47",
+      "cases": [
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_deducts_send_commit_latency_from_publish_timeout",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "manifest": "issue67/red-cancellation-inputs.json",
+      "input_head": "6176a2af32eb5d773344e87ddcf9967f72f8eaf3",
+      "exit_code": 1,
+      "total": 1,
+      "passed": 0,
+      "failed": 1,
+      "skipped": 0,
+      "sha256": "bd1ae7a1a0feaecf60895d68338608dff2f632df9bdcb570ac126590a568e8d4",
+      "cases": [
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_enter_publisher_when_cancelled_after_send_commit",
+          "outcome": "Failed"
+        }
+      ]
+    },
+    {
+      "manifest": "issue67/red-inputs.json",
+      "input_head": "6176a2af32eb5d773344e87ddcf9967f72f8eaf3",
+      "exit_code": 1,
+      "total": 3,
+      "passed": 1,
+      "failed": 2,
+      "skipped": 0,
+      "sha256": "c549333b03a584a80ae0ac5fff189704d84a9b809fd25956d0fac5f4179f2178",
+      "cases": [
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_deducts_send_commit_latency_from_publish_timeout",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease",
+          "outcome": "Failed"
+        },
+        {
+          "name": "CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Dispatcher_publishes_after_short_send_commit_delay_within_budget",
+          "outcome": "Passed"
+        }
+      ]
+    }
+  ],
+  "distinct_passing_correction_cases": 12,
+  "new_regression_cases": 5,
+  "final_input_recheck": {
+    "sources": 142,
+    "dependencies": 4,
+    "artifacts": 39,
+    "mismatches": []
+  },
+  "final_changed_sources": [
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxDispatcherV2.cs",
+      "bytes": 8152,
+      "sha256": "ff952fd8bfb99c7913d1318b026eacb6d4b4b916e173820c7d53496e8ec5a468"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxLifecycleV2.cs",
+      "bytes": 11528,
+      "sha256": "b0e44d5a3dfae3a77e8daa49bad73f0312f10f3c0eea6f1f211604e84f88772a"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/OutboxTransactionTests.cs",
+      "bytes": 57574,
+      "sha256": "e77aae42202246ffdd8dbe290c3a95be2933c1e605e506f334c89b9e4d358a78"
+    }
+  ],
+  "final_compiled_identity": [
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.EntityFramework.dll",
+      "bytes": 361984,
+      "sha256": "6c417c4f832f0b707eba03585c68917c4f03bb3cf7f82fd7baf8b556171bf304"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0208.PostgreSqlTests/bin/Debug/net8.0/CP6.Platform.WP0208.PostgreSqlTests.dll",
+      "bytes": 247296,
+      "sha256": "ce85532011f61d5514720aed04d96e552ebedfc5d18e1e230856f7cb592eacc1"
+    }
+  ],
+  "test_scope": "Issue66 5/5 and Issue67 7/7, then timeout-probe assertion 1/1 and combined source/DLL smoke 3/3; 12 distinct relevant cases, of which 5 are new. No whole-suite or original-153 rerun. Original results retain original source/artifact identities and unchanged-scope reuse.",
+  "runtime": {
+    "sdk": "8.0.424",
+    "dotnet_runtime": "8.0.30",
+    "ef": "8.0.30",
+    "npgsql": "8.0.8",
+    "npgsql_provider": "8.0.11",
+    "postgresql": "18.6",
+    "resource": "integrated/resource-stop.json"
+  },
+  "review": {
+    "kind": "one correction-batch self-review",
+    "result": "two findings addressed; no added issue found in corrected production diff",
+    "independent_focused_review": "PENDING_COORD"
+  },
+  "untouched": [
+    "original worker worktree",
+    "Main shared status/roadmap",
+    "root build/dependency configuration",
+    "InboxV1",
+    "shared public contracts",
+    "workflows",
+    "remote branches/PRs/Issues",
+    "Actions",
+    "production/other DBs"
+  ],
+  "held": [
+    "Main/CRM real Owner adoption",
+    "actual broker/network end-to-end",
+    "original60 business AC",
+    "production migration/cutover/package/release/deploy"
+  ],
+  "tooling_notes": [
+    "An initial git merge --stat=0 command was rejected before mutation; corrected to --no-stat and prerequisite merged successfully.",
+    "PowerShell Get-NetTCPConnection produced no matches after the successful smart stop; no listener is expected and separately recorded by socket check."
+  ]
+}

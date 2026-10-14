@@ -1,0 +1,17 @@
+  Determining projects to restore...
+  Restored D:\CP6.Platform-worktrees\wp02-08-corrected-20261014\src\CP6.Platform.Contracts\CP6.Platform.Contracts.csproj (in 78 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-08-corrected-20261014\src\CP6.Platform.Abstractions\CP6.Platform.Abstractions.csproj (in 80 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-08-corrected-20261014\src\CP6.Platform.EntityFramework\CP6.Platform.EntityFramework.csproj (in 2.72 sec).
+  Restored D:\CP6.Platform-worktrees\wp02-08-corrected-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\CP6.Platform.WP0208.PostgreSqlTests.csproj (in 2.77 sec).
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-08-corrected-20261014\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-08-corrected-20261014\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-08-corrected-20261014\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.WP0208.PostgreSqlTests -> D:\CP6.Platform-worktrees\wp02-08-corrected-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-08-corrected-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: D:\CP6.Platform-worktrees\wp02-08-corrected-20261014\docs\development\evidence\WP02-08\coord-corrections\integrated\smoke.trx
+
+Passed!  - Failed:     0, Passed:     3, Skipped:     0, Total:     3, Duration: 8 s - CP6.Platform.WP0208.PostgreSqlTests.dll (net8.0)
