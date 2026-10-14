@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="6d206258-2325-4078-af85-ffe901f5afdb" name="tt@LAPTOP-3QQ44FJS 2026-10-14 02:59:34" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T02:59:34.8550036-04:00" queuing="2026-10-14T02:59:34.8550040-04:00" start="2026-10-14T02:59:33.3798915-04:00" finish="2026-10-14T02:59:34.8593951-04:00" />
+  <TestSettings name="default" id="a388298f-5dda-4722-8457-7bf43f6c462f">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_02_59_34" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="6428afc3-c7b1-4c21-84b6-a50df48edae2" testId="ea70cd42-c86f-87a6-078d-e5d3d8e7047f" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;startup&quot;, failedDependency: False, expected: OK)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0105011" startTime="2026-10-14T02:59:34.7402406-04:00" endTime="2026-10-14T02:59:34.7509622-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6428afc3-c7b1-4c21-84b6-a50df48edae2">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:64967/ /ops/v1/startup: HTTP 200; Cache-Control=no-store; dependencyFailed=False.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e1da6145-47ae-4d4f-a5f0-85f4ec740fe8" testId="f2e14b4e-dcff-3548-9038-a5ec8f96ffcb" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;identity&quot;, failedDependency: False, expected: OK)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0195513" startTime="2026-10-14T02:59:34.6905301-04:00" endTime="2026-10-14T02:59:34.7099271-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e1da6145-47ae-4d4f-a5f0-85f4ec740fe8">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:64961/ /ops/v1/identity: HTTP 200; Cache-Control=no-store; dependencyFailed=False.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8103b41e-e0cd-4f81-93df-77ee7a65708d" testId="88a6278b-3df2-713a-0d04-958d7f83a71c" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;ready&quot;, failedDependency: False, expected: OK)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0127391" startTime="2026-10-14T02:59:34.7276195-04:00" endTime="2026-10-14T02:59:34.7401292-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8103b41e-e0cd-4f81-93df-77ee7a65708d">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:64965/ /ops/v1/ready: HTTP 200; Cache-Control=no-store; dependencyFailed=False.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c885fd2b-4eae-4f1b-a92d-66c61b4907af" testId="02ffa52f-f022-8e63-a4a7-d0dba1e006d1" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;ready&quot;, failedDependency: True, expected: ServiceUnavailable)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0159905" startTime="2026-10-14T02:59:34.7100352-04:00" endTime="2026-10-14T02:59:34.7270690-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c885fd2b-4eae-4f1b-a92d-66c61b4907af">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:64963/ /ops/v1/ready: HTTP 503; Cache-Control=no-store; dependencyFailed=True.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2efe6b22-3c59-4955-b047-f031ee0a7e2a" testId="6aa0d326-4173-c060-70de-e645382b4099" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;startup&quot;, failedDependency: True, expected: ServiceUnavailable)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0512205" startTime="2026-10-14T02:59:34.6473196-04:00" endTime="2026-10-14T02:59:34.6901394-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2efe6b22-3c59-4955-b047-f031ee0a7e2a">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:64950/ /ops/v1/startup: HTTP 503; Cache-Control=no-store; dependencyFailed=True.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="32e3eec9-c80b-46a2-b636-c14125057ac0" testId="d1132f38-3730-66b7-1fb8-1c16ad2f7a16" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;live&quot;, failedDependency: False, expected: OK)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2805163" startTime="2026-10-14T02:59:34.3287955-04:00" endTime="2026-10-14T02:59:34.6377888-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="32e3eec9-c80b-46a2-b636-c14125057ac0">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:64937/ /ops/v1/live: HTTP 200; Cache-Control=no-store; dependencyFailed=False.</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;ready&quot;, failedDependency: False, expected: OK)" storage="d:\cp6.platform-worktrees\bug-69-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="88a6278b-3df2-713a-0d04-958d7f83a71c">
+      <Execution id="8103b41e-e0cd-4f81-93df-77ee7a65708d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-69-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;startup&quot;, failedDependency: False, expected: OK)" storage="d:\cp6.platform-worktrees\bug-69-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="ea70cd42-c86f-87a6-078d-e5d3d8e7047f">
+      <Execution id="6428afc3-c7b1-4c21-84b6-a50df48edae2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-69-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;live&quot;, failedDependency: False, expected: OK)" storage="d:\cp6.platform-worktrees\bug-69-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="d1132f38-3730-66b7-1fb8-1c16ad2f7a16">
+      <Execution id="32e3eec9-c80b-46a2-b636-c14125057ac0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-69-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;startup&quot;, failedDependency: True, expected: ServiceUnavailable)" storage="d:\cp6.platform-worktrees\bug-69-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="6aa0d326-4173-c060-70de-e645382b4099">
+      <Execution id="2efe6b22-3c59-4955-b047-f031ee0a7e2a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-69-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;identity&quot;, failedDependency: False, expected: OK)" storage="d:\cp6.platform-worktrees\bug-69-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="f2e14b4e-dcff-3548-9038-a5ec8f96ffcb">
+      <Execution id="e1da6145-47ae-4d4f-a5f0-85f4ec740fe8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-69-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: &quot;ready&quot;, failedDependency: True, expected: ServiceUnavailable)" storage="d:\cp6.platform-worktrees\bug-69-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="02ffa52f-f022-8e63-a4a7-d0dba1e006d1">
+      <Execution id="c885fd2b-4eae-4f1b-a92d-66c61b4907af" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-69-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests" name="EveryOperationalResponseDisablesStorage" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="ea70cd42-c86f-87a6-078d-e5d3d8e7047f" executionId="6428afc3-c7b1-4c21-84b6-a50df48edae2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f2e14b4e-dcff-3548-9038-a5ec8f96ffcb" executionId="e1da6145-47ae-4d4f-a5f0-85f4ec740fe8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="88a6278b-3df2-713a-0d04-958d7f83a71c" executionId="8103b41e-e0cd-4f81-93df-77ee7a65708d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="02ffa52f-f022-8e63-a4a7-d0dba1e006d1" executionId="c885fd2b-4eae-4f1b-a92d-66c61b4907af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6aa0d326-4173-c060-70de-e645382b4099" executionId="2efe6b22-3c59-4955-b047-f031ee0a7e2a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d1132f38-3730-66b7-1fb8-1c16ad2f7a16" executionId="32e3eec9-c80b-46a2-b636-c14125057ac0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="6" executed="6" passed="6" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.32]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.40]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.42]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.86]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

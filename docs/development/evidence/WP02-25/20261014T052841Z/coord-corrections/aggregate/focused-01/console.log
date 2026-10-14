@@ -1,0 +1,23 @@
+  Determining projects to restore...
+  Restored D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.Contracts\CP6.Platform.Contracts.csproj (in 103 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.Abstractions\CP6.Platform.Abstractions.csproj (in 111 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.EntityFramework\CP6.Platform.EntityFramework.csproj (in 329 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.Messaging\CP6.Platform.Messaging.csproj (in 384 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.AspNetCore\CP6.Platform.AspNetCore.csproj (in 441 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.Testing\CP6.Platform.Testing.csproj (in 444 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\CP6.Platform.AspNetCoreTests.csproj (in 444 ms).
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.AspNetCoreTests -> D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: D:\CP6.Platform-worktrees\wp02-25-corrected-20261014\docs\development\evidence\WP02-25\20261014T052841Z\coord-corrections\aggregate\focused-01\results.trx
+
+Passed!  - Failed:     0, Passed:    69, Skipped:     0, Total:    69, Duration: 2 s - CP6.Platform.AspNetCoreTests.dll (net8.0)

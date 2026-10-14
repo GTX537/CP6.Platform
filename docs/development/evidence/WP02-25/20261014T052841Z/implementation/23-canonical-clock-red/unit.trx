@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="7f6abc47-3c82-4d1a-9721-852942860ce3" name="tt@LAPTOP-3QQ44FJS 2026-10-14 01:57:02" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T01:57:02.4640137-04:00" queuing="2026-10-14T01:57:02.4640140-04:00" start="2026-10-14T01:57:01.5541892-04:00" finish="2026-10-14T01:57:02.4701161-04:00" />
+  <TestSettings name="default" id="e434319e-8f53-4ce3-b7b4-9f2e31bcc511">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_01_57_02" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="34f51778-64bf-408a-86b4-f357e910be0d" testId="15706710-69f5-875b-4f72-e0fad89c46d9" testName="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: &quot;\t&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002087" startTime="2026-10-14T01:57:02.3283467-04:00" endTime="2026-10-14T01:57:02.3284007-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="34f51778-64bf-408a-86b4-f357e910be0d" />
+    <UnitTestResult executionId="825ec361-6c9e-40a2-9d10-322686878ec3" testId="6d82b51a-b73f-1d1f-d71e-cff8fcdac980" testName="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: &quot;\n&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0026520" startTime="2026-10-14T01:57:02.3293936-04:00" endTime="2026-10-14T01:57:02.3317246-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="825ec361-6c9e-40a2-9d10-322686878ec3">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.ArgumentException)</Message>
+          <StackTrace>   at CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(String suffix) in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\ObservabilityV1\CanonicalBoundaryTests.cs:line 15&#xD;
+   at InvokeStub_CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c91abb1e-20f5-49aa-85a5-7cb49fcbb93a" testId="1c91696d-2ec4-f27c-7605-d327ee7ced83" testName="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: &quot;\r\n&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0001216" startTime="2026-10-14T01:57:02.3352249-04:00" endTime="2026-10-14T01:57:02.3352561-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c91abb1e-20f5-49aa-85a5-7cb49fcbb93a" />
+    <UnitTestResult executionId="172c153a-8317-488a-808c-7242b7562378" testId="c825a313-7e95-f6f2-19bc-e5338998e44b" testName="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: &quot;\0&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0069669" startTime="2026-10-14T01:57:02.3079999-04:00" endTime="2026-10-14T01:57:02.3210840-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="172c153a-8317-488a-808c-7242b7562378" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: &quot;\t&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="15706710-69f5-875b-4f72-e0fad89c46d9">
+      <Execution id="34f51778-64bf-408a-86b4-f357e910be0d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests" name="CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: &quot;\n&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="6d82b51a-b73f-1d1f-d71e-cff8fcdac980">
+      <Execution id="825ec361-6c9e-40a2-9d10-322686878ec3" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests" name="CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: &quot;\0&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="c825a313-7e95-f6f2-19bc-e5338998e44b">
+      <Execution id="172c153a-8317-488a-808c-7242b7562378" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests" name="CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: &quot;\r\n&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="1c91696d-2ec4-f27c-7605-d327ee7ced83">
+      <Execution id="c91abb1e-20f5-49aa-85a5-7cb49fcbb93a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests" name="CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="15706710-69f5-875b-4f72-e0fad89c46d9" executionId="34f51778-64bf-408a-86b4-f357e910be0d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6d82b51a-b73f-1d1f-d71e-cff8fcdac980" executionId="825ec361-6c9e-40a2-9d10-322686878ec3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1c91696d-2ec4-f27c-7605-d327ee7ced83" executionId="c91abb1e-20f5-49aa-85a5-7cb49fcbb93a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c825a313-7e95-f6f2-19bc-e5338998e44b" executionId="172c153a-8317-488a-808c-7242b7562378" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="4" executed="4" passed="3" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.09]   Discovering: CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.27]   Discovered:  CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.29]   Starting:    CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.33]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.33]       Expected: typeof(System.ArgumentException)&#xD;
+[xUnit.net 00:00:00.33]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.33]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\ObservabilityV1\CanonicalBoundaryTests.cs(15,0): at CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(String suffix)&#xD;
+[xUnit.net 00:00:00.33]            at InvokeStub_CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.33]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.34]   Finished:    CP6.Platform.UnitTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T01:57:02.3334952-04:00">
+        <Text>[xUnit.net 00:00:00.33]     CP6.Platform.UnitTests.ObservabilityV1.CanonicalBoundaryTests.CanonicalIdentifiersDigestsModulesSourcesAndTemplatesRejectTrailingControls(suffix: "\n") [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

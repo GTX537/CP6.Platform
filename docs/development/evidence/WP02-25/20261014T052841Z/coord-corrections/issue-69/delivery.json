@@ -1,0 +1,93 @@
+{
+  "issue": "https://github.com/GTX537/CP6.Platform/issues/69",
+  "status": "ISSUE_FIX_GREEN_AGGREGATE_REVIEW_PENDING",
+  "confirmed_origin_main": "e5c63a28c94bae4cc66ec50fbe6079553c03d0d0",
+  "candidate_prerequisite": "095a66bfda8b4df2ee65e920541ce6304e8e66c1",
+  "prerequisite_merge": "3ef92b95116e8f8a74b9c3f45982f876755eec16",
+  "results": {
+    "red-01": {
+      "exit_code": 1,
+      "counters": {
+        "total": "6",
+        "executed": "6",
+        "passed": "4",
+        "failed": "2",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "trx_sha256": "c39a957bdf78a4011cfbc160c85fc9273623f59a017e6df2e577afc6d87bdbf0",
+      "source_digest": "33ab63e00c70b151b9d54e87e0486f25e55dedac0df6e50099ab41dc3f8809c2",
+      "source_count": 262,
+      "dependencies": 7,
+      "artifacts": 25,
+      "unchanged_during_run": true,
+      "command": [
+        "C:/Users/tt/.dotnet/dotnet.exe",
+        "test",
+        "tests/CP6.Platform.AspNetCoreTests/CP6.Platform.AspNetCoreTests.csproj",
+        "-c",
+        "Release",
+        "--filter",
+        "FullyQualifiedName~OperationalNoStoreRegressionTests",
+        "--logger",
+        "trx;LogFileName=results.trx",
+        "--results-directory",
+        "D:\\CP6.Platform-worktrees\\bug-69-20261014\\docs\\development\\evidence\\WP02-25\\20261014T052841Z\\coord-corrections\\issue-69\\red-01"
+      ]
+    },
+    "green-01": {
+      "exit_code": 0,
+      "counters": {
+        "total": "6",
+        "executed": "6",
+        "passed": "6",
+        "failed": "0",
+        "error": "0",
+        "timeout": "0",
+        "aborted": "0",
+        "inconclusive": "0",
+        "passedButRunAborted": "0",
+        "notRunnable": "0",
+        "notExecuted": "0",
+        "disconnected": "0",
+        "warning": "0",
+        "completed": "0",
+        "inProgress": "0",
+        "pending": "0"
+      },
+      "trx_sha256": "a308ab8aa77e39b52240d2c0d02166bdea4a4bd42c673412f65d34bf20368df7",
+      "source_digest": "bbe95498a3123a40654fbaaa1f1db79a215c73ed9abfe8cd7a88c868bad74288",
+      "source_count": 262,
+      "dependencies": 7,
+      "artifacts": 25,
+      "unchanged_during_run": true,
+      "command": [
+        "C:/Users/tt/.dotnet/dotnet.exe",
+        "test",
+        "tests/CP6.Platform.AspNetCoreTests/CP6.Platform.AspNetCoreTests.csproj",
+        "-c",
+        "Release",
+        "--filter",
+        "FullyQualifiedName~OperationalNoStoreRegressionTests",
+        "--logger",
+        "trx;LogFileName=results.trx",
+        "--results-directory",
+        "D:\\CP6.Platform-worktrees\\bug-69-20261014\\docs\\development\\evidence\\WP02-25\\20261014T052841Z\\coord-corrections\\issue-69\\green-01"
+      ]
+    }
+  },
+  "sdk": "8.0.424",
+  "runtime": "8.0.30",
+  "scope": "Local targeted regression; no real Owner/package trust/adoption/production acceptance. Issue remains open pending COORD remote-main verification.",
+  "self_review": "Only issue-specific production/test/doc/evidence paths changed; git diff --check passed; focused independent review follows COORD aggregation."
+}

@@ -1,0 +1,84 @@
+{
+  "status": "LOCAL_GATE_PASS",
+  "reports": [
+    {
+      "suite": "unit",
+      "execution": "docs\\development\\evidence\\WP02-25\\20261014T052841Z\\final-01\\unit\\execution.json",
+      "input_snapshot": "snapshot-final-01-unit-after.json",
+      "relevant_inputs_verified": 168,
+      "trx": "docs\\development\\evidence\\WP02-25\\20261014T052841Z\\final-01\\unit\\wp02-25-unit.trx",
+      "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf",
+      "counters": {
+        "total": 57,
+        "executed": 57,
+        "passed": 57,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      }
+    },
+    {
+      "suite": "host",
+      "execution": "docs\\development\\evidence\\WP02-25\\20261014T052841Z\\final-01\\host\\execution.json",
+      "input_snapshot": "snapshot-final-01-host-after.json",
+      "relevant_inputs_verified": 174,
+      "trx": "docs\\development\\evidence\\WP02-25\\20261014T052841Z\\final-01\\host\\wp02-25-host.trx",
+      "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646",
+      "counters": {
+        "total": 100,
+        "executed": 100,
+        "passed": 100,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      }
+    },
+    {
+      "suite": "architecture",
+      "execution": "docs\\development\\evidence\\WP02-25\\20261014T052841Z\\final-01\\architecture\\execution.json",
+      "input_snapshot": "snapshot-final-01-architecture-after.json",
+      "relevant_inputs_verified": 142,
+      "trx": "docs\\development\\evidence\\WP02-25\\20261014T052841Z\\final-01\\architecture\\wp02-25-architecture.trx",
+      "trx_sha256": "19a5260206d5d0d5c7a85eecff71192c611c39805394186c8ad5f9417e242e91",
+      "counters": {
+        "total": 98,
+        "executed": 98,
+        "passed": 98,
+        "failed": 0,
+        "error": 0,
+        "timeout": 0,
+        "aborted": 0,
+        "inconclusive": 0,
+        "passedButRunAborted": 0,
+        "notRunnable": 0,
+        "notExecuted": 0,
+        "disconnected": 0,
+        "warning": 0,
+        "completed": 0,
+        "inProgress": 0,
+        "pending": 0
+      }
+    }
+  ],
+  "scope": "Exact local source/dependency and executed test scope; no production or business acceptance."
+}

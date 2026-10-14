@@ -1,0 +1,59 @@
+{
+  "captured_at": "2026-10-14T05:30:51.648080+00:00",
+  "main": "1ab2d031e3c501662ecb89a33839fac1cba55d33",
+  "platform": "e5c63a28c94bae4cc66ec50fbe6079553c03d0d0",
+  "source_pins": [
+    {
+      "repository": "GTX537/CP6",
+      "commit": "1ab2d031e3c501662ecb89a33839fac1cba55d33",
+      "path": "docs/development/dispatch/20261013-wave6/WP02-25.md",
+      "copy": "docs/development/evidence/WP02-25/20261014T052841Z/inputs/dispatch.md",
+      "sha256": "95aa811580d300382633ebcd7d7dfbf07604d4d8355d0714f4ccf080d73e25ff"
+    },
+    {
+      "repository": "GTX537/CP6",
+      "commit": "1ab2d031e3c501662ecb89a33839fac1cba55d33",
+      "path": "docs/development/evidence/wave6-dispatch-20261013/admission-observability.md",
+      "copy": "docs/development/evidence/WP02-25/20261014T052841Z/inputs/admission.md",
+      "sha256": "03538aadbf943b51ac54115ec89b5f4f955d653cebe4ce8b350006e4920cb580"
+    },
+    {
+      "repository": "GTX537/CP6",
+      "commit": "1ab2d031e3c501662ecb89a33839fac1cba55d33",
+      "path": "docs/development/evidence/wave6-dispatch-20261013/admission-observability.json",
+      "copy": "docs/development/evidence/WP02-25/20261014T052841Z/inputs/admission.json",
+      "sha256": "9857056262990942c91ba50e1f015fdcbdb7ba84939724543095cfeb449d2e0b"
+    },
+    {
+      "repository": "GTX537/CP6",
+      "commit": "1ab2d031e3c501662ecb89a33839fac1cba55d33",
+      "path": "docs/development/09-parallel-development.md",
+      "copy": "docs/development/evidence/WP02-25/20261014T052841Z/inputs/parallel.md",
+      "sha256": "5d5da99193c5c08df8774268a6eff59fbd9111601a0cfbf52b352c315b253c38"
+    },
+    {
+      "repository": "GTX537/CP6",
+      "commit": "1ab2d031e3c501662ecb89a33839fac1cba55d33",
+      "path": "docs/design-handbook/modules/PLT-OBS-01.md",
+      "copy": "docs/development/evidence/WP02-25/20261014T052841Z/inputs/handbook.md",
+      "sha256": "2500ecfa284c694288aecab60c69ca589f45612c0e2608d13570f22ecdb7e77d"
+    },
+    {
+      "source_kind": "untracked Main archive, not Git blob",
+      "path": "D:\\CP6\\docs\\CP6_完整成果归档_20261009\\完整成果\\docs\\originals\\20\\20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "copy": "inputs/original-PLT-OBS-01.md",
+      "lines": 111
+    }
+  ],
+  "assignment_state": "READY",
+  "entry_gate": "CONFIRMED",
+  "start_handoff": "e1b65c2cfc9cb243914687c1d2af82fd82ffc233",
+  "predecessor_wp02_11_ancestor": "34cf7ab144a02e412de121eee2d9c5083f5a96a8",
+  "original_ac_count": 32,
+  "original_business_acceptance": "NOT_RUN",
+  "actions_triggered": [],
+  "actions_cancelled": [],
+  "databases_used": [],
+  "deployment_performed": false
+}

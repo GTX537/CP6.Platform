@@ -1,0 +1,389 @@
+{
+  "started_at_utc": "2026-10-14T07:25:27.085457+00:00",
+  "ended_at_utc": "2026-10-14T07:25:45.717785+00:00",
+  "command": [
+    "C:/Users/tt/.dotnet/dotnet.exe",
+    "test",
+    "tests/CP6.Platform.AspNetCoreTests/CP6.Platform.AspNetCoreTests.csproj",
+    "-c",
+    "Release",
+    "--filter",
+    "FullyQualifiedName~IdentityClockRegressionTests|FullyQualifiedName~OperationalNoStoreRegressionTests|FullyQualifiedName~RuntimeIdentityTests|FullyQualifiedName~IdentityNegativeMatrixTests|FullyQualifiedName~HealthBindingTests|FullyQualifiedName~HealthIdentityAndPermissionTests|FullyQualifiedName~HealthNegativeMatrixTests|FullyQualifiedName~RouteCapabilityTests|FullyQualifiedName~QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards|FullyQualifiedName~OperationalEndpointTests",
+    "--logger",
+    "trx;LogFileName=results.trx",
+    "--results-directory",
+    "D:\\CP6.Platform-worktrees\\wp02-25-corrected-20261014\\docs\\development\\evidence\\WP02-25\\20261014T052841Z\\coord-corrections\\aggregate\\focused-01"
+  ],
+  "worktree": "D:\\CP6.Platform-worktrees\\wp02-25-corrected-20261014",
+  "exit_code": 0,
+  "sdk_info": ".NET SDK:\r\n Version:           8.0.424\r\n Commit:            5cbde90d8f\r\n Workload version:  8.0.400-manifests.d7d8d4b1\r\n MSBuild version:   17.11.48+02bf66295\r\n\r\nRuntime Environment:\r\n OS Name:     Windows\r\n OS Version:  10.0.26200\r\n OS Platform: Windows\r\n RID:         win-x64\r\n Base Path:   C:\\Users\\tt\\.dotnet\\sdk\\8.0.424\\\r\n\r\n.NET workloads installed:\r\nConfigured to use loose manifests when installing new manifests.\r\n [maui-windows]\r\n   Installation Source: VS 18.8.12023.21\r\n   Manifest Version:    8.0.3/8.0.100\r\n   Manifest Path:       C:\\Users\\tt\\.dotnet\\sdk-manifests\\8.0.100\\microsoft.net.sdk.maui\\8.0.3\\WorkloadManifest.json\r\n   Install Type:        FileBased\r\n\r\n [maccatalyst]\r\n   Installation Source: VS 18.8.12023.21\r\n   Manifest Version:    17.0.8478/8.0.100\r\n   Manifest Path:       C:\\Users\\tt\\.dotnet\\sdk-manifests\\8.0.100\\microsoft.net.sdk.maccatalyst\\17.0.8478\\WorkloadManifest.json\r\n   Install Type:        FileBased\r\n\r\n [ios]\r\n   Installation Source: VS 18.8.12023.21\r\n   Manifest Version:    17.0.8478/8.0.100\r\n   Manifest Path:       C:\\Users\\tt\\.dotnet\\sdk-manifests\\8.0.100\\microsoft.net.sdk.ios\\17.0.8478\\WorkloadManifest.json\r\n   Install Type:        FileBased\r\n\r\n [android]\r\n   Installation Source: VS 18.8.12023.21\r\n   Manifest Version:    34.0.43/8.0.100\r\n   Manifest Path:       C:\\Users\\tt\\.dotnet\\sdk-manifests\\8.0.100\\microsoft.net.sdk.android\\34.0.43\\WorkloadManifest.json\r\n   Install Type:        FileBased\r\n\r\n\r\nHost:\r\n  Version:      8.0.30\r\n  Architecture: x64\r\n  Commit:       a83db3e0eb\r\n\r\n.NET SDKs installed:\r\n  8.0.424 [C:\\Users\\tt\\.dotnet\\sdk]\r\n\r\n.NET runtimes installed:\r\n  Microsoft.AspNetCore.App 8.0.30 [C:\\Users\\tt\\.dotnet\\shared\\Microsoft.AspNetCore.App]\r\n  Microsoft.NETCore.App 8.0.30 [C:\\Users\\tt\\.dotnet\\shared\\Microsoft.NETCore.App]\r\n  Microsoft.WindowsDesktop.App 8.0.30 [C:\\Users\\tt\\.dotnet\\shared\\Microsoft.WindowsDesktop.App]\r\n\r\nOther architectures found:\r\n  x86   [C:\\Program Files (x86)\\dotnet]\r\n    registered at [HKLM\\SOFTWARE\\dotnet\\Setup\\InstalledVersions\\x86\\InstallLocation]\r\n\r\nEnvironment variables:\r\n  Not set\r\n\r\nglobal.json file:\r\n  D:\\CP6.Platform-worktrees\\wp02-25-corrected-20261014\\global.json\r\n\r\nLearn more:\r\n  https://aka.ms/dotnet/info\r\n\r\nDownload .NET:\r\n  https://aka.ms/dotnet/download\r\n",
+  "summary": {
+    "counters": {
+      "total": "69",
+      "executed": "69",
+      "passed": "69",
+      "failed": "0",
+      "error": "0",
+      "timeout": "0",
+      "aborted": "0",
+      "inconclusive": "0",
+      "passedButRunAborted": "0",
+      "notRunnable": "0",
+      "notExecuted": "0",
+      "disconnected": "0",
+      "warning": "0",
+      "completed": "0",
+      "inProgress": "0",
+      "pending": "0"
+    },
+    "results": [
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: True)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.WriteOnlyDependencyFailurePreservesReadRouteAndHiddenFailureKeepsOverall503",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"configuration\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.DependencyEndpoints_FilterTags_RedactDetails_AndFailOnAnyNonHealthy(path: \"/health/ready\", selectedTag: \"ready\", selectedStatus: Unhealthy)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"version\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ProcessImage)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingEqualProfileTwice_IsIdempotent",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: \"component name\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: True)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_ReturnsCompleteCandidateIdentity",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FutureObserverTimestampIsUnprovenAtEvaluationTime",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.UnpublishedUnsafeCheck_AffectsAggregateButIsOmitted",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"git\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.SourceRevisionIsReadFromLoadedAssemblyMetadataAndWrongPinCannotMatch",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 120)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: \"identity\", failedDependency: False, expected: OK)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.FreshEvidenceRemainsMatchUntilTheMonotonicBudgetIsExceeded",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: \"startup\", failedDependency: True, expected: ServiceUnavailable)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.LiveEndpoint_DoesNotRunRegisteredChecks",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: \"ready\", failedDependency: False, expected: OK)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"environment\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: \"live\", failedDependency: False, expected: OK)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"deployment\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"start\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.MissingEmptyDuplicateUnknownAndWrongPurposeRouteCheckInventoriesFailClosed",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_ReturnsExplicitNonCandidateIdentityWithoutEmptyDigests",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"wrong-tag\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"epoch\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingDifferentProfile_FailsBeforeStartup",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: False)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"epoch\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 10)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: PackageSet)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"collision\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"region\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: \"Unsafe_Component\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-check\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_RejectsValidButDriftedIdentity",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-policy\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: \"ready\", failedDependency: True, expected: ServiceUnavailable)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"process\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ContainerImage)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.DependencyEndpoints_FilterTags_RedactDetails_AndFailOnAnyNonHealthy(path: \"/health/startup\", selectedTag: \"startup\", selectedStatus: Degraded)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.MonotonicClockFailureCannotProducePositiveEvidenceOrExposeException",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_RejectsInvalidIdentityWithoutEchoingIt",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"offset\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.OperationalNoStoreRegressionTests.EveryOperationalResponseDisablesStorage(route: \"startup\", failedDependency: False, expected: OK)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: \"minimum\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"service\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.Profile_RejectsUnsafePublishedComponentName(componentName: \"component/child\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: False)",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"schema\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"packages\")",
+        "outcome": "Passed",
+        "failure": ""
+      },
+      {
+        "name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected",
+        "outcome": "Passed",
+        "failure": ""
+      }
+    ],
+    "trx_sha256": "da7c92ed8a72f87fc5f245da306c0be3398282e1ca22ed89a47ba2507bb3d0d5"
+  },
+  "scope": "SDK8 local focused issue regression only; no DB/Actions/production or actual Owner adoption."
+}

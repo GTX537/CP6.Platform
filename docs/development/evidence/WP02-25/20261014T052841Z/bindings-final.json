@@ -1,0 +1,583 @@
+{
+  "PLT-OBS-01::OBS01-A1": {
+    "result": "LOCAL_PASS",
+    "scope": "Legacy names plus new closed finite value registry.",
+    "remaining": "Real consumer registration is external.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.TelemetryConventionTests.SourcesAndMeters_UseTheExactApprovedNames"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.TelemetryConventionTests.Operations_UseTheExactApprovedNames"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS01-A2": {
+    "result": "LOCAL_PASS",
+    "scope": "Actual SDK finite-series/numeric measurement export, no high-cardinality dimensions.",
+    "remaining": "Existing EF emitters are unchanged; real Owner traffic is not measured.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.MetricsAreSanitizedBeforeSdkAggregationAndSeriesAndRecordBudgetsAreEnforced"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS01-A3": {
+    "result": "LOCAL_PASS",
+    "scope": "Versioned technical measurement definitions preserve pre-commit/transport semantics.",
+    "remaining": "Actual Owner commit facts and business counts require original receipts.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.rejected\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.attempts\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.trace_context.rejected\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.duration\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.outbox.oldest_available.age\")"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS01-A4": {
+    "result": "LOCAL_PASS",
+    "scope": "Trace-only propagation, invalid trace handling and actual loopback SDK output.",
+    "remaining": "Production consumer propagation adoption is external.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.TraceContextDistributedPropagatorTests.Inject_EmitsOnlyW3cTraceFieldsWhenInnerPropagatorEmitsLegacyBaggage"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.InvalidAndDuplicateTraceHeaders_CreateFreshTraceRoots"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS01-A5": {
+    "result": "LOCAL_PASS",
+    "scope": "Automatic inbound/outbound final SDK capture plus event/link/baggage/log-state privacy negatives.",
+    "remaining": "Guarantee is limited to this configured pipeline, not other providers.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.EventLinkBaggageStatusDisplayNameAndCaseVariantSeedsNeverEnterFinalSink"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LoggerNeverInvokesCallerFormatterStateScopeOrExceptionFormatting"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS01-A6": {
+    "result": "LOCAL_PASS",
+    "scope": "Blocked/throwing sink and queue overflow leave local HTTP/simulated Owner result intact; incomplete observation is explicit.",
+    "remaining": "No actual Owner transaction or production exporter was exercised.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LocalQueueBoundsBatchLifetimeRecordCountRetentionSizeAndPostDisposeWrites"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS01-A7": {
+    "result": "LOCAL_PASS",
+    "scope": "Multiple loopback hosts, registration drift, process-global replacement and lifecycle cleanup.",
+    "remaining": "Production registration ordering and third-party providers remain host responsibilities.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.RepeatedLifecycleRestoresGlobalsAndOtelReplacementDisablesExportWithoutClobberingReplacement"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.DuplicateAndDriftedRegistrationAreRejected"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS01-A8": {
+    "result": "LOCAL_PASS",
+    "scope": "Reset/aggregation definitions and separate synthetic receipt/clock rules; no real population denominator.",
+    "remaining": "Real receipt authenticity, deduplication, sampling and fleet population remain external.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS02-A1": {
+    "result": "REGRESSION_PASS",
+    "scope": "Unchanged legacy parser/wire regression only.",
+    "remaining": "No new SLO qualification or production evidence acceptance.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Parse_RejectsDuplicateJsonPropertiesWithoutEchoingValues"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ReleaseIdentity_SerializesOnlyTheApprovedWireShape"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"partial-indeterminate.json\", expected: Indeterminate)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"non-candidate-indeterminate.json\", expected: Indeterminate)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"valid-pass.json\", expected: Pass)"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS02-A2": {
+    "result": "REGRESSION_PASS",
+    "scope": "Unchanged legacy evaluator comparison and declared-result regression only.",
+    "remaining": "Source verification and calculation qualification belong to WP02-26/Owner.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Partial, thresholdMet: True, expected: Indeterminate)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: True, expected: Pass)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: False, expected: Fail)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: False, completeness: Complete, thresholdMet: True, expected: Indeterminate)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Parse_RejectsClaimedPassWhenSourceDigestDrifts"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS02-A5": {
+    "result": "REGRESSION_PASS",
+    "scope": "Legacy zero-sample/coverage-gap fail-closed regression, not real coverage measurement.",
+    "remaining": "Real population and source coverage qualification remain external.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_ReturnsIndeterminateForZeroSamplesOrCoverageGap"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS02-A6": {
+    "result": "LOCAL_PASS",
+    "scope": "Local observation cannot promote candidate flags or package-looking references to production acceptance.",
+    "remaining": "No actual trusted package publication or production SLO qualification performed.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS03-A1": {
+    "result": "LOCAL_PASS",
+    "scope": "Legacy identity format regressions and versioned binding validation.",
+    "remaining": "Format validity remains distinct from runtime/source/package trust.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RequiresImmutableIdentity"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"CRM-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0+local\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha512:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:cccc\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.NonCandidate_AllowsExplicitLocalIdentityWithoutDigests"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS03-A2": {
+    "result": "LOCAL_PASS",
+    "scope": "Owned loaded-byte observation and fail-closed missing/self-report boundaries.",
+    "remaining": "Only adapter-owned managed modules are observed; no whole-process/package trust.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS03-A3": {
+    "result": "LOCAL_PASS",
+    "scope": "Independent expected-binding negatives plus legacy actual request-spoof regression.",
+    "remaining": "Host config is declared; actual Main/CRM trusted registration is external.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"version\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"configuration\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"start\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"service\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"environment\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"git\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"deployment\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"packages\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"epoch\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"region\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"schema\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"process\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.SpoofedIdentityAndBaggageNeverBecomeTelemetryData"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS03-A4": {
+    "result": "LOCAL_PASS",
+    "scope": "Typed unsupported artifact domains stay unproven and exact module inventory is compared.",
+    "remaining": "Container/package/config provenance is not inferred from module bytes.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ProcessImage)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ContainerImage)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: PackageSet)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS03-A5": {
+    "result": "LOCAL_PASS",
+    "scope": "Legacy release endpoint compatibility and safe new identity/health outputs.",
+    "remaining": "HTTP success is not production qualification.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_RejectsInvalidIdentityWithoutEchoingIt"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_ReturnsCompleteCandidateIdentity"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS03-A6": {
+    "result": "LOCAL_PASS",
+    "scope": "Real local route/module isolation and freshness with conservative aggregate.",
+    "remaining": "Actual fleet rollout/cutover remains WP02-28/29 and deployment Owner.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: False)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: True)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS03-A7": {
+    "result": "LOCAL_PASS",
+    "scope": "Defensive immutable binding/owned-byte snapshots only.",
+    "remaining": "No real immutable deployment history or rollback executed.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS04-A1": {
+    "result": "LOCAL_PASS",
+    "scope": "Legacy idempotent mapping plus new early/late route collisions and inventory validation.",
+    "remaining": "Actual consumer route-table adoption is external.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingEqualProfileTwice_IsIdempotent"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingDifferentProfile_FailsBeforeStartup"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.MissingEmptyDuplicateUnknownAndWrongPurposeRouteCheckInventoriesFailClosed"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS04-A2": {
+    "result": "LOCAL_PASS",
+    "scope": "Live remains constant while actual owned loopback dependency stops/restarts; required registration fails closed.",
+    "remaining": "No PostgreSQL or actual application dependency was exercised.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-check\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"collision\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"wrong-tag\")"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-policy\")"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS04-A3": {
+    "result": "LOCAL_PASS",
+    "scope": "Library path-conflict rejection only; no CRM edits.",
+    "remaining": "Actual CRM ready compatibility/adoption belongs to WP02-29.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS04-A4": {
+    "result": "LOCAL_PASS",
+    "scope": "Safe HTTP output hides component details without removing aggregate failure.",
+    "remaining": "Production operational visibility policies are external.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.UnpublishedUnsafeCheck_AffectsAggregateButIsOmitted"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS04-A5": {
+    "result": "LOCAL_PASS",
+    "scope": "Explicit policy binding exercised in isolated authenticated host.",
+    "remaining": "No production probe identity/network/deployment authorization qualification.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS04-A6": {
+    "result": "LOCAL_PASS",
+    "scope": "Bounded probes, cancellation, exception and stale-cache failures.",
+    "remaining": "Production probe rates and actual dependency impact are external.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS04-A7": {
+    "result": "LOCAL_PASS",
+    "scope": "Per-route check/module availability preserves independent reads and effects while aggregate fails.",
+    "remaining": "These observations grant no business write permission or fleet routing action.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.WriteOnlyDependencyFailurePreservesReadRouteAndHiddenFailureKeepsOverall503"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: False)"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: True)"
+      }
+    ]
+  },
+  "PLT-OBS-01::OBS04-A8": {
+    "result": "LOCAL_PASS",
+    "scope": "Local health GET uses read-only loopback probes, keeps live independent and cannot promote acceptance.",
+    "remaining": "Consumer IHealthCheck side effects and real Owner use require separate review/adoption.",
+    "evidence": [
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.LiveEndpoint_DoesNotRunRegisteredChecks"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+        "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects"
+      },
+      {
+        "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+        "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction"
+      }
+    ]
+  }
+}

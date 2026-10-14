@@ -1,0 +1,25 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Messaging\bin\Debug\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\bin\Debug\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Testing\bin\Debug\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.AspNetCoreTests -> D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.62]     CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping [4 ms]
+  Error Message:
+   System.InvalidOperationException : SYNTHETIC-private-clock
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ThrowingClock.GetUtcNow() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs:line 76
+   at CP6.Platform.AspNetCore.ObservabilityV1.RuntimeIdentityEvaluatorV1.Observe(CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\OwnedModuleObserverV1.cs:line 85
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs:line 69
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: D:\CP6.Platform-worktrees\wp02-25-20261013\docs\development\evidence\WP02-25\20261014T052841Z\implementation\20-clock-definitions-red\aspnet.trx
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 19 ms - CP6.Platform.AspNetCoreTests.dll (net8.0)
