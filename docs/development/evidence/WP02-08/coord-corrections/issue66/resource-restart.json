@@ -1,0 +1,31 @@
+{
+  "observed_utc": "2026-10-14T06:56:16.151515+00:00",
+  "prestart_disk_system_id": "7696392773160066692",
+  "foreign_sessions": 0,
+  "identity": {
+    "SystemIdentifier": "7696392773160066692",
+    "DataDirectory": "D:/CP6-local-test/WP02-08/dcdfb04dda48edc0d52d638b5e7bd2f0/data",
+    "Port": 55428,
+    "Database": "cp6_wp0208_20261014_dcdfb04d",
+    "Oid": "16385",
+    "DatabaseOwner": "wp0208_admin_dcdfb04d",
+    "Principal": "wp0208_admin_dcdfb04d",
+    "RuntimeIdentity": {
+      "Principal": "wp0208_runtime_dcdfb04d",
+      "Database": "cp6_wp0208_20261014_dcdfb04d",
+      "Port": 55428,
+      "Owner": "dcdfb04dda48edc0d52d638b5e7bd2f0",
+      "Marker": "CP6-WP02-08:dcdfb04dda48edc0d52d638b5e7bd2f0",
+      "Superuser": false,
+      "CreateDatabase": false,
+      "CreateRole": false,
+      "Inherit": false,
+      "BypassRls": false,
+      "CreateSchema": false,
+      "CreateFixture": false
+    },
+    "Owner": "dcdfb04dda48edc0d52d638b5e7bd2f0",
+    "Marker": "CP6-WP02-08:dcdfb04dda48edc0d52d638b5e7bd2f0",
+    "RunDirectory": "D:\\CP6-local-test\\WP02-08\\dcdfb04dda48edc0d52d638b5e7bd2f0"
+  }
+}

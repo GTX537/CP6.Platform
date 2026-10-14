@@ -47,8 +47,7 @@ public sealed partial class CallerTransactionOutboxV2
         {
             await OutboxPostgreSqlV2.Execute(tx.Context, $"UPDATE {tx.Table("Cp6_OutboxRouteV2")} SET \"Phase\"=@phase WHERE \"Id\"=@root", ct,
                 ("phase", (int)OutboxPhaseV2.Blocked), ("root", root.Id));
-            Audit(tx, null, "EpochBlocked", switchId.ToString("D"), await Now(tx, ct)); await tx.Context.SaveChangesAsync(ct);
-            return new(OutboxDecisionV2.PendingCommit, root.CurrentEpoch, OutboxEncodingV2.Encode((await Root(tx, ct))!.Version));
+            return await SaveSwitch(tx, mutationId, tuple, "EpochBlocked", ct);
         }
         var now = await Now(tx, ct);
         foreach (var id in rows)

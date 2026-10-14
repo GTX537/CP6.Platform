@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="bb6c5239-f3fd-4aa1-b0d4-d123534dd997" name="tt@LAPTOP-3QQ44FJS 2026-10-14 02:57:57" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T02:57:57.9085207-04:00" queuing="2026-10-14T02:57:57.9085212-04:00" start="2026-10-14T02:57:51.3874429-04:00" finish="2026-10-14T02:57:57.9149818-04:00" />
+  <TestSettings name="default" id="3cd71c24-35e6-4e71-9b80-88c2389ad9e4">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_02_57_57" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="9ac03087-2201-4edf-9ead-8c4dd55128fd" testId="e638848b-0e57-aa9a-b00d-8eb9e3b795cc" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.8024822" startTime="2026-10-14T02:57:55.9648982-04:00" endTime="2026-10-14T02:57:57.7820806-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9ac03087-2201-4edf-9ead-8c4dd55128fd">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: OutboxSwitchResultV2 { Decision = PendingCommit, Epoch = 1, ControlVersion = pg-xmin-v1:1832 }&#xD;
+Actual:   OutboxSwitchResultV2 { Decision = Conflict, Epoch = 1, ControlVersion =  }</Message>
+          <StackTrace>   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement&gt;b__22_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids) in D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 339&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;&gt;c__DisplayClass2_0.&lt;&lt;Scenario&gt;b__0&gt;d.MoveNext() in D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 22&#xD;
+--- End of stack trace from previous location ---&#xD;
+   at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteScopedAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs:line 49&#xD;
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Scenario(Int32 rows, Func`4 body) in D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 17&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement" storage="d:\cp6.platform-worktrees\bug-66-outbox-blocked-20261014\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="e638848b-0e57-aa9a-b00d-8eb9e3b795cc">
+      <Execution id="9ac03087-2201-4edf-9ead-8c4dd55128fd" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="e638848b-0e57-aa9a-b00d-8eb9e3b795cc" executionId="9ac03087-2201-4edf-9ead-8c4dd55128fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.93]   Discovering: CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:01.04]   Discovered:  CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:01.05]   Starting:    CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:04.92]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:04.92]       Expected: OutboxSwitchResultV2 { Decision = PendingCommit, Epoch = 1, ControlVersion = pg-xmin-v1:1832 }&#xD;
+[xUnit.net 00:00:04.92]       Actual:   OutboxSwitchResultV2 { Decision = Conflict, Epoch = 1, ControlVersion =  }&#xD;
+[xUnit.net 00:00:04.92]       Stack Trace:&#xD;
+[xUnit.net 00:00:04.92]         D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(339,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement&gt;b__22_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids)&#xD;
+[xUnit.net 00:00:04.92]         D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(22,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.&lt;&gt;c__DisplayClass2_0.&lt;&lt;Scenario&gt;b__0&gt;d.MoveNext()&#xD;
+[xUnit.net 00:00:04.92]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:04.92]         D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs(49,0): at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteScopedAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:04.92]         D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs(17,0): at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Scenario(Int32 rows, Func`4 body)&#xD;
+[xUnit.net 00:00:04.92]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:04.93]   Finished:    CP6.Platform.WP0208.PostgreSqlTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:57:57.7975868-04:00">
+        <Text>[xUnit.net 00:00:04.92]     CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

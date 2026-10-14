@@ -1,0 +1,30 @@
+  Determining projects to restore...
+  Restored D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\src\CP6.Platform.Contracts\CP6.Platform.Contracts.csproj (in 90 ms).
+  Restored D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\src\CP6.Platform.Abstractions\CP6.Platform.Abstractions.csproj (in 94 ms).
+  Restored D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\src\CP6.Platform.EntityFramework\CP6.Platform.EntityFramework.csproj (in 5.33 sec).
+  Restored D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\CP6.Platform.WP0208.PostgreSqlTests.csproj (in 5.39 sec).
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.WP0208.PostgreSqlTests -> D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll
+Test run for D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:04.92]     CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement [FAIL]
+  Failed CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement [1 s]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: OutboxSwitchResultV2 { Decision = PendingCommit, Epoch = 1, ControlVersion = pg-xmin-v1:1832 }
+Actual:   OutboxSwitchResultV2 { Decision = Conflict, Epoch = 1, ControlVersion =  }
+  Stack Trace:
+     at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.<Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement>b__22_0(FixtureOwner owner, CallerTransactionOutboxV2 api, Guid[] ids) in D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 339
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.<>c__DisplayClass2_0.<<Scenario>b__0>d.MoveNext() in D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 22
+--- End of stack trace from previous location ---
+   at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteScopedAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs:line 49
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Scenario(Int32 rows, Func`4 body) in D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 17
+--- End of stack trace from previous location ---
+Results File: D:\CP6.Platform-worktrees\bug-66-outbox-blocked-20261014\docs\development\evidence\WP02-08\coord-corrections\issue66\red.trx
+
+Failed!  - Failed:     1, Passed:     0, Skipped:     0, Total:     1, Duration: 1 s - CP6.Platform.WP0208.PostgreSqlTests.dll (net8.0)
