@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="b7a7b3b1-23ab-49b8-a9f0-ef7259dbd2a8" name="tt@LAPTOP-3QQ44FJS 2026-10-14 01:33:05" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T01:33:05.9741824-04:00" queuing="2026-10-14T01:33:05.9741827-04:00" start="2026-10-14T01:33:03.1547760-04:00" finish="2026-10-14T01:33:05.9776679-04:00" />
+  <TestSettings name="default" id="ecf70532-23f5-46f7-aa89-53a6ec93f027">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_01_33_05" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="edb70cac-4170-4b09-bf1d-c56bdcef611d" testId="bfe5e2d6-3219-4672-4443-5102207e55d2" testName="CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Versioned_protocol_has_separate_prepared_and_committed_types" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0011674" startTime="2026-10-14T01:33:05.8868346-04:00" endTime="2026-10-14T01:33:05.8880422-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="edb70cac-4170-4b09-bf1d-c56bdcef611d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.NotNull() Failure: Value is null</Message>
+          <StackTrace>   at CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Versioned_protocol_has_separate_prepared_and_committed_types() in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.UnitTests\OutboxV2\OutboxV2ContractTests.cs:line 15&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="17e27787-fee1-4cae-b7a2-dfed18740915" testId="afff503b-43d0-0b4d-123f-b4cd518adcb4" testName="CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Legacy_claim_remains_without_epoch_or_fabricated_native_version" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.1001602" startTime="2026-10-14T01:33:05.7694127-04:00" endTime="2026-10-14T01:33:05.8805112-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="17e27787-fee1-4cae-b7a2-dfed18740915" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Versioned_protocol_has_separate_prepared_and_committed_types" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="bfe5e2d6-3219-4672-4443-5102207e55d2">
+      <Execution id="edb70cac-4170-4b09-bf1d-c56bdcef611d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests" name="Versioned_protocol_has_separate_prepared_and_committed_types" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Legacy_claim_remains_without_epoch_or_fabricated_native_version" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="afff503b-43d0-0b4d-123f-b4cd518adcb4">
+      <Execution id="17e27787-fee1-4cae-b7a2-dfed18740915" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests" name="Legacy_claim_remains_without_epoch_or_fabricated_native_version" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="bfe5e2d6-3219-4672-4443-5102207e55d2" executionId="edb70cac-4170-4b09-bf1d-c56bdcef611d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="afff503b-43d0-0b4d-123f-b4cd518adcb4" executionId="17e27787-fee1-4cae-b7a2-dfed18740915" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="2" executed="2" passed="1" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.66]   Discovering: CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:01.09]   Discovered:  CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:01.12]   Starting:    CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:01.25]       Assert.NotNull() Failure: Value is null&#xD;
+[xUnit.net 00:00:01.25]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.25]         D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.UnitTests\OutboxV2\OutboxV2ContractTests.cs(15,0): at CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Versioned_protocol_has_separate_prepared_and_committed_types()&#xD;
+[xUnit.net 00:00:01.25]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:01.25]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.25]   Finished:    CP6.Platform.UnitTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T01:33:05.8897797-04:00">
+        <Text>[xUnit.net 00:00:01.25]     CP6.Platform.UnitTests.OutboxV2.OutboxV2ContractTests.Versioned_protocol_has_separate_prepared_and_committed_types [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

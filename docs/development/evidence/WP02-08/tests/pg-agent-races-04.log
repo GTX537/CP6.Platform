@@ -1,0 +1,54 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.WP0208.PostgreSqlTests -> D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:07.89]     CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Hold_and_cleanup_use_same_root_in_both_lock_orderings(holdFirst: True) [FAIL]
+  Failed CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Hold_and_cleanup_use_same_root_in_both_lock_orderings(holdFirst: True) [757 ms]
+  Error Message:
+   System.InvalidOperationException : An exception has been raised that is likely due to a transient failure.
+---- Npgsql.PostgresException : 40001: could not serialize access due to concurrent update
+  Stack Trace:
+     at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.ShapedQueryCompilingExpressionVisitor.SingleAsync[TSource](IAsyncEnumerable`1 asyncEnumerable, CancellationToken cancellationToken)
+   at CP6.Platform.WP0208.PostgreSqlTests.FixtureOwner.AuthorizeAsync(OutboxTransactionV2 tx, OutboxAccessV2 access, CancellationToken ct) in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\FixtureOwner.cs:line 61
+   at CP6.Platform.EntityFramework.OutboxV2.OutboxTransactionV2.Check(OutboxAccessV2 access, CancellationToken ct, Boolean authorize) in D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.EntityFramework\OutboxV2\OutboxTransactionV2.cs:line 98
+   at CP6.Platform.EntityFramework.OutboxV2.CallerTransactionOutboxV2.DeleteEligibleInTransactionV1(OutboxTransactionV2 tx, IReadOnlyList`1 candidates, CancellationToken ct) in D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.EntityFramework\OutboxV2\OutboxLifecycleV2.cs:line 100
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.<>c__DisplayClass32_0.<<Hold_and_cleanup_use_same_root_in_both_lock_orderings>b__0>d.MoveNext() in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 568
+--- End of stack trace from previous location ---
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.<>c__DisplayClass32_0.<<Hold_and_cleanup_use_same_root_in_both_lock_orderings>b__0>d.MoveNext() in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 582
+--- End of stack trace from previous location ---
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.<>c__DisplayClass32_0.<<Hold_and_cleanup_use_same_root_in_both_lock_orderings>b__0>d.MoveNext() in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 582
+--- End of stack trace from previous location ---
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.<>c__DisplayClass32_0.<<Hold_and_cleanup_use_same_root_in_both_lock_orderings>b__0>d.MoveNext() in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 582
+--- End of stack trace from previous location ---
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.<>c__DisplayClass32_0.<<Hold_and_cleanup_use_same_root_in_both_lock_orderings>b__0>d.MoveNext() in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 582
+--- End of stack trace from previous location ---
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.<>c__DisplayClass2_0.<<Scenario>b__0>d.MoveNext() in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 22
+--- End of stack trace from previous location ---
+   at CP6.Platform.Abstractions.Context.ContextScopeAccessorV1.ExecuteScopedAsync(Func`2 resolve, Func`2 handler, CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-08-20261013\src\CP6.Platform.Abstractions\Context\ContextScopeAccessorV1.cs:line 49
+   at CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Scenario(Int32 rows, Func`4 body) in D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\OutboxTransactionTests.cs:line 17
+--- End of stack trace from previous location ---
+----- Inner Stack Trace -----
+   at Npgsql.Internal.NpgsqlConnector.ReadMessageLong(Boolean async, DataRowLoadingMode dataRowLoadingMode, Boolean readingNotifications, Boolean isReadingPrependedMessage)
+   at System.Runtime.CompilerServices.PoolingAsyncValueTaskMethodBuilder`1.StateMachineBox`1.System.Threading.Tasks.Sources.IValueTaskSource<TResult>.GetResult(Int16 token)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlDataReader.NextResult(Boolean async, Boolean isConsuming, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteReader(Boolean async, CommandBehavior behavior, CancellationToken cancellationToken)
+   at Npgsql.NpgsqlCommand.ExecuteDbDataReaderAsync(CommandBehavior behavior, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Npgsql.EntityFrameworkCore.PostgreSQL.Storage.Internal.NpgsqlExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+Results File: D:\CP6.Platform-worktrees\wp02-08-20261013\docs\development\evidence\WP02-08\tests\pg-agent-races-04\pg-agent-races-04.trx
+
+Failed!  - Failed:     1, Passed:     9, Skipped:     0, Total:    10, Duration: 10 s - CP6.Platform.WP0208.PostgreSqlTests.dll (net8.0)

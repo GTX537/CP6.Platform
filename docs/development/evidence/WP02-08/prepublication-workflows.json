@@ -1,0 +1,159 @@
+{
+  "observed_utc": "2026-10-14T06:01:46.059967+00:00",
+  "candidate": "495a41f7a238e6af5d19e4daa1e3880c3ff33f4c",
+  "protected_main": "e5c63a28c94bae4cc66ec50fbe6079553c03d0d0",
+  "task_branch": "codex/wp02-08-outbox-20261013",
+  "changed": [
+    "docs/WP02-08-OUTBOX-V2.md",
+    "docs/development/evidence/WP02-08/.gitattributes",
+    "docs/development/evidence/WP02-08/PLAN.md",
+    "docs/development/evidence/WP02-08/REVIEW.md",
+    "docs/development/evidence/WP02-08/collect_validation.py",
+    "src/CP6.Platform.EntityFramework/Cp6MessageRetentionService.cs",
+    "src/CP6.Platform.EntityFramework/Cp6OutboxStore.cs",
+    "src/CP6.Platform.EntityFramework/OutboxV2/CallerTransactionOutboxV2.cs",
+    "src/CP6.Platform.EntityFramework/OutboxV2/LegacyOutboxFenceV2.cs",
+    "src/CP6.Platform.EntityFramework/OutboxV2/OutboxContractsV2.cs",
+    "src/CP6.Platform.EntityFramework/OutboxV2/OutboxDispatcherV2.cs",
+    "src/CP6.Platform.EntityFramework/OutboxV2/OutboxLifecycleV2.cs",
+    "src/CP6.Platform.EntityFramework/OutboxV2/OutboxModelV2.cs",
+    "src/CP6.Platform.EntityFramework/OutboxV2/OutboxPostgreSqlV2.cs",
+    "src/CP6.Platform.EntityFramework/OutboxV2/OutboxTransactionV2.cs",
+    "tests/CP6.Platform.UnitTests/OutboxV2/OutboxV2ContractTests.cs",
+    "tests/CP6.Platform.WP0208.PostgreSqlTests/CP6.Platform.WP0208.PostgreSqlTests.csproj",
+    "tests/CP6.Platform.WP0208.PostgreSqlTests/Directory.Packages.props",
+    "tests/CP6.Platform.WP0208.PostgreSqlTests/FixtureOwner.cs",
+    "tests/CP6.Platform.WP0208.PostgreSqlTests/OutboxTransactionTests.cs",
+    "tests/CP6.Platform.WP0208.PostgreSqlTests/PgFixture.cs",
+    "tests/CP6.Platform.WP0208.PostgreSqlTests/pg_resource.py"
+  ],
+  "workflows": [
+    {
+      "path": ".github/workflows/p10-formal-packages-recovery.yml",
+      "sha256": "a2fec881215515679cdeed382dc62c8c505b5fa65d27812a2cf0d1e6c65c61c2",
+      "events": [
+        "workflow_dispatch"
+      ],
+      "on_block": "on:\n  workflow_dispatch:\n    inputs:\n      publication_run_id:\n        description: Failed formal publication run whose Windows publication job succeeded\n        required: true\n        type: string\n      publication_run_attempt:\n        description: Exact attempt of the failed formal publication run\n        required: true\n        type: string\n      publication_commit:\n        description: Exact package source commit used by the formal publication run\n        required: true\n        type: string\n      version:\n        description: Immutable published formal package version; must be exactly 0.10.0\n        required: true\n        type: string\n      windows_artifact_id:\n        description: Exact immutable Windows read-back artifact ID from the publication run\n        required: true\n        type: string\n      windows_artifact_digest:\n        description: Exact sha256 digest reported by GitHub for the Windows read-back artifact\n        required: true\n        type: string\n",
+      "dependency_uses": [
+        "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68",
+        "actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c",
+        "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
+      ]
+    },
+    {
+      "path": ".github/workflows/p10-formal-packages.yml",
+      "sha256": "a8a491f903e4b9ece4ec821a2fef064a5d78b6b62b4b88af5f71b8d6e8f9a19f",
+      "events": [
+        "workflow_dispatch"
+      ],
+      "on_block": "on:\n  workflow_dispatch:\n    inputs:\n      expected_commit:\n        description: Exact CP6.Platform main commit approved for formal package publication\n        required: true\n        type: string\n      version:\n        description: Immutable formal patch version; must be exactly 0.10.2\n        required: true\n        type: string\n",
+      "dependency_uses": [
+        "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68",
+        "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+        "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68",
+        "actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c",
+        "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
+      ]
+    },
+    {
+      "path": ".github/workflows/p10-formal-signer-revalidation.yml",
+      "sha256": "baa7c7b624e69a79949845cfc4507caf30e62ae1bdceadb2043ad29f63ada747",
+      "events": [
+        "workflow_dispatch"
+      ],
+      "on_block": "on:\n  workflow_dispatch:\n    inputs:\n      expected_commit:\n        description: Exact CP6.Platform main commit whose protected signer identity must be revalidated\n        required: true\n        type: string\n",
+      "dependency_uses": [
+        "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68"
+      ]
+    },
+    {
+      "path": ".github/workflows/p10-rfc3161-preflight.yml",
+      "sha256": "2660e87fc9a556be0cbc73f19f12a2ab58b4bda534e265ba398d257752272cf1",
+      "events": [
+        "workflow_dispatch",
+        "pull_request"
+      ],
+      "on_block": "on:\n  workflow_dispatch:\n  pull_request:\n    paths:\n      - \".github/workflows/p10-rfc3161-preflight.yml\"\n      - \"tests/CP6.Platform.ReleaseTests/P10Rfc3161PreflightWorkflowContractTests.cs\"\n",
+      "dependency_uses": [
+        "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+        "actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68",
+        "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+        "actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c",
+        "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a"
+      ]
+    },
+    {
+      "path": ".github/workflows/p10-test-candidate.yml",
+      "sha256": "dbb726eebac234fc841f82ebed32f98cff4fd070abcb6a298594077186976975",
+      "events": [
+        "workflow_dispatch"
+      ],
+      "on_block": "on:\n  workflow_dispatch:\n    inputs:\n      expected_commit:\n        description: Exact CP6.Platform main commit approved for the P10 test candidate\n        required: true\n        type: string\n",
+      "dependency_uses": [
+        "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683",
+        "actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9",
+        "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02",
+        "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02"
+      ]
+    },
+    {
+      "path": ".github/workflows/platform-validation.yml",
+      "sha256": "80f167eca33181d5ed08ffd6824c3772bb1b49d1e8ada0160001a5cd1ac6ff10",
+      "events": [
+        "workflow_dispatch"
+      ],
+      "on_block": "on:\n  workflow_dispatch:\n",
+      "dependency_uses": [
+        "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2",
+        "actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4",
+        "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4",
+        "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2",
+        "actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4",
+        "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4",
+        "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2",
+        "actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4",
+        "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4",
+        "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2",
+        "actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4",
+        "docker/setup-docker-action@77e84dbf09b47d1e29270283c22f16145aa85ca1 # v5.4.0",
+        "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4"
+      ]
+    },
+    {
+      "path": ".github/workflows/publish-alpha.yml",
+      "sha256": "1e42cbbbd929bb1ec6a257bd50b1b244c1da029035eb27a2f4ff15ecbfc86f13",
+      "events": [
+        "workflow_dispatch"
+      ],
+      "on_block": "on:\n  workflow_dispatch:\n    inputs:\n      expected_commit:\n        description: Exact CP6.Platform main commit approved for immutable publication\n        required: true\n        type: string\n",
+      "dependency_uses": [
+        "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2",
+        "actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4",
+        "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4"
+      ]
+    },
+    {
+      "path": ".github/workflows/publish-p09.yml",
+      "sha256": "a3856f69bb6443f2a630c7da60724bb8159b515cef780a225219add55d6d28a9",
+      "events": [
+        "workflow_dispatch"
+      ],
+      "on_block": "on:\n  workflow_dispatch:\n    inputs:\n      expected_commit:\n        description: Exact CP6.Platform main commit approved for immutable P09 publication\n        required: true\n        type: string\n",
+      "dependency_uses": [
+        "actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2",
+        "actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4",
+        "docker/setup-docker-action@77e84dbf09b47d1e29270283c22f16145aa85ca1 # v5.4.0",
+        "actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4"
+      ]
+    }
+  ],
+  "active_runs": [],
+  "conclusion": "Candidate/protected main workflow bytes identical; no push event; only existing two-file PR filter, no matching diff. No workflow changes, dispatch, rerun, cancellation, package/tag/deploy.",
+  "actions_started": 0,
+  "actions_cancelled": 0
+}
