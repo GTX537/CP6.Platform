@@ -1,4 +1,5 @@
 using System.Data;
+using System.Diagnostics;
 using CP6.Platform.Abstractions.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -54,6 +55,9 @@ public sealed class OutboxDispatcherV2<TContext>(IDbContextFactory<TContext> fac
         string policy;
         TimeSpan budget;
         OutboxDecisionV2 gate;
+        // The database gate proves that a full budget fits inside the lease. Starting this
+        // monotonic window earlier is conservative: admission/commit/disposal also consume it.
+        var sendStarted = Stopwatch.GetTimestamp();
         try
         {
             (gate, policy, budget) = await Write(ticket.Root, async tx =>
@@ -65,9 +69,14 @@ public sealed class OutboxDispatcherV2<TContext>(IDbContextFactory<TContext> fac
         OutboxTransportResultV2 transport;
         try
         {
+            var message = committed.Message;
+            var remainingBudget = budget - Stopwatch.GetElapsedTime(sendStarted);
+            if (remainingBudget <= TimeSpan.Zero)
+                return new("SEND_NOT_AUTHORIZED", ticket.ClaimRequestId, mutationId, null, OutboxDecisionV2.Expired);
             using var timeout = CancellationTokenSource.CreateLinkedTokenSource(ct);
-            timeout.CancelAfter(budget);
-            transport = await publisher.PublishAsync(committed.Message, timeout.Token).AsTask().WaitAsync(timeout.Token);
+            timeout.CancelAfter(remainingBudget);
+            timeout.Token.ThrowIfCancellationRequested();
+            transport = await publisher.PublishAsync(message, timeout.Token).AsTask().WaitAsync(timeout.Token);
         }
         catch (Exception) { return new("UNCERTAIN_DELIVERY", ticket.ClaimRequestId, mutationId, null, OutboxDecisionV2.OutcomeUnknown); }
         if (transport.Decision == OutboxTransportDecisionV2.Unknown || !Enum.IsDefined(transport.Decision))

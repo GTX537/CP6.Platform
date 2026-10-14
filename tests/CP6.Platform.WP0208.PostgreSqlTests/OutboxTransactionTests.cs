@@ -1,8 +1,11 @@
 using System.Data;
+using System.Data.Common;
+using System.Diagnostics;
 using System.Text.Json;
 using CP6.Platform.EntityFramework;
 using CP6.Platform.EntityFramework.OutboxV2;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.EntityFrameworkCore.Storage;
 using Npgsql;
 
@@ -502,6 +505,86 @@ public sealed class OutboxTransactionTests(PgFixture fixture)
     });
 
     [Fact]
+    public Task Dispatcher_does_not_publish_after_send_commit_acknowledgement_outlives_lease() => Scenario(1, async (owner, api, ids) =>
+    {
+        owner.LeaseDuration = TimeSpan.FromSeconds(2);
+        var claim = await Claim(owner, api); var mutationId = Guid.NewGuid();
+        var publisher = new ProbePublisher(_ => Task.FromResult(new OutboxTransportResultV2(OutboxTransportDecisionV2.Confirmed)));
+        var dispatcher = new OutboxDispatcherV2<TestDb>(new DelayedCommitFactory(fixture.RuntimeConnection, TimeSpan.FromSeconds(2.2)), owner.Trusted, owner, publisher);
+        var observed = await dispatcher.DispatchClaimV2(claim, mutationId);
+        await using var check = await fixture.OpenAsync();
+        await using var clock = check.Database.GetDbConnection().CreateCommand();
+        clock.CommandText = "SELECT clock_timestamp() >= @expiry";
+        var expiry = clock.CreateParameter(); expiry.ParameterName = "expiry"; expiry.Value = claim.Ticket.LeaseExpiresAtUtc; clock.Parameters.Add(expiry);
+        Assert.Equal(true, await clock.ExecuteScalarAsync());
+        Assert.Equal(0, publisher.Calls);
+        Assert.Equal("SEND_NOT_AUTHORIZED", observed.State);
+        Assert.Equal(OutboxDecisionV2.Expired, observed.CompletionDecision);
+        var attempt = Assert.Single(await check.Set<OutboxSendAttemptV2>().Where(x => x.RootId == owner.Root.Id).ToArrayAsync());
+        Assert.Equal(mutationId, attempt.MutationId);
+        Assert.Equal(JsonSerializer.Serialize(claim.Ticket), attempt.OriginalTicket);
+        var native = await check.Set<Cp6OutboxMessage>().SingleAsync(x => x.Id == ids[0]);
+        Assert.Equal(1, native.AttemptCount); Assert.Equal(Cp6OutboxStatus.Dispatching, native.Status);
+        Assert.False(await check.Set<OutboxLeaseMutationReceiptV2>().AnyAsync(x => x.RootId == owner.Root.Id));
+        Assert.Equal("SEND_NOT_AUTHORIZED", (await dispatcher.DispatchClaimV2(claim, mutationId)).State);
+        Assert.Equal(0, publisher.Calls);
+    });
+
+    [Fact]
+    public Task Dispatcher_deducts_send_commit_latency_from_publish_timeout() => Scenario(1, async (owner, api, ids) =>
+    {
+        var claim = await Claim(owner, api);
+        var publisher = new WaitForCancellationPublisher(() => AssertRouteLockReleased(owner));
+        var dispatcher = new OutboxDispatcherV2<TestDb>(new DelayedCommitFactory(fixture.RuntimeConnection, TimeSpan.FromSeconds(2)), owner.Trusted, owner, publisher);
+        var observed = await dispatcher.DispatchClaimV2(claim, Guid.NewGuid());
+        await publisher.Cancelled.Task.WaitAsync(TimeSpan.FromSeconds(2));
+        Assert.Equal(1, publisher.Calls);
+        Assert.True(publisher.EntryVerified);
+        Assert.Equal("UNCERTAIN_DELIVERY", observed.State);
+        // Approved publish budget is five seconds. Two spent awaiting COMMIT cannot be granted again.
+        Assert.InRange(publisher.Elapsed.TotalSeconds, 0.01, 4.5);
+    });
+
+    [Fact]
+    public Task Dispatcher_publishes_after_short_send_commit_delay_within_budget() => Scenario(1, async (owner, api, ids) =>
+    {
+        var claim = await Claim(owner, api);
+        var publisher = new ProbePublisher(async _ =>
+        {
+            await AssertRouteLockReleased(owner); return new(OutboxTransportDecisionV2.Confirmed);
+        });
+        var dispatcher = new OutboxDispatcherV2<TestDb>(new DelayedCommitFactory(fixture.RuntimeConnection, TimeSpan.FromMilliseconds(200)), owner.Trusted, owner, publisher);
+        var observed = await dispatcher.DispatchClaimV2(claim, Guid.NewGuid());
+        Assert.Equal(1, publisher.Calls);
+        Assert.Equal("Published", observed.State);
+        Assert.Equal(OutboxDecisionV2.Committed, observed.CompletionDecision);
+    });
+
+    [Fact]
+    public Task Dispatcher_does_not_enter_publisher_when_cancelled_after_send_commit() => Scenario(1, async (owner, api, ids) =>
+    {
+        var claim = await Claim(owner, api); var mutationId = Guid.NewGuid(); using var cancel = new CancellationTokenSource();
+        var publisher = new ProbePublisher(_ => Task.FromResult(new OutboxTransportResultV2(OutboxTransportDecisionV2.Confirmed)));
+        var dispatcher = new OutboxDispatcherV2<TestDb>(new DelayedCommitFactory(fixture.RuntimeConnection, TimeSpan.Zero, cancel.Cancel), owner.Trusted, owner, publisher);
+        await dispatcher.DispatchClaimV2(claim, mutationId, cancel.Token);
+        Assert.Equal(0, publisher.Calls);
+        await using var check = await fixture.OpenAsync();
+        Assert.Equal(mutationId, (await check.Set<OutboxSendAttemptV2>().SingleAsync(x => x.RootId == owner.Root.Id)).MutationId);
+        Assert.False(await check.Set<OutboxLeaseMutationReceiptV2>().AnyAsync(x => x.RootId == owner.Root.Id));
+    });
+
+    private async Task AssertRouteLockReleased(FixtureOwner owner)
+    {
+        await using var db = await fixture.OpenAsync();
+        var authority = await db.Set<Authority>().AsNoTracking().SingleAsync(x => x.RootId == owner.Root.Id);
+        await using var command = db.Database.GetDbConnection().CreateCommand();
+        command.CommandText = "SELECT count(*) FROM pg_locks WHERE locktype='advisory' AND database=(SELECT oid FROM pg_database WHERE datname=current_database()) AND classid::bigint=@hi AND objid::bigint=@lo AND objsubid=1 AND granted";
+        var hi = command.CreateParameter(); hi.ParameterName = "hi"; hi.Value = (long)(uint)((ulong)authority.RouteLock >> 32); command.Parameters.Add(hi);
+        var lo = command.CreateParameter(); lo.ParameterName = "lo"; lo.Value = (long)(uint)authority.RouteLock; command.Parameters.Add(lo);
+        Assert.Equal(0L, await command.ExecuteScalarAsync());
+    }
+
+    [Fact]
     public Task Database_wall_clock_expiry_rejects_completion_even_when_transaction_started_before_expiry() => Scenario(1, async (owner, api, ids) =>
     {
         owner.LeaseDuration = TimeSpan.FromSeconds(2);
@@ -522,6 +605,43 @@ public sealed class OutboxTransactionTests(PgFixture fixture)
     private sealed class Factory(string connection) : IDbContextFactory<TestDb>
     {
         public TestDb CreateDbContext() => new(connection);
+    }
+    private sealed class DelayedCommitFactory(string connection, TimeSpan delay, Action? afterCommit = null) : IDbContextFactory<TestDb>
+    {
+        private readonly DelayedCommitInterceptor _interceptor = new(delay, afterCommit);
+        public TestDb CreateDbContext() => new DelayedCommitDb(connection, _interceptor);
+    }
+    private sealed class DelayedCommitDb(string connection, DbTransactionInterceptor interceptor) : TestDb(connection)
+    {
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            base.OnConfiguring(options); options.AddInterceptors(interceptor);
+        }
+    }
+    private sealed class DelayedCommitInterceptor(TimeSpan delay, Action? afterCommit) : DbTransactionInterceptor
+    {
+        private int _commits;
+        public override async Task TransactionCommittedAsync(DbTransaction transaction, TransactionEndEventData eventData, CancellationToken cancellationToken = default)
+        {
+            // This callback runs after the real PostgreSQL COMMIT; only its acknowledgement is delayed.
+            if (Interlocked.Increment(ref _commits) == 1)
+            {
+                await Task.Delay(delay, cancellationToken); afterCommit?.Invoke();
+            }
+        }
+    }
+    private sealed class WaitForCancellationPublisher(Func<Task> onEntry) : IOutboxPublisherV2
+    {
+        public int Calls { get; private set; }
+        public TimeSpan Elapsed { get; private set; }
+        public bool EntryVerified { get; private set; }
+        public TaskCompletionSource Cancelled { get; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
+        public async ValueTask<OutboxTransportResultV2> PublishAsync(Cp6OutboxDispatchMessage message, CancellationToken ct)
+        {
+            Calls++; var started = Stopwatch.GetTimestamp();
+            try { await onEntry(); EntryVerified = true; await Task.Delay(Timeout.InfiniteTimeSpan, ct); return new(OutboxTransportDecisionV2.Unknown); }
+            finally { Elapsed = Stopwatch.GetElapsedTime(started); Cancelled.TrySetResult(); }
+        }
     }
     private async Task WaitForAdvisoryWait(int pid)
     {
