@@ -101,7 +101,9 @@ app.MapCp6HealthV1();
 
 The authenticated operational routes are `/ops/v1/live`, `/ops/v1/startup`,
 `/ops/v1/ready` and `/ops/v1/identity`. Live is constant and never runs dependency
-checks. Existing route collisions, including catch-all routes, are rejected;
+checks. All four operational response handlers send `Cache-Control: no-store`,
+including unhealthy startup/ready responses; clients must obtain fresh observations.
+Existing route collisions, including catch-all routes, are rejected;
 the complete route table is checked again before the server starts listening.
 The capability inventory describes consumer routes; it does not install those
 business routes or bypass their authorization.
