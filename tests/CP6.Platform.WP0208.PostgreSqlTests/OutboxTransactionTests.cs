@@ -319,6 +319,44 @@ public sealed class OutboxTransactionTests(PgFixture fixture)
         Assert.Equal(2, (await db.Set<OutboxLeaseBindingV2>().SingleAsync(x => x.NativeId == ids[0])).AssignedEpoch);
     });
 
+    [Fact]
+    public Task Committed_blocked_epoch_recovers_original_mutation_after_lost_acknowledgement() => Scenario(1, async (owner, api, ids) =>
+    {
+        var root = await Root(owner); var switchId = Guid.NewGuid(); var mutationId = Guid.NewGuid();
+        await Write(owner, api, tx => api.BeginDrainV2(tx, switchId, 1, OutboxEncodingV2.Encode(root.Version)));
+        var expectedControlVersion = OutboxEncodingV2.Encode((await Root(owner)).Version);
+        await owner.SetAuthority(a => a.UnknownResolved = false);
+        OutboxSwitchResultV2? original = null;
+        await Assert.ThrowsAsync<LostAcknowledgement>(async () =>
+        {
+            original = await Write(owner, api, tx => api.AdvanceEpochV2(tx, mutationId, switchId, 1, expectedControlVersion));
+            throw new LostAcknowledgement(); // The real PostgreSQL COMMIT already succeeded.
+        });
+        Assert.Equal(OutboxDecisionV2.PendingCommit, original!.Decision);
+        Assert.Equal(OutboxPhaseV2.Blocked, (await Root(owner)).Phase);
+        var before = await Snapshot(owner);
+        var replay = await Write(owner, api, tx => api.AdvanceEpochV2(tx, mutationId, switchId, 1, expectedControlVersion));
+        Assert.Equal(original, replay);
+        Assert.Equal(before, await Snapshot(owner));
+        await Read(owner, api, async tx =>
+        {
+            var receipt = await tx.Context.Set<OutboxLeaseMutationReceiptV2>().AsNoTracking()
+                .SingleAsync(x => x.RootId == owner.Root.Id && x.MutationId == mutationId);
+            Assert.NotEqual(tx.TransactionId, receipt.WriterTransaction);
+            Assert.Equal(JsonSerializer.Serialize(new { Kind = "AdvanceEpoch", mutationId, switchId, expectedEpoch = 1L, expectedControlVersion }), receipt.Input);
+            Assert.Equal(original, JsonSerializer.Deserialize<OutboxSwitchResultV2>(receipt.Output));
+            return 0;
+        });
+        Assert.Equal(OutboxDecisionV2.Conflict,
+            (await Write(owner, api, tx => api.AdvanceEpochV2(tx, mutationId, switchId, 2, expectedControlVersion))).Decision);
+        Assert.Equal(before, await Snapshot(owner));
+        await owner.SetAuthority(a => a.UnknownResolved = true);
+        Assert.Equal(original, await Write(owner, api, tx => api.AdvanceEpochV2(tx, mutationId, switchId, 1, expectedControlVersion)));
+        Assert.Equal(before, await Snapshot(owner));
+        Assert.Equal(OutboxPhaseV2.Blocked, (await Root(owner)).Phase);
+        Assert.Equal(2, (await Write(owner, api, tx => api.AdvanceEpochV2(tx, Guid.NewGuid(), switchId, 1, original.ControlVersion!))).Epoch);
+    });
+
     [Theory]
     [InlineData("hold", OutboxDecisionV2.Retained)]
     [InlineData("reference", OutboxDecisionV2.Retained)]
