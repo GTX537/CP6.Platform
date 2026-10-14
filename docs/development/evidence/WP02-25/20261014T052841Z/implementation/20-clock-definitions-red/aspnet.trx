@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="204b29d5-b6bb-4f6d-95f4-2bde07cffb9f" name="tt@LAPTOP-3QQ44FJS 2026-10-14 01:48:10" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T01:48:10.0064632-04:00" queuing="2026-10-14T01:48:10.0064634-04:00" start="2026-10-14T01:48:08.6873687-04:00" finish="2026-10-14T01:48:10.0099462-04:00" />
+  <TestSettings name="default" id="d8e43415-4218-47b5-a410-01b40ae970fb">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_01_48_10" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="d8d3f56b-48f8-4915-aaab-a2330fea17a4" testId="ad313685-7184-38cc-e774-419d8ce9e6a7" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0043745" startTime="2026-10-14T01:48:09.8970231-04:00" endTime="2026-10-14T01:48:09.9165458-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d8d3f56b-48f8-4915-aaab-a2330fea17a4">
+      <Output>
+        <ErrorInfo>
+          <Message>System.InvalidOperationException : SYNTHETIC-private-clock</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ThrowingClock.GetUtcNow() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs:line 76&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.RuntimeIdentityEvaluatorV1.Observe(CancellationToken cancellationToken) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\OwnedModuleObserverV1.cs:line 85&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs:line 69&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="ad313685-7184-38cc-e774-419d8ce9e6a7">
+      <Execution id="d8d3f56b-48f8-4915-aaab-a2330fea17a4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="ad313685-7184-38cc-e774-419d8ce9e6a7" executionId="d8d3f56b-48f8-4915-aaab-a2330fea17a4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="1" executed="1" passed="0" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.48]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.57]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.58]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.62]       System.InvalidOperationException : SYNTHETIC-private-clock&#xD;
+[xUnit.net 00:00:00.62]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.62]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs(76,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ThrowingClock.GetUtcNow()&#xD;
+[xUnit.net 00:00:00.62]         D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\OwnedModuleObserverV1.cs(85,0): at CP6.Platform.AspNetCore.ObservabilityV1.RuntimeIdentityEvaluatorV1.Observe(CancellationToken cancellationToken)&#xD;
+[xUnit.net 00:00:00.62]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs(69,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping()&#xD;
+[xUnit.net 00:00:00.62]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.62]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.63]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T01:48:09.9182272-04:00">
+        <Text>[xUnit.net 00:00:00.62]     CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.ObserverClockExceptionReturnsSafeUnprovenInsteadOfEscaping [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

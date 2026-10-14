@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="0faebc56-da07-4274-9890-ce192c0b0447" name="tt@LAPTOP-3QQ44FJS 2026-10-14 02:58:20" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T02:58:20.9657018-04:00" queuing="2026-10-14T02:58:20.9657023-04:00" start="2026-10-14T02:58:16.1476035-04:00" finish="2026-10-14T02:58:20.9721181-04:00" />
+  <TestSettings name="default" id="0933ffac-3616-4a16-a2d0-03af5a055e5a">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_02_58_20" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="807eeeee-8314-432c-84c4-cdfe4e06c433" testId="49da5992-b1fc-c5a2-07b8-ce3cf3db2c41" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0035395" startTime="2026-10-14T02:58:19.7753807-04:00" endTime="2026-10-14T02:58:19.7754166-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="807eeeee-8314-432c-84c4-cdfe4e06c433">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Unproven&#xD;
+Actual:   Match</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(Boolean separateEvaluatorClock) in D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs:line 45&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="64045f99-2022-4fdf-9763-c7e24b66f5f4" testId="16b9e3df-3073-2864-87ba-dfeb2288aa17" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.MonotonicClockFailureCannotProducePositiveEvidenceOrExposeException" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3016847" startTime="2026-10-14T02:58:19.4615932-04:00" endTime="2026-10-14T02:58:19.7604161-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="64045f99-2022-4fdf-9763-c7e24b66f5f4">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Unproven&#xD;
+Actual:   Match</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.MonotonicClockFailureCannotProducePositiveEvidenceOrExposeException() in D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs:line 68&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2270fff1-7ce0-4fa2-90db-38335264a25d" testId="23e788ec-c77b-75e1-20de-9a756bb0742b" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.FreshEvidenceRemainsMatchUntilTheMonotonicBudgetIsExceeded" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0035509" startTime="2026-10-14T02:58:20.8654746-04:00" endTime="2026-10-14T02:58:20.8699091-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2270fff1-7ce0-4fa2-90db-38335264a25d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Unproven&#xD;
+Actual:   Match</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.FreshEvidenceRemainsMatchUntilTheMonotonicBudgetIsExceeded() in D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs:line 57&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2d3e363e-6e75-43ea-99f5-26ebfa990f71" testId="b74a2db5-d628-f97b-4428-78d0334a3e40" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 10)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0030763" startTime="2026-10-14T02:58:19.7747056-04:00" endTime="2026-10-14T02:58:19.7747481-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2d3e363e-6e75-43ea-99f5-26ebfa990f71">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Unproven&#xD;
+Actual:   Match</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(Int32 firstElapsedSeconds) in D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs:line 31&#xD;
+   at InvokeStub_IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="9ed6dd82-e5e4-46cd-973b-cd1d6d4cda83" testId="438030c4-4bf3-4160-dd09-7677716d673f" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.0854875" startTime="2026-10-14T02:58:19.7762299-04:00" endTime="2026-10-14T02:58:20.8646499-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9ed6dd82-e5e4-46cd-973b-cd1d6d4cda83">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: ServiceUnavailable&#xD;
+Actual:   OK</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback() in D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs:line 97&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback() in D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs:line 103&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fc085a73-b8d4-4910-afd4-ac3d46a2dc6b" testId="bf5be1c5-bd0d-9b99-df97-659cbd2e22e6" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 120)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0038158" startTime="2026-10-14T02:58:19.7733657-04:00" endTime="2026-10-14T02:58:19.7734507-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fc085a73-b8d4-4910-afd4-ac3d46a2dc6b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Unproven&#xD;
+Actual:   Match</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(Int32 firstElapsedSeconds) in D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs:line 31&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5de0ea1e-3aee-4467-b275-fd47d9c8d6c4" testId="fee0b017-f30f-630e-6ee7-1bbe73e4d2e4" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0039415" startTime="2026-10-14T02:58:19.7758264-04:00" endTime="2026-10-14T02:58:19.7758593-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5de0ea1e-3aee-4467-b275-fd47d9c8d6c4">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Unproven&#xD;
+Actual:   Match</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(Boolean separateEvaluatorClock) in D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs:line 45&#xD;
+   at InvokeStub_IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: True)" storage="d:\cp6.platform-worktrees\bug-68-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="fee0b017-f30f-630e-6ee7-1bbe73e4d2e4">
+      <Execution id="5de0ea1e-3aee-4467-b275-fd47d9c8d6c4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback" storage="d:\cp6.platform-worktrees\bug-68-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="438030c4-4bf3-4160-dd09-7677716d673f">
+      <Execution id="9ed6dd82-e5e4-46cd-973b-cd1d6d4cda83" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.MonotonicClockFailureCannotProducePositiveEvidenceOrExposeException" storage="d:\cp6.platform-worktrees\bug-68-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="16b9e3df-3073-2864-87ba-dfeb2288aa17">
+      <Execution id="64045f99-2022-4fdf-9763-c7e24b66f5f4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="MonotonicClockFailureCannotProducePositiveEvidenceOrExposeException" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: False)" storage="d:\cp6.platform-worktrees\bug-68-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="49da5992-b1fc-c5a2-07b8-ce3cf3db2c41">
+      <Execution id="807eeeee-8314-432c-84c4-cdfe4e06c433" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 120)" storage="d:\cp6.platform-worktrees\bug-68-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="bf5be1c5-bd0d-9b99-df97-659cbd2e22e6">
+      <Execution id="fc085a73-b8d4-4910-afd4-ac3d46a2dc6b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="ExpiredIdentityCannotReviveWhenUtcRollsBack" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.FreshEvidenceRemainsMatchUntilTheMonotonicBudgetIsExceeded" storage="d:\cp6.platform-worktrees\bug-68-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="23e788ec-c77b-75e1-20de-9a756bb0742b">
+      <Execution id="2270fff1-7ce0-4fa2-90db-38335264a25d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="FreshEvidenceRemainsMatchUntilTheMonotonicBudgetIsExceeded" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 10)" storage="d:\cp6.platform-worktrees\bug-68-20261014\tests\cp6.platform.aspnetcoretests\bin\release\net8.0\cp6.platform.aspnetcoretests.dll" id="b74a2db5-d628-f97b-4428-78d0334a3e40">
+      <Execution id="2d3e363e-6e75-43ea-99f5-26ebfa990f71" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\bin\Release\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests" name="ExpiredIdentityCannotReviveWhenUtcRollsBack" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="49da5992-b1fc-c5a2-07b8-ce3cf3db2c41" executionId="807eeeee-8314-432c-84c4-cdfe4e06c433" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="16b9e3df-3073-2864-87ba-dfeb2288aa17" executionId="64045f99-2022-4fdf-9763-c7e24b66f5f4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="23e788ec-c77b-75e1-20de-9a756bb0742b" executionId="2270fff1-7ce0-4fa2-90db-38335264a25d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b74a2db5-d628-f97b-4428-78d0334a3e40" executionId="2d3e363e-6e75-43ea-99f5-26ebfa990f71" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="438030c4-4bf3-4160-dd09-7677716d673f" executionId="9ed6dd82-e5e4-46cd-973b-cd1d6d4cda83" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bf5be1c5-bd0d-9b99-df97-659cbd2e22e6" executionId="fc085a73-b8d4-4910-afd4-ac3d46a2dc6b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fee0b017-f30f-630e-6ee7-1bbe73e4d2e4" executionId="5de0ea1e-3aee-4467-b275-fd47d9c8d6c4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="7" executed="7" passed="0" failed="7" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:01.45]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:01.59]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:01.62]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:01.97]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.97]       Expected: Unproven&#xD;
+[xUnit.net 00:00:01.97]       Actual:   Match&#xD;
+[xUnit.net 00:00:01.97]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.97]         D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs(68,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.MonotonicClockFailureCannotProducePositiveEvidenceOrExposeException()&#xD;
+[xUnit.net 00:00:01.97]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:01.97]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.98]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.98]       Expected: Unproven&#xD;
+[xUnit.net 00:00:01.98]       Actual:   Match&#xD;
+[xUnit.net 00:00:01.98]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.98]         D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs(31,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(Int32 firstElapsedSeconds)&#xD;
+[xUnit.net 00:00:01.98]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:01.98]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.98]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.98]       Expected: Unproven&#xD;
+[xUnit.net 00:00:01.98]       Actual:   Match&#xD;
+[xUnit.net 00:00:01.98]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.98]         D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs(31,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(Int32 firstElapsedSeconds)&#xD;
+[xUnit.net 00:00:01.98]            at InvokeStub_IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.98]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:01.98]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.98]       Expected: Unproven&#xD;
+[xUnit.net 00:00:01.98]       Actual:   Match&#xD;
+[xUnit.net 00:00:01.98]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.98]         D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs(45,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(Boolean separateEvaluatorClock)&#xD;
+[xUnit.net 00:00:01.98]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:01.98]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.98]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.98]       Expected: Unproven&#xD;
+[xUnit.net 00:00:01.98]       Actual:   Match&#xD;
+[xUnit.net 00:00:01.98]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.98]         D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs(45,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(Boolean separateEvaluatorClock)&#xD;
+[xUnit.net 00:00:01.98]            at InvokeStub_IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(Object, Span`1)&#xD;
+[xUnit.net 00:00:01.98]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:03.07]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:03.07]       Expected: ServiceUnavailable&#xD;
+[xUnit.net 00:00:03.07]       Actual:   OK&#xD;
+[xUnit.net 00:00:03.07]       Stack Trace:&#xD;
+[xUnit.net 00:00:03.07]         D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs(97,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback()&#xD;
+[xUnit.net 00:00:03.07]         D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs(103,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback()&#xD;
+[xUnit.net 00:00:03.07]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:03.08]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:03.08]       Expected: Unproven&#xD;
+[xUnit.net 00:00:03.08]       Actual:   Match&#xD;
+[xUnit.net 00:00:03.08]       Stack Trace:&#xD;
+[xUnit.net 00:00:03.08]         D:\CP6.Platform-worktrees\bug-68-20261014\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\IdentityClockRegressionTests.cs(57,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.FreshEvidenceRemainsMatchUntilTheMonotonicBudgetIsExceeded()&#xD;
+[xUnit.net 00:00:03.08]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:03.08]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:03.08]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:58:19.7623432-04:00">
+        <Text>[xUnit.net 00:00:01.97]     CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.MonotonicClockFailureCannotProducePositiveEvidenceOrExposeException [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:58:19.7740736-04:00">
+        <Text>[xUnit.net 00:00:01.98]     CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 120) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:58:19.7750659-04:00">
+        <Text>[xUnit.net 00:00:01.98]     CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ExpiredIdentityCannotReviveWhenUtcRollsBack(firstElapsedSeconds: 10) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:58:19.7756699-04:00">
+        <Text>[xUnit.net 00:00:01.98]     CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:58:19.7761234-04:00">
+        <Text>[xUnit.net 00:00:01.98]     CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ObserverMonotonicExpiryCannotBeHiddenByFrozenOrDifferentEvaluatorClock(separateEvaluatorClock: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:58:20.8651346-04:00">
+        <Text>[xUnit.net 00:00:03.07]     CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.ActualHttpIdentityAndEffectRoutesStayClosedAfterExpiryAndUtcRollback [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:58:20.8707139-04:00">
+        <Text>[xUnit.net 00:00:03.08]     CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityClockRegressionTests.FreshEvidenceRemainsMatchUntilTheMonotonicBudgetIsExceeded [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

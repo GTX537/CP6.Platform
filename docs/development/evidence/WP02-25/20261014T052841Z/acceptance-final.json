@@ -1,0 +1,910 @@
+{
+  "target": "PLT-OBS-01",
+  "count": 32,
+  "original_business_acceptance": "NOT_RUN",
+  "production_acceptance": "UNPROVEN",
+  "task_scope": "Platform library and isolated loopback host only; no Main/CRM or real Owner adoption.",
+  "cases": [
+    {
+      "id": "PLT-OBS-01::OBS01-A1",
+      "assertion": "原source/meter/operation及标签键值枚举",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 local registry tests",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Legacy names plus new closed finite value registry.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.TelemetryConventionTests.SourcesAndMeters_UseTheExactApprovedNames",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.TelemetryConventionTests.Operations_UseTheExactApprovedNames",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        }
+      ],
+      "remaining": "Real consumer registration is external."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A2",
+      "assertion": "age/attempt为数值且高基数不入metric",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 bounded export/series tests; existing EF emitters read-only",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Actual SDK finite-series/numeric measurement export, no high-cardinality dimensions.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.MetricsAreSanitizedBeforeSdkAggregationAndSeriesAndRecordBudgetsAreEnforced",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Existing EF emitters are unchanged; real Owner traffic is not measured."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A3",
+      "assertion": "consumed/published/enqueue时点不冒业务提交",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 definition and non-equivalence checks; actual Owner commit remains external",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Versioned technical measurement definitions preserve pre-commit/transport semantics.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.rejected\")",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.attempts\")",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.trace_context.rejected\")",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.messaging.duration\")",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ExistingTechnicalMetricsHaveVersionedDefinitions(name: \"cp6.outbox.oldest_available.age\")",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        }
+      ],
+      "remaining": "Actual Owner commit facts and business counts require original receipts."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A4",
+      "assertion": "trace-only传播与无baggage、非法parent处理",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 existing + new actual exported trace tests",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Trace-only propagation, invalid trace handling and actual loopback SDK output.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.TraceContextDistributedPropagatorTests.Inject_EmitsOnlyW3cTraceFieldsWhenInnerPropagatorEmitsLegacyBaggage",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.InvalidAndDuplicateTraceHeaders_CreateFreshTraceRoots",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Production consumer propagation adoption is external."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A5",
+      "assertion": "自动instrumentation隐私清理含URL/query/code",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 new SDK export-boundary tests",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Automatic inbound/outbound final SDK capture plus event/link/baggage/log-state privacy negatives.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.EventLinkBaggageStatusDisplayNameAndCaseVariantSeedsNeverEnterFinalSink",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LoggerNeverInvokesCallerFormatterStateScopeOrExceptionFormatting",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Guarantee is limited to this configured pipeline, not other providers."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A6",
+      "assertion": "exporter异常/满队列不改变事务且缺证可见",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 bounded adapter + actual HTTP result; real Owner transaction proof remains external",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Blocked/throwing sink and queue overflow leave local HTTP/simulated Owner result intact; incomplete observation is explicit.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.LocalQueueBoundsBatchLifetimeRecordCountRetentionSizeAndPostDisposeWrites",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "No actual Owner transaction or production exporter was exercised."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A7",
+      "assertion": "多Host全局propagator/注册漂移准确识别",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 multiple loopback hosts and lifecycle drift",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Multiple loopback hosts, registration drift, process-global replacement and lifecycle cleanup.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.RepeatedLifecycleRestoresGlobalsAndOtelReplacementDisablesExportWithoutClobberingReplacement",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.AdversarialTelemetryTests.DuplicateAndDriftedRegistrationAreRejected",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Production registration ordering and third-party providers remain host responsibilities."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A8",
+      "assertion": "instance重启/重复/采样口径与业务receipt分离",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 reset/clock/receipt definitions; actual receipt population external",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Reset/aggregation definitions and separate synthetic receipt/clock rules; no real population denominator.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        }
+      ],
+      "remaining": "Real receipt authenticity, deduplication, sampling and fleet population remain external."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A1",
+      "assertion": "原JSON字段/1MiB/depth/重复键/UTC约束",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "Legacy contract read-only regression; WP02-26 substantive work",
+      "local_result": "REGRESSION_PASS",
+      "local_scope": "Unchanged legacy parser/wire regression only.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Parse_RejectsDuplicateJsonPropertiesWithoutEchoingValues",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ReleaseIdentity_SerializesOnlyTheApprovedWireShape",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"partial-indeterminate.json\", expected: Indeterminate)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"non-candidate-indeterminate.json\", expected: Indeterminate)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"valid-pass.json\", expected: Pass)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        }
+      ],
+      "remaining": "No new SLO qualification or production evidence acceptance."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A2",
+      "assertion": "原Evaluate精确条件及result重算",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "Legacy evaluator read-only regression; WP02-26 substantive work",
+      "local_result": "REGRESSION_PASS",
+      "local_scope": "Unchanged legacy evaluator comparison and declared-result regression only.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Partial, thresholdMet: True, expected: Indeterminate)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: True, expected: Pass)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: False, expected: Fail)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: False, completeness: Complete, thresholdMet: True, expected: Indeterminate)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Parse_RejectsClaimedPassWhenSourceDigestDrifts",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        }
+      ],
+      "remaining": "Source verification and calculation qualification belong to WP02-26/Owner."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A3",
+      "assertion": "源实体/查询/definition/release内容身份真实绑定",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-26 and application/evidence Owner; not delivered by telemetry match",
+      "local_result": "NOT_RUN",
+      "local_scope": "Awaiting candidate execution; no acceptance promotion.",
+      "evidence": [],
+      "remaining": "WP02-26 and application/evidence Owner; not delivered by telemetry match"
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A4",
+      "assertion": "ratio/percentile/gauge单位与计算一致",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-26 and approved business SLI Owner",
+      "local_result": "NOT_RUN",
+      "local_scope": "Awaiting candidate execution; no acceptance promotion.",
+      "evidence": [],
+      "remaining": "WP02-26 and approved business SLI Owner"
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A5",
+      "assertion": "真实覆盖/缺测/零样本保持Indeterminate",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "Legacy shape regressions only; real coverage qualifications WP02-26/Owner",
+      "local_result": "REGRESSION_PASS",
+      "local_scope": "Legacy zero-sample/coverage-gap fail-closed regression, not real coverage measurement.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_ReturnsIndeterminateForZeroSamplesOrCoverageGap",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        }
+      ],
+      "remaining": "Real population and source coverage qualification remain external."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A6",
+      "assertion": "候选与生产分离，flag不自证且无测试混入",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 anti-promotion guard; full production qualification WP02-26/Owner",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Local observation cannot promote candidate flags or package-looking references to production acceptance.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        }
+      ],
+      "remaining": "No actual trusted package publication or production SLO qualification performed."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A7",
+      "assertion": "修订/晚到/多release窗口血缘保原结果",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-26 immutable evidence workflow",
+      "local_result": "NOT_RUN",
+      "local_scope": "Awaiting candidate execution; no acceptance promotion.",
+      "evidence": [],
+      "remaining": "WP02-26 immutable evidence workflow"
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A8",
+      "assertion": "权限/保留/hold且SLO不冒业务验收",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "Application evidence/security Owner; WP02-25 no-promotion invariant only",
+      "local_result": "NOT_RUN",
+      "local_scope": "Awaiting candidate execution; no acceptance promotion.",
+      "evidence": [],
+      "remaining": "Application evidence/security Owner; WP02-25 no-promotion invariant only"
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A1",
+      "assertion": "Candidate/NonCandidate字段和格式准确",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 original format regressions plus new observation versions",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Legacy identity format regressions and versioned binding validation.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RequiresImmutableIdentity",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"CRM-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0+local\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha512:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:ccccccccccccccccccccccccccccccccccccccccccc\"···)",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.Candidate_RejectsMutableOrNonCanonicalIdentity(service: \"crm-api\", version: \"0.8.0-alpha.1\", gitSha: \"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\", artifactDigest: \"sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\"···, contractBundleDigest: \"sha256:cccc\")",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ReleaseIdentityTests.NonCandidate_AllowsExplicitLocalIdentityWithoutDigests",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        }
+      ],
+      "remaining": "Format validity remains distinct from runtime/source/package trust."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A2",
+      "assertion": "self-declared身份不冒实测字节/签名/生产",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 fail-closed observation and qualification distinctions",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Owned loaded-byte observation and fail-closed missing/self-report boundaries.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.MalformedDuplicateEmptyAndExceptionPathsAreSafeAndCannotBecomeSelfReportMatch",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Only adapter-owned managed modules are observed; no whole-process/package trust."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A3",
+      "assertion": "service/profile一致且禁止请求注入",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 actual host request-injection negative",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Independent expected-binding negatives plus legacy actual request-spoof regression.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"version\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"configuration\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"start\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"service\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"environment\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"git\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"deployment\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"packages\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"epoch\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"region\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"schema\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.WrongExpectedBindingCannotMatchOwnedRunningModules(change: \"process\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityEndToEndTests.SpoofedIdentityAndBaggageNeverBecomeTelemetryData",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Host config is declared; actual Main/CRM trusted registration is external."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A4",
+      "assertion": "artifact/package/bundle/config身份不混域",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 typed identity-domain comparisons",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Typed unsupported artifact domains stay unproven and exact module inventory is compared.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ProcessImage)",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: ContainerImage)",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.FileSourceMetadataMvidOrOpaquePackageReferencesNeverProveOtherArtifactDomains(kind: PackageSet)",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.IdentityNegativeMatrixTests.LoadedModuleNameVersionDigestAndCompleteInventoryAreComparedIndependently",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Container/package/config provenance is not inferred from module bytes."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A5",
+      "assertion": "/health/release对象一致/异常分支无敏感细节",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 legacy regression + versioned observed view",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Legacy release endpoint compatibility and safe new identity/health outputs.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_RejectsInvalidIdentityWithoutEchoingIt",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.ReleaseEndpoint_ReturnsCompleteCandidateIdentity",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "HTTP success is not production qualification."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A6",
+      "assertion": "多instance滚动升级与Mismatch/Unproven精确关闭新能力",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 per-instance/route decision tests; actual fleet cutover WP02-28/29/deployment Owner",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Real local route/module isolation and freshness with conservative aggregate.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: False)",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: True)",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Actual fleet rollout/cutover remains WP02-28/29 and deployment Owner."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A7",
+      "assertion": "版本/部署历史不原地改写",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 immutable snapshots; real deployment history external",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Defensive immutable binding/owned-byte snapshots only.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "No real immutable deployment history or rollback executed."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A8",
+      "assertion": "回退与旧operation/schema读路径保留",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-28/29 and deployment/business Owner; no runtime rollback in this task",
+      "local_result": "NOT_RUN",
+      "local_scope": "Awaiting candidate execution; no acceptance promotion.",
+      "evidence": [],
+      "remaining": "WP02-28/29 and deployment/business Owner; no runtime rollback in this task"
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A1",
+      "assertion": "四路径/注册幂等/冲突准确",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 original + versioned registration path cases",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Legacy idempotent mapping plus new early/late route collisions and inventory validation.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingEqualProfileTwice_IsIdempotent",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.MappingDifferentProfile_FailsBeforeStartup",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.MissingEmptyDuplicateUnknownAndWrongPurposeRouteCheckInventoriesFailClosed",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Actual consumer route-table adoption is external."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A2",
+      "assertion": "live静态含义与真实startup/ready inventory分离",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 real loopback inventory including missing and stopped dependency",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Live remains constant while actual owned loopback dependency stops/restarts; required registration fails closed.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-check\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"collision\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"wrong-tag\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.RegistrationFailsClosed(failure: \"missing-policy\")",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "No PostgreSQL or actual application dependency was exercised."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A3",
+      "assertion": "CRM原ready不被空检查替换、无重复路径",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-29 actual CRM adoption; WP02-25 path-conflict guard only",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Library path-conflict rejection only; no CRM edits.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.LaterRouteCollisionFailsAtHostStart",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Actual CRM ready compatibility/adoption belongs to WP02-29."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A4",
+      "assertion": "health输出allowlist/no-store且不泄异常",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 serialized HTTP health tests",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Safe HTTP output hides component details without removing aggregate failure.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.UnpublishedUnsafeCheck_AffectsAggregateButIsOmitted",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Production operational visibility policies are external."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A5",
+      "assertion": "显式probe/运维权限及部署层采用",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 exposes host policy binding/test hook only; deployment/actual host Owner qualification external",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Explicit policy binding exercised in isolated authenticated host.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "No production probe identity/network/deployment authorization qualification."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A6",
+      "assertion": "有界check/取消/stale/collector影响明确",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 new bounded inventory/probe tests",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Bounded probes, cancellation, exception and stale-cache failures.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.ExceptionsAndCancelledCheckResultsAreSafeAndNeverHealthy",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthNegativeMatrixTests.StaleCacheRefreshesAndHiddenFailureStillChangesAggregate",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "Production probe rates and actual dependency impact are external."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A7",
+      "assertion": "read与新write能力、全局摘流边界准确",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 route capability model, no authorization; real routing/Owner policy external",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Per-route check/module availability preserves independent reads and effects while aggregate fails.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.WriteOnlyDependencyFailurePreservesReadRouteAndHiddenFailureKeepsOverall503",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: False)",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.RouteCapabilityTests.ModuleBMismatchOnlyBlocksBUnlessCommonHostBindingAlsoMismatches(wrongHost: True)",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        }
+      ],
+      "remaining": "These observations grant no business write permission or fleet routing action."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A8",
+      "assertion": "health GET零业务副作用、不冒SLO或验收",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "original_business_acceptance": "NOT_RUN",
+      "responsibility": "WP02-25 actual endpoint zero-effect checks and no acceptance promotion",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Local health GET uses read-only loopback probes, keeps live independent and cannot promote acceptance.",
+      "evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.OperationalEndpointTests.LiveEndpoint_DoesNotRunRegisteredChecks",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/host/wp02-25-host.trx",
+          "test_name": "CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects",
+          "trx_sha256": "f7c0f5133319ddff39b79fd478598c24376587aad064b8a6998181488cade646"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-25/20261014T052841Z/final-01/unit/wp02-25-unit.trx",
+          "test_name": "CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction",
+          "trx_sha256": "99dc2284ced5bead4999709f794d914c4bd1c4c728a1548db87df90c3a1606cf"
+        }
+      ],
+      "remaining": "Consumer IHealthCheck side effects and real Owner use require separate review/adoption."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "started_at": "2026-10-14T06:13:01.776278+00:00",
+  "ended_at": "2026-10-14T06:13:07.812778+00:00",
+  "command": [
+    "C:/Users/tt/.dotnet/dotnet.exe",
+    "test",
+    "tests/CP6.Platform.ArchitectureTests/CP6.Platform.ArchitectureTests.csproj",
+    "-c",
+    "Release",
+    "--logger",
+    "trx;LogFileName=wp02-25-architecture.trx",
+    "--results-directory",
+    "D:\\CP6.Platform-worktrees\\wp02-25-20261013\\docs\\development\\evidence\\WP02-25\\20261014T052841Z\\final-01\\architecture"
+  ],
+  "working_directory": "D:\\CP6.Platform-worktrees\\wp02-25-20261013",
+  "exit_code": 0,
+  "sdk_info": ".NET SDK:\r\n Version:           8.0.424\r\n Commit:            5cbde90d8f\r\n Workload version:  8.0.400-manifests.d7d8d4b1\r\n MSBuild version:   17.11.48+02bf66295\r\n\r\nRuntime Environment:\r\n OS Name:     Windows\r\n OS Version:  10.0.26200\r\n OS Platform: Windows\r\n RID:         win-x64\r\n Base Path:   C:\\Users\\tt\\.dotnet\\sdk\\8.0.424\\\r\n\r\n.NET workloads installed:\r\nConfigured to use loose manifests when installing new manifests.\r\n [maui-windows]\r\n   Installation Source: VS 18.8.12023.21\r\n   Manifest Version:    8.0.3/8.0.100\r\n   Manifest Path:       C:\\Users\\tt\\.dotnet\\sdk-manifests\\8.0.100\\microsoft.net.sdk.maui\\8.0.3\\WorkloadManifest.json\r\n   Install Type:        FileBased\r\n\r\n [maccatalyst]\r\n   Installation Source: VS 18.8.12023.21\r\n   Manifest Version:    17.0.8478/8.0.100\r\n   Manifest Path:       C:\\Users\\tt\\.dotnet\\sdk-manifests\\8.0.100\\microsoft.net.sdk.maccatalyst\\17.0.8478\\WorkloadManifest.json\r\n   Install Type:        FileBased\r\n\r\n [ios]\r\n   Installation Source: VS 18.8.12023.21\r\n   Manifest Version:    17.0.8478/8.0.100\r\n   Manifest Path:       C:\\Users\\tt\\.dotnet\\sdk-manifests\\8.0.100\\microsoft.net.sdk.ios\\17.0.8478\\WorkloadManifest.json\r\n   Install Type:        FileBased\r\n\r\n [android]\r\n   Installation Source: VS 18.8.12023.21\r\n   Manifest Version:    34.0.43/8.0.100\r\n   Manifest Path:       C:\\Users\\tt\\.dotnet\\sdk-manifests\\8.0.100\\microsoft.net.sdk.android\\34.0.43\\WorkloadManifest.json\r\n   Install Type:        FileBased\r\n\r\n\r\nHost:\r\n  Version:      8.0.30\r\n  Architecture: x64\r\n  Commit:       a83db3e0eb\r\n\r\n.NET SDKs installed:\r\n  8.0.424 [C:\\Users\\tt\\.dotnet\\sdk]\r\n\r\n.NET runtimes installed:\r\n  Microsoft.AspNetCore.App 8.0.30 [C:\\Users\\tt\\.dotnet\\shared\\Microsoft.AspNetCore.App]\r\n  Microsoft.NETCore.App 8.0.30 [C:\\Users\\tt\\.dotnet\\shared\\Microsoft.NETCore.App]\r\n  Microsoft.WindowsDesktop.App 8.0.30 [C:\\Users\\tt\\.dotnet\\shared\\Microsoft.WindowsDesktop.App]\r\n\r\nOther architectures found:\r\n  x86   [C:\\Program Files (x86)\\dotnet]\r\n    registered at [HKLM\\SOFTWARE\\dotnet\\Setup\\InstalledVersions\\x86\\InstallLocation]\r\n\r\nEnvironment variables:\r\n  Not set\r\n\r\nglobal.json file:\r\n  D:\\CP6.Platform-worktrees\\wp02-25-20261013\\global.json\r\n\r\nLearn more:\r\n  https://aka.ms/dotnet/info\r\n\r\nDownload .NET:\r\n  https://aka.ms/dotnet/download\r\n",
+  "source_before": "snapshot-final-01-architecture-before.json",
+  "source_after": "snapshot-final-01-architecture-after.json",
+  "scope": "Local library/loopback gate only. No DB/Actions/package/environment/production acceptance."
+}

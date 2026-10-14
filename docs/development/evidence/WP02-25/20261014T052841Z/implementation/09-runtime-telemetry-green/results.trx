@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="f4ddfdec-a8e9-4431-b647-2f1d3e9a8d3c" name="tt@LAPTOP-3QQ44FJS 2026-10-14 01:38:34" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T01:38:34.7605680-04:00" queuing="2026-10-14T01:38:34.7605683-04:00" start="2026-10-14T01:38:32.7521686-04:00" finish="2026-10-14T01:38:35.5628874-04:00" />
+  <TestSettings name="default" id="ff484f8b-5510-4f43-97c0-fbe4a42fcb62">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_01_38_34" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="a234227c-3cf8-4ea7-b8e6-12976a8265f9" testId="1ba48eff-2a67-d4ff-4323-8efb1f9a47fd" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.4555192" startTime="2026-10-14T01:38:33.8505038-04:00" endTime="2026-10-14T01:38:34.3111897-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a234227c-3cf8-4ea7-b8e6-12976a8265f9" />
+    <UnitTestResult executionId="16a568dd-a6e1-4762-97cc-c9d56ded1306" testId="adb05523-68a8-6719-d78c-c4f5a219353c" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.4788746" startTime="2026-10-14T01:38:34.9258268-04:00" endTime="2026-10-14T01:38:35.4123195-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="16a568dd-a6e1-4762-97cc-c9d56ded1306">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Contains() Failure: Filter not matched in collection&#xD;
+Collection: [SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, ···]</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs:line 64&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs:line 70&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="68ef2673-437e-4f2b-beb6-833709b88fa6" testId="ab8d0862-52cb-3758-487b-ab7eea863217" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.6065083" startTime="2026-10-14T01:38:34.3177169-04:00" endTime="2026-10-14T01:38:34.9243825-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="68ef2673-437e-4f2b-beb6-833709b88fa6">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:52868/ dependency http://127.0.0.1:52867/; up ServiceUnavailable; stopped ServiceUnavailable; live {"contractVersion":"1.0.0","status":"live"}&#xD;
+Dependency restarted on same loopback port; read restored; no Owner writes, migrations or replay configured; hosts disposed.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5a3a2a60-d5d2-43a8-803a-3582e8e8abc6" testId="ab952d6c-d9f2-5bd2-9ffb-fc94e3e2bd43" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0034889" startTime="2026-10-14T01:38:34.0405496-04:00" endTime="2026-10-14T01:38:34.0433431-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5a3a2a60-d5d2-43a8-803a-3582e8e8abc6" />
+    <UnitTestResult executionId="5d57b92d-62af-4766-8265-f37b5ac6019c" testId="6f3d5403-4aa3-b9e3-f17d-c31e12c7786e" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.1222873" startTime="2026-10-14T01:38:33.8513869-04:00" endTime="2026-10-14T01:38:33.9779848-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5d57b92d-62af-4766-8265-f37b5ac6019c" />
+    <UnitTestResult executionId="fc909ca6-4052-4cd3-a2ff-2587143fc4f4" testId="d1187a6c-f45c-ca9f-b95f-4f01f12f8ce9" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0797901" startTime="2026-10-14T01:38:35.4329320-04:00" endTime="2026-10-14T01:38:35.5121892-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fc909ca6-4052-4cd3-a2ff-2587143fc4f4">
+      <Output>
+        <StdOut>Owner fixture response count=2; bounded queue dropped=210; completeness=Incomplete.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d8555b33-67fc-47e2-b79d-83e648f2f6f8" testId="ab02cac3-07ee-22ec-2bcc-976eec79b604" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0193070" startTime="2026-10-14T01:38:35.4160140-04:00" endTime="2026-10-14T01:38:35.4321002-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d8555b33-67fc-47e2-b79d-83e648f2f6f8">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Single() Failure: The collection did not contain any matching items&#xD;
+Expected:   (predicate expression)&#xD;
+Collection: [SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, ···]</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs:line 116&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs:line 118&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs:line 125&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="17b61dc6-fd35-452e-a64a-e3fcd0c7f47e" testId="e9159e36-af02-b064-2924-64dfacabe9da" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0058318" startTime="2026-10-14T01:38:34.3116413-04:00" endTime="2026-10-14T01:38:34.3175747-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="17b61dc6-fd35-452e-a64a-e3fcd0c7f47e" />
+    <UnitTestResult executionId="dfdf5a3c-7229-4123-a50b-e071c5683268" testId="cb493280-97aa-3378-106b-6f28f61fb31a" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0617364" startTime="2026-10-14T01:38:33.9876246-04:00" endTime="2026-10-14T01:38:34.0397975-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dfdf5a3c-7229-4123-a50b-e071c5683268">
+      <Output>
+        <StdOut>Actual owned loader digest sha256:2942d2d8b07e273616b574e14c2f61d4eeee3117b0333defb3c6361c616f04cd; pinned sha256:2942d2d8b07e273616b574e14c2f61d4eeee3117b0333defb3c6361c616f04cd; verdict Match; scope owned-managed-modules-only</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="ab02cac3-07ee-22ec-2bcc-976eec79b604">
+      <Execution id="d8555b33-67fc-47e2-b79d-83e648f2f6f8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests" name="MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="adb05523-68a8-6719-d78c-c4f5a219353c">
+      <Execution id="16a568dd-a6e1-4762-97cc-c9d56ded1306" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests" name="ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="ab8d0862-52cb-3758-487b-ab7eea863217">
+      <Execution id="68ef2673-437e-4f2b-beb6-833709b88fa6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests" name="RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="e9159e36-af02-b064-2924-64dfacabe9da">
+      <Execution id="17b61dc6-fd35-452e-a64a-e3fcd0c7f47e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests" name="MissingWrongTagAndRouteCollisionsAreRejected" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="1ba48eff-2a67-d4ff-4323-8efb1f9a47fd">
+      <Execution id="a234227c-3cf8-4ea7-b8e6-12976a8265f9" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests" name="BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="cb493280-97aa-3378-106b-6f28f61fb31a">
+      <Execution id="dfdf5a3c-7229-4123-a50b-e071c5683268" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="OwnedBytesMatchOnlyExactPinnedInventoryAndFreshProcessBinding" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="d1187a6c-f45c-ca9f-b95f-4f01f12f8ce9">
+      <Execution id="fc909ca6-4052-4cd3-a2ff-2587143fc4f4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests" name="BlockingAndThrowingSinkCannotDelayOwnerResultAndQueueDropsAreExplicit" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FreshnessIsEvaluatedOnEveryObservation" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="ab952d6c-d9f2-5bd2-9ffb-fc94e3e2bd43">
+      <Execution id="5a3a2a60-d5d2-43a8-803a-3582e8e8abc6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="FreshnessIsEvaluatedOnEveryObservation" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="6f3d5403-4aa3-b9e3-f17d-c31e12c7786e">
+      <Execution id="5d57b92d-62af-4766-8265-f37b5ac6019c" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="MissingObserverWrongSourceDigestServiceEnvironmentAndKindsDoNotMatch" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="1ba48eff-2a67-d4ff-4323-8efb1f9a47fd" executionId="a234227c-3cf8-4ea7-b8e6-12976a8265f9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="adb05523-68a8-6719-d78c-c4f5a219353c" executionId="16a568dd-a6e1-4762-97cc-c9d56ded1306" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab8d0862-52cb-3758-487b-ab7eea863217" executionId="68ef2673-437e-4f2b-beb6-833709b88fa6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab952d6c-d9f2-5bd2-9ffb-fc94e3e2bd43" executionId="5a3a2a60-d5d2-43a8-803a-3582e8e8abc6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6f3d5403-4aa3-b9e3-f17d-c31e12c7786e" executionId="5d57b92d-62af-4766-8265-f37b5ac6019c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d1187a6c-f45c-ca9f-b95f-4f01f12f8ce9" executionId="fc909ca6-4052-4cd3-a2ff-2587143fc4f4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab02cac3-07ee-22ec-2bcc-976eec79b604" executionId="d8555b33-67fc-47e2-b79d-83e648f2f6f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9159e36-af02-b064-2924-64dfacabe9da" executionId="17b61dc6-fd35-452e-a64a-e3fcd0c7f47e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cb493280-97aa-3378-106b-6f28f61fb31a" executionId="dfdf5a3c-7229-4123-a50b-e071c5683268" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="9" executed="9" passed="7" failed="2" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.49]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.57]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.58]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:02.16]       Assert.Contains() Failure: Filter not matched in collection&#xD;
+[xUnit.net 00:00:02.16]       Collection: [SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, ···]&#xD;
+[xUnit.net 00:00:02.16]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.16]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs(64,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields()&#xD;
+[xUnit.net 00:00:02.16]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs(70,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields()&#xD;
+[xUnit.net 00:00:02.16]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.18]       Assert.Single() Failure: The collection did not contain any matching items&#xD;
+[xUnit.net 00:00:02.18]       Expected:   (predicate expression)&#xD;
+[xUnit.net 00:00:02.18]       Collection: [SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, ···]&#xD;
+[xUnit.net 00:00:02.18]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.18]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs(116,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators()&#xD;
+[xUnit.net 00:00:02.18]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs(118,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators()&#xD;
+[xUnit.net 00:00:02.18]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs(125,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators()&#xD;
+[xUnit.net 00:00:02.18]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.26]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T01:38:35.4139405-04:00">
+        <Text>[xUnit.net 00:00:02.16]     CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T01:38:35.4325733-04:00">
+        <Text>[xUnit.net 00:00:02.18]     CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

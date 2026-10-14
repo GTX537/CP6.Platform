@@ -1,0 +1,35 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Messaging\bin\Debug\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\bin\Debug\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Testing\bin\Debug\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.AspNetCoreTests -> D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:02.16]     CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields [FAIL]
+[xUnit.net 00:00:02.18]     CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators [FAIL]
+  Failed CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields [478 ms]
+  Error Message:
+   Assert.Contains() Failure: Filter not matched in collection
+Collection: [SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, ···]
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs:line 64
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.ActualSdkFinalTraceMetricAndLogExportsContainOnlyClosedSafeFields() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs:line 70
+--- End of stack trace from previous location ---
+  Failed CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators [19 ms]
+  Error Message:
+   Assert.Single() Failure: The collection did not contain any matching items
+Expected:   (predicate expression)
+Collection: [SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, SafeTelemetryRecordV1 { Attributes = [["log.severity"] = "Information"], ContractVersion = "1.0.0", Count = 1, Name = "log.event", Resources = [["service.name"] = "orders", ["deployment.environment.name"] = "test", ["cp6.region"] = "east"], ··· }, ···]
+  Stack Trace:
+     at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs:line 116
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs:line 118
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.TelemetryAdapterTests.MultipleHostsUseSeparateResourcesAndRestoreOnlyOwnedGlobalPropagators() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\TelemetryAdapterTests.cs:line 125
+--- End of stack trace from previous location ---
+Results File: D:\CP6.Platform-worktrees\wp02-25-20261013\docs\development\evidence\WP02-25\20261014T052841Z\implementation\09-runtime-telemetry-green\results.trx
+
+Failed!  - Failed:     2, Passed:     7, Skipped:     0, Total:     9, Duration: 1 s - CP6.Platform.AspNetCoreTests.dll (net8.0)

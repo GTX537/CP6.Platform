@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="d4763306-31df-4d6e-b79e-bcebec02ef32" name="tt@LAPTOP-3QQ44FJS 2026-10-14 01:57:07" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T01:57:07.7188015-04:00" queuing="2026-10-14T01:57:07.7188018-04:00" start="2026-10-14T01:57:06.7632401-04:00" finish="2026-10-14T01:57:07.7243335-04:00" />
+  <TestSettings name="default" id="e11a7e83-4dd9-4680-b134-6824b5f39871">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_01_57_07" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="169dcc06-4a41-42b6-a883-d9b0172b2e04" testId="eb88151f-98f0-5125-77e9-089224741207" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;epoch&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0423105" startTime="2026-10-14T01:57:07.5588954-04:00" endTime="2026-10-14T01:57:07.6128952-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="169dcc06-4a41-42b6-a883-d9b0172b2e04">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.ArgumentException)</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(String scenario) in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs:line 88&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f2e36d48-8f8f-48b6-b58b-4172d6c661b0" testId="1c7bf44b-bbd7-879a-8041-dd7aa2176934" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;offset&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0030821" startTime="2026-10-14T01:57:07.6218094-04:00" endTime="2026-10-14T01:57:07.6218710-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f2e36d48-8f8f-48b6-b58b-4172d6c661b0">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.ArgumentException)</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(String scenario) in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs:line 88&#xD;
+   at InvokeStub_RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8c358862-ddf6-4247-9f5d-3d6a32551d4a" testId="5ce4b657-96d7-358a-2e1e-e2a3c325c48d" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FutureObserverTimestampIsUnprovenAtEvaluationTime" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0094260" startTime="2026-10-14T01:57:07.6238006-04:00" endTime="2026-10-14T01:57:07.6278810-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8c358862-ddf6-4247-9f5d-3d6a32551d4a" />
+    <UnitTestResult executionId="6c268eaf-a537-4d95-938d-cf75493f2946" testId="04be0b08-3e66-8b14-2b9e-cd80a90b8040" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;minimum&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0017860" startTime="2026-10-14T01:57:07.6226971-04:00" endTime="2026-10-14T01:57:07.6227287-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6c268eaf-a537-4d95-938d-cf75493f2946">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.ArgumentException)</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(String scenario) in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs:line 88&#xD;
+   at InvokeStub_RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;epoch&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="eb88151f-98f0-5125-77e9-089224741207">
+      <Execution id="169dcc06-4a41-42b6-a883-d9b0172b2e04" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="InvalidObserverTimestampCannotBecomePositiveEvidence" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;offset&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="1c7bf44b-bbd7-879a-8041-dd7aa2176934">
+      <Execution id="f2e36d48-8f8f-48b6-b58b-4172d6c661b0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="InvalidObserverTimestampCannotBecomePositiveEvidence" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.FutureObserverTimestampIsUnprovenAtEvaluationTime" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="5ce4b657-96d7-358a-2e1e-e2a3c325c48d">
+      <Execution id="8c358862-ddf6-4247-9f5d-3d6a32551d4a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="FutureObserverTimestampIsUnprovenAtEvaluationTime" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: &quot;minimum&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="04be0b08-3e66-8b14-2b9e-cd80a90b8040">
+      <Execution id="6c268eaf-a537-4d95-938d-cf75493f2946" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests" name="InvalidObserverTimestampCannotBecomePositiveEvidence" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="eb88151f-98f0-5125-77e9-089224741207" executionId="169dcc06-4a41-42b6-a883-d9b0172b2e04" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1c7bf44b-bbd7-879a-8041-dd7aa2176934" executionId="f2e36d48-8f8f-48b6-b58b-4172d6c661b0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5ce4b657-96d7-358a-2e1e-e2a3c325c48d" executionId="8c358862-ddf6-4247-9f5d-3d6a32551d4a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="04be0b08-3e66-8b14-2b9e-cd80a90b8040" executionId="6c268eaf-a537-4d95-938d-cf75493f2946" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="4" executed="4" passed="1" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.18]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.28]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.30]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.37]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.37]       Expected: typeof(System.ArgumentException)&#xD;
+[xUnit.net 00:00:00.37]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.37]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs(88,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(String scenario)&#xD;
+[xUnit.net 00:00:00.37]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.37]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.38]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.38]       Expected: typeof(System.ArgumentException)&#xD;
+[xUnit.net 00:00:00.38]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.38]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs(88,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(String scenario)&#xD;
+[xUnit.net 00:00:00.38]            at InvokeStub_RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.38]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.38]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.38]       Expected: typeof(System.ArgumentException)&#xD;
+[xUnit.net 00:00:00.38]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.38]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\RuntimeIdentityTests.cs(88,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(String scenario)&#xD;
+[xUnit.net 00:00:00.38]            at InvokeStub_RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.38]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.38]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T01:57:07.6147482-04:00">
+        <Text>[xUnit.net 00:00:00.37]     CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: "epoch") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T01:57:07.6222515-04:00">
+        <Text>[xUnit.net 00:00:00.38]     CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: "offset") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T01:57:07.6230035-04:00">
+        <Text>[xUnit.net 00:00:00.38]     CP6.Platform.AspNetCoreTests.ObservabilityV1.RuntimeIdentityTests.InvalidObserverTimestampCannotBecomePositiveEvidence(scenario: "minimum") [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

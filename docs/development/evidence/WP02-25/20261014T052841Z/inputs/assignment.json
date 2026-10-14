@@ -1,0 +1,64 @@
+{
+  "id": "WP02-25",
+  "package_id": "WP02",
+  "title": "运行身份、健康与遥测脱敏",
+  "repository": "Platform",
+  "kind": "CODE",
+  "target_ids": [
+    "PLT-OBS-01"
+  ],
+  "relative_size": "M",
+  "dependencies": [
+    "WP02-01"
+  ],
+  "exclusive_resources": [
+    "Platform:observability",
+    "file:Platform:src/CP6.Platform.Contracts/Cp6SloEvidenceEvaluator.cs",
+    "file:Platform:src/CP6.Platform.Testing/Cp6TelemetryRecorder.cs"
+  ],
+  "coverage_role": "IMPLEMENTATION",
+  "state": "READY",
+  "plan_path": "docs/development/task-plans/WP02.md",
+  "card_anchor": "wp02-25",
+  "entry_gate": "CONFIRMED",
+  "assignment": {
+    "chat_label": "D / WP02-25（沿用原WP02-11对话）",
+    "repository": "Platform",
+    "branch": "codex/wp02-25-observability-20261013",
+    "worktree": "D:/CP6.Platform-worktrees/wp02-25-20261013",
+    "claimed_at": "2026-10-14T03:14:11.400961+00:00",
+    "baseline_sha": "e5c63a28c94bae4cc66ec50fbe6079553c03d0d0",
+    "entry_evidence": "docs/development/evidence/wave6-dispatch-20261013/admission.json",
+    "dispatch_scope": "IMPLEMENTATION",
+    "phase": "IMPLEMENTATION",
+    "worker_ack_at": null,
+    "allowed_write_paths": [
+      "src/CP6.Platform.Contracts/ObservabilityV1/",
+      "src/CP6.Platform.Abstractions/ObservabilityV1/",
+      "src/CP6.Platform.AspNetCore/ObservabilityV1/",
+      "src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs",
+      "src/CP6.Platform.AspNetCore/Cp6ObservabilityProfile.cs",
+      "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointRouteBuilderExtensions.cs",
+      "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointProfile.cs",
+      "src/CP6.Platform.AspNetCore/Cp6SafeHealthResponseWriter.cs",
+      "tests/CP6.Platform.UnitTests/ObservabilityV1/",
+      "tests/CP6.Platform.AspNetCoreTests/ObservabilityV1/",
+      "tests/CP6.Platform.AspNetCoreTests/OperationalEndpointTests.cs",
+      "tests/CP6.Platform.AspNetCoreTests/ObservabilityRegistrationTests.cs",
+      "tests/CP6.Platform.AspNetCoreTests/ObservabilityEndToEndTests.cs",
+      "tests/CP6.Platform.AspNetCoreTests/TwoServiceObservabilityFixture.cs",
+      "docs/WP02-25-OBSERVABILITY-V1.md",
+      "docs/development/evidence/WP02-25/",
+      "eng/wp02-25/"
+    ],
+    "handoff_branch": "codex/dev-handoff-wp02-25",
+    "coordination_baseline_sha": "9a0155dec1c3366df8a6631f3d8fdb086aa32fc8"
+  },
+  "blockers": [],
+  "validation_evidence": [],
+  "delivery_evidence": null,
+  "entry_conditions": [
+    "读取任务卡固定来源与当前已确认主线；逐项确认直接前置的实际远端交付及合同/包版本。",
+    "条件消费路径逐条核验卡片绑定；不适用需说明依据，未交付的真实提供者不可用stub绕过；协调对话确认共享写入窗口。"
+  ]
+}

@@ -1,0 +1,8 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Contracts\bin\Debug\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Abstractions\bin\Debug\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.EntityFramework\bin\Debug\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Messaging\bin\Debug\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\bin\Debug\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Testing\bin\Debug\net8.0\CP6.Platform.Testing.dll
+D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\ObservabilityV1\ContractTests.cs(2,30): error CS0234: The type or namespace name 'ObservabilityV1' does not exist in the namespace 'CP6.Platform.Contracts' (are you missing an assembly reference?) [D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\CP6.Platform.UnitTests.csproj]
+D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\ObservabilityV1\ContractTests.cs(53,20): error CS0246: The type or namespace name 'RuntimeIdentityBindingV1' could not be found (are you missing a using directive or an assembly reference?) [D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\CP6.Platform.UnitTests.csproj]
