@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using CP6.Platform.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using CP6.Platform.EntityFramework.OutboxV2;
 
 namespace CP6.Platform.EntityFramework;
 
@@ -54,7 +55,8 @@ public sealed class Cp6OutboxStore<TContext>
             var now = timeProvider.GetUtcNow();
             var leaseExpiresAt = now.Add(options.OutboxLeaseDuration);
             var leaseToken = Guid.NewGuid().ToString("N");
-            var candidateIds = await context.Set<Cp6OutboxMessage>()
+            var unbound = await LegacyOutboxFenceV2.Unbound<Cp6OutboxMessage>(context, "Id", cancellationToken);
+            var candidateIds = await unbound
                 .AsNoTracking()
                 .Where(message =>
                     (message.Status == Cp6OutboxStatus.Pending && message.AvailableAtUtc <= now) ||
@@ -71,7 +73,7 @@ public sealed class Cp6OutboxStore<TContext>
                 return [];
             }
 
-            await context.Set<Cp6OutboxMessage>()
+            await unbound
                 .Where(message => candidateIds.Contains(message.Id) &&
                     ((message.Status == Cp6OutboxStatus.Pending && message.AvailableAtUtc <= now) ||
                      (message.Status == Cp6OutboxStatus.Dispatching && message.LeaseExpiresAtUtc <= now)))
@@ -84,7 +86,7 @@ public sealed class Cp6OutboxStore<TContext>
                         .SetProperty(message => message.AttemptCount, message => message.AttemptCount + 1),
                     cancellationToken);
 
-            var claimedMessages = await context.Set<Cp6OutboxMessage>()
+            var claimedMessages = await unbound
                 .AsNoTracking()
                 .Where(message => candidateIds.Contains(message.Id) && message.LeaseToken == leaseToken)
                 .OrderBy(message => message.CreatedAtUtc)
@@ -194,6 +196,7 @@ public sealed class Cp6OutboxStore<TContext>
         try
         {
             await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
+            await LegacyOutboxFenceV2.RejectBound(context, outboxId, cancellationToken);
             var message = await context.Set<Cp6OutboxMessage>().SingleAsync(item => item.Id == outboxId, cancellationToken);
             var deadLetter = await context.Set<Cp6DeadLetterRecord>()
                 .Where(record =>
@@ -225,6 +228,7 @@ public sealed class Cp6OutboxStore<TContext>
         Cp6ClaimedOutboxMessage claim,
         CancellationToken cancellationToken)
     {
+        await LegacyOutboxFenceV2.RejectBound(context, claim.Message.Id, cancellationToken);
         var message = await context.Set<Cp6OutboxMessage>()
             .SingleOrDefaultAsync(item =>
                 item.Id == claim.Message.Id &&
