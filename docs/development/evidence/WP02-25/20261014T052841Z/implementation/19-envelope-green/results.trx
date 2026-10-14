@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="a2c57be5-7659-4ea8-b422-d42cd6aead79" name="tt@LAPTOP-3QQ44FJS 2026-10-14 01:47:17" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T01:47:17.6185572-04:00" queuing="2026-10-14T01:47:17.6185575-04:00" start="2026-10-14T01:47:16.2167374-04:00" finish="2026-10-14T01:47:17.6237074-04:00" />
+  <TestSettings name="default" id="7c94bd0d-58dd-44d6-82a9-be54c59a522f">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_01_47_17" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="f531adbb-1f49-40d3-80dc-49d723222146" testId="05e38b0f-4074-fe4f-45e8-39515b6adbb6" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;1 invalid&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0000306" startTime="2026-10-14T01:47:17.4831144-04:00" endTime="2026-10-14T01:47:17.4831443-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f531adbb-1f49-40d3-80dc-49d723222146" />
+    <UnitTestResult executionId="503f9bac-3ab2-47a5-b4be-fe6f7f104ae2" testId="585ca758-bfdb-d585-55e0-e702216fc6f0" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0124525" startTime="2026-10-14T01:47:17.4838424-04:00" endTime="2026-10-14T01:47:17.4932781-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="503f9bac-3ab2-47a5-b4be-fe6f7f104ae2" />
+    <UnitTestResult executionId="a3d13b2c-c234-4815-b92b-0652cef5f169" testId="2fb2fb35-c39d-f861-51f3-62b39d98e738" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0038138" startTime="2026-10-14T01:47:17.4836627-04:00" endTime="2026-10-14T01:47:17.4836929-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a3d13b2c-c234-4815-b92b-0652cef5f169" />
+    <UnitTestResult executionId="ae6ee905-cdc8-4a29-b283-25b65e7742d6" testId="94448bc8-7868-5e29-f4d5-0a2b7f37d47a" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0005377" startTime="2026-10-14T01:47:17.4974938-04:00" endTime="2026-10-14T01:47:17.4979391-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ae6ee905-cdc8-4a29-b283-25b65e7742d6" />
+    <UnitTestResult executionId="d628c53b-54b8-449d-b6f6-2938efe661ac" testId="be11d8dc-8f04-f7de-f7de-0ee0923a0252" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0036740" startTime="2026-10-14T01:47:17.4936207-04:00" endTime="2026-10-14T01:47:17.4973757-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d628c53b-54b8-449d-b6f6-2938efe661ac" />
+    <UnitTestResult executionId="749648e1-bc90-47a9-bedb-8d390df2e3ba" testId="7574705e-4c6e-058f-3f65-2c189a6b4eb9" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;a/../b&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0120344" startTime="2026-10-14T01:47:17.4601941-04:00" endTime="2026-10-14T01:47:17.4765139-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="749648e1-bc90-47a9-bedb-8d390df2e3ba" />
+    <UnitTestResult executionId="362365e8-59d5-47af-82ae-7a7dd8a52994" testId="90313722-28d7-1a61-5793-92d1737b6f9d" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;SECRET&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002323" startTime="2026-10-14T01:47:17.4827077-04:00" endTime="2026-10-14T01:47:17.4827694-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="362365e8-59d5-47af-82ae-7a7dd8a52994" />
+    <UnitTestResult executionId="97e45514-ef52-43a6-ab5a-b8e428586e6a" testId="dd0cb890-6068-c5a5-f7f3-d946723a6873" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0038390" startTime="2026-10-14T01:47:17.4980505-04:00" endTime="2026-10-14T01:47:17.5018533-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="97e45514-ef52-43a6-ab5a-b8e428586e6a" />
+    <UnitTestResult executionId="a588864c-20de-4713-8c86-65378e0b22af" testId="d50657da-cb37-e1f6-e874-ede7cc1e2493" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002621" startTime="2026-10-14T01:47:17.4934236-04:00" endTime="2026-10-14T01:47:17.4935349-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a588864c-20de-4713-8c86-65378e0b22af" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="dd0cb890-6068-c5a5-f7f3-d946723a6873">
+      <Execution id="97e45514-ef52-43a6-ab5a-b8e428586e6a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="585ca758-bfdb-d585-55e0-e702216fc6f0">
+      <Execution id="503f9bac-3ab2-47a5-b4be-fe6f7f104ae2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="94448bc8-7868-5e29-f4d5-0a2b7f37d47a">
+      <Execution id="ae6ee905-cdc8-4a29-b283-25b65e7742d6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="BindingRejectsNonCanonicalAndNonUtcValues" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;SECRET&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="90313722-28d7-1a61-5793-92d1737b6f9d">
+      <Execution id="362365e8-59d5-47af-82ae-7a7dd8a52994" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="BindingRejectsUnsafeLabelsWithoutEcho" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;1 invalid&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="05e38b0f-4074-fe4f-45e8-39515b6adbb6">
+      <Execution id="f531adbb-1f49-40d3-80dc-49d723222146" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="BindingRejectsUnsafeLabelsWithoutEcho" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="d50657da-cb37-e1f6-e874-ede7cc1e2493">
+      <Execution id="a588864c-20de-4713-8c86-65378e0b22af" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="ObservationNeverPromotesCandidateOrClaimsProduction" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;a/../b&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="7574705e-4c6e-058f-3f65-2c189a6b4eb9">
+      <Execution id="749648e1-bc90-47a9-bedb-8d390df2e3ba" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="BindingRejectsUnsafeLabelsWithoutEcho" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="2fb2fb35-c39d-f861-51f3-62b39d98e738">
+      <Execution id="a3d13b2c-c234-4815-b92b-0652cef5f169" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="be11d8dc-8f04-f7de-f7de-0ee0923a0252">
+      <Execution id="d628c53b-54b8-449d-b6f6-2938efe661ac" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="05e38b0f-4074-fe4f-45e8-39515b6adbb6" executionId="f531adbb-1f49-40d3-80dc-49d723222146" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="585ca758-bfdb-d585-55e0-e702216fc6f0" executionId="503f9bac-3ab2-47a5-b4be-fe6f7f104ae2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2fb2fb35-c39d-f861-51f3-62b39d98e738" executionId="a3d13b2c-c234-4815-b92b-0652cef5f169" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="94448bc8-7868-5e29-f4d5-0a2b7f37d47a" executionId="ae6ee905-cdc8-4a29-b283-25b65e7742d6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="be11d8dc-8f04-f7de-f7de-0ee0923a0252" executionId="d628c53b-54b8-449d-b6f6-2938efe661ac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7574705e-4c6e-058f-3f65-2c189a6b4eb9" executionId="749648e1-bc90-47a9-bedb-8d390df2e3ba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="90313722-28d7-1a61-5793-92d1737b6f9d" executionId="362365e8-59d5-47af-82ae-7a7dd8a52994" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dd0cb890-6068-c5a5-f7f3-d946723a6873" executionId="97e45514-ef52-43a6-ab5a-b8e428586e6a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d50657da-cb37-e1f6-e874-ede7cc1e2493" executionId="a588864c-20de-4713-8c86-65378e0b22af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="9" executed="9" passed="9" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.49]   Discovering: CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.65]   Discovered:  CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.67]   Starting:    CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.73]   Finished:    CP6.Platform.UnitTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

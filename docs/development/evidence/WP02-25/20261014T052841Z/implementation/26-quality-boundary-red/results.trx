@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e3a706fa-5599-4196-be64-083d6d035c2b" name="tt@LAPTOP-3QQ44FJS 2026-10-14 02:07:47" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T02:07:47.6761304-04:00" queuing="2026-10-14T02:07:47.6761308-04:00" start="2026-10-14T02:07:45.8985426-04:00" finish="2026-10-14T02:07:47.6809151-04:00" />
+  <TestSettings name="default" id="d6eb30bd-5dab-4c03-ac72-5852130f12a9">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_02_07_47" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="e666b893-578f-4f9b-af73-7ca919810777" testId="93fa4b9e-aedd-3ee2-f662-510db92e971b" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2615951" startTime="2026-10-14T02:07:47.2609073-04:00" endTime="2026-10-14T02:07:47.5104818-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e666b893-578f-4f9b-af73-7ca919810777">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: OK&#xD;
+Actual:   InternalServerError</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 38&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 45&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="60b1ce92-f353-44af-953e-195e0fba9355" testId="735804a1-8feb-3192-e54e-c322b234a200" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0660022" startTime="2026-10-14T02:07:47.5115995-04:00" endTime="2026-10-14T02:07:47.5769593-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="60b1ce92-f353-44af-953e-195e0fba9355">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: ServiceUnavailable&#xD;
+Actual:   OK</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 88&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 88&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="8c8b92a6-066b-4339-a4f1-9c6502dec64d" testId="7630da0c-9912-3b4b-5f4a-748ae46d27af" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.1493013" startTime="2026-10-14T02:07:47.0863390-04:00" endTime="2026-10-14T02:07:47.2475296-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8c8b92a6-066b-4339-a4f1-9c6502dec64d">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Empty() Failure: Collection was not empty&#xD;
+Collection: [System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+Object name: 'LoggerFactory'.&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.CreateLogger(String categoryName)&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.DisposingLoggerFactory.CreateLogger(String categoryName)&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.ObservabilityRuntimeV1.Log(LogLevel level) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 140&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.PrivacyLoggerProviderV1.PrivacyLogger.Log[TState](LogLevel logLevel, EventId eventId, TState state, Exception exception, Func`3 formatter) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 218&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, String message, Object[] args)&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.LogWarning(ILogger logger, String message, Object[] args)&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.&lt;&gt;c__DisplayClass1_1.&lt;ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller&gt;b__1() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 61, System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+Object name: 'LoggerFactory'.&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.CreateLogger(String categoryName)&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.DisposingLoggerFactory.CreateLogger(String categoryName)&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.ObservabilityRuntimeV1.Log(LogLevel level) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 140&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.PrivacyLoggerProviderV1.PrivacyLogger.Log[TState](LogLevel logLevel, EventId eventId, TState state, Exception exception, Func`3 formatter) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 218&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, String message, Object[] args)&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.LogWarning(ILogger logger, String message, Object[] args)&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.&lt;&gt;c__DisplayClass1_1.&lt;ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller&gt;b__1() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 61, System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+Object name: 'LoggerFactory'.&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.CreateLogger(String categoryName)&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.DisposingLoggerFactory.CreateLogger(String categoryName)&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.ObservabilityRuntimeV1.Log(LogLevel level) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 140&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.PrivacyLoggerProviderV1.PrivacyLogger.Log[TState](LogLevel logLevel, EventId eventId, TState state, Exception exception, Func`3 formatter) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 218&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, String message, Object[] args)&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.LogWarning(ILogger logger, String message, Object[] args)&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.&lt;&gt;c__DisplayClass1_1.&lt;ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller&gt;b__1() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 61, System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+Object name: 'LoggerFactory'.&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.CreateLogger(String categoryName)&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.DisposingLoggerFactory.CreateLogger(String categoryName)&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.ObservabilityRuntimeV1.Log(LogLevel level) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 140&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.PrivacyLoggerProviderV1.PrivacyLogger.Log[TState](LogLevel logLevel, EventId eventId, TState state, Exception exception, Func`3 formatter) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 218&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, String message, Object[] args)&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.LogWarning(ILogger logger, String message, Object[] args)&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.&lt;&gt;c__DisplayClass1_1.&lt;ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller&gt;b__1() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 61, System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+Object name: 'IServiceProvider'.&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ThrowHelper.ThrowObjectDisposedException()&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)&#xD;
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)&#xD;
+   at Microsoft.Extensions.Logging.OpenTelemetryLoggingExtensions.&lt;&gt;c__DisplayClass5_0.&lt;AddOpenTelemetryInternal&gt;b__3()&#xD;
+   at OpenTelemetry.Logs.OpenTelemetryLoggerProvider.get_Provider()&#xD;
+   at OpenTelemetry.Logs.OpenTelemetryLoggerProvider.CreateLogger(String categoryName)&#xD;
+   at Microsoft.Extensions.Logging.LoggerInformation..ctor(ILoggerProvider provider, String category)&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.CreateLoggers(String categoryName)&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.CreateLogger(String categoryName)&#xD;
+   at Microsoft.Extensions.Logging.LoggerFactory.DisposingLoggerFactory.CreateLogger(String categoryName)&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.ObservabilityRuntimeV1.Log(LogLevel level) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 140&#xD;
+   at CP6.Platform.AspNetCore.ObservabilityV1.PrivacyLoggerProviderV1.PrivacyLogger.Log[TState](LogLevel logLevel, EventId eventId, TState state, Exception exception, Func`3 formatter) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 218&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, String message, Object[] args)&#xD;
+   at Microsoft.Extensions.Logging.LoggerExtensions.LogWarning(ILogger logger, String message, Object[] args)&#xD;
+   at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.&lt;&gt;c__DisplayClass1_1.&lt;ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller&gt;b__1() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 61, ···]</Message>
+          <StackTrace>   at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 70&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="93fa4b9e-aedd-3ee2-f662-510db92e971b">
+      <Execution id="e666b893-578f-4f9b-af73-7ca919810777" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests" name="NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="7630da0c-9912-3b4b-5f4a-748ae46d27af">
+      <Execution id="8c8b92a6-066b-4339-a4f1-9c6502dec64d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests" name="ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="735804a1-8feb-3192-e54e-c322b234a200">
+      <Execution id="60b1ce92-f353-44af-953e-195e0fba9355" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests" name="HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="93fa4b9e-aedd-3ee2-f662-510db92e971b" executionId="e666b893-578f-4f9b-af73-7ca919810777" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="735804a1-8feb-3192-e54e-c322b234a200" executionId="60b1ce92-f353-44af-953e-195e0fba9355" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7630da0c-9912-3b4b-5f4a-748ae46d27af" executionId="8c8b92a6-066b-4339-a4f1-9c6502dec64d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="0" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.17]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.32]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.34]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.52]       Assert.Empty() Failure: Collection was not empty&#xD;
+[xUnit.net 00:00:00.52]       Collection: [System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+[xUnit.net 00:00:00.52]       Object name: 'LoggerFactory'.&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerFactory.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerFactory.DisposingLoggerFactory.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCore.ObservabilityV1.ObservabilityRuntimeV1.Log(LogLevel level) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 140&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCore.ObservabilityV1.PrivacyLoggerProviderV1.PrivacyLogger.Log[TState](LogLevel logLevel, EventId eventId, TState state, Exception exception, Func`3 formatter) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 218&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.LogWarning(ILogger logger, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.&lt;&gt;c__DisplayClass1_1.&lt;ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller&gt;b__1() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 61, System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+[xUnit.net 00:00:00.52]       Object name: 'LoggerFactory'.&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerFactory.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerFactory.DisposingLoggerFactory.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCore.ObservabilityV1.ObservabilityRuntimeV1.Log(LogLevel level) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 140&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCore.ObservabilityV1.PrivacyLoggerProviderV1.PrivacyLogger.Log[TState](LogLevel logLevel, EventId eventId, TState state, Exception exception, Func`3 formatter) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 218&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.LogWarning(ILogger logger, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.&lt;&gt;c__DisplayClass1_1.&lt;ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller&gt;b__1() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 61, System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+[xUnit.net 00:00:00.52]       Object name: 'LoggerFactory'.&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerFactory.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerFactory.DisposingLoggerFactory.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCore.ObservabilityV1.ObservabilityRuntimeV1.Log(LogLevel level) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 140&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCore.ObservabilityV1.PrivacyLoggerProviderV1.PrivacyLogger.Log[TState](LogLevel logLevel, EventId eventId, TState state, Exception exception, Func`3 formatter) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 218&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.LogWarning(ILogger logger, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.&lt;&gt;c__DisplayClass1_1.&lt;ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller&gt;b__1() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 61, System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+[xUnit.net 00:00:00.52]       Object name: 'LoggerFactory'.&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerFactory.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerFactory.DisposingLoggerFactory.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCore.ObservabilityV1.ObservabilityRuntimeV1.Log(LogLevel level) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 140&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCore.ObservabilityV1.PrivacyLoggerProviderV1.PrivacyLogger.Log[TState](LogLevel logLevel, EventId eventId, TState state, Exception exception, Func`3 formatter) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 218&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at Microsoft.Extensions.Logging.LoggerExtensions.LogWarning(ILogger logger, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.52]          at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.&lt;&gt;c__DisplayClass1_1.&lt;ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller&gt;b__1() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 61, System.ObjectDisposedException: Cannot access a disposed object.&#xD;
+[xUnit.net 00:00:00.53]       Object name: 'IServiceProvider'.&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.DependencyInjection.ServiceLookup.ThrowHelper.ThrowObjectDisposedException()&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngineScope.GetService(Type serviceType)&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService[T](IServiceProvider provider)&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.Logging.OpenTelemetryLoggingExtensions.&lt;&gt;c__DisplayClass5_0.&lt;AddOpenTelemetryInternal&gt;b__3()&#xD;
+[xUnit.net 00:00:00.53]          at OpenTelemetry.Logs.OpenTelemetryLoggerProvider.get_Provider()&#xD;
+[xUnit.net 00:00:00.53]          at OpenTelemetry.Logs.OpenTelemetryLoggerProvider.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.Logging.LoggerInformation..ctor(ILoggerProvider provider, String category)&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.Logging.LoggerFactory.CreateLoggers(String categoryName)&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.Logging.LoggerFactory.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.Logging.LoggerFactory.DisposingLoggerFactory.CreateLogger(String categoryName)&#xD;
+[xUnit.net 00:00:00.53]          at CP6.Platform.AspNetCore.ObservabilityV1.ObservabilityRuntimeV1.Log(LogLevel level) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 140&#xD;
+[xUnit.net 00:00:00.53]          at CP6.Platform.AspNetCore.ObservabilityV1.PrivacyLoggerProviderV1.PrivacyLogger.Log[TState](LogLevel logLevel, EventId eventId, TState state, Exception exception, Func`3 formatter) in D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\ObservabilityV1\ObservabilityRuntimeV1.cs:line 218&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, EventId eventId, Exception exception, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.Logging.LoggerExtensions.Log(ILogger logger, LogLevel logLevel, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.53]          at Microsoft.Extensions.Logging.LoggerExtensions.LogWarning(ILogger logger, String message, Object[] args)&#xD;
+[xUnit.net 00:00:00.53]          at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.&lt;&gt;c__DisplayClass1_1.&lt;ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller&gt;b__1() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs:line 61, ···]&#xD;
+[xUnit.net 00:00:00.53]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.53]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs(70,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller()&#xD;
+[xUnit.net 00:00:00.53]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.78]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.78]       Expected: OK&#xD;
+[xUnit.net 00:00:00.78]       Actual:   InternalServerError&#xD;
+[xUnit.net 00:00:00.78]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.78]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs(38,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult()&#xD;
+[xUnit.net 00:00:00.78]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs(45,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult()&#xD;
+[xUnit.net 00:00:00.78]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.85]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.85]       Expected: ServiceUnavailable&#xD;
+[xUnit.net 00:00:00.85]       Actual:   OK&#xD;
+[xUnit.net 00:00:00.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs(88,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards()&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\ObservabilityV1\QualityBoundaryRegressionTests.cs(88,0): at CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards()&#xD;
+[xUnit.net 00:00:00.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:00.85]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:07:47.2499297-04:00">
+        <Text>[xUnit.net 00:00:00.52]     CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.ActualLoggerCallsRacingRuntimeDisposalNeverThrowBackToCaller [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:07:47.5108846-04:00">
+        <Text>[xUnit.net 00:00:00.78]     CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.NullAndOversizedMetricDimensionsCannotThrowFromActualCounterOrChangeRequestResult [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T02:07:47.5773658-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.AspNetCoreTests.ObservabilityV1.QualityBoundaryRegressionTests.HealthCacheExpiresByMonotonicTimeEvenWhenUtcMovesBackwards [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

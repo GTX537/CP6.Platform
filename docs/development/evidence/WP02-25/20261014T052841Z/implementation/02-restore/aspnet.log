@@ -1,0 +1,8 @@
+  Determining projects to restore...
+  Restored D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Contracts\CP6.Platform.Contracts.csproj (in 98 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Abstractions\CP6.Platform.Abstractions.csproj (in 101 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.EntityFramework\CP6.Platform.EntityFramework.csproj (in 488 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Messaging\CP6.Platform.Messaging.csproj (in 806 ms).
+  Restored D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.AspNetCore\CP6.Platform.AspNetCore.csproj (in 1.19 sec).
+  Restored D:\CP6.Platform-worktrees\wp02-25-20261013\src\CP6.Platform.Testing\CP6.Platform.Testing.csproj (in 1.2 sec).
+  Restored D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\CP6.Platform.AspNetCoreTests.csproj (in 1.27 sec).
