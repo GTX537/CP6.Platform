@@ -1,0 +1,17 @@
+# WP02-25 execution plan
+
+Assignment Main `1ab2d031e3c501662ecb89a33839fac1cba55d33`; Platform source baseline `e5c63a28c94bae4cc66ec50fbe6079553c03d0d0`; Handoff assignment `ad255c21810a101662fd3e380992a03fde71407e`. Actual START `e1b65c2cfc9cb243914687c1d2af82fd82ffc233`. Task window: wave6 WP02-25 only. Evidence run: `docs/development/evidence/WP02-25/20261014T052841Z/`.
+
+## One implementation task, one delivery review
+
+1. Pin exact intake/admission/source bytes and map all 32 original AC to local coverage and external ownership. Keep original business acceptance NOT_RUN. Confirm prerequisite ancestry, branch cleanliness, SDK/dependencies and no automatic Actions side effect.
+2. Add immutable versioned contracts and validation under Contracts/ObservabilityV1, observer/sink seams under Abstractions/ObservabilityV1. Distinguish declared metadata, observed artifact bytes, local adapter evidence, package trust and independent acceptance. Define technical versus committed-receipt metrics without modifying existing emitters.
+3. Implement real host adapter under AspNetCore/ObservabilityV1: independently pinned expected manifest and actual bounded loaded-byte observation; required health inventory with per-route read/new-effect scope, timeout/concurrency/freshness and safe output. Default missing/stale/error states Unproven/unhealthy. No permissions or Owner writes granted.
+4. Implement explicitly selected SDK tracing/metrics/logging registration with finite key/value/resource policy; sanitize before queue/aggregation and sink, real automatic instrumentation, bounded capacity/rate/series/size/batch/flush/dispose. Safe drop/incompleteness and registration/global propagator drift observations. No external destination enabled.
+5. TDD and actual loopback tests: identity mismatch/missing/self-report/domain/freshness/cancellation; dependency stop/restart and hidden aggregate failure; seeded privacy leak checks at final sink; blocked/throwing export and request independence; lifecycle/drift; unchanged legacy formats, semantics and anti-promotion. Preserve each RED/intermediate failure and scope.
+6. After code is stable, capture exact source/dependency/working-byte and loaded artifact hashes. Run the task-card Unit, AspNetCore and Architecture gates once, preserving logs/TRX/skips and startup/HTTP/cleanup evidence. Perform one full-task specification review then quality review; fix substantive findings with targeted checks. Reuse only exact unaffected inputs with original provenance.
+7. Audit complete diff against latest confirmed main, scope, source/evidence hashes and candidate/protected workflows. Commit only named task files, push candidate and verify remote SHA. Publish fixed Handoff DELIVERY with report, gates, limitations and consumption interface; COORD owns merge and authoritative state sync. Task is not DONE until remote main containment and COORD closeout.
+
+## Guardrails
+
+Only the assignment's three ObservabilityV1 production directories, task-private tests/doc/evidence/eng and explicitly named compatible existing registration/health/test files are writable. All csproj/props/locks/schema/versions, legacy SLO evaluator/recorder, Context, EF/Messaging, Release/Deployment, Main/CRM and shared state are read-only. No database, Actions, package publication, release or deployment. Local adapter matching is never runtime package trust, independent acceptance, production SLO or original business AC acceptance. Existing required health and legacy endpoint behavior remain available; new capability is explicit.

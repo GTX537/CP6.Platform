@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="10d6001f-a55b-4dfe-b62f-a9381f717c4b" name="tt@LAPTOP-3QQ44FJS 2026-10-14 01:45:12" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T01:45:12.9503645-04:00" queuing="2026-10-14T01:45:12.9503650-04:00" start="2026-10-14T01:45:10.9957733-04:00" finish="2026-10-14T01:45:13.1611013-04:00" />
+  <TestSettings name="default" id="6339bf59-1aea-41c0-85bb-ce46aa1fbfb6">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_01_45_12" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="fd7fc0d5-c801-4ad8-8ad2-d64160403ce1" testId="fed43476-7281-5c04-a915-24fd4ce9b7c9" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0068442" startTime="2026-10-14T01:45:12.1022406-04:00" endTime="2026-10-14T01:45:12.1148487-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fd7fc0d5-c801-4ad8-8ad2-d64160403ce1" />
+    <UnitTestResult executionId="dc3e95fb-e7ca-4411-a933-be3530e78cc9" testId="e9159e36-af02-b064-2924-64dfacabe9da" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0034687" startTime="2026-10-14T01:45:12.5128359-04:00" endTime="2026-10-14T01:45:12.5162590-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dc3e95fb-e7ca-4411-a933-be3530e78cc9" />
+    <UnitTestResult executionId="7a0b4461-3780-41b9-8921-b9873208f1d9" testId="1ba48eff-2a67-d4ff-4323-8efb1f9a47fd" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.4055208" startTime="2026-10-14T01:45:12.1013777-04:00" endTime="2026-10-14T01:45:12.5126104-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7a0b4461-3780-41b9-8921-b9873208f1d9" />
+    <UnitTestResult executionId="44e56da5-a0dd-4b57-a0d8-bfe0853b698e" testId="ab8d0862-52cb-3758-487b-ab7eea863217" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.5824058" startTime="2026-10-14T01:45:12.5163968-04:00" endTime="2026-10-14T01:45:13.0990455-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="44e56da5-a0dd-4b57-a0d8-bfe0853b698e">
+      <Output>
+        <StdOut>Kestrel http://127.0.0.1:63082/ dependency http://127.0.0.1:63081/; up ServiceUnavailable; stopped ServiceUnavailable; live {"contractVersion":"1.0.0","status":"live"}&#xD;
+Dependency restarted on same loopback port; read restored; no Owner writes, migrations or replay configured; hosts disposed.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="90169425-2b25-44f5-b668-4fb1f74cec87" testId="e68b48b4-b14b-2d78-462a-f26ee46b7020" testName="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3334683" startTime="2026-10-14T01:45:12.1211629-04:00" endTime="2026-10-14T01:45:12.4498958-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="90169425-2b25-44f5-b668-4fb1f74cec87" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="e68b48b4-b14b-2d78-462a-f26ee46b7020">
+      <Execution id="90169425-2b25-44f5-b668-4fb1f74cec87" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests" name="IdentityFreshnessGatesRelevantEffectsWhileAuthorizedReadRemainsAvailable" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests.EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="fed43476-7281-5c04-a915-24fd4ce9b7c9">
+      <Execution id="fd7fc0d5-c801-4ad8-8ad2-d64160403ce1" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthIdentityAndPermissionTests" name="EffectCapabilityCannotBeDeclaredWithoutARelevantArtifactBinding" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="ab8d0862-52cb-3758-487b-ab7eea863217">
+      <Execution id="44e56da5-a0dd-4b57-a0d8-bfe0853b698e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests" name="RealKestrelDependencyStopRestartAffectsReadinessButNotLiveAndNeverGrantsNewEffects" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.MissingWrongTagAndRouteCollisionsAreRejected" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="e9159e36-af02-b064-2924-64dfacabe9da">
+      <Execution id="dc3e95fb-e7ca-4411-a933-be3530e78cc9" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests" name="MissingWrongTagAndRouteCollisionsAreRejected" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests.BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.aspnetcoretests\bin\debug\net8.0\cp6.platform.aspnetcoretests.dll" id="1ba48eff-2a67-d4ff-4323-8efb1f9a47fd">
+      <Execution id="7a0b4461-3780-41b9-8921-b9873208f1d9" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.AspNetCoreTests\bin\Debug\net8.0\CP6.Platform.AspNetCoreTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.AspNetCoreTests.ObservabilityV1.HealthBindingTests" name="BlockedProbeIsBoundedAndNeverHealthyIncludingCancellation" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="fed43476-7281-5c04-a915-24fd4ce9b7c9" executionId="fd7fc0d5-c801-4ad8-8ad2-d64160403ce1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e9159e36-af02-b064-2924-64dfacabe9da" executionId="dc3e95fb-e7ca-4411-a933-be3530e78cc9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1ba48eff-2a67-d4ff-4323-8efb1f9a47fd" executionId="7a0b4461-3780-41b9-8921-b9873208f1d9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab8d0862-52cb-3758-487b-ab7eea863217" executionId="44e56da5-a0dd-4b57-a0d8-bfe0853b698e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e68b48b4-b14b-2d78-462a-f26ee46b7020" executionId="90169425-2b25-44f5-b668-4fb1f74cec87" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="5" executed="5" passed="5" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.54]   Discovering: CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.63]   Discovered:  CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:00.65]   Starting:    CP6.Platform.AspNetCoreTests&#xD;
+[xUnit.net 00:00:01.67]   Finished:    CP6.Platform.AspNetCoreTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

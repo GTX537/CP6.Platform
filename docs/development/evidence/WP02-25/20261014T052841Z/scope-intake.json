@@ -1,0 +1,41 @@
+{
+  "baseline": "e5c63a28c94bae4cc66ec50fbe6079553c03d0d0",
+  "head": "e5c63a28c94bae4cc66ec50fbe6079553c03d0d0",
+  "allowed": [
+    "src/CP6.Platform.Contracts/ObservabilityV1/",
+    "src/CP6.Platform.Abstractions/ObservabilityV1/",
+    "src/CP6.Platform.AspNetCore/ObservabilityV1/",
+    "src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs",
+    "src/CP6.Platform.AspNetCore/Cp6ObservabilityProfile.cs",
+    "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointRouteBuilderExtensions.cs",
+    "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointProfile.cs",
+    "src/CP6.Platform.AspNetCore/Cp6SafeHealthResponseWriter.cs",
+    "tests/CP6.Platform.UnitTests/ObservabilityV1/",
+    "tests/CP6.Platform.AspNetCoreTests/ObservabilityV1/",
+    "tests/CP6.Platform.AspNetCoreTests/OperationalEndpointTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/ObservabilityRegistrationTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/ObservabilityEndToEndTests.cs",
+    "tests/CP6.Platform.AspNetCoreTests/TwoServiceObservabilityFixture.cs",
+    "docs/WP02-25-OBSERVABILITY-V1.md",
+    "docs/development/evidence/WP02-25/",
+    "eng/wp02-25/"
+  ],
+  "changed": [
+    "docs/development/evidence/WP02-25/20261014T052841Z/inputs/admission.json",
+    "docs/development/evidence/WP02-25/20261014T052841Z/inputs/admission.md",
+    "docs/development/evidence/WP02-25/20261014T052841Z/inputs/assignment.json",
+    "docs/development/evidence/WP02-25/20261014T052841Z/inputs/catalog-target-17.json",
+    "docs/development/evidence/WP02-25/20261014T052841Z/inputs/dispatch.md",
+    "docs/development/evidence/WP02-25/20261014T052841Z/inputs/handbook.md",
+    "docs/development/evidence/WP02-25/20261014T052841Z/inputs/original-PLT-OBS-01.md",
+    "docs/development/evidence/WP02-25/20261014T052841Z/inputs/parallel.md",
+    "docs/development/evidence/WP02-25/20261014T052841Z/intake.json",
+    "docs/development/evidence/WP02-25/20261014T052841Z/workflows-intake.json",
+    "eng/wp02-25/PLAN.md",
+    "eng/wp02-25/audit_workflows.py",
+    "eng/wp02-25/evidence.py",
+    "eng/wp02-25/run_gate.py",
+    "tests/CP6.Platform.UnitTests/ObservabilityV1/ContractTests.cs"
+  ],
+  "violations": []
+}

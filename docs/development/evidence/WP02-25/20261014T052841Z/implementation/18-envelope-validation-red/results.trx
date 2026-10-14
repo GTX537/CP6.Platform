@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e9e16926-0e55-454d-ab4f-71df64594e85" name="tt@LAPTOP-3QQ44FJS 2026-10-14 01:46:56" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T01:46:56.8458807-04:00" queuing="2026-10-14T01:46:56.8458812-04:00" start="2026-10-14T01:46:55.6155161-04:00" finish="2026-10-14T01:46:56.8510901-04:00" />
+  <TestSettings name="default" id="524bddf4-fb1f-4000-bb34-1679eb5655d4">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_01_46_56" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="a50526f8-6983-4cbc-812c-dbe24e1f7487" testId="dd0cb890-6068-c5a5-f7f3-d946723a6873" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0037887" startTime="2026-10-14T01:46:56.7525325-04:00" endTime="2026-10-14T01:46:56.7563696-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a50526f8-6983-4cbc-812c-dbe24e1f7487" />
+    <UnitTestResult executionId="5bdfa7bb-97bc-4bb3-bf04-3a28c9c75eb0" testId="be11d8dc-8f04-f7de-f7de-0ee0923a0252" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0042806" startTime="2026-10-14T01:46:56.7506982-04:00" endTime="2026-10-14T01:46:56.7518322-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5bdfa7bb-97bc-4bb3-bf04-3a28c9c75eb0" />
+    <UnitTestResult executionId="2b4c31fa-8d66-4b2e-8fde-0f355f61bdd1" testId="2fb2fb35-c39d-f861-51f3-62b39d98e738" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0036501" startTime="2026-10-14T01:46:56.7305974-04:00" endTime="2026-10-14T01:46:56.7306249-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2b4c31fa-8d66-4b2e-8fde-0f355f61bdd1" />
+    <UnitTestResult executionId="81c69495-69d9-415b-9262-ff7b3618c7e4" testId="90313722-28d7-1a61-5793-92d1737b6f9d" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;SECRET&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002111" startTime="2026-10-14T01:46:56.7297875-04:00" endTime="2026-10-14T01:46:56.7298480-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="81c69495-69d9-415b-9262-ff7b3618c7e4" />
+    <UnitTestResult executionId="91b1b032-222c-4820-bc51-c9cd3ab36b09" testId="585ca758-bfdb-d585-55e0-e702216fc6f0" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0118964" startTime="2026-10-14T01:46:56.7307071-04:00" endTime="2026-10-14T01:46:56.7400383-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="91b1b032-222c-4820-bc51-c9cd3ab36b09" />
+    <UnitTestResult executionId="b372489c-cd26-46f9-8c90-a5633537103c" testId="d50657da-cb37-e1f6-e874-ede7cc1e2493" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0015642" startTime="2026-10-14T01:46:56.7401637-04:00" endTime="2026-10-14T01:46:56.7477610-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b372489c-cd26-46f9-8c90-a5633537103c">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: No exception was thrown&#xD;
+Expected: typeof(System.ArgumentOutOfRangeException)</Message>
+          <StackTrace>   at CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction() in D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\ObservabilityV1\ContractTests.cs:line 37&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0d25f240-032e-4b8e-b729-ad66c88a1cab" testId="94448bc8-7868-5e29-f4d5-0a2b7f37d47a" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0005484" startTime="2026-10-14T01:46:56.7519597-04:00" endTime="2026-10-14T01:46:56.7524318-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0d25f240-032e-4b8e-b729-ad66c88a1cab" />
+    <UnitTestResult executionId="95bbdce6-db81-4d56-828f-9bb6301b76db" testId="05e38b0f-4074-fe4f-45e8-39515b6adbb6" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;1 invalid&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0000276" startTime="2026-10-14T01:46:56.7301715-04:00" endTime="2026-10-14T01:46:56.7302002-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="95bbdce6-db81-4d56-828f-9bb6301b76db" />
+    <UnitTestResult executionId="08cb8f79-3d5f-4e18-9a50-12a318e2024f" testId="7574705e-4c6e-058f-3f65-2c189a6b4eb9" testName="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;a/../b&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0119685" startTime="2026-10-14T01:46:56.7076784-04:00" endTime="2026-10-14T01:46:56.7241034-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="08cb8f79-3d5f-4e18-9a50-12a318e2024f" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="dd0cb890-6068-c5a5-f7f3-d946723a6873">
+      <Execution id="a50526f8-6983-4cbc-812c-dbe24e1f7487" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="OwnerLatencyRequiresDistinctCommittedReceiptsAndClockProvenance" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="585ca758-bfdb-d585-55e0-e702216fc6f0">
+      <Execution id="91b1b032-222c-4820-bc51-c9cd3ab36b09" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="CandidateFlagsAndValidLookingPackageLockCannotPromoteLocalEnvelope" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsNonCanonicalAndNonUtcValues" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="94448bc8-7868-5e29-f4d5-0a2b7f37d47a">
+      <Execution id="0d25f240-032e-4b8e-b729-ad66c88a1cab" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="BindingRejectsNonCanonicalAndNonUtcValues" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;SECRET&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="90313722-28d7-1a61-5793-92d1737b6f9d">
+      <Execution id="81c69495-69d9-415b-9262-ff7b3618c7e4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="BindingRejectsUnsafeLabelsWithoutEcho" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;1 invalid&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="05e38b0f-4074-fe4f-45e8-39515b6adbb6">
+      <Execution id="95bbdce6-db81-4d56-828f-9bb6301b76db" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="BindingRejectsUnsafeLabelsWithoutEcho" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="d50657da-cb37-e1f6-e874-ede7cc1e2493">
+      <Execution id="b372489c-cd26-46f9-8c90-a5633537103c" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="ObservationNeverPromotesCandidateOrClaimsProduction" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.BindingRejectsUnsafeLabelsWithoutEcho(input: &quot;a/../b&quot;)" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="7574705e-4c6e-058f-3f65-2c189a6b4eb9">
+      <Execution id="08cb8f79-3d5f-4e18-9a50-12a318e2024f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="BindingRejectsUnsafeLabelsWithoutEcho" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="2fb2fb35-c39d-f861-51f3-62b39d98e738">
+      <Execution id="2b4c31fa-8d66-4b2e-8fde-0f355f61bdd1" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="ContractPreservesTechnicalMetricSemanticsAndOwnerLatencyHasSeparateBusinessMeaning" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.UnitTests.ObservabilityV1.ContractTests.PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys" storage="d:\cp6.platform-worktrees\wp02-25-20261013\tests\cp6.platform.unittests\bin\debug\net8.0\cp6.platform.unittests.dll" id="be11d8dc-8f04-f7de-f7de-0ee0923a0252">
+      <Execution id="5bdfa7bb-97bc-4bb3-bf04-3a28c9c75eb0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\bin\Debug\net8.0\CP6.Platform.UnitTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.UnitTests.ObservabilityV1.ContractTests" name="PolicyCopiesFiniteRegistriesAndRejectsArbitraryValuesUnderAllowedKeys" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="dd0cb890-6068-c5a5-f7f3-d946723a6873" executionId="a50526f8-6983-4cbc-812c-dbe24e1f7487" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="be11d8dc-8f04-f7de-f7de-0ee0923a0252" executionId="5bdfa7bb-97bc-4bb3-bf04-3a28c9c75eb0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2fb2fb35-c39d-f861-51f3-62b39d98e738" executionId="2b4c31fa-8d66-4b2e-8fde-0f355f61bdd1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="90313722-28d7-1a61-5793-92d1737b6f9d" executionId="81c69495-69d9-415b-9262-ff7b3618c7e4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="585ca758-bfdb-d585-55e0-e702216fc6f0" executionId="91b1b032-222c-4820-bc51-c9cd3ab36b09" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d50657da-cb37-e1f6-e874-ede7cc1e2493" executionId="b372489c-cd26-46f9-8c90-a5633537103c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="94448bc8-7868-5e29-f4d5-0a2b7f37d47a" executionId="0d25f240-032e-4b8e-b729-ad66c88a1cab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="05e38b0f-4074-fe4f-45e8-39515b6adbb6" executionId="95bbdce6-db81-4d56-828f-9bb6301b76db" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7574705e-4c6e-058f-3f65-2c189a6b4eb9" executionId="08cb8f79-3d5f-4e18-9a50-12a318e2024f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="9" executed="9" passed="8" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.42]   Discovering: CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.56]   Discovered:  CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.58]   Starting:    CP6.Platform.UnitTests&#xD;
+[xUnit.net 00:00:00.63]       Assert.Throws() Failure: No exception was thrown&#xD;
+[xUnit.net 00:00:00.63]       Expected: typeof(System.ArgumentOutOfRangeException)&#xD;
+[xUnit.net 00:00:00.63]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.64]         D:\CP6.Platform-worktrees\wp02-25-20261013\tests\CP6.Platform.UnitTests\ObservabilityV1\ContractTests.cs(37,0): at CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction()&#xD;
+[xUnit.net 00:00:00.64]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.64]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.64]   Finished:    CP6.Platform.UnitTests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T01:46:56.7493230-04:00">
+        <Text>[xUnit.net 00:00:00.63]     CP6.Platform.UnitTests.ObservabilityV1.ContractTests.ObservationNeverPromotesCandidateOrClaimsProduction [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>
