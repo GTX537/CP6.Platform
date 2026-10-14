@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="0e841e8f-1c00-4a6c-9097-36ec5ea38c51" name="tt@LAPTOP-3QQ44FJS 2026-10-14 01:57:08" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T01:57:08.6769831-04:00" queuing="2026-10-14T01:57:08.6769837-04:00" start="2026-10-14T01:57:04.8241749-04:00" finish="2026-10-14T01:57:10.0010078-04:00" />
+  <TestSettings name="default" id="14087231-1969-4e1c-b2d6-bcadbcd80ad9">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_01_57_08" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="d74867ac-f765-4498-a22c-04ca84e291f8" testId="f852638e-6ea5-a675-33d1-42d4472ae03e" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.5617915" startTime="2026-10-14T01:57:07.0952105-04:00" endTime="2026-10-14T01:57:08.6489910-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d74867ac-f765-4498-a22c-04ca84e291f8" />
+    <UnitTestResult executionId="43755e87-aa1f-4bcd-8344-5b23d3dd50ea" testId="1b04e857-0c51-9d74-e600-8c765aac4048" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: &quot;binding-token&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3204503" startTime="2026-10-14T01:57:08.9501657-04:00" endTime="2026-10-14T01:57:09.2703969-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43755e87-aa1f-4bcd-8344-5b23d3dd50ea" />
+    <UnitTestResult executionId="aab78e73-4dba-4dc3-b108-013866140f1d" testId="665d6652-7452-9085-c910-13fbf785bc62" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: &quot;ignored-root-token&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2995824" startTime="2026-10-14T01:57:08.6613500-04:00" endTime="2026-10-14T01:57:08.9496343-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aab78e73-4dba-4dc3-b108-013866140f1d" />
+    <UnitTestResult executionId="1ab45474-24b1-49db-a6cc-50c98874c19a" testId="79e7b0a5-959f-a240-0235-03daa736a633" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: &quot;ignored-binding-token&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3897410" startTime="2026-10-14T01:57:09.5553708-04:00" endTime="2026-10-14T01:57:09.9454276-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1ab45474-24b1-49db-a6cc-50c98874c19a" />
+    <UnitTestResult executionId="2c311589-739e-4506-abff-f22bd0a365e0" testId="8735445e-04eb-f460-74b6-72e85d5cd1d0" testName="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: &quot;root-column&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2844640" startTime="2026-10-14T01:57:09.2706783-04:00" endTime="2026-10-14T01:57:09.5551767-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2c311589-739e-4506-abff-f22bd0a365e0" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: &quot;ignored-binding-token&quot;)" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="79e7b0a5-959f-a240-0235-03daa736a633">
+      <Execution id="1ab45474-24b1-49db-a6cc-50c98874c19a" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Altered_companion_token_or_root_mapping_is_rejected_before_dml" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: &quot;root-column&quot;)" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="8735445e-04eb-f460-74b6-72e85d5cd1d0">
+      <Execution id="2c311589-739e-4506-abff-f22bd0a365e0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Altered_companion_token_or_root_mapping_is_rejected_before_dml" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="f852638e-6ea5-a675-33d1-42d4472ae03e">
+      <Execution id="d74867ac-f765-4498-a22c-04ca84e291f8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Prepared_claim_is_invisible_until_commit_and_rollback_restores_complete_graph" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: &quot;binding-token&quot;)" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="1b04e857-0c51-9d74-e600-8c765aac4048">
+      <Execution id="43755e87-aa1f-4bcd-8344-5b23d3dd50ea" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Altered_companion_token_or_root_mapping_is_rejected_before_dml" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests.Altered_companion_token_or_root_mapping_is_rejected_before_dml(mapping: &quot;ignored-root-token&quot;)" storage="d:\cp6.platform-worktrees\wp02-08-20261013\tests\cp6.platform.wp0208.postgresqltests\bin\debug\net8.0\cp6.platform.wp0208.postgresqltests.dll" id="665d6652-7452-9085-c910-13fbf785bc62">
+      <Execution id="aab78e73-4dba-4dc3-b108-013866140f1d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-08-20261013\tests\CP6.Platform.WP0208.PostgreSqlTests\bin\Debug\net8.0\CP6.Platform.WP0208.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0208.PostgreSqlTests.OutboxTransactionTests" name="Altered_companion_token_or_root_mapping_is_rejected_before_dml" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="f852638e-6ea5-a675-33d1-42d4472ae03e" executionId="d74867ac-f765-4498-a22c-04ca84e291f8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1b04e857-0c51-9d74-e600-8c765aac4048" executionId="43755e87-aa1f-4bcd-8344-5b23d3dd50ea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="665d6652-7452-9085-c910-13fbf785bc62" executionId="aab78e73-4dba-4dc3-b108-013866140f1d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="79e7b0a5-959f-a240-0235-03daa736a633" executionId="1ab45474-24b1-49db-a6cc-50c98874c19a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8735445e-04eb-f460-74b6-72e85d5cd1d0" executionId="2c311589-739e-4506-abff-f22bd0a365e0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="5" executed="5" passed="5" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.16]   Discovering: CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:00.22]   Discovered:  CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:00.24]   Starting:    CP6.Platform.WP0208.PostgreSqlTests&#xD;
+[xUnit.net 00:00:04.62]   Finished:    CP6.Platform.WP0208.PostgreSqlTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

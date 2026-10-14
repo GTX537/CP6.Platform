@@ -1,0 +1,50 @@
+{
+  "observed_utc": "2026-10-14T05:37:14.345136+00:00",
+  "helper_sha256": "de8574d94ccd6bf1a3075fbd1ba5762dcf2350cb68f82229e200b6ece134d634",
+  "python": "3.13.13 (main, May  8 2026, 19:33:50) [MSC v.1944 64 bit (AMD64)]",
+  "checks": [
+    {
+      "check": "Exact live cluster, database OID/owner, marker, runtime principal/privileges and zero sessions",
+      "result": "PASS"
+    },
+    {
+      "check": "Wrong full Owner token",
+      "result": "PASS_EXPECTED_REJECTION"
+    },
+    {
+      "check": "Wrong declared port",
+      "result": "PASS_EXPECTED_REJECTION"
+    },
+    {
+      "check": "Data directory outside exact owned path",
+      "result": "PASS_EXPECTED_REJECTION"
+    },
+    {
+      "check": "Wrong marker",
+      "result": "PASS_EXPECTED_REJECTION"
+    },
+    {
+      "check": "Wrong system identifier",
+      "result": "PASS_EXPECTED_REJECTION"
+    },
+    {
+      "check": "Wrong database OID",
+      "result": "PASS_EXPECTED_REJECTION"
+    },
+    {
+      "check": "Foreign task settings path before any credentials are read",
+      "result": "PASS_EXPECTED_REJECTION"
+    },
+    {
+      "check": "Occupied task port blocks create before resource mutation",
+      "result": "PASS_EXPECTED_REJECTION"
+    },
+    {
+      "check": "Any other live client refuses teardown preflight",
+      "result": "PASS_EXPECTED_REJECTION"
+    }
+  ],
+  "count": 10,
+  "resource_left_running": true,
+  "boundary": "Helper preparation only, no product tests, runtime adoption or business AC execution."
+}

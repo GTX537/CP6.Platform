@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using CP6.Platform.EntityFramework.OutboxV2;
 
 namespace CP6.Platform.EntityFramework;
 
@@ -26,14 +27,17 @@ public sealed class Cp6MessageRetentionService<TContext>
         try
         {
             await using var transaction = await context.Database.BeginTransactionAsync(cancellationToken);
-            var outboxDeleted = await context.Set<Cp6OutboxMessage>()
+            var outbox = await LegacyOutboxFenceV2.Unbound<Cp6OutboxMessage>(context, "Id", cancellationToken);
+            var inbox = await LegacyOutboxFenceV2.Unbound<Cp6InboxMessage>(context, "MessageId", cancellationToken);
+            var deadLetters = await LegacyOutboxFenceV2.Unbound<Cp6DeadLetterRecord>(context, "MessageId", cancellationToken);
+            var outboxDeleted = await outbox
                 .Where(message =>
                     (message.Status == Cp6OutboxStatus.Published &&
                      message.PublishedAtUtc < now.Subtract(options.PublishedOutboxRetention)) ||
                     (message.Status == Cp6OutboxStatus.DeadLettered &&
                      message.DeadLetteredAtUtc < now.Subtract(options.DeadLetterRetention)))
                 .ExecuteDeleteAsync(cancellationToken);
-            var inboxDeleted = await context.Set<Cp6InboxMessage>()
+            var inboxDeleted = await inbox
                 .Where(message =>
                     message.Status == Cp6InboxStatus.Processed &&
                     ((message.OutcomeCode != Cp6InboxProcessingResult.DeadLetteredErrorCode &&
@@ -41,7 +45,7 @@ public sealed class Cp6MessageRetentionService<TContext>
                      (message.OutcomeCode == Cp6InboxProcessingResult.DeadLetteredErrorCode &&
                       message.ProcessedAtUtc < now.Subtract(options.DeadLetterRetention))))
                 .ExecuteDeleteAsync(cancellationToken);
-            var deadLettersDeleted = await context.Set<Cp6DeadLetterRecord>()
+            var deadLettersDeleted = await deadLetters
                 .Where(record => record.CreatedAtUtc < now.Subtract(options.DeadLetterRetention))
                 .ExecuteDeleteAsync(cancellationToken);
             await transaction.CommitAsync(cancellationToken);
