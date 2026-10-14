@@ -29,10 +29,18 @@ public static class HealthAdapterV1
         var paths = new[] { "/ops/v1/live", "/ops/v1/startup", "/ops/v1/ready", "/ops/v1/identity" };
         if (endpoints.DataSources.SelectMany(s => s.Endpoints).OfType<RouteEndpoint>().Any(e => paths.Any(path => Matches(e, path))))
             throw new InvalidOperationException("An operational route is already registered.");
-        endpoints.MapGet(paths[0], () => Results.Json(new { contractVersion = "1.0.0", status = "live" })).RequireAuthorization(runtime.Profile.PermissionPolicy);
+        endpoints.MapGet(paths[0], (HttpContext context) =>
+        {
+            context.Response.Headers.CacheControl = "no-store";
+            return Results.Json(new { contractVersion = "1.0.0", status = "live" });
+        }).RequireAuthorization(runtime.Profile.PermissionPolicy);
         endpoints.MapGet(paths[1], (HttpContext context) => Write(context, runtime, HealthPurposeV1.Startup)).RequireAuthorization(runtime.Profile.PermissionPolicy);
         endpoints.MapGet(paths[2], (HttpContext context) => Write(context, runtime, HealthPurposeV1.Ready)).RequireAuthorization(runtime.Profile.PermissionPolicy);
-        endpoints.MapGet(paths[3], () => Results.Json(runtime.Identity.Observe())).RequireAuthorization(runtime.Profile.PermissionPolicy);
+        endpoints.MapGet(paths[3], (HttpContext context) =>
+        {
+            context.Response.Headers.CacheControl = "no-store";
+            return Results.Json(runtime.Identity.Observe());
+        }).RequireAuthorization(runtime.Profile.PermissionPolicy);
         runtime.ValidateCompletedRoutes = () =>
         {
             if (paths.Any(path => endpoints.DataSources.SelectMany(s => s.Endpoints).OfType<RouteEndpoint>().Count(e => Matches(e, path)) != 1))
