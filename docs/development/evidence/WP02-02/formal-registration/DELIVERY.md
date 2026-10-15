@@ -6,10 +6,18 @@ Main WP02-02 仍为 `BLOCKED / NOT_CHECKED`。最终 producer SHA 为 null，
 只可在 COORD 合入并核对远端 main 后冻结。
 
 分配源：Main `b3eb755bc43e370f697480a6ea41474c3d978488`，Handoff
-`6c44c1f8ffba124b381366adefe41bf86ea924e3`。Platform 起点与本轮最后 fetch 核对的
-origin/main 均为 `66480fe24d51c706708be971e7e9d75a684a3bc4`。
+`6c44c1f8ffba124b381366adefe41bf86ea924e3`。Platform 起点为
+`66480fe24d51c706708be971e7e9d75a684a3bc4`；交付前最新 origin/main 为
+`3b75dde64f702df122a46a7b49c692a53a880ff1`，仅新增/更新 AGENTS、CONTRIBUTING、TESTING 文档。
 任务分支 `codex/wp02-02-formal-registration-20261015`；最终候选提交由 Handoff
 DELIVERY 固定完整 SHA，不在本文件预填自身未来提交。
+
+交付前已读入 Handoff `b64444ccbc8626f29d8110dc988ca8f126ea137f` 的精简规则和
+Main `6b3a70b1c91c274308ff090d1394fa21c1ee470b` 更新执行包。不再新增跨仓诊断、
+重复审查或证据；本文件下列三入口/探针、Architecture 和既有审查均在收到新消息前完成，
+仅保留真实结果。私有 host 于 05:49 UTC 已关闭。新 producer 消费兼容仍未验收，
+留待 WP02-02 实际消费窗口。COORD 已明确 Pkcs 依赖另开修复窗口，本轮可交付候选，
+不得把诊断警告结果写为标准通过；没有扩展共享依赖写权限。
 
 ## 实际改动
 
