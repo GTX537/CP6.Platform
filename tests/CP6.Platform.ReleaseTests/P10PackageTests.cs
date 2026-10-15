@@ -24,7 +24,8 @@ public sealed class P10PackageTests
                 ("0.10.2", "0.10.1", "0.10.2", false),
                 ("0.10.2", "0.10.2", "0.10.1", false),
                 ("0.10.1", "0.10.2", "0.10.2", false),
-                ("0.10.3", "0.10.3", "0.10.3", false),
+                ("0.10.3", "0.10.3", "0.10.3", true),
+                ("0.10.4", "0.10.4", "0.10.4", false),
                 ("0.10.2-preview.1", "0.10.2-preview.1", "0.10.2-preview.1", false),
                 ("0.10.2+build.1", "0.10.2+build.1", "0.10.2+build.1", false),
                 ("00.10.2", "00.10.2", "00.10.2", false),
@@ -105,6 +106,7 @@ public sealed class P10PackageTests
                 or "[Content_Types].xml"
                 or "CP6.Platform.Release.nuspec" ||
             name.StartsWith("contracts/release/v1/", StringComparison.Ordinal) ||
+            name.StartsWith("contracts/release/capabilities/v1/", StringComparison.Ordinal) ||
             name.StartsWith("_rels/", StringComparison.Ordinal) ||
             name.StartsWith("package/", StringComparison.Ordinal),
             $"Unexpected release package entry: {name}"));
