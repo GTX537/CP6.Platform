@@ -1,5 +1,30 @@
 # P10 Release Governance
 
+## WP02-02 0.10.3 registration — NOT_PUBLISHED
+
+The wave8 bounded registration prepares exactly `0.10.3` for a future formal
+publication. Readers retain `0.10.0`, `0.10.1`, and `0.10.2`; normal writers
+accept only `0.10.3`. The new formal capability catalog is limited to
+`ctx-binding-v1/1.0.0`, `ctx-v1`, and Http/Message/Background. Historical formal
+versions retain empty capability lists. An unmeasured consumer remains Unknown.
+This does not qualify native S01-09, Transport, OBS, SLO, or Main adoption.
+
+No formal workflow was run and no stable package was signed or published in
+this registration window. Local TaskLocal prerelease packages are schema test
+inputs only and remain NOT_FORMALLY_TRUSTED. Trust policies, certificates,
+immutable historical publication bytes, development package defaults, audit
+VERSION and existing recovery paths remain unchanged. Historical sections below
+retain their original dated scope; their writer version statements describe
+those releases rather than this new registration.
+
+Final producer source is not yet frozen. COORD must integrate and verify remote
+main before proposing one separately authorized protected workflow execution
+for that exact source and seven `0.10.3` slots. See the
+[task evidence](development/evidence/WP02-02/formal-registration/PLAN.md) for scope,
+local validation and remaining authorization boundaries. Main WP02-02 remains
+BLOCKED / NOT_CHECKED pending formal trust and consumer acceptance.
+
+
 ## C01 immutable 0.10.2 publication — 2026-09-09
 
 The C01 consumer repair is delivered at verified Platform

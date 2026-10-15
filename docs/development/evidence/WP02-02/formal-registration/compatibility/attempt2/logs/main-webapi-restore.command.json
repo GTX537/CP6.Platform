@@ -1,0 +1,21 @@
+{
+  "label": "main-webapi-restore",
+  "argv": [
+    "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+    "restore",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\CP6.WebApi\\CP6.WebApi.csproj",
+    "--configfile",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\NuGet.config",
+    "--packages",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\n",
+    "-p:RestoreLockedMode=false",
+    "-p:RestorePackagesWithLockFile=true",
+    "-p:NuGetLockFilePath=packages.wp02-02.lock.json",
+    "-p:PlatformSnapshot=D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\platform"
+  ],
+  "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59",
+  "log": "logs/main-webapi-restore.log",
+  "exitCode": 0,
+  "elapsedSeconds": 101.843,
+  "logSha256": "a0abff8863285910cfc57ef77388cfbb47d91b3612fa845302ffb96b19987fa0"
+}

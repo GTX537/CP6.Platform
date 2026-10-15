@@ -1,0 +1,146 @@
+{
+  "owner": "e19a9115d0c64d069cd5126ddc4cff59",
+  "files": [
+    {
+      "path": "build-identities.json",
+      "sha256": "5c2a3ba1375134c8a615f78e421bf8dd4bbbd06b7d95a51647440d32b1c8c66f",
+      "bytes": 129306
+    },
+    {
+      "path": "global.json",
+      "sha256": "6e5fc1043095a4055e47f491521d95a733c214d32aaecaf952584637f4a86099",
+      "bytes": 111
+    },
+    {
+      "path": "graph-report.json",
+      "sha256": "8454e36a22e59ee09fc7c75260985f7c2386d2dd52b7cc02404c047b7b79393b",
+      "bytes": 3485078
+    },
+    {
+      "path": "input-manifest.json",
+      "sha256": "77a1d2c6a4369c00564ff706d3ea16ef82137fdb6c83ce4f33b1551a055ff23f",
+      "bytes": 1665
+    },
+    {
+      "path": "pre-runtime-identities.json",
+      "sha256": "1af4a7f352010a4be3cd2e7157937cb001a23586a610fcb2c2242dd78b30e3e8",
+      "bytes": 9377
+    },
+    {
+      "path": "runtime-policy.json",
+      "sha256": "6d60b9a835d6089e1722544505db7e43f6a6ea3afa1784d9d4724f0c3b04e8b6",
+      "bytes": 692
+    },
+    {
+      "path": "snapshot-manifest.json",
+      "sha256": "d949aff9c36f39c4587b54ac4413c55fc1069a2fe366fe66b967328ca788f9e8",
+      "bytes": 4637802
+    },
+    {
+      "path": "state.json",
+      "sha256": "4313e0a2a9e4a319b32c44c36b20214860eeaa641fb5d6f8b226438e42573688",
+      "bytes": 9796
+    },
+    {
+      "path": "logs/database-probe-build-only-build.command.json",
+      "sha256": "867b609d344c3484ceb240e7bfe75eae4676ee4799c61decc955cdeb1c769d48",
+      "bytes": 1033
+    },
+    {
+      "path": "logs/database-probe-build-only-build.log",
+      "sha256": "3db2fba1b5eed134bf0a824669c67672941e6dffc3eb69e09e4874805f062ab4",
+      "bytes": 4980
+    },
+    {
+      "path": "logs/database-probe-build-only-restore.command.json",
+      "sha256": "a65af30fa9cfe829ca8b25e15b6f5c99e92f1be09e605959234ac10092cf6285",
+      "bytes": 1278
+    },
+    {
+      "path": "logs/database-probe-build-only-restore.log",
+      "sha256": "91be543fb442a334447727f0e51d03bf93b8d8da168d189e6431d922508833c4",
+      "bytes": 2359
+    },
+    {
+      "path": "logs/main-webapi-build.command.json",
+      "sha256": "7ab6a058cfa683fdb6b7342328b615019bc38fa322fb9b7cd09c25077ec7074c",
+      "bytes": 955
+    },
+    {
+      "path": "logs/main-webapi-build.log",
+      "sha256": "9ef90dc16a9a33a5ece0138c43f4f0cd7bdbb6e46b27dd475a3bb1cf0659e45d",
+      "bytes": 6516
+    },
+    {
+      "path": "logs/main-webapi-restore.command.json",
+      "sha256": "9dec280ee8493a29ea14bd0bd929c8f7a16f2ae35908777e8f57b048359a07c0",
+      "bytes": 1204
+    },
+    {
+      "path": "logs/main-webapi-restore.log",
+      "sha256": "a0abff8863285910cfc57ef77388cfbb47d91b3612fa845302ffb96b19987fa0",
+      "bytes": 4510
+    },
+    {
+      "path": "logs/private-probe-build.command.json",
+      "sha256": "0438d23989243f79fd45c4af144a8d790de141aae9ac3d9bfed8fcd46beb06a7",
+      "bytes": 932
+    },
+    {
+      "path": "logs/private-probe-build.log",
+      "sha256": "36bf715cac654b683b546d507eab2b43c70802a68aa8538b2ee0758c48b44468",
+      "bytes": 1418
+    },
+    {
+      "path": "logs/private-probe-restore.command.json",
+      "sha256": "2d78c03c07ca5fba18e8d4732526df19fad7f45f404e6d2157af4e65ac678436",
+      "bytes": 1179
+    },
+    {
+      "path": "logs/private-probe-restore.log",
+      "sha256": "14be98ef81c45884ad17f1ef066db47d1f5f3e69a2adce348fac4cc0c20c6455",
+      "bytes": 238
+    },
+    {
+      "path": "logs/private-probe-run.command.json",
+      "sha256": "258466e6730a73babd68162f6e0bf324a4f16511dbd14e02fac20db9c64cc663",
+      "bytes": 777
+    },
+    {
+      "path": "logs/private-probe-run.log",
+      "sha256": "374bee4b51fc15e9b507e06aad46783bce69bb15e0e0d868223db5dbf493a087",
+      "bytes": 100
+    },
+    {
+      "path": "logs/runtime-list.command.json",
+      "sha256": "897bf293f0be9f717c2d95ac1b1f51c559f6f327c6680cdd12e195f5b978df9b",
+      "bytes": 409
+    },
+    {
+      "path": "logs/runtime-list.log",
+      "sha256": "7b9dc6d614384652e6c31c7739e03e4f72015f1fff7c9637dc0dfd8ef10c6b59",
+      "bytes": 263
+    },
+    {
+      "path": "logs/sdk-version.command.json",
+      "sha256": "aa339550dd2ed9d3352effacfdf53c5b25a3e895f1e2271ead50ba0231f039d1",
+      "bytes": 402
+    },
+    {
+      "path": "logs/sdk-version.log",
+      "sha256": "d431370954fffbac8949338e91ab683ed6a5b007f7b58559f609d10572cbe339",
+      "bytes": 9
+    },
+    {
+      "path": "runtime/runtime.json",
+      "sha256": "160e909c3a714f43d25bf1151b1e6fc9fb03a08a364c8399d480fa141d30f69c",
+      "bytes": 25785
+    },
+    {
+      "path": "Directory.Packages.props",
+      "sha256": "17284cb74605517cbec8a8153505da71a685b28694b67b5ef80608cd79b1c0ea",
+      "bytes": 12
+    }
+  ],
+  "scope": "Raw bounded build/graph/runtime evidence; no cache/bin/source exports committed"
+}

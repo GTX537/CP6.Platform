@@ -52,20 +52,26 @@ public sealed class CapabilityTrustTests
         Assert.Equal(0, verifier.Calls);
     }
 
-    [Fact]
-    public void Formal_shape_and_success_claims_do_not_grant_crypto_trust()
+    [Theory]
+    [InlineData("0.10.0")][InlineData("0.10.1")][InlineData("0.10.2")][InlineData("0.10.3")]
+    public void Formal_shape_and_success_claims_do_not_grant_crypto_trust(string version)
     {
-        var f = new FormalFixture();
+        var f = new FormalFixture(version);
         var result = f.Evaluate();
         Assert.Equal(Cp6CapabilityState.Verified, result.ArtifactBytesVerified);
         Assert.Equal(Cp6CapabilityState.Unknown, result.TrustCurrentlyAccepted);
         Assert.Equal(Cp6CompatibilityDecision.Unknown, result.Compatibility);
+        Assert.Equal(Cp6CapabilityState.Unknown, result.ConsumerQualified);
+        Assert.Equal(Cp6CapabilityState.Unknown, result.HostRegistered);
+        Assert.Equal(Cp6CapabilityState.Unknown, result.RuntimeObserved);
+        Assert.Equal(Cp6CapabilityState.Unknown, result.BusinessApplied);
     }
 
-    [Fact]
-    public void Host_boundary_receives_current_policy_exact_bytes_and_evaluation_time()
+    [Theory]
+    [InlineData("0.10.2")][InlineData("0.10.3")]
+    public void Host_boundary_receives_current_policy_exact_bytes_and_evaluation_time(string version)
     {
-        var f = new FormalFixture(); var verifier = new BoundaryVerifier(f, true);
+        var f = new FormalFixture(version); var verifier = new BoundaryVerifier(f, true);
         Assert.Equal(Cp6CapabilityState.Verified, f.Evaluate(verifier).TrustCurrentlyAccepted);
         Assert.Equal(1, verifier.Calls);
         Assert.Equal(Cp6CapabilityState.Unknown, f.Evaluate(new BoundaryVerifier(f, false)).TrustCurrentlyAccepted);
@@ -140,17 +146,19 @@ public sealed class CapabilityTrustTests
 
     private sealed class FormalFixture
     {
-        public Fixture Matrix { get; } = new(formal: true);
+        public Fixture Matrix { get; }
         public TestCertificate Certificate { get; } = FormalCertificateTestData.CreateCertificate();
         public Cp6PinnedNuGetTrustPolicy Policy { get; set; }
         public JsonObject Publication { get; }
         public string? ApprovedPolicyHash { get; set; }
-        public FormalFixture()
+        public FormalFixture(string version = "0.10.2")
         {
+            Matrix = new Fixture(formal: true, formalVersion: version);
+            if (version == "0.10.3") Matrix.Root["capabilities"] = new JsonArray(new Fixture().Root["capabilities"]![1]!.DeepClone());
             var policy = FormalCertificateTestData.CreatePolicy(Certificate);
             Policy = Cp6PinnedNuGetTrustPolicy.Parse(policy.CanonicalBytes(), policy.Certificates);
             Publication = JsonNode.Parse(ReleaseTestData.Fixture("supporting", "formal-package-publication.valid.json"))!.AsObject();
-            Publication["version"] = "0.10.2"; Publication["sourceGitSha"] = Fixture.Source;
+            Publication["version"] = version; Publication["sourceGitSha"] = Fixture.Source;
             Publication["buildInvocationId"] = $"p10-s04:{Fixture.Source}:123:1";
             Publication["workflow"]!["commitSha"] = Fixture.Source; Publication["workflow"]!["runId"] = 123;
             Publication["workflow"]!["runAttempt"] = 1;
@@ -160,7 +168,7 @@ public sealed class CapabilityTrustTests
             for (var i = 0; i < Fixture.Ids.Length; i++)
             {
                 var p = Publication["packages"]![i]!; var m = Matrix.Root["packages"]![i]!;
-                p["version"] = "0.10.2"; p["sourceGitSha"] = Fixture.Source;
+                p["version"] = version; p["sourceGitSha"] = Fixture.Source;
                 p["authorSignedPackageSha256"] = m["sha256"]!.GetValue<string>(); p["publishedPackageSha256"] = m["sha256"]!.GetValue<string>();
                 p["feedIdentity"] = m["feedIdentity"]!.GetValue<string>(); p["signerFingerprint"] = Certificate.Fingerprint;
             }

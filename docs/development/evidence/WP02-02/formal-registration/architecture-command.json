@@ -1,0 +1,20 @@
+{
+  "command": [
+    "C:/Users/tt/.dotnet/dotnet.exe",
+    "test",
+    "tests/CP6.Platform.ArchitectureTests/CP6.Platform.ArchitectureTests.csproj",
+    "-c",
+    "Release",
+    "--logger",
+    "trx;LogFileName=architecture.trx",
+    "--results-directory",
+    "docs/development/evidence/WP02-02/formal-registration/architecture"
+  ],
+  "exitCode": 0,
+  "passed": 98,
+  "failed": 0,
+  "skipped": 0,
+  "diagnosticOverrides": false,
+  "logSha256": "c0a8cfb1a4a98e6228122e50418e9da2eb90f115bae4af2856ab58184eb012b2",
+  "trxSha256": "de75b917d74d83daf210a94a30148ccf1af5d6fdc5d1b846e56859515108b70f"
+}

@@ -1,0 +1,133 @@
+{
+  "sourceRepository": "GTX537/CP6",
+  "sourceCommit": "b3eb755bc43e370f697480a6ea41474c3d978488",
+  "changes": "Exact new producer SHA/tree pins and shorter isolated owner prefix artifacts/w8; no trust change. Main input remains fixed1129953 for producer-delta diagnostic, not current Main acceptance. README commands also updated to the new task path and separate Main repository. After preserved NU1008, run.py adds an owner-local inert Directory.Packages.props boundary with byte verification; one real-MSBuild regression proves parent import blocked but nested Platform central management retained. See runner-boundary-red/green logs.",
+  "files": [
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/.gitattributes",
+      "targetPath": "eng/wp02-02/formal-registration/.gitattributes",
+      "sourceSha256": "e1d2c22ab63eb3c58af8fb2d27ea184665498aaa01494448ca3bcac68dd69851",
+      "targetSha256": "e1d2c22ab63eb3c58af8fb2d27ea184665498aaa01494448ca3bcac68dd69851",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/.gitignore",
+      "targetPath": "eng/wp02-02/formal-registration/.gitignore",
+      "sourceSha256": "99c965767ed4d9eeb147711c016b2426f6815912c2bc8efd02808bdce278e028",
+      "targetSha256": "99c965767ed4d9eeb147711c016b2426f6815912c2bc8efd02808bdce278e028",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/Inspect-Assemblies.ps1",
+      "targetPath": "eng/wp02-02/formal-registration/Inspect-Assemblies.ps1",
+      "sourceSha256": "b4199919d2fc0877619b3f3fe05a43996799788a4470ca421f5bf50ea2993337",
+      "targetSha256": "b4199919d2fc0877619b3f3fe05a43996799788a4470ca421f5bf50ea2993337",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/README.md",
+      "targetPath": "eng/wp02-02/formal-registration/README.md",
+      "sourceSha256": "79f6f58b705ad3c4394d0e83a789406f7a0c2445166bc5e549afad81d697d28b",
+      "targetSha256": "dea4f1193c2e4c1efb08fa452fe284f2e0393c2c2efe102ff2b8eb7e353bb57e",
+      "byteIdentical": false
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/capture_build.py",
+      "targetPath": "eng/wp02-02/formal-registration/capture_build.py",
+      "sourceSha256": "21854a91271070be8e354bb62625a927999e608cbe5e0c8ea81d576be8cedbe5",
+      "targetSha256": "21854a91271070be8e354bb62625a927999e608cbe5e0c8ea81d576be8cedbe5",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/input-manifest.json",
+      "targetPath": "eng/wp02-02/formal-registration/input-manifest.json",
+      "sourceSha256": "c6b12d444616e13eceb0d53ceaceed4d79553cc130abf6fe1752e0049ec0ea21",
+      "targetSha256": "51c8ed09c0568f4f939e86c62cb3333674bb736dc607ff003eb4a2759ad1f677",
+      "byteIdentical": false
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/input.schema.json",
+      "targetPath": "eng/wp02-02/formal-registration/input.schema.json",
+      "sourceSha256": "a560c0de562f38bdb90c189c848ddb7ebc720332d95f9a0bf53a811dd1bfcdeb",
+      "targetSha256": "427b46096a55af64996c54be41ca29f0fedd1676ca000d5e0ae7956db6789ace",
+      "byteIdentical": false
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/inspect_graph.py",
+      "targetPath": "eng/wp02-02/formal-registration/inspect_graph.py",
+      "sourceSha256": "30e27d1299602bcd4efea8df458f40a861fd2c7d142c69926ecb6dadfc0c641d",
+      "targetSha256": "30e27d1299602bcd4efea8df458f40a861fd2c7d142c69926ecb6dadfc0c641d",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/probe/Directory.Build.props",
+      "targetPath": "eng/wp02-02/formal-registration/probe/Directory.Build.props",
+      "sourceSha256": "315a0e580f702ffbc689f8adffd643f4d9a5432d4f2743a9f466d522df5b7fdd",
+      "targetSha256": "315a0e580f702ffbc689f8adffd643f4d9a5432d4f2743a9f466d522df5b7fdd",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/probe/Directory.Build.targets",
+      "targetPath": "eng/wp02-02/formal-registration/probe/Directory.Build.targets",
+      "sourceSha256": "17d71c4344a08c20f0e6ed80c1455bac6ad4f283357060db4f87e1ed3d7e57ce",
+      "targetSha256": "17d71c4344a08c20f0e6ed80c1455bac6ad4f283357060db4f87e1ed3d7e57ce",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/probe/Probe.csproj",
+      "targetPath": "eng/wp02-02/formal-registration/probe/Probe.csproj",
+      "sourceSha256": "da9b79bce315f38b016a2d16996a8e1717e83f649bfe8ea1d2bc4ca055aa88e2",
+      "targetSha256": "da9b79bce315f38b016a2d16996a8e1717e83f649bfe8ea1d2bc4ca055aa88e2",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/probe/Program.cs",
+      "targetPath": "eng/wp02-02/formal-registration/probe/Program.cs",
+      "sourceSha256": "fb6e3f31337191e5220d7180bdc1bfe34cd92f14478a2ffe346eea2a275d5d65",
+      "targetSha256": "fb6e3f31337191e5220d7180bdc1bfe34cd92f14478a2ffe346eea2a275d5d65",
+      "byteIdentical": true
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/run.py",
+      "targetPath": "eng/wp02-02/formal-registration/run.py",
+      "sourceSha256": "e7feb185b813c2ebd6a63b89283774e3676bb2253183accb9dbeee2df49b5afa",
+      "targetSha256": "e61f4a72f3310436bda932ce61f3fa82e5b7fe4cfe0bf70367c630f8ec4389c2",
+      "byteIdentical": false
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/runtime_policy.py",
+      "targetPath": "eng/wp02-02/formal-registration/runtime_policy.py",
+      "sourceSha256": "a7d8d2e2959e4c52412dc8355143eab4201cb240ed1c88d4bc02732d1081804c",
+      "targetSha256": "3a607877b19a7570538d1c6acc5006548cfed2a093ad41e8e0bc61f335dca3a2",
+      "byteIdentical": false
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/snapshot.py",
+      "targetPath": "eng/wp02-02/formal-registration/snapshot.py",
+      "sourceSha256": "2e956e42b76567117f58615667d80684f11d13f7787afce35dd26978e217f2d8",
+      "targetSha256": "c780c010196fe5cb2534f42d097d78c66836f0f9eafbb9eb80474b525bf3506c",
+      "byteIdentical": false
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/tests/test_graph.py",
+      "targetPath": "eng/wp02-02/formal-registration/tests/test_graph.py",
+      "sourceSha256": "cbd3b98e0764e563f692a5711c1aa6418766c868e82ea73293b5e37caf598fc7",
+      "targetSha256": "bdf23194d05c4e5f22a58f7d4550742200266169ff61bcc23abf6130fa7a3402",
+      "byteIdentical": false
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/tests/test_runtime_policy.py",
+      "targetPath": "eng/wp02-02/formal-registration/tests/test_runtime_policy.py",
+      "sourceSha256": "4a160b41eba9e90148bced1e589e94af2d70c281565f4270044e9e95f3d57e9a",
+      "targetSha256": "5b0e896110fd18513a88bcab2f29bb4ac056716bc70a245f454336fd3e257bd5",
+      "byteIdentical": false
+    },
+    {
+      "sourcePath": "eng/wp02-02/consumption-compatibility/tests/test_snapshot.py",
+      "targetPath": "eng/wp02-02/formal-registration/tests/test_snapshot.py",
+      "sourceSha256": "64d169ee36bdc03fd96e40b3801a190f432636a0dffea8c7486314280a479f49",
+      "targetSha256": "9481846050f92cecd95e776344a9f930fe085fa3b43cabdbeef43c862be63dd5",
+      "byteIdentical": false
+    }
+  ]
+}

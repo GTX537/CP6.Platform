@@ -1,0 +1,194 @@
+{
+  "status": "DIAGNOSTIC_ONLY_RED",
+  "note": "Production code changes began only after observing required behavior failures. RED also exposed a test harness global schema registry conflict; later tests use isolated registries. Entire failing count is not attributed to missing production behavior.",
+  "counts": {
+    "total": "90",
+    "executed": "90",
+    "passed": "56",
+    "failed": "34",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "failures": [
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: \"version\", value: \"1.0.1\")",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"0.10.1\", context: True, valid: False)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"0.10.3\", context: True, valid: True)",
+      "kind": "expected-registration-red",
+      "message": "Assert.Null() Failure: Value is not null\r\nExpected: null\r\nActual:   CP6.Platform.Release.Cp6ReleaseContractException: Unknown publication lane or unapproved formal version.\r\n   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\src\\CP6.Platform.Release\\CapabilitiesV1\\Cp6CapabilityValidator.cs:line 39\r\n   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.<>c__DisplayClass6_0.<AssertShape>b__0() in D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\tests\\CP6.Platform.ReleaseTests\\P10FormalRegistrationTests.cs:line 119\r\n   at Xunit.Record.Exception(Func`1 testCode) in /_/src/xunit.core/Record.cs:line 47"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"0.10.0\", context: False, valid: True)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"latest\", context: False, valid: False)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"0.10.4\", context: False, valid: False)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: \"Publish-P10FormalPackageSet\", reader: False)",
+      "kind": "expected-registration-red",
+      "message": "Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.ReleaseSchemaAssetTests.Formal_publication_schema_registers_exactly_the_four_immutable_versions_at_every_layer",
+      "kind": "expected-registration-red",
+      "message": "Assert.Equal() Failure: Collections differ\r\n                                         \u2193 (pos 3)\r\nExpected: [\"0.10.0\", \"0.10.1\", \"0.10.2\", \"0.10.3\"]\r\nActual:   [\"0.10.0\", \"0.10.1\", \"0.10.2\"]"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"0.10.0\", context: True, valid: False)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: \"id\", value: \"OBS\")",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: \"sha256\", value: \"invalid\")",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"0.10.2\", context: False, valid: True)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: \"id\", value: \"Transport\")",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: \"sourceGitSha\", value: \"main\")",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: \"Pack-P10FormalPackages\", reader: False)",
+      "kind": "expected-registration-red",
+      "message": "Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"0.10.3\", context: False, valid: True)",
+      "kind": "expected-registration-red",
+      "message": "Assert.Null() Failure: Value is not null\r\nExpected: null\r\nActual:   CP6.Platform.Release.Cp6ReleaseContractException: Unknown publication lane or unapproved formal version.\r\n   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\src\\CP6.Platform.Release\\CapabilitiesV1\\Cp6CapabilityValidator.cs:line 39\r\n   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.<>c__DisplayClass6_0.<AssertShape>b__0() in D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\tests\\CP6.Platform.ReleaseTests\\P10FormalRegistrationTests.cs:line 119\r\n   at Xunit.Record.Exception(Func`1 testCode) in /_/src/xunit.core/Record.cs:line 47"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"0.10.2\", context: True, valid: False)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: \"New-P10FormalPublicationRecord\", reader: False)",
+      "kind": "expected-registration-red",
+      "message": "Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: \"scope\", value: \"Http\")",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"0.10.3+build.1\", context: True, valid: False)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.FormalPackagePublicationTests.Publication_API_accepts_only_coherent_approved_formal_versions(rootVersion: \"0.10.3\", packageVersion: \"0.10.3\", feedVersion: \"0.10.3\", expected: True)",
+      "kind": "expected-registration-red",
+      "message": "Assert.Null() Failure: Value is not null\r\nExpected: null\r\nActual:   CP6.Platform.Release.Cp6ReleaseContractException: Formal publication version is not approved.\r\n   at CP6.Platform.Release.Cp6FormalPackagePublicationValidator.ValidateFormalPackagePublication(ReadOnlySpan`1 utf8Json, Cp6PinnedNuGetTrustPolicy trustPolicy, DateTimeOffset evaluationUtc) in D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\src\\CP6.Platform.Release\\Cp6FormalPackagePublicationValidator.cs:line 40\r\n   at CP6.Platform.ReleaseTests.FormalPackagePublicationTests.<>c__DisplayClass1_0.<Publication_API_accepts_only_coherent_approved_formal_versions>b__0() in D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\tests\\CP6.Platform.ReleaseTests\\FormalPackagePublicationTests.cs:line 17\r\n   at Xunit."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityTrustTests.Formal_shape_and_success_claims_do_not_grant_crypto_trust(version: \"0.10.3\")",
+      "kind": "expected-registration-red",
+      "message": "CP6.Platform.Release.Cp6ReleaseContractException : Unknown publication lane or unapproved formal version."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.FormalPackagePublicationTests.Publication_Schema_accepts_only_coherent_approved_formal_versions(rootVersion: \"0.10.3\", packageVersion: \"0.10.3\", feedVersion: \"0.10.3\", expected: True)",
+      "kind": "expected-registration-red",
+      "message": "[{\"InstanceLocation\":\"\",\"Errors\":{\"properties\":\"Some properties did not match the required schema: [\\u0022version\\u0022,\\u0022packages\\u0022]\"}},{\"InstanceLocation\":\"/version\",\"Errors\":{\"enum\":\"Value should match one of the values specified by the enum\"}},{\"InstanceLocation\":\"/packages\",\"Errors\":{\"prefixItems\":\"Some prefix items do not match the required schema; failing indexes: [0,1,2,3,4,5,6]\"}},{\"InstanceLocation\":\"/packages/0\",\"Errors\":{\"allOf\":\"Value does not match all of the specified schemas; failing schema indexes: [0,1]\"}},{\"InstanceLocation\":\"/packages/1\",\"Errors\":{\"allOf\":\"Value does not match all of the specified schemas; failing schema indexes: [0,1]\"}},{\"InstanceLocation\":\"/packages/2\",\"Errors\":{\"allOf\":\"Value does not match all of the specified schemas; failing schema indexe"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: \"version\", value: \"0.10.2\")",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: \"New-P10FormalPackageSet\", reader: False)",
+      "kind": "expected-registration-red",
+      "message": "Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: \"feedIdentity\", value: \"https://nuget.pkg.github.com/GTX537/index.json#CP6\"\u00b7\u00b7\u00b7)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: \"profiles\", value: \"ctx-v2\")",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: \"Test-P10FormalPackageSet\", reader: True)",
+      "kind": "expected-registration-red",
+      "message": "Assert.Equal() Failure: Values differ\r\nExpected: True\r\nActual:   False"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: \"Test-P10FormalPrerequisites\", reader: False)",
+      "kind": "expected-registration-red",
+      "message": "Assert.Equal() Failure: Values differ\r\nExpected: False\r\nActual:   True"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: \"id\", value: \"SLO\")",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalWorkflowContractTests.Formal_workflow_is_manual_exact_main_fixed_version_and_protected",
+      "kind": "expected-registration-red",
+      "message": "Assert.Equal() Failure: Values differ\r\nExpected: 2\r\nActual:   0"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: \"id\", value: \"S01-09\")",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: \"0.10.1\", context: False, valid: True)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: \"feedIdentity\", value: \"https://nuget.pkg.github.com/GTX537/index.json#CP6\"\u00b7\u00b7\u00b7)",
+      "kind": "test-harness-schema-registry-conflict",
+      "message": "Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted."
+    }
+  ]
+}

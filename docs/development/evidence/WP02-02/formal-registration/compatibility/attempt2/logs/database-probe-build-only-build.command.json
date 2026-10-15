@@ -1,0 +1,21 @@
+{
+  "label": "database-probe-build-only-build",
+  "argv": [
+    "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+    "build",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\tools\\CP6.DatabaseCompatibility.Probe\\CP6.DatabaseCompatibility.Probe.csproj",
+    "-c",
+    "Release",
+    "--no-restore",
+    "-warnaserror:MSB3277",
+    "-p:RestoreLockedMode=false",
+    "-p:RestorePackagesWithLockFile=true",
+    "-p:NuGetLockFilePath=packages.wp02-02.lock.json",
+    "-p:PlatformSnapshot=D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\platform"
+  ],
+  "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59",
+  "log": "logs/database-probe-build-only-build.log",
+  "exitCode": 0,
+  "elapsedSeconds": 16.426,
+  "logSha256": "3db2fba1b5eed134bf0a824669c67672941e6dffc3eb69e09e4874805f062ab4"
+}

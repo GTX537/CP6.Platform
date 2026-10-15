@@ -1,0 +1,811 @@
+{
+  "actualExecutedProducer": "66480fe24d51c706708be971e7e9d75a684a3bc4",
+  "finalProducerSha": null,
+  "note": "Runtime five-project source/dependency assets unchanged by registration; reuse these exact inputs only. Release schema/API separately tested. Does not restamp execution onto final candidateSHA.",
+  "files": [
+    {
+      "path": "Directory.Build.props",
+      "baselineBlob": "42131cd740450f08305e95b08b855cfb981c022a",
+      "candidateBlob": "42131cd740450f08305e95b08b855cfb981c022a",
+      "equal": true
+    },
+    {
+      "path": "Directory.Packages.props",
+      "baselineBlob": "768d4ae02403f682963025d762ff7ed022a9c18d",
+      "candidateBlob": "768d4ae02403f682963025d762ff7ed022a9c18d",
+      "equal": true
+    },
+    {
+      "path": "NuGet.config",
+      "baselineBlob": "7f55add0ec73ef552270b2fb024d410239c04f71",
+      "candidateBlob": "7f55add0ec73ef552270b2fb024d410239c04f71",
+      "equal": true
+    },
+    {
+      "path": "contracts/contract-bundle.v1.json",
+      "baselineBlob": "02925e1d392c0403969e45b7b52454e3d5b61f20",
+      "candidateBlob": "02925e1d392c0403969e45b7b52454e3d5b61f20",
+      "equal": true
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/missing-required.json",
+      "baselineBlob": "ff36ed86548ffb28aab33c98bb1192d17bce8cb4",
+      "candidateBlob": "ff36ed86548ffb28aab33c98bb1192d17bce8cb4",
+      "equal": true
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/pii-negative.json",
+      "baselineBlob": "7c70fd88e85ca7e7a30a1564c4e368f7f64ae0d6",
+      "candidateBlob": "7c70fd88e85ca7e7a30a1564c4e368f7f64ae0d6",
+      "equal": true
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/unknown-optional.json",
+      "baselineBlob": "48ad61583ecfe558cfa35a33d6f070d4167b2eb7",
+      "candidateBlob": "48ad61583ecfe558cfa35a33d6f070d4167b2eb7",
+      "equal": true
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/valid.json",
+      "baselineBlob": "6d4f8ca387136cdbe7565a09530b17722c813903",
+      "candidateBlob": "6d4f8ca387136cdbe7565a09530b17722c813903",
+      "equal": true
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/wrong-type.json",
+      "baselineBlob": "e8b8e3a5422d28eaa4ff584dace5d363d3da7893",
+      "candidateBlob": "e8b8e3a5422d28eaa4ff584dace5d363d3da7893",
+      "equal": true
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/schema.json",
+      "baselineBlob": "e3d5105a48d4bf4fe04905c19a40484d832d3403",
+      "candidateBlob": "e3d5105a48d4bf4fe04905c19a40484d832d3403",
+      "equal": true
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/assets.v1.json",
+      "baselineBlob": "46ef68ece6ad60ca4f2110d602fdcc1a3b33e741",
+      "candidateBlob": "46ef68ece6ad60ca4f2110d602fdcc1a3b33e741",
+      "equal": true
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/non-candidate-indeterminate.json",
+      "baselineBlob": "843817da35dd878b8a0651bb34acb3d8197a582c",
+      "candidateBlob": "843817da35dd878b8a0651bb34acb3d8197a582c",
+      "equal": true
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/partial-indeterminate.json",
+      "baselineBlob": "b1928fe64896b0afb4c8ace9a4b9f7101640e21b",
+      "candidateBlob": "b1928fe64896b0afb4c8ace9a4b9f7101640e21b",
+      "equal": true
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/pii-negative.json",
+      "baselineBlob": "6c5996f80bca4b97d06234da31f0f8bf69df3949",
+      "candidateBlob": "6c5996f80bca4b97d06234da31f0f8bf69df3949",
+      "equal": true
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/valid-pass.json",
+      "baselineBlob": "183040a3c68970e17a5d2c2c26ca79bdd4491dda",
+      "candidateBlob": "183040a3c68970e17a5d2c2c26ca79bdd4491dda",
+      "equal": true
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/schema.json",
+      "baselineBlob": "c630e46fdc3ce42f01db2c1db0e8e206d84d9ec7",
+      "candidateBlob": "c630e46fdc3ce42f01db2c1db0e8e206d84d9ec7",
+      "equal": true
+    },
+    {
+      "path": "global.json",
+      "baselineBlob": "4c4c3ae5ed709aa83aa03569d2c1f6792c553165",
+      "candidateBlob": "4c4c3ae5ed709aa83aa03569d2c1f6792c553165",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj",
+      "baselineBlob": "33b1a90713ef06f20b60bed1590bdb90b7601614",
+      "candidateBlob": "33b1a90713ef06f20b60bed1590bdb90b7601614",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/BackgroundContextExecutorV1.cs",
+      "baselineBlob": "00b2d113c47f243549ad345df1464255a0fa931b",
+      "candidateBlob": "00b2d113c47f243549ad345df1464255a0fa931b",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextBindingValidatorV1.cs",
+      "baselineBlob": "20d0d50bfafabdb2c5288cb4e0b09717b7d95e5f",
+      "candidateBlob": "20d0d50bfafabdb2c5288cb4e0b09717b7d95e5f",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextBoundariesV1.cs",
+      "baselineBlob": "6170302e84e5dcf43ea67dbb96f46b45a115fb4d",
+      "candidateBlob": "6170302e84e5dcf43ea67dbb96f46b45a115fb4d",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextScopeAccessorV1.cs",
+      "baselineBlob": "534ffeb5705a4d3cdadc6e7021f4796e17315fbe",
+      "candidateBlob": "534ffeb5705a4d3cdadc6e7021f4796e17315fbe",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/TrustedContextExecutorV1.cs",
+      "baselineBlob": "94840cf64832d30af6455e833625a74d000deda8",
+      "candidateBlob": "94840cf64832d30af6455e833625a74d000deda8",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Cp6TelemetryConventions.cs",
+      "baselineBlob": "62f978b5e127ae9b638f1874f35f8fcd564e291d",
+      "candidateBlob": "62f978b5e127ae9b638f1874f35f8fcd564e291d",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/ICp6ReleaseIdentityAccessor.cs",
+      "baselineBlob": "4dbe8d9577e8a1edec486ffa04cecbb43e8fc0dd",
+      "candidateBlob": "4dbe8d9577e8a1edec486ffa04cecbb43e8fc0dd",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/IRequestContext.cs",
+      "baselineBlob": "70f93074560ea45c76d01ab1d98a85a2be8e47cf",
+      "candidateBlob": "70f93074560ea45c76d01ab1d98a85a2be8e47cf",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/IRequestContextAccessor.cs",
+      "baselineBlob": "97b178a4f0ee3fc2c55fdba19b6736908e2f51bb",
+      "candidateBlob": "97b178a4f0ee3fc2c55fdba19b6736908e2f51bb",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/RequestContext.cs",
+      "baselineBlob": "d24138b2770232013e1edb09001d35dc443d9eb9",
+      "candidateBlob": "d24138b2770232013e1edb09001d35dc443d9eb9",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj",
+      "baselineBlob": "3b66a813bbab6ccf723ee7e12c9492389062040c",
+      "candidateBlob": "3b66a813bbab6ccf723ee7e12c9492389062040c",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Context/TrustedRequestContextExtensionsV1.cs",
+      "baselineBlob": "aafabad8ae1c1c9ca7a4a193dd2807f975bbd100",
+      "candidateBlob": "aafabad8ae1c1c9ca7a4a193dd2807f975bbd100",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Context/TrustedRequestContextMiddlewareV1.cs",
+      "baselineBlob": "88f27f9dd56aaca8ff42225986b179fae0bf6222",
+      "candidateBlob": "88f27f9dd56aaca8ff42225986b179fae0bf6222",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationId.cs",
+      "baselineBlob": "ed1daf3e0183f1915bd291dd1448ddb1ba9ca7da",
+      "candidateBlob": "ed1daf3e0183f1915bd291dd1448ddb1ba9ca7da",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationMiddleware.cs",
+      "baselineBlob": "e76fcdda92998e4ecf085714d704276900875b54",
+      "candidateBlob": "e76fcdda92998e4ecf085714d704276900875b54",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayExtensions.cs",
+      "baselineBlob": "0c5152addd12280e4ab9e1df6e4f83a8149a78b8",
+      "candidateBlob": "0c5152addd12280e4ab9e1df6e4f83a8149a78b8",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayHeaders.cs",
+      "baselineBlob": "9177761c186e781124d11a94bc8b45fc6c59a80d",
+      "candidateBlob": "9177761c186e781124d11a94bc8b45fc6c59a80d",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayProfile.cs",
+      "baselineBlob": "d66c5c220a939802b0c96c11baabf8a13b042bd5",
+      "candidateBlob": "d66c5c220a939802b0c96c11baabf8a13b042bd5",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpFailureCategory.cs",
+      "baselineBlob": "ece492312eb7989c664921469b686d4f1086a886",
+      "candidateBlob": "ece492312eb7989c664921469b686d4f1086a886",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpOperationKind.cs",
+      "baselineBlob": "f1ba18d8425781e2ed83bfc62322066948949667",
+      "candidateBlob": "f1ba18d8425781e2ed83bfc62322066948949667",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceException.cs",
+      "baselineBlob": "a43c3f9a4a426c72665eb0aa4fcf91cfabb5a30c",
+      "candidateBlob": "a43c3f9a4a426c72665eb0aa4fcf91cfabb5a30c",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceProfile.cs",
+      "baselineBlob": "73ab6f7c5aee2980b5d9e8f7b3cfa90b10e8eb8a",
+      "candidateBlob": "73ab6f7c5aee2980b5d9e8f7b3cfa90b10e8eb8a",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceServiceCollectionExtensions.cs",
+      "baselineBlob": "6700da329bf5974f6b72ecd238b8c4b0d35c2fde",
+      "candidateBlob": "6700da329bf5974f6b72ecd238b8c4b0d35c2fde",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtBearerExtensions.cs",
+      "baselineBlob": "0a0a70c79b631e68fdb6f0877328373419982a54",
+      "candidateBlob": "0a0a70c79b631e68fdb6f0877328373419982a54",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtBearerProfile.cs",
+      "baselineBlob": "61f5681f979fce6bdc82efd58b470e712e0e4ce9",
+      "candidateBlob": "61f5681f979fce6bdc82efd58b470e712e0e4ce9",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtClaimsValidator.cs",
+      "baselineBlob": "9335e3be72d896d53611af075e329837c3dc7178",
+      "candidateBlob": "9335e3be72d896d53611af075e329837c3dc7178",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtConfigurationManager.cs",
+      "baselineBlob": "ee2baaa9dfc714eb95a842a45c044044bd83f54e",
+      "candidateBlob": "ee2baaa9dfc714eb95a842a45c044044bd83f54e",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ObservabilityProfile.cs",
+      "baselineBlob": "2c254df083f538afaaa82e4b16d19c3d7ab173af",
+      "candidateBlob": "2c254df083f538afaaa82e4b16d19c3d7ab173af",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs",
+      "baselineBlob": "f272165bcfd916ab1f64adae8150362a219eb1ae",
+      "candidateBlob": "f272165bcfd916ab1f64adae8150362a219eb1ae",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointProfile.cs",
+      "baselineBlob": "8a40171b24772090cf2ecd9f208e73790f67f00b",
+      "candidateBlob": "8a40171b24772090cf2ecd9f208e73790f67f00b",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointRouteBuilderExtensions.cs",
+      "baselineBlob": "9c0ed1c129c15016b379f486054c96be0512de46",
+      "candidateBlob": "9c0ed1c129c15016b379f486054c96be0512de46",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OutboundCorrelationHandler.cs",
+      "baselineBlob": "b67e2c42616c13a15c59b6f6172e51e5968bd321",
+      "candidateBlob": "b67e2c42616c13a15c59b6f6172e51e5968bd321",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ProblemDetailsExtensions.cs",
+      "baselineBlob": "917652346ac660570b91eb0f1863f08d017ccdc5",
+      "candidateBlob": "917652346ac660570b91eb0f1863f08d017ccdc5",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ReleaseIdentityAccessor.cs",
+      "baselineBlob": "02d0950d435cc0893ea1d75aa7f18f2c256cf97c",
+      "candidateBlob": "02d0950d435cc0893ea1d75aa7f18f2c256cf97c",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6SafeHealthResponseWriter.cs",
+      "baselineBlob": "92f70fb5c8018ea5aafa2258bc27de703c3675df",
+      "candidateBlob": "92f70fb5c8018ea5aafa2258bc27de703c3675df",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6TraceContextDistributedPropagator.cs",
+      "baselineBlob": "6a2eadb767e276e3dd329a28678db8571a9f3627",
+      "candidateBlob": "6a2eadb767e276e3dd329a28678db8571a9f3627",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpDeadline.cs",
+      "baselineBlob": "6a8a1a1ac686f7732ebe7e9ff84d8ca0da16db63",
+      "candidateBlob": "6a8a1a1ac686f7732ebe7e9ff84d8ca0da16db63",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpOperationBinding.cs",
+      "baselineBlob": "3dc528354db7c82a3fd1890c62bcec79f14627c6",
+      "candidateBlob": "3dc528354db7c82a3fd1890c62bcec79f14627c6",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Handler.cs",
+      "baselineBlob": "4878e18b56c99c0f38b682dce94a5775c9769aa2",
+      "candidateBlob": "4878e18b56c99c0f38b682dce94a5775c9769aa2",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Outcome.cs",
+      "baselineBlob": "5931b71d88940f302ba9213b2ab034f2ca43323c",
+      "candidateBlob": "5931b71d88940f302ba9213b2ab034f2ca43323c",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Profile.cs",
+      "baselineBlob": "1ba369e617eea179f85c8933ddc96ea81ad06563",
+      "candidateBlob": "1ba369e617eea179f85c8933ddc96ea81ad06563",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Registration.cs",
+      "baselineBlob": "b61d17e23aee15ca6e896e3be397e8a7ea488315",
+      "candidateBlob": "b61d17e23aee15ca6e896e3be397e8a7ea488315",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6RetryAfter.cs",
+      "baselineBlob": "49d2809f218f536bc4e6594648ddb68961fcbc8a",
+      "candidateBlob": "49d2809f218f536bc4e6594648ddb68961fcbc8a",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6RetryDecision.cs",
+      "baselineBlob": "4cd9306cca0cce596fd4a3a14249e746a16d86bf",
+      "candidateBlob": "4cd9306cca0cce596fd4a3a14249e746a16d86bf",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6SafeProblemPolicy.cs",
+      "baselineBlob": "33e3e0d14009b2d3ca9cd8d7518ee48c4d12f2b6",
+      "candidateBlob": "33e3e0d14009b2d3ca9cd8d7518ee48c4d12f2b6",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6SafeProblemWriter.cs",
+      "baselineBlob": "8992ec45cc160b71ee3561522c2e354d488aa691",
+      "candidateBlob": "8992ec45cc160b71ee3561522c2e354d488aa691",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/IRequestContextResolver.cs",
+      "baselineBlob": "db5278fddcb5bdc8d124f7ef0c24467a9cb8ff32",
+      "candidateBlob": "db5278fddcb5bdc8d124f7ef0c24467a9cb8ff32",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/ObservabilityV1/HealthAdapterV1.cs",
+      "baselineBlob": "0d7bcd2d0bcc7d08367435d14eb74c344d96ea26",
+      "candidateBlob": "0d7bcd2d0bcc7d08367435d14eb74c344d96ea26",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/ObservabilityV1/LocalTelemetrySinkV1.cs",
+      "baselineBlob": "114dbad67cbc4de85889e3bb07088f6a59be0bf6",
+      "candidateBlob": "114dbad67cbc4de85889e3bb07088f6a59be0bf6",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/ObservabilityV1/ObservabilityRuntimeV1.cs",
+      "baselineBlob": "f039e9c3c0f5215c0ec9d845153483d25366ceb4",
+      "candidateBlob": "f039e9c3c0f5215c0ec9d845153483d25366ceb4",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/ObservabilityV1/OwnedModuleObserverV1.cs",
+      "baselineBlob": "78d5c44fc8d3773d8c6fc9b32f5241584f999ccd",
+      "candidateBlob": "78d5c44fc8d3773d8c6fc9b32f5241584f999ccd",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/ObservabilityV1/PropagationLeaseV1.cs",
+      "baselineBlob": "1d2e86bf2c76cf99d66efe2009f08274909bde3d",
+      "candidateBlob": "1d2e86bf2c76cf99d66efe2009f08274909bde3d",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextAccessor.cs",
+      "baselineBlob": "7af3466100101f218ce0fb888be62f27008c8e23",
+      "candidateBlob": "7af3466100101f218ce0fb888be62f27008c8e23",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextExtensions.cs",
+      "baselineBlob": "de71430519928fb305826223ec5a46ad63f51bbb",
+      "candidateBlob": "de71430519928fb305826223ec5a46ad63f51bbb",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextMiddleware.cs",
+      "baselineBlob": "efcf240e6ead009566b647b5c69b82d2b2e578f0",
+      "candidateBlob": "efcf240e6ead009566b647b5c69b82d2b2e578f0",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj",
+      "baselineBlob": "9ce69da3bb822a9adf040e13638d6e7e705755cf",
+      "candidateBlob": "9ce69da3bb822a9adf040e13638d6e7e705755cf",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Context/ContextContractsV1.cs",
+      "baselineBlob": "b0d306b08c10780b1928a5273af902c96d41a09c",
+      "candidateBlob": "b0d306b08c10780b1928a5273af902c96d41a09c",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6ProblemDefinition.cs",
+      "baselineBlob": "fdd17003e978a024c4ed0c2d197e4abd3de9c3b9",
+      "candidateBlob": "fdd17003e978a024c4ed0c2d197e4abd3de9c3b9",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6Problems.cs",
+      "baselineBlob": "6ed4b309d10c995407b60e009ecfbf600b53534e",
+      "candidateBlob": "6ed4b309d10c995407b60e009ecfbf600b53534e",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6ReleaseIdentity.cs",
+      "baselineBlob": "6e2f4451d835fa2958b373d2ad1047a199f71e8f",
+      "candidateBlob": "6e2f4451d835fa2958b373d2ad1047a199f71e8f",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6SloEvidenceDocument.cs",
+      "baselineBlob": "a6e9df9aeab112ff4b94578be6247cf066bacadb",
+      "candidateBlob": "a6e9df9aeab112ff4b94578be6247cf066bacadb",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6SloEvidenceEvaluator.cs",
+      "baselineBlob": "90667b6dd48d94986509bcadefd027e77e4ea815",
+      "candidateBlob": "90667b6dd48d94986509bcadefd027e77e4ea815",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/ObservabilityV1/HealthCheckBindingV1.cs",
+      "baselineBlob": "e377c2267b6b8190c080cf87f048009727c588f0",
+      "candidateBlob": "e377c2267b6b8190c080cf87f048009727c588f0",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/ObservabilityV1/MetricDefinitionV1.cs",
+      "baselineBlob": "e806790ee0beff1ac8176c9c1ad0d610999f2dad",
+      "candidateBlob": "e806790ee0beff1ac8176c9c1ad0d610999f2dad",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/ObservabilityV1/RuntimeIdentityBindingV1.cs",
+      "baselineBlob": "2b9de73fb5a5c90a77620994a460bbf5915cccb7",
+      "candidateBlob": "2b9de73fb5a5c90a77620994a460bbf5915cccb7",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/ObservabilityV1/TelemetryLimitsV1.cs",
+      "baselineBlob": "1b35e5772afe60d76385d266f26dec2dfcebe9d5",
+      "candidateBlob": "1b35e5772afe60d76385d266f26dec2dfcebe9d5",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/ObservabilityV1/TelemetryPolicyV1.cs",
+      "baselineBlob": "10d04a91e3ae3abff6ba961f969b412276179a04",
+      "candidateBlob": "10d04a91e3ae3abff6ba961f969b412276179a04",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/RequestContextSnapshot.cs",
+      "baselineBlob": "82f216485550e233bca4b2641cf17905df2c059a",
+      "candidateBlob": "82f216485550e233bca4b2641cf17905df2c059a",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/SloQualificationV1/ExactNumber.cs",
+      "baselineBlob": "d7b446e98d66fc0514f1cae904efb5d2ce34b17b",
+      "candidateBlob": "d7b446e98d66fc0514f1cae904efb5d2ce34b17b",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/SloQualificationV1/SloQualifier.cs",
+      "baselineBlob": "4bac0184d28f5026bf0bd95a69c2159def3fe0ce",
+      "candidateBlob": "4bac0184d28f5026bf0bd95a69c2159def3fe0ce",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj",
+      "baselineBlob": "30b7857046279e978db3e12d443d65bdecc242fb",
+      "candidateBlob": "30b7857046279e978db3e12d443d65bdecc242fb",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6EntityFrameworkTelemetry.cs",
+      "baselineBlob": "fb18dce0809563bc366e9b8baa90f0acff5a5c89",
+      "candidateBlob": "fb18dce0809563bc366e9b8baa90f0acff5a5c89",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6InboxProcessor.cs",
+      "baselineBlob": "de4b9aa3d8366aa70dded6ebfa498380e4908410",
+      "candidateBlob": "de4b9aa3d8366aa70dded6ebfa498380e4908410",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6MessageRetentionService.cs",
+      "baselineBlob": "126b82ab0382966913e579127b4b0eef2e5e3d62",
+      "candidateBlob": "126b82ab0382966913e579127b4b0eef2e5e3d62",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6OutboxDispatcher.cs",
+      "baselineBlob": "d74a85939bfafe8c7c0cc9d440c76d7a78b51b6e",
+      "candidateBlob": "d74a85939bfafe8c7c0cc9d440c76d7a78b51b6e",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6OutboxStore.cs",
+      "baselineBlob": "5d7de9eecb6e0f0f9369bcee42ef34fd36631b5c",
+      "candidateBlob": "5d7de9eecb6e0f0f9369bcee42ef34fd36631b5c",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingEntities.cs",
+      "baselineBlob": "98f2018c17ecb39e9e990fa3feff6bf9ea881a67",
+      "candidateBlob": "98f2018c17ecb39e9e990fa3feff6bf9ea881a67",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingModelBuilderExtensions.cs",
+      "baselineBlob": "5459f5f3896a8bf9346466659b7124aabdde9662",
+      "candidateBlob": "5459f5f3896a8bf9346466659b7124aabdde9662",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingTypes.cs",
+      "baselineBlob": "f9160b6ca6e86774b609d3b2142dc0894d882c0a",
+      "candidateBlob": "f9160b6ca6e86774b609d3b2142dc0894d882c0a",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/CallerTransactionInboxV1.cs",
+      "baselineBlob": "f0a22e4de8cecdd7985a857b89a90feb5049da84",
+      "candidateBlob": "f0a22e4de8cecdd7985a857b89a90feb5049da84",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxContractsV1.cs",
+      "baselineBlob": "ef70330786e729c09128d1c2bf8712e06f53a42f",
+      "candidateBlob": "ef70330786e729c09128d1c2bf8712e06f53a42f",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxModelV1.cs",
+      "baselineBlob": "aed8024a4333e4926665cc3842df3ada6fb5adf9",
+      "candidateBlob": "aed8024a4333e4926665cc3842df3ada6fb5adf9",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxTransactionV1.cs",
+      "baselineBlob": "2f8cb604fef3aae87c36bac07f309d4cda1f2776",
+      "candidateBlob": "2f8cb604fef3aae87c36bac07f309d4cda1f2776",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/CallerTransactionOutboxV2.cs",
+      "baselineBlob": "464bde84607c8abf62ab6e43dbad96c29d66d1b3",
+      "candidateBlob": "464bde84607c8abf62ab6e43dbad96c29d66d1b3",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/LegacyOutboxFenceV2.cs",
+      "baselineBlob": "2c3079e862bfb777cbbee1b88b6cce93baecdab7",
+      "candidateBlob": "2c3079e862bfb777cbbee1b88b6cce93baecdab7",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxContractsV2.cs",
+      "baselineBlob": "fd4efd60aa06dc4dc05c14369f62fe54bfc928f2",
+      "candidateBlob": "fd4efd60aa06dc4dc05c14369f62fe54bfc928f2",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxDispatcherV2.cs",
+      "baselineBlob": "b9c8e8a66c53db2dd4ae43a5e32f133bcb79e2e0",
+      "candidateBlob": "b9c8e8a66c53db2dd4ae43a5e32f133bcb79e2e0",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxLifecycleV2.cs",
+      "baselineBlob": "a21a0f07b4ae8433e37877d3c617c50bf4269278",
+      "candidateBlob": "a21a0f07b4ae8433e37877d3c617c50bf4269278",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxModelV2.cs",
+      "baselineBlob": "4a53857b9488d15e749da9cc4b3521e28978ad40",
+      "candidateBlob": "4a53857b9488d15e749da9cc4b3521e28978ad40",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxPostgreSqlV2.cs",
+      "baselineBlob": "634431e1a6b1fed910bddc002fe1a110dfbce266",
+      "candidateBlob": "634431e1a6b1fed910bddc002fe1a110dfbce266",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxTransactionV2.cs",
+      "baselineBlob": "2030d8190daf232570b941932acb861ffd8e98c6",
+      "candidateBlob": "2030d8190daf232570b941932acb861ffd8e98c6",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/TransportV1/TransportOutboxPublisherV1.cs",
+      "baselineBlob": "7bf9defe72a9022f5b3efce027ab3dabfaed2f9b",
+      "candidateBlob": "7bf9defe72a9022f5b3efce027ab3dabfaed2f9b",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj",
+      "baselineBlob": "0a735078a1562db562d72998172bd63cf6ab8934",
+      "candidateBlob": "0a735078a1562db562d72998172bd63cf6ab8934",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Context/MessageContextExecutorV1.cs",
+      "baselineBlob": "0e14ef0cd8145ac2d98684fa45979bb85a8c6fae",
+      "candidateBlob": "0e14ef0cd8145ac2d98684fa45979bb85a8c6fae",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventAttributes.cs",
+      "baselineBlob": "5fba25d9839569e6a2dc0a0723624ad11a0663fa",
+      "candidateBlob": "5fba25d9839569e6a2dc0a0723624ad11a0663fa",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventCodec.cs",
+      "baselineBlob": "96173bddcbab9c1bc8acf28ba7fcf701d93370a3",
+      "candidateBlob": "96173bddcbab9c1bc8acf28ba7fcf701d93370a3",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventDescriptor.cs",
+      "baselineBlob": "66535c45a4e1180ec7624e608c73be3eca76bf27",
+      "candidateBlob": "66535c45a4e1180ec7624e608c73be3eca76bf27",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventValidator.cs",
+      "baselineBlob": "08f06fc2c3f648c674aaef24211a8e0b94c3368f",
+      "candidateBlob": "08f06fc2c3f648c674aaef24211a8e0b94c3368f",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6ContractBundle.cs",
+      "baselineBlob": "b06f0b912c3f0af869b00e54d4173b01d0426599",
+      "candidateBlob": "b06f0b912c3f0af869b00e54d4173b01d0426599",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprDeliveryValidator.cs",
+      "baselineBlob": "d0dcfcc10bd6fd8d38d39dcd095fc6fb4185cd01",
+      "candidateBlob": "d0dcfcc10bd6fd8d38d39dcd095fc6fb4185cd01",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprEventPublisher.cs",
+      "baselineBlob": "096eb7dba54bf118e46a618e614bf6213927cc70",
+      "candidateBlob": "096eb7dba54bf118e46a618e614bf6213927cc70",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprKafkaConventions.cs",
+      "baselineBlob": "b7923d2b307e1e527d375cb438e278198bd08276",
+      "candidateBlob": "b7923d2b307e1e527d375cb438e278198bd08276",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprServiceInvoker.cs",
+      "baselineBlob": "5e2ae20a3de6bb1b958ff83889c0e5994a0a7f9f",
+      "candidateBlob": "5e2ae20a3de6bb1b958ff83889c0e5994a0a7f9f",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprTransport.cs",
+      "baselineBlob": "95b1fe4c722af54eb9399cb0b936e08de33d0039",
+      "candidateBlob": "95b1fe4c722af54eb9399cb0b936e08de33d0039",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6EventContractIdentity.cs",
+      "baselineBlob": "58787dfbd8a821c07c682a509f1af6e75acab8c9",
+      "candidateBlob": "58787dfbd8a821c07c682a509f1af6e75acab8c9",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6EventValidationResult.cs",
+      "baselineBlob": "6d444617be10e44e5e0c09c80be6e1c84d1cc483",
+      "candidateBlob": "6d444617be10e44e5e0c09c80be6e1c84d1cc483",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6MessagingTelemetry.cs",
+      "baselineBlob": "56c90d45093f7ee3ef18c94c20b1affef7074f8f",
+      "candidateBlob": "56c90d45093f7ee3ef18c94c20b1affef7074f8f",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6SchemaCompatibility.cs",
+      "baselineBlob": "580e456dff89177e97b70c663207d13a4490c4c7",
+      "candidateBlob": "580e456dff89177e97b70c663207d13a4490c4c7",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6TraceContextCodec.cs",
+      "baselineBlob": "09b98835b20bd430579662eae320e2293c40fd63",
+      "candidateBlob": "09b98835b20bd430579662eae320e2293c40fd63",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/ICp6DaprTransport.cs",
+      "baselineBlob": "0f120b3dd7b365c6f17b0552a7b53e7cc830bcd7",
+      "candidateBlob": "0f120b3dd7b365c6f17b0552a7b53e7cc830bcd7",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6NativeContractCatalog.cs",
+      "baselineBlob": "0436729bb3f3dd8131dd35fab38d0005f7d8f968",
+      "candidateBlob": "0436729bb3f3dd8131dd35fab38d0005f7d8f968",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6NativeJson.cs",
+      "baselineBlob": "54517ba4810e61c99a80563abc1fa273d20f513f",
+      "candidateBlob": "54517ba4810e61c99a80563abc1fa273d20f513f",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6OriginalJson.cs",
+      "baselineBlob": "b52fcc9fd98294896a09c2c70763d95c19e7fabb",
+      "candidateBlob": "b52fcc9fd98294896a09c2c70763d95c19e7fabb",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/TransportV1/TransportContractsV1.cs",
+      "baselineBlob": "001c9cb1e012c7fe586bae1c21c36e1b00f01bc1",
+      "candidateBlob": "001c9cb1e012c7fe586bae1c21c36e1b00f01bc1",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/TransportV1/TransportRegistryV1.cs",
+      "baselineBlob": "982c56f3202e5430ca5af436c2e3126dd650e543",
+      "candidateBlob": "982c56f3202e5430ca5af436c2e3126dd650e543",
+      "equal": true
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/TransportV1/TransportRouteV1.cs",
+      "baselineBlob": "d4deab0f82da1cada00e9d1d1aa919f5af4ea112",
+      "candidateBlob": "d4deab0f82da1cada00e9d1d1aa919f5af4ea112",
+      "equal": true
+    }
+  ]
+}

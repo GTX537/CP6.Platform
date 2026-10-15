@@ -258,9 +258,9 @@ public sealed class CapabilityValidationTests
         internal string EvidenceHash { get; }
         internal byte[] Bytes => Canonical(Root);
         internal Cp6CapabilityApproval Approval => new(Cp6DeterministicJson.Sha256Hex(Bytes), Source);
-        internal Fixture(bool formal = false, string packagedSchemaPath = "contracts/test.schema.json")
+        internal Fixture(bool formal = false, string packagedSchemaPath = "contracts/test.schema.json", string formalVersion = "0.10.2")
         {
-            var version = formal ? "0.10.2" : Version;
+            var version = formal ? formalVersion : Version;
             byte[] evidence = Encoding.UTF8.GetBytes("synthetic unit test evidence; not a real consumer qualification");
             EvidenceHash = Cp6DeterministicJson.Sha256Hex(evidence); Evidence[EvidenceHash] = evidence;
             var packages = new JsonArray();

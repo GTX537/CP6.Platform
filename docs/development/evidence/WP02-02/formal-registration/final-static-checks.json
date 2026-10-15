@@ -1,0 +1,20 @@
+{
+  "observedUtc": "2026-10-15T06:08:24.197499+00:00",
+  "filesScanned": 180,
+  "credentialPatternMatches": [],
+  "workflowChanges": "Only exact0.10.2 to0.10.3 version text; no event/permission/environment/gate changes",
+  "workflowCheckoutSha256": "5434075d849f2bf6b2bc0719eec780ec47a37914daf46e814f24c6f2287912bf",
+  "allEightWorkflowEventsChecked": 8,
+  "automaticPrPathsTouched": [],
+  "changedCountBelow300": true,
+  "actionRunsStarted": false,
+  "initialStagedDiffCheck": {
+    "result": "FAIL",
+    "reason": "Raw CRLF evidence committed with -text was treated as trailing whitespace; source code was not the cause.",
+    "example": "architecture-command.json:1 trailing whitespace (CRLF preserved)"
+  },
+  "finalStagedDiffCheck": {
+    "exitCode": 0,
+    "evidenceAttributes": "Task evidence json/log/trx/xml/diff/props/txt keep original bytes and disable whitespace lint for raw evidence only. Source-code whitespace checks remain active."
+  }
+}

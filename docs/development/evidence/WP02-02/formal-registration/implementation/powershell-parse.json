@@ -1,0 +1,32 @@
+[
+  {
+    "script": "eng/p10/Test-P10FormalPrerequisites.ps1",
+    "parseErrors": 0,
+    "sha256": "5f0f37ca4d1032849649b723a0e89a99a90a70ccacff581597718d7b14d1e505"
+  },
+  {
+    "script": "eng/p10/Pack-P10FormalPackages.ps1",
+    "parseErrors": 0,
+    "sha256": "294e84d110fae3d57403c7fa9e67782728b2532db055f7592a783a7425404b2e"
+  },
+  {
+    "script": "eng/p10/New-P10FormalPackageSet.ps1",
+    "parseErrors": 0,
+    "sha256": "9fc26d347b151475ff6a6303592e87e21e3bf6ddf636975e5c989eb8fa324832"
+  },
+  {
+    "script": "eng/p10/Publish-P10FormalPackageSet.ps1",
+    "parseErrors": 0,
+    "sha256": "72553befec751e8cf992289ed99d65e701652e43a3097451c333f6e0141496c2"
+  },
+  {
+    "script": "eng/p10/New-P10FormalPublicationRecord.ps1",
+    "parseErrors": 0,
+    "sha256": "8ce15e8e479b088b89e62503d72fbf985d111c4dbac353336cfa05cb3dee9cce"
+  },
+  {
+    "script": "eng/p10/Test-P10FormalPackageSet.ps1",
+    "parseErrors": 0,
+    "sha256": "79d45cb4515ae5f865e670aa802c08e49bdeb61fa99d037f568e3db60c751c53"
+  }
+]

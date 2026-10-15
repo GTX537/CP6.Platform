@@ -1,0 +1,21 @@
+{
+  "label": "private-probe-restore",
+  "argv": [
+    "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+    "restore",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\probe\\Probe.csproj",
+    "--configfile",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\main\\NuGet.config",
+    "--packages",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\n",
+    "-p:RestoreLockedMode=false",
+    "-p:RestorePackagesWithLockFile=true",
+    "-p:NuGetLockFilePath=packages.wp02-02.lock.json",
+    "-p:PlatformSnapshot=D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\platform"
+  ],
+  "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76",
+  "log": "logs/private-probe-restore.log",
+  "exitCode": 0,
+  "elapsedSeconds": 3.151,
+  "logSha256": "b572941d9d6aca714019ee74b98d5e90b37ddde9fa97ad31f910c88281fbc929"
+}

@@ -1,0 +1,16 @@
+{
+  "label": "private-probe-run",
+  "argv": [
+    "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\probe\\bin\\Release\\net8.0\\Probe.dll",
+    "--owner",
+    "e19a9115d0c64d069cd5126ddc4cff59",
+    "--output",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\runtime\\runtime.json"
+  ],
+  "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59",
+  "log": "logs/private-probe-run.log",
+  "exitCode": 0,
+  "elapsedSeconds": 3.172,
+  "logSha256": "374bee4b51fc15e9b507e06aad46783bce69bb15e0e0d868223db5dbf493a087"
+}

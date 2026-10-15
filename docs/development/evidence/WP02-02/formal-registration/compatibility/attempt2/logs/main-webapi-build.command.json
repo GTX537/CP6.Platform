@@ -1,0 +1,21 @@
+{
+  "label": "main-webapi-build",
+  "argv": [
+    "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+    "build",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\CP6.WebApi\\CP6.WebApi.csproj",
+    "-c",
+    "Release",
+    "--no-restore",
+    "-warnaserror:MSB3277",
+    "-p:RestoreLockedMode=false",
+    "-p:RestorePackagesWithLockFile=true",
+    "-p:NuGetLockFilePath=packages.wp02-02.lock.json",
+    "-p:PlatformSnapshot=D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\platform"
+  ],
+  "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59",
+  "log": "logs/main-webapi-build.log",
+  "exitCode": 0,
+  "elapsedSeconds": 334.3,
+  "logSha256": "9ef90dc16a9a33a5ece0138c43f4f0cd7bdbb6e46b27dd475a3bb1cf0659e45d"
+}

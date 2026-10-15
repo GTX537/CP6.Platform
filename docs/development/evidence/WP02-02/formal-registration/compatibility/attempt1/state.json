@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "owner": "477a039df2ee4a95a42bcbb2aa143d76",
+  "phase": "build",
+  "source": "PASS",
+  "build": "FAIL",
+  "runtime": "NOT_RUN",
+  "sourceAdoptionPlan": "CANDIDATE_ONLY",
+  "formalPackageTrust": "BLOCKED",
+  "mainConsumption": "NOT_RUN",
+  "commands": [
+    {
+      "label": "sdk-version",
+      "argv": [
+        "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+        "--version"
+      ],
+      "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76",
+      "log": "logs/sdk-version.log",
+      "exitCode": 0,
+      "elapsedSeconds": 0.453,
+      "logSha256": "d431370954fffbac8949338e91ab683ed6a5b007f7b58559f609d10572cbe339"
+    },
+    {
+      "label": "runtime-list",
+      "argv": [
+        "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+        "--list-runtimes"
+      ],
+      "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76",
+      "log": "logs/runtime-list.log",
+      "exitCode": 0,
+      "elapsedSeconds": 0.03,
+      "logSha256": "7b9dc6d614384652e6c31c7739e03e4f72015f1fff7c9637dc0dfd8ef10c6b59"
+    },
+    {
+      "label": "main-webapi-restore",
+      "argv": [
+        "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+        "restore",
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\main\\CP6.WebApi\\CP6.WebApi.csproj",
+        "--configfile",
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\main\\NuGet.config",
+        "--packages",
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\n",
+        "-p:RestoreLockedMode=false",
+        "-p:RestorePackagesWithLockFile=true",
+        "-p:NuGetLockFilePath=packages.wp02-02.lock.json",
+        "-p:PlatformSnapshot=D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\platform"
+      ],
+      "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76",
+      "log": "logs/main-webapi-restore.log",
+      "exitCode": 1,
+      "elapsedSeconds": 58.876,
+      "logSha256": "d317ff4b4561c25664910299cf1518962ea70dfa4059ed43c185ae5b9874de36"
+    },
+    {
+      "label": "database-probe-build-only-restore",
+      "argv": [
+        "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+        "restore",
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\main\\tools\\CP6.DatabaseCompatibility.Probe\\CP6.DatabaseCompatibility.Probe.csproj",
+        "--configfile",
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\main\\NuGet.config",
+        "--packages",
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\n",
+        "-p:RestoreLockedMode=false",
+        "-p:RestorePackagesWithLockFile=true",
+        "-p:NuGetLockFilePath=packages.wp02-02.lock.json",
+        "-p:PlatformSnapshot=D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\platform"
+      ],
+      "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76",
+      "log": "logs/database-probe-build-only-restore.log",
+      "exitCode": 1,
+      "elapsedSeconds": 3.005,
+      "logSha256": "d697fa61674cd54deff9111bde3493abc4001461bb625288f8e9feefb7822bab"
+    },
+    {
+      "label": "private-probe-restore",
+      "argv": [
+        "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+        "restore",
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\probe\\Probe.csproj",
+        "--configfile",
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\main\\NuGet.config",
+        "--packages",
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\n",
+        "-p:RestoreLockedMode=false",
+        "-p:RestorePackagesWithLockFile=true",
+        "-p:NuGetLockFilePath=packages.wp02-02.lock.json",
+        "-p:PlatformSnapshot=D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\platform"
+      ],
+      "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76",
+      "log": "logs/private-probe-restore.log",
+      "exitCode": 0,
+      "elapsedSeconds": 3.151,
+      "logSha256": "b572941d9d6aca714019ee74b98d5e90b37ddde9fa97ad31f910c88281fbc929"
+    },
+    {
+      "label": "private-probe-build",
+      "argv": [
+        "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+        "build",
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\probe\\Probe.csproj",
+        "-c",
+        "Release",
+        "--no-restore",
+        "-warnaserror:MSB3277",
+        "-p:RestoreLockedMode=false",
+        "-p:RestorePackagesWithLockFile=true",
+        "-p:NuGetLockFilePath=packages.wp02-02.lock.json",
+        "-p:PlatformSnapshot=D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\platform"
+      ],
+      "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76",
+      "log": "logs/private-probe-build.log",
+      "exitCode": 0,
+      "elapsedSeconds": 43.828,
+      "logSha256": "3af1a0dfe8f7b69eeed2ad6a5daa31f1ad012a22a94dd9b9b66804a0003ecf51"
+    }
+  ],
+  "failures": [
+    "main-webapi restore failed; root build NOT_RUN; see logs/main-webapi-restore.log",
+    "database-probe-build-only restore failed; root build NOT_RUN; see logs/database-probe-build-only-restore.log",
+    "One or more independent build roots failed; all root outcomes and logs retained"
+  ],
+  "snapshotManifestSha256": "967fce42162d78483fcc4426f7910d1bc0d1087509a2ddb7304f5f0cb7cf2279",
+  "compatibility": "UNKNOWN",
+  "buildRoots": {
+    "main-webapi": {
+      "restore": "FAIL",
+      "build": "NOT_RUN",
+      "restoreExitCode": 1,
+      "buildExitCode": null
+    },
+    "database-probe-build-only": {
+      "restore": "FAIL",
+      "build": "NOT_RUN",
+      "restoreExitCode": 1,
+      "buildExitCode": null
+    },
+    "private-probe": {
+      "restore": "PASS",
+      "build": "PASS",
+      "restoreExitCode": 0,
+      "buildExitCode": 0
+    }
+  }
+}

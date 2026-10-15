@@ -1,0 +1,17 @@
+  Determining projects to restore...
+D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj : warning NU1902: Package 'System.Security.Cryptography.Pkcs' 8.0.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-2fmv-rv2c-59x7 [D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\CP6.Platform.ReleaseTests.csproj]
+D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj : warning NU1903: Package 'System.Security.Cryptography.Pkcs' 8.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-846f-f764-76mx [D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\CP6.Platform.ReleaseTests.csproj]
+  All projects are up-to-date for restore.
+  CP6.Platform.Release -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\src\CP6.Platform.Release\bin\Release\net8.0\CP6.Platform.Release.dll
+D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj : warning NU1902: Package 'System.Security.Cryptography.Pkcs' 8.0.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-2fmv-rv2c-59x7
+D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj : warning NU1903: Package 'System.Security.Cryptography.Pkcs' 8.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-846f-f764-76mx
+  CP6.Platform.ReleaseTool -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\bin\Release\net8.0\CP6.Platform.ReleaseTool.dll
+  CP6.Platform.ReleaseTests -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\docs\development\evidence\WP02-02\formal-registration\implementation\targeted-diagnostic.trx
+
+Passed!  - Failed:     0, Passed:   171, Skipped:     0, Total:   171, Duration: 1 m 30 s - CP6.Platform.ReleaseTests.dll (net8.0)

@@ -1,0 +1,12 @@
+{
+  "result": "MATCHED_SPECIFIED_PATHS",
+  "findings": [],
+  "formalPackageTrust": "BLOCKED",
+  "mainConsumption": "NOT_RUN",
+  "scope": "PREPARATION_ONLY",
+  "inputs": {
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\pre-runtime-identities.json": "1af4a7f352010a4be3cd2e7157937cb001a23586a610fcb2c2242dd78b30e3e8",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\runtime\\runtime.json": "160e909c3a714f43d25bf1151b1e6fc9fb03a08a364c8399d480fa141d30f69c"
+  },
+  "policySha256": "3a607877b19a7570538d1c6acc5006548cfed2a093ad41e8e0bc61f335dca3a2"
+}

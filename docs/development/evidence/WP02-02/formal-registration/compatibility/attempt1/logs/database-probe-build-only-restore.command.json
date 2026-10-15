@@ -1,0 +1,21 @@
+{
+  "label": "database-probe-build-only-restore",
+  "argv": [
+    "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+    "restore",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\main\\tools\\CP6.DatabaseCompatibility.Probe\\CP6.DatabaseCompatibility.Probe.csproj",
+    "--configfile",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\main\\NuGet.config",
+    "--packages",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\n",
+    "-p:RestoreLockedMode=false",
+    "-p:RestorePackagesWithLockFile=true",
+    "-p:NuGetLockFilePath=packages.wp02-02.lock.json",
+    "-p:PlatformSnapshot=D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76\\snapshots\\platform"
+  ],
+  "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\477a039df2ee4a95a42bcbb2aa143d76",
+  "log": "logs/database-probe-build-only-restore.log",
+  "exitCode": 1,
+  "elapsedSeconds": 3.005,
+  "logSha256": "d697fa61674cd54deff9111bde3493abc4001461bb625288f8e9feefb7822bab"
+}

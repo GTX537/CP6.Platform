@@ -1,0 +1,12 @@
+{
+  "label": "sdk-version",
+  "argv": [
+    "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+    "--version"
+  ],
+  "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59",
+  "log": "logs/sdk-version.log",
+  "exitCode": 0,
+  "elapsedSeconds": 0.313,
+  "logSha256": "d431370954fffbac8949338e91ab683ed6a5b007f7b58559f609d10572cbe339"
+}
