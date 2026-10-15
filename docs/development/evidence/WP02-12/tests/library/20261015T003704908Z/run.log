@@ -1,0 +1,31 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.WP0212.Tests -> D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:01.09]     CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeRejectsUnboundedPayloadBeforeCallingTransport [FAIL]
+  Failed CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeRejectsUnboundedPayloadBeforeCallingTransport [5 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: DefinitelyRejected
+Actual:   Confirmed
+  Stack Trace:
+     at CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeRejectsUnboundedPayloadBeforeCallingTransport() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\OutboxBridgeTests.cs:line 45
+--- End of stack trace from previous location ---
+[xUnit.net 00:00:01.50]     CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: "native-missing") [FAIL]
+  Failed CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: "native-missing") [2 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: Retry
+Actual:   Drop
+  Stack Trace:
+     at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 204
+--- End of stack trace from previous location ---
+Results File: D:\CP6.Platform-worktrees\wp02-12-20261014\docs\development\evidence\WP02-12\tests\library\20261015T003704908Z\red-native-quarantine.trx
+
+Failed!  - Failed:     2, Passed:    42, Skipped:     0, Total:    44, Duration: 972 ms - CP6.Platform.WP0212.Tests.dll (net8.0)

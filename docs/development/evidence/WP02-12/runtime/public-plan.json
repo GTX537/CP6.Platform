@@ -1,0 +1,30 @@
+{
+  "Owner": "6caf6a19b8a641989bfe8e108733d5bc",
+  "Project": "cp6-wp0212-6caf6a19b8a6",
+  "Images": {
+    "kafka": "sha256:77e3df9054047a88b520d0cc46e16696d3b22022e1d580aeccd2632df6532837",
+    "dapr": "sha256:8e94ba37d6bc95875e88545ce7d8ff781354f29080db02706d57446285fcc4a5",
+    "sdk": "sha256:bb32ba3ba3ea36e38572d9d8db76fa15f7cbf722f3f886e06bca6d528bd4fba8"
+  },
+  "topics": [
+    "cp6.platform.contract-example-changed.v1",
+    "cp6.wp0212.wrong-topic.v1"
+  ],
+  "principals": [
+    "admin",
+    "publisher",
+    "receiver",
+    "observer",
+    "intruder"
+  ],
+  "loopbackPorts": [
+    19092,
+    13500,
+    15001,
+    18012,
+    18013
+  ],
+  "transportSecurity": "SASL/PLAIN on task-private internal Docker network; no production TLS claim",
+  "aclAuthority": "task-private admin only; no untrusted controller network peers",
+  "noImagePull": true
+}

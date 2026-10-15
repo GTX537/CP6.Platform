@@ -1,0 +1,13 @@
+{
+  "policy": "Failures remain failures; later successes use distinct records. Private credential-bearing logs are retained privately, not published.",
+  "failures": [
+    {"phase":"Kafka initial setup","result":"Image configure failed: !1 unbound variable; missing KAFKA_OPTS","resolution":"Inspected cached image configure script; supplied task-private JAAS file and KAFKA_OPTS. Original container retained stopped as kafka-setup-failed1."},
+    {"phase":"Docker host connectivity","result":"Internal-only network prevented expected host reachability / loopback mappings","resolution":"Retained initial owned network; added owned host bridge and verified actual loopback bindings. Fresh runner creates a normal owned bridge."},
+    {"phase":"Fixture startup liveness probe","result":"ConnectionRefused before listener ready","resolution":"Waited for exact-owner health response before dependent phases. No success claimed for the failed probe."},
+    {"phase":"Kafka observer offsets","log":"20261015T004229825640Z","result":"10-second default API timeout","resolution":"Independent authenticated admin/observer list checks passed; request/default API timeout set to 10/30 seconds; original failed command retained."},
+    {"phase":"Kafka console metadata parser","log":"20261015T004358247936Z","result":"Deprecated flags emitted warning text on stdout; strict parser rejected missing native metadata","resolution":"Used Kafka4.3 command-config and formatter-property flags; did not strip bad capture or relabel it as native evidence."},
+    {"phase":"Library development and review","result":"RED assertions and compile/command errors","evidence":"tests/library/RUNS.md","resolution":"Original logs/TRX/exit codes retained alongside distinct successful runs."},
+    {"phase":"Safe stop identity check","result":"Fixture process identity drift (false mismatch before any stop)","resolution":"Both expected DLL path and observed command line normalized to slash form; also checked actual DLL hash. Exact PID/start/owner/ports then passed and verified owned resources stopped.","raw_record":"Interactive tool output; no standalone raw file claimed"},
+    {"phase":"Final static diff check","result":"Exit 2: original Kafka ACL stdout contains a blank line at EOF in both retained captures","resolution":"Preserved raw evidence bytes; disabled only blank-at-eof whitespace lint for runtime/*acl-proof.txt via task-local attributes. Other source/evidence checks unchanged.","raw_record":"Interactive tool output; no standalone raw file claimed"}
+  ]
+}

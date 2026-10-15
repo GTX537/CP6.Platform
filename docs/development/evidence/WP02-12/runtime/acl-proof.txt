@@ -1,0 +1,20 @@
+Current ACLs for resource `ResourcePattern(resourceType=GROUP, name=wp0212-observer, patternType=LITERAL)`:
+	(principal=User:observer, host=*, operation=READ, permissionType=ALLOW)
+
+Current ACLs for resource `ResourcePattern(resourceType=GROUP, name=wp0212-receiver, patternType=LITERAL)`:
+	(principal=User:receiver, host=*, operation=READ, permissionType=ALLOW)
+
+Current ACLs for resource `ResourcePattern(resourceType=TOPIC, name=cp6.wp0212.wrong-topic.v1, patternType=LITERAL)`:
+	(principal=User:observer, host=*, operation=READ, permissionType=ALLOW)
+	(principal=User:receiver, host=*, operation=READ, permissionType=ALLOW)
+	(principal=User:observer, host=*, operation=DESCRIBE, permissionType=ALLOW)
+	(principal=User:receiver, host=*, operation=DESCRIBE, permissionType=ALLOW)
+
+Current ACLs for resource `ResourcePattern(resourceType=TOPIC, name=cp6.platform.contract-example-changed.v1, patternType=LITERAL)`:
+	(principal=User:observer, host=*, operation=READ, permissionType=ALLOW)
+	(principal=User:publisher, host=*, operation=WRITE, permissionType=ALLOW)
+	(principal=User:publisher, host=*, operation=DESCRIBE, permissionType=ALLOW)
+	(principal=User:receiver, host=*, operation=READ, permissionType=ALLOW)
+	(principal=User:observer, host=*, operation=DESCRIBE, permissionType=ALLOW)
+	(principal=User:receiver, host=*, operation=DESCRIBE, permissionType=ALLOW)
+

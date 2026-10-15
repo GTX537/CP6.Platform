@@ -1,0 +1,4 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.EntityFramework\TransportV1\TransportOutboxPublisherV1.cs(9,91): error CS9113: Parameter 'publish' is unread. [D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.EntityFramework\CP6.Platform.EntityFramework.csproj]

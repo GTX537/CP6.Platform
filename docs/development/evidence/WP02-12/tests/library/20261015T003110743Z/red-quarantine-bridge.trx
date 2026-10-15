@@ -1,0 +1,333 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="89fdcee6-44cf-4d06-b0f0-420ab85d7d51" name="tt@LAPTOP-3QQ44FJS 2026-10-14 20:31:31" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T20:31:31.1870034-04:00" queuing="2026-10-14T20:31:31.1870043-04:00" start="2026-10-14T20:31:27.7835535-04:00" finish="2026-10-14T20:31:31.5675860-04:00" />
+  <TestSettings name="default" id="16697708-6c38-4ca3-a442-a6a83e1c80b1">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_20_31_31" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="3d8de9e2-c1f6-471a-bd71-ee8549190aaf" testId="72378655-a1ec-f761-b4bd-c5dff1aa3908" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;policy&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0028306" startTime="2026-10-14T20:31:30.6391415-04:00" endTime="2026-10-14T20:31:30.6417397-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3d8de9e2-c1f6-471a-bd71-ee8549190aaf" />
+    <UnitTestResult executionId="dfe616b8-c20b-44d1-a4f3-f36c271c7ffe" testId="c763bd65-2c8f-00d9-670f-78d4e5d575d2" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;producer&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0010931" startTime="2026-10-14T20:31:30.6709289-04:00" endTime="2026-10-14T20:31:30.6717753-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dfe616b8-c20b-44d1-a4f3-f36c271c7ffe" />
+    <UnitTestResult executionId="54a2c544-d60e-418a-8732-d1a4384c70a8" testId="a8b3d880-fb89-c7ce-4f2d-157ee4295c67" testName="CP6.Platform.WP0212.Tests.TransportTests.ProfileAndHeaderCannotSelectAuthority" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0027456" startTime="2026-10-14T20:31:30.6512779-04:00" endTime="2026-10-14T20:31:30.6539414-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="54a2c544-d60e-418a-8732-d1a4384c70a8" />
+    <UnitTestResult executionId="971f98e6-5987-4ee4-ada0-c7ee5d6b2431" testId="f121a2c2-3554-bfc7-cd07-b753f550fbb9" testName="CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeDefensivelyOwnsPayloadAndPreservesAllIdentities" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2250947" startTime="2026-10-14T20:31:29.9525442-04:00" endTime="2026-10-14T20:31:30.1337811-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="971f98e6-5987-4ee4-ada0-c7ee5d6b2431">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.EntityFramework.TransportV1.TransportOutboxPublisherV1.PublishAsync(Cp6OutboxDispatchMessage message, CancellationToken ct) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.EntityFramework\TransportV1\TransportOutboxPublisherV1.cs:line 12&#xD;
+   at CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeDefensivelyOwnsPayloadAndPreservesAllIdentities() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\OutboxBridgeTests.cs:line 21&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7dd14c2f-b5c2-4fdf-a391-81abc9cdfde2" testId="209702b1-c2b7-06d1-5fd8-75c919104340" testName="CP6.Platform.WP0212.Tests.TransportTests.RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0031851" startTime="2026-10-14T20:31:30.7120350-04:00" endTime="2026-10-14T20:31:30.7149743-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7dd14c2f-b5c2-4fdf-a391-81abc9cdfde2" />
+    <UnitTestResult executionId="44cca818-d897-4c5e-a6bc-81b5d23859ff" testId="def2abd3-f39f-f7ed-4e31-61781d8dd395" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;tenant&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0011978" startTime="2026-10-14T20:31:30.6650920-04:00" endTime="2026-10-14T20:31:30.6660790-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="44cca818-d897-4c5e-a6bc-81b5d23859ff" />
+    <UnitTestResult executionId="a95116c2-85ea-4d1b-8a2f-6962533263ec" testId="7fc59993-153a-14ea-de38-4a9e6e44a47e" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;causation&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0030259" startTime="2026-10-14T20:31:30.6617873-04:00" endTime="2026-10-14T20:31:30.6646568-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a95116c2-85ea-4d1b-8a2f-6962533263ec" />
+    <UnitTestResult executionId="e2a89e85-2819-4c2d-b9c5-6be35b8e8b6f" testId="3681589b-3a3b-a0f9-1aaa-e460a601380f" testName="CP6.Platform.WP0212.Tests.TransportTests.DiagnosticsNeverExposePayloadPropertySecretsAndDepthIsBounded" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0239186" startTime="2026-10-14T20:31:30.6835854-04:00" endTime="2026-10-14T20:31:30.7075088-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e2a89e85-2819-4c2d-b9c5-6be35b8e8b6f" />
+    <UnitTestResult executionId="064670a7-401f-4648-a248-f9a231dc19a8" testId="a65d6563-b9e5-aa33-abb7-2993d6452d39" testName="CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(host: 1, broker: 1048576)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0014478" startTime="2026-10-14T20:31:30.7181280-04:00" endTime="2026-10-14T20:31:30.7193067-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="064670a7-401f-4648-a248-f9a231dc19a8" />
+    <UnitTestResult executionId="a3b1555a-8545-45c7-b84e-be260b190c19" testId="47afaef2-4e59-8cb6-3a1f-953fac965609" testName="CP6.Platform.WP0212.Tests.TransportTests.ExplicitTransportBoundaryIsAvailableWithoutChangingLegacyDefault" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0002935" startTime="2026-10-14T20:31:30.8061870-04:00" endTime="2026-10-14T20:31:30.8063021-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a3b1555a-8545-45c7-b84e-be260b190c19" />
+    <UnitTestResult executionId="2fba1089-1a51-417a-85b8-91f3a19d00cf" testId="3c31efb8-e1a7-32d3-525d-bf73ddff1cf2" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;missing&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.2341251" startTime="2026-10-14T20:31:30.4116349-04:00" endTime="2026-10-14T20:31:30.6354946-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2fba1089-1a51-417a-85b8-91f3a19d00cf" />
+    <UnitTestResult executionId="81b75da9-d280-4435-a966-9b0d397d8fa4" testId="960452dd-9f35-e1bf-8c69-dee99102acfb" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;version&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0041377" startTime="2026-10-14T20:31:30.6664310-04:00" endTime="2026-10-14T20:31:30.6704533-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="81b75da9-d280-4435-a966-9b0d397d8fa4" />
+    <UnitTestResult executionId="7c4eed4b-d35a-4b0f-81e6-a37ee158f622" testId="a675097e-1e91-e20f-3dfb-d090e2929559" testName="CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeExceptionAndCancellationAreUnknown(cancel: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0007189" startTime="2026-10-14T20:31:29.9488497-04:00" endTime="2026-10-14T20:31:29.9490140-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7c4eed4b-d35a-4b0f-81e6-a37ee158f622">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.EntityFramework.TransportV1.TransportOutboxPublisherV1.PublishAsync(Cp6OutboxDispatchMessage message, CancellationToken ct) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.EntityFramework\TransportV1\TransportOutboxPublisherV1.cs:line 12&#xD;
+   at CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeExceptionAndCancellationAreUnknown(Boolean cancel) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\OutboxBridgeTests.cs:line 33&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f3cd1aa1-6c6c-4a3e-8fa3-2c814040a03f" testId="8dc1daf3-1c2d-aa15-64d7-005d95c04e2d" testName="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;schemaversion&quot;, replacement: &quot;1.0.1&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0135889" startTime="2026-10-14T20:31:30.7213144-04:00" endTime="2026-10-14T20:31:30.7331952-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f3cd1aa1-6c6c-4a3e-8fa3-2c814040a03f" />
+    <UnitTestResult executionId="d02105eb-bd2a-4ea1-ac4d-23f209ab2be2" testId="7ae5efcf-4b9b-e795-835f-6c2e7d18d1f9" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;id&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0024339" startTime="2026-10-14T20:31:30.6485602-04:00" endTime="2026-10-14T20:31:30.6508772-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d02105eb-bd2a-4ea1-ac4d-23f209ab2be2" />
+    <UnitTestResult executionId="9113fb9e-54dc-4a9e-a1a8-f22b8a5abdae" testId="21f8455d-0e56-1d10-da43-42dafe49d56b" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;hash&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0011624" startTime="2026-10-14T20:31:30.6721427-04:00" endTime="2026-10-14T20:31:30.6730383-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9113fb9e-54dc-4a9e-a1a8-f22b8a5abdae" />
+    <UnitTestResult executionId="c01cb338-9cbe-4e01-be69-4353f3fd489e" testId="dfe76444-22d6-d388-0ad9-585ed048ed0e" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;media&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0019262" startTime="2026-10-14T20:31:30.6595234-04:00" endTime="2026-10-14T20:31:30.6614771-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c01cb338-9cbe-4e01-be69-4353f3fd489e" />
+    <UnitTestResult executionId="192d1151-f71a-4c59-bad9-6190fc5b381b" testId="c4ebd22f-ebe6-6df4-0b37-83e1acb2ad93" testName="CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(malformed: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.5666627" startTime="2026-10-14T20:31:29.7995683-04:00" endTime="2026-10-14T20:31:30.3940283-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="192d1151-f71a-4c59-bad9-6190fc5b381b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.NotNull() Failure: Value is null</Message>
+          <StackTrace>   at CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(Boolean malformed) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 82&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d2d18492-dbdf-43a4-a12b-cbec978d5a6d" testId="c889b22b-454e-1d7f-7761-843056411156" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;hash&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0038271" startTime="2026-10-14T20:31:30.6380187-04:00" endTime="2026-10-14T20:31:30.6387606-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d2d18492-dbdf-43a4-a12b-cbec978d5a6d" />
+    <UnitTestResult executionId="43456f6a-17fc-4c74-ac42-6f5f4341734c" testId="4d88ba3c-80ce-fe3d-b81f-258c5bc9f629" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;bytes&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0028299" startTime="2026-10-14T20:31:30.6420627-04:00" endTime="2026-10-14T20:31:30.6448351-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43456f6a-17fc-4c74-ac42-6f5f4341734c" />
+    <UnitTestResult executionId="0f311e66-537f-4853-bb09-40129b1190a6" testId="9db383de-eca3-5855-58f5-88815cf2ac84" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;aggregate&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0012280" startTime="2026-10-14T20:31:30.6745202-04:00" endTime="2026-10-14T20:31:30.6757221-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0f311e66-537f-4853-bb09-40129b1190a6" />
+    <UnitTestResult executionId="2eb7a4a1-9da0-436e-a7bf-d5e76543ef2c" testId="ef5abd5a-f206-800d-e4fe-9954f8be96f2" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;correlation&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0021201" startTime="2026-10-14T20:31:30.6801985-04:00" endTime="2026-10-14T20:31:30.6821230-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2eb7a4a1-9da0-436e-a7bf-d5e76543ef2c" />
+    <UnitTestResult executionId="2ef25fc9-f150-4731-badb-e2ab1b9856fd" testId="1f0d38f0-fe5d-d1fe-2e01-923e115feda5" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;route&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0033011" startTime="2026-10-14T20:31:30.6453274-04:00" endTime="2026-10-14T20:31:30.6482373-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2ef25fc9-f150-4731-badb-e2ab1b9856fd" />
+    <UnitTestResult executionId="29098a49-3026-4eda-b7d5-23ad93fa6c50" testId="f99a5ff6-4bfd-7126-c211-b3b0f2f3c1a5" testName="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;dataschema&quot;, replacement: &quot;https://attacker.invalid/schema&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0012446" startTime="2026-10-14T20:31:30.7398007-04:00" endTime="2026-10-14T20:31:30.7405275-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="29098a49-3026-4eda-b7d5-23ad93fa6c50" />
+    <UnitTestResult executionId="907c56de-b951-4c2b-b501-0e7aa82ce155" testId="18ee0b4d-20f5-df9a-9eec-cb4bc415933d" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;topic&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0010865" startTime="2026-10-14T20:31:30.6777235-04:00" endTime="2026-10-14T20:31:30.6779690-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="907c56de-b951-4c2b-b501-0e7aa82ce155" />
+    <UnitTestResult executionId="7ed04259-12d4-4267-8693-07ab195fc46f" testId="dc052bf9-f46b-e547-4fbb-9a3e176ce5ba" testName="CP6.Platform.WP0212.Tests.TransportTests.RawBytesAreOwnedAndRetryPreservesOriginalIdentity" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0181833" startTime="2026-10-14T20:31:30.8066099-04:00" endTime="2026-10-14T20:31:30.8244757-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7ed04259-12d4-4267-8693-07ab195fc46f" />
+    <UnitTestResult executionId="e2f0e45f-e554-414f-b622-9c6c9898022d" testId="aaae1e07-6c14-2cb3-024b-3e8f05644673" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;key&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0010505" startTime="2026-10-14T20:31:30.6823584-04:00" endTime="2026-10-14T20:31:30.6833117-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e2f0e45f-e554-414f-b622-9c6c9898022d" />
+    <UnitTestResult executionId="73bd970e-383c-4db3-a6e3-a4df7878c5a0" testId="0a408dfd-6451-966d-0bc1-5db5ce08cef9" testName="CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(host: 1048576, broker: 1)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0024917" startTime="2026-10-14T20:31:30.7155842-04:00" endTime="2026-10-14T20:31:30.7177117-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="73bd970e-383c-4db3-a6e3-a4df7878c5a0" />
+    <UnitTestResult executionId="b2475c77-92ea-4a2b-9640-e5c3f13234ce" testId="f19c5136-a7d7-e1df-e842-896d0bd29e1b" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;region&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0027058" startTime="2026-10-14T20:31:30.6782450-04:00" endTime="2026-10-14T20:31:30.6798813-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b2475c77-92ea-4a2b-9640-e5c3f13234ce" />
+    <UnitTestResult executionId="d05e7fb4-f357-4611-a7ff-8b4a86fed7c6" testId="f30d343b-2f3b-99bf-2abd-abc3aec0a949" testName="CP6.Platform.WP0212.Tests.TransportTests.DuplicateBusinessFieldsRejectButRootTraceCompatibilityIsPreserved" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0367223" startTime="2026-10-14T20:31:30.7694549-04:00" endTime="2026-10-14T20:31:30.8057229-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d05e7fb4-f357-4611-a7ff-8b4a86fed7c6" />
+    <UnitTestResult executionId="8bd92352-a36e-4455-bec0-efb4072773c2" testId="c002c8ee-860c-21d5-1e4b-8d6276d386b2" testName="CP6.Platform.WP0212.Tests.TransportTests.NativeC02AdoptionIsDisabled" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0037704" startTime="2026-10-14T20:31:30.7079514-04:00" endTime="2026-10-14T20:31:30.7116335-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8bd92352-a36e-4455-bec0-efb4072773c2" />
+    <UnitTestResult executionId="7e7b4369-2af2-4f41-bb6c-3ed861fd9fc3" testId="4a319295-dc94-2a9e-66aa-e27fb174d349" testName="CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeExceptionAndCancellationAreUnknown(cancel: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0043859" startTime="2026-10-14T20:31:29.8629451-04:00" endTime="2026-10-14T20:31:29.9215806-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7e7b4369-2af2-4f41-bb6c-3ed861fd9fc3">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.EntityFramework.TransportV1.TransportOutboxPublisherV1.PublishAsync(Cp6OutboxDispatchMessage message, CancellationToken ct) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.EntityFramework\TransportV1\TransportOutboxPublisherV1.cs:line 12&#xD;
+   at CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeExceptionAndCancellationAreUnknown(Boolean cancel) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\OutboxBridgeTests.cs:line 33&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a1886441-800b-47e3-b83f-2526f2e23c22" testId="9f853367-8e78-915e-74cb-50d795aed35f" testName="CP6.Platform.WP0212.Tests.TransportTests.ExceptionsCancellationForeignTokenAndReceiveTokenNeverConfirm" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0279934" startTime="2026-10-14T20:31:30.7410394-04:00" endTime="2026-10-14T20:31:30.7688186-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a1886441-800b-47e3-b83f-2526f2e23c22" />
+    <UnitTestResult executionId="6f913deb-5d31-4862-b979-6398cfd9ff9b" testId="945cbc35-9d6d-0ce2-fbf1-2d1512a47191" testName="CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(malformed: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0095948" startTime="2026-10-14T20:31:30.3966489-04:00" endTime="2026-10-14T20:31:30.4072703-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6f913deb-5d31-4862-b979-6398cfd9ff9b">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.NotNull() Failure: Value is null</Message>
+          <StackTrace>   at CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(Boolean malformed) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 82&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="83529eee-3ec1-4d71-a792-38f587251355" testId="686a14bd-ff24-840e-d5cc-558c3470e2c3" testName="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;type&quot;, replacement: &quot;unknown.type.v1&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0055330" startTime="2026-10-14T20:31:30.7352195-04:00" endTime="2026-10-14T20:31:30.7389871-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="83529eee-3ec1-4d71-a792-38f587251355" />
+    <UnitTestResult executionId="d0330dba-ae79-45ea-87c7-36acdec5aeac" testId="a89ba034-af1e-efda-594f-edcd21d251ac" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;id&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0051391" startTime="2026-10-14T20:31:30.6590727-04:00" endTime="2026-10-14T20:31:30.6592335-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d0330dba-ae79-45ea-87c7-36acdec5aeac" />
+    <UnitTestResult executionId="d330422d-c8ff-4e30-b6b5-c4177d9d7c7e" testId="d77cb4c7-96b6-2a8c-3f1f-adbf237d8e9a" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;metadata&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0010923" startTime="2026-10-14T20:31:30.6733218-04:00" endTime="2026-10-14T20:31:30.6742833-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d330422d-c8ff-4e30-b6b5-c4177d9d7c7e" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ProfileAndHeaderCannotSelectAuthority" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="a8b3d880-fb89-c7ce-4f2d-157ee4295c67">
+      <Execution id="54a2c544-d60e-418a-8732-d1a4384c70a8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ProfileAndHeaderCannotSelectAuthority" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;route&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="1f0d38f0-fe5d-d1fe-2e01-923e115feda5">
+      <Execution id="2ef25fc9-f150-4731-badb-e2ab1b9856fd" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;version&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="960452dd-9f35-e1bf-8c69-dee99102acfb">
+      <Execution id="81b75da9-d280-4435-a966-9b0d397d8fa4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;missing&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="3c31efb8-e1a7-32d3-525d-bf73ddff1cf2">
+      <Execution id="2fba1089-1a51-417a-85b8-91f3a19d00cf" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(malformed: True)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="945cbc35-9d6d-0ce2-fbf1-2d1512a47191">
+      <Execution id="6f913deb-5d31-4862-b979-6398cfd9ff9b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;tenant&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="def2abd3-f39f-f7ed-4e31-61781d8dd395">
+      <Execution id="44cca818-d897-4c5e-a6bc-81b5d23859ff" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;region&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="f19c5136-a7d7-e1df-e842-896d0bd29e1b">
+      <Execution id="b2475c77-92ea-4a2b-9640-e5c3f13234ce" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.DuplicateBusinessFieldsRejectButRootTraceCompatibilityIsPreserved" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="f30d343b-2f3b-99bf-2abd-abc3aec0a949">
+      <Execution id="d05e7fb4-f357-4611-a7ff-8b4a86fed7c6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="DuplicateBusinessFieldsRejectButRootTraceCompatibilityIsPreserved" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;causation&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="7fc59993-153a-14ea-de38-4a9e6e44a47e">
+      <Execution id="a95116c2-85ea-4d1b-8a2f-6962533263ec" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeExceptionAndCancellationAreUnknown(cancel: False)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="4a319295-dc94-2a9e-66aa-e27fb174d349">
+      <Execution id="7e7b4369-2af2-4f41-bb6c-3ed861fd9fc3" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.OutboxBridgeTests" name="BridgeExceptionAndCancellationAreUnknown" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;topic&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="18ee0b4d-20f5-df9a-9eec-cb4bc415933d">
+      <Execution id="907c56de-b951-4c2b-b501-0e7aa82ce155" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;producer&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="c763bd65-2c8f-00d9-670f-78d4e5d575d2">
+      <Execution id="dfe616b8-c20b-44d1-a4f3-f36c271c7ffe" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;dataschema&quot;, replacement: &quot;https://attacker.invalid/schema&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="f99a5ff6-4bfd-7126-c211-b3b0f2f3c1a5">
+      <Execution id="29098a49-3026-4eda-b7d5-23ad93fa6c50" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ExactTupleHasNoFallback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.NativeC02AdoptionIsDisabled" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="c002c8ee-860c-21d5-1e4b-8d6276d386b2">
+      <Execution id="8bd92352-a36e-4455-bec0-efb4072773c2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="NativeC02AdoptionIsDisabled" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ExplicitTransportBoundaryIsAvailableWithoutChangingLegacyDefault" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="47afaef2-4e59-8cb6-3a1f-953fac965609">
+      <Execution id="a3b1555a-8545-45c7-b84e-be260b190c19" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ExplicitTransportBoundaryIsAvailableWithoutChangingLegacyDefault" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(malformed: False)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="c4ebd22f-ebe6-6df4-0b37-83e1acb2ad93">
+      <Execution id="192d1151-f71a-4c59-bad9-6190fc5b381b" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;hash&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="21f8455d-0e56-1d10-da43-42dafe49d56b">
+      <Execution id="9113fb9e-54dc-4a9e-a1a8-f22b8a5abdae" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;key&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="aaae1e07-6c14-2cb3-024b-3e8f05644673">
+      <Execution id="e2f0e45f-e554-414f-b622-9c6c9898022d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;correlation&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="ef5abd5a-f206-800d-e4fe-9954f8be96f2">
+      <Execution id="2eb7a4a1-9da0-436e-a7bf-d5e76543ef2c" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;id&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="a89ba034-af1e-efda-594f-edcd21d251ac">
+      <Execution id="d0330dba-ae79-45ea-87c7-36acdec5aeac" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.DiagnosticsNeverExposePayloadPropertySecretsAndDepthIsBounded" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="3681589b-3a3b-a0f9-1aaa-e460a601380f">
+      <Execution id="e2a89e85-2819-4c2d-b9c5-6be35b8e8b6f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="DiagnosticsNeverExposePayloadPropertySecretsAndDepthIsBounded" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;bytes&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="4d88ba3c-80ce-fe3d-b81f-258c5bc9f629">
+      <Execution id="43456f6a-17fc-4c74-ac42-6f5f4341734c" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.RawBytesAreOwnedAndRetryPreservesOriginalIdentity" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="dc052bf9-f46b-e547-4fbb-9a3e176ce5ba">
+      <Execution id="7ed04259-12d4-4267-8693-07ab195fc46f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="RawBytesAreOwnedAndRetryPreservesOriginalIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(host: 1, broker: 1048576)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="a65d6563-b9e5-aa33-abb7-2993d6452d39">
+      <Execution id="064670a7-401f-4648-a248-f9a231dc19a8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="EffectiveLimitRejectsBeforeAuthority" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;policy&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="72378655-a1ec-f761-b4bd-c5dff1aa3908">
+      <Execution id="3d8de9e2-c1f6-471a-bd71-ee8549190aaf" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeDefensivelyOwnsPayloadAndPreservesAllIdentities" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="f121a2c2-3554-bfc7-cd07-b753f550fbb9">
+      <Execution id="971f98e6-5987-4ee4-ada0-c7ee5d6b2431" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.OutboxBridgeTests" name="BridgeDefensivelyOwnsPayloadAndPreservesAllIdentities" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;media&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="dfe76444-22d6-d388-0ad9-585ed048ed0e">
+      <Execution id="c01cb338-9cbe-4e01-be69-4353f3fd489e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;type&quot;, replacement: &quot;unknown.type.v1&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="686a14bd-ff24-840e-d5cc-558c3470e2c3">
+      <Execution id="83529eee-3ec1-4d71-a792-38f587251355" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ExactTupleHasNoFallback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ExceptionsCancellationForeignTokenAndReceiveTokenNeverConfirm" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="9f853367-8e78-915e-74cb-50d795aed35f">
+      <Execution id="a1886441-800b-47e3-b83f-2526f2e23c22" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ExceptionsCancellationForeignTokenAndReceiveTokenNeverConfirm" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;hash&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="c889b22b-454e-1d7f-7761-843056411156">
+      <Execution id="d2d18492-dbdf-43a4-a12b-cbec978d5a6d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="209702b1-c2b7-06d1-5fd8-75c919104340">
+      <Execution id="7dd14c2f-b5c2-4fdf-a391-81abc9cdfde2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(host: 1048576, broker: 1)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="0a408dfd-6451-966d-0bc1-5db5ce08cef9">
+      <Execution id="73bd970e-383c-4db3-a6e3-a4df7878c5a0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="EffectiveLimitRejectsBeforeAuthority" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;aggregate&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="9db383de-eca3-5855-58f5-88815cf2ac84">
+      <Execution id="0f311e66-537f-4853-bb09-40129b1190a6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;metadata&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="d77cb4c7-96b6-2a8c-3f1f-adbf237d8e9a">
+      <Execution id="d330422d-c8ff-4e30-b6b5-c4177d9d7c7e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;id&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="7ae5efcf-4b9b-e795-835f-6c2e7d18d1f9">
+      <Execution id="d02105eb-bd2a-4ea1-ac4d-23f209ab2be2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeExceptionAndCancellationAreUnknown(cancel: True)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="a675097e-1e91-e20f-3dfb-d090e2929559">
+      <Execution id="7c4eed4b-d35a-4b0f-81e6-a37ee158f622" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.OutboxBridgeTests" name="BridgeExceptionAndCancellationAreUnknown" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;schemaversion&quot;, replacement: &quot;1.0.1&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="8dc1daf3-1c2d-aa15-64d7-005d95c04e2d">
+      <Execution id="f3cd1aa1-6c6c-4a3e-8fa3-2c814040a03f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ExactTupleHasNoFallback" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="72378655-a1ec-f761-b4bd-c5dff1aa3908" executionId="3d8de9e2-c1f6-471a-bd71-ee8549190aaf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c763bd65-2c8f-00d9-670f-78d4e5d575d2" executionId="dfe616b8-c20b-44d1-a4f3-f36c271c7ffe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a8b3d880-fb89-c7ce-4f2d-157ee4295c67" executionId="54a2c544-d60e-418a-8732-d1a4384c70a8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f121a2c2-3554-bfc7-cd07-b753f550fbb9" executionId="971f98e6-5987-4ee4-ada0-c7ee5d6b2431" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="209702b1-c2b7-06d1-5fd8-75c919104340" executionId="7dd14c2f-b5c2-4fdf-a391-81abc9cdfde2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="def2abd3-f39f-f7ed-4e31-61781d8dd395" executionId="44cca818-d897-4c5e-a6bc-81b5d23859ff" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7fc59993-153a-14ea-de38-4a9e6e44a47e" executionId="a95116c2-85ea-4d1b-8a2f-6962533263ec" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3681589b-3a3b-a0f9-1aaa-e460a601380f" executionId="e2a89e85-2819-4c2d-b9c5-6be35b8e8b6f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a65d6563-b9e5-aa33-abb7-2993d6452d39" executionId="064670a7-401f-4648-a248-f9a231dc19a8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="47afaef2-4e59-8cb6-3a1f-953fac965609" executionId="a3b1555a-8545-45c7-b84e-be260b190c19" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3c31efb8-e1a7-32d3-525d-bf73ddff1cf2" executionId="2fba1089-1a51-417a-85b8-91f3a19d00cf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="960452dd-9f35-e1bf-8c69-dee99102acfb" executionId="81b75da9-d280-4435-a966-9b0d397d8fa4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a675097e-1e91-e20f-3dfb-d090e2929559" executionId="7c4eed4b-d35a-4b0f-81e6-a37ee158f622" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8dc1daf3-1c2d-aa15-64d7-005d95c04e2d" executionId="f3cd1aa1-6c6c-4a3e-8fa3-2c814040a03f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7ae5efcf-4b9b-e795-835f-6c2e7d18d1f9" executionId="d02105eb-bd2a-4ea1-ac4d-23f209ab2be2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="21f8455d-0e56-1d10-da43-42dafe49d56b" executionId="9113fb9e-54dc-4a9e-a1a8-f22b8a5abdae" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dfe76444-22d6-d388-0ad9-585ed048ed0e" executionId="c01cb338-9cbe-4e01-be69-4353f3fd489e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c4ebd22f-ebe6-6df4-0b37-83e1acb2ad93" executionId="192d1151-f71a-4c59-bad9-6190fc5b381b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c889b22b-454e-1d7f-7761-843056411156" executionId="d2d18492-dbdf-43a4-a12b-cbec978d5a6d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4d88ba3c-80ce-fe3d-b81f-258c5bc9f629" executionId="43456f6a-17fc-4c74-ac42-6f5f4341734c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9db383de-eca3-5855-58f5-88815cf2ac84" executionId="0f311e66-537f-4853-bb09-40129b1190a6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef5abd5a-f206-800d-e4fe-9954f8be96f2" executionId="2eb7a4a1-9da0-436e-a7bf-d5e76543ef2c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1f0d38f0-fe5d-d1fe-2e01-923e115feda5" executionId="2ef25fc9-f150-4731-badb-e2ab1b9856fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f99a5ff6-4bfd-7126-c211-b3b0f2f3c1a5" executionId="29098a49-3026-4eda-b7d5-23ad93fa6c50" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="18ee0b4d-20f5-df9a-9eec-cb4bc415933d" executionId="907c56de-b951-4c2b-b501-0e7aa82ce155" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dc052bf9-f46b-e547-4fbb-9a3e176ce5ba" executionId="7ed04259-12d4-4267-8693-07ab195fc46f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aaae1e07-6c14-2cb3-024b-3e8f05644673" executionId="e2f0e45f-e554-414f-b622-9c6c9898022d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0a408dfd-6451-966d-0bc1-5db5ce08cef9" executionId="73bd970e-383c-4db3-a6e3-a4df7878c5a0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f19c5136-a7d7-e1df-e842-896d0bd29e1b" executionId="b2475c77-92ea-4a2b-9640-e5c3f13234ce" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f30d343b-2f3b-99bf-2abd-abc3aec0a949" executionId="d05e7fb4-f357-4611-a7ff-8b4a86fed7c6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c002c8ee-860c-21d5-1e4b-8d6276d386b2" executionId="8bd92352-a36e-4455-bec0-efb4072773c2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4a319295-dc94-2a9e-66aa-e27fb174d349" executionId="7e7b4369-2af2-4f41-bb6c-3ed861fd9fc3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9f853367-8e78-915e-74cb-50d795aed35f" executionId="a1886441-800b-47e3-b83f-2526f2e23c22" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="945cbc35-9d6d-0ce2-fbf1-2d1512a47191" executionId="6f913deb-5d31-4862-b979-6398cfd9ff9b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="686a14bd-ff24-840e-d5cc-558c3470e2c3" executionId="83529eee-3ec1-4d71-a792-38f587251355" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a89ba034-af1e-efda-594f-edcd21d251ac" executionId="d0330dba-ae79-45ea-87c7-36acdec5aeac" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d77cb4c7-96b6-2a8c-3f1f-adbf237d8e9a" executionId="d330422d-c8ff-4e30-b6b5-c4177d9d7c7e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="37" executed="37" passed="32" failed="5" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.54]   Discovering: CP6.Platform.WP0212.Tests&#xD;
+[xUnit.net 00:00:00.84]   Discovered:  CP6.Platform.WP0212.Tests&#xD;
+[xUnit.net 00:00:00.95]   Starting:    CP6.Platform.WP0212.Tests&#xD;
+[xUnit.net 00:00:01.13]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:01.14]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.14]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.EntityFramework\TransportV1\TransportOutboxPublisherV1.cs(12,0): at CP6.Platform.EntityFramework.TransportV1.TransportOutboxPublisherV1.PublishAsync(Cp6OutboxDispatchMessage message, CancellationToken ct)&#xD;
+[xUnit.net 00:00:01.14]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\OutboxBridgeTests.cs(33,0): at CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeExceptionAndCancellationAreUnknown(Boolean cancel)&#xD;
+[xUnit.net 00:00:01.14]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.16]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:01.16]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.16]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.EntityFramework\TransportV1\TransportOutboxPublisherV1.cs(12,0): at CP6.Platform.EntityFramework.TransportV1.TransportOutboxPublisherV1.PublishAsync(Cp6OutboxDispatchMessage message, CancellationToken ct)&#xD;
+[xUnit.net 00:00:01.16]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\OutboxBridgeTests.cs(33,0): at CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeExceptionAndCancellationAreUnknown(Boolean cancel)&#xD;
+[xUnit.net 00:00:01.16]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.34]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:01.34]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.34]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.EntityFramework\TransportV1\TransportOutboxPublisherV1.cs(12,0): at CP6.Platform.EntityFramework.TransportV1.TransportOutboxPublisherV1.PublishAsync(Cp6OutboxDispatchMessage message, CancellationToken ct)&#xD;
+[xUnit.net 00:00:01.34]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\OutboxBridgeTests.cs(21,0): at CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeDefensivelyOwnsPayloadAndPreservesAllIdentities()&#xD;
+[xUnit.net 00:00:01.34]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.60]       Assert.NotNull() Failure: Value is null&#xD;
+[xUnit.net 00:00:01.60]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.60]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(82,0): at CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(Boolean malformed)&#xD;
+[xUnit.net 00:00:01.60]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:01.62]       Assert.NotNull() Failure: Value is null&#xD;
+[xUnit.net 00:00:01.62]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.62]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(82,0): at CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(Boolean malformed)&#xD;
+[xUnit.net 00:00:01.62]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.04]   Finished:    CP6.Platform.WP0212.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:31:29.9319252-04:00">
+        <Text>[xUnit.net 00:00:01.13]     CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeExceptionAndCancellationAreUnknown(cancel: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:31:29.9552870-04:00">
+        <Text>[xUnit.net 00:00:01.16]     CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeExceptionAndCancellationAreUnknown(cancel: True) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:31:30.4923460-04:00">
+        <Text>[xUnit.net 00:00:01.34]     CP6.Platform.WP0212.Tests.OutboxBridgeTests.BridgeDefensivelyOwnsPayloadAndPreservesAllIdentities [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:31:31.2602439-04:00">
+        <Text>[xUnit.net 00:00:01.60]     CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(malformed: False) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:31:31.2604494-04:00">
+        <Text>[xUnit.net 00:00:01.61]     CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(malformed: True) [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

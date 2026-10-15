@@ -1,0 +1,888 @@
+{
+  "source_catalog": "D:\\CP6\\docs\\development\\assessments\\20261011\\catalogs\\foundation.json",
+  "original_ac_count": 40,
+  "original_business_pass_count": 0,
+  "rule": "Local subassertions do not change original AC status. Runtime proof is only the named native fixture; injections stay labeled.",
+  "cases": [
+    {
+      "id": "PLT-MSG-01::MSG01-A1",
+      "source_case_id": "MSG01-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 37,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "原字段/七required和canonical type/source/schema匹配",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Legacy101 + Transport exact tuple tests",
+        "limit": "Actual Owner event inventory remains absent",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG01-A2",
+      "source_case_id": "MSG01-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 37,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "tenant/subject/外层metadata一致",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity; broker-native-key",
+        "limit": "No real Main/CRM subject authorization",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG01-A3",
+      "source_case_id": "MSG01-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 37,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "payload object、UTC/版本/长度边界正确",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Legacy CloudEvent cases; EffectiveLimit; depth diagnostics",
+        "limit": "Owner payload limits remain their native contracts",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG01-A4",
+      "source_case_id": "MSG01-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 37,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "trace可选且非法parent被丢弃不改原事件",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "DuplicateBusinessFieldsRejectButRootTraceCompatibilityIsPreserved; legacy trace cases",
+        "limit": "No real production trace pipeline adoption",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG01-A5",
+      "source_case_id": "MSG01-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 37,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "原消息重投保原ID/bytes/occurred time",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "retry-preserves-original-id-bytes-key; quarantine retry regression",
+        "limit": "No business operation replay acceptance",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG01-A6",
+      "source_case_id": "MSG01-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 37,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "关联ID不替业务键或授权",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "IndependentFacts identity checks; no business-key API introduced",
+        "limit": "Owner business key and authorization remain required",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG01-A7",
+      "source_case_id": "MSG01-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 37,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "transport/consumer/business状态分层无假Applied",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "outbox-real-dapr-confirmed; real-receiver-commit-before-ack; businessApplied=false",
+        "limit": "Observation commit only, no BusinessApplied",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG01-A8",
+      "source_case_id": "MSG01-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 37,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "诊断权限和payload最小暴露",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "DiagnosticsNeverExposePayloadPropertySecretsAndDepthIsBounded",
+        "limit": "No tenant operational UI/real field authorization",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG02-A1",
+      "source_case_id": "MSG02-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 61,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "manifest/schema/样例hash及五样例矩阵完整",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "LoadForTransport pinned bundle; affected legacy bundle cases",
+        "limit": "Only existing example bundle and test-only synthetic versions",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG02-A2",
+      "source_case_id": "MSG02-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 61,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "受信profile/route内精确三元组选择，C02只1.0.0，未知minor隔离",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "ExactTupleHasNoFallback; NativeC02AdoptionIsDisabled",
+        "limit": "C02 actual closed five-type route unadopted",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG02-A3",
+      "source_case_id": "MSG02-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 61,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "同选择键不同hash及重复配置均拒绝",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical",
+        "limit": "No dynamic contract registration service",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG02-A4",
+      "source_case_id": "MSG02-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 61,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "静态比较子集局限及语义评审单列",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Existing compatibility evaluator unchanged",
+        "limit": "Business semantic compatibility review NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG02-A5",
+      "source_case_id": "MSG02-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 61,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "独立exact bundle/validator实例为唯一方案，同schemaId不同已批准minor按精确键唯一选择且无最新fallback",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "SeparatePinnedVersionsCoexistWithoutLatestFallback",
+        "limit": "1.0.1 is test-only material, not published acceptance",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG02-A6",
+      "source_case_id": "MSG02-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 61,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "breaking升major/旧库存/转换血缘保留",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "No conversion or stored payload rewrite path",
+        "limit": "Owner breaking-version inventory/conversion NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG02-A7",
+      "source_case_id": "MSG02-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 61,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "deprecated/retired不删历史验证材料",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Original bundles/old evidence retained, no deletion API",
+        "limit": "Real deprecated/retired lifecycle NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG02-A8",
+      "source_case_id": "MSG02-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 61,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "精确Producer/Consumer矩阵与Required关闭行为",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Exact route registration and authority rejection gates",
+        "limit": "Real producer/consumer adoption matrix NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG03-A1",
+      "source_case_id": "MSG03-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 81,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "大小/depth/重复名/content-type前置",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "EffectiveLimit, duplicate/depth/media identity cases",
+        "limit": "C02 depth32 validator remains read-only/unadopted",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG03-A2",
+      "source_case_id": "MSG03-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 81,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "未知contract/schema错误在业务前终止",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "ExactTupleHasNoFallback; unknown-schema-durable-original-quarantine",
+        "limit": "No real business handler reached or claimed",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG03-A3",
+      "source_case_id": "MSG03-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 81,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "校验locations安全限长及payload不进日志",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Fixed diagnostics; no request field paths emitted",
+        "limit": "Production logging policy NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG03-A4",
+      "source_case_id": "MSG03-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 81,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "三类hash与S6 typed digest分域",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Distinct schema hash and rawEnvelopeSha256 fields, native Outbox hash readback",
+        "limit": "Owner and S6 typed digest domains remain external",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG03-A5",
+      "source_case_id": "MSG03-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 81,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "原bytes重复不重编码",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "independent-kafka-record; retry-preserves-original-id-bytes-key",
+        "limit": "Only controlled local fixture record corpus",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG03-A6",
+      "source_case_id": "MSG03-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 81,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "CRM alias/region/外内metadata规则保真",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "C02 adapter and CRM files untouched; generic profile rejects native adoption",
+        "limit": "CRM alias/region/outer bindings runtime NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG03-A7",
+      "source_case_id": "MSG03-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 81,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "隔离/依赖/永久错误各恢复分类，无假ack",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "unknown schema/wrong key durable quarantine and independent PG readback",
+        "limit": "Production retention/recovery policy NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG03-A8",
+      "source_case_id": "MSG03-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 81,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "precheckpoint全部早退/取消保持S6事务与观测",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Library cancellation/unknown tests, corrected OutboxV2 dependency",
+        "limit": "S6 consumer precheckpoint business early exits NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG04-A1",
+      "source_case_id": "MSG04-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 112,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "合法P05走通用canonical地址，合法C02保原topic/冒号partition/五type/专属validator与publisher、raw bytes",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Native generic Kafka/Dapr roundtrip; C02 disabled",
+        "limit": "Actual C02 producer/publisher/consumer NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG04-A2",
+      "source_case_id": "MSG04-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 112,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "publish receipt不冒业务完成",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Transport Confirmed and fixture observation distinct from businessApplied=false",
+        "limit": "No business application receipt",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG04-A3",
+      "source_case_id": "MSG04-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 112,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "可信topic/partition来源证据且先定profile，禁止payload自选/自算冒broker",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "SASL ACL denials, authenticated app path, independent actual record key/offset/body",
+        "limit": "Dedicated local topic boundary only; not production mTLS",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG04-A4",
+      "source_case_id": "MSG04-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 112,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "commit后ack及unknown重查，不提前SUCCESS",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Real Outbox commit/send-intent, fixture observation commit/ack, injected unknown ACK",
+        "limit": "No real business transaction or provider-native ACK-loss claim",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG04-A5",
+      "source_case_id": "MSG04-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 112,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "服务地址/path验证与真实sidecar allowlist分列",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Fixed local sidecar endpoint; Dapr token rejection",
+        "limit": "Service invocation/remote business HTTP routes unchanged",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG04-A6",
+      "source_case_id": "MSG04-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 112,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "同消息重复不双效果、不同消息同business key也受Owner去重",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Same original transport message repeated, original bytes/id retained",
+        "limit": "Cross-message same business key/exactly-once NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG04-A7",
+      "source_case_id": "MSG04-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 112,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "多层retry/offset与业务版本范围明确",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Unknown/no fallback tests; controlled native unavailable cases",
+        "limit": "Business version/offset reconciliation and production retry SLO NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG04-A8",
+      "source_case_id": "MSG04-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 112,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "两profile互不fallback、旧Bridge/Kafka单writer与S6优先序不被transport替代",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "C02 disabled; no fallback route or alternate publisher",
+        "limit": "Old Bridge/new Kafka production single-writer cutover NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG05-A1",
+      "source_case_id": "MSG05-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 130,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "精确inventory含各必需Ref和无凭据",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Pinned task image/schema/source identities, sanitized config proof",
+        "limit": "Real Owner inventory/secret provisioning NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG05-A2",
+      "source_case_id": "MSG05-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 130,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "C02/P05及其他Owner profile各自bundle/validator/publisher确定，Main内部本地路径保留",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Only generic opt-in; old defaults and Main internal paths unchanged",
+        "limit": "Other Owners and C02 runtime NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG05-A3",
+      "source_case_id": "MSG05-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 130,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "缺Required能力按门关闭，无包存在即采用",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Unknown auth/route/contract gates closed; no BusinessApplied API",
+        "limit": "Real Host adoption requirements remain closed",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG05-A4",
+      "source_case_id": "MSG05-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 130,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "bindingVersion与精确选择表随单writer切换、积压清单、routeEpoch可追，旧C02不得变通用地址",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Corrected existing OutboxV2 consumed, no shared migration/config edits",
+        "limit": "Real single-writer switch/backlog inventory NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG05-A5",
+      "source_case_id": "MSG05-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 130,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "回退保新消息/旧读取，不清库或全重放",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Original raw rows retained during fixture key expansion, read-only readback",
+        "limit": "Production rollback/in-flight inventory NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG05-A6",
+      "source_case_id": "MSG05-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 130,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "retention/restore/hold不破坏去重及撤权",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "No retention/delete API introduced; owned data/logs retained",
+        "limit": "Business retention/restore/revocation NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG05-A7",
+      "source_case_id": "MSG05-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 130,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "诊断分层且按tenant/app权限",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Fixed safe diagnostics; fixture endpoints private token authenticated",
+        "limit": "Real tenant/app operational UI authorization NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    },
+    {
+      "id": "PLT-MSG-01::MSG05-A8",
+      "source_case_id": "MSG05-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/7b/7b59ff237b27e8ef__PLT-MSG-01_完整静态设计_v0.2.md",
+      "source_line": 130,
+      "source_sha256": "7b59ff237b27e8efc452ae1ecf776ac77002382466a9e7d9744a3bf924e505e2",
+      "assertion": "实际Host/broker/DB/业务回执与测试fixture分列",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "local_subassertion": {
+        "scope": "WP02-12 bounded library/local fixture only",
+        "description": "Actual Kafka/Dapr/PG evidence separated from fixture and injections",
+        "limit": "Original real business acceptance remains NOT_RUN",
+        "evidence_index": [
+          "tests/library/RUNS.md",
+          "runtime/acceptance.json",
+          "runtime/targeted-review-regression.json",
+          "REVIEW.md"
+        ]
+      }
+    }
+  ]
+}

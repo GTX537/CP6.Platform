@@ -1,0 +1,16 @@
+{
+  "owner": "6caf6a19b8a641989bfe8e108733d5bc",
+  "allOwnedContainersStopped": true,
+  "fixtureStopped": true,
+  "postgresSmartStopped": true,
+  "portsClosed": [
+    19092,
+    13500,
+    15001,
+    18012,
+    18013,
+    55430
+  ],
+  "dataLogsFailuresRetained": true,
+  "noDeletesOrPrune": true
+}

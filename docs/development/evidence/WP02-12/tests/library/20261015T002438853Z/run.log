@@ -1,0 +1,6 @@
+MSBUILD : error MSB1001: Unknown switch.
+    Full command line: 'C:\Users\tt\.dotnet\sdk\8.0.424\MSBuild.dll -maxcpucount -verbosity:m -nologo -restore -target:VSTest -nodereuse:false -nologo -property:VSTestLogger="trx%3bLogFileName=red.trx" -property:VSTestResultsDirectory="D:\CP6.Platform-worktrees\wp02-12-20261014\docs\development\evidence\WP02-12\tests\library\20261015T002438853Z" -property:Configuration=Release tests/CP6.Platform.WP0212.Tests/CP6.Platform.WP0212.Tests.csproj -p:NuGetAudit=false --ignore-failed-sources --source C:/Users/tt/.nuget/packages -property:VSTestArtifactsProcessingMode=collect -property:VSTestSessionCorrelationId=37496_471fa579-576b-4b54-b17b-079c539a2367 -distributedlogger:Microsoft.DotNet.Tools.MSBuild.MSBuildLogger,C:\Users\tt\.dotnet\sdk\8.0.424\dotnet.dll*Microsoft.DotNet.Tools.MSBuild.MSBuildForwardingLogger,C:\Users\tt\.dotnet\sdk\8.0.424\dotnet.dll'
+  Switches appended by response files:
+Switch: --ignore-failed-sources
+
+For switch syntax, type "MSBuild -help"

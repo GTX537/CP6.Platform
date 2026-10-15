@@ -1,0 +1,1381 @@
+{
+  "baseline": "b28db763f70ab6f164cb7c87d6ce49a6d97267f1",
+  "inputs": [
+    {
+      "path": "contracts/contract-bundle.v1.json",
+      "bytes": 1865,
+      "workingSha256": "5a83e10f9454363d8e8c7f30fec7d84e1abd91347a7a1de3a6b5509790532344"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/missing-required.json",
+      "bytes": 680,
+      "workingSha256": "3ac54ecf5cd47a8112ab336fd430192f3185490949780f51be2b4a7831f49587"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/pii-negative.json",
+      "bytes": 760,
+      "workingSha256": "d1f2614d1f7960d72ce27b391b04c3a13975fde97c59b15fb638e3c1c2a52a1c"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/unknown-optional.json",
+      "bytes": 817,
+      "workingSha256": "f02bb9b296e32258ee920e846d5d2ee4725ac5e12913ea1d8bd26872be6c644e"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/valid.json",
+      "bytes": 712,
+      "workingSha256": "8374408416c217e68a3a0defc71700ce3492cef1d2f96bf87d57b4406904a880"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/examples/wrong-type.json",
+      "bytes": 714,
+      "workingSha256": "f88878492dc25da8d1bfb3eacf1ea443a61c8bb3e72184694712099f267d789c"
+    },
+    {
+      "path": "contracts/events/platform/contract-example-changed/v1/schema.json",
+      "bytes": 2874,
+      "workingSha256": "889e3774a6dcfba8735e719dd207d2772372ccece6fefb01f9efe8f921489f76"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/assets.v1.json",
+      "bytes": 756,
+      "workingSha256": "2453e96bd7bb40c0460c52a02c40edfd7bd86dfad7d4e2b934917ae1354e2111"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/non-candidate-indeterminate.json",
+      "bytes": 1510,
+      "workingSha256": "1c9ede47cc017c632873c9e458766c21010ef6767c37eb88168d87db119435b0"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/partial-indeterminate.json",
+      "bytes": 1697,
+      "workingSha256": "a5a407fb4ba6453ae609434ac091f84c67234fd6bd893395c8b983c88fba8c9a"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/pii-negative.json",
+      "bytes": 1744,
+      "workingSha256": "011c5dfa8b1bc10a59cce2a734a3f69b365c7b52cbdc7d06c8f2eff7d53176d2"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/examples/valid-pass.json",
+      "bytes": 1695,
+      "workingSha256": "089d08442f54942bbcc696865e4556a2ed2bcaf699bae69cdb334d1316bf0695"
+    },
+    {
+      "path": "contracts/observability/slo-evidence/v1/schema.json",
+      "bytes": 6852,
+      "workingSha256": "d07a9963c26277e09561d5afec2668bb6aa25b9c53124709c786d53af82262cb"
+    },
+    {
+      "path": "contracts/p09/examples/non-production-runtime-profile.crm-topic.invalid.json",
+      "bytes": 2991,
+      "workingSha256": "62f371741da20f2143c405f3103528273021b333fae0acbcfb0f71f282e26226"
+    },
+    {
+      "path": "contracts/p09/examples/non-production-runtime-profile.plaintext-secret.invalid.json",
+      "bytes": 3038,
+      "workingSha256": "b560f95c6aafce43e72f20e0e885c10a0dad78693b231eca443da7f26868d2d5"
+    },
+    {
+      "path": "contracts/p09/examples/non-production-runtime-profile.production.invalid.json",
+      "bytes": 3003,
+      "workingSha256": "45e19fa4405f1a306c25318e02dd44b12eeeb68272756cf29e8647827fe35259"
+    },
+    {
+      "path": "contracts/p09/examples/non-production-runtime-profile.valid.json",
+      "bytes": 3406,
+      "workingSha256": "961f242ea780172090e5d450dcb8893b42e0cc4cf65066be8f17203604d5dee0"
+    },
+    {
+      "path": "contracts/p09/examples/rehearsal-evidence.secret.invalid.json",
+      "bytes": 3810,
+      "workingSha256": "bfd2b4e426612a38725bda4e69a1a1ad272a2b9db61406d28b258e2e56fd03c2"
+    },
+    {
+      "path": "contracts/p09/examples/rehearsal-evidence.valid.json",
+      "bytes": 3781,
+      "workingSha256": "0426bc9167de62e7eab5d2c2519ec8d01e3d75c6ca57d095a1e90dc333cd6795"
+    },
+    {
+      "path": "contracts/p09/non-production-runtime-profile.v1.schema.json",
+      "bytes": 11332,
+      "workingSha256": "f2ceef03b24185044b60bf41ea8c2c2fe1382e049e1bf2558a36ebca87b9ecdc"
+    },
+    {
+      "path": "contracts/p09/rehearsal-evidence.v1.schema.json",
+      "bytes": 14718,
+      "workingSha256": "78c698cb17147aeb2ba17b7017f24e60f801ff3451d87e7380f0ab26465fd20c"
+    },
+    {
+      "path": "contracts/release/capabilities/v1/capability-matrix.v1.schema.json",
+      "bytes": 23074,
+      "workingSha256": "54aeabc581130e2119597a44a9b72953ad5fc0db1b3ef282904e108acd9975a1"
+    },
+    {
+      "path": "contracts/release/capabilities/v1/consumer-lock.v1.schema.json",
+      "bytes": 14114,
+      "workingSha256": "e8868ed248000d2ec253d91819af61a175faa65a172011f45f39fbf0fe3c70fa"
+    },
+    {
+      "path": "contracts/release/capabilities/v1/README.md",
+      "bytes": 7052,
+      "workingSha256": "6a5506eb636848aa1f1db05dff82cf7d6cd3094ad0169c07a8c9056785140540"
+    },
+    {
+      "path": "contracts/release/v1/assets.v1.json",
+      "bytes": 2476,
+      "workingSha256": "9b7326701033f26352ee7f942a6d1bc837ec45171b51d1d7994e8d21d702cf7f"
+    },
+    {
+      "path": "contracts/release/v1/build-invocation-provenance.v1.schema.json",
+      "bytes": 2275,
+      "workingSha256": "4cec4bb534820a89bf3b1df644ce907782cb64b69507d7122eab16daa2d16a8b"
+    },
+    {
+      "path": "contracts/release/v1/candidate-locator.v1.schema.json",
+      "bytes": 947,
+      "workingSha256": "cc531053e10eb769e37bdda5689d15fa194d0f175ddf98d5a424eda24ff5c263"
+    },
+    {
+      "path": "contracts/release/v1/candidate-result.v2.schema.json",
+      "bytes": 1398,
+      "workingSha256": "4b078c2ce741c12f5949b9a376abebe3abdf9ad41521b2899c08f40ec5588a64"
+    },
+    {
+      "path": "contracts/release/v1/evidence-record.v1.schema.json",
+      "bytes": 1179,
+      "workingSha256": "8c742af3be9a69f920270c7a84b72ce2f0cf0bc03086c1e5f83300e887048922"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/deterministic/simple.canonical.json",
+      "bytes": 35,
+      "workingSha256": "c70d0dc4eaf50a576944851115bb0e81a935fc39c7893a992a6dd00092eafdb1"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/deterministic/simple.input.json",
+      "bytes": 32,
+      "workingSha256": "1aede7b610006db56c0b616aab5fcd742d8480a67daf331acea151c5eb39dbca"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/candidate-locator-platform.valid.json",
+      "bytes": 629,
+      "workingSha256": "bde21726f445c39bc1f6094df1ae1487ce782339eb16c5c972f0095f8f41194a"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/candidate-locator-system.valid.json",
+      "bytes": 606,
+      "workingSha256": "ee58798e85ac26ad04440cf5aa8ce6d72a2c015a679495d50e3d8858b0ef127a"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/candidate-result.valid.json",
+      "bytes": 1170,
+      "workingSha256": "47856239e6da3bbc5e41d0211af62cbb40b97e528ba79832ecc7262ba42b0525"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-locator-missing.invalid.json",
+      "bytes": 587,
+      "workingSha256": "25e5b38793c68e2b15c7e7f18e40b78e9f1f88627d22541961ec273d1babe9cf"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-locator-unknown.invalid.json",
+      "bytes": 647,
+      "workingSha256": "0d8f30357defd4993b4538feb28568acddab430f51154acbc12193aecbeef6ac"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-locator-wrong-kind.invalid.json",
+      "bytes": 607,
+      "workingSha256": "9f7374e399a13fd35d64baeffc0f1666c6677a06de14d76c5d52cc070e6ec6a5"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-result-missing.invalid.json",
+      "bytes": 1140,
+      "workingSha256": "ffd7b76a09dafa9c64ee309e3570e26f89dc948d4d66756ac8e64fad95c7c18f"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-result-unknown.invalid.json",
+      "bytes": 1188,
+      "workingSha256": "930992479dcffaec5b1b769e20648558809092d72cf3375e49877ca0ed97fe8f"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/candidate-result-wrong-kind.invalid.json",
+      "bytes": 1158,
+      "workingSha256": "d949edebef697f39ec1668cb0f4904ed36a68072367451eb0c65e47f8e85a7bb"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/platform-missing.invalid.json",
+      "bytes": 5694,
+      "workingSha256": "204474ebdc1b5855b8f2760a8a107cae071698b3705631624db528689c2f6131"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/platform-unknown.invalid.json",
+      "bytes": 5754,
+      "workingSha256": "64bdb6ea3c9916cd7443bb3e8b540754cde1ca2ef08dc7c2f846f59083792652"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/platform-wrong-kind.invalid.json",
+      "bytes": 5714,
+      "workingSha256": "84dd00228381e8f5dda4a455b16b6f0e6a5bceffd887f9743adad6716f77ebb4"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/system-missing.invalid.json",
+      "bytes": 1144,
+      "workingSha256": "3fae3b3e7d8c7ea1df14ef3526c45796a1d09bd069aae3b33fffa505ffb1973f"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/system-unknown.invalid.json",
+      "bytes": 1204,
+      "workingSha256": "a22a3a3880c87fcc8033f85991057da82615f5d311352ff1d1121097027d8eef"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/mutations/system-wrong-kind.invalid.json",
+      "bytes": 1164,
+      "workingSha256": "b53fe66a91a188c35ef01290cbade48f4936952d0efb866ec3af9ace596ec12a"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/platform-as-system.invalid.json",
+      "bytes": 1197,
+      "workingSha256": "a5a8c4335e148132863447649c53507eb8ccf167771c78558f985f02330702d9"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/platform-mixed-package-version.invalid.json",
+      "bytes": 5736,
+      "workingSha256": "d7527429a3e42694f04c0424ca70ca61458a95ad0a2261f4f3463a1138043d6b"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/platform.valid.json",
+      "bytes": 5736,
+      "workingSha256": "52e9acc1617addd3e272d9bd8fc7ac2af7fb21d2949570bde2372fca45c78a7c"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/system-missing-portal.invalid.json",
+      "bytes": 1173,
+      "workingSha256": "98ef571aacddc627c7bb5dd0ceb4877fa61dad89bf9b39c6918622fdc64fa5b1"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/primary/system.valid.json",
+      "bytes": 1186,
+      "workingSha256": "ea8f8b4677428d3e3fb59603a399a404c231ea7bacc7eafd26b2a1c1c3ceea18"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/build-provenance-missing.invalid.json",
+      "bytes": 4084,
+      "workingSha256": "7fadc12cc55d37eea9a953a83c68163e4530be3bd3d72b8d5174df334ce5b63c"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/build-provenance-mixed-invocation.invalid.json",
+      "bytes": 4126,
+      "workingSha256": "60f72659ce93579242eac8ac6331a36eea3c07b4ec68d1594b8675d96066a384"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/build-provenance-unknown.invalid.json",
+      "bytes": 4144,
+      "workingSha256": "575d721e71bf70b990de3fd79d4bf4324df214093436fae3d0be16bba20788ad"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/build-provenance-wrong-kind.invalid.json",
+      "bytes": 4104,
+      "workingSha256": "ba609c611ff399eab2937fa9f344133de16d0d3ec0c91fe5cd1293c462e2be56"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/build-provenance.valid.json",
+      "bytes": 4126,
+      "workingSha256": "a9ea1fc96d3197c4f8e97539ba108123744ce4faf7d748728f9bec37de24b5a2"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/candidate-locator-time.invalid.json",
+      "bytes": 629,
+      "workingSha256": "bf6b1adcf7fc03f0b00c86510cd1b42c041f0e3a6720e2b7d2fe8bc58b4cc8c0"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence-authority.invalid.json",
+      "bytes": 1002,
+      "workingSha256": "c4d59b7fff5988696770c3c00ea8198323f1787aad9afb1b4622484cd7003b4b"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence-missing.invalid.json",
+      "bytes": 960,
+      "workingSha256": "724f23ceb6d33b4fdde3cbb057fa98eb769efa3a9e0a29a9977fc808570249c7"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence-unbound.invalid.json",
+      "bytes": 1002,
+      "workingSha256": "52f6f198d534e05a6d24b6491d5b0dbaea6bde6541d0f7c9660ceff477e68227"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence-unknown.invalid.json",
+      "bytes": 1020,
+      "workingSha256": "3890d60a333e76ccdf49549defd0256617c62f02910faafe5ed9d484a7fadef6"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence-wrong-kind.invalid.json",
+      "bytes": 980,
+      "workingSha256": "f872ef938092d1587d29fc01f066948315e1844a3cb00410b1e27217c7a9d685"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/evidence.valid.json",
+      "bytes": 1002,
+      "workingSha256": "957ae88fc15b489daac7cf7815bee51c588cc14ac8ca8f132480f7430f853bfe"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/formal-package-publication-changed-published-bytes.invalid.json",
+      "bytes": 6027,
+      "workingSha256": "2c2daef17f15b9bea99e1caa7ff79ac3f99c1a7c58f844243bab25875cc9800e"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/formal-package-publication-missing-package.invalid.json",
+      "bytes": 5339,
+      "workingSha256": "3aec5f48fb51765be2dc71eedd39ffef349f23bd1a871db1fa2135c0eb37d725"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/formal-package-publication-mixed-version.invalid.json",
+      "bytes": 6027,
+      "workingSha256": "ecccd4706277315c9d54e4ec90902b122785be734674670d2345b141f48df2bc"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/formal-package-publication-test-timestamp-policy.invalid.json",
+      "bytes": 6024,
+      "workingSha256": "ab5b06578079e7013bc23bd6a6072256f8f071744d8c6ecbc4c261e58f1f5719"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/formal-package-publication.valid.json",
+      "bytes": 6027,
+      "workingSha256": "9999c4f1cbbe9c601496bafbd54b402525a165b0870ba0ac62e9c99eed1b7315"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/lineage-bootstrap-missing.invalid.json",
+      "bytes": 689,
+      "workingSha256": "e07613b621bf9bf0b314de8847f6ae9930ed69df15368ece25d8bf7fbec17ccd"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/lineage-bootstrap-unknown.invalid.json",
+      "bytes": 749,
+      "workingSha256": "c58b19f3b6e8beaa01fa8bc26f85e090c0bc1bb92d351a969c16c72f40b9c359"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/lineage-bootstrap-unsigned.invalid.json",
+      "bytes": 722,
+      "workingSha256": "5d8d12784568d9f8e1e2de3a5cf88f6a5e25e8ec6850ddd1608e8a20e38fe4d2"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/lineage-bootstrap-wrong-kind.invalid.json",
+      "bytes": 709,
+      "workingSha256": "8ec660afe537fb4d4f9dafbc9506fbfb9e3202ece9ac77198019df26f05dcfb0"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/lineage-bootstrap.valid.json",
+      "bytes": 731,
+      "workingSha256": "a0b864e739a20160af4a87a0a9ea3e9cd8b2b20217471d1d9a2c4f9370a58cb4"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-bad-fingerprint.invalid.json",
+      "bytes": 1035,
+      "workingSha256": "d6ba2a6ac498bf9eeb29acc0d29cd3d12d601fc080089d53d35552f44ff79231"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-bad-status-fields.invalid.json",
+      "bytes": 1066,
+      "workingSha256": "7cdb1ce441f1040fd0bbfd6fc389a3f6f07970e4c519ace084cd1fa4b5aaf41b"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-noncanonical.invalid.json",
+      "bytes": 1212,
+      "workingSha256": "2614872963047455e30179f62d2e99cdc53e796e53ee93fad81a36b919ae6255"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-public-ca.invalid.json",
+      "bytes": 1034,
+      "workingSha256": "006091bbc03697a89146e71339c06b01462fb292d34bd3a2aef7cc0e1323301c"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-two-current.invalid.json",
+      "bytes": 1591,
+      "workingSha256": "84f5f6326535b70c5924a3d11d15d0c3bf155176a28674834f22d3aa8d7e0306"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust-wrong-package-set.invalid.json",
+      "bytes": 1035,
+      "workingSha256": "ee4a1c1d199cf9d07773c0654eb4bc72e3235a5799dc898536b59131b012615d"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/pinned-nuget-trust.valid.json",
+      "bytes": 1035,
+      "workingSha256": "352975344b7187e168788d02e741de3ef06b224496a55737d08aee6a2ab952ae"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/release-gate-missing.invalid.json",
+      "bytes": 710,
+      "workingSha256": "4201d7da8b16149df55d8e099931f4c422252a745c5bd4d2d4d4a3cd827e4c30"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/release-gate-unbound.invalid.json",
+      "bytes": 752,
+      "workingSha256": "d45970b6161ef551c3498c208338492298a38060324940a7c9dcf18a113bf158"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/release-gate-unknown.invalid.json",
+      "bytes": 770,
+      "workingSha256": "9dab1f3d495c1c746d313a2ca18f9919e8537976a830d3672d77b3bcb5eb9527"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/release-gate-wrong-kind.invalid.json",
+      "bytes": 730,
+      "workingSha256": "20015bedcf0ba0802465ec472d38148b39d1ad167f3e6941048c209b45bfb6b2"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/release-gate.valid.json",
+      "bytes": 752,
+      "workingSha256": "bc1d3120844343fdfdf701d9137806d293a56ef4ff6185a33ba1dc3052f3ffc9"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/system-successor.valid.json",
+      "bytes": 1502,
+      "workingSha256": "cf3a3e2c4187b4c1b083ff9c91847343ec55816cefd5a43d8a2696ec147532c3"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/transport-expired.invalid.json",
+      "bytes": 655,
+      "workingSha256": "8c6a38ca8b575b055cf309ecd1668ce89d03b77050c302c91e8ea5d2bc44a01c"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/transport-missing.invalid.json",
+      "bytes": 613,
+      "workingSha256": "3272e9ecdbc0b6ffbc63e7bd86db007e989e086d21b522b936ba9ae1be0d9d5f"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/transport-unknown.invalid.json",
+      "bytes": 673,
+      "workingSha256": "4d22ed49087d12b7a89f1fe83e64d134502e0dce7e77b367efd4825206314669"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/transport-wrong-kind.invalid.json",
+      "bytes": 633,
+      "workingSha256": "d3fb15c9bf893c0df09951a5c9c7652e09ce7279fc178f6d1d1f093e73e708b6"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/transport.valid.json",
+      "bytes": 655,
+      "workingSha256": "713537e404e45035e2a1114a4cc2ebe03c607682edb67e90f67a4a400c134429"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust-authority.invalid.json",
+      "bytes": 947,
+      "workingSha256": "e607894e8df72f13ce96bb7bfec4e88a79c1f3ae1af70ece6a574894b081b78d"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust-downgrade.invalid.json",
+      "bytes": 950,
+      "workingSha256": "a2d6a6d1b2f54adff21098a1db6cff948ed778f7aece9c1a15a7b99cb07f1cde"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust-missing.invalid.json",
+      "bytes": 932,
+      "workingSha256": "2ae18ce5e29f87df13b06ff4c9b0c10c89a3acb916c2f05c0d59bfc020d8f545"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust-unknown.invalid.json",
+      "bytes": 968,
+      "workingSha256": "24f5394f0ce0953488bd87dec8b6aa99e9411fa9080c999dc1a34dd49db27eff"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust-wrong-kind.invalid.json",
+      "bytes": 952,
+      "workingSha256": "66b0fd64760e1dcd807fa4e298a52a9bc5f9b5ac2adaf9376eac3b58a6573bb7"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust.revoked.valid.json",
+      "bytes": 1444,
+      "workingSha256": "27d89c62905a00d9bdda5d2703413b99c3d45fa5eb8ba7524dd73ca5adc58599"
+    },
+    {
+      "path": "contracts/release/v1/fixtures/supporting/trust.valid.json",
+      "bytes": 950,
+      "workingSha256": "40cb641cdea708c3674bf8fbfac32ddc26358f48188f0619694063545ae23cf9"
+    },
+    {
+      "path": "contracts/release/v1/formal-package-publication.v1.schema.json",
+      "bytes": 7661,
+      "workingSha256": "4367323087073639828ebd4466f9dbf0b0b700d71123dc11d0fc91334d42d853"
+    },
+    {
+      "path": "contracts/release/v1/pinned-nuget-trust-store.v1.schema.json",
+      "bytes": 3786,
+      "workingSha256": "60680268aa24afbce2f43f0ae781438ca8af9f185a521c07dbd91b3c5a4f837d"
+    },
+    {
+      "path": "contracts/release/v1/pinned-trust-store.v1.schema.json",
+      "bytes": 3245,
+      "workingSha256": "c09f7cef3ef8f7824ca197ad5768d7f061db5a81c2dc98f213cc0d9d5b9a2e55"
+    },
+    {
+      "path": "contracts/release/v1/platform-release-candidate.v1.schema.json",
+      "bytes": 2166,
+      "workingSha256": "ae2dc7f7ad1404e24a42e5a555c03e4dbf67dc4faffddfe7c469e0db900a993d"
+    },
+    {
+      "path": "contracts/release/v1/release-common.v1.schema.json",
+      "bytes": 5549,
+      "workingSha256": "debb7779f1469d2266e3818f2cae72950efdbcb76d5be1d106c344308066ec4d"
+    },
+    {
+      "path": "contracts/release/v1/release-gate-result.v1.schema.json",
+      "bytes": 1343,
+      "workingSha256": "d7d5fe65525172fcad28f1c7be9426ca9bb57595739a8f089eb5c217562b30c0"
+    },
+    {
+      "path": "contracts/release/v1/system-lineage-bootstrap-evidence.v1.schema.json",
+      "bytes": 971,
+      "workingSha256": "5b66546444ba13eefaeea931e2fa5f28e9d99a24d48925a0c83b6572fa2760bf"
+    },
+    {
+      "path": "contracts/release/v1/system-release-manifest.v1.schema.json",
+      "bytes": 2121,
+      "workingSha256": "447429a43b54cc988c25042e5d7d8b0d654a3ba7da3dd1dd42d30ba34cd97f9e"
+    },
+    {
+      "path": "contracts/release/v1/test-package-transport.v1.schema.json",
+      "bytes": 1340,
+      "workingSha256": "83ae5a6b0a1f54f8606235fde0b8cdd8e16db991d90fd078eb22ea67dd57bfcb"
+    },
+    {
+      "path": "Directory.Build.props",
+      "bytes": 1171,
+      "workingSha256": "be5ae2820e4d7c1a554336a50b06e5eef5d0f4dea9469f31d1b8c84e52c32d83"
+    },
+    {
+      "path": "Directory.Packages.props",
+      "bytes": 1871,
+      "workingSha256": "e27010697c96f9ae86af011e6a7fd0f7b19dca60b71d49f393aaa4d6fc5f78b5"
+    },
+    {
+      "path": "global.json",
+      "bytes": 117,
+      "workingSha256": "12977d3e63d38bc51c22c4708ccbc351af024a310de7f25ac974468b731677b3"
+    },
+    {
+      "path": "NuGet.config",
+      "bytes": 548,
+      "workingSha256": "4f4e0db54145bc7bb5429295242e0b96b88ee984cb1581fe7ca926ad1463060e"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/BackgroundContextExecutorV1.cs",
+      "bytes": 602,
+      "workingSha256": "4cccf59c073893524c682397ca1abf8d23b7c4f335c0d9ead6e2152c926bd03f"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextBindingValidatorV1.cs",
+      "bytes": 5990,
+      "workingSha256": "4463b3f5fe8aaae23307e23450368859a6cc1e857fbfc6cce87e94e45fe0a82c"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextBoundariesV1.cs",
+      "bytes": 2517,
+      "workingSha256": "d2402fab0e6518ac95ced1dd00446753013702421757882ae22b704f9fb220ca"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/ContextScopeAccessorV1.cs",
+      "bytes": 2688,
+      "workingSha256": "954a300185592f6e1e9ea3d0b342baa3e0fd52951e18cef5b9f91774c10d8e6c"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Context/TrustedContextExecutorV1.cs",
+      "bytes": 1846,
+      "workingSha256": "31903b51f6b5b46b89f16331c25b337ea5d896d37927cdb77d46b95848089993"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/CP6.Platform.Abstractions.csproj",
+      "bytes": 389,
+      "workingSha256": "0330506d22b02a69d8e841e446632c09e3d6bd13847013601c3540fc9f163a9a"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/Cp6TelemetryConventions.cs",
+      "bytes": 3626,
+      "workingSha256": "b0c3a8a93b73e8ec875808494bea9504b540b40a0750ee2e0e44ababb2dec281"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/ICp6ReleaseIdentityAccessor.cs",
+      "bytes": 276,
+      "workingSha256": "4b9b8179a6cb7f0a2402556a0e07a249f2045f1521a34fc06f558f20a2ff91be"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/IRequestContext.cs",
+      "bytes": 409,
+      "workingSha256": "36c69005e469b28d553c3c4a469cb2148d6d4b5ff83b4f143b31ed6fc8eb2d9b"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/IRequestContextAccessor.cs",
+      "bytes": 241,
+      "workingSha256": "0cbbb91ddd3db7d8875fd01423ca3344c4f7dcf2ba7de9cac15dc165a0ed916e"
+    },
+    {
+      "path": "src/CP6.Platform.Abstractions/RequestContext.cs",
+      "bytes": 1664,
+      "workingSha256": "050a71b08f624e4da8769ba1c7929ab6e47ac1dc86b5b31a15da0166dc9f9f32"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Context/TrustedRequestContextExtensionsV1.cs",
+      "bytes": 1639,
+      "workingSha256": "cf0ae29902db8c37ff23e5bafca01bc4a6b31dbaa10ba253a377dd36df0c379a"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Context/TrustedRequestContextMiddlewareV1.cs",
+      "bytes": 1566,
+      "workingSha256": "82f5d37cabb58e1249a3c27222313f8b199be7c26a9637bdd704aa9c9845471a"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/CP6.Platform.AspNetCore.csproj",
+      "bytes": 1037,
+      "workingSha256": "7c2d830254c06aad4f4284f7e58c4926147f151703ddbd4eef40ffa3d94f472c"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationId.cs",
+      "bytes": 538,
+      "workingSha256": "ad428e0fa5272f2794b375ee390c6539d10f854b1857e32f7d6bf77abc6b4d82"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6CorrelationMiddleware.cs",
+      "bytes": 896,
+      "workingSha256": "04ee6cd8ed16ea194b87e3ec6db72fce87b825257f72c66626b7e69ee0cb165f"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayExtensions.cs",
+      "bytes": 5377,
+      "workingSha256": "d5279439627e8a0b206e72e225d47a9c4fe587f7b40400f6b62e0acf7ba2b9bd"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayHeaders.cs",
+      "bytes": 975,
+      "workingSha256": "8cda8ab26bbd948f75967029ba3958862da9802ca7af8ae05d6af3f5b9352167"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6GatewayProfile.cs",
+      "bytes": 7746,
+      "workingSha256": "89ee088edb69ecaaeb77b0684f381f9b88e42137a7c9e7733ca0e810ee0b0e23"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpFailureCategory.cs",
+      "bytes": 287,
+      "workingSha256": "95dbdf39d0377fa9db2e72297f647d344aa24a8690ec3e5fd5ac4c3e27503a17"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpOperationKind.cs",
+      "bytes": 249,
+      "workingSha256": "a31557f72002e3d001b6267d320e41cbebeda2d1d6504b22861d09aed7e4bfd2"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceException.cs",
+      "bytes": 526,
+      "workingSha256": "2f7ac461974590b394d0078571f83d123ad683072836af379d2a42f2995e0024"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceProfile.cs",
+      "bytes": 3786,
+      "workingSha256": "eccd9e93122018651aff6baf46615e551c961673a67122b964d13545533602c5"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6HttpResilienceServiceCollectionExtensions.cs",
+      "bytes": 7535,
+      "workingSha256": "6d5cb95e53a15803cc95fbdb55c5042dcecf9be7369a584c83b0c8f94b85e45d"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtBearerExtensions.cs",
+      "bytes": 5052,
+      "workingSha256": "86d8dd694bcba4f8afe144502c30f23e1a738e18e025ce7ef56fb7e8152e5e1d"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtBearerProfile.cs",
+      "bytes": 3247,
+      "workingSha256": "bdb3fe136d3e294bc7c2b4dc56478ad3facdd30b03e4aec5fe7a78b595a6f0be"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtClaimsValidator.cs",
+      "bytes": 2795,
+      "workingSha256": "b34a7e589bae712eb865ef4e31453ebce8da20704f5a8e80179af22093520a15"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6JwtConfigurationManager.cs",
+      "bytes": 23391,
+      "workingSha256": "7c41df8c6551295ea43e2c711d1b18678911148433c15e12c80ae963fbb4fb5c"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ObservabilityProfile.cs",
+      "bytes": 1958,
+      "workingSha256": "f371a8489f2f099f61369c6b1eacac2542ae3b9f2001113fcd661b310454c1bf"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ObservabilityServiceCollectionExtensions.cs",
+      "bytes": 3483,
+      "workingSha256": "1a0e077b4e24c208ec44c54ae5066009a2f84ff214f5111d1f1bbb67c8c483f2"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointProfile.cs",
+      "bytes": 3123,
+      "workingSha256": "a5a3f7cf1fa7c8e0e5c80c8d7f1c663383fce1866fecee3b1f256c7aae482181"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OperationalEndpointRouteBuilderExtensions.cs",
+      "bytes": 3916,
+      "workingSha256": "181fc638fe54f1342cd668b724b34e040c407d41edade7d5201c603e1d0e56ce"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6OutboundCorrelationHandler.cs",
+      "bytes": 1476,
+      "workingSha256": "2a4d32baff3e9e1401e8a931c53b9273aebadfd3107c97d6ea5c1eb575e70946"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ProblemDetailsExtensions.cs",
+      "bytes": 4478,
+      "workingSha256": "e90e7b2c62bd5b80079f27dec02f45b4140710f058b49f8d0961ea81371f02bc"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6ReleaseIdentityAccessor.cs",
+      "bytes": 367,
+      "workingSha256": "e9d03c96da65a849a833b2a4ae85af365c162f7b428e58e097ac189a0c5be6be"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6SafeHealthResponseWriter.cs",
+      "bytes": 4522,
+      "workingSha256": "7d9d70614da59c2a93419d9643b2bdf3221575e200c22e190fed2842b3fc3e09"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/Cp6TraceContextDistributedPropagator.cs",
+      "bytes": 2355,
+      "workingSha256": "669b7043dc7463099b5a30e3c942901bd295b6fdfae29dbfb1927131c555547f"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpDeadline.cs",
+      "bytes": 2803,
+      "workingSha256": "31a04faea8df87f139d999c45a40080d3e2c2020b7d00521fc4ff99f5566bce0"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpOperationBinding.cs",
+      "bytes": 7825,
+      "workingSha256": "4dd8426bbf1409f79ea3f9fa4cbd23b75e7df0a5e962fef6d99c873314aa02b2"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Handler.cs",
+      "bytes": 22446,
+      "workingSha256": "0efe04799f477f969512c5abde916cb65a874e279964107ae528b8ef9c444526"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Outcome.cs",
+      "bytes": 1173,
+      "workingSha256": "e9f70cf87414e265adea2daa389f86b0aa76764460f7aed61fe0e63a1229b833"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Profile.cs",
+      "bytes": 3585,
+      "workingSha256": "9e9d65b45534f7f5352bf2ebe3b77332a1861bacb1f771de0cf3d35f0f96f81d"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6HttpV2Registration.cs",
+      "bytes": 4496,
+      "workingSha256": "f49894511de671068ea05a3af742547747a674bde1f187520d1dc36b1b34b142"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6RetryAfter.cs",
+      "bytes": 3783,
+      "workingSha256": "1fe6217898878db2cd2b07ef39d858553c397eee675ecaa2d62ac8596a22478c"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6RetryDecision.cs",
+      "bytes": 2694,
+      "workingSha256": "a41446e4b6738633431ef1d5401bce57b69500788be2be4f2c5f8a9b3ba62971"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6SafeProblemPolicy.cs",
+      "bytes": 1824,
+      "workingSha256": "08f5dd1875bbd9ec13302eeb52e28a8c218b659b7b7034137842b46ede861201"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/HttpV2/Cp6SafeProblemWriter.cs",
+      "bytes": 4091,
+      "workingSha256": "7f81b464e36500f15e1918b4ee407db9b8463eba138a32afdd121c9fca43e406"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/IRequestContextResolver.cs",
+      "bytes": 591,
+      "workingSha256": "79dd0d9f0fb5bc2711854e0952aaf553ac5390004f8e342bebb8fc910aadb729"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/ObservabilityV1/HealthAdapterV1.cs",
+      "bytes": 11486,
+      "workingSha256": "8d6e3804c15b0534aee97aa43d37a8154ce1eda622457bdfd88be5db1b95a991"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/ObservabilityV1/LocalTelemetrySinkV1.cs",
+      "bytes": 6010,
+      "workingSha256": "e62e573214eae3dad73137987927cc4be3c1d3ddddb53b6a7b0bc74f72800e21"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/ObservabilityV1/ObservabilityRuntimeV1.cs",
+      "bytes": 13797,
+      "workingSha256": "5b2b128444f344ea37d6a8ea5066aa4ab099bbbd5e9093b1f86494d70ab1e095"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/ObservabilityV1/OwnedModuleObserverV1.cs",
+      "bytes": 8543,
+      "workingSha256": "b9e04cb68f35b5acad44895ec440839b3b5d31e3228f72d4a77fc66d2f9e86d3"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/ObservabilityV1/PropagationLeaseV1.cs",
+      "bytes": 1827,
+      "workingSha256": "987ae2ec74a217426e0e16b951fe2fbfe341a2717bf41062842c07565c423eeb"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextAccessor.cs",
+      "bytes": 338,
+      "workingSha256": "8409c464b10bef5cb8c0a4e20209a1c645459f144ae9a04af9c458e26a53b6b5"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextExtensions.cs",
+      "bytes": 1480,
+      "workingSha256": "b107caaa53071b6941872eb7397753b8d1d67e3a7b875df695647e9577e88651"
+    },
+    {
+      "path": "src/CP6.Platform.AspNetCore/RequestContextMiddleware.cs",
+      "bytes": 1168,
+      "workingSha256": "4098aac92acdb77f09bcfb950a5310b8046415f600f24f1c658b24741e040f12"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Context/ContextContractsV1.cs",
+      "bytes": 2784,
+      "workingSha256": "f9d8c18d7cab2bf7399039b108b54df5792d9b20c113fb99913a3a0bb2b25786"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/CP6.Platform.Contracts.csproj",
+      "bytes": 444,
+      "workingSha256": "3c71927da98b44f52abb45e29f1da302b7bbfcab28077c365ad09bdfac8dd55c"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6ProblemDefinition.cs",
+      "bytes": 2032,
+      "workingSha256": "b30a0dea1c2b634ce2b1c69d9268a7edc1c018b867d5e4fb70badb06fa898bd0"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6Problems.cs",
+      "bytes": 1001,
+      "workingSha256": "8204ca012c039a1513a71cc6d0e57783e20d3303f783dcd834f65be242f883b6"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6ReleaseIdentity.cs",
+      "bytes": 5010,
+      "workingSha256": "c5c31863d44e1f07dabfe2be7dd7fdc4b13834c03309c7a642793f7e40b5c2ec"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6SloEvidenceDocument.cs",
+      "bytes": 11950,
+      "workingSha256": "a469783aaf986461422729306f6490912f40f8b88d47fe7bc4a04198f29b7953"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/Cp6SloEvidenceEvaluator.cs",
+      "bytes": 1606,
+      "workingSha256": "a8cb9e07f68f65c357c3b9bbae218b6a37f3874cd1b4ab88f1528e063a6abf2e"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/ObservabilityV1/HealthCheckBindingV1.cs",
+      "bytes": 5060,
+      "workingSha256": "eec99d60a050eb447eeb766fc05aa94122b5b9ecb7c6cee08b82a1f204f5c3d5"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/ObservabilityV1/MetricDefinitionV1.cs",
+      "bytes": 5070,
+      "workingSha256": "b6cb4291c170baf6319ccdf15da26301dbdfb3c4ebf90083c3537d9663a777f5"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/ObservabilityV1/RuntimeIdentityBindingV1.cs",
+      "bytes": 6882,
+      "workingSha256": "bdf385d89866263afab75290007edb6b40450d1ccd06f72e925d7f2bbde4ca81"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/ObservabilityV1/TelemetryLimitsV1.cs",
+      "bytes": 1154,
+      "workingSha256": "7d0032a13e2743a300b628d086cb8156befbd1ff7667156aa08611ea15479435"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/ObservabilityV1/TelemetryPolicyV1.cs",
+      "bytes": 3775,
+      "workingSha256": "94f05eda53ab6699bcf1224baf8e01c680afe64137c5a0cac1e27fef30a6d7f5"
+    },
+    {
+      "path": "src/CP6.Platform.Contracts/RequestContextSnapshot.cs",
+      "bytes": 962,
+      "workingSha256": "713fc11b45bbd4e85487277a0f88fb2fb22619634ffb51b98f53007a330e150a"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/CP6.Platform.Deployment.csproj",
+      "bytes": 1029,
+      "workingSha256": "0e6a3c90d2fb7123fe06c86b3702b658924bbdee61f306e4c9847ae8e12335b5"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09ContractException.cs",
+      "bytes": 455,
+      "workingSha256": "5aec3379fec3b95600055790f444fb8391a20c3db4518223af06c3e45c89ee4d"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09Json.cs",
+      "bytes": 8540,
+      "workingSha256": "61bef9962d7f1726f0a35dff912036709299c7bbdb7e108df51c0560292287ce"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09KubernetesValidator.cs",
+      "bytes": 32683,
+      "workingSha256": "961842dec5d803cbbe75d0bcc81e1eb111a3664059e392971b55c4f6325e297d"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RehearsalEvidence.cs",
+      "bytes": 5282,
+      "workingSha256": "aab4cd878a3f6f86bab76652180c5710a0d0d83839aff7b07cdfbe5b0750fa46"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RehearsalEvidence.Safety.cs",
+      "bytes": 4922,
+      "workingSha256": "24c5add00779b2af16e71103a17a7978b1c4d8c9217615d263d38a51e38ae5ff"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RehearsalEvidence.Validator.cs",
+      "bytes": 17671,
+      "workingSha256": "831a39a6afadb07faf992249227a68b4e4788c389520dad413e4310711bbd972"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RuntimeProfile.cs",
+      "bytes": 4016,
+      "workingSha256": "851584086c288678b45eefa1dcdb686a1cd6bb97f8d4a4cb4f5bfc15fe123639"
+    },
+    {
+      "path": "src/CP6.Platform.Deployment/Cp6P09RuntimeProfileValidator.cs",
+      "bytes": 18295,
+      "workingSha256": "3893c153899f37a9cd6786eb8343a6faf0e834fd7448fedeef2b5bfefb9bb673"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/CP6.Platform.EntityFramework.csproj",
+      "bytes": 756,
+      "workingSha256": "78da574887a1a1ad1d421cf948572c589832472d48adbb3d90090771510645c7"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6EntityFrameworkTelemetry.cs",
+      "bytes": 8077,
+      "workingSha256": "05c18180ec76d3f2608946e66fc2cddb3236c8be5fa3c576ffc7a1c05ac8ca53"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6InboxProcessor.cs",
+      "bytes": 16168,
+      "workingSha256": "9a9ae94a2dd2e192a4a727107dda6c34921fd6404ad921a34a3f6735f9830911"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6MessageRetentionService.cs",
+      "bytes": 3518,
+      "workingSha256": "c24ba07d8d05e2991c9562d4c8b945295c98db8fc8db7fa5456dfff538a36411"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6OutboxDispatcher.cs",
+      "bytes": 4559,
+      "workingSha256": "68e4bb3dd72ac2430fc396a4bcf0d89f4c06343565eaabdff474aa6ddb4ce04b"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6OutboxStore.cs",
+      "bytes": 10515,
+      "workingSha256": "11c9836079377b7aef056b7355b2e80d7fa6d83641a9158a02cfba67e298d1ca"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingEntities.cs",
+      "bytes": 10530,
+      "workingSha256": "5ad6bc52594a434b16134a77ea3232c2d8da77e7183efa4d05f9e1e851ed7561"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingModelBuilderExtensions.cs",
+      "bytes": 5454,
+      "workingSha256": "36688b990311da00fffd196adf0e1662afc7cca8269e3b031f8f0682065cd373"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/Cp6TransactionalMessagingTypes.cs",
+      "bytes": 10202,
+      "workingSha256": "de89f6e51f0c304fc564b712ede0502c34ad55eeec54785a48a59c261e956259"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/CallerTransactionInboxV1.cs",
+      "bytes": 12421,
+      "workingSha256": "a2cfad3bad83dcf6f4bb5ae1b4255f20325c2890089374c0b0cbd59ecc2bfbdb"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxContractsV1.cs",
+      "bytes": 10655,
+      "workingSha256": "88769491504c8d2946316684d646b6ae8883fe47a623d5303d137cd635945485"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxModelV1.cs",
+      "bytes": 7114,
+      "workingSha256": "e57e3b64f94e70f1e881b86c3203abe64ff58db409b79002d9f692f22fcb304b"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/InboxV1/InboxTransactionV1.cs",
+      "bytes": 5996,
+      "workingSha256": "ce472e4e88dac5baea304c80df180ab63c73680ff2667ee73abcddd0fe8d699b"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/CallerTransactionOutboxV2.cs",
+      "bytes": 21778,
+      "workingSha256": "9e0e8d540fc437ab7e59cb51e0ae451a94b21d83329bf74c32d1fa33a47684cb"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/LegacyOutboxFenceV2.cs",
+      "bytes": 2073,
+      "workingSha256": "e1aa3dc0c1b6601e5f4fd90ff9a61549df66accdf3e0f8e40a53c9ebd3ef7aad"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxContractsV2.cs",
+      "bytes": 7539,
+      "workingSha256": "c9dc3a43adab466f88fd3ab96f4f951e427c7c1e78676412c57baeca0586759e"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxDispatcherV2.cs",
+      "bytes": 8152,
+      "workingSha256": "ff952fd8bfb99c7913d1318b026eacb6d4b4b916e173820c7d53496e8ec5a468"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxLifecycleV2.cs",
+      "bytes": 11528,
+      "workingSha256": "b0e44d5a3dfae3a77e8daa49bad73f0312f10f3c0eea6f1f211604e84f88772a"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxModelV2.cs",
+      "bytes": 9336,
+      "workingSha256": "0bc6044f73fb34e341dbabe4c2fc84327bd3e91fd799177b812b73a35d484349"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxPostgreSqlV2.cs",
+      "bytes": 8132,
+      "workingSha256": "beb41e8c152dd2735a4ecb50ce978a21fb252d772e6829431a79624c9767c9c7"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/OutboxV2/OutboxTransactionV2.cs",
+      "bytes": 8961,
+      "workingSha256": "c870718d92943f892281daafd7a1a373ef6bd864dfc49fd8cdffcdb1a77a4e9c"
+    },
+    {
+      "path": "src/CP6.Platform.EntityFramework/TransportV1/TransportOutboxPublisherV1.cs",
+      "bytes": 2216,
+      "workingSha256": "2f17203349d0c25ee5ca857e10329e0ced33211457526678376ab9779de6f2c5"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Context/MessageContextExecutorV1.cs",
+      "bytes": 875,
+      "workingSha256": "4a97e377c01b5682c191d7bbe15063900450c8e2a66f76580efc3b6b82962657"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/CP6.Platform.Messaging.csproj",
+      "bytes": 1034,
+      "workingSha256": "6fde2bbeb23b1286ef4bd221d8981493d745520504221311097cd5f04ffda3b7"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventAttributes.cs",
+      "bytes": 3713,
+      "workingSha256": "427efdc2fb48560f85316327be23bfdcfec3a194dc1b6f18dda6018c2e984be0"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventCodec.cs",
+      "bytes": 8508,
+      "workingSha256": "20b19e1e68da4a6ef5caaf2cc02597f1308559cb7c6673f2d0cc7d9b9ee0e82e"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventDescriptor.cs",
+      "bytes": 487,
+      "workingSha256": "b534e70e9182c2f3b14783a6895601cbd410da831b0be978c4a914d719e7424c"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6CloudEventValidator.cs",
+      "bytes": 4430,
+      "workingSha256": "fcde9f7831bee8dcb7f3643bfd26b386c1ab2ef90f2949d92d39e77e8d3f3b6b"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6ContractBundle.cs",
+      "bytes": 15503,
+      "workingSha256": "2c46abff1754a6021c5d4068df62ce98bf50b9b0c3fe3f7388c916559f155a44"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprDeliveryValidator.cs",
+      "bytes": 3177,
+      "workingSha256": "f608d49e095b37b03c4551e196532f602f8245608e85756dfb7bb59a858f2074"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprEventPublisher.cs",
+      "bytes": 3136,
+      "workingSha256": "73dc529f2e2491926448110d6cfb0bbe2a0e1f75a6645b6889a42d5fefb025a6"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprKafkaConventions.cs",
+      "bytes": 2560,
+      "workingSha256": "7273f0a3e9efbaddf92a788934d27d9bde791ded2ca064cd91f7724d224af369"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprServiceInvoker.cs",
+      "bytes": 1548,
+      "workingSha256": "de30d7156ee6d910e75fb865a4bc0c4ac83dd63c79cd46f0ccf21d2b2bfe6a41"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6DaprTransport.cs",
+      "bytes": 2042,
+      "workingSha256": "dcba1f0ca029008ae2967ab90a7f3fdfea45134feb9fc7a492ad7e26c2fbe979"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6EventContractIdentity.cs",
+      "bytes": 1895,
+      "workingSha256": "3e3e935fc9ebbe6d6289582a7470f1477e2913c2d14ef1d5510b60d570ce667b"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6EventValidationResult.cs",
+      "bytes": 962,
+      "workingSha256": "309b3e4b69b4a44116d4271aa588e3d173d0d27c183987766361192d97c27c5e"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6MessagingTelemetry.cs",
+      "bytes": 8429,
+      "workingSha256": "acac0f7735ab198f148ea868c4ccfd8dd48b1c6bd64d8c905ec9ef72ad921392"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6SchemaCompatibility.cs",
+      "bytes": 8418,
+      "workingSha256": "3620a02a148c33b2c462609edf861ef3d6290d9a8b5d6dce5d213df61acedc4c"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/Cp6TraceContextCodec.cs",
+      "bytes": 5215,
+      "workingSha256": "dbfe37c02a30a989d675da4d59b78e8350de82a4e4eace208f8dfcb05d9b2c9a"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/ICp6DaprTransport.cs",
+      "bytes": 734,
+      "workingSha256": "dcd1db21340781f5df6e3efe894cd7ba4f4a31e523aeb0ca34d4815f8221ea05"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6NativeContractCatalog.cs",
+      "bytes": 3909,
+      "workingSha256": "165f6adc0ddb9bf4b2850a482d9e4b23a3550d87334cd824296536ee376203a5"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6NativeJson.cs",
+      "bytes": 4959,
+      "workingSha256": "fd63eed2ffb5c1e373de9c68ecfd7680f952390addbe23763c8ba32b28a16b27"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/NativeContracts/Cp6OriginalJson.cs",
+      "bytes": 973,
+      "workingSha256": "d3545e5b96008bdc580ee1e9b475478ff01ce4602b3169199d9914f0388d232b"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/TransportV1/TransportContractsV1.cs",
+      "bytes": 2483,
+      "workingSha256": "48b76f842ec44b545d462384bd7ee9ab8b95638b3e1352cfa99dc42d3fd3127d"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/TransportV1/TransportRegistryV1.cs",
+      "bytes": 11776,
+      "workingSha256": "866e09f23f629e55b34a02d161aa3fa14dc71cbe3ac25daa9c1403ec2c2a94bf"
+    },
+    {
+      "path": "src/CP6.Platform.Messaging/TransportV1/TransportRouteV1.cs",
+      "bytes": 2397,
+      "workingSha256": "d61ec95fda4ee7f96f964a53e21805e8825c88fd7088f11617d9a88ff12c9bbf"
+    },
+    {
+      "path": "src/CP6.Platform.Release/CapabilitiesV1/Cp6CapabilityContracts.cs",
+      "bytes": 2858,
+      "workingSha256": "1a9afad32601d838d93fc1624f209da0e3c5825fdf84ea1a266344fe84fe090e"
+    },
+    {
+      "path": "src/CP6.Platform.Release/CapabilitiesV1/Cp6CapabilityValidator.cs",
+      "bytes": 18989,
+      "workingSha256": "c9f61b01091d5aea5f67ed9588e04020342a9bdd1304bc7c9163ef3e4d89bc72"
+    },
+    {
+      "path": "src/CP6.Platform.Release/CP6.Platform.Release.csproj",
+      "bytes": 1028,
+      "workingSha256": "da851661b9f172616304f7863c23a0536d0babfd7e4315888d5515dfd641f5ff"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6CandidateLocatorKeys.cs",
+      "bytes": 831,
+      "workingSha256": "fb24f355f9b8f6d53849571e0aab362df46f737ad421d109b0a52be384f463d1"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6DeterministicJson.cs",
+      "bytes": 14326,
+      "workingSha256": "df68f5bab7a538472cc50fba008f97c5d06b6323ebc9791b14a04fb7490d5c01"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6FormalPackagePublicationValidator.cs",
+      "bytes": 13500,
+      "workingSha256": "2442f28094bdc626b4e217a899d840151e4f3f948245658cbcf9a569a4752472"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6NuGetCertificateProfile.cs",
+      "bytes": 4444,
+      "workingSha256": "bc0afed2edd3e3d33581b65db80a97a5a366dfac7460071d822434fc1c56fac5"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6PinnedNuGetTrustPolicy.cs",
+      "bytes": 15527,
+      "workingSha256": "fb8f37e5273acbe9684aa210f5977cff21f8f04f09668c1d9596be56521bcb64"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6PinnedTrustPolicy.cs",
+      "bytes": 17554,
+      "workingSha256": "203bf97697f4c37b72c0e9d27306de38cc13d49d30c905c6107de6e789f534da"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseContractException.cs",
+      "bytes": 297,
+      "workingSha256": "7cea3d16d835e9a41751b4a3f5436ffaeaa30a18e7268a154230cf0d8b611ed1"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseContractIds.cs",
+      "bytes": 1786,
+      "workingSha256": "4b26bee5ef08f9626d56330df85c1a82ca6b9032efd08f662248f7c16f8c2752"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseJsonRules.cs",
+      "bytes": 4345,
+      "workingSha256": "5791a71e22a86b2b621a75e6589b34eb71fc61f3fea2c0f7d6d32ab3225cd713"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseMediaTypes.cs",
+      "bytes": 2421,
+      "workingSha256": "17210158c834c4475c3fcca03a75bf5a7bed4a14c02e8f1b2e04898595d8e579"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseValidationMode.cs",
+      "bytes": 114,
+      "workingSha256": "896b0ae50c93a313c5214483ab83bcd2fbd48195ffed7e94888d844296be3595"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ReleaseValidator.cs",
+      "bytes": 21559,
+      "workingSha256": "a30f7e7617f7d982f6b4289d7f13a12c3a677cb3c63d4317694211ba5576cb15"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6SupportingContractValidator.cs",
+      "bytes": 23348,
+      "workingSha256": "065ff3f09d83d0220ca113e15b523a93089ee7cb4c7fc85c48bd7912e4808bbf"
+    },
+    {
+      "path": "src/CP6.Platform.Release/Cp6ValidatedReleaseDocument.cs",
+      "bytes": 358,
+      "workingSha256": "1d444c9bc781970ff79dc1526ed3ad7a836876c586e815b39e047adaa324d185"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/CP6.Platform.Testing.csproj",
+      "bytes": 861,
+      "workingSha256": "dfc8d21583474e7ebed6d2d7c83e8b5010fde2663a24f385ace9b73e90c46044"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6FaultInjectionServiceCollectionExtensions.cs",
+      "bytes": 1560,
+      "workingSha256": "88a422790691b44d3884e3159d37122ad7dff59d67e13d615c0a92c196183057"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6HttpFaultHandler.cs",
+      "bytes": 1558,
+      "workingSha256": "11b8b26d7987b9aad1c7de4e642d326e52fa47561b956a71dc44714f5e9683fc"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6HttpFaultScript.cs",
+      "bytes": 2579,
+      "workingSha256": "a9ea7ec30ca6c680d2e926e12e40a120e937b39c4ce8ee10c6976895cb1e983a"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6RecordedMetric.cs",
+      "bytes": 255,
+      "workingSha256": "4bf62f2a3ec5fe405c3677c18e66fba8dc2472a9097e5ca9c0247443922f8a2c"
+    },
+    {
+      "path": "src/CP6.Platform.Testing/Cp6TelemetryRecorder.cs",
+      "bytes": 9495,
+      "workingSha256": "7132e3a0c0ab51532531f5eea7aeabe85e3962c46e20cac82af7c8dce4a52b62"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0212.Fixture/CP6.Platform.WP0212.Fixture.csproj",
+      "bytes": 465,
+      "workingSha256": "f91b74d7adc40f3270e861ff9f1656c68060d7569e2dc6553c675d04ee44371f"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0212.Fixture/Directory.Packages.props",
+      "bytes": 248,
+      "workingSha256": "c5d73cd73f28635ed28e6b3aa3b4268ddd72a1ddb61357a952beca62f1585a39"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0212.Fixture/FixtureDatabase.cs",
+      "bytes": 8391,
+      "workingSha256": "60349cd3f92f31e7ffdb78689cf0f931b9e95f70d3b3eed202cdcf31347c8260"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0212.Fixture/FixtureOwner.cs",
+      "bytes": 5557,
+      "workingSha256": "05a9194775f3b5a6a00feb5752261b7076753d85acf34d1274e5fa64d42a9a7d"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0212.Fixture/FixtureTransport.cs",
+      "bytes": 8153,
+      "workingSha256": "407260fc54e70fd58d0c3e857df1527485c3591ec5e928b1600f4e05618cd924"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0212.Fixture/Program.cs",
+      "bytes": 6408,
+      "workingSha256": "e0b8c2232c6f5bf5202106bc6663aa18e3b51efeaff9d28948fb9bb0b3f1592b"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0212.Tests/CP6.Platform.WP0212.Tests.csproj",
+      "bytes": 612,
+      "workingSha256": "5ff6a3161c4dbc76977ae4730a8f5c137cd1c8c33ba1c2f7e6ad22afa6015e25"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0212.Tests/OutboxBridgeTests.cs",
+      "bytes": 2244,
+      "workingSha256": "d55ba4f2e8879ab43c4c1d435e5f0c25a4dc32b3c96bbf96a29466d90e53a248"
+    },
+    {
+      "path": "tests/CP6.Platform.WP0212.Tests/TransportTests.cs",
+      "bytes": 20769,
+      "workingSha256": "45ce73c3ce6347a034eadef7ff02ef4f3eca26991ac77f29f433cf78160fac13"
+    },
+    {
+      "path": "tests/wp02-12-runtime/Invoke-WP0212.ps1",
+      "bytes": 571,
+      "workingSha256": "9c1fd7f6eadeea2f4a2da2ee9e12e1785249711d32ce078f19064625ae4b8b56"
+    },
+    {
+      "path": "tests/wp02-12-runtime/pg_resource.py",
+      "bytes": 11948,
+      "workingSha256": "7fd459ccbbc86c2e45d6968f0762054ec46a12a1ea1ef977d1577b2e207b10e5"
+    },
+    {
+      "path": "tests/wp02-12-runtime/README.md",
+      "bytes": 3115,
+      "workingSha256": "ddf25ecac9cf70a93147e9e5028bc4198025101f32fef82b8e87731c1ee3a0ff"
+    },
+    {
+      "path": "tests/wp02-12-runtime/runtime.py",
+      "bytes": 13838,
+      "workingSha256": "847f4bd0697153d7dc2e5b5c15e0243fa5d4f19a8fc5e5580de690cd0297866d"
+    },
+    {
+      "path": "tests/wp02-12-runtime/Start-Fixture.ps1",
+      "bytes": 1677,
+      "workingSha256": "62b560a6b707453f3b999925c194d411f9acc451ee3522c952d91fda08b035c1"
+    },
+    {
+      "path": "tests/wp02-12-runtime/stop_owned.py",
+      "bytes": 4559,
+      "workingSha256": "61295163ce635b5f26cc0a78f02a38a9d1f71cc0d84daeaa11c2abfc1a8673c7"
+    },
+    {
+      "path": "tests/wp02-12-runtime/verify_quarantine_retries.py",
+      "bytes": 2314,
+      "workingSha256": "658321529dc1e08b0f7854d9b07a099717d04ef140c4de632cf85057cb3f70eb"
+    },
+    {
+      "path": "tests/wp02-12-runtime/verify_runtime.py",
+      "bytes": 10188,
+      "workingSha256": "6d594d6850691ddf3d5e283775df7779787241fd5c195c33d570dd66fbb9ab0d"
+    }
+  ],
+  "identity": "Working file bytes at final validation; source SHA recorded separately after audit commit, no rebuilt-after-commit claim"
+}

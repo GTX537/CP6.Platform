@@ -1,0 +1,13 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.WP0212.Tests -> D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: D:\CP6.Platform-worktrees\wp02-12-20261014\docs\development\evidence\WP02-12\tests\library\20261015T003345191Z\exact-version.trx
+
+Passed!  - Failed:     0, Passed:    40, Skipped:     0, Total:    40, Duration: 1 s - CP6.Platform.WP0212.Tests.dll (net8.0)

@@ -1,0 +1,657 @@
+[
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CloudNative.CloudEvents.dll",
+    "bytes": 62464,
+    "sha256": "d0f0b3886002397c0b9b55cf50c308e6c98fd09cac07120a1b31f259bbcc6054"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CloudNative.CloudEvents.SystemTextJson.dll",
+    "bytes": 20992,
+    "sha256": "bdd3c3ffd09208bedfcc0521e27811a21a862e6dc948e57ee74db03fbb11926e"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.Abstractions.dll",
+    "bytes": 25600,
+    "sha256": "464beaeb291ff68c8f7217da87cb2a4edba350e8cd4de385b57b72a1546db697"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.Abstractions.pdb",
+    "bytes": 15376,
+    "sha256": "41fa45dde5fd9846eb1cf446907401851550c034bed1860022a9a441b6060982"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.Contracts.dll",
+    "bytes": 111104,
+    "sha256": "66a5fe313d70fe1cb58179620c79daaa4c1f82bacc7ee2663eca379ced6570ee"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.Contracts.pdb",
+    "bytes": 43956,
+    "sha256": "55675a6a344181a7370e683b04cd2ff5ad88383ba862a065baed5e86d1c2230e"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.EntityFramework.dll",
+    "bytes": 339456,
+    "sha256": "6428ad9913d56747f87d825e5b5b2b00e1e1a7296dc450f2fa9f36847efffd1e"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.EntityFramework.pdb",
+    "bytes": 64384,
+    "sha256": "4d0427a47b91ea44a166e7d110666019730f19311447c47544bc7011a43c7020"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.Messaging.dll",
+    "bytes": 117760,
+    "sha256": "be9389af0708b4848b54271a9c9046e3ffb6c1e073898812fa26d7490c202b69"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.Messaging.pdb",
+    "bytes": 46092,
+    "sha256": "c33c1c004d40f6833862d42ef37293ec2dffe0ab4b7a14bdac852f2987b28ed1"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.WP0212.Fixture.deps.json",
+    "bytes": 30779,
+    "sha256": "4c414385b601f23d9e5f564aa1afbb2eac8defb16aa9a8d67a38824654b3c2a6"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.WP0212.Fixture.dll",
+    "bytes": 92672,
+    "sha256": "075b9360818b5279e892602bb633e72df91d2a2e285999a344c8c54131629820"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.WP0212.Fixture.exe",
+    "bytes": 152064,
+    "sha256": "7a70adc3cbca7aee59d34ac0a9fd978d84ff37d52e75db3fd872aad4eac2ecd8"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.WP0212.Fixture.pdb",
+    "bytes": 32780,
+    "sha256": "54226fb048532b14c355a3da321090916fce2b9ec269a79af952db257b54b9be"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.WP0212.Fixture.runtimeconfig.json",
+    "bytes": 557,
+    "sha256": "bfcd9777228f00ce830a77b9ee3d2d735afec5e998def17c549c6b004dd354cf"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Dapr.Client.dll",
+    "bytes": 174080,
+    "sha256": "d827719966d8334bc3874b41ef3e13d221fe8550af45e60af7e54f28ef24daee"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Dapr.Common.dll",
+    "bytes": 77824,
+    "sha256": "6a30456a0813827fbd11feeb7f354aa37fc4787850d3bd943ad2a36c3df88b11"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Dapr.Protos.dll",
+    "bytes": 635904,
+    "sha256": "be1f11db9c7403b4b969d5c15f0703a1a6bfc355a7be5ff9e5700486c5e46a79"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Google.Api.CommonProtos.dll",
+    "bytes": 450048,
+    "sha256": "329cf0f2b66c5cbf675321f0d6b33c17d1092e5761f32d3d2c1307a110c0dbbd"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Google.Protobuf.dll",
+    "bytes": 501400,
+    "sha256": "e9b892ac667931162ffefa411ef8dc3eae777d634d8bfe8beddc28b1de95a612"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Grpc.Core.Api.dll",
+    "bytes": 70296,
+    "sha256": "5674c1203706b5a261e8bbd3499147d94fc80b5f077bf45f9934ca28a9c8574b"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Grpc.Net.Client.dll",
+    "bytes": 359064,
+    "sha256": "c1a0f38d3815c6b7e508d73dc322f05b2318a9ff5c7dffdc3657c3c269135c92"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Grpc.Net.Common.dll",
+    "bytes": 22168,
+    "sha256": "3f73ff2444130e120eb1741c1efbc77b9bbab991de88e944cd513439649b4b54"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Grpc.Reflection.dll",
+    "bytes": 77976,
+    "sha256": "87795d17c1385e7c05469c447ad8eecc883c3c71b4804319c5918a5a490c8d57"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Humanizer.dll",
+    "bytes": 355944,
+    "sha256": "d6853075547d7e303efd60354d911a2ff18edba582cda2fa59d91a2e5dcf9e98"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Json.More.dll",
+    "bytes": 55296,
+    "sha256": "574554f92f8c58c63fc767315c1fdf0fdf259ba7eef96f5458062ba1cd5cd647"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/JsonPointer.Net.dll",
+    "bytes": 26624,
+    "sha256": "2a01ecbfe23cb9f05c1867c8ba0c05330bdbc44f5924350232bb3f57610e0c8b"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/JsonSchema.Net.dll",
+    "bytes": 292352,
+    "sha256": "abfeaccc6cd0af3dd573924337434999e2e880b2fc978b05bd632f1613bb38ec"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
+    "bytes": 34616,
+    "sha256": "ec81b528082d4d012178ea9f725d5b860c4e5c801ccdd8f1193b6e8729f6ed03"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.EntityFrameworkCore.dll",
+    "bytes": 2535224,
+    "sha256": "ba583ae8fd64c7680da2d1e2886dcba31d81ce60bbc9cd7a9701d0d74228fe24"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.EntityFrameworkCore.Relational.dll",
+    "bytes": 1995576,
+    "sha256": "4bc2d9ad587455ebe4b6e8d60b4639b556ab4af3f8a8c4a68dda00ecfe306a4e"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Caching.Memory.dll",
+    "bytes": 45832,
+    "sha256": "a6bc869c530a2ed7573575dd61e40f0a1079ef6074251afe9701f927c5355ca8"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+    "bytes": 27472,
+    "sha256": "d9943874039e2190a36e1ff23436c1eca9bf4dc5a86ee2ee28a67614e92cca03"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Configuration.Binder.dll",
+    "bytes": 42280,
+    "sha256": "c4e4b6116e7feb30a9b4a0c294b083172db870fcd236d38359868d513a1b4dd2"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Configuration.dll",
+    "bytes": 43304,
+    "sha256": "4f43fc53c114a963b8c4ee75c19d7fa91de23e1243f245ad12e4d0e5021c8cd4"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+    "bytes": 64848,
+    "sha256": "392e9b29bd2fda4426de916c7e3ed71d3e10984599d83ad96f4bbd6a13f0e7f6"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.DependencyInjection.dll",
+    "bytes": 94504,
+    "sha256": "c61126fa0a573f7736bb5544449b971a01778b709689b65979dc26b1bfffe613"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+    "bytes": 29992,
+    "sha256": "6a2aaf92bcdfe0b6feced6405e47b2101e1a6b6b5f8e954eb4ade1270be36bac"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Diagnostics.dll",
+    "bytes": 35112,
+    "sha256": "84347cfe978185d034afc94ffe4aeb335b7fae51d0ad7f2f586e36597070f1de"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Http.dll",
+    "bytes": 91944,
+    "sha256": "831c1aee76e724f942ce6650aadfa84931bb8a8a8883bf309dbcdb7297b9e177"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
+    "bytes": 65832,
+    "sha256": "b54c06bae479114565221ce27273555476b9c0edc3511eb6c8dc3913108e5167"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Logging.dll",
+    "bytes": 50472,
+    "sha256": "72e5e6453e068a4503de74c42406caac09fe937845da255c217ea32c758c8117"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+    "bytes": 21800,
+    "sha256": "f020ffe7f3a665432eadb1997c5b03c73d86f0fd126293ff629497398646ac3b"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Options.dll",
+    "bytes": 64296,
+    "sha256": "71a7d96f252253ec66e260b5f769adae57166e5713ae942950715965386d64bc"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Microsoft.Extensions.Primitives.dll",
+    "bytes": 43856,
+    "sha256": "3e7725e55414df9cc486e66f0dfc3ceaba4b100ff4085199013d7598ecb08db0"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Npgsql.dll",
+    "bytes": 1409024,
+    "sha256": "2083de510463c4f708fa433d68bf3da149f10e25cd99a86f4519360e3f59b70d"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll",
+    "bytes": 623616,
+    "sha256": "e0a329c94ca198007947d38e89b38fa7f332e65b8a63a2035d06143e759b7d3c"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/System.Diagnostics.DiagnosticSource.dll",
+    "bytes": 191784,
+    "sha256": "5de9dc5c14e36e7798b69805b57b6d2c4136a6c2266c6db2c2351eb8eda792f6"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/.msCoverageSourceRootsMapping_CP6.Platform.WP0212.Tests",
+    "bytes": 4806,
+    "sha256": "25b6c110b57379ffb58648faf34d4db1bd93cef04cf3571d7898a6bee505092a"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CloudNative.CloudEvents.dll",
+    "bytes": 62464,
+    "sha256": "d0f0b3886002397c0b9b55cf50c308e6c98fd09cac07120a1b31f259bbcc6054"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CloudNative.CloudEvents.SystemTextJson.dll",
+    "bytes": 20992,
+    "sha256": "bdd3c3ffd09208bedfcc0521e27811a21a862e6dc948e57ee74db03fbb11926e"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.Abstractions.dll",
+    "bytes": 25600,
+    "sha256": "464beaeb291ff68c8f7217da87cb2a4edba350e8cd4de385b57b72a1546db697"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.Abstractions.pdb",
+    "bytes": 15376,
+    "sha256": "41fa45dde5fd9846eb1cf446907401851550c034bed1860022a9a441b6060982"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.Contracts.dll",
+    "bytes": 111104,
+    "sha256": "66a5fe313d70fe1cb58179620c79daaa4c1f82bacc7ee2663eca379ced6570ee"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.Contracts.pdb",
+    "bytes": 43956,
+    "sha256": "55675a6a344181a7370e683b04cd2ff5ad88383ba862a065baed5e86d1c2230e"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.EntityFramework.dll",
+    "bytes": 339456,
+    "sha256": "6428ad9913d56747f87d825e5b5b2b00e1e1a7296dc450f2fa9f36847efffd1e"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.EntityFramework.pdb",
+    "bytes": 64384,
+    "sha256": "4d0427a47b91ea44a166e7d110666019730f19311447c47544bc7011a43c7020"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.Messaging.dll",
+    "bytes": 117760,
+    "sha256": "be9389af0708b4848b54271a9c9046e3ffb6c1e073898812fa26d7490c202b69"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.Messaging.pdb",
+    "bytes": 46092,
+    "sha256": "c33c1c004d40f6833862d42ef37293ec2dffe0ab4b7a14bdac852f2987b28ed1"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.WP0212.Tests.deps.json",
+    "bytes": 47204,
+    "sha256": "f1d434da6c14e9cc0e9c91761f1c6e22b831760bb87beb1066faff6abde2be9f"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.WP0212.Tests.dll",
+    "bytes": 49152,
+    "sha256": "e4d2cca5a28b95fd1765b73a8acb957778c7f725a894d73650108c14b339c41f"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.WP0212.Tests.pdb",
+    "bytes": 21080,
+    "sha256": "47665e44c2d70c0cffbda867a879270bbf4dd17dafb482667d10c6cacbdf2115"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/CP6.Platform.WP0212.Tests.runtimeconfig.json",
+    "bytes": 457,
+    "sha256": "022c31bd8cff6f3a4db0549e1df346bae2d17663dce073667f34df7d3bf7cfc0"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Dapr.Client.dll",
+    "bytes": 174080,
+    "sha256": "d827719966d8334bc3874b41ef3e13d221fe8550af45e60af7e54f28ef24daee"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Dapr.Common.dll",
+    "bytes": 77824,
+    "sha256": "6a30456a0813827fbd11feeb7f354aa37fc4787850d3bd943ad2a36c3df88b11"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Dapr.Protos.dll",
+    "bytes": 635904,
+    "sha256": "be1f11db9c7403b4b969d5c15f0703a1a6bfc355a7be5ff9e5700486c5e46a79"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Google.Api.CommonProtos.dll",
+    "bytes": 450048,
+    "sha256": "329cf0f2b66c5cbf675321f0d6b33c17d1092e5761f32d3d2c1307a110c0dbbd"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Google.Protobuf.dll",
+    "bytes": 501400,
+    "sha256": "e9b892ac667931162ffefa411ef8dc3eae777d634d8bfe8beddc28b1de95a612"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Grpc.Core.Api.dll",
+    "bytes": 70296,
+    "sha256": "5674c1203706b5a261e8bbd3499147d94fc80b5f077bf45f9934ca28a9c8574b"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Grpc.Net.Client.dll",
+    "bytes": 359064,
+    "sha256": "c1a0f38d3815c6b7e508d73dc322f05b2318a9ff5c7dffdc3657c3c269135c92"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Grpc.Net.Common.dll",
+    "bytes": 22168,
+    "sha256": "3f73ff2444130e120eb1741c1efbc77b9bbab991de88e944cd513439649b4b54"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Grpc.Reflection.dll",
+    "bytes": 77976,
+    "sha256": "87795d17c1385e7c05469c447ad8eecc883c3c71b4804319c5918a5a490c8d57"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Humanizer.dll",
+    "bytes": 355944,
+    "sha256": "d6853075547d7e303efd60354d911a2ff18edba582cda2fa59d91a2e5dcf9e98"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Json.More.dll",
+    "bytes": 55296,
+    "sha256": "574554f92f8c58c63fc767315c1fdf0fdf259ba7eef96f5458062ba1cd5cd647"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/JsonPointer.Net.dll",
+    "bytes": 26624,
+    "sha256": "2a01ecbfe23cb9f05c1867c8ba0c05330bdbc44f5924350232bb3f57610e0c8b"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/JsonSchema.Net.dll",
+    "bytes": 292352,
+    "sha256": "abfeaccc6cd0af3dd573924337434999e2e880b2fc978b05bd632f1613bb38ec"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.EntityFrameworkCore.Abstractions.dll",
+    "bytes": 34616,
+    "sha256": "ec81b528082d4d012178ea9f725d5b860c4e5c801ccdd8f1193b6e8729f6ed03"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.EntityFrameworkCore.dll",
+    "bytes": 2535224,
+    "sha256": "ba583ae8fd64c7680da2d1e2886dcba31d81ce60bbc9cd7a9701d0d74228fe24"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.EntityFrameworkCore.Relational.dll",
+    "bytes": 1995576,
+    "sha256": "4bc2d9ad587455ebe4b6e8d60b4639b556ab4af3f8a8c4a68dda00ecfe306a4e"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Caching.Abstractions.dll",
+    "bytes": 31008,
+    "sha256": "31caebf834b6da88696a4a21ecb38eefff2623a531be925f6bd27719583ee3e2"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Caching.Memory.dll",
+    "bytes": 45832,
+    "sha256": "a6bc869c530a2ed7573575dd61e40f0a1079ef6074251afe9701f927c5355ca8"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Configuration.Abstractions.dll",
+    "bytes": 27472,
+    "sha256": "d9943874039e2190a36e1ff23436c1eca9bf4dc5a86ee2ee28a67614e92cca03"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Configuration.Binder.dll",
+    "bytes": 42280,
+    "sha256": "c4e4b6116e7feb30a9b4a0c294b083172db870fcd236d38359868d513a1b4dd2"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Configuration.dll",
+    "bytes": 43304,
+    "sha256": "4f43fc53c114a963b8c4ee75c19d7fa91de23e1243f245ad12e4d0e5021c8cd4"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
+    "bytes": 64848,
+    "sha256": "392e9b29bd2fda4426de916c7e3ed71d3e10984599d83ad96f4bbd6a13f0e7f6"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.DependencyInjection.dll",
+    "bytes": 94504,
+    "sha256": "c61126fa0a573f7736bb5544449b971a01778b709689b65979dc26b1bfffe613"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Diagnostics.Abstractions.dll",
+    "bytes": 29992,
+    "sha256": "6a2aaf92bcdfe0b6feced6405e47b2101e1a6b6b5f8e954eb4ade1270be36bac"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Diagnostics.dll",
+    "bytes": 35112,
+    "sha256": "84347cfe978185d034afc94ffe4aeb335b7fae51d0ad7f2f586e36597070f1de"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Http.dll",
+    "bytes": 91944,
+    "sha256": "831c1aee76e724f942ce6650aadfa84931bb8a8a8883bf309dbcdb7297b9e177"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Logging.Abstractions.dll",
+    "bytes": 65832,
+    "sha256": "b54c06bae479114565221ce27273555476b9c0edc3511eb6c8dc3913108e5167"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Logging.dll",
+    "bytes": 50472,
+    "sha256": "72e5e6453e068a4503de74c42406caac09fe937845da255c217ea32c758c8117"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Options.ConfigurationExtensions.dll",
+    "bytes": 21800,
+    "sha256": "f020ffe7f3a665432eadb1997c5b03c73d86f0fd126293ff629497398646ac3b"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Options.dll",
+    "bytes": 64296,
+    "sha256": "71a7d96f252253ec66e260b5f769adae57166e5713ae942950715965386d64bc"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.Extensions.Primitives.dll",
+    "bytes": 43856,
+    "sha256": "3e7725e55414df9cc486e66f0dfc3ceaba4b100ff4085199013d7598ecb08db0"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.TestPlatform.CommunicationUtilities.dll",
+    "bytes": 137776,
+    "sha256": "e38a359aa502bb1867d6092dca9aba5c130dd6f9111decea8156aa746b2c69e6"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.TestPlatform.CoreUtilities.dll",
+    "bytes": 98336,
+    "sha256": "f6e2495c44640d8915b2aefc938f391c970300266da014350ff35512a448ee84"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.TestPlatform.CrossPlatEngine.dll",
+    "bytes": 316960,
+    "sha256": "d55399bc66dc5b451d60ad82662452ca4a5f735918135dfc91ca9b5e3e38a6ab"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.TestPlatform.PlatformAbstractions.dll",
+    "bytes": 51232,
+    "sha256": "7b919ce4429c3b7b8fa2c36fd641b70b2f459a30ecb7c65fd80f437673cec930"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.TestPlatform.Utilities.dll",
+    "bytes": 67104,
+    "sha256": "01ffd64d25a4bd905aef9594d2aa700e020273a90a77a8720af6bec8b4fd5444"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+    "bytes": 17464,
+    "sha256": "a753bc15f23a957f4f91a059376e4472c6bacd1503622de4b9b2b079ad8ea289"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.VisualStudio.TestPlatform.Common.dll",
+    "bytes": 248352,
+    "sha256": "059aa2f335c3f7b14ac3fb7caa1625bc2767581b9548e9ff53a246c7f2f94d6a"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+    "bytes": 334392,
+    "sha256": "f83e38ee9020baa42e284e2299e233070ffa86ce4b10213583f9b7c8a521bcd0"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/Newtonsoft.Json.dll",
+    "bytes": 712464,
+    "sha256": "22c649f75fce5be7c7ccda8880473b634ef69ecf33f5d1ab8ad892caf47d5a07"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/System.Diagnostics.DiagnosticSource.dll",
+    "bytes": 191784,
+    "sha256": "5de9dc5c14e36e7798b69805b57b6d2c4136a6c2266c6db2c2351eb8eda792f6"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/testhost.dll",
+    "bytes": 49696,
+    "sha256": "92cbdf52db5249112f9f53f1fcdaf9f9aa3fce467141c688a31a7fe095e4d304"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/testhost.exe",
+    "bytes": 150576,
+    "sha256": "fb63eb314f25584a532683de7abf4ca8a0b43103f3699f5d5d87317338eeda76"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/xunit.abstractions.dll",
+    "bytes": 21928,
+    "sha256": "3166dc70323fb30ccf1cedb0fe86f2ad122c46d254542342d90386efc4c9285c"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/xunit.assert.dll",
+    "bytes": 187088,
+    "sha256": "bcd9711b22d227ac8cd4c1568e72433a0f576d2ec8aae64ac508081892015b1d"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/xunit.core.dll",
+    "bytes": 70352,
+    "sha256": "2f7feeec8c6dec7df684c25fb80aadb292b963d09723460f03d53c5ad2088acc"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/xunit.execution.dotnet.dll",
+    "bytes": 279760,
+    "sha256": "e70febe547c15f8155db3e2d95c3ba4445a59cbc21a3e7541ab22ed49d3dcf7b"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/bin/Release/net8.0/xunit.runner.visualstudio.testadapter.dll",
+    "bytes": 1251840,
+    "sha256": "98a7395cd6abd03d0ac8eeb82d720c24db00602f047ca49bd6e88e77fc6d1153"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/CP6.Platform.ArchitectureTests.deps.json",
+    "bytes": 18330,
+    "sha256": "6a07a1649389be38cb221a10491681ea1528afc809d5b3fe6aef299b6a1cfd75"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/CP6.Platform.ArchitectureTests.dll",
+    "bytes": 53248,
+    "sha256": "f063c184a6eb36f82914aea594eb5ccd01aaa49a711cea55481d2db3e6638478"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/CP6.Platform.ArchitectureTests.pdb",
+    "bytes": 18656,
+    "sha256": "6ac8779fc34cbd9d5820285cf14cfb81968588cc9b2928d13022c2e624ab6024"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/CP6.Platform.ArchitectureTests.runtimeconfig.json",
+    "bytes": 388,
+    "sha256": "7b7401577f185805bf9f44124cdbb0b919047ad4cde5b4ac4e9f0b37468f68ca"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/Microsoft.TestPlatform.CommunicationUtilities.dll",
+    "bytes": 137776,
+    "sha256": "e38a359aa502bb1867d6092dca9aba5c130dd6f9111decea8156aa746b2c69e6"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/Microsoft.TestPlatform.CoreUtilities.dll",
+    "bytes": 98336,
+    "sha256": "f6e2495c44640d8915b2aefc938f391c970300266da014350ff35512a448ee84"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/Microsoft.TestPlatform.CrossPlatEngine.dll",
+    "bytes": 316960,
+    "sha256": "d55399bc66dc5b451d60ad82662452ca4a5f735918135dfc91ca9b5e3e38a6ab"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/Microsoft.TestPlatform.PlatformAbstractions.dll",
+    "bytes": 51232,
+    "sha256": "7b919ce4429c3b7b8fa2c36fd641b70b2f459a30ecb7c65fd80f437673cec930"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/Microsoft.TestPlatform.Utilities.dll",
+    "bytes": 67104,
+    "sha256": "01ffd64d25a4bd905aef9594d2aa700e020273a90a77a8720af6bec8b4fd5444"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll",
+    "bytes": 17464,
+    "sha256": "a753bc15f23a957f4f91a059376e4472c6bacd1503622de4b9b2b079ad8ea289"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/Microsoft.VisualStudio.TestPlatform.Common.dll",
+    "bytes": 248352,
+    "sha256": "059aa2f335c3f7b14ac3fb7caa1625bc2767581b9548e9ff53a246c7f2f94d6a"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll",
+    "bytes": 334392,
+    "sha256": "f83e38ee9020baa42e284e2299e233070ffa86ce4b10213583f9b7c8a521bcd0"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/Newtonsoft.Json.dll",
+    "bytes": 712464,
+    "sha256": "22c649f75fce5be7c7ccda8880473b634ef69ecf33f5d1ab8ad892caf47d5a07"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/testhost.dll",
+    "bytes": 49696,
+    "sha256": "92cbdf52db5249112f9f53f1fcdaf9f9aa3fce467141c688a31a7fe095e4d304"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/testhost.exe",
+    "bytes": 150576,
+    "sha256": "fb63eb314f25584a532683de7abf4ca8a0b43103f3699f5d5d87317338eeda76"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/xunit.abstractions.dll",
+    "bytes": 21928,
+    "sha256": "3166dc70323fb30ccf1cedb0fe86f2ad122c46d254542342d90386efc4c9285c"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/xunit.assert.dll",
+    "bytes": 187088,
+    "sha256": "bcd9711b22d227ac8cd4c1568e72433a0f576d2ec8aae64ac508081892015b1d"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/xunit.core.dll",
+    "bytes": 70352,
+    "sha256": "2f7feeec8c6dec7df684c25fb80aadb292b963d09723460f03d53c5ad2088acc"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/xunit.execution.dotnet.dll",
+    "bytes": 279760,
+    "sha256": "e70febe547c15f8155db3e2d95c3ba4445a59cbc21a3e7541ab22ed49d3dcf7b"
+  },
+  {
+    "path": "tests/CP6.Platform.ArchitectureTests/bin/Release/net8.0/xunit.runner.visualstudio.testadapter.dll",
+    "bytes": 1251840,
+    "sha256": "98a7395cd6abd03d0ac8eeb82d720c24db00602f047ca49bd6e88e77fc6d1153"
+  }
+]

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="9aa14132-5275-47e0-a7e4-79206bb673f1" name="tt@LAPTOP-3QQ44FJS 2026-10-14 20:48:42" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T20:48:42.2203422-04:00" queuing="2026-10-14T20:48:42.2203429-04:00" start="2026-10-14T20:48:26.0691859-04:00" finish="2026-10-14T20:48:43.4967253-04:00" />
+  <TestSettings name="default" id="b0654aa1-6ac4-4b56-8a7e-d721ded34824">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_20_48_42" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="4b1a01d0-e3de-4272-8c50-8018ffcca1cf" testId="2c577fcf-3024-fd87-c3c4-b1db4790ca81" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;native-key&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0044247" startTime="2026-10-14T20:48:42.9300365-04:00" endTime="2026-10-14T20:48:42.9330215-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4b1a01d0-e3de-4272-8c50-8018ffcca1cf" />
+    <UnitTestResult executionId="6c51a171-bd23-475e-877a-58371ee59514" testId="3787ad1f-d010-24d3-822a-6dc7916f57a2" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;native-reference&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.8249670" startTime="2026-10-14T20:48:42.1559053-04:00" endTime="2026-10-14T20:48:42.9026762-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6c51a171-bd23-475e-877a-58371ee59514" />
+    <UnitTestResult executionId="73098b06-a699-4689-8610-d48216aeb775" testId="945cbc35-9d6d-0ce2-fbf1-2d1512a47191" testName="CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(malformed: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0046970" startTime="2026-10-14T20:48:42.1443645-04:00" endTime="2026-10-14T20:48:42.1447668-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="73098b06-a699-4689-8610-d48216aeb775" />
+    <UnitTestResult executionId="94e6278a-f86b-4043-b7de-22971356bbee" testId="1f0d38f0-fe5d-d1fe-2e01-923e115feda5" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;route&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0042673" startTime="2026-10-14T20:48:42.9400423-04:00" endTime="2026-10-14T20:48:42.9439251-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="94e6278a-f86b-4043-b7de-22971356bbee" />
+    <UnitTestResult executionId="ec1159f4-3297-44ff-aa15-d33141a26525" testId="56bc3715-95fe-8748-e0bc-a4a9bb439e13" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;native-missing&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0089405" startTime="2026-10-14T20:48:42.9167980-04:00" endTime="2026-10-14T20:48:42.9217337-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec1159f4-3297-44ff-aa15-d33141a26525" />
+    <UnitTestResult executionId="b4a61f51-2532-4732-a310-3e6c98773151" testId="4d88ba3c-80ce-fe3d-b81f-258c5bc9f629" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;bytes&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0062174" startTime="2026-10-14T20:48:42.9335747-04:00" endTime="2026-10-14T20:48:42.9395347-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b4a61f51-2532-4732-a310-3e6c98773151" />
+    <UnitTestResult executionId="f199b4b4-15c5-433c-bc86-31dd7ee6913f" testId="7ae5efcf-4b9b-e795-835f-6c2e7d18d1f9" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;id&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0037889" startTime="2026-10-14T20:48:42.9528680-04:00" endTime="2026-10-14T20:48:42.9531671-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f199b4b4-15c5-433c-bc86-31dd7ee6913f" />
+    <UnitTestResult executionId="c1f83ee2-ded7-4a54-9861-a9f07263975e" testId="c4ebd22f-ebe6-6df4-0b37-83e1acb2ad93" testName="CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(malformed: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:03.3617012" startTime="2026-10-14T20:48:38.7426336-04:00" endTime="2026-10-14T20:48:42.0706751-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c1f83ee2-ded7-4a54-9861-a9f07263975e" />
+    <UnitTestResult executionId="8361d640-4b52-440b-bf02-6a7544dc1e72" testId="3c31efb8-e1a7-32d3-525d-bf73ddff1cf2" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;missing&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0051262" startTime="2026-10-14T20:48:42.9039155-04:00" endTime="2026-10-14T20:48:42.9079928-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8361d640-4b52-440b-bf02-6a7544dc1e72" />
+    <UnitTestResult executionId="cec7e0c3-ce7d-4a8b-bc8c-aa0ee271b867" testId="9c6da278-dfbe-85a0-0ca3-8254fef4eaa7" testName="CP6.Platform.WP0212.Tests.TransportTests.RepeatedInvalidBodyAtDistinctNativeReferencesHasIndependentReadback" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0307528" startTime="2026-10-14T20:48:42.9538973-04:00" endTime="2026-10-14T20:48:43.0813830-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cec7e0c3-ce7d-4a8b-bc8c-aa0ee271b867">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Drop&#xD;
+Actual:   Retry</Message>
+          <StackTrace>   at CP6.Platform.WP0212.Tests.TransportTests.RepeatedInvalidBodyAtDistinctNativeReferencesHasIndependentReadback() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 223&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ec3c5fe9-2e71-476a-ab21-df7cbefcd5f6" testId="72378655-a1ec-f761-b4bd-c5dff1aa3908" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;policy&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0055587" startTime="2026-10-14T20:48:42.9222724-04:00" endTime="2026-10-14T20:48:42.9288904-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec3c5fe9-2e71-476a-ab21-df7cbefcd5f6" />
+    <UnitTestResult executionId="dd9a1cd2-e7c0-4733-807c-cb22f64d92db" testId="c889b22b-454e-1d7f-7761-843056411156" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;hash&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0043441" startTime="2026-10-14T20:48:42.9084854-04:00" endTime="2026-10-14T20:48:42.9128902-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dd9a1cd2-e7c0-4733-807c-cb22f64d92db" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;id&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="7ae5efcf-4b9b-e795-835f-6c2e7d18d1f9">
+      <Execution id="f199b4b4-15c5-433c-bc86-31dd7ee6913f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;bytes&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="4d88ba3c-80ce-fe3d-b81f-258c5bc9f629">
+      <Execution id="b4a61f51-2532-4732-a310-3e6c98773151" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;native-missing&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="56bc3715-95fe-8748-e0bc-a4a9bb439e13">
+      <Execution id="ec1159f4-3297-44ff-aa15-d33141a26525" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.RepeatedInvalidBodyAtDistinctNativeReferencesHasIndependentReadback" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="9c6da278-dfbe-85a0-0ca3-8254fef4eaa7">
+      <Execution id="cec7e0c3-ce7d-4a8b-bc8c-aa0ee271b867" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="RepeatedInvalidBodyAtDistinctNativeReferencesHasIndependentReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;missing&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="3c31efb8-e1a7-32d3-525d-bf73ddff1cf2">
+      <Execution id="8361d640-4b52-440b-bf02-6a7544dc1e72" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;policy&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="72378655-a1ec-f761-b4bd-c5dff1aa3908">
+      <Execution id="ec3c5fe9-2e71-476a-ab21-df7cbefcd5f6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;route&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="1f0d38f0-fe5d-d1fe-2e01-923e115feda5">
+      <Execution id="94e6278a-f86b-4043-b7de-22971356bbee" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(malformed: False)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="c4ebd22f-ebe6-6df4-0b37-83e1acb2ad93">
+      <Execution id="c1f83ee2-ded7-4a54-9861-a9f07263975e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;hash&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="c889b22b-454e-1d7f-7761-843056411156">
+      <Execution id="dd9a1cd2-e7c0-4733-807c-cb22f64d92db" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;native-reference&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="3787ad1f-d010-24d3-822a-6dc7916f57a2">
+      <Execution id="6c51a171-bd23-475e-877a-58371ee59514" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication(malformed: True)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="945cbc35-9d6d-0ce2-fbf1-2d1512a47191">
+      <Execution id="73098b06-a699-4689-8610-d48216aeb775" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="UnknownSchemaAndMalformedRawCanOnlyBeQuarantinedAfterAuthentication" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;native-key&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="2c577fcf-3024-fd87-c3c4-b1db4790ca81">
+      <Execution id="4b1a01d0-e3de-4272-8c50-8018ffcca1cf" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="2c577fcf-3024-fd87-c3c4-b1db4790ca81" executionId="4b1a01d0-e3de-4272-8c50-8018ffcca1cf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3787ad1f-d010-24d3-822a-6dc7916f57a2" executionId="6c51a171-bd23-475e-877a-58371ee59514" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="945cbc35-9d6d-0ce2-fbf1-2d1512a47191" executionId="73098b06-a699-4689-8610-d48216aeb775" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1f0d38f0-fe5d-d1fe-2e01-923e115feda5" executionId="94e6278a-f86b-4043-b7de-22971356bbee" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="56bc3715-95fe-8748-e0bc-a4a9bb439e13" executionId="ec1159f4-3297-44ff-aa15-d33141a26525" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4d88ba3c-80ce-fe3d-b81f-258c5bc9f629" executionId="b4a61f51-2532-4732-a310-3e6c98773151" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7ae5efcf-4b9b-e795-835f-6c2e7d18d1f9" executionId="f199b4b4-15c5-433c-bc86-31dd7ee6913f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c4ebd22f-ebe6-6df4-0b37-83e1acb2ad93" executionId="c1f83ee2-ded7-4a54-9861-a9f07263975e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3c31efb8-e1a7-32d3-525d-bf73ddff1cf2" executionId="8361d640-4b52-440b-bf02-6a7544dc1e72" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9c6da278-dfbe-85a0-0ca3-8254fef4eaa7" executionId="cec7e0c3-ce7d-4a8b-bc8c-aa0ee271b867" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="72378655-a1ec-f761-b4bd-c5dff1aa3908" executionId="ec3c5fe9-2e71-476a-ab21-df7cbefcd5f6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c889b22b-454e-1d7f-7761-843056411156" executionId="dd9a1cd2-e7c0-4733-807c-cb22f64d92db" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="12" executed="12" passed="11" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:02.65]   Discovering: CP6.Platform.WP0212.Tests&#xD;
+[xUnit.net 00:00:02.79]   Discovered:  CP6.Platform.WP0212.Tests&#xD;
+[xUnit.net 00:00:02.87]   Starting:    CP6.Platform.WP0212.Tests&#xD;
+[xUnit.net 00:00:07.36]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:07.36]       Expected: Drop&#xD;
+[xUnit.net 00:00:07.36]       Actual:   Retry&#xD;
+[xUnit.net 00:00:07.36]       Stack Trace:&#xD;
+[xUnit.net 00:00:07.37]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(223,0): at CP6.Platform.WP0212.Tests.TransportTests.RepeatedInvalidBodyAtDistinctNativeReferencesHasIndependentReadback()&#xD;
+[xUnit.net 00:00:07.38]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:07.41]   Finished:    CP6.Platform.WP0212.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:48:43.1012385-04:00">
+        <Text>[xUnit.net 00:00:07.35]     CP6.Platform.WP0212.Tests.TransportTests.RepeatedInvalidBodyAtDistinctNativeReferencesHasIndependentReadback [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

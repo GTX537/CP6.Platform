@@ -1,0 +1,46 @@
+[
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/TransportTests.cs",
+    "sha256": "45ce73c3ce6347a034eadef7ff02ef4f3eca26991ac77f29f433cf78160fac13"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/OutboxBridgeTests.cs",
+    "sha256": "d55ba4f2e8879ab43c4c1d435e5f0c25a4dc32b3c96bbf96a29466d90e53a248"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0212.Tests/CP6.Platform.WP0212.Tests.csproj",
+    "sha256": "5ff6a3161c4dbc76977ae4730a8f5c137cd1c8c33ba1c2f7e6ad22afa6015e25"
+  },
+  {
+    "path": "src/CP6.Platform.Messaging/TransportV1/TransportRouteV1.cs",
+    "sha256": "d61ec95fda4ee7f96f964a53e21805e8825c88fd7088f11617d9a88ff12c9bbf"
+  },
+  {
+    "path": "src/CP6.Platform.Messaging/TransportV1/TransportRegistryV1.cs",
+    "sha256": "866e09f23f629e55b34a02d161aa3fa14dc71cbe3ac25daa9c1403ec2c2a94bf"
+  },
+  {
+    "path": "src/CP6.Platform.Messaging/TransportV1/TransportContractsV1.cs",
+    "sha256": "48b76f842ec44b545d462384bd7ee9ab8b95638b3e1352cfa99dc42d3fd3127d"
+  },
+  {
+    "path": "src/CP6.Platform.EntityFramework/TransportV1/TransportOutboxPublisherV1.cs",
+    "sha256": "2f17203349d0c25ee5ca857e10329e0ced33211457526678376ab9779de6f2c5"
+  },
+  {
+    "path": "src/CP6.Platform.Messaging/Cp6ContractBundle.cs",
+    "sha256": "2c46abff1754a6021c5d4068df62ce98bf50b9b0c3fe3f7388c916559f155a44"
+  },
+  {
+    "path": "src/CP6.Platform.Messaging/Cp6CloudEventValidator.cs",
+    "sha256": "fcde9f7831bee8dcb7f3643bfd26b386c1ab2ef90f2949d92d39e77e8d3f3b6b"
+  },
+  {
+    "path": "Directory.Packages.props",
+    "sha256": "e27010697c96f9ae86af011e6a7fd0f7b19dca60b71d49f393aaa4d6fc5f78b5"
+  },
+  {
+    "path": "Directory.Build.props",
+    "sha256": "be5ae2820e4d7c1a554336a50b06e5eef5d0f4dea9469f31d1b8c84e52c32d83"
+  }
+]

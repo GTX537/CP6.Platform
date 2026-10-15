@@ -1,0 +1,32 @@
+{
+  "identity": {
+    "SystemIdentifier": "7696683980637488880",
+    "DataDirectory": "D:/CP6-local-test/WP02-12/6caf6a19b8a641989bfe8e108733d5bc/data",
+    "Port": 55430,
+    "Database": "cp6_wp0212_20261015_6caf6a19",
+    "Oid": "16385",
+    "DatabaseOwner": "wp0212_admin_6caf6a19",
+    "Principal": "wp0212_admin_6caf6a19",
+    "RuntimeIdentity": {
+      "Principal": "wp0212_runtime_6caf6a19",
+      "Database": "cp6_wp0212_20261015_6caf6a19",
+      "Port": 55430,
+      "Owner": "6caf6a19b8a641989bfe8e108733d5bc",
+      "Marker": "CP6-WP02-12:6caf6a19b8a641989bfe8e108733d5bc",
+      "Superuser": false,
+      "CreateDatabase": false,
+      "CreateRole": false,
+      "Inherit": false,
+      "BypassRls": false,
+      "CreateSchema": false,
+      "CreateFixture": false
+    },
+    "Owner": "6caf6a19b8a641989bfe8e108733d5bc",
+    "Marker": "CP6-WP02-12:6caf6a19b8a641989bfe8e108733d5bc",
+    "RunDirectory": "D:\\CP6-local-test\\WP02-12\\6caf6a19b8a641989bfe8e108733d5bc"
+  },
+  "scope": "owned fixture only",
+  "rowsPreserved": true,
+  "keyAdded": "NativeReference",
+  "reason": "retain each original Kafka offset without replacing raw message identity"
+}
