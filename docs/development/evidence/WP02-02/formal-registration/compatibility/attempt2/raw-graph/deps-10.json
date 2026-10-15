@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CP6.Platform.Abstractions/0.8.0-alpha.2": {
+        "dependencies": {
+          "CP6.Platform.Contracts": "0.8.0-alpha.2"
+        },
+        "runtime": {
+          "CP6.Platform.Abstractions.dll": {}
+        }
+      },
+      "CP6.Platform.Contracts/0.8.0-alpha.2": {
+        "runtime": {
+          "CP6.Platform.Contracts.dll": {
+            "assemblyVersion": "0.8.0-alpha.2",
+            "fileVersion": "0.8.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CP6.Platform.Abstractions/0.8.0-alpha.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CP6.Platform.Contracts/0.8.0-alpha.2": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

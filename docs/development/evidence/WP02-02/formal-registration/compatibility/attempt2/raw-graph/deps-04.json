@@ -1,0 +1,53 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "CP6.Space.Application/1.0.0": {
+        "dependencies": {
+          "CP6.Space.Contracts": "1.0.0",
+          "CP6.Space.Domain": "1.0.0"
+        },
+        "runtime": {
+          "CP6.Space.Application.dll": {}
+        }
+      },
+      "CP6.Space.Contracts/1.0.0": {
+        "runtime": {
+          "CP6.Space.Contracts.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "CP6.Space.Domain/1.0.0": {
+        "runtime": {
+          "CP6.Space.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CP6.Space.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CP6.Space.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CP6.Space.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

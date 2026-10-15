@@ -37,12 +37,12 @@ public sealed class ReleaseSchemaAssetTests
     }
 
     [Fact]
-    public void Formal_publication_schema_registers_exactly_the_three_immutable_versions_at_every_layer()
+    public void Formal_publication_schema_registers_exactly_the_four_immutable_versions_at_every_layer()
     {
         var path = Path.Combine(Root, "contracts", "release", "v1", "formal-package-publication.v1.schema.json");
         using var document = JsonDocument.Parse(File.ReadAllBytes(path));
         var root = document.RootElement;
-        var expected = new[] { "0.10.0", "0.10.1", "0.10.2" };
+        var expected = new[] { "0.10.0", "0.10.1", "0.10.2", "0.10.3" };
 
         Assert.Equal(expected, root.GetProperty("properties").GetProperty("version").GetProperty("enum")
             .EnumerateArray().Select(item => item.GetString()).ToArray());

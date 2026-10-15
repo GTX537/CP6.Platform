@@ -1,0 +1,118 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "CP6.Space.Contracts/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/CP6.Space.Contracts.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CP6.Space.Contracts.dll": {}
+        }
+      },
+      "CP6.Space.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/CP6.Space.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CP6.Space.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CP6.Space.Contracts/1.0.0": {
+      "type": "project",
+      "path": "../CP6.Space.Contracts/CP6.Space.Contracts.csproj",
+      "msbuildProject": "../CP6.Space.Contracts/CP6.Space.Contracts.csproj"
+    },
+    "CP6.Space.Domain/1.0.0": {
+      "type": "project",
+      "path": "../CP6.Space.Domain/CP6.Space.Domain.csproj",
+      "msbuildProject": "../CP6.Space.Domain/CP6.Space.Domain.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "CP6.Space.Contracts >= 1.0.0",
+      "CP6.Space.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\n": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\CP6.Space.Application\\CP6.Space.Application.csproj",
+      "projectName": "CP6.Space.Application",
+      "projectPath": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\CP6.Space.Application\\CP6.Space.Application.csproj",
+      "packagesPath": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\n",
+      "outputPath": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\CP6.Space.Application\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\NuGet.config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.pkg.github.com/GTX537/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {
+            "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\CP6.Space.Contracts\\CP6.Space.Contracts.csproj": {
+              "projectPath": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\CP6.Space.Contracts\\CP6.Space.Contracts.csproj"
+            },
+            "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\CP6.Space.Domain\\CP6.Space.Domain.csproj": {
+              "projectPath": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\main\\CP6.Space.Domain\\CP6.Space.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreLockProperties": {
+        "restorePackagesWithLockFile": "true",
+        "nuGetLockFilePath": "packages.wp02-02.lock.json"
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Users\\tt\\.dotnet\\sdk\\8.0.424/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

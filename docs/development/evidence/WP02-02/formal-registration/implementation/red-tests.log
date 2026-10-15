@@ -1,0 +1,496 @@
+  Determining projects to restore...
+  Restored D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\src\CP6.Platform.Release\CP6.Platform.Release.csproj (in 326 ms).
+D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj : warning NU1902: Package 'System.Security.Cryptography.Pkcs' 8.0.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-2fmv-rv2c-59x7 [D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\CP6.Platform.ReleaseTests.csproj]
+D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj : warning NU1903: Package 'System.Security.Cryptography.Pkcs' 8.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-846f-f764-76mx [D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\CP6.Platform.ReleaseTests.csproj]
+  Restored D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj (in 1.24 sec).
+  Restored D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\CP6.Platform.ReleaseTests.csproj (in 1.26 sec).
+  CP6.Platform.Release -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\src\CP6.Platform.Release\bin\Release\net8.0\CP6.Platform.Release.dll
+D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj : warning NU1902: Package 'System.Security.Cryptography.Pkcs' 8.0.1 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-2fmv-rv2c-59x7
+D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\CP6.Platform.ReleaseTool.csproj : warning NU1903: Package 'System.Security.Cryptography.Pkcs' 8.0.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-846f-f764-76mx
+  CP6.Platform.ReleaseTool -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tools\CP6.Platform.ReleaseTool\bin\Release\net8.0\CP6.Platform.ReleaseTool.dll
+  CP6.Platform.ReleaseTests -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:05.27]     CP6.Platform.ReleaseTests.ReleaseSchemaAssetTests.Formal_publication_schema_registers_exactly_the_four_immutable_versions_at_every_layer [FAIL]
+[xUnit.net 00:00:05.30]     CP6.Platform.ReleaseTests.P10FormalWorkflowContractTests.Formal_workflow_is_manual_exact_main_fixed_version_and_protected [FAIL]
+  Failed CP6.Platform.ReleaseTests.ReleaseSchemaAssetTests.Formal_publication_schema_registers_exactly_the_four_immutable_versions_at_every_layer [720 ms]
+  Error Message:
+   Assert.Equal() Failure: Collections differ
+                                         ↓ (pos 3)
+Expected: ["0.10.0", "0.10.1", "0.10.2", "0.10.3"]
+Actual:   ["0.10.0", "0.10.1", "0.10.2"]
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.ReleaseSchemaAssetTests.Formal_publication_schema_registers_exactly_the_four_immutable_versions_at_every_layer() in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\ReleaseSchemaAssetTests.cs:line 47
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.P10FormalWorkflowContractTests.Formal_workflow_is_manual_exact_main_fixed_version_and_protected [654 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: 2
+Actual:   0
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.P10FormalWorkflowContractTests.Formal_workflow_is_manual_exact_main_fixed_version_and_protected() in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalWorkflowContractTests.cs:line 34
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:06.72]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.2", context: True, valid: False) [FAIL]
+[xUnit.net 00:00:06.81]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.0", context: False, valid: True) [FAIL]
+[xUnit.net 00:00:06.87]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.2", context: False, valid: True) [FAIL]
+[xUnit.net 00:00:06.95]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.1", context: False, valid: True) [FAIL]
+[xUnit.net 00:00:07.01]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.1", context: True, valid: False) [FAIL]
+[xUnit.net 00:00:07.08]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.0", context: True, valid: False) [FAIL]
+[xUnit.net 00:00:07.12]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.3", context: True, valid: True) [FAIL]
+[xUnit.net 00:00:07.19]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "latest", context: False, valid: False) [FAIL]
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.2", context: True, valid: False) [68 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.0", context: False, valid: True) [87 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.2", context: False, valid: True) [60 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.1", context: False, valid: True) [74 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.1", context: True, valid: False) [57 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.0", context: True, valid: False) [73 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.3", context: True, valid: True) [40 ms]
+  Error Message:
+   Assert.Null() Failure: Value is not null
+Expected: null
+Actual:   CP6.Platform.Release.Cp6ReleaseContractException: Unknown publication lane or unapproved formal version.
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 39
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.<>c__DisplayClass6_0.<AssertShape>b__0() in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 119
+   at Xunit.Record.Exception(Func`1 testCode) in /_/src/xunit.core/Record.cs:line 47
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 120
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "latest", context: False, valid: False) [60 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:07.29]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.4", context: False, valid: False) [FAIL]
+[xUnit.net 00:00:07.31]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.3", context: False, valid: True) [FAIL]
+[xUnit.net 00:00:07.39]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.3+build.1", context: True, valid: False) [FAIL]
+[xUnit.net 00:00:07.46]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: "version", value: "0.10.2") [FAIL]
+[xUnit.net 00:00:07.54]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: "feedIdentity", value: "https://nuget.pkg.github.com/GTX537/index.json#CP6"···) [FAIL]
+[xUnit.net 00:00:07.63]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: "sha256", value: "invalid") [FAIL]
+[xUnit.net 00:00:07.83]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: "feedIdentity", value: "https://nuget.pkg.github.com/GTX537/index.json#CP6"···) [FAIL]
+[xUnit.net 00:00:07.90]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: "sourceGitSha", value: "main") [FAIL]
+[xUnit.net 00:00:08.01]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "id", value: "S01-09") [FAIL]
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.4", context: False, valid: False) [101 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.3", context: False, valid: True) [20 ms]
+  Error Message:
+   Assert.Null() Failure: Value is not null
+Expected: null
+Actual:   CP6.Platform.Release.Cp6ReleaseContractException: Unknown publication lane or unapproved formal version.
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 39
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.<>c__DisplayClass6_0.<AssertShape>b__0() in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 119
+   at Xunit.Record.Exception(Func`1 testCode) in /_/src/xunit.core/Record.cs:line 47
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 120
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(version: "0.10.3+build.1", context: True, valid: False) [83 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(String version, Boolean context, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 30
+   at InvokeStub_P10FormalRegistrationTests.Formal_capability_version_catalog_agrees_with_source_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: "version", value: "0.10.2") [58 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 58
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: "feedIdentity", value: "https://nuget.pkg.github.com/GTX537/index.json#CP6"···) [78 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 58
+   at InvokeStub_P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: "sha256", value: "invalid") [92 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 58
+   at InvokeStub_P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: "feedIdentity", value: "https://nuget.pkg.github.com/GTX537/index.json#CP6"···) [187 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 58
+   at InvokeStub_P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(property: "sourceGitSha", value: "main") [76 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 58
+   at InvokeStub_P10FormalRegistrationTests.Formal_package_identity_corruption_is_rejected_by_API_and_schema(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "id", value: "S01-09") [100 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 45
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:08.21]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "scope", value: "Http") [FAIL]
+[xUnit.net 00:00:08.29]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "id", value: "Transport") [FAIL]
+[xUnit.net 00:00:08.42]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "id", value: "OBS") [FAIL]
+[xUnit.net 00:00:08.50]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "id", value: "SLO") [FAIL]
+[xUnit.net 00:00:08.62]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "version", value: "1.0.1") [FAIL]
+[xUnit.net 00:00:08.70]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "profiles", value: "ctx-v2") [FAIL]
+[xUnit.net 00:00:08.71]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "Pack-P10FormalPackages", reader: False) [FAIL]
+[xUnit.net 00:00:08.72]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "Test-P10FormalPrerequisites", reader: False) [FAIL]
+[xUnit.net 00:00:08.72]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "Test-P10FormalPackageSet", reader: True) [FAIL]
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "scope", value: "Http") [141 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 45
+   at InvokeStub_P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "id", value: "Transport") [141 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 45
+   at InvokeStub_P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "id", value: "OBS") [128 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 45
+   at InvokeStub_P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "id", value: "SLO") [77 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 45
+   at InvokeStub_P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "version", value: "1.0.1") [107 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 45
+   at InvokeStub_P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(property: "profiles", value: "ctx-v2") [80 ms]
+  Error Message:
+   Json.Schema.JsonSchemaException : Overwriting registered schemas is not permitted.
+  Stack Trace:
+     at Json.Schema.SchemaRegistry.RegisterSchema(Uri uri, IBaseDocument schema)
+   at Json.Schema.SchemaRegistry.Register(Uri uri, IBaseDocument document)
+   at Json.Schema.SchemaRegistry.Register(IBaseDocument document)
+   at Json.Schema.JsonSchema.BuildImpl(JsonElement root, BuildOptions options, Uri baseUri, Boolean register)
+   at Json.Schema.JsonSchema.Build(JsonElement root, BuildOptions options, Uri baseUri)
+   at Json.Schema.JsonSchema.FromText(String jsonText, BuildOptions buildOptions, Uri baseUri, Nullable`1 jsonOptions)
+   at Json.Schema.JsonSchema.FromFile(String fileName, BuildOptions options, Uri baseUri)
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.AssertShape(JsonObject root, Boolean valid) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 121
+   at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(String property, String value) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 45
+   at InvokeStub_P10FormalRegistrationTests.Formal_context_catalog_cannot_expand(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "Pack-P10FormalPackages", reader: False) [5 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: False
+Actual:   True
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(String name, Boolean reader) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 75
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "Test-P10FormalPrerequisites", reader: False) [7 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: False
+Actual:   True
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(String name, Boolean reader) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 75
+   at InvokeStub_P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "Test-P10FormalPackageSet", reader: True) [5 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: True
+Actual:   False
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(String name, Boolean reader) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 75
+   at InvokeStub_P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:00:08.75]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "Publish-P10FormalPackageSet", reader: False) [FAIL]
+[xUnit.net 00:00:08.76]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "New-P10FormalPackageSet", reader: False) [FAIL]
+[xUnit.net 00:00:08.80]     CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "New-P10FormalPublicationRecord", reader: False) [FAIL]
+[xUnit.net 00:00:09.14]     CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityTrustTests.Formal_shape_and_success_claims_do_not_grant_crypto_trust(version: "0.10.3") [FAIL]
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "Publish-P10FormalPackageSet", reader: False) [7 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: False
+Actual:   True
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(String name, Boolean reader) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 75
+   at InvokeStub_P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "New-P10FormalPackageSet", reader: False) [11 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: False
+Actual:   True
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(String name, Boolean reader) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 75
+   at InvokeStub_P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: "New-P10FormalPublicationRecord", reader: False) [< 1 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: False
+Actual:   True
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(String name, Boolean reader) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\P10FormalRegistrationTests.cs:line 75
+   at InvokeStub_P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+  Failed CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityTrustTests.Formal_shape_and_success_claims_do_not_grant_crypto_trust(version: "0.10.3") [4 s]
+  Error Message:
+   CP6.Platform.Release.Cp6ReleaseContractException : Unknown publication lane or unapproved formal version.
+  Stack Trace:
+     at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.ValidateShape(ReadOnlySpan`1 manifest) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 39
+   at CP6.Platform.Release.CapabilitiesV1.Cp6CapabilityValidator.Evaluate(ReadOnlySpan`1 manifest, Cp6CapabilityApproval approval, IReadOnlyDictionary`2 packages, IReadOnlyDictionary`2 evidence, ReadOnlySpan`1 requestedRow, DateTimeOffset evaluationUtc, ReadOnlyMemory`1 publication, Cp6PinnedNuGetTrustPolicy trustPolicy, ICp6CapabilitySignatureVerifier signatureVerifier) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\src\CP6.Platform.Release\CapabilitiesV1\Cp6CapabilityValidator.cs:line 117
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityTrustTests.FormalFixture.Evaluate(ICp6CapabilitySignatureVerifier verifier, Nullable`1 now) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityTrustTests.cs:line 180
+   at CP6.Platform.ReleaseTests.CapabilitiesV1.CapabilityTrustTests.Formal_shape_and_success_claims_do_not_grant_crypto_trust(String version) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\CapabilitiesV1\CapabilityTrustTests.cs:line 60
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)
+[xUnit.net 00:00:15.27]     CP6.Platform.ReleaseTests.FormalPackagePublicationTests.Publication_Schema_accepts_only_coherent_approved_formal_versions(rootVersion: "0.10.3", packageVersion: "0.10.3", feedVersion: "0.10.3", expected: True) [FAIL]
+  Failed CP6.Platform.ReleaseTests.FormalPackagePublicationTests.Publication_Schema_accepts_only_coherent_approved_formal_versions(rootVersion: "0.10.3", packageVersion: "0.10.3", feedVersion: "0.10.3", expected: True) [2 s]
+  Error Message:
+   [{"InstanceLocation":"","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022,\u0022packages\u0022]"}},{"InstanceLocation":"/version","Errors":{"enum":"Value should match one of the values specified by the enum"}},{"InstanceLocation":"/packages","Errors":{"prefixItems":"Some prefix items do not match the required schema; failing indexes: [0,1,2,3,4,5,6]"}},{"InstanceLocation":"/packages/0","Errors":{"allOf":"Value does not match all of the specified schemas; failing schema indexes: [0,1]"}},{"InstanceLocation":"/packages/1","Errors":{"allOf":"Value does not match all of the specified schemas; failing schema indexes: [0,1]"}},{"InstanceLocation":"/packages/2","Errors":{"allOf":"Value does not match all of the specified schemas; failing schema indexes: [0,1]"}},{"InstanceLocation":"/packages/3","Errors":{"allOf":"Value does not match all of the specified schemas; failing schema indexes: [0,1]"}},{"InstanceLocation":"/packages/4","Errors":{"allOf":"Value does not match all of the specified schemas; failing schema indexes: [0,1]"}},{"InstanceLocation":"/packages/5","Errors":{"allOf":"Value does not match all of the specified schemas; failing schema indexes: [0,1]"}},{"InstanceLocation":"/packages/6","Errors":{"allOf":"Value does not match all of the specified schemas; failing schema indexes: [0,1]"}},{"InstanceLocation":"","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022]"}},{"InstanceLocation":"","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022]"}},{"InstanceLocation":"","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022]"}},{"InstanceLocation":"/packages/0","Errors":{"properties":"Some properties did not match the required schema: [\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/1","Errors":{"properties":"Some properties did not match the required schema: [\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/2","Errors":{"properties":"Some properties did not match the required schema: [\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/3","Errors":{"properties":"Some properties did not match the required schema: [\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/4","Errors":{"properties":"Some properties did not match the required schema: [\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/5","Errors":{"properties":"Some properties did not match the required schema: [\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/6","Errors":{"properties":"Some properties did not match the required schema: [\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/version","Errors":{"const":"Expected \u0022\\u00220.10.0\\u0022\u0022"}},{"InstanceLocation":"/version","Errors":{"const":"Expected \u0022\\u00220.10.1\\u0022\u0022"}},{"InstanceLocation":"/version","Errors":{"const":"Expected \u0022\\u00220.10.2\\u0022\u0022"}},{"InstanceLocation":"/packages/0","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022,\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/0/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/1","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022,\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/1/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/2","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022,\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/2/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/3","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022,\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/3/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/4","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022,\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/4/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/5","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022,\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/5/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/6","Errors":{"properties":"Some properties did not match the required schema: [\u0022version\u0022,\u0022feedIdentity\u0022]"}},{"InstanceLocation":"/packages/6/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/0/version","Errors":{"enum":"Value should match one of the values specified by the enum"}},{"InstanceLocation":"/packages/0/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/1/version","Errors":{"enum":"Value should match one of the values specified by the enum"}},{"InstanceLocation":"/packages/1/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/2/version","Errors":{"enum":"Value should match one of the values specified by the enum"}},{"InstanceLocation":"/packages/2/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/3/version","Errors":{"enum":"Value should match one of the values specified by the enum"}},{"InstanceLocation":"/packages/3/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/4/version","Errors":{"enum":"Value should match one of the values specified by the enum"}},{"InstanceLocation":"/packages/4/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/5/version","Errors":{"enum":"Value should match one of the values specified by the enum"}},{"InstanceLocation":"/packages/5/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}},{"InstanceLocation":"/packages/6/version","Errors":{"enum":"Value should match one of the values specified by the enum"}},{"InstanceLocation":"/packages/6/feedIdentity","Errors":{"pattern":"The string value is not a match for the indicated regular expression"}}]
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.FormalPackagePublicationTests.Publication_Schema_accepts_only_coherent_approved_formal_versions(String rootVersion, String packageVersion, String feedVersion, Boolean expected) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\FormalPackagePublicationTests.cs:line 30
+   at InvokeStub_FormalPackagePublicationTests.Publication_Schema_accepts_only_coherent_approved_formal_versions(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+[xUnit.net 00:01:11.60]     CP6.Platform.ReleaseTests.FormalPackagePublicationTests.Publication_API_accepts_only_coherent_approved_formal_versions(rootVersion: "0.10.3", packageVersion: "0.10.3", feedVersion: "0.10.3", expected: True) [FAIL]
+  Failed CP6.Platform.ReleaseTests.FormalPackagePublicationTests.Publication_API_accepts_only_coherent_approved_formal_versions(rootVersion: "0.10.3", packageVersion: "0.10.3", feedVersion: "0.10.3", expected: True) [1 s]
+  Error Message:
+   Assert.Null() Failure: Value is not null
+Expected: null
+Actual:   CP6.Platform.Release.Cp6ReleaseContractException: Formal publication version is not approved.
+   at CP6.Platform.Release.Cp6FormalPackagePublicationValidator.ValidateFormalPackagePublication(ReadOnlySpan`1 utf8Json, Cp6PinnedNuGetTrustPolicy trustPolicy, DateTimeOffset evaluationUtc) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\src\CP6.Platform.Release\Cp6FormalPackagePublicationValidator.cs:line 40
+   at CP6.Platform.ReleaseTests.FormalPackagePublicationTests.<>c__DisplayClass1_0.<Publication_API_accepts_only_coherent_approved_formal_versions>b__0() in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\FormalPackagePublicationTests.cs:line 17
+   at Xunit.Record.Exception(Func`1 testCode) in /_/src/xunit.core/Record.cs:line 47
+  Stack Trace:
+     at CP6.Platform.ReleaseTests.FormalPackagePublicationTests.Publication_API_accepts_only_coherent_approved_formal_versions(String rootVersion, String packageVersion, String feedVersion, Boolean expected) in D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\FormalPackagePublicationTests.cs:line 19
+   at InvokeStub_FormalPackagePublicationTests.Publication_API_accepts_only_coherent_approved_formal_versions(Object, Span`1)
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)
+Results File: D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\docs\development\evidence\WP02-02\formal-registration\implementation\red-tests.trx
+
+Failed!  - Failed:    34, Passed:    56, Skipped:     0, Total:    90, Duration: 2 m - CP6.Platform.ReleaseTests.dll (net8.0)

@@ -1,0 +1,334 @@
+{
+  "files": [
+    {
+      "kind": "assets",
+      "sourcePath": "probe/obj/project.assets.json",
+      "path": "assets-00.json",
+      "sha256": "07dc242c395b7588b6185daf33252ca5dc952294224aa2bd68ead5ac344e9cbd",
+      "bytes": 148558
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/main/CP6.Core/obj/project.assets.json",
+      "path": "assets-01.json",
+      "sha256": "ff8b4bcef2287e79c7b7dcc6a2124d1a93be8ee4dcad699c307689b2509136dc",
+      "bytes": 211546
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/main/CP6.Entity/obj/project.assets.json",
+      "path": "assets-02.json",
+      "sha256": "79de9ae2eb05fea09450f5f81fbb6ff1db8726e97c54715d5788aac709f7c1a8",
+      "bytes": 29870
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/main/CP6.Persistence.PostgreSql/obj/project.assets.json",
+      "path": "assets-03.json",
+      "sha256": "38a4d9c0d1000734be30306c8068bdab450504bb98014d7091f3f336be88545c",
+      "bytes": 270821
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/main/CP6.Space.Application/obj/project.assets.json",
+      "path": "assets-04.json",
+      "sha256": "e69bdd31e08d04dfeb7942f0e716648f3075eafba1ca2180d16c0e7b69bb9ca5",
+      "bytes": 4671
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/main/CP6.Space.Contracts/obj/project.assets.json",
+      "path": "assets-05.json",
+      "sha256": "22589a3f77b28ff50a1f40b7b36b9482988cb17fd1cfcd8a03266dd092fd75bb",
+      "bytes": 2700
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/main/CP6.Space.Domain/obj/project.assets.json",
+      "path": "assets-06.json",
+      "sha256": "9cebc796b939b786de3bd720a7a7a920b6fc9b754f152b7f2f7d17f8662c0e46",
+      "bytes": 2682
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/main/CP6.Space.Infrastructure/obj/project.assets.json",
+      "path": "assets-07.json",
+      "sha256": "81c6fd3aa5eea67c58c00d5f5d714b81d7ececce86b215d7d38708d711a76901",
+      "bytes": 271169
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/main/CP6.WebApi/obj/project.assets.json",
+      "path": "assets-08.json",
+      "sha256": "1a5c2c6aca7ded5040295701b2ea6fbb38bc5a9c326ea9888dee8f4c1b9030dc",
+      "bytes": 364834
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/main/tools/CP6.DatabaseCompatibility.Probe/obj/project.assets.json",
+      "path": "assets-09.json",
+      "sha256": "6c01a013840ae6b0fa20810c7875cd95059b4e8f3d95b5ea81ad57ffda8af307",
+      "bytes": 211998
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.Abstractions/obj/project.assets.json",
+      "path": "assets-10.json",
+      "sha256": "8f8a3f8f3beef7c1a7570111b4f73c844f17832e4bf2daef5cc0e84dc1a68392",
+      "bytes": 5111
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.AspNetCore/obj/project.assets.json",
+      "path": "assets-11.json",
+      "sha256": "dc124e971dc80f9d62c761ea6b6aa525b6f46c16dfc23f4bb9ddefd1cd1be3c4",
+      "bytes": 112900
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.Contracts/obj/project.assets.json",
+      "path": "assets-12.json",
+      "sha256": "b4ae9a5b15c7bfab570f77ac49b2a9a5b029cc3191957f2ac2826f7913bab6d7",
+      "bytes": 4001
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.EntityFramework/obj/project.assets.json",
+      "path": "assets-13.json",
+      "sha256": "be436b45c2bf6c9756142c4801ac4f0dab0ac57655f1af1e16c62ce9756f0180",
+      "bytes": 37325
+    },
+    {
+      "kind": "assets",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.Messaging/obj/project.assets.json",
+      "path": "assets-14.json",
+      "sha256": "77ffb2e231948bc7c14df85870c331f31e4239566a208e303904a66aca56cdfc",
+      "bytes": 68954
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "probe/bin/Release/net8.0/Probe.deps.json",
+      "path": "deps-00.json",
+      "sha256": "92e38f3557e8779b375058bdd61be631e9775498c5d46fe469a42d3586fb6e40",
+      "bytes": 56821
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/main/CP6.Core/bin/Release/net8.0/CP6.Core.deps.json",
+      "path": "deps-01.json",
+      "sha256": "0d85b4f335437fe76a663cb32a3dd138c0669189b4e9434c05edaeb5c63ba6d3",
+      "bytes": 81240
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/main/CP6.Entity/bin/Release/net8.0/CP6.Entity.deps.json",
+      "path": "deps-02.json",
+      "sha256": "9181324c560e18d8466ee9e66cf05ad4e29a30bed6c5ff706489a140d473c9bf",
+      "bytes": 8704
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/main/CP6.Persistence.PostgreSql/bin/Release/net8.0/CP6.Persistence.PostgreSql.deps.json",
+      "path": "deps-03.json",
+      "sha256": "84a9ac71f01e3d24e1a59aa592f7960e66b6c0f460431c3163b343676239dab5",
+      "bytes": 102323
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/main/CP6.Space.Application/bin/Release/net8.0/CP6.Space.Application.deps.json",
+      "path": "deps-04.json",
+      "sha256": "da5e52c2576eb9a819f48258450c500c3497387aa8f78607c45d4d52d7f19da4",
+      "bytes": 1231
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/main/CP6.Space.Contracts/bin/Release/net8.0/CP6.Space.Contracts.deps.json",
+      "path": "deps-05.json",
+      "sha256": "ac414c45515f6531259d711835401fbff6335948eb025e91745e42302599f318",
+      "bytes": 449
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/main/CP6.Space.Domain/bin/Release/net8.0/CP6.Space.Domain.deps.json",
+      "path": "deps-06.json",
+      "sha256": "97ff6c32994a116f45bc5d96c74f83805decddb70eaa5642bbd69277698c4c36",
+      "bytes": 440
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/main/CP6.Space.Infrastructure/bin/Release/net8.0/CP6.Space.Infrastructure.deps.json",
+      "path": "deps-07.json",
+      "sha256": "bf1a762b7cbc63ab5569fc199cc4f9a8ac0eaa6e384beeea506b5d71474a69a2",
+      "bytes": 101852
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/main/CP6.WebApi/bin/Release/net8.0/CP6.WebApi.deps.json",
+      "path": "deps-08.json",
+      "sha256": "2286375293e74f4cce987d622753777dafe97caf235929b6848bb58a583e56e1",
+      "bytes": 137530
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/main/tools/CP6.DatabaseCompatibility.Probe/bin/Release/net8.0/CP6.DatabaseCompatibility.Probe.deps.json",
+      "path": "deps-09.json",
+      "sha256": "bfa7577aa530b609f53fc16ef3fa2885e7791556459e55fc6d36cbf6248cfb08",
+      "bytes": 83733
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.Abstractions/bin/Release/net8.0/CP6.Platform.Abstractions.deps.json",
+      "path": "deps-10.json",
+      "sha256": "dcea2f238c47bdfbbe8e79691f64ea7d3f76938d6e92b6731c8c0da91b5fb6c4",
+      "bytes": 940
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.AspNetCore/bin/Release/net8.0/CP6.Platform.AspNetCore.deps.json",
+      "path": "deps-11.json",
+      "sha256": "3411eeb620e8b8bb832b29a5f717d58ae1db83a76cf215fbbd1d7aa776b22a64",
+      "bytes": 38804
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.Contracts/bin/Release/net8.0/CP6.Platform.Contracts.deps.json",
+      "path": "deps-12.json",
+      "sha256": "1fc137f399cdb8212ce4a406f41155fa6d4b4e77b8089a132bcb7b72f6968e54",
+      "bytes": 474
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.EntityFramework/bin/Release/net8.0/CP6.Platform.EntityFramework.deps.json",
+      "path": "deps-13.json",
+      "sha256": "8901342d80c23c24bc286b85c268fb41d1e2249f5a2ac5d190fbf3510befc088",
+      "bytes": 11387
+    },
+    {
+      "kind": "deps",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.Messaging/bin/Release/net8.0/CP6.Platform.Messaging.deps.json",
+      "path": "deps-14.json",
+      "sha256": "4a92087027205f50cb06134296f16636ff16d246f200a9e8167a11e6c67b3fad",
+      "bytes": 23668
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "probe/bin/Release/net8.0/packages.wp02-02.lock.json",
+      "path": "locks-00.json",
+      "sha256": "e8efe3502b6e360bcb727d2608fd5a0a11f043a67a81b6a389c4cb35932df61d",
+      "bytes": 29692
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "probe/packages.wp02-02.lock.json",
+      "path": "locks-01.json",
+      "sha256": "e8efe3502b6e360bcb727d2608fd5a0a11f043a67a81b6a389c4cb35932df61d",
+      "bytes": 29692
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/main/CP6.Core/packages.wp02-02.lock.json",
+      "path": "locks-02.json",
+      "sha256": "abcb5655ff9917307ac904f4d85213ec925a3918f90094f06d9990c5cda4b0b4",
+      "bytes": 37435
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/main/CP6.Entity/packages.wp02-02.lock.json",
+      "path": "locks-03.json",
+      "sha256": "bf6ccea1eb09e82768edb2c2c1162171e006cd25632ed91f99af498dfa94d88f",
+      "bytes": 4045
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/main/CP6.Persistence.PostgreSql/packages.wp02-02.lock.json",
+      "path": "locks-04.json",
+      "sha256": "318e6fae4805e0c55b27025a9640962a9382ff9acc20eea4660c9b4ffe56c3d0",
+      "bytes": 45122
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/main/CP6.Space.Application/packages.wp02-02.lock.json",
+      "path": "locks-05.json",
+      "sha256": "54900c93e93f104268e2b524461988ee4c307d08af3e9abaa917ebbe7dc503e9",
+      "bytes": 205
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/main/CP6.Space.Contracts/packages.wp02-02.lock.json",
+      "path": "locks-06.json",
+      "sha256": "3cc7952787be7d43489891ec4a98f0d089ab0cedb68a61da0244c43df6a02398",
+      "bytes": 65
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/main/CP6.Space.Domain/packages.wp02-02.lock.json",
+      "path": "locks-07.json",
+      "sha256": "3cc7952787be7d43489891ec4a98f0d089ab0cedb68a61da0244c43df6a02398",
+      "bytes": 65
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/main/CP6.Space.Infrastructure/packages.wp02-02.lock.json",
+      "path": "locks-08.json",
+      "sha256": "0a35dd0ecd8ad732034fe7f14980b9df407bef644e1a5f200c8ccb0aedc6532a",
+      "bytes": 44788
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/main/CP6.WebApi/bin/Release/net8.0/packages.wp02-02.lock.json",
+      "path": "locks-09.json",
+      "sha256": "beb1a4cd1042d8a7bb17345f8838c63631ad1550a88b3e6d9f82c081a60dc070",
+      "bytes": 62915
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/main/CP6.WebApi/packages.wp02-02.lock.json",
+      "path": "locks-10.json",
+      "sha256": "beb1a4cd1042d8a7bb17345f8838c63631ad1550a88b3e6d9f82c081a60dc070",
+      "bytes": 62915
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/main/tools/CP6.DatabaseCompatibility.Probe/packages.wp02-02.lock.json",
+      "path": "locks-11.json",
+      "sha256": "5c28ed6d1a197a17bf211f53743f72f38232b8df690fb415aa2339a90ba47ac5",
+      "bytes": 38895
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.Abstractions/packages.wp02-02.lock.json",
+      "path": "locks-12.json",
+      "sha256": "a6909940b68f6a686071f795745460b212a5f1f631c565077820ac10a6982242",
+      "bytes": 142
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.AspNetCore/packages.wp02-02.lock.json",
+      "path": "locks-13.json",
+      "sha256": "89edad14a7f3d14585af29710911c80cb4e7c9b8c6d52937896ff30ecd5dfb17",
+      "bytes": 19682
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.Contracts/packages.wp02-02.lock.json",
+      "path": "locks-14.json",
+      "sha256": "beff604dc90c4f4de310b8c1c075156b758472fca928f6b2b3029c5b013749c6",
+      "bytes": 65
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.EntityFramework/packages.wp02-02.lock.json",
+      "path": "locks-15.json",
+      "sha256": "6b305da386d8d7b3e782ceeaa4b2e98cd3031f57f7ea88abe4358bb29178c9c7",
+      "bytes": 5062
+    },
+    {
+      "kind": "locks",
+      "sourcePath": "snapshots/platform/src/CP6.Platform.Messaging/packages.wp02-02.lock.json",
+      "path": "locks-16.json",
+      "sha256": "a4982f2577eec0ed58859ca73a747b55918fd020e2f552ad44c0fa3e1211a945",
+      "bytes": 11899
+    }
+  ],
+  "totalBytes": 2789420
+}

@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0": {
+      "cp6.space.contracts": {
+        "type": "Project"
+      },
+      "cp6.space.domain": {
+        "type": "Project"
+      }
+    }
+  }
+}

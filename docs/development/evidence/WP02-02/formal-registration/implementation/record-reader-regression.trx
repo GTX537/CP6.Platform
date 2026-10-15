@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="e722c905-e81e-47be-8794-9682ccb44988" name="tt@LAPTOP-3QQ44FJS 2026-10-15 01:52:36" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-15T01:52:36.1753804-04:00" queuing="2026-10-15T01:52:36.1753825-04:00" start="2026-10-15T01:52:33.4710953-04:00" finish="2026-10-15T01:52:36.2341412-04:00" />
+  <TestSettings name="default" id="124f5121-d8ab-4ed3-a384-d796f123a5fb">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-15_01_52_36" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="bc9963ec-4dfa-47db-918e-d65233163acf" testId="542de8a5-641e-de22-e5ad-9e6ce7a66a90" testName="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;Test-P10FormalPrerequisites&quot;, reader: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0007982" startTime="2026-10-15T01:52:35.5742902-04:00" endTime="2026-10-15T01:52:35.5743466-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bc9963ec-4dfa-47db-918e-d65233163acf" />
+    <UnitTestResult executionId="af04e615-896a-490d-863d-50eedc3ac26f" testId="b43e4697-4cb3-31d4-42bc-3c19ac7c3403" testName="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;Publish-P10FormalPackageSet&quot;, reader: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0007061" startTime="2026-10-15T01:52:35.5746632-04:00" endTime="2026-10-15T01:52:35.5747095-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="af04e615-896a-490d-863d-50eedc3ac26f" />
+    <UnitTestResult executionId="0d56345d-4ae1-412f-bda5-6ee138412df4" testId="fd454d17-d0d7-0b65-631c-a838800189d6" testName="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;Pack-P10FormalPackages&quot;, reader: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0016381" startTime="2026-10-15T01:52:35.5735186-04:00" endTime="2026-10-15T01:52:35.5736231-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0d56345d-4ae1-412f-bda5-6ee138412df4" />
+    <UnitTestResult executionId="9744b484-8b4f-4a8e-8cf6-193897ed58a8" testId="79119db0-714a-bed2-beee-9d8e90adc616" testName="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;Test-P10FormalPackageSet&quot;, reader: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0006845" startTime="2026-10-15T01:52:35.5744731-04:00" endTime="2026-10-15T01:52:35.5745610-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9744b484-8b4f-4a8e-8cf6-193897ed58a8" />
+    <UnitTestResult executionId="5819e256-9ec0-44c1-87ec-52c5328a542d" testId="14874c96-97d1-244b-b4c2-92ff1197053a" testName="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;New-P10FormalPackageSet&quot;, reader: False)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0006971" startTime="2026-10-15T01:52:35.5748169-04:00" endTime="2026-10-15T01:52:35.5748640-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5819e256-9ec0-44c1-87ec-52c5328a542d" />
+    <UnitTestResult executionId="687b8042-504d-4459-8b59-c90573256f26" testId="4f0098ca-c32d-10d1-81fe-c4938e47c150" testName="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;New-P10FormalPublicationRecord&quot;, reader: True)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0495408" startTime="2026-10-15T01:52:35.5024807-04:00" endTime="2026-10-15T01:52:35.5608432-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="687b8042-504d-4459-8b59-c90573256f26" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;Test-P10FormalPrerequisites&quot;, reader: False)" storage="d:\cp6.platform-worktrees\wp02-02-formal-registration-20261015\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="542de8a5-641e-de22-e5ad-9e6ce7a66a90">
+      <Execution id="bc9963ec-4dfa-47db-918e-d65233163acf" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.P10FormalRegistrationTests" name="Script_parameter_registration_is_exact_without_executing_any_writer" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;Publish-P10FormalPackageSet&quot;, reader: False)" storage="d:\cp6.platform-worktrees\wp02-02-formal-registration-20261015\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="b43e4697-4cb3-31d4-42bc-3c19ac7c3403">
+      <Execution id="af04e615-896a-490d-863d-50eedc3ac26f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.P10FormalRegistrationTests" name="Script_parameter_registration_is_exact_without_executing_any_writer" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;Test-P10FormalPackageSet&quot;, reader: True)" storage="d:\cp6.platform-worktrees\wp02-02-formal-registration-20261015\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="79119db0-714a-bed2-beee-9d8e90adc616">
+      <Execution id="9744b484-8b4f-4a8e-8cf6-193897ed58a8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.P10FormalRegistrationTests" name="Script_parameter_registration_is_exact_without_executing_any_writer" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;Pack-P10FormalPackages&quot;, reader: False)" storage="d:\cp6.platform-worktrees\wp02-02-formal-registration-20261015\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="fd454d17-d0d7-0b65-631c-a838800189d6">
+      <Execution id="0d56345d-4ae1-412f-bda5-6ee138412df4" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.P10FormalRegistrationTests" name="Script_parameter_registration_is_exact_without_executing_any_writer" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;New-P10FormalPublicationRecord&quot;, reader: True)" storage="d:\cp6.platform-worktrees\wp02-02-formal-registration-20261015\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="4f0098ca-c32d-10d1-81fe-c4938e47c150">
+      <Execution id="687b8042-504d-4459-8b59-c90573256f26" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.P10FormalRegistrationTests" name="Script_parameter_registration_is_exact_without_executing_any_writer" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.P10FormalRegistrationTests.Script_parameter_registration_is_exact_without_executing_any_writer(name: &quot;New-P10FormalPackageSet&quot;, reader: False)" storage="d:\cp6.platform-worktrees\wp02-02-formal-registration-20261015\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="14874c96-97d1-244b-b4c2-92ff1197053a">
+      <Execution id="5819e256-9ec0-44c1-87ec-52c5328a542d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.P10FormalRegistrationTests" name="Script_parameter_registration_is_exact_without_executing_any_writer" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="542de8a5-641e-de22-e5ad-9e6ce7a66a90" executionId="bc9963ec-4dfa-47db-918e-d65233163acf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b43e4697-4cb3-31d4-42bc-3c19ac7c3403" executionId="af04e615-896a-490d-863d-50eedc3ac26f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fd454d17-d0d7-0b65-631c-a838800189d6" executionId="0d56345d-4ae1-412f-bda5-6ee138412df4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="79119db0-714a-bed2-beee-9d8e90adc616" executionId="9744b484-8b4f-4a8e-8cf6-193897ed58a8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="14874c96-97d1-244b-b4c2-92ff1197053a" executionId="5819e256-9ec0-44c1-87ec-52c5328a542d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4f0098ca-c32d-10d1-81fe-c4938e47c150" executionId="687b8042-504d-4459-8b59-c90573256f26" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="6" executed="6" passed="6" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.23]   Discovering: CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:00.41]   Discovered:  CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:00.46]   Starting:    CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:00.57]   Finished:    CP6.Platform.ReleaseTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

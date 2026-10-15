@@ -31,7 +31,7 @@ public sealed class P10FormalWorkflowContractTests
         Assert.Equal(2, Count(text, "required: true"));
         Assert.Contains("if ($env:P10_EVENT_REF -cne 'refs/heads/main')", text, StringComparison.Ordinal);
         Assert.Contains("if ($env:P10_EVENT_SHA -cne $env:P10_EXPECTED_COMMIT)", text, StringComparison.Ordinal);
-        Assert.Equal(2, Count(text, "if ($env:P10_PACKAGE_VERSION -cne '0.10.2')"));
+        Assert.Equal(2, Count(text, "if ($env:P10_PACKAGE_VERSION -cne '0.10.3')"));
         Assert.DoesNotContain("if ($env:P10_PACKAGE_VERSION -cne '0.10.0')", text, StringComparison.Ordinal);
         Assert.DoesNotContain("if ($env:P10_PACKAGE_VERSION -cne '0.10.1')", text, StringComparison.Ordinal);
         Assert.Contains("ref: ${{ github.sha }}", text, StringComparison.Ordinal);

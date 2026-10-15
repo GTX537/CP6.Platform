@@ -1,0 +1,11 @@
+A	src/CP6.Platform.Contracts/SloQualificationV1/ExactNumber.cs
+A	src/CP6.Platform.Contracts/SloQualificationV1/SloQualifier.cs
+A	src/CP6.Platform.EntityFramework/TransportV1/TransportOutboxPublisherV1.cs
+M	src/CP6.Platform.Messaging/Cp6CloudEventValidator.cs
+M	src/CP6.Platform.Messaging/Cp6ContractBundle.cs
+A	src/CP6.Platform.Messaging/TransportV1/TransportContractsV1.cs
+A	src/CP6.Platform.Messaging/TransportV1/TransportRegistryV1.cs
+A	src/CP6.Platform.Messaging/TransportV1/TransportRouteV1.cs
+A	src/CP6.Platform.Testing/EvidenceV1/DeterministicFaultCase.cs
+A	src/CP6.Platform.Testing/EvidenceV1/EvidenceCase.cs
+A	src/CP6.Platform.Testing/EvidenceV1/ExactValue.cs
