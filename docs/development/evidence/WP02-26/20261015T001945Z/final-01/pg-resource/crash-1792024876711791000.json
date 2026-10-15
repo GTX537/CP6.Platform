@@ -1,0 +1,39 @@
+{
+  "SystemIdentifier": "7696685906165408468",
+  "DataDirectory": "D:/CP6-local-test/WP02-26/4ba89ba3d399683bd75209e61c31f1ab/data",
+  "Port": 55429,
+  "Database": "cp6_wp0226_20261015_4ba89ba3",
+  "Oid": 16385,
+  "DatabaseOwner": "wp0226_admin_4ba89ba3",
+  "Principal": "wp0226_admin_4ba89ba3",
+  "Listen": "127.0.0.1",
+  "Version": "PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit",
+  "Owner": "4ba89ba3d399683bd75209e61c31f1ab",
+  "Marker": "CP6-WP02-26:4ba89ba3d399683bd75209e61c31f1ab",
+  "Runtime": {
+    "Owner": "4ba89ba3d399683bd75209e61c31f1ab",
+    "Marker": "CP6-WP02-26:4ba89ba3d399683bd75209e61c31f1ab",
+    "SystemIdentifier": "7696685906165408468",
+    "DatabaseOid": 16385,
+    "Principal": "wp0226_runtime_4ba89ba3",
+    "Superuser": false,
+    "CreateDatabase": false,
+    "CreateRole": false,
+    "Inherit": false,
+    "BypassRls": false,
+    "CreateSchema": false,
+    "CreateFixture": false,
+    "Native": "7696685906165408468|D:/CP6-local-test/WP02-26/4ba89ba3d399683bd75209e61c31f1ab/data"
+  },
+  "Sessions": [
+    {
+      "Pid": 23040,
+      "Role": "wp0226_runtime_4ba89ba3",
+      "Database": "cp6_wp0226_20261015_4ba89ba3",
+      "Application": "CP6-WP02-26:4ba89ba3d399683bd75209e61c31f1ab:crash"
+    }
+  ],
+  "Action": "crash",
+  "ControlledFailure": true,
+  "AtUtc": "2026-10-15T00:41:16.711764+00:00"
+}

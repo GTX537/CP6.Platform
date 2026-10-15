@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="b29afc18-77be-4b00-8907-02aa889fa81f" name="tt@LAPTOP-3QQ44FJS 2026-10-14 20:53:30" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T20:53:30.1564564-04:00" queuing="2026-10-14T20:53:30.1564579-04:00" start="2026-10-14T20:53:27.1068985-04:00" finish="2026-10-14T20:53:30.3672417-04:00" />
+  <TestSettings name="default" id="6fc56c58-38ba-4e8c-85f4-8ff703fcd5f9">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_20_53_30" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="589e3e1d-cdfe-4b9a-a823-31e935a82014" testId="4b0c84c4-29f6-9b89-1719-28bea3cae21b" testName="CP6.Platform.WP0226.Tests.CaptureTests.Graph_actual_link_enumeration_has_budget_even_for_duplicate_links" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.1650352" startTime="2026-10-14T20:53:28.9941021-04:00" endTime="2026-10-14T20:53:29.2064575-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="589e3e1d-cdfe-4b9a-a823-31e935a82014">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Contains() Failure: Item not found in collection&#xD;
+Collection: []&#xD;
+Not found:  "GraphResourceLimit"</Message>
+          <StackTrace>   at CP6.Platform.WP0226.Tests.CaptureTests.Graph_actual_link_enumeration_has_budget_even_for_duplicate_links() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs:line 232&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="59475d2e-bab6-4758-acd4-57a4f10c3efe" testId="9f7c17ac-db56-8302-6ded-ff5e94a3ba60" testName="CP6.Platform.WP0226.Tests.CaptureTests.Actual_activity_tag_inventory_is_limited_before_copying" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.6981054" startTime="2026-10-14T20:53:29.2534888-04:00" endTime="2026-10-14T20:53:29.9053880-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="59475d2e-bab6-4758-acd4-57a4f10c3efe">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Incomplete&#xD;
+Actual:   Capturing</Message>
+          <StackTrace>   at CP6.Platform.WP0226.Tests.CaptureTests.Actual_activity_tag_inventory_is_limited_before_copying() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs:line 221&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="46dee980-771b-4e75-a677-f41cc16adedb" testId="c47ac6bb-113a-6da9-ba7f-8d6f9b36fdad" testName="CP6.Platform.WP0226.Tests.CaptureTests.Actual_metric_tag_inventory_is_limited_before_copying" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0350233" startTime="2026-10-14T20:53:29.9757425-04:00" endTime="2026-10-14T20:53:29.9758991-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="46dee980-771b-4e75-a677-f41cc16adedb">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Incomplete&#xD;
+Actual:   Capturing</Message>
+          <StackTrace>   at CP6.Platform.WP0226.Tests.CaptureTests.Actual_metric_tag_inventory_is_limited_before_copying() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs:line 210&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0226.Tests.CaptureTests.Actual_metric_tag_inventory_is_limited_before_copying" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.tests\bin\release\net8.0\cp6.platform.wp0226.tests.dll" id="c47ac6bb-113a-6da9-ba7f-8d6f9b36fdad">
+      <Execution id="46dee980-771b-4e75-a677-f41cc16adedb" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.Tests.CaptureTests" name="Actual_metric_tag_inventory_is_limited_before_copying" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0226.Tests.CaptureTests.Actual_activity_tag_inventory_is_limited_before_copying" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.tests\bin\release\net8.0\cp6.platform.wp0226.tests.dll" id="9f7c17ac-db56-8302-6ded-ff5e94a3ba60">
+      <Execution id="59475d2e-bab6-4758-acd4-57a4f10c3efe" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.Tests.CaptureTests" name="Actual_activity_tag_inventory_is_limited_before_copying" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0226.Tests.CaptureTests.Graph_actual_link_enumeration_has_budget_even_for_duplicate_links" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.tests\bin\release\net8.0\cp6.platform.wp0226.tests.dll" id="4b0c84c4-29f6-9b89-1719-28bea3cae21b">
+      <Execution id="589e3e1d-cdfe-4b9a-a823-31e935a82014" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.Tests.CaptureTests" name="Graph_actual_link_enumeration_has_budget_even_for_duplicate_links" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="4b0c84c4-29f6-9b89-1719-28bea3cae21b" executionId="589e3e1d-cdfe-4b9a-a823-31e935a82014" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9f7c17ac-db56-8302-6ded-ff5e94a3ba60" executionId="59475d2e-bab6-4758-acd4-57a4f10c3efe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c47ac6bb-113a-6da9-ba7f-8d6f9b36fdad" executionId="46dee980-771b-4e75-a677-f41cc16adedb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="0" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.21]   Discovering: CP6.Platform.WP0226.Tests&#xD;
+[xUnit.net 00:00:00.35]   Discovered:  CP6.Platform.WP0226.Tests&#xD;
+[xUnit.net 00:00:00.42]   Starting:    CP6.Platform.WP0226.Tests&#xD;
+[xUnit.net 00:00:00.70]       Assert.Contains() Failure: Item not found in collection&#xD;
+[xUnit.net 00:00:00.70]       Collection: []&#xD;
+[xUnit.net 00:00:00.70]       Not found:  "GraphResourceLimit"&#xD;
+[xUnit.net 00:00:00.70]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.71]         D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs(232,0): at CP6.Platform.WP0226.Tests.CaptureTests.Graph_actual_link_enumeration_has_budget_even_for_duplicate_links()&#xD;
+[xUnit.net 00:00:00.71]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.71]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.39]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.39]       Expected: Incomplete&#xD;
+[xUnit.net 00:00:01.39]       Actual:   Capturing&#xD;
+[xUnit.net 00:00:01.39]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.39]         D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs(221,0): at CP6.Platform.WP0226.Tests.CaptureTests.Actual_activity_tag_inventory_is_limited_before_copying()&#xD;
+[xUnit.net 00:00:01.39]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:01.39]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.46]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:01.46]       Expected: Incomplete&#xD;
+[xUnit.net 00:00:01.46]       Actual:   Capturing&#xD;
+[xUnit.net 00:00:01.46]       Stack Trace:&#xD;
+[xUnit.net 00:00:01.46]         D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs(210,0): at CP6.Platform.WP0226.Tests.CaptureTests.Actual_metric_tag_inventory_is_limited_before_copying()&#xD;
+[xUnit.net 00:00:01.46]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:01.46]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:01.47]   Finished:    CP6.Platform.WP0226.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:53:29.2183291-04:00">
+        <Text>[xUnit.net 00:00:00.70]     CP6.Platform.WP0226.Tests.CaptureTests.Graph_actual_link_enumeration_has_budget_even_for_duplicate_links [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:53:29.9066723-04:00">
+        <Text>[xUnit.net 00:00:01.39]     CP6.Platform.WP0226.Tests.CaptureTests.Actual_activity_tag_inventory_is_limited_before_copying [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:53:30.1833383-04:00">
+        <Text>[xUnit.net 00:00:01.46]     CP6.Platform.WP0226.Tests.CaptureTests.Actual_metric_tag_inventory_is_limited_before_copying [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

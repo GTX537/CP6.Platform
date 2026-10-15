@@ -1,0 +1,12 @@
+{
+  "command": [
+    "C:/Users/tt/AppData/Roaming/uv/python/cpython-3.13-windows-x86_64-none/python.exe",
+    "-m",
+    "unittest",
+    "test_resource_guards.py",
+    "-v"
+  ],
+  "cwd": "tests/CP6.Platform.WP0226.PostgreSqlTests",
+  "exit_code": 0,
+  "utc": "2026-10-15T00:32:06.017875+00:00"
+}

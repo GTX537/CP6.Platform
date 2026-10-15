@@ -1,0 +1,18 @@
+{
+  "observed_utc": "2026-10-15T01:19:39.928933+00:00",
+  "source_sha256": "5213cce41de27c9ba989657d94aa8a948ecc8512cb3e2625a9f53e63ea97eb5d",
+  "exit_code": 1,
+  "command": [
+    "python",
+    "tests/CP6.Platform.WP0226.PostgreSqlTests/map_acceptance.py",
+    "--unit",
+    "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+    "--pg",
+    "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+    "--label",
+    "final"
+  ],
+  "failure": "TypeError: dict() got multiple values for keyword argument evidence",
+  "source_line": 64,
+  "scope": "Observed actual tool exit/stderr; receipt created afterward, not a claimed execution start timestamp. No matrix output created."
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "path": "src/CP6.Platform.Testing/EvidenceV1/ExactValue.cs",
+    "sha256": "54589df207dbbffaa7c5329de664443414554117eed54c6d62ee198d0e83a95a"
+  },
+  {
+    "path": "src/CP6.Platform.Testing/EvidenceV1/EvidenceCase.cs",
+    "sha256": "a295f500a06d3dad3a052f4186dda25101081f08f9ab2cb938e4be99c472356c"
+  },
+  {
+    "path": "src/CP6.Platform.Testing/EvidenceV1/DeterministicFaultCase.cs",
+    "sha256": "2564301c8120583ab9301a5a6a8adafa56cbda1ec0e82f8676e0a8ac9efa909c"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0226.Tests/CaptureTests.cs",
+    "sha256": "dd7f61749f7836dd74c3ab3da09679684e4a83611a4c08b13990236026e6fdf0"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0226.Tests/FaultTests.cs",
+    "sha256": "ba5752e6bed14bb028bc39c0d13ffb1f40e53f70bec3e6a3bbc22f75e7c89aab"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:/Users/tt/.dotnet/dotnet.exe",
+    "test",
+    "tests/CP6.Platform.ArchitectureTests/CP6.Platform.ArchitectureTests.csproj",
+    "-c",
+    "Release",
+    "--logger",
+    "trx;LogFileName=wp02-26-architecture.trx",
+    "--results-directory",
+    "D:\\CP6.Platform-worktrees\\wp02-26-20261014\\docs\\development\\evidence\\WP02-26\\20261015T001945Z\\final-01\\architecture"
+  ],
+  "cwd": "D:\\CP6.Platform-worktrees\\wp02-26-20261014",
+  "started_at": "2026-10-15T01:18:37.647095+00:00",
+  "ended_at": "2026-10-15T01:19:02.901992+00:00",
+  "exit_code": 0,
+  "settings_supplied": false
+}

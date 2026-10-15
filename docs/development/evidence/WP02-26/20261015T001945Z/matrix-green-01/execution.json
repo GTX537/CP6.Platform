@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Users\\tt\\AppData\\Roaming\\uv\\python\\cpython-3.13-windows-x86_64-none\\python.exe",
+    "tests/CP6.Platform.WP0226.PostgreSqlTests/map_acceptance.py",
+    "--unit",
+    "D:\\CP6.Platform-worktrees\\wp02-26-20261014\\docs\\development\\evidence\\WP02-26\\20261015T001945Z\\final-01\\unit\\wp02-26-unit.trx",
+    "--pg",
+    "D:\\CP6.Platform-worktrees\\wp02-26-20261014\\docs\\development\\evidence\\WP02-26\\20261015T001945Z\\final-01\\pg\\wp02-26-pg.trx",
+    "--label",
+    "final"
+  ],
+  "started_utc": "2026-10-15T01:20:03.555963+00:00",
+  "ended_utc": "2026-10-15T01:20:04.010302+00:00",
+  "exit_code": 0,
+  "source_sha256": "d234cd915114c79bfdbd36722e767004cafbb9db00a53261d56f1d39a438efc7"
+}

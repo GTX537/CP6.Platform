@@ -1,0 +1,22 @@
+{
+  "vectorsSha256": "b9a63a1512da2d2374e95d49d9f69c8636d06465f88a47862dc3604605d5be01",
+  "mainS0103": "b24f76445ffdc9b4df0de77eb394a6aa47726a0c",
+  "legacyTests": [
+    {
+      "sha256": "35b0440ab2a61a7c7923a52893b87d7c3d07b4ff2f662f770e70d7588dfa2185",
+      "execution": "source-linked unchanged into task tests",
+      "path": "tests/CP6.Platform.UnitTests/TestingUtilityTests.cs",
+      "sourceCommit": "b28db763f70ab6f164cb7c87d6ce49a6d97267f1"
+    },
+    {
+      "sha256": "7f84526d3bfdad227de4d38b72f8117ef8dd5b32c023654e985149228086c58c",
+      "execution": "source-linked unchanged into task tests",
+      "path": "tests/CP6.Platform.UnitTests/SloEvidenceContractTests.cs",
+      "sourceCommit": "b28db763f70ab6f164cb7c87d6ce49a6d97267f1"
+    }
+  ],
+  "mainWave7Input": "1129953156b7775152a74ad2f51cb95ef430ee56",
+  "contractAuthority": "Existing Main native profiles; this library performs generic numeric arithmetic only",
+  "productionSloClaimed": false,
+  "mainS0104": "bfa00a4c055bfcf4f6b7b7fe696f7a819af720c8"
+}

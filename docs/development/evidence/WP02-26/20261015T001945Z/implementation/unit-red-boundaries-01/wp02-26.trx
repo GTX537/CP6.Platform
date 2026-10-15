@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="fa0e2a51-820a-49ef-ad28-b601af75f3e6" name="tt@LAPTOP-3QQ44FJS 2026-10-14 20:35:25" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T20:35:25.6493123-04:00" queuing="2026-10-14T20:35:25.6493130-04:00" start="2026-10-14T20:35:23.4666910-04:00" finish="2026-10-14T20:35:25.6738224-04:00" />
+  <TestSettings name="default" id="3c74d74a-29d1-4835-ab7b-7b3c9b8219f9">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_20_35_25" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="a37bacb0-caae-4870-8ff9-a70689d75777" testId="75cd7ae9-bdbc-2d68-8343-75ade9ae399f" testName="CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.4395416" startTime="2026-10-14T20:35:24.7345700-04:00" endTime="2026-10-14T20:35:25.1824519-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a37bacb0-caae-4870-8ff9-a70689d75777">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Indeterminate&#xD;
+Actual:   Qualified</Message>
+          <StackTrace>   at CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\QualificationTests.cs:line 131&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="55af76c8-f783-4e32-ae8a-1f4c616f4a79" testId="14cec2c5-135b-fcb6-249b-78baf3f0cf62" testName="CP6.Platform.WP0226.Tests.CaptureTests.Link_capture_keeps_trace_state_flags_and_link_tags" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.3832815" startTime="2026-10-14T20:35:24.7367189-04:00" endTime="2026-10-14T20:35:25.1438484-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="55af76c8-f783-4e32-ae8a-1f4c616f4a79">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Contains() Failure: Sub-string not found&#xD;
+String:    "{"TraceId":"b4b662de60e5f1abc01117c6e1ea6"···&#xD;
+Not found: "vendor=state"</Message>
+          <StackTrace>   at CP6.Platform.WP0226.Tests.CaptureTests.Link_capture_keeps_trace_state_flags_and_link_tags() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs:line 125&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="65c8b979-d589-4cfd-b401-8964b4c3acd0" testId="2184aef6-fd6d-88c5-0784-11693a47976e" testName="CP6.Platform.WP0226.Tests.CaptureTests.Elapsed_capture_is_incomplete_even_without_a_later_record" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0069522" startTime="2026-10-14T20:35:25.1652740-04:00" endTime="2026-10-14T20:35:25.1655274-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="65c8b979-d589-4cfd-b401-8964b4c3acd0">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Incomplete&#xD;
+Actual:   Capturing</Message>
+          <StackTrace>   at CP6.Platform.WP0226.Tests.CaptureTests.Elapsed_capture_is_incomplete_even_without_a_later_record() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs:line 114&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0226.Tests.CaptureTests.Link_capture_keeps_trace_state_flags_and_link_tags" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.tests\bin\release\net8.0\cp6.platform.wp0226.tests.dll" id="14cec2c5-135b-fcb6-249b-78baf3f0cf62">
+      <Execution id="55af76c8-f783-4e32-ae8a-1f4c616f4a79" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.Tests.CaptureTests" name="Link_capture_keeps_trace_state_flags_and_link_tags" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0226.Tests.CaptureTests.Elapsed_capture_is_incomplete_even_without_a_later_record" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.tests\bin\release\net8.0\cp6.platform.wp0226.tests.dll" id="2184aef6-fd6d-88c5-0784-11693a47976e">
+      <Execution id="65c8b979-d589-4cfd-b401-8964b4c3acd0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.Tests.CaptureTests" name="Elapsed_capture_is_incomplete_even_without_a_later_record" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.tests\bin\release\net8.0\cp6.platform.wp0226.tests.dll" id="75cd7ae9-bdbc-2d68-8343-75ade9ae399f">
+      <Execution id="a37bacb0-caae-4870-8ff9-a70689d75777" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.Tests.QualificationTests" name="Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="75cd7ae9-bdbc-2d68-8343-75ade9ae399f" executionId="a37bacb0-caae-4870-8ff9-a70689d75777" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="14cec2c5-135b-fcb6-249b-78baf3f0cf62" executionId="55af76c8-f783-4e32-ae8a-1f4c616f4a79" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2184aef6-fd6d-88c5-0784-11693a47976e" executionId="65c8b979-d589-4cfd-b401-8964b4c3acd0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="3" executed="3" passed="0" failed="3" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.24]   Discovering: CP6.Platform.WP0226.Tests&#xD;
+[xUnit.net 00:00:00.34]   Discovered:  CP6.Platform.WP0226.Tests&#xD;
+[xUnit.net 00:00:00.37]   Starting:    CP6.Platform.WP0226.Tests&#xD;
+[xUnit.net 00:00:00.82]       Assert.Contains() Failure: Sub-string not found&#xD;
+[xUnit.net 00:00:00.82]       String:    "{"TraceId":"b4b662de60e5f1abc01117c6e1ea6"···&#xD;
+[xUnit.net 00:00:00.82]       Not found: "vendor=state"&#xD;
+[xUnit.net 00:00:00.82]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.82]         D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs(125,0): at CP6.Platform.WP0226.Tests.CaptureTests.Link_capture_keeps_trace_state_flags_and_link_tags()&#xD;
+[xUnit.net 00:00:00.82]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.82]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.84]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.84]       Expected: Incomplete&#xD;
+[xUnit.net 00:00:00.84]       Actual:   Capturing&#xD;
+[xUnit.net 00:00:00.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.84]         D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs(114,0): at CP6.Platform.WP0226.Tests.CaptureTests.Elapsed_capture_is_incomplete_even_without_a_later_record()&#xD;
+[xUnit.net 00:00:00.84]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.84]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.85]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.85]       Expected: Indeterminate&#xD;
+[xUnit.net 00:00:00.85]       Actual:   Qualified&#xD;
+[xUnit.net 00:00:00.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.85]         D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\QualificationTests.cs(131,0): at CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness()&#xD;
+[xUnit.net 00:00:00.85]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:00.85]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.86]   Finished:    CP6.Platform.WP0226.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:35:25.1489971-04:00">
+        <Text>[xUnit.net 00:00:00.82]     CP6.Platform.WP0226.Tests.CaptureTests.Link_capture_keeps_trace_state_flags_and_link_tags [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:35:25.1670928-04:00">
+        <Text>[xUnit.net 00:00:00.84]     CP6.Platform.WP0226.Tests.CaptureTests.Elapsed_capture_is_incomplete_even_without_a_later_record [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:35:25.1841264-04:00">
+        <Text>[xUnit.net 00:00:00.85]     CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

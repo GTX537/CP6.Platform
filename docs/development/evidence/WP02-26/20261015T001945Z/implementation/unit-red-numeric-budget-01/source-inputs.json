@@ -1,0 +1,14 @@
+[
+  {
+    "path": "src/CP6.Platform.Testing/EvidenceV1/ExactValue.cs",
+    "sha256": "2c805a2030b0b1a718c10e37b2dc553b352904d987108520b49c9d3cc4e314a2"
+  },
+  {
+    "path": "src/CP6.Platform.Testing/EvidenceV1/EvidenceCase.cs",
+    "sha256": "0543683b879632aaba91068315c91255280f2b6a9972c507b23340a99f567c57"
+  },
+  {
+    "path": "tests/CP6.Platform.WP0226.Tests/CaptureTests.cs",
+    "sha256": "d8685a4df560b0eb08dbbcb19d47c7c28d90a80c18bb4c4e4c608f7dcfd1c310"
+  }
+]

@@ -1,0 +1,45 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.WP0226.Tests -> D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.70]     CP6.Platform.WP0226.Tests.CaptureTests.Graph_actual_link_enumeration_has_budget_even_for_duplicate_links [FAIL]
+[xUnit.net 00:00:01.39]     CP6.Platform.WP0226.Tests.CaptureTests.Actual_activity_tag_inventory_is_limited_before_copying [FAIL]
+  Failed CP6.Platform.WP0226.Tests.CaptureTests.Graph_actual_link_enumeration_has_budget_even_for_duplicate_links [165 ms]
+  Error Message:
+   Assert.Contains() Failure: Item not found in collection
+Collection: []
+Not found:  "GraphResourceLimit"
+  Stack Trace:
+     at CP6.Platform.WP0226.Tests.CaptureTests.Graph_actual_link_enumeration_has_budget_even_for_duplicate_links() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs:line 232
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+[xUnit.net 00:00:01.46]     CP6.Platform.WP0226.Tests.CaptureTests.Actual_metric_tag_inventory_is_limited_before_copying [FAIL]
+  Failed CP6.Platform.WP0226.Tests.CaptureTests.Actual_activity_tag_inventory_is_limited_before_copying [698 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: Incomplete
+Actual:   Capturing
+  Stack Trace:
+     at CP6.Platform.WP0226.Tests.CaptureTests.Actual_activity_tag_inventory_is_limited_before_copying() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs:line 221
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.WP0226.Tests.CaptureTests.Actual_metric_tag_inventory_is_limited_before_copying [35 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: Incomplete
+Actual:   Capturing
+  Stack Trace:
+     at CP6.Platform.WP0226.Tests.CaptureTests.Actual_metric_tag_inventory_is_limited_before_copying() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs:line 210
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: D:\CP6.Platform-worktrees\wp02-26-20261014\docs\development\evidence\WP02-26\20261015T001945Z\implementation\unit-red-capture-budget-01\wp02-26.trx
+
+Failed!  - Failed:     3, Passed:     0, Skipped:     0, Total:     3, Duration: 981 ms - CP6.Platform.WP0226.Tests.dll (net8.0)

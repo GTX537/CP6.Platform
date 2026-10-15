@@ -1,0 +1,1570 @@
+{
+  "original_count": 56,
+  "original_business_acceptance": "NOT_RUN",
+  "rows": [
+    {
+      "id": "PLT-OBS-01::OBS01-A1",
+      "source_case_id": "OBS01-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "原source/meter/operation及标签键值枚举",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A2",
+      "source_case_id": "OBS01-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "age/attempt为数值且高基数不入metric",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A3",
+      "source_case_id": "OBS01-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "consumed/published/enqueue时点不冒业务提交",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Actual synthetic fixture technical success followed by native rollback; not a proof about actual application Owner counters.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "test_name": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.TechnicalSuccessBeforeRollbackDoesNotProveOwnerCommit",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A4",
+      "source_case_id": "OBS01-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "trace-only传播与无baggage、非法parent处理",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A5",
+      "source_case_id": "OBS01-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "自动instrumentation隐私清理含URL/query/code",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A6",
+      "source_case_id": "OBS01-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "exporter异常/满队列不改变事务且缺证可见",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A7",
+      "source_case_id": "OBS01-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "多Host全局propagator/注册漂移准确识别",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS01-A8",
+      "source_case_id": "OBS01-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "instance重启/重复/采样口径与业务receipt分离",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A1",
+      "source_case_id": "OBS02-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "原JSON字段/1MiB/depth/重复键/UTC约束",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Unchanged legacy parser/schema/wire regression only.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.SchemaExamples_MatchDeclaredOutcomes",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Parse_RejectsDuplicateJsonPropertiesWithoutEchoingValues",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.ReleaseIdentity_SerializesOnlyTheApprovedWireShape",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A2",
+      "source_case_id": "OBS02-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "原Evaluate精确条件及result重算",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Unchanged legacy fail-closed evaluator plus explicit separate local recomputation.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Partial, thresholdMet: True, expected: Indeterminate)",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: False, completeness: Complete, thresholdMet: True, expected: Indeterminate)",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: True, expected: Pass)",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: False, expected: Fail)",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Same_frozen_bytes_recompute_exact_K_over_N_and_remain_nonproduction",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A3",
+      "source_case_id": "OBS02-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "源实体/查询/definition/release内容身份真实绑定",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Actual supplied immutable local bytes and independent caller pins compared; producer authenticity and trusted runtime provenance remain unproven.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Same_frozen_bytes_recompute_exact_K_over_N_and_remain_nonproduction",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Forged_self_count_inventory_and_query_drift_do_not_replace_independent_binding",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A4",
+      "source_case_id": "OBS02-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "ratio/percentile/gauge单位与计算一致",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Synthetic exact ratio, weighted nearest-rank and gauge grid recalculation; no business SLI threshold approval.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Same_frozen_bytes_recompute_exact_K_over_N_and_remain_nonproduction",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Weighted_nearest_rank_is_not_average_of_percentiles",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Gauge_maximum_uses_bound_sampling_grid_and_tail_gap",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A5",
+      "source_case_id": "OBS02-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "真实覆盖/缺测/零样本保持Indeterminate",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Missing/altered synthetic inventory, bad flags, gaps, zero and incomplete source cases; real population not qualified.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"zero\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"window\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"dropped\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"excluded\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"overflow\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"denominator\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"fractional-weight\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"incomplete\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"release\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"missing\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"query\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"unit\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"unsealed\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"duplicate\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Gauge_sampling_gap_is_rejected_even_when_member_count_matches",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A6",
+      "source_case_id": "OBS02-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "候选与生产分离，flag不自证且无测试混入",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Local qualification always excludes production/independent acceptance; no production authorization exercised.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Same_frozen_bytes_recompute_exact_K_over_N_and_remain_nonproduction",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A7",
+      "source_case_id": "OBS02-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "修订/晚到/多release窗口血缘保原结果",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "In-memory immutable versions preserve prior failure and reject overwrite; mixed-unbound releases rejected; no durable production retention/fleet rollout.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Journal_retains_original_failure_and_refuses_late_overwrite",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"zero\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"window\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"dropped\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"excluded\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"overflow\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"denominator\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"fractional-weight\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"incomplete\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"release\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"missing\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"query\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"unit\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"unsealed\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"duplicate\")",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS02-A8",
+      "source_case_id": "OBS02-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "权限/保留/hold且SLO不冒业务验收",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A1",
+      "source_case_id": "OBS03-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "Candidate/NonCandidate字段和格式准确",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A2",
+      "source_case_id": "OBS03-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "self-declared身份不冒实测字节/签名/生产",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A3",
+      "source_case_id": "OBS03-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "service/profile一致且禁止请求注入",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A4",
+      "source_case_id": "OBS03-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "artifact/package/bundle/config身份不混域",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A5",
+      "source_case_id": "OBS03-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "/health/release对象一致/异常分支无敏感细节",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A6",
+      "source_case_id": "OBS03-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "多instance滚动升级与Mismatch/Unproven精确关闭新能力",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A7",
+      "source_case_id": "OBS03-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "版本/部署历史不原地改写",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS03-A8",
+      "source_case_id": "OBS03-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 83,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "回退与旧operation/schema读路径保留",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A1",
+      "source_case_id": "OBS04-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "四路径/注册幂等/冲突准确",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A2",
+      "source_case_id": "OBS04-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "live静态含义与真实startup/ready inventory分离",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A3",
+      "source_case_id": "OBS04-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "CRM原ready不被空检查替换、无重复路径",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A4",
+      "source_case_id": "OBS04-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "health输出allowlist/no-store且不泄异常",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A5",
+      "source_case_id": "OBS04-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "显式probe/运维权限及部署层采用",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A6",
+      "source_case_id": "OBS04-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "有界check/取消/stale/collector影响明确",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A7",
+      "source_case_id": "OBS04-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "read与新write能力、全局摘流边界准确",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-OBS-01::OBS04-A8",
+      "source_case_id": "OBS04-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_完整静态设计_v0.1.md",
+      "source_line": 103,
+      "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+      "assertion": "health GET零业务副作用、不冒SLO或验收",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST01-A1",
+      "source_case_id": "TEST01-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "四Outcome原语义及Status/Delay边界",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Legacy four-outcome semantics and explicitly bounded new terminal behavior.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.TestingUtilityTests.FaultScript_ExecutesStatusExceptionDelayAndSuccessExactlyOnce",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Status_and_throw_never_reach_terminal",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Success_and_delay_reach_only_named_terminal_with_deterministic_clock_and_random",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST01-A2",
+      "source_case_id": "TEST01-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "Success/Delay必经登记内存终端且无网络fallback",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "New sealed in-memory fixture terminal cannot fall back to network; no real remote transport qualification.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Success_and_delay_reach_only_named_terminal_with_deterministic_clock_and_random",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Cancellation_after_script_observer_prevents_inner_and_terminal_exhaustion_has_no_fallback",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST01-A3",
+      "source_case_id": "TEST01-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "Test/CI精确注册、同引用幂等/异实例拒绝及直接构造差距",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Unchanged exact Test/CI registration regression; production dependency adoption remains external.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.TestingUtilityTests.FaultInjection_RejectsNonTestEnvironmentBeforeChangingServices(environment: \"Production\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.TestingUtilityTests.FaultInjection_RejectsNonTestEnvironmentBeforeChangingServices(environment: \"test\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.TestingUtilityTests.FaultInjection_RejectsNonTestEnvironmentBeforeChangingServices(environment: \"Development\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.TestingUtilityTests.FaultInjection_AcceptsOnlyExactApprovedEnvironments(environment: \"CI\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.TestingUtilityTests.FaultInjection_AcceptsOnlyExactApprovedEnvironments(environment: \"Test\")",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST01-A4",
+      "source_case_id": "TEST01-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "script计数/inner计数/耗尽含义分离",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Finite script/inner counters and exhaustion are separated; no claim these count real network sends.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Retry_placement_explicitly_changes_script_and_terminal_counts",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Exhaustion_cancellation_observer_and_cleanup_failures_are_visible",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST01-A5",
+      "source_case_id": "TEST01-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "并发index不冒确定业务顺序",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Each new fault case owns its random/clock/script; native database concurrency independently observed, no local sequence commit-order inference.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Success_and_delay_reach_only_named_terminal_with_deterministic_clock_and_random",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "test_name": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ConcurrentOriginalKeysCommitOnceAndPreserveNativeExactValues",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST01-A6",
+      "source_case_id": "TEST01-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "controlled clock/取消与handler位置明确",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Virtual clock, caller cancellation and explicit inner/outer retry placement.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Retry_placement_explicitly_changes_script_and_terminal_counts",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.TestingUtilityTests.FaultDelay_PreservesCallerCancellationAndSkipsTransport",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST01-A7",
+      "source_case_id": "TEST01-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "HTTP原重试/Unknown/幂等预期不被测试改写",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Synthetic local retry placement and injected lost application ACK recover original actual PG receipt; real HTTP Owner idempotency contract not adopted.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Retry_placement_explicitly_changes_script_and_terminal_counts",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "test_name": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.InjectedLostApplicationAckReadsOriginalCommittedReceiptWithoutNewKeys",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST01-A8",
+      "source_case_id": "TEST01-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 41,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "fixture不冒真实事务/共同fence及无生产故障UI",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Real owned PG fixture transactions/crash; no actual Main/CRM Owner/fence or production fault interface.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "test_name": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ControlledOwnedClusterCrashRecoversCommittedBytesAndRollsBackUncommittedKeys",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "test_name": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.TechnicalSuccessBeforeRollbackDoesNotProveOwnerCommit",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST02-A1",
+      "source_case_id": "TEST02-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "record字段/数字转换/sequence准确",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Legacy capture regression plus opt-in exact CLR/arbitrary-precision and original-byte distinction; local sequence is not commit order.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.TestingUtilityTests.Recorder_CapturesConcurrentActivitiesAndMetricsInSequence",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.ExactTests.Clr_kind_and_binary_rational_are_preserved",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.ExactTests.Exact_assertions_distinguish_large_or_fine_values(left: \"999999.123456789012\", right: \"999999.123456789011\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.ExactTests.Exact_assertions_distinguish_large_or_fine_values(left: \"999999999999999999999999999999.12345678\", right: \"999999999999999999999999999999.12345677\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.ExactTests.Exact_assertions_distinguish_large_or_fine_values(left: \"9007199254740993\", right: \"9007199254740992\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"-0.00\", right: \"0e1000\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"1.000\", right: \"1\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"1e1000\", right: \"10e999\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.ExactTests.Nonterminating_rational_is_never_rounded",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.ExactTests.Pinned_S01_vectors_are_consumed_as_arithmetic_provenance_not_owner_acceptance",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST02-A2",
+      "source_case_id": "TEST02-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "原direct-chain限制与graph中间span分列",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Actual Activity parent/link/ancestor graph retains intermediate Dapr/retry/fanout spans; synthetic in-process graph only.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Actual_fanout_retry_intermediate_Dapr_receive_and_apply_DAG_is_preserved",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Graph_rejects_cycles_duplicate_span_ids_and_missing_ancestor_edges",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST02-A3",
+      "source_case_id": "TEST02-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "cp6-only tag检查/禁词搜索范围不冒全量脱敏",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Legacy allowed-key/forbidden-token assertion scope remains unchanged; no all-channel privacy proof.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.TestingUtilityTests.Recorder_RejectsForbiddenTagNamesAndValues",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST02-A4",
+      "source_case_id": "TEST02-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "合成canary覆盖HTTP自动字段等真实输出通道",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST02-A5",
+      "source_case_id": "TEST02-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "并发listener隔离和有界capture/overflow不假Complete",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Actual concurrent cases and bounded capture flags; no real external exporter completeness.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Concurrent_cases_capture_only_their_own_metrics",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"cross\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"bytes\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"count\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"cleanup\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"observer\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"dispose\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"duplicate\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"time\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Cross_case_and_dangling_edges_are_not_joined",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST02-A6",
+      "source_case_id": "TEST02-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "Dispose后停止捕获且不串下case",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Listener disposal, in-flight detection and case separation.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Dispose_with_inflight_span_cannot_claim_complete_or_capture_afterwards",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.UnitTests.TestingUtilityTests.Recorder_DisposeStopsBothListeners",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST02-A7",
+      "source_case_id": "TEST02-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "技术success/业务commit/原receipt分列",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Native PG rollback counterexample and exact receipt keys, no actual application Owner adapter.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "test_name": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.TechnicalSuccessBeforeRollbackDoesNotProveOwnerCommit",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "test_name": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ConcurrentOriginalKeysCommitOnceAndPreserveNativeExactValues",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST02-A8",
+      "source_case_id": "TEST02-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 65,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "observer-only异常不改业务、内存record不冒远端/生产证据",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Synthetic observer exceptions keep terminal result separate from incomplete evidence.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Exhaustion_cancellation_observer_and_cleanup_failures_are_visible",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST03-A1",
+      "source_case_id": "TEST03-A1",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 96,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "TEST_ONLY/IsPackable=false/正式七包排除不升业务数",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST03-A2",
+      "source_case_id": "TEST03-A2",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 96,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "层级证据不相互冒充且SC23/24保原Owner",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST03-A3",
+      "source_case_id": "TEST03-A3",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 96,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "生产Host无Testing引用/开关须真实证明",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST03-A4",
+      "source_case_id": "TEST03-A4",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 96,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "合成数据/隔离/授权与具体范围完整",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Fresh owned PG identity and restricted DML role actually verified; exact case input/clock sources remain fixture-bound.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "test_name": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.RestrictedRuntimeCannotCreateTruncateOrRewriteIdentityGuard",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "test_name": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ControlledOwnedClusterCrashRecoversCommittedBytesAndRollsBackUncommittedKeys",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST03-A5",
+      "source_case_id": "TEST03-A5",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 96,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "S6关键read/precheckpoint/fence/typed replay预期不删",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST03-A6",
+      "source_case_id": "TEST03-A6",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 96,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "NotRun/取消/缺前置/cleanup失败不假Pass",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Cancellation, missing input/capture and cleanup failures cannot become Complete.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.FaultTests.Exhaustion_cancellation_observer_and_cleanup_failures_are_visible",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"cross\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"bytes\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"count\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"cleanup\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"observer\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"dispose\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"duplicate\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"time\")",
+          "outcome": "Passed"
+        },
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST03-A7",
+      "source_case_id": "TEST03-A7",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 96,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "原case版本/attempt/失败历史不可变",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "LOCAL_PASS",
+      "local_scope": "Local immutable journal keeps prior artifacts/failures; repository preserves distinct attempts; no external retention claim.",
+      "local_evidence": [
+        {
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "test_name": "CP6.Platform.WP0226.Tests.QualificationTests.Journal_retains_original_failure_and_refuses_late_overwrite",
+          "outcome": "Passed"
+        }
+      ],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    },
+    {
+      "id": "PLT-TEST-01::TEST03-A8",
+      "source_case_id": "TEST03-A8",
+      "source_path": "docs/CP6_完整成果归档_20261009/完整成果/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_完整静态设计_v0.1.md",
+      "source_line": 96,
+      "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+      "assertion": "Required缺证按层关闭且无业务UI/API/副作用",
+      "state": "NOT_RUN",
+      "evidence": [],
+      "kind": "ORIGINAL_AC",
+      "original_business_acceptance": "NOT_RUN",
+      "local_result": "NOT_RUN",
+      "local_scope": "No new execution claimed for this original case.",
+      "local_evidence": [],
+      "remaining": "Actual Main/CRM/Owner acceptance, trusted producer/environment/production sources, authorization, durable retention/hold and independent acceptance remain external as applicable."
+    }
+  ]
+}

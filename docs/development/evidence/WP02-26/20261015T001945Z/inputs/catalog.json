@@ -1,0 +1,660 @@
+[
+  {
+    "id": "PLT-OBS-01",
+    "inventory_state": "COMPLETE",
+    "reason": "\u539f\u59cb\u9010\u9879AC\u5df2\u679a\u4e3e\uff0c\u4fdd\u7559\u539f\u65ad\u8a00\uff1b\u5185\u8054A\u5e8f\u53f7\u7ee7\u627f\u540c\u4e00\u884c\u663e\u5f0f\u7ec4\u524d\u7f00\u3002SPACE\u6309R2\u539f\u59cb\u7d22\u5f15\u9010\u9879\u767b\u8bb0\uff0c\u5e76\u5728\u539fID\u4e0b\u8865\u6302R2\u5b50\u573a\u666f\uff0c\u4e0d\u6269\u539fAC\u5206\u6bcd\u3002",
+    "case_count": 32,
+    "source_sets": [
+      {
+        "archive_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "covered_scope": "\u672c\u76ee\u6807\u539fAC\u5b8c\u6574\u58f0\u660e\u5217\u8868\uff1b\u4e0d\u628a\u522b\u7684\u76ee\u6807\u7684\u5171\u4eab\u6587\u4ef6\u6761\u76ee\u7eb3\u5165\u672c\u76ee\u6807",
+        "expected_count": 32,
+        "observed_count": 32
+      }
+    ],
+    "cases": [
+      {
+        "id": "PLT-OBS-01::OBS01-A1",
+        "source_case_id": "OBS01-A1",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u539fsource/meter/operation\u53ca\u6807\u7b7e\u952e\u503c\u679a\u4e3e",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS01-A2",
+        "source_case_id": "OBS01-A2",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "age/attempt\u4e3a\u6570\u503c\u4e14\u9ad8\u57fa\u6570\u4e0d\u5165metric",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS01-A3",
+        "source_case_id": "OBS01-A3",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "consumed/published/enqueue\u65f6\u70b9\u4e0d\u5192\u4e1a\u52a1\u63d0\u4ea4",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS01-A4",
+        "source_case_id": "OBS01-A4",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "trace-only\u4f20\u64ad\u4e0e\u65e0baggage\u3001\u975e\u6cd5parent\u5904\u7406",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS01-A5",
+        "source_case_id": "OBS01-A5",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u81ea\u52a8instrumentation\u9690\u79c1\u6e05\u7406\u542bURL/query/code",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS01-A6",
+        "source_case_id": "OBS01-A6",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "exporter\u5f02\u5e38/\u6ee1\u961f\u5217\u4e0d\u6539\u53d8\u4e8b\u52a1\u4e14\u7f3a\u8bc1\u53ef\u89c1",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS01-A7",
+        "source_case_id": "OBS01-A7",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u591aHost\u5168\u5c40propagator/\u6ce8\u518c\u6f02\u79fb\u51c6\u786e\u8bc6\u522b",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS01-A8",
+        "source_case_id": "OBS01-A8",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "instance\u91cd\u542f/\u91cd\u590d/\u91c7\u6837\u53e3\u5f84\u4e0e\u4e1a\u52a1receipt\u5206\u79bb",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS02-A1",
+        "source_case_id": "OBS02-A1",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u539fJSON\u5b57\u6bb5/1MiB/depth/\u91cd\u590d\u952e/UTC\u7ea6\u675f",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS02-A2",
+        "source_case_id": "OBS02-A2",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u539fEvaluate\u7cbe\u786e\u6761\u4ef6\u53caresult\u91cd\u7b97",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS02-A3",
+        "source_case_id": "OBS02-A3",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u6e90\u5b9e\u4f53/\u67e5\u8be2/definition/release\u5185\u5bb9\u8eab\u4efd\u771f\u5b9e\u7ed1\u5b9a",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS02-A4",
+        "source_case_id": "OBS02-A4",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "ratio/percentile/gauge\u5355\u4f4d\u4e0e\u8ba1\u7b97\u4e00\u81f4",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS02-A5",
+        "source_case_id": "OBS02-A5",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u771f\u5b9e\u8986\u76d6/\u7f3a\u6d4b/\u96f6\u6837\u672c\u4fdd\u6301Indeterminate",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS02-A6",
+        "source_case_id": "OBS02-A6",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u5019\u9009\u4e0e\u751f\u4ea7\u5206\u79bb\uff0cflag\u4e0d\u81ea\u8bc1\u4e14\u65e0\u6d4b\u8bd5\u6df7\u5165",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS02-A7",
+        "source_case_id": "OBS02-A7",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u4fee\u8ba2/\u665a\u5230/\u591arelease\u7a97\u53e3\u8840\u7f18\u4fdd\u539f\u7ed3\u679c",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS02-A8",
+        "source_case_id": "OBS02-A8",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u6743\u9650/\u4fdd\u7559/hold\u4e14SLO\u4e0d\u5192\u4e1a\u52a1\u9a8c\u6536",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS03-A1",
+        "source_case_id": "OBS03-A1",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 83,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "Candidate/NonCandidate\u5b57\u6bb5\u548c\u683c\u5f0f\u51c6\u786e",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS03-A2",
+        "source_case_id": "OBS03-A2",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 83,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "self-declared\u8eab\u4efd\u4e0d\u5192\u5b9e\u6d4b\u5b57\u8282/\u7b7e\u540d/\u751f\u4ea7",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS03-A3",
+        "source_case_id": "OBS03-A3",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 83,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "service/profile\u4e00\u81f4\u4e14\u7981\u6b62\u8bf7\u6c42\u6ce8\u5165",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS03-A4",
+        "source_case_id": "OBS03-A4",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 83,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "artifact/package/bundle/config\u8eab\u4efd\u4e0d\u6df7\u57df",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS03-A5",
+        "source_case_id": "OBS03-A5",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 83,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "/health/release\u5bf9\u8c61\u4e00\u81f4/\u5f02\u5e38\u5206\u652f\u65e0\u654f\u611f\u7ec6\u8282",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS03-A6",
+        "source_case_id": "OBS03-A6",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 83,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u591ainstance\u6eda\u52a8\u5347\u7ea7\u4e0eMismatch/Unproven\u7cbe\u786e\u5173\u95ed\u65b0\u80fd\u529b",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS03-A7",
+        "source_case_id": "OBS03-A7",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 83,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u7248\u672c/\u90e8\u7f72\u5386\u53f2\u4e0d\u539f\u5730\u6539\u5199",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS03-A8",
+        "source_case_id": "OBS03-A8",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 83,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u56de\u9000\u4e0e\u65e7operation/schema\u8bfb\u8def\u5f84\u4fdd\u7559",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS04-A1",
+        "source_case_id": "OBS04-A1",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 103,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u56db\u8def\u5f84/\u6ce8\u518c\u5e42\u7b49/\u51b2\u7a81\u51c6\u786e",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS04-A2",
+        "source_case_id": "OBS04-A2",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 103,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "live\u9759\u6001\u542b\u4e49\u4e0e\u771f\u5b9estartup/ready inventory\u5206\u79bb",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS04-A3",
+        "source_case_id": "OBS04-A3",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 103,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "CRM\u539fready\u4e0d\u88ab\u7a7a\u68c0\u67e5\u66ff\u6362\u3001\u65e0\u91cd\u590d\u8def\u5f84",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS04-A4",
+        "source_case_id": "OBS04-A4",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 103,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "health\u8f93\u51faallowlist/no-store\u4e14\u4e0d\u6cc4\u5f02\u5e38",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS04-A5",
+        "source_case_id": "OBS04-A5",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 103,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u663e\u5f0fprobe/\u8fd0\u7ef4\u6743\u9650\u53ca\u90e8\u7f72\u5c42\u91c7\u7528",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS04-A6",
+        "source_case_id": "OBS04-A6",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 103,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "\u6709\u754ccheck/\u53d6\u6d88/stale/collector\u5f71\u54cd\u660e\u786e",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS04-A7",
+        "source_case_id": "OBS04-A7",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 103,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "read\u4e0e\u65b0write\u80fd\u529b\u3001\u5168\u5c40\u6458\u6d41\u8fb9\u754c\u51c6\u786e",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-OBS-01::OBS04-A8",
+        "source_case_id": "OBS04-A8",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 103,
+        "source_sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99",
+        "assertion": "health GET\u96f6\u4e1a\u52a1\u526f\u4f5c\u7528\u3001\u4e0d\u5192SLO\u6216\u9a8c\u6536",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      }
+    ],
+    "remaining_scope": [],
+    "kind_counts": {
+      "ORIGINAL_AC": 32
+    }
+  },
+  {
+    "id": "PLT-TEST-01",
+    "inventory_state": "COMPLETE",
+    "reason": "\u539f\u59cb\u9010\u9879AC\u5df2\u679a\u4e3e\uff0c\u4fdd\u7559\u539f\u65ad\u8a00\uff1b\u5185\u8054A\u5e8f\u53f7\u7ee7\u627f\u540c\u4e00\u884c\u663e\u5f0f\u7ec4\u524d\u7f00\u3002SPACE\u6309R2\u539f\u59cb\u7d22\u5f15\u9010\u9879\u767b\u8bb0\uff0c\u5e76\u5728\u539fID\u4e0b\u8865\u6302R2\u5b50\u573a\u666f\uff0c\u4e0d\u6269\u539fAC\u5206\u6bcd\u3002",
+    "case_count": 24,
+    "source_sets": [
+      {
+        "archive_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "covered_scope": "\u672c\u76ee\u6807\u539fAC\u5b8c\u6574\u58f0\u660e\u5217\u8868\uff1b\u4e0d\u628a\u522b\u7684\u76ee\u6807\u7684\u5171\u4eab\u6587\u4ef6\u6761\u76ee\u7eb3\u5165\u672c\u76ee\u6807",
+        "expected_count": 24,
+        "observed_count": 24
+      }
+    ],
+    "cases": [
+      {
+        "id": "PLT-TEST-01::TEST01-A1",
+        "source_case_id": "TEST01-A1",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "\u56dbOutcome\u539f\u8bed\u4e49\u53caStatus/Delay\u8fb9\u754c",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST01-A2",
+        "source_case_id": "TEST01-A2",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "Success/Delay\u5fc5\u7ecf\u767b\u8bb0\u5185\u5b58\u7ec8\u7aef\u4e14\u65e0\u7f51\u7edcfallback",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST01-A3",
+        "source_case_id": "TEST01-A3",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "Test/CI\u7cbe\u786e\u6ce8\u518c\u3001\u540c\u5f15\u7528\u5e42\u7b49/\u5f02\u5b9e\u4f8b\u62d2\u7edd\u53ca\u76f4\u63a5\u6784\u9020\u5dee\u8ddd",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST01-A4",
+        "source_case_id": "TEST01-A4",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "script\u8ba1\u6570/inner\u8ba1\u6570/\u8017\u5c3d\u542b\u4e49\u5206\u79bb",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST01-A5",
+        "source_case_id": "TEST01-A5",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "\u5e76\u53d1index\u4e0d\u5192\u786e\u5b9a\u4e1a\u52a1\u987a\u5e8f",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST01-A6",
+        "source_case_id": "TEST01-A6",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "controlled clock/\u53d6\u6d88\u4e0ehandler\u4f4d\u7f6e\u660e\u786e",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST01-A7",
+        "source_case_id": "TEST01-A7",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "HTTP\u539f\u91cd\u8bd5/Unknown/\u5e42\u7b49\u9884\u671f\u4e0d\u88ab\u6d4b\u8bd5\u6539\u5199",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST01-A8",
+        "source_case_id": "TEST01-A8",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 41,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "fixture\u4e0d\u5192\u771f\u5b9e\u4e8b\u52a1/\u5171\u540cfence\u53ca\u65e0\u751f\u4ea7\u6545\u969cUI",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST02-A1",
+        "source_case_id": "TEST02-A1",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "record\u5b57\u6bb5/\u6570\u5b57\u8f6c\u6362/sequence\u51c6\u786e",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST02-A2",
+        "source_case_id": "TEST02-A2",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "\u539fdirect-chain\u9650\u5236\u4e0egraph\u4e2d\u95f4span\u5206\u5217",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST02-A3",
+        "source_case_id": "TEST02-A3",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "cp6-only tag\u68c0\u67e5/\u7981\u8bcd\u641c\u7d22\u8303\u56f4\u4e0d\u5192\u5168\u91cf\u8131\u654f",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST02-A4",
+        "source_case_id": "TEST02-A4",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "\u5408\u6210canary\u8986\u76d6HTTP\u81ea\u52a8\u5b57\u6bb5\u7b49\u771f\u5b9e\u8f93\u51fa\u901a\u9053",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST02-A5",
+        "source_case_id": "TEST02-A5",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "\u5e76\u53d1listener\u9694\u79bb\u548c\u6709\u754ccapture/overflow\u4e0d\u5047Complete",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST02-A6",
+        "source_case_id": "TEST02-A6",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "Dispose\u540e\u505c\u6b62\u6355\u83b7\u4e14\u4e0d\u4e32\u4e0bcase",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST02-A7",
+        "source_case_id": "TEST02-A7",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "\u6280\u672fsuccess/\u4e1a\u52a1commit/\u539freceipt\u5206\u5217",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST02-A8",
+        "source_case_id": "TEST02-A8",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 65,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "observer-only\u5f02\u5e38\u4e0d\u6539\u4e1a\u52a1\u3001\u5185\u5b58record\u4e0d\u5192\u8fdc\u7aef/\u751f\u4ea7\u8bc1\u636e",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST03-A1",
+        "source_case_id": "TEST03-A1",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "TEST_ONLY/IsPackable=false/\u6b63\u5f0f\u4e03\u5305\u6392\u9664\u4e0d\u5347\u4e1a\u52a1\u6570",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST03-A2",
+        "source_case_id": "TEST03-A2",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "\u5c42\u7ea7\u8bc1\u636e\u4e0d\u76f8\u4e92\u5192\u5145\u4e14SC23/24\u4fdd\u539fOwner",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST03-A3",
+        "source_case_id": "TEST03-A3",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "\u751f\u4ea7Host\u65e0Testing\u5f15\u7528/\u5f00\u5173\u987b\u771f\u5b9e\u8bc1\u660e",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST03-A4",
+        "source_case_id": "TEST03-A4",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "\u5408\u6210\u6570\u636e/\u9694\u79bb/\u6388\u6743\u4e0e\u5177\u4f53\u8303\u56f4\u5b8c\u6574",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST03-A5",
+        "source_case_id": "TEST03-A5",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "S6\u5173\u952eread/precheckpoint/fence/typed replay\u9884\u671f\u4e0d\u5220",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST03-A6",
+        "source_case_id": "TEST03-A6",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "NotRun/\u53d6\u6d88/\u7f3a\u524d\u7f6e/cleanup\u5931\u8d25\u4e0d\u5047Pass",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST03-A7",
+        "source_case_id": "TEST03-A7",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "\u539fcase\u7248\u672c/attempt/\u5931\u8d25\u5386\u53f2\u4e0d\u53ef\u53d8",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      },
+      {
+        "id": "PLT-TEST-01::TEST03-A8",
+        "source_case_id": "TEST03-A8",
+        "source_path": "docs/CP6_\u5b8c\u6574\u6210\u679c\u5f52\u6863_20261009/\u5b8c\u6574\u6210\u679c/docs/originals/d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+        "source_line": 96,
+        "source_sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa",
+        "assertion": "Required\u7f3a\u8bc1\u6309\u5c42\u5173\u95ed\u4e14\u65e0\u4e1a\u52a1UI/API/\u526f\u4f5c\u7528",
+        "state": "NOT_RUN",
+        "evidence": [],
+        "kind": "ORIGINAL_AC"
+      }
+    ],
+    "remaining_scope": [],
+    "kind_counts": {
+      "ORIGINAL_AC": 24
+    }
+  }
+]

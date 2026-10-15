@@ -1,0 +1,45 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.WP0226.Tests -> D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+[xUnit.net 00:00:00.82]     CP6.Platform.WP0226.Tests.CaptureTests.Link_capture_keeps_trace_state_flags_and_link_tags [FAIL]
+[xUnit.net 00:00:00.84]     CP6.Platform.WP0226.Tests.CaptureTests.Elapsed_capture_is_incomplete_even_without_a_later_record [FAIL]
+[xUnit.net 00:00:00.85]     CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness [FAIL]
+  Failed CP6.Platform.WP0226.Tests.CaptureTests.Link_capture_keeps_trace_state_flags_and_link_tags [383 ms]
+  Error Message:
+   Assert.Contains() Failure: Sub-string not found
+String:    "{"TraceId":"b4b662de60e5f1abc01117c6e1ea6"···
+Not found: "vendor=state"
+  Stack Trace:
+     at CP6.Platform.WP0226.Tests.CaptureTests.Link_capture_keeps_trace_state_flags_and_link_tags() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs:line 125
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.WP0226.Tests.CaptureTests.Elapsed_capture_is_incomplete_even_without_a_later_record [6 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: Incomplete
+Actual:   Capturing
+  Stack Trace:
+     at CP6.Platform.WP0226.Tests.CaptureTests.Elapsed_capture_is_incomplete_even_without_a_later_record() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs:line 114
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+  Failed CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness [439 ms]
+  Error Message:
+   Assert.Equal() Failure: Values differ
+Expected: Indeterminate
+Actual:   Qualified
+  Stack Trace:
+     at CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness() in D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\QualificationTests.cs:line 131
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)
+Results File: D:\CP6.Platform-worktrees\wp02-26-20261014\docs\development\evidence\WP02-26\20261015T001945Z\implementation\unit-red-boundaries-01\wp02-26.trx
+
+Failed!  - Failed:     3, Passed:     0, Skipped:     0, Total:     3, Duration: 447 ms - CP6.Platform.WP0226.Tests.dll (net8.0)
