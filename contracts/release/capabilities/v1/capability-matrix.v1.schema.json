@@ -803,14 +803,9 @@
             "enum": [
               "0.10.0",
               "0.10.1",
-              "0.10.2"
+              "0.10.2",
+              "0.10.3"
             ]
-          },
-          "capabilities": {
-            "maxItems": 0
-          },
-          "compatibility": {
-            "maxItems": 0
           },
           "packages": {
             "items": {
@@ -819,18 +814,83 @@
                   "enum": [
                     "0.10.0",
                     "0.10.1",
-                    "0.10.2"
+                    "0.10.2",
+                    "0.10.3"
                   ]
                 },
                 "feedIdentity": {
                   "type": "string",
-                  "pattern": "^https://nuget\\.pkg\\.github\\.com/GTX537/index\\.json#CP6\\.Platform\\.[A-Za-z]+/0\\.10\\.[012]$"
+                  "pattern": "^https://nuget\\.pkg\\.github\\.com/GTX537/index\\.json#CP6\\.Platform\\.[A-Za-z]+/0\\.10\\.[0123](?![\\s\\S])"
                 }
               }
             }
           }
         }
       }
+    },
+    {
+      "if": {"properties": {"lane": {"const": "FormalPublished"}, "version": {"const": "0.10.0"}}, "required": ["lane", "version"]},
+      "then": { "properties": {
+        "packages": { "prefixItems": [
+          {"properties": {"version": {"const": "0.10.0"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Abstractions/0.10.0"}}},
+          {"properties": {"version": {"const": "0.10.0"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.AspNetCore/0.10.0"}}},
+          {"properties": {"version": {"const": "0.10.0"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/0.10.0"}}},
+          {"properties": {"version": {"const": "0.10.0"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Deployment/0.10.0"}}},
+          {"properties": {"version": {"const": "0.10.0"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.EntityFramework/0.10.0"}}},
+          {"properties": {"version": {"const": "0.10.0"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Messaging/0.10.0"}}},
+          {"properties": {"version": {"const": "0.10.0"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Release/0.10.0"}}}
+        ] },
+        "capabilities": {"maxItems": 0},
+        "compatibility": {"maxItems": 0}
+      } }
+    },
+    {
+      "if": {"properties": {"lane": {"const": "FormalPublished"}, "version": {"const": "0.10.1"}}, "required": ["lane", "version"]},
+      "then": { "properties": {
+        "packages": { "prefixItems": [
+          {"properties": {"version": {"const": "0.10.1"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Abstractions/0.10.1"}}},
+          {"properties": {"version": {"const": "0.10.1"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.AspNetCore/0.10.1"}}},
+          {"properties": {"version": {"const": "0.10.1"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/0.10.1"}}},
+          {"properties": {"version": {"const": "0.10.1"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Deployment/0.10.1"}}},
+          {"properties": {"version": {"const": "0.10.1"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.EntityFramework/0.10.1"}}},
+          {"properties": {"version": {"const": "0.10.1"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Messaging/0.10.1"}}},
+          {"properties": {"version": {"const": "0.10.1"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Release/0.10.1"}}}
+        ] },
+        "capabilities": {"maxItems": 0},
+        "compatibility": {"maxItems": 0}
+      } }
+    },
+    {
+      "if": {"properties": {"lane": {"const": "FormalPublished"}, "version": {"const": "0.10.2"}}, "required": ["lane", "version"]},
+      "then": { "properties": {
+        "packages": { "prefixItems": [
+          {"properties": {"version": {"const": "0.10.2"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Abstractions/0.10.2"}}},
+          {"properties": {"version": {"const": "0.10.2"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.AspNetCore/0.10.2"}}},
+          {"properties": {"version": {"const": "0.10.2"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/0.10.2"}}},
+          {"properties": {"version": {"const": "0.10.2"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Deployment/0.10.2"}}},
+          {"properties": {"version": {"const": "0.10.2"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.EntityFramework/0.10.2"}}},
+          {"properties": {"version": {"const": "0.10.2"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Messaging/0.10.2"}}},
+          {"properties": {"version": {"const": "0.10.2"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Release/0.10.2"}}}
+        ] },
+        "capabilities": {"maxItems": 0},
+        "compatibility": {"maxItems": 0}
+      } }
+    },
+    {
+      "if": {"properties": {"lane": {"const": "FormalPublished"}, "version": {"const": "0.10.3"}}, "required": ["lane", "version"]},
+      "then": { "properties": {
+        "packages": { "prefixItems": [
+          {"properties": {"version": {"const": "0.10.3"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Abstractions/0.10.3"}}},
+          {"properties": {"version": {"const": "0.10.3"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.AspNetCore/0.10.3"}}},
+          {"properties": {"version": {"const": "0.10.3"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/0.10.3"}}},
+          {"properties": {"version": {"const": "0.10.3"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Deployment/0.10.3"}}},
+          {"properties": {"version": {"const": "0.10.3"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.EntityFramework/0.10.3"}}},
+          {"properties": {"version": {"const": "0.10.3"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Messaging/0.10.3"}}},
+          {"properties": {"version": {"const": "0.10.3"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Release/0.10.3"}}}
+        ] },
+        "capabilities": {"maxItems": 1, "items": {"properties": {"id": {"const": "ctx-binding-v1"}}}},
+        "compatibility": {"items": {"properties": {"requiredCapabilityId": {"const": "ctx-binding-v1"}, "profile": {"const": "ctx-v1"}}}}
+      } }
     }
   ]
 }

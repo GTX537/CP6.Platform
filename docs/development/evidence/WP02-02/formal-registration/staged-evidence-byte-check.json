@@ -1,0 +1,668 @@
+{
+  "result": "PASS",
+  "initialFailure": "producer-delta.txt had staged LF before raw-evidence attributes; explicitly re-added under -text, then all files rechecked.",
+  "files": [
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/architecture-command.json",
+      "sha256": "206e26884e4fbfe45987903f8488f9e36e87c8fa2d0a437d6ec6023c3ab21458",
+      "bytes": 618
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/architecture.log",
+      "sha256": "c0a8cfb1a4a98e6228122e50418e9da2eb90f115bae4af2856ab58184eb012b2",
+      "bytes": 1014
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/architecture/architecture.trx",
+      "sha256": "de75b917d74d83daf210a94a30148ccf1af5d6fdc5d1b846e56859515108b70f",
+      "bytes": 159814
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility-attempt1.json",
+      "sha256": "9de07c223093f0da8fec11cc54a690706d50e04cfcad5c33329f94354051d103",
+      "bytes": 307
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility-owner.json",
+      "sha256": "4e63681760cd965cc737de7fb0f09b06ffaab415031727453d44e0e4264ddeea",
+      "bytes": 307
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility-result.json",
+      "sha256": "6667a6fd5395cf130eaae6630a8d5083f48f12c68de08ba641a9588f2263934c",
+      "bytes": 2119
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/archive-index.json",
+      "sha256": "7888780bfd6d7ba94fcd987c5f36669d8072b65c7925d8718d83892a820d50fc",
+      "bytes": 3184
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/build-failure-1792042588618600100.json",
+      "sha256": "07b456909335e436a7a54fe03dc557d7163ed252276cb8b13f38493d183a04d6",
+      "bytes": 192
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/build-identities.json",
+      "sha256": "f48a99203dfd41b3b8c2d1fa76932b9264344063b1399fe4a50842a4c4675076",
+      "bytes": 28817
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/global.json",
+      "sha256": "6e5fc1043095a4055e47f491521d95a733c214d32aaecaf952584637f4a86099",
+      "bytes": 111
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/input-manifest.json",
+      "sha256": "77a1d2c6a4369c00564ff706d3ea16ef82137fdb6c83ce4f33b1551a055ff23f",
+      "bytes": 1665
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/database-probe-build-only-restore.command.json",
+      "sha256": "e55047584f0cd733f56ae62dc772cc976dccec9232a48498029052827eb3f132",
+      "bytes": 1279
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/database-probe-build-only-restore.log",
+      "sha256": "d697fa61674cd54deff9111bde3493abc4001461bb625288f8e9feefb7822bab",
+      "bytes": 3479
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/main-webapi-restore.command.json",
+      "sha256": "b497043cea54b715137be89bac678317fb4fffa5b35bbf5d3b36c8cb10d5a15e",
+      "bytes": 1203
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/main-webapi-restore.log",
+      "sha256": "d317ff4b4561c25664910299cf1518962ea70dfa4059ed43c185ae5b9874de36",
+      "bytes": 5751
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/private-probe-build.command.json",
+      "sha256": "2d3193fa1788588af4b555a27bc3239d57c94141ff4b133d1d54aa4996f05097",
+      "bytes": 933
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/private-probe-build.log",
+      "sha256": "3af1a0dfe8f7b69eeed2ad6a5daa31f1ad012a22a94dd9b9b66804a0003ecf51",
+      "bytes": 1418
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/private-probe-restore.command.json",
+      "sha256": "6f972c5daeae5098219cb1c5dc18a98a9c3a666690d425f8cf615aa936ab008b",
+      "bytes": 1179
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/private-probe-restore.log",
+      "sha256": "b572941d9d6aca714019ee74b98d5e90b37ddde9fa97ad31f910c88281fbc929",
+      "bytes": 240
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/runtime-list.command.json",
+      "sha256": "9d95573dff52016dc8e5ea88ae972b31599a76f7ee46caf0336084b36bf6ed2c",
+      "bytes": 409
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/runtime-list.log",
+      "sha256": "7b9dc6d614384652e6c31c7739e03e4f72015f1fff7c9637dc0dfd8ef10c6b59",
+      "bytes": 263
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/sdk-version.command.json",
+      "sha256": "da5e498ab98cdba48688118353b48983718cf27cbb6d47cc1648e0134dbf6583",
+      "bytes": 402
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/logs/sdk-version.log",
+      "sha256": "d431370954fffbac8949338e91ab683ed6a5b007f7b58559f609d10572cbe339",
+      "bytes": 9
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/snapshot-manifest.json",
+      "sha256": "967fce42162d78483fcc4426f7910d1bc0d1087509a2ddb7304f5f0cb7cf2279",
+      "bytes": 4637802
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt1/state.json",
+      "sha256": "5fbda877a2e03b2112590af8fab43c3e25143511285316ad605a745c38fdf28d",
+      "bytes": 7041
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/Directory.Packages.props",
+      "sha256": "17284cb74605517cbec8a8153505da71a685b28694b67b5ef80608cd79b1c0ea",
+      "bytes": 12
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/archive-index.json",
+      "sha256": "3b5a6bb804d4b0db481a3c4021cc78a8abaedd329e18ff2f8d12a19c5628c297",
+      "bytes": 4874
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/build-identities.json",
+      "sha256": "5c2a3ba1375134c8a615f78e421bf8dd4bbbd06b7d95a51647440d32b1c8c66f",
+      "bytes": 129306
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/global.json",
+      "sha256": "6e5fc1043095a4055e47f491521d95a733c214d32aaecaf952584637f4a86099",
+      "bytes": 111
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/graph-report.json",
+      "sha256": "8454e36a22e59ee09fc7c75260985f7c2386d2dd52b7cc02404c047b7b79393b",
+      "bytes": 3485078
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/input-manifest.json",
+      "sha256": "77a1d2c6a4369c00564ff706d3ea16ef82137fdb6c83ce4f33b1551a055ff23f",
+      "bytes": 1665
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/database-probe-build-only-build.command.json",
+      "sha256": "867b609d344c3484ceb240e7bfe75eae4676ee4799c61decc955cdeb1c769d48",
+      "bytes": 1033
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/database-probe-build-only-build.log",
+      "sha256": "3db2fba1b5eed134bf0a824669c67672941e6dffc3eb69e09e4874805f062ab4",
+      "bytes": 4980
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/database-probe-build-only-restore.command.json",
+      "sha256": "a65af30fa9cfe829ca8b25e15b6f5c99e92f1be09e605959234ac10092cf6285",
+      "bytes": 1278
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/database-probe-build-only-restore.log",
+      "sha256": "91be543fb442a334447727f0e51d03bf93b8d8da168d189e6431d922508833c4",
+      "bytes": 2359
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/main-webapi-build.command.json",
+      "sha256": "7ab6a058cfa683fdb6b7342328b615019bc38fa322fb9b7cd09c25077ec7074c",
+      "bytes": 955
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/main-webapi-build.log",
+      "sha256": "9ef90dc16a9a33a5ece0138c43f4f0cd7bdbb6e46b27dd475a3bb1cf0659e45d",
+      "bytes": 6516
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/main-webapi-restore.command.json",
+      "sha256": "9dec280ee8493a29ea14bd0bd929c8f7a16f2ae35908777e8f57b048359a07c0",
+      "bytes": 1204
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/main-webapi-restore.log",
+      "sha256": "a0abff8863285910cfc57ef77388cfbb47d91b3612fa845302ffb96b19987fa0",
+      "bytes": 4510
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/private-probe-build.command.json",
+      "sha256": "0438d23989243f79fd45c4af144a8d790de141aae9ac3d9bfed8fcd46beb06a7",
+      "bytes": 932
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/private-probe-build.log",
+      "sha256": "36bf715cac654b683b546d507eab2b43c70802a68aa8538b2ee0758c48b44468",
+      "bytes": 1418
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/private-probe-restore.command.json",
+      "sha256": "2d78c03c07ca5fba18e8d4732526df19fad7f45f404e6d2157af4e65ac678436",
+      "bytes": 1179
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/private-probe-restore.log",
+      "sha256": "14be98ef81c45884ad17f1ef066db47d1f5f3e69a2adce348fac4cc0c20c6455",
+      "bytes": 238
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/private-probe-run.command.json",
+      "sha256": "258466e6730a73babd68162f6e0bf324a4f16511dbd14e02fac20db9c64cc663",
+      "bytes": 777
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/private-probe-run.log",
+      "sha256": "374bee4b51fc15e9b507e06aad46783bce69bb15e0e0d868223db5dbf493a087",
+      "bytes": 100
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/runtime-list.command.json",
+      "sha256": "897bf293f0be9f717c2d95ac1b1f51c559f6f327c6680cdd12e195f5b978df9b",
+      "bytes": 409
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/runtime-list.log",
+      "sha256": "7b9dc6d614384652e6c31c7739e03e4f72015f1fff7c9637dc0dfd8ef10c6b59",
+      "bytes": 263
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/sdk-version.command.json",
+      "sha256": "aa339550dd2ed9d3352effacfdf53c5b25a3e895f1e2271ead50ba0231f039d1",
+      "bytes": 402
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/logs/sdk-version.log",
+      "sha256": "d431370954fffbac8949338e91ab683ed6a5b007f7b58559f609d10572cbe339",
+      "bytes": 9
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/pre-runtime-identities.json",
+      "sha256": "1af4a7f352010a4be3cd2e7157937cb001a23586a610fcb2c2242dd78b30e3e8",
+      "bytes": 9377
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-00.json",
+      "sha256": "07dc242c395b7588b6185daf33252ca5dc952294224aa2bd68ead5ac344e9cbd",
+      "bytes": 148558
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-01.json",
+      "sha256": "ff8b4bcef2287e79c7b7dcc6a2124d1a93be8ee4dcad699c307689b2509136dc",
+      "bytes": 211546
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-02.json",
+      "sha256": "79de9ae2eb05fea09450f5f81fbb6ff1db8726e97c54715d5788aac709f7c1a8",
+      "bytes": 29870
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-03.json",
+      "sha256": "38a4d9c0d1000734be30306c8068bdab450504bb98014d7091f3f336be88545c",
+      "bytes": 270821
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-04.json",
+      "sha256": "e69bdd31e08d04dfeb7942f0e716648f3075eafba1ca2180d16c0e7b69bb9ca5",
+      "bytes": 4671
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-05.json",
+      "sha256": "22589a3f77b28ff50a1f40b7b36b9482988cb17fd1cfcd8a03266dd092fd75bb",
+      "bytes": 2700
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-06.json",
+      "sha256": "9cebc796b939b786de3bd720a7a7a920b6fc9b754f152b7f2f7d17f8662c0e46",
+      "bytes": 2682
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-07.json",
+      "sha256": "81c6fd3aa5eea67c58c00d5f5d714b81d7ececce86b215d7d38708d711a76901",
+      "bytes": 271169
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-08.json",
+      "sha256": "1a5c2c6aca7ded5040295701b2ea6fbb38bc5a9c326ea9888dee8f4c1b9030dc",
+      "bytes": 364834
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-09.json",
+      "sha256": "6c01a013840ae6b0fa20810c7875cd95059b4e8f3d95b5ea81ad57ffda8af307",
+      "bytes": 211998
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-10.json",
+      "sha256": "8f8a3f8f3beef7c1a7570111b4f73c844f17832e4bf2daef5cc0e84dc1a68392",
+      "bytes": 5111
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-11.json",
+      "sha256": "dc124e971dc80f9d62c761ea6b6aa525b6f46c16dfc23f4bb9ddefd1cd1be3c4",
+      "bytes": 112900
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-12.json",
+      "sha256": "b4ae9a5b15c7bfab570f77ac49b2a9a5b029cc3191957f2ac2826f7913bab6d7",
+      "bytes": 4001
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-13.json",
+      "sha256": "be436b45c2bf6c9756142c4801ac4f0dab0ac57655f1af1e16c62ce9756f0180",
+      "bytes": 37325
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/assets-14.json",
+      "sha256": "77ffb2e231948bc7c14df85870c331f31e4239566a208e303904a66aca56cdfc",
+      "bytes": 68954
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-00.json",
+      "sha256": "92e38f3557e8779b375058bdd61be631e9775498c5d46fe469a42d3586fb6e40",
+      "bytes": 56821
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-01.json",
+      "sha256": "0d85b4f335437fe76a663cb32a3dd138c0669189b4e9434c05edaeb5c63ba6d3",
+      "bytes": 81240
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-02.json",
+      "sha256": "9181324c560e18d8466ee9e66cf05ad4e29a30bed6c5ff706489a140d473c9bf",
+      "bytes": 8704
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-03.json",
+      "sha256": "84a9ac71f01e3d24e1a59aa592f7960e66b6c0f460431c3163b343676239dab5",
+      "bytes": 102323
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-04.json",
+      "sha256": "da5e52c2576eb9a819f48258450c500c3497387aa8f78607c45d4d52d7f19da4",
+      "bytes": 1231
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-05.json",
+      "sha256": "ac414c45515f6531259d711835401fbff6335948eb025e91745e42302599f318",
+      "bytes": 449
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-06.json",
+      "sha256": "97ff6c32994a116f45bc5d96c74f83805decddb70eaa5642bbd69277698c4c36",
+      "bytes": 440
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-07.json",
+      "sha256": "bf1a762b7cbc63ab5569fc199cc4f9a8ac0eaa6e384beeea506b5d71474a69a2",
+      "bytes": 101852
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-08.json",
+      "sha256": "2286375293e74f4cce987d622753777dafe97caf235929b6848bb58a583e56e1",
+      "bytes": 137530
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-09.json",
+      "sha256": "bfa7577aa530b609f53fc16ef3fa2885e7791556459e55fc6d36cbf6248cfb08",
+      "bytes": 83733
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-10.json",
+      "sha256": "dcea2f238c47bdfbbe8e79691f64ea7d3f76938d6e92b6731c8c0da91b5fb6c4",
+      "bytes": 940
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-11.json",
+      "sha256": "3411eeb620e8b8bb832b29a5f717d58ae1db83a76cf215fbbd1d7aa776b22a64",
+      "bytes": 38804
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-12.json",
+      "sha256": "1fc137f399cdb8212ce4a406f41155fa6d4b4e77b8089a132bcb7b72f6968e54",
+      "bytes": 474
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-13.json",
+      "sha256": "8901342d80c23c24bc286b85c268fb41d1e2249f5a2ac5d190fbf3510befc088",
+      "bytes": 11387
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/deps-14.json",
+      "sha256": "4a92087027205f50cb06134296f16636ff16d246f200a9e8167a11e6c67b3fad",
+      "bytes": 23668
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/index.json",
+      "sha256": "8b1d36c54bb873b0bc912c22ad33608d43e4654befef186e8d3c9e4296aaaf89",
+      "bytes": 12836
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-00.json",
+      "sha256": "e8efe3502b6e360bcb727d2608fd5a0a11f043a67a81b6a389c4cb35932df61d",
+      "bytes": 29692
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-01.json",
+      "sha256": "e8efe3502b6e360bcb727d2608fd5a0a11f043a67a81b6a389c4cb35932df61d",
+      "bytes": 29692
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-02.json",
+      "sha256": "abcb5655ff9917307ac904f4d85213ec925a3918f90094f06d9990c5cda4b0b4",
+      "bytes": 37435
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-03.json",
+      "sha256": "bf6ccea1eb09e82768edb2c2c1162171e006cd25632ed91f99af498dfa94d88f",
+      "bytes": 4045
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-04.json",
+      "sha256": "318e6fae4805e0c55b27025a9640962a9382ff9acc20eea4660c9b4ffe56c3d0",
+      "bytes": 45122
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-05.json",
+      "sha256": "54900c93e93f104268e2b524461988ee4c307d08af3e9abaa917ebbe7dc503e9",
+      "bytes": 205
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-06.json",
+      "sha256": "3cc7952787be7d43489891ec4a98f0d089ab0cedb68a61da0244c43df6a02398",
+      "bytes": 65
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-07.json",
+      "sha256": "3cc7952787be7d43489891ec4a98f0d089ab0cedb68a61da0244c43df6a02398",
+      "bytes": 65
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-08.json",
+      "sha256": "0a35dd0ecd8ad732034fe7f14980b9df407bef644e1a5f200c8ccb0aedc6532a",
+      "bytes": 44788
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-09.json",
+      "sha256": "beb1a4cd1042d8a7bb17345f8838c63631ad1550a88b3e6d9f82c081a60dc070",
+      "bytes": 62915
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-10.json",
+      "sha256": "beb1a4cd1042d8a7bb17345f8838c63631ad1550a88b3e6d9f82c081a60dc070",
+      "bytes": 62915
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-11.json",
+      "sha256": "5c28ed6d1a197a17bf211f53743f72f38232b8df690fb415aa2339a90ba47ac5",
+      "bytes": 38895
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-12.json",
+      "sha256": "a6909940b68f6a686071f795745460b212a5f1f631c565077820ac10a6982242",
+      "bytes": 142
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-13.json",
+      "sha256": "89edad14a7f3d14585af29710911c80cb4e7c9b8c6d52937896ff30ecd5dfb17",
+      "bytes": 19682
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-14.json",
+      "sha256": "beff604dc90c4f4de310b8c1c075156b758472fca928f6b2b3029c5b013749c6",
+      "bytes": 65
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-15.json",
+      "sha256": "6b305da386d8d7b3e782ceeaa4b2e98cd3031f57f7ea88abe4358bb29178c9c7",
+      "bytes": 5062
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/raw-graph/locks-16.json",
+      "sha256": "a4982f2577eec0ed58859ca73a747b55918fd020e2f552ad44c0fa3e1211a945",
+      "bytes": 11899
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/runtime-policy.json",
+      "sha256": "6d60b9a835d6089e1722544505db7e43f6a6ea3afa1784d9d4724f0c3b04e8b6",
+      "bytes": 692
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/runtime/runtime.json",
+      "sha256": "160e909c3a714f43d25bf1151b1e6fc9fb03a08a364c8399d480fa141d30f69c",
+      "bytes": 25785
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/snapshot-manifest.json",
+      "sha256": "d949aff9c36f39c4587b54ac4413c55fc1069a2fe366fe66b967328ca788f9e8",
+      "bytes": 4637802
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/compatibility/attempt2/state.json",
+      "sha256": "4313e0a2a9e4a319b32c44c36b20214860eeaa641fb5d6f8b226438e42573688",
+      "bytes": 9796
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/feed-version-observation.json",
+      "sha256": "e78a52eacff58c3df74fab4b5c9da02cf84aafe027183ed5e22d048e9ff90b4b",
+      "bytes": 5223
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/final-static-checks.json",
+      "sha256": "2927010e8623977ac006c7667e13d56c1ac8c21f4b3d9b9367d81e21feb48223",
+      "bytes": 975
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/formal-package-plan.json",
+      "sha256": "913ddc51efb4c9244785570bdc8c0fb973e5ec9be8edec224539c85b5c5bfd5d",
+      "bytes": 3102
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/pack-source.diff",
+      "sha256": "7eedeae19769b159100b606a69775e9483afec6957b5d83371a9ee2f14fc6a83",
+      "bytes": 16801
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/powershell-parse.json",
+      "sha256": "3355c42043102ee29388f70868d697281645c885c7013dada5c4f78448024025",
+      "bytes": 1040
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/record-reader-regression.log",
+      "sha256": "f1e38b9d0c61988f639add0d196e0ad44fe36bf1690ad8e801d7ca3fc0ed9171",
+      "bytes": 2623
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/record-reader-regression.trx",
+      "sha256": "12849d954219e8d580bbdc74334ad0acd6565dbb4419c0a6b0176f57ca1f5890",
+      "bytes": 11616
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/red-local-compiler.log",
+      "sha256": "7b06af880706105bf0e1afb2abd8e13cf052bb68f5098afb59e8c64eb177af0c",
+      "bytes": 67315
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/red-local-compiler.trx",
+      "sha256": "e5e93334b21279833ca2aaa5a4374a0c71d57b4399baf331507fc9e8284fc483",
+      "bytes": 287510
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/red-summary.json",
+      "sha256": "bbe8a95a2c18549a11dee052fb86e2d2ae34dccf290f09a097c32efcbecc57d8",
+      "bytes": 15566
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/red-tests.log",
+      "sha256": "2ffe7766004a361752b649c55a9a8c88d44cfbd89203a36b20936419fdd53ef2",
+      "bytes": 67715
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/red-tests.trx",
+      "sha256": "1531a3f60c83f39d2a38808ee8f1bf7e0f614534926e37fec085a7229fb40bc2",
+      "bytes": 287510
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/red.log",
+      "sha256": "176196e17e058eba5ae9cc6bd0e800a6d63340eb27e267700cce0b3bf1d1ab57",
+      "bytes": 1368
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/release-safe-diagnostic.log",
+      "sha256": "c3801a92020f24361e17a757210fc80c40b75403757121be30f2baa46c1a85d8",
+      "bytes": 6057
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/release-safe-diagnostic.trx",
+      "sha256": "b18485514bc3e0869035c734255c7dc6b7685cc7b53f3f301580d783c9db06d4",
+      "bytes": 594764
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/safe-suite-summary.json",
+      "sha256": "a76620e446db6876619c6e4d516db458abf78b207d0d627802d1036febd08374",
+      "bytes": 2460
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/targeted-diagnostic.log",
+      "sha256": "fdf6c3ba3cd330fa2a875517b49225ca24abeef0c8736a724d322596e8d17bf6",
+      "bytes": 2621
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/targeted-diagnostic.trx",
+      "sha256": "70487832a7a1c196373786b89ce6935c93b9c9b6b91ca80335cc15d23058153b",
+      "bytes": 283457
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/tasklocal-pack.json",
+      "sha256": "0a85d2b6682b04787448262c239d1cca6fa923339542e59e759a61b007eb93de",
+      "bytes": 18490
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/tasklocal-pack.log",
+      "sha256": "82aa639934932bd4c4a782069c6d30691245af20eab6b8c5c012cde3a10494ee",
+      "bytes": 428
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/implementation/validation-inputs.json",
+      "sha256": "9ca51337e43dee3972d21441e7e03db74d2eef8f9341ce59f541ccd29b5e9f6c",
+      "bytes": 19272
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/parent-import-diagnostic.json",
+      "sha256": "e6eda90e3bd5834dcb5822a4e14d17e594525e2df6e36b1010e7c480fa16a6d5",
+      "bytes": 432
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/producer-delta.txt",
+      "sha256": "9cc326e04cc1f1a053858c3e26d0dc430ade62e6f518b92836a4ff907de3b6aa",
+      "bytes": 680
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/readonly-baseline.json",
+      "sha256": "9145f5d1d19b816362635ce73708139690e5a00db653759f574b59e281689f1b",
+      "bytes": 7807
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/runner-boundary-green.log",
+      "sha256": "b91ab35ce5036364346ebddc2e37a5434552f8d336aa4c94bc2c4a6d2746b652",
+      "bytes": 4560
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/runner-boundary-red.log",
+      "sha256": "f08aa7fba37f05450e767bce29a4fc3caaee6661c1c8602b6631f627d9cfa997",
+      "bytes": 2654
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/runner-provenance.json",
+      "sha256": "dd188a347e44155eb934cd27cc1256b60ab5be1065554b4c7cc61027bb8ef918",
+      "bytes": 7537
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/runner-tests.log",
+      "sha256": "7dd0b722fa52777f3fcd8340c3102701602f6a6c6927959a4b9332af95e4135a",
+      "bytes": 4374
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/runtime-input-reuse.json",
+      "sha256": "2350c2894c2670b338fe22098d5a57ebe5ecfd09c981eb2cf567ee5f89fdb544",
+      "bytes": 33577
+    },
+    {
+      "path": "docs/development/evidence/WP02-02/formal-registration/scope-audit.json",
+      "sha256": "094b777bea27e3a97e018b48454d2e80fb7013fc0401021134544bdb814b9738",
+      "bytes": 24850
+    }
+  ],
+  "count": 132,
+  "scope": "Exact staged versus working raw evidence bytes; performed before this audit file was added."
+}

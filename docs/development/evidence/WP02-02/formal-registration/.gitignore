@@ -1,0 +1,9 @@
+!*.log
+!*.trx
+!implementation/
+!implementation/**/
+!implementation/**/*.log
+!implementation/**/*.trx
+!compatibility/
+!compatibility/**/
+!compatibility/**/*.log

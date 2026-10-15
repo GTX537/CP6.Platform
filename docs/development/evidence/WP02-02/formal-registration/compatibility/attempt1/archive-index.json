@@ -1,0 +1,97 @@
+{
+  "owner": "477a039df2ee4a95a42bcbb2aa143d76",
+  "status": "FAILED_NU1008_PARENT_CENTRAL_PACKAGE_IMPORT",
+  "runtime": "NOT_RUN",
+  "files": [
+    {
+      "path": "build-failure-1792042588618600100.json",
+      "sha256": "07b456909335e436a7a54fe03dc557d7163ed252276cb8b13f38493d183a04d6",
+      "bytes": 192
+    },
+    {
+      "path": "build-identities.json",
+      "sha256": "f48a99203dfd41b3b8c2d1fa76932b9264344063b1399fe4a50842a4c4675076",
+      "bytes": 28817
+    },
+    {
+      "path": "global.json",
+      "sha256": "6e5fc1043095a4055e47f491521d95a733c214d32aaecaf952584637f4a86099",
+      "bytes": 111
+    },
+    {
+      "path": "input-manifest.json",
+      "sha256": "77a1d2c6a4369c00564ff706d3ea16ef82137fdb6c83ce4f33b1551a055ff23f",
+      "bytes": 1665
+    },
+    {
+      "path": "snapshot-manifest.json",
+      "sha256": "967fce42162d78483fcc4426f7910d1bc0d1087509a2ddb7304f5f0cb7cf2279",
+      "bytes": 4637802
+    },
+    {
+      "path": "state.json",
+      "sha256": "5fbda877a2e03b2112590af8fab43c3e25143511285316ad605a745c38fdf28d",
+      "bytes": 7041
+    },
+    {
+      "path": "logs/database-probe-build-only-restore.command.json",
+      "sha256": "e55047584f0cd733f56ae62dc772cc976dccec9232a48498029052827eb3f132",
+      "bytes": 1279
+    },
+    {
+      "path": "logs/database-probe-build-only-restore.log",
+      "sha256": "d697fa61674cd54deff9111bde3493abc4001461bb625288f8e9feefb7822bab",
+      "bytes": 3479
+    },
+    {
+      "path": "logs/main-webapi-restore.command.json",
+      "sha256": "b497043cea54b715137be89bac678317fb4fffa5b35bbf5d3b36c8cb10d5a15e",
+      "bytes": 1203
+    },
+    {
+      "path": "logs/main-webapi-restore.log",
+      "sha256": "d317ff4b4561c25664910299cf1518962ea70dfa4059ed43c185ae5b9874de36",
+      "bytes": 5751
+    },
+    {
+      "path": "logs/private-probe-build.command.json",
+      "sha256": "2d3193fa1788588af4b555a27bc3239d57c94141ff4b133d1d54aa4996f05097",
+      "bytes": 933
+    },
+    {
+      "path": "logs/private-probe-build.log",
+      "sha256": "3af1a0dfe8f7b69eeed2ad6a5daa31f1ad012a22a94dd9b9b66804a0003ecf51",
+      "bytes": 1418
+    },
+    {
+      "path": "logs/private-probe-restore.command.json",
+      "sha256": "6f972c5daeae5098219cb1c5dc18a98a9c3a666690d425f8cf615aa936ab008b",
+      "bytes": 1179
+    },
+    {
+      "path": "logs/private-probe-restore.log",
+      "sha256": "b572941d9d6aca714019ee74b98d5e90b37ddde9fa97ad31f910c88281fbc929",
+      "bytes": 240
+    },
+    {
+      "path": "logs/runtime-list.command.json",
+      "sha256": "9d95573dff52016dc8e5ea88ae972b31599a76f7ee46caf0336084b36bf6ed2c",
+      "bytes": 409
+    },
+    {
+      "path": "logs/runtime-list.log",
+      "sha256": "7b9dc6d614384652e6c31c7739e03e4f72015f1fff7c9637dc0dfd8ef10c6b59",
+      "bytes": 263
+    },
+    {
+      "path": "logs/sdk-version.command.json",
+      "sha256": "da5e498ab98cdba48688118353b48983718cf27cbb6d47cc1648e0134dbf6583",
+      "bytes": 402
+    },
+    {
+      "path": "logs/sdk-version.log",
+      "sha256": "d431370954fffbac8949338e91ab683ed6a5b007f7b58559f609d10572cbe339",
+      "bytes": 9
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\artifacts\w8\e19a9115d0c64d069cd5126ddc4cff59\snapshots\platform\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\artifacts\w8\e19a9115d0c64d069cd5126ddc4cff59\snapshots\platform\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\artifacts\w8\e19a9115d0c64d069cd5126ddc4cff59\snapshots\platform\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\artifacts\w8\e19a9115d0c64d069cd5126ddc4cff59\snapshots\platform\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\artifacts\w8\e19a9115d0c64d069cd5126ddc4cff59\snapshots\platform\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  Probe -> D:\CP6.Platform-worktrees\wp02-02-formal-registration-20261015\artifacts\w8\e19a9115d0c64d069cd5126ddc4cff59\probe\bin\Release\net8.0\Probe.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:05.11

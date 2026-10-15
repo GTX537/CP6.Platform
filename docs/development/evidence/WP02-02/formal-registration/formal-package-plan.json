@@ -1,0 +1,91 @@
+{
+  "scope": "PRODUCER_REGISTRATION_ONLY",
+  "status": "NOT_PUBLISHED",
+  "formalTrust": "NOT_FORMALLY_TRUSTED",
+  "finalProducerSha": null,
+  "publicationSha256": null,
+  "approvedMatrixSha256": null,
+  "consumerLock": null,
+  "packages": [
+    {
+      "packageId": "CP6.Platform.Abstractions",
+      "version": "0.10.3",
+      "sourceGitSha": null,
+      "authorSignedPackageSha256": null,
+      "publishedPackageSha256": null,
+      "feedIdentity": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Abstractions/0.10.3"
+    },
+    {
+      "packageId": "CP6.Platform.AspNetCore",
+      "version": "0.10.3",
+      "sourceGitSha": null,
+      "authorSignedPackageSha256": null,
+      "publishedPackageSha256": null,
+      "feedIdentity": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.AspNetCore/0.10.3"
+    },
+    {
+      "packageId": "CP6.Platform.Contracts",
+      "version": "0.10.3",
+      "sourceGitSha": null,
+      "authorSignedPackageSha256": null,
+      "publishedPackageSha256": null,
+      "feedIdentity": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/0.10.3"
+    },
+    {
+      "packageId": "CP6.Platform.Deployment",
+      "version": "0.10.3",
+      "sourceGitSha": null,
+      "authorSignedPackageSha256": null,
+      "publishedPackageSha256": null,
+      "feedIdentity": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Deployment/0.10.3"
+    },
+    {
+      "packageId": "CP6.Platform.EntityFramework",
+      "version": "0.10.3",
+      "sourceGitSha": null,
+      "authorSignedPackageSha256": null,
+      "publishedPackageSha256": null,
+      "feedIdentity": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.EntityFramework/0.10.3"
+    },
+    {
+      "packageId": "CP6.Platform.Messaging",
+      "version": "0.10.3",
+      "sourceGitSha": null,
+      "authorSignedPackageSha256": null,
+      "publishedPackageSha256": null,
+      "feedIdentity": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Messaging/0.10.3"
+    },
+    {
+      "packageId": "CP6.Platform.Release",
+      "version": "0.10.3",
+      "sourceGitSha": null,
+      "authorSignedPackageSha256": null,
+      "publishedPackageSha256": null,
+      "feedIdentity": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Release/0.10.3"
+    }
+  ],
+  "futureAuthorization": {
+    "workflow": ".github/workflows/p10-formal-packages.yml",
+    "environment": "p10-formal-release",
+    "executions": 1,
+    "estimatedRunnerMinutes": [
+      20,
+      50
+    ],
+    "hardCapRunnerMinutes": 65,
+    "authorized": false,
+    "costChecked": false,
+    "excluded": [
+      "retries",
+      "recovery",
+      "separate RFC3161 preflight",
+      "signer revalidation",
+      "deployment"
+    ]
+  },
+  "workflow": {
+    "path": ".github/workflows/p10-formal-packages.yml",
+    "gitBlobSha256": "42225fdc549020df717e374437aa6f61181dac9381edf74789c687362974f029",
+    "checkoutSha256": "5434075d849f2bf6b2bc0719eec780ec47a37914daf46e814f24c6f2287912bf"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "status": "DIAGNOSTIC_ONLY_FAILED",
+  "counts": {
+    "total": "355",
+    "executed": "355",
+    "passed": "353",
+    "failed": "2",
+    "error": "0",
+    "timeout": "0",
+    "aborted": "0",
+    "inconclusive": "0",
+    "passedButRunAborted": "0",
+    "notRunnable": "0",
+    "notExecuted": "0",
+    "disconnected": "0",
+    "warning": "0",
+    "completed": "0",
+    "inProgress": "0",
+    "pending": "0"
+  },
+  "failures": [
+    {
+      "test": "CP6.Platform.ReleaseTests.P10PackageTests.Packaged_formal_publication_Schema_accepts_only_coherent_registered_versions_and_feed_identities",
+      "message": "[{\"InstanceLocation\":\"\",\"Errors\":{\"properties\":\"Some properties did not match the required schema: [\\u0022version\\u0022]\"}},{\"InstanceLocation\":\"\",\"Errors\":{\"properties\":\"Some properties did not match the required schema: [\\u0022version\\u0022]\"}},{\"InstanceLocation\":\"\",\"Errors\":{\"properties\":\"Some properties did not match the required schema: [\\u0022version\\u0022]\"}},{\"InstanceLocation\":\"/version\",\"Errors\":{\"const\":\"Expected \\u0022\\\\u00220.10.0\\\\u0022\\u0022\"}},{\"InstanceLocation\":\"/version\",\"Errors\":{\"const\":\"Expected \\u0022\\\\u00220.10.1\\\\u0022\\u0022\"}},{\"InstanceLocation\":\"/version\",\"Errors\":{\"const\":\"Expected \\u0022\\\\u00220.10.2\\\\u0022\\u0022\"}}]"
+    },
+    {
+      "test": "CP6.Platform.ReleaseTests.P10PackageTests.Release_package_contains_only_dll_xml_readme_and_release_contract_assets",
+      "message": "Assert.All() Failure: 3 out of 93 items in the collection did not pass.\r\n[4]: Item:  \"contracts/release/capabilities/v1/README.md\"\r\n     Error: Unexpected release package entry: contracts/release/capabilities/v1/README.md\r\n[5]: Item:  \"contracts/release/capabilities/v1/capability-matri\"\u00b7\u00b7\u00b7\r\n     Error: Unexpected release package entry: contracts/release/capabilities/v1/capability-matrix.v1.schema.json\r\n[6]: Item:  \"contracts/release/capabilities/v1/consumer-lock.v1\"\u00b7\u00b7\u00b7\r\n     Error: Unexpected release package entry: contracts/release/capabilities/v1/consumer-lock.v1.schema.json"
+    }
+  ],
+  "notRun": [
+    "Formal_verifier_accepts_one_real_RFC3161_timestamp_and_rejects_identity_and_integrity_mutations",
+    "Test_package_set_has_exact_seven_ids_one_version_one_source_and_test_only_trust",
+    "Injected_signing_failure_removes_private_material"
+  ]
+}

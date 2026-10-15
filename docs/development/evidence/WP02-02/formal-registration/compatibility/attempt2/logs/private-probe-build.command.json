@@ -1,0 +1,21 @@
+{
+  "label": "private-probe-build",
+  "argv": [
+    "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+    "build",
+    "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\probe\\Probe.csproj",
+    "-c",
+    "Release",
+    "--no-restore",
+    "-warnaserror:MSB3277",
+    "-p:RestoreLockedMode=false",
+    "-p:RestorePackagesWithLockFile=true",
+    "-p:NuGetLockFilePath=packages.wp02-02.lock.json",
+    "-p:PlatformSnapshot=D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59\\snapshots\\platform"
+  ],
+  "cwd": "D:\\CP6.Platform-worktrees\\wp02-02-formal-registration-20261015\\artifacts\\w8\\e19a9115d0c64d069cd5126ddc4cff59",
+  "log": "logs/private-probe-build.log",
+  "exitCode": 0,
+  "elapsedSeconds": 5.423,
+  "logSha256": "36bf715cac654b683b546d507eab2b43c70802a68aa8538b2ee0758c48b44468"
+}
