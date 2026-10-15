@@ -1,0 +1,11 @@
+  Determining projects to restore...
+  Restored D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CP6.Platform.WP0226.Tests.csproj (in 10.62 sec).
+  6 of 7 projects are up-to-date for restore.
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs(27,74): error CS8752: The type 'ActivityLink[]' may not be used as the target type of new() [D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CP6.Platform.WP0226.Tests.csproj]
+D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CaptureTests.cs(49,60): error CS8752: The type 'ActivityLink[]' may not be used as the target type of new() [D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\CP6.Platform.WP0226.Tests.csproj]

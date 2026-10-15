@@ -1,0 +1,18 @@
+{
+  "command": [
+    "C:/Users/tt/.dotnet/dotnet.exe",
+    "test",
+    "tests/CP6.Platform.WP0226.PostgreSqlTests/CP6.Platform.WP0226.PostgreSqlTests.csproj",
+    "-c",
+    "Release",
+    "--logger",
+    "trx;LogFileName=wp02-26-pg.trx",
+    "--results-directory",
+    "D:\\CP6.Platform-worktrees\\wp02-26-20261014\\docs\\development\\evidence\\WP02-26\\20261015T001945Z\\pg-development-01\\pg"
+  ],
+  "cwd": "D:\\CP6.Platform-worktrees\\wp02-26-20261014",
+  "started_at": "2026-10-15T00:38:50.923083+00:00",
+  "ended_at": "2026-10-15T00:41:29.349987+00:00",
+  "exit_code": 0,
+  "settings_supplied": true
+}

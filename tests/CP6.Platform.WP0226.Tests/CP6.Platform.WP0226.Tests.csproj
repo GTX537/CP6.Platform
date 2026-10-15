@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><IsPackable>false</IsPackable><IsTestProject>true</IsTestProject></PropertyGroup>
+  <ItemGroup><PackageReference Include="Microsoft.NET.Test.Sdk" /><PackageReference Include="xunit" /><PackageReference Include="xunit.runner.visualstudio" PrivateAssets="all" /><PackageReference Include="JsonSchema.Net" /></ItemGroup>
+  <ItemGroup><Using Include="Xunit" /></ItemGroup>
+  <ItemGroup><ProjectReference Include="../../src/CP6.Platform.Testing/CP6.Platform.Testing.csproj" /></ItemGroup>
+  <ItemGroup><None Include="../../docs/development/evidence/WP02-26/20261015T001945Z/inputs/vectors.json" Link="vectors.json" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+  <ItemGroup>
+    <Compile Include="../CP6.Platform.UnitTests/TestingUtilityTests.cs" Link="Legacy/TestingUtilityTests.cs" />
+    <Compile Include="../CP6.Platform.UnitTests/SloEvidenceContractTests.cs" Link="Legacy/SloEvidenceContractTests.cs" />
+  </ItemGroup>
+</Project>

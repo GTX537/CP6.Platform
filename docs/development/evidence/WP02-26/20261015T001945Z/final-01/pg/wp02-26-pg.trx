@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="c41424d2-541d-4e67-998a-31857a4e6711" name="tt@LAPTOP-3QQ44FJS 2026-10-14 21:17:38" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T21:17:38.6182383-04:00" queuing="2026-10-14T21:17:38.6182390-04:00" start="2026-10-14T21:17:26.8374071-04:00" finish="2026-10-14T21:18:10.5663388-04:00" />
+  <TestSettings name="default" id="8fa2cf8c-4745-4382-8f46-b60d0b504e82">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_21_17_38" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="0846aadc-2682-48d4-8bec-c4598ca66170" testId="6f7eeb2c-c823-76f7-d7a0-c38e31d31790" testName="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ConcurrentOriginalKeysCommitOnceAndPreserveNativeExactValues" computerName="LAPTOP-3QQ44FJS" duration="00:00:02.2470170" startTime="2026-10-14T21:17:46.8161145-04:00" endTime="2026-10-14T21:17:49.0685006-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0846aadc-2682-48d4-8bec-c4598ca66170">
+      <Output>
+        <StdOut>Native PG concurrent duplicate: operation=operation:bfcf0fd0f12347fd900ea41454fb4715; message=message:bfcf0fd0f12347fd900ea41454fb4715; 1 insert + 0 duplicate; exact NUMERIC and raw bytes retained. Fixture Owner only.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="2462c49e-9192-45e2-852f-578177d45559" testId="1b42d335-39de-3b6f-d899-896b46f57156" testName="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.NativeSerializationFailureIsDistinctFromInjectedAcknowledgmentSuppression" computerName="LAPTOP-3QQ44FJS" duration="00:00:05.1477312" startTime="2026-10-14T21:17:41.6694198-04:00" endTime="2026-10-14T21:17:46.8123943-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2462c49e-9192-45e2-852f-578177d45559">
+      <Output>
+        <StdOut>Observed native PostgreSQL SQLSTATE=40001 from overlapping RepeatableRead transactions; no injected SQLSTATE.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="e328eb7b-c58f-471f-86d6-c0c28ea84ee0" testId="b880374f-205b-4b92-4280-8c7a1b4d04f6" testName="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.TechnicalSuccessBeforeRollbackDoesNotProveOwnerCommit" computerName="LAPTOP-3QQ44FJS" duration="00:00:02.8925488" startTime="2026-10-14T21:17:35.6539757-04:00" endTime="2026-10-14T21:17:38.5264383-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e328eb7b-c58f-471f-86d6-c0c28ea84ee0">
+      <Output>
+        <StdOut>Actual technical counter=1; actual PostgreSQL rollback leaves receipt count=0. No business commit inferred.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="44e16909-e41b-49cf-83c1-b3c7591d1bf2" testId="d17ffa3e-cfe1-a6e9-7762-a8c397c426ab" testName="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.InjectedLostApplicationAckReadsOriginalCommittedReceiptWithoutNewKeys" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.2864878" startTime="2026-10-14T21:18:07.6191635-04:00" endTime="2026-10-14T21:18:08.9054699-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="44e16909-e41b-49cf-83c1-b3c7591d1bf2">
+      <Output>
+        <StdOut>Unknown_InjectedApplicationAckSuppression; no native SQLSTATE claim; actual receipt readback and duplicate keep operation:fdbdd68922864f11a7f3920c6bf07934/message:fdbdd68922864f11a7f3920c6bf07934.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0559ebf1-c483-4e0b-a473-da290214dd80" testId="54029bbe-ca78-70e5-9ada-4e894ffc1683" testName="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ControlledOwnedClusterCrashRecoversCommittedBytesAndRollsBackUncommittedKeys" computerName="LAPTOP-3QQ44FJS" duration="00:00:18.5485203" startTime="2026-10-14T21:17:49.0701550-04:00" endTime="2026-10-14T21:18:07.6180597-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0559ebf1-c483-4e0b-a473-da290214dd80">
+      <Output>
+        <StdOut>Controlled own-cluster immediate shutdown; observed interrupted connection type=NpgsqlException; no SQLSTATE fabricated&#xD;
+Same cluster 7696685906165408468; committed original keys/NUMERIC/raw bytes survive; uncommitted receipt absent; no production crash/adoption claim.</StdOut>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="34ef8f1f-9305-479b-b8a0-8eaed95b26a0" testId="0a476f54-0147-7a78-e255-e1c1536a0bef" testName="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.RestrictedRuntimeCannotCreateTruncateOrRewriteIdentityGuard" computerName="LAPTOP-3QQ44FJS" duration="00:00:03.1011901" startTime="2026-10-14T21:17:38.5722240-04:00" endTime="2026-10-14T21:17:41.6609034-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="34ef8f1f-9305-479b-b8a0-8eaed95b26a0">
+      <Output>
+        <StdOut>Native PostgreSQL runtime denies CREATE, TRUNCATE and guard UPDATE with SQLSTATE 42501; identity unchanged.</StdOut>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.InjectedLostApplicationAckReadsOriginalCommittedReceiptWithoutNewKeys" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.postgresqltests\bin\release\net8.0\cp6.platform.wp0226.postgresqltests.dll" id="d17ffa3e-cfe1-a6e9-7762-a8c397c426ab">
+      <Execution id="44e16909-e41b-49cf-83c1-b3c7591d1bf2" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.PostgreSqlTests\bin\Release\net8.0\CP6.Platform.WP0226.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests" name="InjectedLostApplicationAckReadsOriginalCommittedReceiptWithoutNewKeys" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.RestrictedRuntimeCannotCreateTruncateOrRewriteIdentityGuard" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.postgresqltests\bin\release\net8.0\cp6.platform.wp0226.postgresqltests.dll" id="0a476f54-0147-7a78-e255-e1c1536a0bef">
+      <Execution id="34ef8f1f-9305-479b-b8a0-8eaed95b26a0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.PostgreSqlTests\bin\Release\net8.0\CP6.Platform.WP0226.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests" name="RestrictedRuntimeCannotCreateTruncateOrRewriteIdentityGuard" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.TechnicalSuccessBeforeRollbackDoesNotProveOwnerCommit" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.postgresqltests\bin\release\net8.0\cp6.platform.wp0226.postgresqltests.dll" id="b880374f-205b-4b92-4280-8c7a1b4d04f6">
+      <Execution id="e328eb7b-c58f-471f-86d6-c0c28ea84ee0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.PostgreSqlTests\bin\Release\net8.0\CP6.Platform.WP0226.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests" name="TechnicalSuccessBeforeRollbackDoesNotProveOwnerCommit" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ConcurrentOriginalKeysCommitOnceAndPreserveNativeExactValues" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.postgresqltests\bin\release\net8.0\cp6.platform.wp0226.postgresqltests.dll" id="6f7eeb2c-c823-76f7-d7a0-c38e31d31790">
+      <Execution id="0846aadc-2682-48d4-8bec-c4598ca66170" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.PostgreSqlTests\bin\Release\net8.0\CP6.Platform.WP0226.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests" name="ConcurrentOriginalKeysCommitOnceAndPreserveNativeExactValues" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ControlledOwnedClusterCrashRecoversCommittedBytesAndRollsBackUncommittedKeys" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.postgresqltests\bin\release\net8.0\cp6.platform.wp0226.postgresqltests.dll" id="54029bbe-ca78-70e5-9ada-4e894ffc1683">
+      <Execution id="0559ebf1-c483-4e0b-a473-da290214dd80" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.PostgreSqlTests\bin\Release\net8.0\CP6.Platform.WP0226.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests" name="ControlledOwnedClusterCrashRecoversCommittedBytesAndRollsBackUncommittedKeys" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.NativeSerializationFailureIsDistinctFromInjectedAcknowledgmentSuppression" storage="d:\cp6.platform-worktrees\wp02-26-20261014\tests\cp6.platform.wp0226.postgresqltests\bin\release\net8.0\cp6.platform.wp0226.postgresqltests.dll" id="1b42d335-39de-3b6f-d899-896b46f57156">
+      <Execution id="2462c49e-9192-45e2-852f-578177d45559" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.PostgreSqlTests\bin\Release\net8.0\CP6.Platform.WP0226.PostgreSqlTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests" name="NativeSerializationFailureIsDistinctFromInjectedAcknowledgmentSuppression" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="6f7eeb2c-c823-76f7-d7a0-c38e31d31790" executionId="0846aadc-2682-48d4-8bec-c4598ca66170" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1b42d335-39de-3b6f-d899-896b46f57156" executionId="2462c49e-9192-45e2-852f-578177d45559" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b880374f-205b-4b92-4280-8c7a1b4d04f6" executionId="e328eb7b-c58f-471f-86d6-c0c28ea84ee0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d17ffa3e-cfe1-a6e9-7762-a8c397c426ab" executionId="44e16909-e41b-49cf-83c1-b3c7591d1bf2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="54029bbe-ca78-70e5-9ada-4e894ffc1683" executionId="0559ebf1-c483-4e0b-a473-da290214dd80" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0a476f54-0147-7a78-e255-e1c1536a0bef" executionId="34ef8f1f-9305-479b-b8a0-8eaed95b26a0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="6" executed="6" passed="6" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:01.04]   Discovering: CP6.Platform.WP0226.PostgreSqlTests&#xD;
+[xUnit.net 00:00:01.11]   Discovered:  CP6.Platform.WP0226.PostgreSqlTests&#xD;
+[xUnit.net 00:00:01.17]   Starting:    CP6.Platform.WP0226.PostgreSqlTests&#xD;
+[xUnit.net 00:00:37.71]   Finished:    CP6.Platform.WP0226.PostgreSqlTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

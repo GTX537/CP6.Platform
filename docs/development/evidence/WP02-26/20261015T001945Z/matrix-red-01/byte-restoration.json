@@ -1,0 +1,5 @@
+{
+  "reason": "An explanatory interpreter-path edit was reverted; restore exact original receipt newline/EOF bytes by matching the independently recorded review hash.",
+  "restored_sha256": "c359781ecd7ac736ed2c1cf696822900d14e2b3c513ac6880bdc78777df6e213",
+  "original_failure_unchanged": true
+}

@@ -1,0 +1,10 @@
+{
+  "Owner": "4ba89ba3d399683bd75209e61c31f1ab",
+  "SystemIdentifier": "7696685906165408468",
+  "Hashes": {
+    "postgresql.conf": "518ebe6e5d2caba06f3edafcda6b7ecfff6adc9fa863887bcd0eb6a305dd4a7e",
+    "postgresql.auto.conf": "ef0843fce52217a6815d36e76a88f618494c851efc3eb9e1a794fe0d8dccdd81",
+    "pg_hba.conf": "0c8dc6e6e57399790417a6e13b3a8e1b5e27aa19708a2122148fbfe3bdcecd42",
+    "pg_ident.conf": "2151e28f0bf5a8bb69109f91dbe61ebffe48c6f9b71620f6a7b0b02b410e7de5"
+  }
+}

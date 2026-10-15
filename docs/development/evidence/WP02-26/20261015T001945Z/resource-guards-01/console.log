@@ -1,0 +1,10 @@
+test_expected_pid_does_not_override_wrong_database_or_application (test_resource_guards.ResourceGuards.test_expected_pid_does_not_override_wrong_database_or_application) ... ok
+test_marker_owner_format_rejects_path_escape (test_resource_guards.ResourceGuards.test_marker_owner_format_rejects_path_escape) ... ok
+test_missing_ready_identity_rejected_before_server_access (test_resource_guards.ResourceGuards.test_missing_ready_identity_rejected_before_server_access) ... ok
+test_unknown_session_blocks_before_any_shutdown (test_resource_guards.ResourceGuards.test_unknown_session_blocks_before_any_shutdown) ... ok
+test_wrong_settings_path_rejected_before_read (test_resource_guards.ResourceGuards.test_wrong_settings_path_rejected_before_read) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.009s
+
+OK

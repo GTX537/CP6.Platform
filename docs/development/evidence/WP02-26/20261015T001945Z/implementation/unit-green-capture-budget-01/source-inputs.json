@@ -1,0 +1,46 @@
+[
+  {
+    "sha256": "e3127e5bd47588c6d11ccd5692494f775642372e0558302192c943a7d576a424",
+    "path": "src/CP6.Platform.Contracts/SloQualificationV1/ExactNumber.cs"
+  },
+  {
+    "sha256": "27dd5e8bc6c08056648c4514d2575aeda1a953af5be839d09cbd96135b26c1be",
+    "path": "src/CP6.Platform.Contracts/SloQualificationV1/SloQualifier.cs"
+  },
+  {
+    "sha256": "0a307f7fe02ac889a55c477e0a51730fccd446e478dd94fd190217c4ac3401c8",
+    "path": "src/CP6.Platform.Testing/EvidenceV1/DeterministicFaultCase.cs"
+  },
+  {
+    "sha256": "0543683b879632aaba91068315c91255280f2b6a9972c507b23340a99f567c57",
+    "path": "src/CP6.Platform.Testing/EvidenceV1/EvidenceCase.cs"
+  },
+  {
+    "sha256": "2c805a2030b0b1a718c10e37b2dc553b352904d987108520b49c9d3cc4e314a2",
+    "path": "src/CP6.Platform.Testing/EvidenceV1/ExactValue.cs"
+  },
+  {
+    "sha256": "6f63771fc7570f624f06df5648f4a474ca9d8d06d4ab0c785d7ec690d8025455",
+    "path": "tests/CP6.Platform.WP0226.Tests/CapabilityTests.cs"
+  },
+  {
+    "sha256": "264f867369a8560d52559b60806626ab2e34f5844379747fe736ba69cffd181d",
+    "path": "tests/CP6.Platform.WP0226.Tests/CaptureTests.cs"
+  },
+  {
+    "sha256": "b1e7ed02efe0e55f6caa6384daeb8994f27c963970da10368c75ef666aba674f",
+    "path": "tests/CP6.Platform.WP0226.Tests/CP6.Platform.WP0226.Tests.csproj"
+  },
+  {
+    "sha256": "e42acd924c2c91d9f128332b6abc691ad08fc3f3631413a9000a01370e6964bd",
+    "path": "tests/CP6.Platform.WP0226.Tests/ExactTests.cs"
+  },
+  {
+    "sha256": "68e3d6b0354b4541c0da9ab7ae03b126f50a7d3d500bb6d220e44ea92751f082",
+    "path": "tests/CP6.Platform.WP0226.Tests/FaultTests.cs"
+  },
+  {
+    "sha256": "ff4fc056f9a49030c7a18919101b7a987f56e9560798fee81560289669563bbe",
+    "path": "tests/CP6.Platform.WP0226.Tests/QualificationTests.cs"
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "utc": "2026-10-15T00:36:16.634019+00:00",
+  "failures": [
+    {
+      "path": "failed-1792024378614915500.json",
+      "sha256": "c98d44db38af1d8c70025ac18946313550d8306ca1fdcbdbb8786634927a9fb4",
+      "stage": "Allocated",
+      "error_type": "TimeoutExpired",
+      "owner": "4ba89ba3d399683bd75209e61c31f1ab"
+    },
+    {
+      "path": "failed-1792024436413099400.json",
+      "sha256": "6e23aeda3695ff22da506a66beb4d2c8c7d417d8cbf74fc9d460036c2cfaff1d",
+      "stage": "Started",
+      "error_type": "RuntimeError",
+      "owner": "4ba89ba3d399683bd75209e61c31f1ab"
+    },
+    {
+      "path": "command-1792024506229563300.json",
+      "sha256": "236e0b14c77880d5143c60e6efce5f0effc45d3dd1fc5513dd6d1a925e057c33",
+      "exit_code": 3
+    }
+  ],
+  "initial_failure": "initdb exceeded 45s wait; actual disk cluster initialized and stopped; original timeout numeric process exit unavailable",
+  "recovery": "same owner partial state verified: PG18, SCRAM, disk system identifier, original admin authentication; then observed database OID 16385 pinned; JSON OID now cast bigint; SQL extraction typo caused syntax failure before schema creation, fixed and configuration transaction completed",
+  "data_deleted": false,
+  "private_credentials_copied": false,
+  "final_state": "Ready",
+  "source_scope": "preliminary execution source not fully snapshotted; final gates separately bound"
+}

@@ -1,0 +1,96 @@
+2026-10-14 20:33:52.787 EDT [58348] LOG:  starting PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit
+2026-10-14 20:33:52.789 EDT [58348] LOG:  listening on IPv4 address "127.0.0.1", port 55429
+2026-10-14 20:33:53.115 EDT [61472] LOG:  database system was shut down at 2026-10-14 20:32:39 EDT
+2026-10-14 20:33:53.133 EDT [58348] LOG:  database system is ready to accept connections
+2026-10-14 20:35:06.219 EDT [23772] ERROR:  syntax error at or near "T" at character 1
+2026-10-14 20:35:06.219 EDT [23772] STATEMENT:  T CONNECT ON DATABASE "cp6_wp0226_20261015_4ba89ba3" TO "wp0226_runtime_4ba89ba3";
+2026-10-14 20:38:53.027 EDT [41380] LOG:  checkpoint starting: time
+2026-10-14 20:41:08.549 EDT [41380] LOG:  checkpoint complete: wrote 1018 buffers (6.2%), wrote 3 SLRU buffers; 1 WAL file(s) added, 0 removed, 0 recycled; write=134.434 s, sync=0.900 s, total=135.524 s; sync files=331, longest=0.016 s, average=0.003 s; distance=4879 kB, estimate=4879 kB; lsn=0/1CBF808, redo lsn=0/1CB7308
+2026-10-14 20:41:09.613 EDT [25088] ERROR:  permission denied for schema fixture at character 14
+2026-10-14 20:41:09.613 EDT [25088] STATEMENT:  CREATE TABLE fixture.forbidden(value int)
+2026-10-14 20:41:09.637 EDT [25088] ERROR:  permission denied for table receipts
+2026-10-14 20:41:09.637 EDT [25088] STATEMENT:  TRUNCATE fixture.receipts
+2026-10-14 20:41:09.640 EDT [25088] ERROR:  permission denied for table resource
+2026-10-14 20:41:09.640 EDT [25088] STATEMENT:  UPDATE wp0226_guard.resource SET marker='forged'
+2026-10-14 20:41:09.642 EDT [25088] ERROR:  permission denied for database cp6_wp0226_20261015_4ba89ba3
+2026-10-14 20:41:09.642 EDT [25088] STATEMENT:  CREATE SCHEMA forbidden
+2026-10-14 20:41:12.112 EDT [10924] ERROR:  could not serialize access due to concurrent update
+2026-10-14 20:41:12.112 EDT [10924] STATEMENT:  UPDATE fixture.balances SET amount=amount+1 WHERE case_id=$1
+2026-10-14 20:41:16.462 EDT [58348] LOG:  received immediate shutdown request
+2026-10-14 20:41:16.558 EDT [58348] LOG:  database system is shut down
+2026-10-14 20:41:19.450 EDT [10548] LOG:  starting PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit
+2026-10-14 20:41:19.452 EDT [10548] LOG:  listening on IPv4 address "127.0.0.1", port 55429
+2026-10-14 20:41:19.660 EDT [29168] LOG:  database system was interrupted; last known up at 2026-10-14 20:41:08 EDT
+2026-10-14 20:41:20.001 EDT [11200] FATAL:  the database system is starting up
+2026-10-14 20:41:20.422 EDT [61168] FATAL:  the database system is starting up
+2026-10-14 20:41:20.585 EDT [29168] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-10-14 20:41:20.593 EDT [29168] LOG:  redo starts at 0/1CB7308
+2026-10-14 20:41:20.622 EDT [29168] LOG:  invalid record length at 0/1CC18C8: expected at least 24, got 0
+2026-10-14 20:41:20.622 EDT [29168] LOG:  redo done at 0/1CC18A0 system usage: CPU: user: 0.00 s, system: 0.00 s, elapsed: 0.02 s
+2026-10-14 20:41:20.631 EDT [42416] LOG:  checkpoint starting: end-of-recovery immediate wait
+2026-10-14 20:41:20.712 EDT [42416] LOG:  checkpoint complete: wrote 14 buffers (0.1%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.034 s, sync=0.027 s, total=0.083 s; sync files=11, longest=0.005 s, average=0.003 s; distance=41 kB, estimate=41 kB; lsn=0/1CC18C8, redo lsn=0/1CC18C8
+2026-10-14 20:41:20.739 EDT [10548] LOG:  database system is ready to accept connections
+2026-10-14 20:41:20.815 EDT [49028] FATAL:  the database system is not yet accepting connections
+2026-10-14 20:41:20.815 EDT [49028] DETAIL:  Consistent recovery state has not been yet reached.
+2026-10-14 20:41:59.402 EDT [10548] LOG:  received smart shutdown request
+2026-10-14 20:41:59.447 EDT [10548] LOG:  background worker "logical replication launcher" (PID 1004) exited with exit code 1
+2026-10-14 20:41:59.450 EDT [42416] LOG:  shutting down
+2026-10-14 20:41:59.457 EDT [42416] LOG:  checkpoint starting: shutdown immediate
+2026-10-14 20:41:59.648 EDT [42416] LOG:  checkpoint complete: wrote 10 buffers (0.1%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.087 s, sync=0.026 s, total=0.198 s; sync files=7, longest=0.012 s, average=0.004 s; distance=52 kB, estimate=52 kB; lsn=0/1CCEA00, redo lsn=0/1CCEA00
+2026-10-14 20:41:59.707 EDT [10548] LOG:  database system is shut down
+2026-10-14 21:16:34.421 EDT [42208] LOG:  starting PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit
+2026-10-14 21:16:34.425 EDT [42208] LOG:  listening on IPv4 address "127.0.0.1", port 55429
+2026-10-14 21:16:34.686 EDT [37160] LOG:  database system was shut down at 2026-10-14 20:41:59 EDT
+2026-10-14 21:16:34.768 EDT [42208] LOG:  database system is ready to accept connections
+2026-10-14 21:16:34.873 EDT [36088] FATAL:  the database system is starting up
+2026-10-14 21:17:41.457 EDT [43924] ERROR:  permission denied for schema fixture at character 14
+2026-10-14 21:17:41.457 EDT [43924] STATEMENT:  CREATE TABLE fixture.forbidden(value int)
+2026-10-14 21:17:41.558 EDT [43924] ERROR:  permission denied for table receipts
+2026-10-14 21:17:41.558 EDT [43924] STATEMENT:  TRUNCATE fixture.receipts
+2026-10-14 21:17:41.569 EDT [43924] ERROR:  permission denied for table resource
+2026-10-14 21:17:41.569 EDT [43924] STATEMENT:  UPDATE wp0226_guard.resource SET marker='forged'
+2026-10-14 21:17:41.574 EDT [43924] ERROR:  permission denied for database cp6_wp0226_20261015_4ba89ba3
+2026-10-14 21:17:41.574 EDT [43924] STATEMENT:  CREATE SCHEMA forbidden
+2026-10-14 21:17:46.796 EDT [24316] ERROR:  could not serialize access due to concurrent update
+2026-10-14 21:17:46.796 EDT [24316] STATEMENT:  UPDATE fixture.balances SET amount=amount+1 WHERE case_id=$1
+2026-10-14 21:17:53.885 EDT [42208] LOG:  received immediate shutdown request
+2026-10-14 21:17:53.994 EDT [42208] LOG:  database system is shut down
+2026-10-14 21:17:56.541 EDT [57340] LOG:  starting PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35228, 64-bit
+2026-10-14 21:17:56.542 EDT [57340] LOG:  listening on IPv4 address "127.0.0.1", port 55429
+2026-10-14 21:17:56.727 EDT [47912] LOG:  database system was interrupted; last known up at 2026-10-14 21:16:34 EDT
+2026-10-14 21:17:56.891 EDT [3768] FATAL:  the database system is starting up
+2026-10-14 21:17:57.239 EDT [25704] FATAL:  the database system is starting up
+2026-10-14 21:17:57.660 EDT [61704] FATAL:  the database system is starting up
+2026-10-14 21:17:58.024 EDT [51912] FATAL:  the database system is starting up
+2026-10-14 21:17:58.387 EDT [26412] FATAL:  the database system is starting up
+2026-10-14 21:17:58.811 EDT [61544] FATAL:  the database system is starting up
+2026-10-14 21:17:59.207 EDT [13472] FATAL:  the database system is starting up
+2026-10-14 21:17:59.730 EDT [51620] FATAL:  the database system is starting up
+2026-10-14 21:18:00.188 EDT [18804] FATAL:  the database system is starting up
+2026-10-14 21:18:00.542 EDT [61508] FATAL:  the database system is starting up
+2026-10-14 21:18:00.952 EDT [50308] FATAL:  the database system is starting up
+2026-10-14 21:18:01.505 EDT [49312] FATAL:  the database system is starting up
+2026-10-14 21:18:02.065 EDT [51936] FATAL:  the database system is starting up
+2026-10-14 21:18:02.579 EDT [25292] FATAL:  the database system is starting up
+2026-10-14 21:18:03.086 EDT [60488] FATAL:  the database system is starting up
+2026-10-14 21:18:03.602 EDT [47572] FATAL:  the database system is starting up
+2026-10-14 21:18:03.984 EDT [61200] FATAL:  the database system is starting up
+2026-10-14 21:18:04.376 EDT [22948] FATAL:  the database system is starting up
+2026-10-14 21:18:04.789 EDT [46344] FATAL:  the database system is starting up
+2026-10-14 21:18:05.185 EDT [37800] FATAL:  the database system is starting up
+2026-10-14 21:18:05.632 EDT [55440] FATAL:  the database system is starting up
+2026-10-14 21:18:05.671 EDT [47912] LOG:  database system was not properly shut down; automatic recovery in progress
+2026-10-14 21:18:05.692 EDT [47912] LOG:  redo starts at 0/1CCEA78
+2026-10-14 21:18:05.740 EDT [47912] LOG:  invalid record length at 0/1CD41C0: expected at least 24, got 0
+2026-10-14 21:18:05.740 EDT [47912] LOG:  redo done at 0/1CD4188 system usage: CPU: user: 0.00 s, system: 0.03 s, elapsed: 0.04 s
+2026-10-14 21:18:05.765 EDT [22972] LOG:  checkpoint starting: end-of-recovery immediate wait
+2026-10-14 21:18:05.931 EDT [22972] LOG:  checkpoint complete: wrote 8 buffers (0.0%), wrote 3 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.104 s, sync=0.031 s, total=0.169 s; sync files=10, longest=0.006 s, average=0.004 s; distance=21 kB, estimate=21 kB; lsn=0/1CD41C0, redo lsn=0/1CD41C0
+2026-10-14 21:18:05.976 EDT [57340] LOG:  database system is ready to accept connections
+2026-10-14 21:18:06.036 EDT [21964] FATAL:  the database system is not yet accepting connections
+2026-10-14 21:18:06.036 EDT [21964] DETAIL:  Consistent recovery state has not been yet reached.
+2026-10-14 21:18:29.290 EDT [57340] LOG:  received smart shutdown request
+2026-10-14 21:18:29.313 EDT [57340] LOG:  background worker "logical replication launcher" (PID 13324) exited with exit code 1
+2026-10-14 21:18:29.317 EDT [22972] LOG:  shutting down
+2026-10-14 21:18:29.321 EDT [22972] LOG:  checkpoint starting: shutdown immediate
+2026-10-14 21:18:29.386 EDT [22972] LOG:  checkpoint complete: wrote 3 buffers (0.0%), wrote 1 SLRU buffers; 0 WAL file(s) added, 0 removed, 0 recycled; write=0.014 s, sync=0.015 s, total=0.069 s; sync files=4, longest=0.007 s, average=0.004 s; distance=4 kB, estimate=20 kB; lsn=0/1CD5590, redo lsn=0/1CD5590
+2026-10-14 21:18:29.461 EDT [57340] LOG:  database system is shut down

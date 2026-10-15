@@ -1,0 +1,1613 @@
+{
+  "scope": "R01-R15 follow assigned execution-package checkbox order; Q01-Q03 are concentrated-review corrections. All proof is local, never production/independent/actual Owner acceptance.",
+  "execution_package_sha256": "ecc4fab40687bfe3dd918c35ef231faa6cb19ecca3f905dc446b75d19633f991",
+  "rows": [
+    {
+      "id": "R01",
+      "requirement": "Frozen actual byte artifacts, hash binding, closed-window qualification",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Same_frozen_bytes_recompute_exact_K_over_N_and_remain_nonproduction",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Duplicate_json_fields_are_rejected_even_with_valid_digest",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.UTC_offsets_are_verified_on_each_supplied_artifact(target: \"inventory-window\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.UTC_offsets_are_verified_on_each_supplied_artifact(target: \"member\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.UTC_offsets_are_verified_on_each_supplied_artifact(target: \"source-window\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R02",
+      "requirement": "Independent population and exact ratio, weighted percentile, gauge grid",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Forged_self_count_inventory_and_query_drift_do_not_replace_independent_binding",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Weighted_nearest_rank_is_not_average_of_percentiles",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Gauge_maximum_uses_bound_sampling_grid_and_tail_gap",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Zero_included_population_and_zero_bound_weight_are_indeterminate",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R03",
+      "requirement": "Legacy evaluator/schema compatibility and explicitly false production claim",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Partial, thresholdMet: True, expected: Indeterminate)",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: False, completeness: Complete, thresholdMet: True, expected: Indeterminate)",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: True, expected: Pass)",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: False, expected: Fail)",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.SchemaExamples_MatchDeclaredOutcomes",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Same_frozen_bytes_recompute_exact_K_over_N_and_remain_nonproduction",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R04",
+      "requirement": "Case-owned deterministic clock/random, finite terminal and explicit retry placement",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.FaultTests.Success_and_delay_reach_only_named_terminal_with_deterministic_clock_and_random",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.FaultTests.Retry_placement_explicitly_changes_script_and_terminal_counts",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R05",
+      "requirement": "Count/time/bytes/case/lifecycle and complete graph bounds",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"cross\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"bytes\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"count\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"cleanup\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"observer\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"dispose\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"duplicate\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"time\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Concurrent_cases_capture_only_their_own_metrics",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Actual_activity_tag_inventory_is_limited_before_copying",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Actual_metric_tag_inventory_is_limited_before_copying",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Graph_actual_link_enumeration_has_budget_even_for_duplicate_links",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R06",
+      "requirement": "Exact kind, coefficient/scale/rational/lexical/bytes remain distinct",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Clr_kind_and_binary_rational_are_preserved",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"-0.00\", right: \"0e1000\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"1.000\", right: \"1\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"1e1000\", right: \"10e999\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Nonterminating_rational_is_never_rounded",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R07",
+      "requirement": "Fixed S01 vector provenance, without new financial contract authority",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Pinned_S01_vectors_are_consumed_as_arithmetic_provenance_not_owner_acceptance",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R08",
+      "requirement": "Legacy accessors preserved; incomplete evidence not promoted",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.UnitTests.TestingUtilityTests.Recorder_CapturesConcurrentActivitiesAndMetricsInSequence",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.UnitTests.TestingUtilityTests.Recorder_DisposeStopsBothListeners",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"zero\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"window\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"dropped\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"excluded\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"overflow\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"denominator\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"fractional-weight\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"incomplete\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"release\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"missing\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"query\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"unit\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"unsealed\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"duplicate\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R09",
+      "requirement": "Same bytes deterministic; query/denominator/exclusions/versions cannot drift silently",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Same_frozen_bytes_recompute_exact_K_over_N_and_remain_nonproduction",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"zero\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"window\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"dropped\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"excluded\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"overflow\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"denominator\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"fractional-weight\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"incomplete\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"release\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"missing\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"query\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"unit\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"unsealed\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"duplicate\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Corrected_query_and_definition_use_new_superseding_identity_and_retain_original_bytes",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Explicit_inventory_exclusion_is_bound_separately_from_received_samples",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R10",
+      "requirement": "Large and fine exact numeric/lexical/rational scenarios",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Exact_assertions_distinguish_large_or_fine_values(left: \"999999.123456789012\", right: \"999999.123456789011\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Exact_assertions_distinguish_large_or_fine_values(left: \"999999999999999999999999999999.12345678\", right: \"999999999999999999999999999999.12345677\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Exact_assertions_distinguish_large_or_fine_values(left: \"9007199254740993\", right: \"9007199254740992\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"-0.00\", right: \"0e1000\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"1.000\", right: \"1\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"1e1000\", right: \"10e999\")",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.ExactTests.Pinned_S01_vectors_are_consumed_as_arithmetic_provenance_not_owner_acceptance",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R11",
+      "requirement": "Full fanout/retry/Dapr/receive/apply graph; duplicates, dangling and missing edges fail",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Actual_fanout_retry_intermediate_Dapr_receive_and_apply_DAG_is_preserved",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Graph_rejects_cycles_duplicate_span_ids_and_missing_ancestor_edges",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Replayed_operation_and_wrong_expected_inventory_are_rejected",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Cross_case_and_dangling_edges_are_not_joined",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R12",
+      "requirement": "No-inner Status/Throw; finite Success/Delay; cancellation and observer/cleanup failure",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.FaultTests.Status_and_throw_never_reach_terminal",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.FaultTests.Success_and_delay_reach_only_named_terminal_with_deterministic_clock_and_random",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.FaultTests.Exhaustion_cancellation_observer_and_cleanup_failures_are_visible",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R13",
+      "requirement": "Actual owned native PG concurrency/crash/original exact receipts; injected ACK separately labeled",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "pg",
+          "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ConcurrentOriginalKeysCommitOnceAndPreserveNativeExactValues",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "pg",
+          "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.NativeSerializationFailureIsDistinctFromInjectedAcknowledgmentSuppression",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "pg",
+          "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.TechnicalSuccessBeforeRollbackDoesNotProveOwnerCommit",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "pg",
+          "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.InjectedLostApplicationAckReadsOriginalCommittedReceiptWithoutNewKeys",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "pg",
+          "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.RestrictedRuntimeCannotCreateTruncateOrRewriteIdentityGuard",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "pg",
+          "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ControlledOwnedClusterCrashRecoversCommittedBytesAndRollsBackUncommittedKeys",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+          "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R14",
+      "requirement": "No production or original Owner acceptance inferred from local fixtures",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.QualificationTests.Same_frozen_bytes_recompute_exact_K_over_N_and_remain_nonproduction",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "Q01",
+      "requirement": "Expanded numeric representation included in capture budget",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Expanded_exact_numeric_backing_is_charged_to_capture_byte_budget",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Small_exact_numeric_value_remains_accepted_with_small_byte_budget",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "Q02",
+      "requirement": "Throwing completion inventories retain failure and execute cleanup",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Throwing_completion_inventory_cannot_be_disposed_into_complete(graphThrows: False)",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Throwing_completion_inventory_cannot_be_disposed_into_complete(graphThrows: True)",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "Q03",
+      "requirement": "Cleanup/observer reentrancy cannot publish premature Complete",
+      "result": "LOCAL_PASS",
+      "evidence": [
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Cleanup_reentrant_capture_snapshot_cannot_publish_premature_complete",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.FaultTests.Cleanup_reentrant_fault_snapshot_cannot_publish_premature_complete",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.CaptureTests.Observer_cannot_complete_capture_while_its_callback_is_active",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        },
+        {
+          "suite": "unit",
+          "test": "CP6.Platform.WP0226.Tests.FaultTests.Observer_cannot_complete_active_fault_execution_or_allow_inner_after_close",
+          "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+          "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+          "outcome": "Passed"
+        }
+      ]
+    },
+    {
+      "id": "R15",
+      "requirement": "Preserve every original AC and distinguish limited local proof",
+      "result": "DOCUMENTED",
+      "path": "docs/development/evidence/WP02-26/20261015T001945Z/acceptance-final.json",
+      "sha256": "d4496c59034090d7ac9c8a549dcf435b971399bd7144196ca530731a3680cb02",
+      "original_count": 56,
+      "original_business_acceptance": "NOT_RUN"
+    }
+  ],
+  "all_actual_local_unit_and_pg_scenarios": [
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Percent_unit_is_exactly_one_hundred_times_ratio",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Actual_metric_tag_inventory_is_limited_before_copying",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"-0.00\", right: \"0e1000\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.FaultInjection_AcceptsOnlyExactApprovedEnvironments(environment: \"CI\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"cross\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"zero\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"window\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Gauge_maximum_uses_bound_sampling_grid_and_tail_gap",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.AssetManifest_DetectsSchemaOrFixtureDrift",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"dropped\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Zero_included_population_and_zero_bound_weight_are_indeterminate",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Metric_listener_preserves_kinds_and_filters_concurrent_cases",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"bytes\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.ExactTests.Pinned_S01_vectors_are_consumed_as_arithmetic_provenance_not_owner_acceptance",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Expanded_exact_numeric_backing_is_charged_to_capture_byte_budget",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"excluded\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Cleanup_reentrant_capture_snapshot_cannot_publish_premature_complete",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Concurrent_cases_capture_only_their_own_metrics",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CapabilityTests.Required_opt_in_capabilities_exist(name: \"CP6.Platform.Contracts.SloQualificationV1.ExactNum\"\u00b7\u00b7\u00b7, contract: True)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"non-candidate-indeterminate.json\", expected: Indeterminate)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.ExactTests.Oversized_wire_token_is_rejected_before_UTF8_string_allocation",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Weighted_nearest_rank_is_not_average_of_percentiles",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"overflow\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.FaultInjection_RejectsNonTestEnvironmentBeforeChangingServices(environment: \"Production\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Partial, thresholdMet: True, expected: Indeterminate)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"denominator\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Small_exact_numeric_value_remains_accepted_with_small_byte_budget",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CapabilityTests.Required_opt_in_capabilities_exist(name: \"CP6.Platform.Contracts.SloQualificationV1.SloQuali\"\u00b7\u00b7\u00b7, contract: True)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Inflight_count_is_bounded_and_cleanup_is_included_before_returning_complete",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: False, completeness: Complete, thresholdMet: True, expected: Indeterminate)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.FaultScript_ExecutesStatusExceptionDelayAndSuccessExactlyOnce",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CapabilityTests.Required_opt_in_capabilities_exist(name: \"CP6.Platform.Testing.EvidenceV1.EvidenceCase\", contract: False)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"fractional-weight\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"incomplete\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"1.000\", right: \"1\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: True, expected: Pass)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.FaultInjection_RejectsNonTestEnvironmentBeforeChangingServices(environment: \"test\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Long_intermediate_chain_is_validated_without_recursive_stack_or_quadratic_cycle_scan",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"release\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"count\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CapabilityTests.Required_opt_in_capabilities_exist(name: \"CP6.Platform.Testing.EvidenceV1.DeterministicFault\"\u00b7\u00b7\u00b7, contract: False)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Throwing_completion_inventory_cannot_be_disposed_into_complete(graphThrows: False)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.FaultTests.Status_and_throw_never_reach_terminal",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"valid-pass.json\", expected: Pass)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.Recorder_RejectsForbiddenTagNamesAndValues",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.ValidExamples_ParseAndMatchEvaluator(fileName: \"partial-indeterminate.json\", expected: Indeterminate)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.UTC_offsets_are_verified_on_each_supplied_artifact(target: \"inventory-window\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.FaultInjection_AcceptsOnlyExactApprovedEnvironments(environment: \"Test\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_ReturnsIndeterminateForZeroSamplesOrCoverageGap",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Duplicate_json_fields_are_rejected_even_with_valid_digest",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.ExactTests.Exact_assertions_distinguish_large_or_fine_values(left: \"999999.123456789012\", right: \"999999.123456789011\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.ExactTests.Exact_assertions_distinguish_large_or_fine_values(left: \"999999999999999999999999999999.12345678\", right: \"999999999999999999999999999999.12345677\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.Recorder_DisposeStopsBothListeners",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Dispose_with_inflight_span_cannot_claim_complete_or_capture_afterwards",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_UsesFailClosedMatrix(candidate: True, completeness: Complete, thresholdMet: False, expected: Fail)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Cross_case_and_dangling_edges_are_not_joined",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Parse_RejectsClaimedPassWhenSourceDigestDrifts",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.SchemaExamples_MatchDeclaredOutcomes",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.FaultInjection_RejectsNonTestEnvironmentBeforeChangingServices(environment: \"Development\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Link_capture_keeps_trace_state_flags_and_link_tags",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Gauge_sampling_gap_is_rejected_even_when_member_count_matches",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"cleanup\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Metric_tags_are_retained_and_arbitrary_tag_code_is_not_executed",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Parse_RejectsDuplicateJsonPropertiesWithoutEchoingValues",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.FaultTests.Observer_cannot_complete_active_fault_execution_or_allow_inner_after_close",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.FaultTests.Success_and_delay_reach_only_named_terminal_with_deterministic_clock_and_random",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.Recorder_ValidatesTraceTopologyAndAllowedTags",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"observer\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Duplicate_case_tags_cannot_contaminate_either_case",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"missing\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Forged_self_count_inventory_and_query_drift_do_not_replace_independent_binding",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.UTC_offsets_are_verified_on_each_supplied_artifact(target: \"member\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Actual_activity_tag_inventory_is_limited_before_copying",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.Evaluate_ReturnsIndeterminateForDefinitionReleaseOrExclusionDrift",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Large_activity_tag_is_rejected_before_serialization_allocation",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.UTC_offsets_are_verified_on_each_supplied_artifact(target: \"source-window\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Journal_retains_original_failure_and_refuses_late_overwrite",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.FaultTests.Retry_placement_explicitly_changes_script_and_terminal_counts",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Listener_source_inventory_is_bounded_before_materializing_input",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.ExactTests.Clr_kind_and_binary_rational_are_preserved",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"query\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Replayed_operation_and_wrong_expected_inventory_are_rejected",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"dispose\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Missing_required_false_or_zero_field_cannot_be_defaulted_into_completeness",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Graph_actual_link_enumeration_has_budget_even_for_duplicate_links",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"duplicate\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Graph_rejects_cycles_duplicate_span_ids_and_missing_ancestor_edges",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.FaultTests.Exhaustion_cancellation_observer_and_cleanup_failures_are_visible",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"unit\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"unsealed\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.ExactTests.Nonterminating_rational_is_never_rounded",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Actual_fanout_retry_intermediate_Dapr_receive_and_apply_DAG_is_preserved",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.ExactTests.Numeric_equality_does_not_erase_original_lexical_or_bytes(left: \"1e1000\", right: \"10e999\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Observer_cannot_complete_capture_while_its_callback_is_active",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.Recorder_CapturesConcurrentActivitiesAndMetricsInSequence",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Throwing_completion_inventory_cannot_be_disposed_into_complete(graphThrows: True)",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.SloEvidenceContractTests.ReleaseIdentity_SerializesOnlyTheApprovedWireShape",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.FaultTests.Cancellation_after_script_observer_prevents_inner_and_terminal_exhaustion_has_no_fallback",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Elapsed_capture_is_incomplete_even_without_a_later_record",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.UnitTests.TestingUtilityTests.FaultDelay_PreservesCallerCancellationAndSkipsTransport",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.FaultTests.Cleanup_reentrant_fault_snapshot_cannot_publish_premature_complete",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Corrected_query_and_definition_use_new_superseding_identity_and_retain_original_bytes",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.ExactTests.Exact_assertions_distinguish_large_or_fine_values(left: \"9007199254740993\", right: \"9007199254740992\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Same_frozen_bytes_recompute_exact_K_over_N_and_remain_nonproduction",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.CaptureTests.Limits_and_lifecycle_failures_never_produce_complete(failure: \"time\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Explicit_inventory_exclusion_is_bound_separately_from_received_samples",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Bad_evidence_cannot_qualify(mutation: \"duplicate\")",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "unit",
+      "test": "CP6.Platform.WP0226.Tests.QualificationTests.Unknown_exclusion_algorithm_cannot_qualify_from_matching_strings",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/unit/wp02-26-unit.trx",
+      "sha256": "f2867b9ffd92c30fef4741b56bcf1e60b51feec112b7fb1786011888826c24b8",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "pg",
+      "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ConcurrentOriginalKeysCommitOnceAndPreserveNativeExactValues",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+      "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "pg",
+      "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.NativeSerializationFailureIsDistinctFromInjectedAcknowledgmentSuppression",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+      "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "pg",
+      "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.TechnicalSuccessBeforeRollbackDoesNotProveOwnerCommit",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+      "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "pg",
+      "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.InjectedLostApplicationAckReadsOriginalCommittedReceiptWithoutNewKeys",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+      "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "pg",
+      "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.ControlledOwnedClusterCrashRecoversCommittedBytesAndRollsBackUncommittedKeys",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+      "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+      "outcome": "Passed"
+    },
+    {
+      "suite": "pg",
+      "test": "CP6.Platform.WP0226.PostgreSqlTests.NativeEvidenceTests.RestrictedRuntimeCannotCreateTruncateOrRewriteIdentityGuard",
+      "trx": "docs/development/evidence/WP02-26/20261015T001945Z/final-01/pg/wp02-26-pg.trx",
+      "sha256": "06531f888807e5f7f23e4cdba57872879472a55f2accb8d269adc71e7fea2ae3",
+      "outcome": "Passed"
+    }
+  ]
+}

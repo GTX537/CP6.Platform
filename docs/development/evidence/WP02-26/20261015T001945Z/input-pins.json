@@ -1,0 +1,44 @@
+[
+  {
+    "commit": "99fc0ce383d2d02c1404a8adbb3abe971b41d332",
+    "path": "docs/development/dispatch/20261014-wave7/WP02-26.md",
+    "copy": "WP02-26.md",
+    "sha256": "ecc4fab40687bfe3dd918c35ef231faa6cb19ecca3f905dc446b75d19633f991"
+  },
+  {
+    "commit": "99fc0ce383d2d02c1404a8adbb3abe971b41d332",
+    "path": "docs/development/dispatch/20261014-wave7/dispatch.json",
+    "copy": "dispatch.json",
+    "sha256": "576d704d46464336416abdf99d875480b7c02c280d406d4ddad0c674d3281983"
+  },
+  {
+    "commit": "99fc0ce383d2d02c1404a8adbb3abe971b41d332",
+    "path": "docs/development/evidence/wave7-dispatch-20261014/admission-platform.json",
+    "copy": "admission-platform.json",
+    "sha256": "a4bfe9972dc07045e6e1817bad7efd3220dab9f2825e99330486a24d8f3ef1a5"
+  },
+  {
+    "commit": "99fc0ce383d2d02c1404a8adbb3abe971b41d332",
+    "path": "docs/development/evidence/wave7-dispatch-20261014/admission-platform.md",
+    "copy": "admission-platform.md",
+    "sha256": "bf7cf5f2f2f1dce088e9a9cdd815c382e9b2e58d69ae6a1b0ecce15bd72afd41"
+  },
+  {
+    "commit": "99fc0ce383d2d02c1404a8adbb3abe971b41d332",
+    "path": "eng/contracts/s01/vectors.json",
+    "copy": "vectors.json",
+    "sha256": "b9a63a1512da2d2374e95d49d9f69c8636d06465f88a47862dc3604605d5be01"
+  },
+  {
+    "source": "Main untracked original archive",
+    "path": "d8/d8b4ef19a1b3a0a5__PLT-TEST-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+    "copy": "original-PLT-TEST-01.md",
+    "sha256": "d8b4ef19a1b3a0a528ddd7831f5159295d75b7eecadfa787e36ad028d362c5aa"
+  },
+  {
+    "source": "Main untracked original archive",
+    "path": "20/20c9a128b3f2bab0__PLT-OBS-01_\u5b8c\u6574\u9759\u6001\u8bbe\u8ba1_v0.1.md",
+    "copy": "original-PLT-OBS-01.md",
+    "sha256": "20c9a128b3f2bab0621459cc6c6494b16fb21cd8340792738ba89e90efa3bc99"
+  }
+]

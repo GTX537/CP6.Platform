@@ -1,0 +1,79 @@
+{
+  "utc": "2026-10-15T01:18:36.135168+00:00",
+  "owner": "4ba89ba3d399683bd75209e61c31f1ab",
+  "system_identifier": "7696685906165408468",
+  "database_oid": 16385,
+  "clean_shutdown": true,
+  "postmaster_pid_absent": true,
+  "reserved_loopback_port_free": true,
+  "credentials_copied": false,
+  "data_retained": true,
+  "files": [
+    {
+      "path": "config-seal.json",
+      "bytes": 484,
+      "sha256": "33032bcdd25d21141f0a497f6167853d071e039551346b3d5cc316f0fde47069"
+    },
+    {
+      "path": "crash-1792024876711791000.json",
+      "bytes": 1396,
+      "sha256": "59d0057e382c18580a6a192046b69ea910e842682a0c42920e30833210a4bad3"
+    },
+    {
+      "path": "crash-1792027074182481900.json",
+      "bytes": 1396,
+      "sha256": "04d314f89be5cb413c4e1a46fdfdf9c44e2fb27b6ca3f013dd567f5ad66e0dc5"
+    },
+    {
+      "path": "failed-1792024378614915500.json",
+      "bytes": 99,
+      "sha256": "c98d44db38af1d8c70025ac18946313550d8306ca1fdcbdbb8786634927a9fb4"
+    },
+    {
+      "path": "failed-1792024436413099400.json",
+      "bytes": 95,
+      "sha256": "6e23aeda3695ff22da506a66beb4d2c8c7d417d8cbf74fc9d460036c2cfaff1d"
+    },
+    {
+      "path": "owner-marker.json",
+      "bytes": 118,
+      "sha256": "a1711d681b461689bd1cea2d5386e651720a6cc9332033ba6a28b87e1fd10c3f"
+    },
+    {
+      "path": "ownership.json",
+      "bytes": 1089,
+      "sha256": "0c1549897fdd77800a98cfa77cdce9be5f3747d0359aef1c15c4fbef70ef4e13"
+    },
+    {
+      "path": "server.log",
+      "bytes": 9755,
+      "sha256": "48b9511ad59a0ec8bbf418efefa73fcf11babf603bd7691940d0551ef35deea8"
+    },
+    {
+      "path": "start-1792024882268880600.json",
+      "bytes": 1190,
+      "sha256": "59ed5b7ba913c000668bf71a3b95a90979891a45f406c2a454def4278b757415"
+    },
+    {
+      "path": "start-1792026997595690600.json",
+      "bytes": 1190,
+      "sha256": "f797045c1ff5178a8fb6654edae89719b624ab359a85de19b4db5a4ba0f22a53"
+    },
+    {
+      "path": "start-1792027087491891500.json",
+      "bytes": 1190,
+      "sha256": "a7e846ef7deb8263b5043a001b6e9dc8b9c35e9dc5fe3b69fb567ecbb1d30f0a"
+    },
+    {
+      "path": "stop-1792024920132746900.json",
+      "bytes": 1189,
+      "sha256": "1d84491d1ef8b82dd826ef949ff7e3f2db1344fa121cf0c35dd7d7b6489276d5"
+    },
+    {
+      "path": "stop-1792027109612470800.json",
+      "bytes": 1189,
+      "sha256": "d57d6729dce441507f7a6f35afe3f2f61b62e21b26481d1122d01f7d887d9059"
+    }
+  ],
+  "note": "Native owned-cluster lifecycle evidence only. Full private stages, credentials and command diagnostics remain private; no production acceptance."
+}

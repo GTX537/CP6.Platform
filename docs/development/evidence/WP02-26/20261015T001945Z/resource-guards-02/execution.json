@@ -1,0 +1,11 @@
+{
+  "command": [
+    "C:/Users/tt/AppData/Roaming/uv/python/cpython-3.13-windows-x86_64-none/python.exe",
+    "-m",
+    "unittest",
+    "test_resource_guards.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "utc": "2026-10-15T00:43:03.959381+00:00"
+}

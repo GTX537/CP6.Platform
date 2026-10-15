@@ -1,0 +1,4 @@
+<Project>
+  <Import Project="../../Directory.Packages.props" />
+  <ItemGroup><PackageVersion Include="Npgsql" Version="8.0.8" /></ItemGroup>
+</Project>

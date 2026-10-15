@@ -1,0 +1,1 @@
+{"program": "psql.exe", "exit_code": 3, "stdout": "REVOKE\n", "stderr": "ERROR:  syntax error at or near \"T\"\nLINE 1: T CONNECT ON DATABASE \"cp6_wp0226_20261015_4ba89ba3\" TO \"wp0...\n        ^\n"}

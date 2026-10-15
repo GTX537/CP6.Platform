@@ -1,0 +1,1 @@
+& C:/Users/tt/.dotnet/dotnet.exe test tests/CP6.Platform.WP0226.Tests/CP6.Platform.WP0226.Tests.csproj -c Release --logger "trx;LogFileName=wp02-26.trx" --results-directory docs/development/evidence/WP02-26/20261015T001945Z/implementation/unit-red-01

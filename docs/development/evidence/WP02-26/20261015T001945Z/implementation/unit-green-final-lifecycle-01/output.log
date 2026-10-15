@@ -1,0 +1,15 @@
+  CP6.Platform.Contracts -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Contracts\bin\Release\net8.0\CP6.Platform.Contracts.dll
+  CP6.Platform.Abstractions -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Abstractions\bin\Release\net8.0\CP6.Platform.Abstractions.dll
+  CP6.Platform.EntityFramework -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.EntityFramework\bin\Release\net8.0\CP6.Platform.EntityFramework.dll
+  CP6.Platform.Messaging -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Messaging\bin\Release\net8.0\CP6.Platform.Messaging.dll
+  CP6.Platform.AspNetCore -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.AspNetCore\bin\Release\net8.0\CP6.Platform.AspNetCore.dll
+  CP6.Platform.Testing -> D:\CP6.Platform-worktrees\wp02-26-20261014\src\CP6.Platform.Testing\bin\Release\net8.0\CP6.Platform.Testing.dll
+  CP6.Platform.WP0226.Tests -> D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll
+Test run for D:\CP6.Platform-worktrees\wp02-26-20261014\tests\CP6.Platform.WP0226.Tests\bin\Release\net8.0\CP6.Platform.WP0226.Tests.dll (.NETCoreApp,Version=v8.0)
+VSTest version 17.11.1 (x64)
+
+Starting test execution, please wait...
+A total of 1 test files matched the specified pattern.
+Results File: D:\CP6.Platform-worktrees\wp02-26-20261014\docs\development\evidence\WP02-26\20261015T001945Z\implementation\unit-green-final-lifecycle-01\wp02-26.trx
+
+Passed!  - Failed:     0, Passed:    39, Skipped:     0, Total:    39, Duration: 684 ms - CP6.Platform.WP0226.Tests.dll (net8.0)
