@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="b7472295-8678-455b-81c4-0ae46dbf8e8a" name="tt@LAPTOP-3QQ44FJS 2026-10-14 20:27:47" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-14T20:27:47.0942572-04:00" queuing="2026-10-14T20:27:47.0942587-04:00" start="2026-10-14T20:27:43.4741143-04:00" finish="2026-10-14T20:27:47.9184737-04:00" />
+  <TestSettings name="default" id="4448ffa5-af97-4b4e-a76b-2925cddbbb6d">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-14_20_27_47" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="0509eb6f-a320-41c3-b9a3-e66973b831c8" testId="7ae5efcf-4b9b-e795-835f-6c2e7d18d1f9" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;id&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0009370" startTime="2026-10-14T20:27:46.8823191-04:00" endTime="2026-10-14T20:27:46.8833003-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0509eb6f-a320-41c3-b9a3-e66973b831c8">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 144&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a788a580-195a-4f54-bc45-8bf57337f8d8" testId="4d88ba3c-80ce-fe3d-b81f-258c5bc9f629" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;bytes&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0009273" startTime="2026-10-14T20:27:46.8478566-04:00" endTime="2026-10-14T20:27:46.8484243-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a788a580-195a-4f54-bc45-8bf57337f8d8">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 144&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0bf35053-96b5-473e-a07c-ed1aa824f607" testId="8dc1daf3-1c2d-aa15-64d7-005d95c04e2d" testName="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;schemaversion&quot;, replacement: &quot;1.0.1&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0162650" startTime="2026-10-14T20:27:47.1576896-04:00" endTime="2026-10-14T20:27:47.1582350-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0bf35053-96b5-473e-a07c-ed1aa824f607">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(String property, String replacement) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 70&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f1b6da10-7a47-4a5c-a903-6d561773ace6" testId="686a14bd-ff24-840e-d5cc-558c3470e2c3" testName="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;type&quot;, replacement: &quot;unknown.type.v1&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0020945" startTime="2026-10-14T20:27:47.2214685-04:00" endTime="2026-10-14T20:27:47.2328350-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f1b6da10-7a47-4a5c-a903-6d561773ace6">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(String property, String replacement) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 70&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6804fd77-af5b-44b9-9bbe-79ecd983c678" testId="9db383de-eca3-5855-58f5-88815cf2ac84" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;aggregate&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0012080" startTime="2026-10-14T20:27:47.0068681-04:00" endTime="2026-10-14T20:27:47.0073357-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6804fd77-af5b-44b9-9bbe-79ecd983c678">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="7d1b5db8-7290-4bbe-a74e-52dd3de9b29e" testId="c763bd65-2c8f-00d9-670f-78d4e5d575d2" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;producer&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0012213" startTime="2026-10-14T20:27:46.9825307-04:00" endTime="2026-10-14T20:27:46.9828866-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7d1b5db8-7290-4bbe-a74e-52dd3de9b29e">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="84a9bdad-cd73-4523-899c-615864361892" testId="18ee0b4d-20f5-df9a-9eec-cb4bc415933d" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;topic&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0017624" startTime="2026-10-14T20:27:47.0113961-04:00" endTime="2026-10-14T20:27:47.0118135-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="84a9bdad-cd73-4523-899c-615864361892">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b249bdc5-2de7-444c-a7ad-d5fb3d65aa49" testId="3c31efb8-e1a7-32d3-525d-bf73ddff1cf2" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;missing&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:01.4839324" startTime="2026-10-14T20:27:45.2167051-04:00" endTime="2026-10-14T20:27:46.7721329-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b249bdc5-2de7-444c-a7ad-d5fb3d65aa49">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 144&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6eb9426e-fe54-498a-9bd9-d04e2417d781" testId="1f0d38f0-fe5d-d1fe-2e01-923e115feda5" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;route&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0016345" startTime="2026-10-14T20:27:46.8691761-04:00" endTime="2026-10-14T20:27:46.8694993-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6eb9426e-fe54-498a-9bd9-d04e2417d781">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 144&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="50b276ac-8960-4731-ae04-6f937f29e696" testId="f30d343b-2f3b-99bf-2abd-abc3aec0a949" testName="CP6.Platform.WP0212.Tests.TransportTests.DuplicateBusinessFieldsRejectButRootTraceCompatibilityIsPreserved" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0081162" startTime="2026-10-14T20:27:47.3106145-04:00" endTime="2026-10-14T20:27:47.3109371-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="50b276ac-8960-4731-ae04-6f937f29e696">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.DuplicateBusinessFieldsRejectButRootTraceCompatibilityIsPreserved() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 127&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0070f538-f4fd-4275-98b7-c01f56f76f34" testId="209702b1-c2b7-06d1-5fd8-75c919104340" testName="CP6.Platform.WP0212.Tests.TransportTests.RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0009628" startTime="2026-10-14T20:27:47.0868660-04:00" endTime="2026-10-14T20:27:47.0871751-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0070f538-f4fd-4275-98b7-c01f56f76f34">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(System.ArgumentException)&#xD;
+Actual:   typeof(System.NotImplementedException)&#xD;
+---- System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.WP0212.Tests.TransportTests.RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 33&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.&lt;&gt;c.&lt;RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical&gt;b__9_0() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 33</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="12bf8d0c-7bba-4281-96e6-673a514392ed" testId="47afaef2-4e59-8cb6-3a1f-953fac965609" testName="CP6.Platform.WP0212.Tests.TransportTests.ExplicitTransportBoundaryIsAvailableWithoutChangingLegacyDefault" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0028348" startTime="2026-10-14T20:27:47.3203020-04:00" endTime="2026-10-14T20:27:47.3214083-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="12bf8d0c-7bba-4281-96e6-673a514392ed" />
+    <UnitTestResult executionId="20d0ce20-9405-4ee6-9f67-82c086f55082" testId="7fc59993-153a-14ea-de38-4a9e6e44a47e" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;causation&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0010782" startTime="2026-10-14T20:27:46.9580126-04:00" endTime="2026-10-14T20:27:46.9584222-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="20d0ce20-9405-4ee6-9f67-82c086f55082">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="94c20697-e014-4f0f-8393-8f7b5671cb74" testId="f99a5ff6-4bfd-7126-c211-b3b0f2f3c1a5" testName="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;dataschema&quot;, replacement: &quot;https://attacker.invalid/schema&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0029508" startTime="2026-10-14T20:27:47.2767330-04:00" endTime="2026-10-14T20:27:47.2770876-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="94c20697-e014-4f0f-8393-8f7b5671cb74">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(String property, String replacement) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 70&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="699e58ae-a537-4be7-af41-b854b5a8339e" testId="dfe76444-22d6-d388-0ad9-585ed048ed0e" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;media&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0014296" startTime="2026-10-14T20:27:46.9069208-04:00" endTime="2026-10-14T20:27:46.9072406-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="699e58ae-a537-4be7-af41-b854b5a8339e">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="051c3f72-e35c-432b-9ad7-f916e11f9c99" testId="9f853367-8e78-915e-74cb-50d795aed35f" testName="CP6.Platform.WP0212.Tests.TransportTests.ExceptionsCancellationForeignTokenAndReceiveTokenNeverConfirm" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0057526" startTime="2026-10-14T20:27:47.2928845-04:00" endTime="2026-10-14T20:27:47.2988490-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="051c3f72-e35c-432b-9ad7-f916e11f9c99">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.ExceptionsCancellationForeignTokenAndReceiveTokenNeverConfirm() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 108&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="10540af0-a71c-43b5-9b66-5c1e34aa28cf" testId="f19c5136-a7d7-e1df-e842-896d0bd29e1b" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;region&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0012816" startTime="2026-10-14T20:27:47.0191132-04:00" endTime="2026-10-14T20:27:47.0196581-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="10540af0-a71c-43b5-9b66-5c1e34aa28cf">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5c7a3e35-ae8d-4676-93ab-55b8788466dd" testId="c889b22b-454e-1d7f-7761-843056411156" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;hash&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0020488" startTime="2026-10-14T20:27:46.8265703-04:00" endTime="2026-10-14T20:27:46.8270226-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5c7a3e35-ae8d-4676-93ab-55b8788466dd">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 144&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="fc9cfac8-1875-4d22-b915-dbe00751e50d" testId="aaae1e07-6c14-2cb3-024b-3e8f05644673" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;key&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0040771" startTime="2026-10-14T20:27:47.0596580-04:00" endTime="2026-10-14T20:27:47.0599795-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="fc9cfac8-1875-4d22-b915-dbe00751e50d">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="5ab341da-1483-4e6c-b075-2c04b40ffe94" testId="dc052bf9-f46b-e547-4fbb-9a3e176ce5ba" testName="CP6.Platform.WP0212.Tests.TransportTests.RawBytesAreOwnedAndRetryPreservesOriginalIdentity" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0089728" startTime="2026-10-14T20:27:47.3307314-04:00" endTime="2026-10-14T20:27:47.3310646-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5ab341da-1483-4e6c-b075-2c04b40ffe94">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.RawBytesAreOwnedAndRetryPreservesOriginalIdentity() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 94&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="15b72c8c-063a-412f-80df-f261b7c5c353" testId="ef5abd5a-f206-800d-e4fe-9954f8be96f2" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;correlation&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0046768" startTime="2026-10-14T20:27:47.0472468-04:00" endTime="2026-10-14T20:27:47.0500354-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="15b72c8c-063a-412f-80df-f261b7c5c353">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4e703e00-eee0-4d14-b4e7-1ec288fe13fd" testId="21f8455d-0e56-1d10-da43-42dafe49d56b" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;hash&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0012918" startTime="2026-10-14T20:27:46.9873531-04:00" endTime="2026-10-14T20:27:46.9877135-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4e703e00-eee0-4d14-b4e7-1ec288fe13fd">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="43e57ce5-1d1b-4b28-9e4e-80d4e887b318" testId="def2abd3-f39f-f7ed-4e31-61781d8dd395" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;tenant&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0027773" startTime="2026-10-14T20:27:46.9700340-04:00" endTime="2026-10-14T20:27:46.9704097-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="43e57ce5-1d1b-4b28-9e4e-80d4e887b318">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="ac2039dc-ca83-4ddf-990f-06b324a85e5c" testId="3681589b-3a3b-a0f9-1aaa-e460a601380f" testName="CP6.Platform.WP0212.Tests.TransportTests.DiagnosticsNeverExposePayloadPropertySecretsAndDepthIsBounded" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0027563" startTime="2026-10-14T20:27:47.0719415-04:00" endTime="2026-10-14T20:27:47.0727442-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ac2039dc-ca83-4ddf-990f-06b324a85e5c">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.DiagnosticsNeverExposePayloadPropertySecretsAndDepthIsBounded() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 135&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="f7bd5af8-1188-4822-96ec-b21c38234028" testId="72378655-a1ec-f761-b4bd-c5dff1aa3908" testName="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;policy&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0022961" startTime="2026-10-14T20:27:46.8381368-04:00" endTime="2026-10-14T20:27:46.8384412-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f7bd5af8-1188-4822-96ec-b21c38234028">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 144&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="0c250b58-1b77-49ee-b3cf-25b0a3d1dfce" testId="0a408dfd-6451-966d-0bc1-5db5ce08cef9" testName="CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(host: 1048576, broker: 1)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0036844" startTime="2026-10-14T20:27:47.1385483-04:00" endTime="2026-10-14T20:27:47.1389211-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0c250b58-1b77-49ee-b3cf-25b0a3d1dfce">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(Int32 host, Int32 broker) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 87&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c16398cc-f4e3-4e8f-8f00-4fd6771f52b5" testId="960452dd-9f35-e1bf-8c69-dee99102acfb" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;version&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0027933" startTime="2026-10-14T20:27:46.9770819-04:00" endTime="2026-10-14T20:27:46.9774758-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c16398cc-f4e3-4e8f-8f00-4fd6771f52b5">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="6b54896a-98b0-4b9f-9085-88b4d6b37339" testId="a89ba034-af1e-efda-594f-edcd21d251ac" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;id&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0054324" startTime="2026-10-14T20:27:46.9008987-04:00" endTime="2026-10-14T20:27:46.9012042-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6b54896a-98b0-4b9f-9085-88b4d6b37339">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="eafc43b9-3efa-451c-b9f8-ec603e8cba02" testId="d77cb4c7-96b6-2a8c-3f1f-adbf237d8e9a" testName="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;metadata&quot;)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0011346" startTime="2026-10-14T20:27:47.0011498-04:00" endTime="2026-10-14T20:27:47.0023005-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eafc43b9-3efa-451c-b9f8-ec603e8cba02">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 60&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="72d9cdbd-c2e6-4810-a59e-7fb46907310f" testId="c002c8ee-860c-21d5-1e4b-8d6276d386b2" testName="CP6.Platform.WP0212.Tests.TransportTests.NativeC02AdoptionIsDisabled" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0273724" startTime="2026-10-14T20:27:47.0779994-04:00" endTime="2026-10-14T20:27:47.0785353-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="72d9cdbd-c2e6-4810-a59e-7fb46907310f">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Throws() Failure: Exception type was not an exact match&#xD;
+Expected: typeof(System.ArgumentException)&#xD;
+Actual:   typeof(System.NotImplementedException)&#xD;
+---- System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.WP0212.Tests.TransportTests.NativeC02AdoptionIsDisabled() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 40&#xD;
+   at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+----- Inner Stack Trace -----&#xD;
+   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.&lt;&gt;c.&lt;NativeC02AdoptionIsDisabled&gt;b__10_0() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 40</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="d99d5957-13c5-4f57-9b3c-141e0328e5ca" testId="a65d6563-b9e5-aa33-abb7-2993d6452d39" testName="CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(host: 1, broker: 1048576)" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0020759" startTime="2026-10-14T20:27:47.1504331-04:00" endTime="2026-10-14T20:27:47.1507649-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d99d5957-13c5-4f57-9b3c-141e0328e5ca">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(Int32 host, Int32 broker) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 87&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="1cc5d5b0-233f-4b4e-8232-656d3d7eceb0" testId="a8b3d880-fb89-c7ce-4f2d-157ee4295c67" testName="CP6.Platform.WP0212.Tests.TransportTests.ProfileAndHeaderCannotSelectAuthority" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0047755" startTime="2026-10-14T20:27:46.8908147-04:00" endTime="2026-10-14T20:27:46.8911066-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1cc5d5b0-233f-4b4e-8232-656d3d7eceb0">
+      <Output>
+        <ErrorInfo>
+          <Message>System.NotImplementedException : The method or operation is not implemented.</Message>
+          <StackTrace>   at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes) in D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs:line 10&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 16&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax) in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 25&#xD;
+   at CP6.Platform.WP0212.Tests.TransportTests.ProfileAndHeaderCannotSelectAuthority() in D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs:line 76&#xD;
+--- End of stack trace from previous location ---</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ProfileAndHeaderCannotSelectAuthority" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="a8b3d880-fb89-c7ce-4f2d-157ee4295c67">
+      <Execution id="1cc5d5b0-233f-4b4e-8232-656d3d7eceb0" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ProfileAndHeaderCannotSelectAuthority" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;route&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="1f0d38f0-fe5d-d1fe-2e01-923e115feda5">
+      <Execution id="6eb9426e-fe54-498a-9bd9-d04e2417d781" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;version&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="960452dd-9f35-e1bf-8c69-dee99102acfb">
+      <Execution id="c16398cc-f4e3-4e8f-8f00-4fd6771f52b5" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;missing&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="3c31efb8-e1a7-32d3-525d-bf73ddff1cf2">
+      <Execution id="b249bdc5-2de7-444c-a7ad-d5fb3d65aa49" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;tenant&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="def2abd3-f39f-f7ed-4e31-61781d8dd395">
+      <Execution id="43e57ce5-1d1b-4b28-9e4e-80d4e887b318" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;region&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="f19c5136-a7d7-e1df-e842-896d0bd29e1b">
+      <Execution id="10540af0-a71c-43b5-9b66-5c1e34aa28cf" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.DuplicateBusinessFieldsRejectButRootTraceCompatibilityIsPreserved" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="f30d343b-2f3b-99bf-2abd-abc3aec0a949">
+      <Execution id="50b276ac-8960-4731-ae04-6f937f29e696" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="DuplicateBusinessFieldsRejectButRootTraceCompatibilityIsPreserved" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;causation&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="7fc59993-153a-14ea-de38-4a9e6e44a47e">
+      <Execution id="20d0ce20-9405-4ee6-9f67-82c086f55082" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;topic&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="18ee0b4d-20f5-df9a-9eec-cb4bc415933d">
+      <Execution id="84a9bdad-cd73-4523-899c-615864361892" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;producer&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="c763bd65-2c8f-00d9-670f-78d4e5d575d2">
+      <Execution id="7d1b5db8-7290-4bbe-a74e-52dd3de9b29e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;dataschema&quot;, replacement: &quot;https://attacker.invalid/schema&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="f99a5ff6-4bfd-7126-c211-b3b0f2f3c1a5">
+      <Execution id="94c20697-e014-4f0f-8393-8f7b5671cb74" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ExactTupleHasNoFallback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.NativeC02AdoptionIsDisabled" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="c002c8ee-860c-21d5-1e4b-8d6276d386b2">
+      <Execution id="72d9cdbd-c2e6-4810-a59e-7fb46907310f" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="NativeC02AdoptionIsDisabled" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ExplicitTransportBoundaryIsAvailableWithoutChangingLegacyDefault" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="47afaef2-4e59-8cb6-3a1f-953fac965609">
+      <Execution id="12bf8d0c-7bba-4281-96e6-673a514392ed" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ExplicitTransportBoundaryIsAvailableWithoutChangingLegacyDefault" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;hash&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="21f8455d-0e56-1d10-da43-42dafe49d56b">
+      <Execution id="4e703e00-eee0-4d14-b4e7-1ec288fe13fd" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;key&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="aaae1e07-6c14-2cb3-024b-3e8f05644673">
+      <Execution id="fc9cfac8-1875-4d22-b915-dbe00751e50d" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;correlation&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="ef5abd5a-f206-800d-e4fe-9954f8be96f2">
+      <Execution id="15b72c8c-063a-412f-80df-f261b7c5c353" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;id&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="a89ba034-af1e-efda-594f-edcd21d251ac">
+      <Execution id="6b54896a-98b0-4b9f-9085-88b4d6b37339" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.DiagnosticsNeverExposePayloadPropertySecretsAndDepthIsBounded" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="3681589b-3a3b-a0f9-1aaa-e460a601380f">
+      <Execution id="ac2039dc-ca83-4ddf-990f-06b324a85e5c" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="DiagnosticsNeverExposePayloadPropertySecretsAndDepthIsBounded" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;bytes&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="4d88ba3c-80ce-fe3d-b81f-258c5bc9f629">
+      <Execution id="a788a580-195a-4f54-bc45-8bf57337f8d8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.RawBytesAreOwnedAndRetryPreservesOriginalIdentity" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="dc052bf9-f46b-e547-4fbb-9a3e176ce5ba">
+      <Execution id="5ab341da-1483-4e6c-b075-2c04b40ffe94" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="RawBytesAreOwnedAndRetryPreservesOriginalIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(host: 1, broker: 1048576)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="a65d6563-b9e5-aa33-abb7-2993d6452d39">
+      <Execution id="d99d5957-13c5-4f57-9b3c-141e0328e5ca" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="EffectiveLimitRejectsBeforeAuthority" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;policy&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="72378655-a1ec-f761-b4bd-c5dff1aa3908">
+      <Execution id="f7bd5af8-1188-4822-96ec-b21c38234028" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;media&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="dfe76444-22d6-d388-0ad9-585ed048ed0e">
+      <Execution id="699e58ae-a537-4be7-af41-b854b5a8339e" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;type&quot;, replacement: &quot;unknown.type.v1&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="686a14bd-ff24-840e-d5cc-558c3470e2c3">
+      <Execution id="f1b6da10-7a47-4a5c-a903-6d561773ace6" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ExactTupleHasNoFallback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ExceptionsCancellationForeignTokenAndReceiveTokenNeverConfirm" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="9f853367-8e78-915e-74cb-50d795aed35f">
+      <Execution id="051c3f72-e35c-432b-9ad7-f916e11f9c99" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ExceptionsCancellationForeignTokenAndReceiveTokenNeverConfirm" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;hash&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="c889b22b-454e-1d7f-7761-843056411156">
+      <Execution id="5c7a3e35-ae8d-4676-93ab-55b8788466dd" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="209702b1-c2b7-06d1-5fd8-75c919104340">
+      <Execution id="0070f538-f4fd-4275-98b7-c01f56f76f34" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(host: 1048576, broker: 1)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="0a408dfd-6451-966d-0bc1-5db5ce08cef9">
+      <Execution id="0c250b58-1b77-49ee-b3cf-25b0a3d1dfce" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="EffectiveLimitRejectsBeforeAuthority" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;aggregate&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="9db383de-eca3-5855-58f5-88815cf2ac84">
+      <Execution id="6804fd77-af5b-44b9-9bbe-79ecd983c678" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: &quot;metadata&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="d77cb4c7-96b6-2a8c-3f1f-adbf237d8e9a">
+      <Execution id="eafc43b9-3efa-451c-b9f8-ec603e8cba02" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: &quot;id&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="7ae5efcf-4b9b-e795-835f-6c2e7d18d1f9">
+      <Execution id="0509eb6f-a320-41c3-b9a3-e66973b831c8" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="QuarantineRequiresIndependentExactReadback" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: &quot;schemaversion&quot;, replacement: &quot;1.0.1&quot;)" storage="d:\cp6.platform-worktrees\wp02-12-20261014\tests\cp6.platform.wp0212.tests\bin\release\net8.0\cp6.platform.wp0212.tests.dll" id="8dc1daf3-1c2d-aa15-64d7-005d95c04e2d">
+      <Execution id="0bf35053-96b5-473e-a07c-ed1aa824f607" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\bin\Release\net8.0\CP6.Platform.WP0212.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.WP0212.Tests.TransportTests" name="ExactTupleHasNoFallback" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="7ae5efcf-4b9b-e795-835f-6c2e7d18d1f9" executionId="0509eb6f-a320-41c3-b9a3-e66973b831c8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4d88ba3c-80ce-fe3d-b81f-258c5bc9f629" executionId="a788a580-195a-4f54-bc45-8bf57337f8d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8dc1daf3-1c2d-aa15-64d7-005d95c04e2d" executionId="0bf35053-96b5-473e-a07c-ed1aa824f607" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="686a14bd-ff24-840e-d5cc-558c3470e2c3" executionId="f1b6da10-7a47-4a5c-a903-6d561773ace6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9db383de-eca3-5855-58f5-88815cf2ac84" executionId="6804fd77-af5b-44b9-9bbe-79ecd983c678" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c763bd65-2c8f-00d9-670f-78d4e5d575d2" executionId="7d1b5db8-7290-4bbe-a74e-52dd3de9b29e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="18ee0b4d-20f5-df9a-9eec-cb4bc415933d" executionId="84a9bdad-cd73-4523-899c-615864361892" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3c31efb8-e1a7-32d3-525d-bf73ddff1cf2" executionId="b249bdc5-2de7-444c-a7ad-d5fb3d65aa49" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1f0d38f0-fe5d-d1fe-2e01-923e115feda5" executionId="6eb9426e-fe54-498a-9bd9-d04e2417d781" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f30d343b-2f3b-99bf-2abd-abc3aec0a949" executionId="50b276ac-8960-4731-ae04-6f937f29e696" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="209702b1-c2b7-06d1-5fd8-75c919104340" executionId="0070f538-f4fd-4275-98b7-c01f56f76f34" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="47afaef2-4e59-8cb6-3a1f-953fac965609" executionId="12bf8d0c-7bba-4281-96e6-673a514392ed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7fc59993-153a-14ea-de38-4a9e6e44a47e" executionId="20d0ce20-9405-4ee6-9f67-82c086f55082" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f99a5ff6-4bfd-7126-c211-b3b0f2f3c1a5" executionId="94c20697-e014-4f0f-8393-8f7b5671cb74" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dfe76444-22d6-d388-0ad9-585ed048ed0e" executionId="699e58ae-a537-4be7-af41-b854b5a8339e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9f853367-8e78-915e-74cb-50d795aed35f" executionId="051c3f72-e35c-432b-9ad7-f916e11f9c99" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f19c5136-a7d7-e1df-e842-896d0bd29e1b" executionId="10540af0-a71c-43b5-9b66-5c1e34aa28cf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c889b22b-454e-1d7f-7761-843056411156" executionId="5c7a3e35-ae8d-4676-93ab-55b8788466dd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aaae1e07-6c14-2cb3-024b-3e8f05644673" executionId="fc9cfac8-1875-4d22-b915-dbe00751e50d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dc052bf9-f46b-e547-4fbb-9a3e176ce5ba" executionId="5ab341da-1483-4e6c-b075-2c04b40ffe94" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef5abd5a-f206-800d-e4fe-9954f8be96f2" executionId="15b72c8c-063a-412f-80df-f261b7c5c353" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="21f8455d-0e56-1d10-da43-42dafe49d56b" executionId="4e703e00-eee0-4d14-b4e7-1ec288fe13fd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="def2abd3-f39f-f7ed-4e31-61781d8dd395" executionId="43e57ce5-1d1b-4b28-9e4e-80d4e887b318" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="3681589b-3a3b-a0f9-1aaa-e460a601380f" executionId="ac2039dc-ca83-4ddf-990f-06b324a85e5c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="72378655-a1ec-f761-b4bd-c5dff1aa3908" executionId="f7bd5af8-1188-4822-96ec-b21c38234028" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0a408dfd-6451-966d-0bc1-5db5ce08cef9" executionId="0c250b58-1b77-49ee-b3cf-25b0a3d1dfce" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="960452dd-9f35-e1bf-8c69-dee99102acfb" executionId="c16398cc-f4e3-4e8f-8f00-4fd6771f52b5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a89ba034-af1e-efda-594f-edcd21d251ac" executionId="6b54896a-98b0-4b9f-9085-88b4d6b37339" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d77cb4c7-96b6-2a8c-3f1f-adbf237d8e9a" executionId="eafc43b9-3efa-451c-b9f8-ec603e8cba02" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c002c8ee-860c-21d5-1e4b-8d6276d386b2" executionId="72d9cdbd-c2e6-4810-a59e-7fb46907310f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a65d6563-b9e5-aa33-abb7-2993d6452d39" executionId="d99d5957-13c5-4f57-9b3c-141e0328e5ca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a8b3d880-fb89-c7ce-4f2d-157ee4295c67" executionId="1cc5d5b0-233f-4b4e-8232-656d3d7eceb0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="32" executed="32" passed="1" failed="31" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:00.64]   Discovering: CP6.Platform.WP0212.Tests&#xD;
+[xUnit.net 00:00:00.80]   Discovered:  CP6.Platform.WP0212.Tests&#xD;
+[xUnit.net 00:00:00.87]   Starting:    CP6.Platform.WP0212.Tests&#xD;
+[xUnit.net 00:00:02.48]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.48]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.48]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.48]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.48]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.48]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(144,0): at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault)&#xD;
+[xUnit.net 00:00:02.48]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.52]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.52]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.52]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.52]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.53]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.53]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(144,0): at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault)&#xD;
+[xUnit.net 00:00:02.53]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.53]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.53]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.53]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.53]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.53]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.54]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(144,0): at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault)&#xD;
+[xUnit.net 00:00:02.54]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.55]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.55]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.55]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.55]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.55]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.55]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(144,0): at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault)&#xD;
+[xUnit.net 00:00:02.55]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.56]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.56]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.57]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.57]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.57]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.57]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(144,0): at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault)&#xD;
+[xUnit.net 00:00:02.57]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.58]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.58]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.58]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.58]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.58]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.58]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(144,0): at CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(String fault)&#xD;
+[xUnit.net 00:00:02.58]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.58]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.58]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.59]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.59]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.59]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.59]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(76,0): at CP6.Platform.WP0212.Tests.TransportTests.ProfileAndHeaderCannotSelectAuthority()&#xD;
+[xUnit.net 00:00:02.59]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.59]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.59]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.59]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.60]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.60]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.60]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.60]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.60]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.60]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.60]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.60]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.60]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.60]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.60]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.65]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.65]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.66]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.66]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.66]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.66]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.66]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.66]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.66]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.67]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.67]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.67]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.67]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.67]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.67]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.67]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.67]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.67]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.67]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.67]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.68]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.68]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.68]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.68]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.68]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.68]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.68]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.68]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.68]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.68]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.69]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.69]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.69]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.69]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.70]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.70]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.70]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.70]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.70]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.70]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.70]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.70]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.70]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.70]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.70]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.70]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.70]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.70]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.71]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.71]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.71]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.71]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.71]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.71]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.71]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.71]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.71]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.71]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.71]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.71]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.72]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.72]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.75]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.75]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.75]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.75]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.75]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.75]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.75]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.75]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.75]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.75]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.76]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.76]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.76]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(60,0): at CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(String field)&#xD;
+[xUnit.net 00:00:02.76]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.77]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.77]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.77]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.77]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.77]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.77]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(135,0): at CP6.Platform.WP0212.Tests.TransportTests.DiagnosticsNeverExposePayloadPropertySecretsAndDepthIsBounded()&#xD;
+[xUnit.net 00:00:02.77]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.77]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:02.77]       Expected: typeof(System.ArgumentException)&#xD;
+[xUnit.net 00:00:02.77]       Actual:   typeof(System.NotImplementedException)&#xD;
+[xUnit.net 00:00:02.77]       ---- System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.77]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.77]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(40,0): at CP6.Platform.WP0212.Tests.TransportTests.NativeC02AdoptionIsDisabled()&#xD;
+[xUnit.net 00:00:02.77]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:02.77]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:02.77]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:02.78]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.78]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(40,0): at CP6.Platform.WP0212.Tests.TransportTests.&lt;&gt;c.&lt;NativeC02AdoptionIsDisabled&gt;b__10_0()&#xD;
+[xUnit.net 00:00:02.78]       Assert.Throws() Failure: Exception type was not an exact match&#xD;
+[xUnit.net 00:00:02.79]       Expected: typeof(System.ArgumentException)&#xD;
+[xUnit.net 00:00:02.79]       Actual:   typeof(System.NotImplementedException)&#xD;
+[xUnit.net 00:00:02.79]       ---- System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.79]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.80]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(33,0): at CP6.Platform.WP0212.Tests.TransportTests.RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical()&#xD;
+[xUnit.net 00:00:02.80]            at System.RuntimeMethodHandle.InvokeMethod(Object target, Void** arguments, Signature sig, Boolean isConstructor)&#xD;
+[xUnit.net 00:00:02.80]            at System.Reflection.MethodBaseInvoker.InvokeWithNoArgs(Object obj, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:02.80]         ----- Inner Stack Trace -----&#xD;
+[xUnit.net 00:00:02.80]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.81]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.81]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(33,0): at CP6.Platform.WP0212.Tests.TransportTests.&lt;&gt;c.&lt;RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical&gt;b__9_0()&#xD;
+[xUnit.net 00:00:02.84]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.84]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.84]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.84]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.84]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(87,0): at CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(Int32 host, Int32 broker)&#xD;
+[xUnit.net 00:00:02.84]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.84]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.84]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.85]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.85]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.85]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.85]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(87,0): at CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(Int32 host, Int32 broker)&#xD;
+[xUnit.net 00:00:02.85]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.85]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.85]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.85]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.86]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.86]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.90]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(70,0): at CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(String property, String replacement)&#xD;
+[xUnit.net 00:00:02.91]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.93]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.93]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.93]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.93]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.94]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.94]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(70,0): at CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(String property, String replacement)&#xD;
+[xUnit.net 00:00:02.94]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.97]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.97]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.97]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.98]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:02.98]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:02.98]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(70,0): at CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(String property, String replacement)&#xD;
+[xUnit.net 00:00:02.98]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:02.99]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:02.99]       Stack Trace:&#xD;
+[xUnit.net 00:00:02.99]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:02.99]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:03.00]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:03.00]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(108,0): at CP6.Platform.WP0212.Tests.TransportTests.ExceptionsCancellationForeignTokenAndReceiveTokenNeverConfirm()&#xD;
+[xUnit.net 00:00:03.00]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:03.00]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:03.00]       Stack Trace:&#xD;
+[xUnit.net 00:00:03.01]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:03.01]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:03.01]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:03.01]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(127,0): at CP6.Platform.WP0212.Tests.TransportTests.DuplicateBusinessFieldsRejectButRootTraceCompatibilityIsPreserved()&#xD;
+[xUnit.net 00:00:03.01]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:03.03]       System.NotImplementedException : The method or operation is not implemented.&#xD;
+[xUnit.net 00:00:03.04]       Stack Trace:&#xD;
+[xUnit.net 00:00:03.04]         D:\CP6.Platform-worktrees\wp02-12-20261014\src\CP6.Platform.Messaging\TransportV1\TransportRouteV1.cs(10,0): at CP6.Platform.Messaging.TransportV1.TransportRouteV1..ctor(String profile, String route, String eventType, String schemaId, String schemaVersion, String schemaSha256, Cp6ContractBundle bundle, String producer, String source, String topic, Int32 maxBytes)&#xD;
+[xUnit.net 00:00:03.04]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(16,0): at CP6.Platform.WP0212.Tests.TransportTests.Route(String hash, Int32 max)&#xD;
+[xUnit.net 00:00:03.04]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(25,0): at CP6.Platform.WP0212.Tests.TransportTests.Registry(ITransportAuthorityV1 authority, Int32 hostMax, Int32 brokerMax)&#xD;
+[xUnit.net 00:00:03.04]         D:\CP6.Platform-worktrees\wp02-12-20261014\tests\CP6.Platform.WP0212.Tests\TransportTests.cs(94,0): at CP6.Platform.WP0212.Tests.TransportTests.RawBytesAreOwnedAndRetryPreservesOriginalIdentity()&#xD;
+[xUnit.net 00:00:03.04]         --- End of stack trace from previous location ---&#xD;
+[xUnit.net 00:00:03.10]   Finished:    CP6.Platform.WP0212.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:46.7829964-04:00">
+        <Text>[xUnit.net 00:00:02.47]     CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: "missing") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:46.8314661-04:00">
+        <Text>[xUnit.net 00:00:02.52]     CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: "hash") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:46.8393918-04:00">
+        <Text>[xUnit.net 00:00:02.53]     CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: "policy") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:46.8496944-04:00">
+        <Text>[xUnit.net 00:00:02.54]     CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: "bytes") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:46.8704332-04:00">
+        <Text>[xUnit.net 00:00:02.56]     CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: "route") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:46.8842789-04:00">
+        <Text>[xUnit.net 00:00:02.58]     CP6.Platform.WP0212.Tests.TransportTests.QuarantineRequiresIndependentExactReadback(fault: "id") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:46.8921015-04:00">
+        <Text>[xUnit.net 00:00:02.58]     CP6.Platform.WP0212.Tests.TransportTests.ProfileAndHeaderCannotSelectAuthority [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:46.9020765-04:00">
+        <Text>[xUnit.net 00:00:02.59]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "id") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:46.9081152-04:00">
+        <Text>[xUnit.net 00:00:02.60]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "media") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.2660705-04:00">
+        <Text>[xUnit.net 00:00:02.65]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "causation") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.2662564-04:00">
+        <Text>[xUnit.net 00:00:02.66]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "tenant") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.2664849-04:00">
+        <Text>[xUnit.net 00:00:02.67]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "version") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.2683575-04:00">
+        <Text>[xUnit.net 00:00:02.68]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "producer") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.2686419-04:00">
+        <Text>[xUnit.net 00:00:02.68]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "hash") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.2688156-04:00">
+        <Text>[xUnit.net 00:00:02.69]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "metadata") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.2690606-04:00">
+        <Text>[xUnit.net 00:00:02.70]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "aggregate") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.2696631-04:00">
+        <Text>[xUnit.net 00:00:02.70]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "topic") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.2702451-04:00">
+        <Text>[xUnit.net 00:00:02.71]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "region") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3101146-04:00">
+        <Text>[xUnit.net 00:00:02.74]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "correlation") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3102908-04:00">
+        <Text>[xUnit.net 00:00:02.75]     CP6.Platform.WP0212.Tests.TransportTests.IndependentFactsMustMatchEveryEnvelopeAndRouteIdentity(field: "key") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3104461-04:00">
+        <Text>[xUnit.net 00:00:02.77]     CP6.Platform.WP0212.Tests.TransportTests.DiagnosticsNeverExposePayloadPropertySecretsAndDepthIsBounded [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3106287-04:00">
+        <Text>[xUnit.net 00:00:02.77]     CP6.Platform.WP0212.Tests.TransportTests.NativeC02AdoptionIsDisabled [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3108325-04:00">
+        <Text>[xUnit.net 00:00:02.78]     CP6.Platform.WP0212.Tests.TransportTests.RegistrationPinsExactHashAndRejectsDuplicateEvenWhenIdentical [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3110522-04:00">
+        <Text>[xUnit.net 00:00:02.83]     CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(host: 1048576, broker: 1) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3144786-04:00">
+        <Text>[xUnit.net 00:00:02.84]     CP6.Platform.WP0212.Tests.TransportTests.EffectiveLimitRejectsBeforeAuthority(host: 1, broker: 1048576) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3149569-04:00">
+        <Text>[xUnit.net 00:00:02.85]     CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: "schemaversion", replacement: "1.0.1") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3153328-04:00">
+        <Text>[xUnit.net 00:00:02.93]     CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: "type", replacement: "unknown.type.v1") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3305113-04:00">
+        <Text>[xUnit.net 00:00:02.97]     CP6.Platform.WP0212.Tests.TransportTests.ExactTupleHasNoFallback(property: "dataschema", replacement: "https://attacker.invalid/schema") [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3337578-04:00">
+        <Text>[xUnit.net 00:00:02.99]     CP6.Platform.WP0212.Tests.TransportTests.ExceptionsCancellationForeignTokenAndReceiveTokenNeverConfirm [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3356574-04:00">
+        <Text>[xUnit.net 00:00:03.00]     CP6.Platform.WP0212.Tests.TransportTests.DuplicateBusinessFieldsRejectButRootTraceCompatibilityIsPreserved [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="LAPTOP-3QQ44FJS" outcome="Error" timestamp="2026-10-14T20:27:47.3365438-04:00">
+        <Text>[xUnit.net 00:00:03.02]     CP6.Platform.WP0212.Tests.TransportTests.RawBytesAreOwnedAndRetryPreservesOriginalIdentity [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

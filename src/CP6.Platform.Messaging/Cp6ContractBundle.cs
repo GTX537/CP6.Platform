@@ -42,6 +42,17 @@ public sealed class Cp6ContractBundle
 
     public IReadOnlyList<Cp6ContractBundleEntry> Entries { get; }
 
+    internal bool IsTransportIsolated { get; private init; }
+
+    /// <summary>Explicit transport opt-in: pins the manifest and forbids external schema references.
+    /// Existing loaders retain their historical behavior.</summary>
+    public static Cp6ContractBundle LoadForTransport(string rootDirectory, string expectedBundleVersion, string expectedManifestSha256)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(expectedBundleVersion);
+        ArgumentException.ThrowIfNullOrWhiteSpace(expectedManifestSha256);
+        return LoadCore(rootDirectory, expectedBundleVersion, expectedManifestSha256, true);
+    }
+
     public static Cp6ContractBundle Load(string rootDirectory, string expectedBundleVersion, string expectedManifestSha256)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(expectedBundleVersion);
@@ -51,7 +62,7 @@ public sealed class Cp6ContractBundle
 
     public static Cp6ContractBundle Load(string rootDirectory) => LoadCore(rootDirectory, null, null);
 
-    private static Cp6ContractBundle LoadCore(string rootDirectory, string? expectedBundleVersion, string? expectedManifestSha256)
+    private static Cp6ContractBundle LoadCore(string rootDirectory, string? expectedBundleVersion, string? expectedManifestSha256, bool transportIsolated = false)
     {
         ArgumentException.ThrowIfNullOrWhiteSpace(rootDirectory);
         var root = Path.GetFullPath(rootDirectory);
@@ -101,8 +112,21 @@ public sealed class Cp6ContractBundle
             }
 
             var schemaPath = ResolveAsset(root, sourceEntry.SchemaPath);
-            VerifyHash(schemaPath, sourceEntry.SchemaSha256);
-            var schemaText = File.ReadAllText(schemaPath);
+            string schemaText;
+            if (transportIsolated)
+            {
+                // Transport pins precisely the bytes it builds, including under concurrent asset replacement.
+                var schemaBytes = File.ReadAllBytes(schemaPath);
+                VerifyHash(schemaBytes, sourceEntry.SchemaSha256, Path.GetFileName(schemaPath));
+                using var strictSchema = Cp6NativeJson.Parse(schemaBytes);
+                RejectExternalReferences(strictSchema.RootElement);
+                schemaText = System.Text.Encoding.UTF8.GetString(schemaBytes);
+            }
+            else
+            {
+                VerifyHash(schemaPath, sourceEntry.SchemaSha256);
+                schemaText = File.ReadAllText(schemaPath);
+            }
             var schema = JsonSchema.FromText(schemaText, buildOptions);
             using (var schemaDocument = JsonDocument.Parse(schemaText))
             {
@@ -142,7 +166,21 @@ public sealed class Cp6ContractBundle
             throw new InvalidDataException("Contract bundle contains duplicate event types.");
         }
 
-        return new Cp6ContractBundle(root, manifest, entries, schemas);
+        return new Cp6ContractBundle(root, manifest, entries, schemas) { IsTransportIsolated = transportIsolated };
+    }
+
+    private static void RejectExternalReferences(JsonElement element)
+    {
+        if (element.ValueKind == JsonValueKind.Object)
+            foreach (var property in element.EnumerateObject())
+            {
+                if (property.Name is "$ref" or "$dynamicRef" &&
+                    (property.Value.ValueKind != JsonValueKind.String || !property.Value.GetString()!.StartsWith('#')))
+                    throw new InvalidDataException("Transport schemas must use only local fragment references.");
+                RejectExternalReferences(property.Value);
+            }
+        else if (element.ValueKind == JsonValueKind.Array)
+            foreach (var item in element.EnumerateArray()) RejectExternalReferences(item);
     }
 
     internal bool TryResolve(string eventType, string schemaId, string schemaVersion, out Cp6ContractBundleEntry entry, out JsonSchema schema)

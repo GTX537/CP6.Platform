@@ -23,6 +23,14 @@ public sealed class Cp6CloudEventValidator
     }
 
     public Cp6EventValidationResult Validate(ReadOnlyMemory<byte> structuredEvent)
+        => ValidateCore(structuredEvent, false);
+
+    // Opt-in callers enforce their profile/Host/broker byte cap before reaching this method.
+    // Do not enumerate adversary-controlled schema paths into transport diagnostics.
+    internal Cp6EventValidationResult ValidateForTransport(ReadOnlyMemory<byte> structuredEvent)
+        => ValidateCore(structuredEvent, true);
+
+    private Cp6EventValidationResult ValidateCore(ReadOnlyMemory<byte> structuredEvent, bool transport)
     {
         if (structuredEvent.IsEmpty)
         {
@@ -53,7 +61,7 @@ public sealed class Cp6CloudEventValidator
             {
                 return Cp6EventValidationResult.Invalid(
                     Cp6EventValidationFailure.SchemaMismatch,
-                    CollectInvalidLocations(schemaResult).ToArray());
+                    transport ? ["/"] : CollectInvalidLocations(schemaResult).ToArray());
             }
 
             var cloudEvent = Cp6CloudEventCodec.DecodeStructured(structuredEvent);

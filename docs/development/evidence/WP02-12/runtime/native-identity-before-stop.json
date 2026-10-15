@@ -1,0 +1,212 @@
+{
+  "owner": "6caf6a19b8a641989bfe8e108733d5bc",
+  "process": {
+    "Path": "C:\\Users\\tt\\.dotnet\\dotnet.exe",
+    "CommandLine": "\"C:\\Users\\tt\\.dotnet\\dotnet.exe\" D:\\CP6.Platform-worktrees\\wp02-12-20261014/tests/CP6.Platform.WP0212.Fixture/bin/Release/net8.0/CP6.Platform.WP0212.Fixture.dll",
+    "Ports": [
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 18013
+      },
+      {
+        "LocalAddress": "127.0.0.1",
+        "LocalPort": 18012
+      }
+    ],
+    "Pid": 27084,
+    "StartTime": "2026-10-15T00:53:50.9985975Z"
+  },
+  "containers": [
+    {
+      "name": "/cp6-wp0212-6caf6a19b8a6-kafka",
+      "id": "c1ca1c0717d6442e54d98c5a5e5d5cb639d840456ec76d548dfc645032f3294a",
+      "image": "sha256:77e3df9054047a88b520d0cc46e16696d3b22022e1d580aeccd2632df6532837",
+      "labels": {
+        "cp6.owner": "6caf6a19b8a641989bfe8e108733d5bc",
+        "cp6.task": "WP02-12",
+        "org.label-schema.build-date": "2026-06-17",
+        "org.label-schema.description": "Apache Kafka",
+        "org.label-schema.name": "kafka",
+        "org.label-schema.vcs-url": "https://github.com/apache/kafka",
+        "org.opencontainers.image.authors": "Apache Kafka"
+      },
+      "running": true,
+      "ports": {
+        "9092/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "19092"
+          }
+        ]
+      },
+      "networks": [
+        "cp6-wp0212-6caf6a19b8a6-host",
+        "cp6-wp0212-6caf6a19b8a6-net"
+      ]
+    },
+    {
+      "name": "/cp6-wp0212-6caf6a19b8a6-publisher-dapr",
+      "id": "97426b48edac211ad95a55bb71bee19613dbc3b14fc570198cfe1276ff9700a2",
+      "image": "sha256:8e94ba37d6bc95875e88545ce7d8ff781354f29080db02706d57446285fcc4a5",
+      "labels": {
+        "com.docker.compose.config-hash": "23b4c20ad7b13992a1a178bf02a0ef085beaae096fe9cf2ae6030cf94d668002",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:1e05a2161fc5f82011ace571923e2a0ca459b3251706078df43b25dcfe0dfe25",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "cp6-wp0212-6caf6a19b8a6",
+        "com.docker.compose.project.config_files": "D:\\CP6-local-test\\WP02-12\\6caf6a19b8a641989bfe8e108733d5bc\\transport\\compose.json",
+        "com.docker.compose.project.working_dir": "D:\\CP6-local-test\\WP02-12\\6caf6a19b8a641989bfe8e108733d5bc\\transport",
+        "com.docker.compose.service": "publisher-dapr",
+        "com.docker.compose.version": "5.5.1",
+        "cp6.owner": "6caf6a19b8a641989bfe8e108733d5bc",
+        "cp6.task": "WP02-12"
+      },
+      "running": true,
+      "ports": {
+        "3500/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "13500"
+          }
+        ],
+        "50001/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "15001"
+          }
+        ]
+      },
+      "networks": [
+        "cp6-wp0212-6caf6a19b8a6-host",
+        "cp6-wp0212-6caf6a19b8a6-net"
+      ]
+    },
+    {
+      "name": "/cp6-wp0212-6caf6a19b8a6-receiver-dapr",
+      "id": "8e58b23589a4808570a7e8bc173e2fae3b980a60ee5f86108cc6565221dda4bf",
+      "image": "sha256:8e94ba37d6bc95875e88545ce7d8ff781354f29080db02706d57446285fcc4a5",
+      "labels": {
+        "com.docker.compose.config-hash": "c78f43cbf2ef02129664c06bc62563605d5362779f3361209733852343f90640",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:1e05a2161fc5f82011ace571923e2a0ca459b3251706078df43b25dcfe0dfe25",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "cp6-wp0212-6caf6a19b8a6",
+        "com.docker.compose.project.config_files": "D:\\CP6-local-test\\WP02-12\\6caf6a19b8a641989bfe8e108733d5bc\\transport\\compose.json",
+        "com.docker.compose.project.working_dir": "D:\\CP6-local-test\\WP02-12\\6caf6a19b8a641989bfe8e108733d5bc\\transport",
+        "com.docker.compose.service": "receiver-dapr",
+        "com.docker.compose.version": "5.5.1",
+        "cp6.owner": "6caf6a19b8a641989bfe8e108733d5bc",
+        "cp6.task": "WP02-12"
+      },
+      "running": true,
+      "ports": {},
+      "networks": [
+        "cp6-wp0212-6caf6a19b8a6-host",
+        "cp6-wp0212-6caf6a19b8a6-net"
+      ]
+    },
+    {
+      "name": "/cp6-wp0212-6caf6a19b8a6-probe",
+      "id": "5a1e95085bd15edd717ebc851385bc79fd782807c073d6eae18824dd8043bd99",
+      "image": "sha256:77e3df9054047a88b520d0cc46e16696d3b22022e1d580aeccd2632df6532837",
+      "labels": {
+        "cp6.owner": "6caf6a19b8a641989bfe8e108733d5bc",
+        "cp6.task": "WP02-12",
+        "org.label-schema.build-date": "2026-06-17",
+        "org.label-schema.description": "Apache Kafka",
+        "org.label-schema.name": "kafka",
+        "org.label-schema.vcs-url": "https://github.com/apache/kafka",
+        "org.opencontainers.image.authors": "Apache Kafka"
+      },
+      "running": false,
+      "ports": {},
+      "networks": [
+        "none"
+      ]
+    },
+    {
+      "name": "/cp6-wp0212-6caf6a19b8a6-kafka-setup-failed1",
+      "id": "fb5700e1a6ae0d2968c311067f644f7f1ce62f5df6bd892f53a63c66e6409450",
+      "image": "sha256:77e3df9054047a88b520d0cc46e16696d3b22022e1d580aeccd2632df6532837",
+      "labels": {
+        "com.docker.compose.config-hash": "97d80079c3f06ea401401bd4c18720fa9d0ce163e19d3c31b6ab17e67fced87a",
+        "com.docker.compose.container-number": "1",
+        "com.docker.compose.depends_on": "",
+        "com.docker.compose.image": "sha256:ccd1314e47ec76909e01f86308b4dcf2064f19f7c89759234322314b0e319e26",
+        "com.docker.compose.oneoff": "False",
+        "com.docker.compose.project": "cp6-wp0212-6caf6a19b8a6",
+        "com.docker.compose.project.config_files": "D:\\CP6-local-test\\WP02-12\\6caf6a19b8a641989bfe8e108733d5bc\\transport\\compose.json",
+        "com.docker.compose.project.working_dir": "D:\\CP6-local-test\\WP02-12\\6caf6a19b8a641989bfe8e108733d5bc\\transport",
+        "com.docker.compose.service": "kafka",
+        "com.docker.compose.version": "5.5.1",
+        "cp6.owner": "6caf6a19b8a641989bfe8e108733d5bc",
+        "cp6.task": "WP02-12",
+        "org.label-schema.build-date": "2026-06-17",
+        "org.label-schema.description": "Apache Kafka",
+        "org.label-schema.name": "kafka",
+        "org.label-schema.vcs-url": "https://github.com/apache/kafka",
+        "org.opencontainers.image.authors": "Apache Kafka"
+      },
+      "running": false,
+      "ports": {
+        "9092/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "19092"
+          }
+        ]
+      },
+      "networks": [
+        "cp6-wp0212-6caf6a19b8a6-net"
+      ]
+    }
+  ],
+  "networks": [
+    {
+      "id": "1ab79fc5935d9e077007c564105f1cdcd21a636e98121e541c3a96de5ca097b5",
+      "name": "cp6-wp0212-6caf6a19b8a6-net",
+      "internal": true,
+      "labels": {
+        "com.docker.compose.config-hash": "c1c9baac4194df82315b8fb6fd0a43698f937744f9388e831e7f5a4be8ba57e6",
+        "com.docker.compose.network": "owned",
+        "com.docker.compose.project": "cp6-wp0212-6caf6a19b8a6",
+        "com.docker.compose.version": "5.5.1",
+        "cp6.owner": "6caf6a19b8a641989bfe8e108733d5bc",
+        "cp6.task": "WP02-12"
+      }
+    },
+    {
+      "id": "bf9cc607355ded529625103c5ef9869ad5264df098e40f7a5cf392386253cf88",
+      "name": "cp6-wp0212-6caf6a19b8a6-host",
+      "internal": false,
+      "labels": {
+        "cp6.owner": "6caf6a19b8a641989bfe8e108733d5bc",
+        "cp6.task": "WP02-12"
+      }
+    }
+  ],
+  "brokerConfigCommand": [
+    "docker",
+    "exec",
+    "cp6-wp0212-6caf6a19b8a6-kafka",
+    "cat",
+    "/opt/kafka/config/server.properties"
+  ],
+  "brokerConfigAllowlist": {
+    "listeners": "SASL_PLAINTEXT://:9092,CONTROLLER://:9093",
+    "allow.everyone.if.no.acl.found": "false",
+    "listener.security.protocol.map": "SASL_PLAINTEXT:SASL_PLAINTEXT,CONTROLLER:PLAINTEXT",
+    "inter.broker.listener.name": "SASL_PLAINTEXT",
+    "controller.listener.names": "CONTROLLER",
+    "authorizer.class.name": "org.apache.kafka.metadata.authorizer.StandardAuthorizer",
+    "super.users": "User:admin;User:ANONYMOUS",
+    "advertised.listeners": "SASL_PLAINTEXT://kafka:9092",
+    "sasl.enabled.mechanisms": "PLAIN",
+    "auto.create.topics.enable": "false",
+    "sasl.mechanism.inter.broker.protocol": "PLAIN"
+  },
+  "rawConfigSha256": "345783d7d90f74a27c96c0618c6dfe78761f19d845bfa293cf540f391b989a58",
+  "authBoundary": "Dedicated SASL publisher topic ACL; task-local deployment admin remains trusted; no production TLS claim"
+}

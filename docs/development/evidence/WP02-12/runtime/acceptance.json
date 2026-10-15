@@ -1,0 +1,339 @@
+[
+  {
+    "case": "owned-fixture-health",
+    "passed": true,
+    "evidence": {}
+  },
+  {
+    "case": "dapr-api-rejects-missing-token",
+    "passed": true,
+    "evidence": {
+      "status": 401
+    }
+  },
+  {
+    "case": "forged-direct-delivery-headers",
+    "passed": true,
+    "evidence": {
+      "status": 401
+    }
+  },
+  {
+    "case": "outbox-real-dapr-confirmed",
+    "passed": true,
+    "evidence": {
+      "result": {
+        "messageId": "wp0212-d6f6867d39fd4934a0f12843d1f86b9a",
+        "rawSha256": "320208329a884f38b41de8ac6e3573b5a2fd16d9081a7293df479db28074a237",
+        "nativeId": "47024349-c334-4128-b388-47356885bcc6",
+        "root": {
+          "ownerId": "wp0212-fixture",
+          "tenantId": "11111111-1111-4111-8111-111111111111",
+          "queueDomainId": "fixture-outbox",
+          "routeId": "wp0212-d6f6867d39fd4934a0f12843d1f86b9a",
+          "id": "e9445612aacdd41def4d75ee047ffdae14fa568800d6fb546e1ef5cd710be4a2"
+        },
+        "request": "d59ef27d-e116-4d1c-b261-97046231c146",
+        "observation": [
+          {
+            "state": "Published",
+            "claimRequestId": "d59ef27d-e116-4d1c-b261-97046231c146",
+            "mutationId": "fada2819-32fb-47a8-98d9-1259969cb4e0",
+            "originalMutation": {
+              "mutationId": "fada2819-32fb-47a8-98d9-1259969cb4e0",
+              "ticket": {
+                "profileId": "cp6-outbox-lease-v2",
+                "profileVersion": 1,
+                "root": {
+                  "ownerId": "wp0212-fixture",
+                  "tenantId": "11111111-1111-4111-8111-111111111111",
+                  "queueDomainId": "fixture-outbox",
+                  "routeId": "wp0212-d6f6867d39fd4934a0f12843d1f86b9a",
+                  "id": "e9445612aacdd41def4d75ee047ffdae14fa568800d6fb546e1ef5cd710be4a2"
+                },
+                "nativeId": "47024349-c334-4128-b388-47356885bcc6",
+                "messageId": "wp0212-d6f6867d39fd4934a0f12843d1f86b9a",
+                "rawEnvelopeSha256": "320208329a884f38b41de8ac6e3573b5a2fd16d9081a7293df479db28074a237",
+                "assignedEpoch": 1,
+                "claimEpoch": 1,
+                "claimId": "383b4911-9d6f-42c5-8584-c18ac8a810b6",
+                "leaseOwner": "fixture-worker",
+                "leaseToken": "855c1687876046f6bcf8b7e47664eb91",
+                "leaseExpiresAtUtc": "2026-10-15T00:48:03.368428+00:00",
+                "claimStartedAtUtc": "2026-10-15T00:45:03.368428+00:00",
+                "expectedNativeVersion": "pg-xmin-v1:817",
+                "expectedBindingVersion": "pg-xmin-v1:817",
+                "versionSource": "ClaimCommit",
+                "versionReceiptRef": "fada2819-32fb-47a8-98d9-1259969cb4e0",
+                "claimRequestId": "d59ef27d-e116-4d1c-b261-97046231c146",
+                "claimReceiptRef": "fada2819-32fb-47a8-98d9-1259969cb4e0",
+                "dispatchJson": "{\"Id\":\"47024349-c334-4128-b388-47356885bcc6\",\"MessageId\":\"wp0212-d6f6867d39fd4934a0f12843d1f86b9a\",\"TenantId\":\"11111111-1111-4111-8111-111111111111\",\"TopicName\":\"cp6.platform.contract-example-changed.v1\",\"PartitionKey\":\"11111111-1111-4111-8111-111111111111/example-1\",\"Payload\":\"ewogICJzcGVjdmVyc2lvbiI6ICIxLjAiLAogICJpZCI6ICJ3cDAyMTItZDZmNjg2N2QzOWZkNDkzNGEwZjEyODQzZDFmODZiOWEiLAogICJzb3VyY2UiOiAidXJuOmNwNjpwbGF0Zm9ybSIsCiAgInR5cGUiOiAiY29tLmd0eDUzNy5wbGF0Zm9ybS5jb250cmFjdC1leGFtcGxlLmNoYW5nZWQudjEiLAogICJzdWJqZWN0IjogInRlbmFudHMvMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExL2NvbnRyYWN0LWV4YW1wbGVzL2V4YW1wbGUtMSIsCiAgInRpbWUiOiAiMjAyNi0wOC0yOFQxMjowMDowMFoiLAogICJkYXRhY29udGVudHR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsCiAgImRhdGFzY2hlbWEiOiAiaHR0cHM6Ly9jb250cmFjdHMuY3A2LnVrL2V2ZW50cy9wbGF0Zm9ybS9jb250cmFjdC1leGFtcGxlLWNoYW5nZWQvdjEvc2NoZW1hLmpzb24iLAogICJ0ZW5hbnRpZCI6ICIxMTExMTExMS0xMTExLTQxMTEtODExMS0xMTExMTExMTExMTEiLAogICJjb3JyZWxhdGlvbmlkIjogImNvcnItMDAwMSIsCiAgImNhdXNhdGlvbmlkIjogImNtZC0wMDAxIiwKICAiYWdncmVnYXRlaWQiOiAiZXhhbXBsZS0xIiwKICAiYWdncmVnYXRldmVyc2lvbiI6IDcsCiAgInNjaGVtYXZlcnNpb24iOiAiMS4wLjAiLAogICJyZWdpb24iOiAibmEiLAogICJkYXRhIjogewogICAgInJlc291cmNlSWQiOiAiMjIyMjIyMjItMjIyMi00MjIyLTgyMjItMjIyMjIyMjIyMjIyIiwKICAgICJ2ZXJzaW9uIjogNwogIH0KfQo=\",\"CorrelationId\":\"corr-0001\",\"CausationId\":\"cmd-0001\",\"AggregateId\":\"example-1\",\"AggregateVersion\":7,\"AttemptCount\":1}"
+              },
+              "intent": 0,
+              "policyVersion": "fixture-policy-v1",
+              "safeErrorCode": null,
+              "retryable": false,
+              "supportReference": null
+            },
+            "completionDecision": 1,
+            "originalClaimInput": null
+          }
+        ],
+        "status": "Published",
+        "businessApplied": false,
+        "faultInjection": "none"
+      }
+    }
+  },
+  {
+    "case": "independent-kafka-record",
+    "passed": true,
+    "evidence": {
+      "record": {
+        "topic": "cp6.platform.contract-example-changed.v1",
+        "partition": 0,
+        "offset": 2,
+        "keyBase64": "MTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExL2V4YW1wbGUtMQ==",
+        "bodyBase64": "ewogICJzcGVjdmVyc2lvbiI6ICIxLjAiLAogICJpZCI6ICJ3cDAyMTItZDZmNjg2N2QzOWZkNDkzNGEwZjEyODQzZDFmODZiOWEiLAogICJzb3VyY2UiOiAidXJuOmNwNjpwbGF0Zm9ybSIsCiAgInR5cGUiOiAiY29tLmd0eDUzNy5wbGF0Zm9ybS5jb250cmFjdC1leGFtcGxlLmNoYW5nZWQudjEiLAogICJzdWJqZWN0IjogInRlbmFudHMvMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExL2NvbnRyYWN0LWV4YW1wbGVzL2V4YW1wbGUtMSIsCiAgInRpbWUiOiAiMjAyNi0wOC0yOFQxMjowMDowMFoiLAogICJkYXRhY29udGVudHR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsCiAgImRhdGFzY2hlbWEiOiAiaHR0cHM6Ly9jb250cmFjdHMuY3A2LnVrL2V2ZW50cy9wbGF0Zm9ybS9jb250cmFjdC1leGFtcGxlLWNoYW5nZWQvdjEvc2NoZW1hLmpzb24iLAogICJ0ZW5hbnRpZCI6ICIxMTExMTExMS0xMTExLTQxMTEtODExMS0xMTExMTExMTExMTEiLAogICJjb3JyZWxhdGlvbmlkIjogImNvcnItMDAwMSIsCiAgImNhdXNhdGlvbmlkIjogImNtZC0wMDAxIiwKICAiYWdncmVnYXRlaWQiOiAiZXhhbXBsZS0xIiwKICAiYWdncmVnYXRldmVyc2lvbiI6IDcsCiAgInNjaGVtYXZlcnNpb24iOiAiMS4wLjAiLAogICJyZWdpb24iOiAibmEiLAogICJkYXRhIjogewogICAgInJlc291cmNlSWQiOiAiMjIyMjIyMjItMjIyMi00MjIyLTgyMjItMjIyMjIyMjIyMjIyIiwKICAgICJ2ZXJzaW9uIjogNwogIH0KfQo=",
+        "bodySha256": "320208329a884f38b41de8ac6e3573b5a2fd16d9081a7293df479db28074a237",
+        "source": "Kafka4.3.1-console-consumer-byte-output",
+        "authenticatedPrincipal": "observer",
+        "owner": "6caf6a19b8a641989bfe8e108733d5bc"
+      }
+    }
+  },
+  {
+    "case": "broker-native-key",
+    "passed": true,
+    "evidence": {
+      "topic": "cp6.platform.contract-example-changed.v1",
+      "offset": 2,
+      "sha256": "320208329a884f38b41de8ac6e3573b5a2fd16d9081a7293df479db28074a237"
+    }
+  },
+  {
+    "case": "real-receiver-commit-before-ack",
+    "passed": true,
+    "evidence": {
+      "received": [
+        {
+          "topic": "cp6.platform.contract-example-changed.v1",
+          "partition": 0,
+          "offset": 2,
+          "key": "11111111-1111-4111-8111-111111111111/example-1",
+          "hash": "320208329a884f38b41de8ac6e3573b5a2fd16d9081a7293df479db28074a237",
+          "body": "ewogICJzcGVjdmVyc2lvbiI6ICIxLjAiLAogICJpZCI6ICJ3cDAyMTItZDZmNjg2N2QzOWZkNDkzNGEwZjEyODQzZDFmODZiOWEiLAogICJzb3VyY2UiOiAidXJuOmNwNjpwbGF0Zm9ybSIsCiAgInR5cGUiOiAiY29tLmd0eDUzNy5wbGF0Zm9ybS5jb250cmFjdC1leGFtcGxlLmNoYW5nZWQudjEiLAogICJzdWJqZWN0IjogInRlbmFudHMvMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExL2NvbnRyYWN0LWV4YW1wbGVzL2V4YW1wbGUtMSIsCiAgInRpbWUiOiAiMjAyNi0wOC0yOFQxMjowMDowMFoiLAogICJkYXRhY29udGVudHR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsCiAgImRhdGFzY2hlbWEiOiAiaHR0cHM6Ly9jb250cmFjdHMuY3A2LnVrL2V2ZW50cy9wbGF0Zm9ybS9jb250cmFjdC1leGFtcGxlLWNoYW5nZWQvdjEvc2NoZW1hLmpzb24iLAogICJ0ZW5hbnRpZCI6ICIxMTExMTExMS0xMTExLTQxMTEtODExMS0xMTExMTExMTExMTEiLAogICJjb3JyZWxhdGlvbmlkIjogImNvcnItMDAwMSIsCiAgImNhdXNhdGlvbmlkIjogImNtZC0wMDAxIiwKICAiYWdncmVnYXRlaWQiOiAiZXhhbXBsZS0xIiwKICAiYWdncmVnYXRldmVyc2lvbiI6IDcsCiAgInNjaGVtYXZlcnNpb24iOiAiMS4wLjAiLAogICJyZWdpb24iOiAibmEiLAogICJkYXRhIjogewogICAgInJlc291cmNlSWQiOiAiMjIyMjIyMjItMjIyMi00MjIyLTgyMjItMjIyMjIyMjIyMjIyIiwKICAgICJ2ZXJzaW9uIjogNwogIH0KfQo=",
+          "qualification": "ValidatedEnvelope",
+          "disposition": "SUCCESS"
+        }
+      ]
+    }
+  },
+  {
+    "case": "missing-native-metadata-retry",
+    "passed": true,
+    "evidence": {
+      "response": "{\"status\":\"RETRY\",\"safeCode\":\"NATIVE_METADATA_REQUIRED\"}",
+      "injected": true
+    }
+  },
+  {
+    "case": "same-original-message-retry-accepted",
+    "passed": true,
+    "evidence": {
+      "status": 204
+    }
+  },
+  {
+    "case": "retry-preserves-original-id-bytes-key",
+    "passed": true,
+    "evidence": {
+      "offsets": [
+        2,
+        3
+      ],
+      "noBusinessExactlyOnceClaim": true
+    }
+  },
+  {
+    "case": "outbox-ack-unknown-keeps-original-mutation",
+    "passed": true,
+    "evidence": {
+      "result": {
+        "messageId": "wp0212-92acae742e9f4531b2b2401e1ac60fcf",
+        "rawSha256": "366c0d78d18db238fa4fb4c3db65f6856bcf2b0c339108bab3c2e1bc03fa2dc3",
+        "nativeId": "9786f8a0-7269-4730-bc11-67fa2e842940",
+        "root": {
+          "ownerId": "wp0212-fixture",
+          "tenantId": "11111111-1111-4111-8111-111111111111",
+          "queueDomainId": "fixture-outbox",
+          "routeId": "wp0212-92acae742e9f4531b2b2401e1ac60fcf",
+          "id": "fb1e867f9ab1e09420ba403265b6c8b9251c474937f1644af3036c24544f4fcb"
+        },
+        "request": "6ef1fa99-8694-40f0-9073-544ca1641c53",
+        "observation": [
+          {
+            "state": "UNCERTAIN_DELIVERY",
+            "claimRequestId": "6ef1fa99-8694-40f0-9073-544ca1641c53",
+            "mutationId": "cd84c279-21c6-4eb1-af2f-b31ed0abb27f",
+            "originalMutation": null,
+            "completionDecision": 2,
+            "originalClaimInput": null
+          }
+        ],
+        "status": "Dispatching",
+        "businessApplied": false,
+        "faultInjection": "application suppressed successful Dapr ACK"
+      },
+      "injection": "application ACK suppression AFTER actual Dapr successful response"
+    }
+  },
+  {
+    "case": "unknown-ack-actually-reached-broker",
+    "passed": true,
+    "evidence": {
+      "hash": "366c0d78d18db238fa4fb4c3db65f6856bcf2b0c339108bab3c2e1bc03fa2dc3"
+    }
+  },
+  {
+    "case": "unknown-schema-transport-accepted",
+    "passed": true,
+    "evidence": {}
+  },
+  {
+    "case": "unknown-schema-durable-original-quarantine",
+    "passed": true,
+    "evidence": {
+      "rows": [
+        {
+          "profile": "cp6-generic-p05-v1",
+          "route": "wp0212-fixture-observe-v1",
+          "policy": "fixture-retain-original-v1",
+          "messageId": "wp0212-unknownschema-2409efc4e7e0",
+          "hash": "3ed22c42e137cab3f8f7c7d34d38bfd952973a9b4bc27142f9c5526638ffde64",
+          "body": "ewogICJzcGVjdmVyc2lvbiI6ICIxLjAiLAogICJpZCI6ICJ3cDAyMTItdW5rbm93bnNjaGVtYS0yNDA5ZWZjNGU3ZTAiLAogICJzb3VyY2UiOiAidXJuOmNwNjpwbGF0Zm9ybSIsCiAgInR5cGUiOiAiY29tLmd0eDUzNy5wbGF0Zm9ybS5jb250cmFjdC1leGFtcGxlLmNoYW5nZWQudjEiLAogICJzdWJqZWN0IjogInRlbmFudHMvMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExL2NvbnRyYWN0LWV4YW1wbGVzL2V4YW1wbGUtMSIsCiAgInRpbWUiOiAiMjAyNi0wOC0yOFQxMjowMDowMFoiLAogICJkYXRhY29udGVudHR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsCiAgImRhdGFzY2hlbWEiOiAiaHR0cHM6Ly9jb250cmFjdHMuY3A2LnVrL2V2ZW50cy9wbGF0Zm9ybS9jb250cmFjdC1leGFtcGxlLWNoYW5nZWQvdjEvc2NoZW1hLmpzb24iLAogICJ0ZW5hbnRpZCI6ICIxMTExMTExMS0xMTExLTQxMTEtODExMS0xMTExMTExMTExMTEiLAogICJjb3JyZWxhdGlvbmlkIjogImNvcnItMDAwMSIsCiAgImNhdXNhdGlvbmlkIjogImNtZC0wMDAxIiwKICAiYWdncmVnYXRlaWQiOiAiZXhhbXBsZS0xIiwKICAiYWdncmVnYXRldmVyc2lvbiI6IDcsCiAgInNjaGVtYXZlcnNpb24iOiAiMS4wLjkiLAogICJyZWdpb24iOiAibmEiLAogICJkYXRhIjogewogICAgInJlc291cmNlSWQiOiAiMjIyMjIyMjItMjIyMi00MjIyLTgyMjItMjIyMjIyMjIyMjIyIiwKICAgICJ2ZXJzaW9uIjogNwogIH0KfQo=",
+          "factsJson": "{\"Producer\":\"platform\",\"TenantId\":\"11111111-1111-4111-8111-111111111111\",\"Region\":\"na\",\"Topic\":\"cp6.platform.contract-example-changed.v1\",\"PartitionKey\":\"11111111-1111-4111-8111-111111111111/example-1\",\"MessageId\":\"wp0212-unknownschema-2409efc4e7e0\",\"AggregateId\":\"example-1\",\"AggregateVersion\":7,\"CorrelationId\":\"corr-0001\",\"CausationId\":\"cmd-0001\",\"NativeReference\":\"kafka:cp6.platform.contract-example-changed.v1:0:5\",\"RawEnvelopeSha256\":\"3ed22c42e137cab3f8f7c7d34d38bfd952973a9b4bc27142f9c5526638ffde64\",\"ContentType\":\"application/cloudevents\\u002Bjson\"}"
+        }
+      ]
+    }
+  },
+  {
+    "case": "quarantine-native-metadata-readback",
+    "passed": true,
+    "evidence": {
+      "nativeReference": "kafka:cp6.platform.contract-example-changed.v1:0:5"
+    }
+  },
+  {
+    "case": "wrong-producer-acl-denied",
+    "passed": true,
+    "evidence": {
+      "returnCode": 0,
+      "stderrHash": "95cc2a8e463f622b629bbddde9fe9d8999e35264f03902d4f42d306a7f9a0b26"
+    }
+  },
+  {
+    "case": "wrong-topic-acl-denied",
+    "passed": true,
+    "evidence": {
+      "returnCode": 0,
+      "stderrHash": "b2c1180c65a7a76152c24b54fb53f77ceef43cfedc3ec84599310925c3d7ad1e"
+    }
+  },
+  {
+    "case": "real-wrong-key-published",
+    "passed": true,
+    "evidence": {}
+  },
+  {
+    "case": "actual-wrong-key-observed",
+    "passed": true,
+    "evidence": {
+      "record": {
+        "topic": "cp6.platform.contract-example-changed.v1",
+        "partition": 0,
+        "offset": 6,
+        "keyBase64": "d3Jvbmcta2V5",
+        "bodyBase64": "ewogICJzcGVjdmVyc2lvbiI6ICIxLjAiLAogICJpZCI6ICJ3cDAyMTItd3JvbmdrZXktODQwYzY2Y2Q1YzQzIiwKICAic291cmNlIjogInVybjpjcDY6cGxhdGZvcm0iLAogICJ0eXBlIjogImNvbS5ndHg1MzcucGxhdGZvcm0uY29udHJhY3QtZXhhbXBsZS5jaGFuZ2VkLnYxIiwKICAic3ViamVjdCI6ICJ0ZW5hbnRzLzExMTExMTExLTExMTEtNDExMS04MTExLTExMTExMTExMTExMS9jb250cmFjdC1leGFtcGxlcy9leGFtcGxlLTEiLAogICJ0aW1lIjogIjIwMjYtMDgtMjhUMTI6MDA6MDBaIiwKICAiZGF0YWNvbnRlbnR0eXBlIjogImFwcGxpY2F0aW9uL2pzb24iLAogICJkYXRhc2NoZW1hIjogImh0dHBzOi8vY29udHJhY3RzLmNwNi51ay9ldmVudHMvcGxhdGZvcm0vY29udHJhY3QtZXhhbXBsZS1jaGFuZ2VkL3YxL3NjaGVtYS5qc29uIiwKICAidGVuYW50aWQiOiAiMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExIiwKICAiY29ycmVsYXRpb25pZCI6ICJjb3JyLTAwMDEiLAogICJjYXVzYXRpb25pZCI6ICJjbWQtMDAwMSIsCiAgImFnZ3JlZ2F0ZWlkIjogImV4YW1wbGUtMSIsCiAgImFnZ3JlZ2F0ZXZlcnNpb24iOiA3LAogICJzY2hlbWF2ZXJzaW9uIjogIjEuMC4wIiwKICAicmVnaW9uIjogIm5hIiwKICAiZGF0YSI6IHsKICAgICJyZXNvdXJjZUlkIjogIjIyMjIyMjIyLTIyMjItNDIyMi04MjIyLTIyMjIyMjIyMjIyMiIsCiAgICAidmVyc2lvbiI6IDcKICB9Cn0K",
+        "bodySha256": "7ea094159250d47185c3839812a2b9ef995820c831a9cf24829a1efe6b131e57",
+        "source": "Kafka4.3.1-console-consumer-byte-output",
+        "authenticatedPrincipal": "observer",
+        "owner": "6caf6a19b8a641989bfe8e108733d5bc"
+      }
+    }
+  },
+  {
+    "case": "wrong-key-no-success-no-effect",
+    "passed": true,
+    "evidence": {
+      "response": "{\"status\":\"RETRY\",\"safeCode\":\"AUTHORITY_REJECTED\"}",
+      "injectedDeliveryWithActualBrokerRecord": true
+    }
+  },
+  {
+    "case": "sidecar-unavailable",
+    "passed": true,
+    "evidence": {
+      "result": {
+        "messageId": "wp0212-f8943b4913ec482da849d277a785e09f",
+        "rawSha256": "6b5e7983a6b841b9eee25bb59509af38567eaeaebe62114391452202fbec97d2",
+        "nativeId": "e6aa0475-b980-4114-bcf0-cea159850a64",
+        "root": {
+          "ownerId": "wp0212-fixture",
+          "tenantId": "11111111-1111-4111-8111-111111111111",
+          "queueDomainId": "fixture-outbox",
+          "routeId": "wp0212-f8943b4913ec482da849d277a785e09f",
+          "id": "390a48cc29690fa3e61bede6445bb216ec9f5ebe63e9fc59906ead80831c923e"
+        },
+        "request": "a7a2d683-52c4-4df7-9ebd-8f0e18aaf7cc",
+        "observation": [
+          {
+            "state": "UNCERTAIN_DELIVERY",
+            "claimRequestId": "a7a2d683-52c4-4df7-9ebd-8f0e18aaf7cc",
+            "mutationId": "358e884f-c184-48e2-82e9-1d07d256ad3e",
+            "originalMutation": null,
+            "completionDecision": 2,
+            "originalClaimInput": null
+          }
+        ],
+        "status": "Dispatching",
+        "businessApplied": false,
+        "faultInjection": "none"
+      },
+      "controlledOwnedServiceStop": true
+    }
+  },
+  {
+    "case": "broker-unavailable",
+    "passed": true,
+    "evidence": {
+      "result": {
+        "messageId": "wp0212-dc4d9b61b46a4c10a24eb6e32ecc2920",
+        "rawSha256": "44ebe47e657aac02d63a9f1669e1974330afdc292b3c084e364a5c4f7e1cc810",
+        "nativeId": "0600b531-da7d-4b7c-92ed-67a4ddfdf9ac",
+        "root": {
+          "ownerId": "wp0212-fixture",
+          "tenantId": "11111111-1111-4111-8111-111111111111",
+          "queueDomainId": "fixture-outbox",
+          "routeId": "wp0212-dc4d9b61b46a4c10a24eb6e32ecc2920",
+          "id": "8c7c48b14f123623832794773a995a5584286a7ce94c321745f438e9bb620b7a"
+        },
+        "request": "371a09b4-d907-4789-a16d-afa92021606d",
+        "observation": [
+          {
+            "state": "UNCERTAIN_DELIVERY",
+            "claimRequestId": "371a09b4-d907-4789-a16d-afa92021606d",
+            "mutationId": "af01f14f-b4a4-4b86-a522-8db64f95a5bc",
+            "originalMutation": null,
+            "completionDecision": 2,
+            "originalClaimInput": null
+          }
+        ],
+        "status": "Dispatching",
+        "businessApplied": false,
+        "faultInjection": "none"
+      },
+      "controlledOwnedServiceStop": true
+    }
+  }
+]

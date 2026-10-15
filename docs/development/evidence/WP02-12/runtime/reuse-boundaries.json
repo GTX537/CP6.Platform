@@ -1,0 +1,19 @@
+{
+  "runs": [
+    {
+      "cases": 22,
+      "passed": 22,
+      "scope": "native local fixture; no business adoption",
+      "runDirectory": "D:\\CP6-local-test\\WP02-12\\6caf6a19b8a641989bfe8e108733d5bc\\transport\\acceptance-20261015T004502616374Z"
+    },
+    {
+      "cases": 7,
+      "passed": 7,
+      "scope": "targeted real Kafka/Dapr/PG task-review regression"
+    }
+  ],
+  "original_runtime_result_preserved": true,
+  "superseded_case": "wrong-key-no-success-no-effect (original RETRY) superseded by targeted wrong-native-key-is-durably-isolated; this case proves durable isolation, not an exported receive DROP observation",
+  "reuse": "Unchanged actual producer entitlement, transport exact bytes, genuine token/ACL negatives, same-id retry, corrected Outbox commit/send budget and native service failure behavior; no rerun claimed.",
+  "targeted_changes": "Quarantine nativeReference lookup and wrong-key permanent isolation only. Real repeated invalid raw/id/hash at distinct offsets retains both native observations and reaches DROP."
+}

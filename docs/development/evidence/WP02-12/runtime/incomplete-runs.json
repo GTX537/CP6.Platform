@@ -1,0 +1,94 @@
+[
+  {
+    "run": "acceptance-20261015T004226297306Z",
+    "results": [
+      {
+        "case": "owned-fixture-health",
+        "passed": true,
+        "evidence": {}
+      },
+      {
+        "case": "dapr-api-rejects-missing-token",
+        "passed": true,
+        "evidence": {
+          "status": 401
+        }
+      },
+      {
+        "case": "forged-direct-delivery-headers",
+        "passed": true,
+        "evidence": {
+          "status": 401
+        }
+      },
+      {
+        "case": "outbox-real-dapr-confirmed",
+        "passed": true,
+        "evidence": {
+          "result": {
+            "messageId": "wp0212-a180237837024ca2af1a867ab0ff79cb",
+            "rawSha256": "297f67099dacec970af4c3b3a93ad5b313d4e589aa9d7032a0cf0351ee06cfad",
+            "nativeId": "ac54132e-bc33-4d75-ae63-31aff59e4f82",
+            "root": {
+              "ownerId": "wp0212-fixture",
+              "tenantId": "11111111-1111-4111-8111-111111111111",
+              "queueDomainId": "fixture-outbox",
+              "routeId": "wp0212-a180237837024ca2af1a867ab0ff79cb",
+              "id": "6a1b3097ce1aaf20afec97515dc00b23da042be3147193c0f33ec7572dddc38e"
+            },
+            "request": "6fce9fe6-7143-4faf-914c-59950c35b834",
+            "observation": [
+              {
+                "state": "Published",
+                "claimRequestId": "6fce9fe6-7143-4faf-914c-59950c35b834",
+                "mutationId": "98d11122-47ba-4c6f-8484-608981624f64",
+                "originalMutation": {
+                  "mutationId": "98d11122-47ba-4c6f-8484-608981624f64",
+                  "ticket": {
+                    "profileId": "cp6-outbox-lease-v2",
+                    "profileVersion": 1,
+                    "root": {
+                      "ownerId": "wp0212-fixture",
+                      "tenantId": "11111111-1111-4111-8111-111111111111",
+                      "queueDomainId": "fixture-outbox",
+                      "routeId": "wp0212-a180237837024ca2af1a867ab0ff79cb",
+                      "id": "6a1b3097ce1aaf20afec97515dc00b23da042be3147193c0f33ec7572dddc38e"
+                    },
+                    "nativeId": "ac54132e-bc33-4d75-ae63-31aff59e4f82",
+                    "messageId": "wp0212-a180237837024ca2af1a867ab0ff79cb",
+                    "rawEnvelopeSha256": "297f67099dacec970af4c3b3a93ad5b313d4e589aa9d7032a0cf0351ee06cfad",
+                    "assignedEpoch": 1,
+                    "claimEpoch": 1,
+                    "claimId": "c4250f63-68c7-4561-8010-65c7ff3cdfe7",
+                    "leaseOwner": "fixture-worker",
+                    "leaseToken": "88ee6b3c31ba4afea4f6252e96528837",
+                    "leaseExpiresAtUtc": "2026-10-15T00:45:27.282587+00:00",
+                    "claimStartedAtUtc": "2026-10-15T00:42:27.282587+00:00",
+                    "expectedNativeVersion": "pg-xmin-v1:802",
+                    "expectedBindingVersion": "pg-xmin-v1:802",
+                    "versionSource": "ClaimCommit",
+                    "versionReceiptRef": "98d11122-47ba-4c6f-8484-608981624f64",
+                    "claimRequestId": "6fce9fe6-7143-4faf-914c-59950c35b834",
+                    "claimReceiptRef": "98d11122-47ba-4c6f-8484-608981624f64",
+                    "dispatchJson": "{\"Id\":\"ac54132e-bc33-4d75-ae63-31aff59e4f82\",\"MessageId\":\"wp0212-a180237837024ca2af1a867ab0ff79cb\",\"TenantId\":\"11111111-1111-4111-8111-111111111111\",\"TopicName\":\"cp6.platform.contract-example-changed.v1\",\"PartitionKey\":\"11111111-1111-4111-8111-111111111111/example-1\",\"Payload\":\"ewogICJzcGVjdmVyc2lvbiI6ICIxLjAiLAogICJpZCI6ICJ3cDAyMTItYTE4MDIzNzgzNzAyNGNhMmFmMWE4NjdhYjBmZjc5Y2IiLAogICJzb3VyY2UiOiAidXJuOmNwNjpwbGF0Zm9ybSIsCiAgInR5cGUiOiAiY29tLmd0eDUzNy5wbGF0Zm9ybS5jb250cmFjdC1leGFtcGxlLmNoYW5nZWQudjEiLAogICJzdWJqZWN0IjogInRlbmFudHMvMTExMTExMTEtMTExMS00MTExLTgxMTEtMTExMTExMTExMTExL2NvbnRyYWN0LWV4YW1wbGVzL2V4YW1wbGUtMSIsCiAgInRpbWUiOiAiMjAyNi0wOC0yOFQxMjowMDowMFoiLAogICJkYXRhY29udGVudHR5cGUiOiAiYXBwbGljYXRpb24vanNvbiIsCiAgImRhdGFzY2hlbWEiOiAiaHR0cHM6Ly9jb250cmFjdHMuY3A2LnVrL2V2ZW50cy9wbGF0Zm9ybS9jb250cmFjdC1leGFtcGxlLWNoYW5nZWQvdjEvc2NoZW1hLmpzb24iLAogICJ0ZW5hbnRpZCI6ICIxMTExMTExMS0xMTExLTQxMTEtODExMS0xMTExMTExMTExMTEiLAogICJjb3JyZWxhdGlvbmlkIjogImNvcnItMDAwMSIsCiAgImNhdXNhdGlvbmlkIjogImNtZC0wMDAxIiwKICAiYWdncmVnYXRlaWQiOiAiZXhhbXBsZS0xIiwKICAiYWdncmVnYXRldmVyc2lvbiI6IDcsCiAgInNjaGVtYXZlcnNpb24iOiAiMS4wLjAiLAogICJyZWdpb24iOiAibmEiLAogICJkYXRhIjogewogICAgInJlc291cmNlSWQiOiAiMjIyMjIyMjItMjIyMi00MjIyLTgyMjItMjIyMjIyMjIyMjIyIiwKICAgICJ2ZXJzaW9uIjogNwogIH0KfQo=\",\"CorrelationId\":\"corr-0001\",\"CausationId\":\"cmd-0001\",\"AggregateId\":\"example-1\",\"AggregateVersion\":7,\"AttemptCount\":1}"
+                  },
+                  "intent": 0,
+                  "policyVersion": "fixture-policy-v1",
+                  "safeErrorCode": null,
+                  "retryable": false,
+                  "supportReference": null
+                },
+                "completionDecision": 1,
+                "originalClaimInput": null
+              }
+            ],
+            "status": "Published",
+            "businessApplied": false,
+            "faultInjection": "none"
+          }
+        }
+      }
+    ],
+    "complete": false
+  }
+]
