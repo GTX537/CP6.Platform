@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="d09c35d3-e78b-46eb-ac1f-c7f455eeff30" name="tt@LAPTOP-3QQ44FJS 2026-10-15 03:22:56" runUser="LAPTOP-3QQ44FJS\tt" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-10-15T03:22:56.2651552-04:00" queuing="2026-10-15T03:22:56.2651560-04:00" start="2026-10-15T03:22:47.3390742-04:00" finish="2026-10-15T03:23:05.0853070-04:00" />
+  <TestSettings name="default" id="84bbe704-42bc-401e-96f6-992a059e619b">
+    <Deployment runDeploymentRoot="tt_LAPTOP-3QQ44FJS_2026-10-15_03_22_56" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="e467b495-99c6-43f8-9c90-bcab24725e94" testId="bcd72b30-d42b-ea39-f7a6-21dfdc955e7c" testName="CP6.Platform.ReleaseTests.FormalPackageVerifierTests.Cli_validates_pinned_trust_without_accepting_the_S02_identity" computerName="LAPTOP-3QQ44FJS" duration="00:00:03.4133803" startTime="2026-10-15T03:23:01.5564715-04:00" endTime="2026-10-15T03:23:04.9634971-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e467b495-99c6-43f8-9c90-bcab24725e94" />
+    <UnitTestResult executionId="899e62d4-8305-4c67-97ac-e2e556d14445" testId="335a8523-4fdc-c595-7b1a-98724afa6b3c" testName="CP6.Platform.ReleaseTests.FormalPackageVerifierTests.Downloader_streams_to_a_new_file_and_never_overwrites_existing_bytes" computerName="LAPTOP-3QQ44FJS" duration="00:00:05.3825873" startTime="2026-10-15T03:22:56.2023508-04:00" endTime="2026-10-15T03:23:01.5383308-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="899e62d4-8305-4c67-97ac-e2e556d14445" />
+    <UnitTestResult executionId="a35a77fe-7033-4f50-b3e1-cfe9d12b2613" testId="5142782d-cb79-9a3b-276a-79814a7ee948" testName="CP6.Platform.ReleaseTests.FormalPackageVerifierTests.Cli_validates_pinned_cosign_and_storage_trust" computerName="LAPTOP-3QQ44FJS" duration="00:00:02.5077557" startTime="2026-10-15T03:22:53.6701186-04:00" endTime="2026-10-15T03:22:56.1534460-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a35a77fe-7033-4f50-b3e1-cfe9d12b2613" />
+    <UnitTestResult executionId="bf5c42a1-0492-4b27-bd1e-9633d20d4376" testId="d5ab71c3-4cf8-813a-5848-a4c25e224a0e" testName="CP6.Platform.ReleaseTests.FormalPackageVerifierTests.Formal_verifier_source_freezes_strict_timestamp_and_download_rules" computerName="LAPTOP-3QQ44FJS" duration="00:00:00.0111815" startTime="2026-10-15T03:23:01.5515639-04:00" endTime="2026-10-15T03:23:01.5533738-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bf5c42a1-0492-4b27-bd1e-9633d20d4376" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="CP6.Platform.ReleaseTests.FormalPackageVerifierTests.Cli_validates_pinned_cosign_and_storage_trust" storage="d:\cp6.platform-worktrees\wave7-integration-20261014\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="5142782d-cb79-9a3b-276a-79814a7ee948">
+      <Execution id="a35a77fe-7033-4f50-b3e1-cfe9d12b2613" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wave7-integration-20261014\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.FormalPackageVerifierTests" name="Cli_validates_pinned_cosign_and_storage_trust" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.FormalPackageVerifierTests.Cli_validates_pinned_trust_without_accepting_the_S02_identity" storage="d:\cp6.platform-worktrees\wave7-integration-20261014\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="bcd72b30-d42b-ea39-f7a6-21dfdc955e7c">
+      <Execution id="e467b495-99c6-43f8-9c90-bcab24725e94" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wave7-integration-20261014\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.FormalPackageVerifierTests" name="Cli_validates_pinned_trust_without_accepting_the_S02_identity" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.FormalPackageVerifierTests.Downloader_streams_to_a_new_file_and_never_overwrites_existing_bytes" storage="d:\cp6.platform-worktrees\wave7-integration-20261014\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="335a8523-4fdc-c595-7b1a-98724afa6b3c">
+      <Execution id="899e62d4-8305-4c67-97ac-e2e556d14445" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wave7-integration-20261014\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.FormalPackageVerifierTests" name="Downloader_streams_to_a_new_file_and_never_overwrites_existing_bytes" />
+    </UnitTest>
+    <UnitTest name="CP6.Platform.ReleaseTests.FormalPackageVerifierTests.Formal_verifier_source_freezes_strict_timestamp_and_download_rules" storage="d:\cp6.platform-worktrees\wave7-integration-20261014\tests\cp6.platform.releasetests\bin\release\net8.0\cp6.platform.releasetests.dll" id="d5ab71c3-4cf8-813a-5848-a4c25e224a0e">
+      <Execution id="bf5c42a1-0492-4b27-bd1e-9633d20d4376" />
+      <TestMethod codeBase="D:\CP6.Platform-worktrees\wave7-integration-20261014\tests\CP6.Platform.ReleaseTests\bin\Release\net8.0\CP6.Platform.ReleaseTests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="CP6.Platform.ReleaseTests.FormalPackageVerifierTests" name="Formal_verifier_source_freezes_strict_timestamp_and_download_rules" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="bcd72b30-d42b-ea39-f7a6-21dfdc955e7c" executionId="e467b495-99c6-43f8-9c90-bcab24725e94" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="335a8523-4fdc-c595-7b1a-98724afa6b3c" executionId="899e62d4-8305-4c67-97ac-e2e556d14445" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5142782d-cb79-9a3b-276a-79814a7ee948" executionId="a35a77fe-7033-4f50-b3e1-cfe9d12b2613" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d5ab71c3-4cf8-813a-5848-a4c25e224a0e" executionId="bf5c42a1-0492-4b27-bd1e-9633d20d4376" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="4" executed="4" passed="4" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 8.0.30)&#xD;
+[xUnit.net 00:00:01.82]   Discovering: CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:02.10]   Discovered:  CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:02.14]   Starting:    CP6.Platform.ReleaseTests&#xD;
+[xUnit.net 00:00:13.56]   Finished:    CP6.Platform.ReleaseTests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>
