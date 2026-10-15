@@ -1,0 +1,14 @@
+{
+  "observed_utc": "2026-10-15T01:14:10.618249+00:00",
+  "private": true,
+  "actions_enabled": false,
+  "default_branch": "codex/t02c-entry-handoff-20260921",
+  "default_commit": "c5af26da818151eb362455b8709c53b43fe004c2",
+  "task_commit": "cd3e3ca14a1cf31bd6efbf62b32e2cd6602b2f8d",
+  "start_commit": "cd3e3ca14a1cf31bd6efbf62b32e2cd6602b2f8d",
+  "path": "handoffs/CP6-DEV-20261012/tasks/WP02-12/messages/20261015T002253Z-c-start/MESSAGE.md",
+  "bytes": 2039,
+  "sha256": "ab5230d1f399784f5fc901c942567ed9ed241766a246884dfc3c2c3474247ac8",
+  "remote_git_working_bytes_equal": true,
+  "workflows": []
+}
