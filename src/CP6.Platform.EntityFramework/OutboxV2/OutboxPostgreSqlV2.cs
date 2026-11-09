@@ -79,14 +79,19 @@ public static class OutboxPostgreSqlV2
             ("cp6_outbox_v2_immutable", ImmutableBody, new[] { "Cp6_OutboxClaimReceiptV2", "Cp6_OutboxClaimTicketV2", "Cp6_OutboxMutationReceiptV2", "Cp6_OutboxAuditV2", "Cp6_OutboxTokenSealV2", "Cp6_OutboxSendAttemptV2" })
         })
         {
+            // Native migrations can preserve either source line ending. Compare only the two complete forms.
+            var lfBody = body.Replace("\r\n", "\n", StringComparison.Ordinal);
+            var crlfBody = lfBody.Replace("\n", "\r\n", StringComparison.Ordinal);
             foreach (var table in tables)
             {
                 var valid = await Scalar(tx.Context,
                     "SELECT EXISTS(SELECT 1 FROM pg_trigger t JOIN pg_proc p ON p.oid=t.tgfoid JOIN pg_namespace n ON n.oid=p.pronamespace " +
                     "WHERE t.tgrelid=to_regclass(@table) AND t.tgname=@name AND t.tgenabled='O' AND t.tgtype=27 AND t.tgqual IS NULL AND t.tgattr=''::int2vector " +
-                    "AND p.proname=@name AND n.nspname=@schema AND p.prosrc=@body AND NOT p.prosecdef AND p.proconfig=ARRAY['search_path=pg_catalog'] " +
+                    "AND p.proname=@name AND n.nspname=@schema AND p.prosrc COLLATE pg_catalog.\"C\" IN (@lfBody, @crlfBody) " +
+                    "AND NOT p.prosecdef AND p.proconfig=ARRAY['search_path=pg_catalog'] " +
                     "AND p.provolatile='v' AND p.prolang=(SELECT oid FROM pg_language WHERE lanname='plpgsql'))", ct,
-                    ("table", tx.Table(table)), ("name", name), ("schema", tx.Registration.Schema), ("body", body));
+                    ("table", tx.Table(table)), ("name", name), ("schema", tx.Registration.Schema),
+                    ("lfBody", lfBody), ("crlfBody", crlfBody));
                 if (valid is not true) throw new OutboxProtocolExceptionV2("CP6_OUTBOX_GUARD_MIGRATION_REQUIRED");
             }
         }

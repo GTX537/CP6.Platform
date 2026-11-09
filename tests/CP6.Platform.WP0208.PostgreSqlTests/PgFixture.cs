@@ -104,18 +104,8 @@ public sealed class PgFixture : IAsyncLifetime
         return db;
     }
     public Task WithNativeGuardDisabled(Func<Task> action) => WithCatalogMutation("disabled-guard", action);
-    public async Task WithCatalogMutation(string mutation, Func<Task> action)
+    public Task WithCatalogMutation(string mutation, Func<Task> action) => WithOwnedCatalog(async admin =>
     {
-        var connection = new NpgsqlConnectionStringBuilder
-        {
-            Host = "127.0.0.1", Port = 55428, Database = Setting("Database"), Username = Setting("Admin"),
-            Password = Setting("AdminPassword"), Pooling = false, Timeout = 5, CommandTimeout = 15,
-            ApplicationName = "CP6-WP02-08:" + Owner, IncludeErrorDetail = false
-        };
-        await using var admin = new NpgsqlConnection(connection.ConnectionString);
-        await admin.OpenAsync(); await VerifyAsync(admin, true);
-        var sessions = (long)(await new NpgsqlCommand("SELECT count(*) FROM pg_stat_activity WHERE backend_type='client backend' AND pid<>pg_backend_pid()", admin).ExecuteScalarAsync())!;
-        Assert.Equal(0L, sessions);
         var (change, restore) = mutation switch
         {
             "disabled-guard" => ("ALTER TABLE fixture.\"Cp6_OutboxMessage\" DISABLE TRIGGER cp6_outbox_v2_guard", "ALTER TABLE fixture.\"Cp6_OutboxMessage\" ENABLE TRIGGER cp6_outbox_v2_guard"),
@@ -127,7 +117,51 @@ public sealed class PgFixture : IAsyncLifetime
         await new NpgsqlCommand(change, admin).ExecuteNonQueryAsync();
         try { await action(); }
         finally { await new NpgsqlCommand(restore, admin).ExecuteNonQueryAsync(); }
+    });
+
+    public Task WithGuardBody(Func<string, string> changeBody, Func<Task> action) => WithOwnedCatalog(async admin =>
+    {
+        async Task<string> ReadBody()
+        {
+            await using var command = new NpgsqlCommand(
+                "SELECT prosrc FROM pg_catalog.pg_proc WHERE oid='fixture.cp6_outbox_v2_guard()'::regprocedure", admin);
+            return (string)(await command.ExecuteScalarAsync())!;
+        }
+
+        async Task WriteBody(string body)
+        {
+            await using var command = new NpgsqlCommand(
+                $"CREATE OR REPLACE FUNCTION fixture.cp6_outbox_v2_guard() RETURNS trigger LANGUAGE plpgsql SET search_path=pg_catalog AS $guard${body}$guard$;",
+                admin);
+            await command.ExecuteNonQueryAsync();
+        }
+
+        var original = await ReadBody();
+        var changed = changeBody(original);
+        await WriteBody(changed);
+        try
+        {
+            Assert.Equal(changed, await ReadBody());
+            await action();
+        }
+        finally { await WriteBody(original); }
+    });
+
+    private async Task WithOwnedCatalog(Func<NpgsqlConnection, Task> action)
+    {
+        var connection = new NpgsqlConnectionStringBuilder
+        {
+            Host = "127.0.0.1", Port = 55428, Database = Setting("Database"), Username = Setting("Admin"),
+            Password = Setting("AdminPassword"), Pooling = false, Timeout = 5, CommandTimeout = 15,
+            ApplicationName = "CP6-WP02-08:" + Owner, IncludeErrorDetail = false
+        };
+        await using var admin = new NpgsqlConnection(connection.ConnectionString);
+        await admin.OpenAsync(); await VerifyAsync(admin, true);
+        var sessions = (long)(await new NpgsqlCommand("SELECT count(*) FROM pg_stat_activity WHERE backend_type='client backend' AND pid<>pg_backend_pid()", admin).ExecuteScalarAsync())!;
+        Assert.Equal(0L, sessions);
+        await action(admin);
     }
+
     public Task DisposeAsync() { NpgsqlConnection.ClearAllPools(); return Task.CompletedTask; }
 }
 
