@@ -804,7 +804,8 @@
               "0.10.0",
               "0.10.1",
               "0.10.2",
-              "0.10.3"
+              "0.10.3",
+              "0.10.4"
             ]
           },
           "packages": {
@@ -815,12 +816,13 @@
                     "0.10.0",
                     "0.10.1",
                     "0.10.2",
-                    "0.10.3"
+                    "0.10.3",
+                    "0.10.4"
                   ]
                 },
                 "feedIdentity": {
                   "type": "string",
-                  "pattern": "^https://nuget\\.pkg\\.github\\.com/GTX537/index\\.json#CP6\\.Platform\\.[A-Za-z]+/0\\.10\\.[0123](?![\\s\\S])"
+                  "pattern": "^https://nuget\\.pkg\\.github\\.com/GTX537/index\\.json#CP6\\.Platform\\.[A-Za-z]+/0\\.10\\.[01234](?![\\s\\S])"
                 }
               }
             }
@@ -890,6 +892,22 @@
         ] },
         "capabilities": {"maxItems": 1, "items": {"properties": {"id": {"const": "ctx-binding-v1"}}}},
         "compatibility": {"items": {"properties": {"requiredCapabilityId": {"const": "ctx-binding-v1"}, "profile": {"const": "ctx-v1"}}}}
+      } }
+    },
+    {
+      "if": {"properties": {"lane": {"const": "FormalPublished"}, "version": {"const": "0.10.4"}}, "required": ["lane", "version"]},
+      "then": { "properties": {
+        "packages": { "prefixItems": [
+          {"properties": {"version": {"const": "0.10.4"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Abstractions/0.10.4"}}},
+          {"properties": {"version": {"const": "0.10.4"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.AspNetCore/0.10.4"}}},
+          {"properties": {"version": {"const": "0.10.4"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/0.10.4"}}},
+          {"properties": {"version": {"const": "0.10.4"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Deployment/0.10.4"}}},
+          {"properties": {"version": {"const": "0.10.4"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.EntityFramework/0.10.4"}}},
+          {"properties": {"version": {"const": "0.10.4"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Messaging/0.10.4"}}},
+          {"properties": {"version": {"const": "0.10.4"}, "feedIdentity": {"const": "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Release/0.10.4"}}}
+        ] },
+        "capabilities": {"maxItems": 0},
+        "compatibility": {"maxItems": 0}
       } }
     }
   ]

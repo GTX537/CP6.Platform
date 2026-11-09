@@ -7,7 +7,7 @@ param(
     [string]$Environment,
 
     [Parameter(Mandatory)]
-    [ValidatePattern('^0\.10\.3\z')]
+    [ValidatePattern('^0\.10\.4\z')]
     [string]$PackageVersion,
 
     [Parameter(Mandatory)]

@@ -22,10 +22,12 @@ public sealed class P10FormalRegistrationTests
     [InlineData("0.10.1", true, false)]
     [InlineData("0.10.2", true, false)]
     [InlineData("0.10.3", true, true)]
-    [InlineData("0.10.4", false, false)]
+    [InlineData("0.10.4", false, true)]
+    [InlineData("0.10.4", true, false)]
+    [InlineData("0.10.5", false, false)]
     [InlineData("latest", false, false)]
-    [InlineData("0.10.3+build.1", true, false)]
-    [InlineData("0.10.3-preview.1", true, false)]
+    [InlineData("0.10.4+build.1", false, false)]
+    [InlineData("0.10.4-preview.1", false, false)]
     public void Formal_capability_version_catalog_agrees_with_source_schema(string version, bool context, bool valid)
     {
         var root = Matrix(version, context);
@@ -56,14 +58,14 @@ public sealed class P10FormalRegistrationTests
     }
 
     [Theory]
-    [InlineData("version", "0.10.2")]
-    [InlineData("feedIdentity", "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Abstractions/0.10.2")]
-    [InlineData("feedIdentity", "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/0.10.3")]
+    [InlineData("version", "0.10.3")]
+    [InlineData("feedIdentity", "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Abstractions/0.10.3")]
+    [InlineData("feedIdentity", "https://nuget.pkg.github.com/GTX537/index.json#CP6.Platform.Contracts/0.10.4")]
     [InlineData("sourceGitSha", "main")]
     [InlineData("sha256", "invalid")]
     public void Formal_package_identity_corruption_is_rejected_by_API_and_schema(string property, string value)
     {
-        var root = Matrix("0.10.3", true);
+        var root = Matrix("0.10.4", false);
         root["packages"]![0]![property] = value;
         AssertShape(root, false);
     }
@@ -74,7 +76,7 @@ public sealed class P10FormalRegistrationTests
     [InlineData("archive-bytes")]
     public void Formal_semantics_reject_cross_field_and_actual_byte_corruption(string mutation)
     {
-        var fixture = new Fixture(formal: true, formalVersion: "0.10.3");
+        var fixture = new Fixture(formal: true, formalVersion: "0.10.4");
         if (mutation == "source") fixture.Root["packages"]![0]!["sourceGitSha"] = new string('b', 40);
         if (mutation == "duplicate-hash") fixture.Root["packages"]![0]!["sha256"] = fixture.Root["packages"]![1]!["sha256"]!.GetValue<string>();
         if (mutation == "archive-bytes") fixture.Packages[Fixture.Ids[0]] = new byte[] { 1, 2, 3 };
@@ -95,8 +97,9 @@ public sealed class P10FormalRegistrationTests
         var parameter = name == "Test-P10FormalPackageSet" ? "ExpectedVersion" : "PackageVersion";
         var match = Regex.Match(script, @"\[ValidatePattern\('(?<pattern>[^']+)'\)\]\s*\[string\]\$" + parameter);
         Assert.True(match.Success);
-        foreach (var version in new[] { "0.10.0", "0.10.1", "0.10.2", "0.10.3", "0.10.4", "latest", "0.10.3+build.1", "0.10.3-preview.1", "0.10.3\n" })
-            Assert.Equal(version == "0.10.3" || reader && version is "0.10.0" or "0.10.1" or "0.10.2",
+        foreach (var version in new[] { "0.10.0", "0.10.1", "0.10.2", "0.10.3", "0.10.4", "0.10.5",
+            "latest", "0.10.4+build.1", "0.10.4-preview.1", "0.10.4\n" })
+            Assert.Equal(version == "0.10.4" || reader && version is "0.10.0" or "0.10.1" or "0.10.2" or "0.10.3",
                 Regex.IsMatch(version, match.Groups["pattern"].Value));
     }
 
@@ -115,9 +118,11 @@ public sealed class P10FormalRegistrationTests
             var capability = JsonSchema.FromText(Read("contracts/release/capabilities/v1/capability-matrix.v1.schema.json"),
                 new BuildOptions { SchemaRegistry = new SchemaRegistry() });
             foreach (var item in new[] { ("0.10.0", false, true), ("0.10.1", false, true), ("0.10.2", false, true),
-                ("0.10.3", true, true), ("0.10.2", true, false), ("0.10.4", true, false), ("0.10.3+build.1", true, false) })
+                ("0.10.3", true, true), ("0.10.4", false, true), ("0.10.2", true, false), ("0.10.4", true, false),
+                ("0.10.5", false, false), ("0.10.4+build.1", false, false) })
                 Assert.Equal(item.Item3, capability.Evaluate(JsonSerializer.SerializeToElement(Matrix(item.Item1, item.Item2))).IsValid);
-            foreach (var versionCase in new[] { ("0.10.0", true), ("0.10.1", true), ("0.10.2", true), ("0.10.3", true), ("0.10.4", false), ("0.10.3-preview.1", false) })
+            foreach (var versionCase in new[] { ("0.10.0", true), ("0.10.1", true), ("0.10.2", true), ("0.10.3", true),
+                ("0.10.4", true), ("0.10.5", false), ("0.10.4-preview.1", false) })
             {
                 var publication = JsonNode.Parse(ReleaseTestData.Fixture("supporting", "formal-package-publication.valid.json"))!;
                 publication["version"] = versionCase.Item1;

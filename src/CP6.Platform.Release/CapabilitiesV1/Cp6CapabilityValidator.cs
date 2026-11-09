@@ -35,7 +35,7 @@ public static class Cp6CapabilityValidator
             if (!Regex.IsMatch(version, @"\A0\.10\.3-wp02\.27\.g" + source + @"\.[1-9][0-9]*\z", RegexOptions.CultureInvariant))
                 throw Error("package-version", "Task-local packages require an exact unique WP02-27 prerelease identity.");
         }
-        else if (lane != "FormalPublished" || version is not ("0.10.0" or "0.10.1" or "0.10.2" or "0.10.3"))
+        else if (lane != "FormalPublished" || version is not ("0.10.0" or "0.10.1" or "0.10.2" or "0.10.3" or "0.10.4"))
             throw Error("package-version", "Unknown publication lane or unapproved formal version.");
         var packages = Array(root, "packages");
         if (packages.GetArrayLength() != PackageIds.Length) throw Error("package-set", "The exact seven packages are required.");
@@ -70,7 +70,7 @@ public static class Cp6CapabilityValidator
         Cp6ReleaseJsonRules.RequireOrdinalSet(ids, "capability-set");
         if (lane == "FormalPublished" &&
             (version != "0.10.3" ? ids.Count != 0 : ids.Any(id => id != "ctx-binding-v1")))
-            throw Error("capability-unavailable", "Formal 0.10.0-0.10.2 capabilities are empty; 0.10.3 permits only ctx-binding-v1.");
+            throw Error("capability-unavailable", "Only formal 0.10.3 permits ctx-binding-v1. Other registered formal versions require an empty capability catalog.");
         var rowHashes = new HashSet<string>(StringComparer.Ordinal);
         foreach (var row in Array(root, "compatibility").EnumerateArray())
         {
