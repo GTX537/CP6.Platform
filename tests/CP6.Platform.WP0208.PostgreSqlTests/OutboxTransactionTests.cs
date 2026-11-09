@@ -774,6 +774,46 @@ public sealed class OutboxTransactionTests(PgFixture fixture)
     });
 
     [Theory]
+    [InlineData("lf", true)]
+    [InlineData("crlf", true)]
+    [InlineData("mixed", false)]
+    [InlineData("tampered", false)]
+    public Task Guard_body_accepts_only_exact_uniform_line_endings(string variant, bool accepted) => Scenario(1, async (owner, api, ids) =>
+    {
+        var before = await Snapshot(owner);
+        await fixture.WithGuardBody(body =>
+        {
+            var lf = body.Replace("\r\n", "\n", StringComparison.Ordinal);
+            return variant switch
+            {
+                "lf" => lf,
+                "crlf" => lf.Replace("\n", "\r\n", StringComparison.Ordinal),
+                "mixed" => lf.Insert(lf.IndexOf('\n'), "\r"),
+                "tampered" => lf.Replace("CP6_OUTBOX_V2_LEGACY_BYPASS", "CP6_OUTBOX_V2_CHANGED", StringComparison.Ordinal),
+                _ => throw new ArgumentOutOfRangeException(nameof(variant))
+            };
+        }, async () =>
+        {
+            if (!accepted)
+            {
+                var error = await Assert.ThrowsAsync<OutboxProtocolExceptionV2>(() => Claim(owner, api));
+                Assert.Equal("CP6_OUTBOX_GUARD_MIGRATION_REQUIRED", error.Code);
+                Assert.Equal(before, await Snapshot(owner));
+                return;
+            }
+
+            var claim = await Claim(owner, api);
+            Assert.Equal(ids[0], claim.Ticket.NativeId);
+            var publisher = new ProbePublisher(_ => Task.FromResult(new OutboxTransportResultV2(OutboxTransportDecisionV2.Confirmed)));
+            var dispatcher = new OutboxDispatcherV2<TestDb>(new Factory(fixture.RuntimeConnection), owner.Trusted, owner, publisher);
+            var result = await dispatcher.DispatchClaimV2(claim, Guid.NewGuid());
+            Assert.Equal("Published", result.State);
+            Assert.Equal(OutboxDecisionV2.Committed, result.CompletionDecision);
+            Assert.Equal(1, publisher.Calls);
+        });
+    });
+
+    [Theory]
     [InlineData("false-guard", "CP6_OUTBOX_GUARD_MIGRATION_REQUIRED")]
     [InlineData("missing-unique-index", "CP6_OUTBOX_INDEX_MIGRATION_REQUIRED")]
     public Task Actual_catalog_guard_predicate_and_unique_index_are_required(string mutation, string code) => Scenario(1, async (owner, api, ids) =>
