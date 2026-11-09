@@ -53,7 +53,7 @@ public sealed class CapabilityTrustTests
     }
 
     [Theory]
-    [InlineData("0.10.0")][InlineData("0.10.1")][InlineData("0.10.2")][InlineData("0.10.3")]
+    [InlineData("0.10.0")][InlineData("0.10.1")][InlineData("0.10.2")][InlineData("0.10.3")][InlineData("0.10.4")]
     public void Formal_shape_and_success_claims_do_not_grant_crypto_trust(string version)
     {
         var f = new FormalFixture(version);
@@ -68,7 +68,7 @@ public sealed class CapabilityTrustTests
     }
 
     [Theory]
-    [InlineData("0.10.2")][InlineData("0.10.3")]
+    [InlineData("0.10.2")][InlineData("0.10.3")][InlineData("0.10.4")]
     public void Host_boundary_receives_current_policy_exact_bytes_and_evaluation_time(string version)
     {
         var f = new FormalFixture(version); var verifier = new BoundaryVerifier(f, true);

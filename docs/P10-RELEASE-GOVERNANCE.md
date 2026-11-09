@@ -1,6 +1,22 @@
 # P10 Release Governance
 
-## WP02-02 0.10.3 registration — NOT_PUBLISHED
+## BUG-844 0.10.4 producer registration — NOT_PUBLISHED
+
+The normal formal workflow and four writer commands select the exact
+seven-package version `0.10.4`. The publication readers and packaged Schema
+accept coherent identities for `0.10.0` through `0.10.4`. The `0.10.4`
+capability matrix shape accepts an identity-only record with empty capability
+and compatibility lists. The `0.10.3` catalog still supports its existing
+`ctx-binding-v1` contract.
+
+The producer registration is local source preparation. Formal publication
+requires the adopted Platform main SHA, a fresh check of all seven feed slots,
+and separate authorization for one protected Windows signing, RFC3161,
+publication and read-back run with independent Linux verification. The
+`0.10.0` read-only recovery workflow retains its historical scope. Main
+adoption uses the actual immutable publication record and feed bytes.
+
+## Historical WP02-02 0.10.3 registration — NOT_PUBLISHED at registration
 
 The wave8 bounded registration prepares exactly `0.10.3` for a future formal
 publication. Readers retain `0.10.0`, `0.10.1`, and `0.10.2`; normal writers
