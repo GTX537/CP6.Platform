@@ -22,9 +22,9 @@ foreach ($entry in $versionEntryPoints.GetEnumerator()) {
     $patterns = @($command.Parameters[$entry.Value].Attributes | Where-Object { $_ -is [Management.Automation.ValidatePatternAttribute] })
     Assert-True ($patterns.Count -eq 1) "$($entry.Key) must pin one explicit version policy."
     foreach ($version in @(
-        '0.10.0', '0.10.1', '0.10.2', '0.10.3',
-        '0.10.2-preview.1', '0.10.2+build.1', '00.10.2', "0.10.2`n")) {
-        $expected = $version -ceq '0.10.2' -or ($reader -and $version -in '0.10.0', '0.10.1')
+        '0.10.0', '0.10.1', '0.10.2', '0.10.3', '0.10.4', '0.10.5',
+        '0.10.4-preview.1', '0.10.4+build.1', '00.10.4', "0.10.4`n")) {
+        $expected = $version -ceq '0.10.4' -or ($reader -and $version -in '0.10.0', '0.10.1', '0.10.2', '0.10.3')
         $accepted = [regex]::IsMatch($version, $patterns[0].RegexPattern)
         Assert-True ($accepted -eq $expected) "$($entry.Key) has the wrong acceptance policy for $version."
     }
@@ -77,7 +77,7 @@ $formalProjects = @(
 foreach ($project in $formalProjects) {
     Assert-True ([regex]::Matches($packFormal, [regex]::Escape($project)).Count -eq 1) "Formal pack list must contain $project exactly once."
 }
-Assert-True ($packFormal.Contains("[ValidatePattern('^0\.10\.2\z')]")) 'Formal package version must be exactly stable 0.10.2.'
+Assert-True ($packFormal.Contains("[ValidatePattern('^0\.10\.4\z')]")) 'Formal package version must be exactly stable 0.10.4.'
 Assert-True ($packFormal -cmatch '(?s)dotnet pack.*--no-build.*--no-restore') 'Formal pack must reuse the one solution build.'
 Assert-True ($packFormal -notmatch '(?i)nuget\s+push') 'Formal packing must not publish packages.'
 Assert-True ([regex]::Matches($newFormal, '(?m)^\s*& dotnet restore ').Count -eq 1) 'Formal orchestration must restore exactly once.'
@@ -357,7 +357,7 @@ if ($GhArguments[0] -ceq 'api') {
     }
     if ($endpoint -like '*/packages/nuget/*/versions*') {
         if ($env:CP6_TEST_EXISTING_PACKAGE -and $endpoint -like "*$($env:CP6_TEST_EXISTING_PACKAGE)*") {
-            '[{"name":"0.10.2"}]'
+            '[{"name":"0.10.4"}]'
         }
         else { '[]' }
         exit 0
@@ -380,7 +380,7 @@ exit 31
         $preflightArguments = @(
             '-Repository', 'GTX537/CP6.Platform',
             '-Environment', 'p10-formal-release',
-            '-PackageVersion', '0.10.2',
+            '-PackageVersion', '0.10.4',
             '-ExpectedCommit', $env:GITHUB_SHA,
             '-CheckoutCommit', $env:GITHUB_SHA,
             '-TrustPolicyPath', $syntheticPolicyPath,
@@ -422,7 +422,7 @@ exit 31
             'CP6.Platform.Deployment', 'CP6.Platform.EntityFramework', 'CP6.Platform.Messaging', 'CP6.Platform.Release'
         )
         foreach ($id in $formalIds) {
-            [IO.File]::WriteAllText((Join-Path $publisherPackageRoot "$id.0.10.2.nupkg"), "synthetic-$id", [Text.UTF8Encoding]::new($false))
+            [IO.File]::WriteAllText((Join-Path $publisherPackageRoot "$id.0.10.4.nupkg"), "synthetic-$id", [Text.UTF8Encoding]::new($false))
         }
         $fakeDotNet = Join-Path $testRoot 'publish-dotnet.ps1'
         $fakeDotNetText = @'
@@ -444,7 +444,7 @@ if ($command -ceq 'validate-nuget-trust') { 'policy'; exit 0 }
 if ($command -ceq 'canonicalize') { [IO.File]::Copy($ToolArguments[1], $ToolArguments[2]); exit 0 }
 if ($command -ceq 'download-package') {
     $id = $ToolArguments[2]
-    $source = Join-Path $env:CP6_TEST_PUBLISH_PACKAGES "$id.0.10.2.nupkg"
+    $source = Join-Path $env:CP6_TEST_PUBLISH_PACKAGES "$id.0.10.4.nupkg"
     [IO.File]::Copy($source, $ToolArguments[4])
     if ($env:CP6_TEST_HASH_MISMATCH -ceq $id) { [IO.File]::AppendAllText($ToolArguments[4], 'changed') }
     exit 0
@@ -454,7 +454,7 @@ if ($command -ceq 'verify-formal-package') {
     if ($env:CP6_TEST_WRONG_IDENTITY -ceq $id) { exit 43 }
     $hash = (Get-FileHash -LiteralPath $ToolArguments[1] -Algorithm SHA256).Hash.ToLowerInvariant()
     [pscustomobject]@{
-        packageId=$id;version='0.10.2';sourceGitSha=$ToolArguments[6]
+        packageId=$id;version='0.10.4';sourceGitSha=$ToolArguments[6]
         packageSha256=$hash;signerFingerprint=$env:CP6_TEST_SIGNER;spkiKeyId=$env:CP6_TEST_SPKI
         timestampPolicyOid='1.2.3.4';timestampUtc='2026-09-02T00:00:00.000Z'
         timestampCertificateChainSha256=@(('d' * 64))
@@ -489,7 +489,7 @@ exit 47
             try {
                 $caseText = & pwsh -NoProfile -File (Join-Path $repositoryRoot 'eng/p10/Publish-P10FormalPackageSet.ps1') `
                     -PackagePath $publisherPackageRoot `
-                    -PackageVersion '0.10.2' `
+                    -PackageVersion '0.10.4' `
                     -SourceGitSha $env:GITHUB_SHA `
                     -RunId 1 `
                     -RunAttempt 1 `
@@ -532,7 +532,7 @@ exit 47
         $verificationPackages = @($successfulReadBack.packages | ForEach-Object {
             [ordered]@{
                 packageId = [string]$_.packageId
-                version = '0.10.2'
+                version = '0.10.4'
                 sourceGitSha = $env:GITHUB_SHA
                 packageSha256 = [string]$_.publishedPackageSha256
                 signerFingerprint = [string]$_.signerFingerprint
@@ -542,7 +542,7 @@ exit 47
             }
         })
         $verificationEvidence = [ordered]@{
-            version = '0.10.2'
+            version = '0.10.4'
             sourceGitSha = $env:GITHUB_SHA
             mode = 'Current'
             packages = $verificationPackages
@@ -558,7 +558,7 @@ exit 47
             -WindowsVerificationPath $windowsEvidence `
             -LinuxVerificationEvidencePath $linuxEvidence `
             -LinuxVerification Success `
-            -PackageVersion '0.10.2' `
+            -PackageVersion '0.10.4' `
             -SourceGitSha $env:GITHUB_SHA `
             -WorkflowFileSha ('e' * 40) `
             -RunId 1 `
@@ -597,7 +597,7 @@ exit 47
                 -WindowsVerificationPath $windowsEvidence `
                 -LinuxVerificationEvidencePath $linuxEvidence `
                 -LinuxVerification Success `
-                -PackageVersion '0.10.2' `
+                -PackageVersion '0.10.4' `
                 -SourceGitSha $env:GITHUB_SHA `
                 -WorkflowFileSha ('e' * 40) `
                 -RunId 1 `
@@ -618,8 +618,8 @@ exit 47
         Invoke-ReadBackInnerIdentityMutationCase 'wrong-source' 'sourceGitSha' $false ('c' * 40)
         Invoke-ReadBackInnerIdentityMutationCase 'missing-source' 'sourceGitSha' $true ''
 
-        # Historical reader compatibility only: never call a publisher for either consumed version.
-        foreach ($historicalVersion in @('0.10.0', '0.10.1')) {
+        # Historical reader compatibility only: never call a publisher for a consumed version.
+        foreach ($historicalVersion in @('0.10.0', '0.10.1', '0.10.2', '0.10.3')) {
             $historicalReadBack = Get-Content -LiteralPath $successfulReadBackPath -Raw | ConvertFrom-Json -Depth 30
             $historicalReadBack.version = $historicalVersion
             foreach ($package in $historicalReadBack.packages) {
@@ -668,7 +668,7 @@ exit 47
             -WindowsVerificationPath $windowsEvidence `
             -LinuxVerificationEvidencePath $platformSpecificLinuxPath `
             -LinuxVerification Success `
-            -PackageVersion '0.10.2' `
+            -PackageVersion '0.10.4' `
             -SourceGitSha $env:GITHUB_SHA `
             -WorkflowFileSha ('e' * 40) `
             -RunId 1 `
@@ -693,7 +693,7 @@ exit 47
             -WindowsVerificationPath $windowsEvidence `
             -LinuxVerificationEvidencePath $mismatchedLeafLinuxPath `
             -LinuxVerification Success `
-            -PackageVersion '0.10.2' `
+            -PackageVersion '0.10.4' `
             -SourceGitSha $env:GITHUB_SHA `
             -WorkflowFileSha ('e' * 40) `
             -RunId 1 `
@@ -718,7 +718,7 @@ exit 47
             -WindowsVerificationPath $windowsEvidence `
             -LinuxVerificationEvidencePath $mismatchedLinuxPath `
             -LinuxVerification Success `
-            -PackageVersion '0.10.2' `
+            -PackageVersion '0.10.4' `
             -SourceGitSha $env:GITHUB_SHA `
             -WorkflowFileSha ('e' * 40) `
             -RunId 1 `
@@ -742,17 +742,17 @@ exit 47
             -SourceGitSha $sourceGitSha `
             -RunId 1 `
             -RunAttempt 1 `
-            -PackageVersion '0.10.2' `
+            -PackageVersion '0.10.4' `
             -OutputPath $syntheticOutput `
             -TrustPolicyPath $syntheticPolicyPath `
             -CertificateDirectory $syntheticCertificates `
             -InjectFailureAfterSigning 2>&1 | Out-String
         Assert-True ($LASTEXITCODE -ne 0) 'Synthetic formal package execution must fail.'
         if ($IsWindows) {
-            Assert-True ($syntheticOutputText -match 'Synthetic injected failure') 'Windows synthetic execution must reach the post-signing failure point.'
+            Assert-True ($syntheticOutputText -match 'Synthetic injected failure') "Windows synthetic execution must reach the post-signing failure point: $syntheticOutputText"
         }
         else {
-            Assert-True ($syntheticOutputText -match 'protected Windows runner') 'Non-Windows synthetic execution must stop at the signing platform boundary.'
+            Assert-True ($syntheticOutputText -match 'protected Windows runner') "Non-Windows synthetic execution must stop at the signing platform boundary: $syntheticOutputText"
         }
         Assert-True (-not (Test-Path -LiteralPath $syntheticOutput)) 'Synthetic failure must remove all candidate formal output.'
         $syntheticPrivateResidue = @(Get-ChildItem -LiteralPath $syntheticRunnerTemp -Recurse -File -ErrorAction SilentlyContinue | Where-Object {
