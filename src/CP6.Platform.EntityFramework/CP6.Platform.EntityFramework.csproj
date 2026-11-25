@@ -4,16 +4,16 @@
     <Description>Entity Framework integration for CP6 distributed services.</Description>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Cp6PlatformEfNet10)' == 'true'">
-    <TargetFramework>net10.0</TargetFramework>
+  <PropertyGroup Condition="'$(Cp6PlatformEfNet10)' == 'false'">
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Cp6PlatformEfNet10)' == 'true' and '$(TargetFramework)' == 'net10.0'">
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <IsPackable>false</IsPackable>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RestoreLockedMode>true</RestoreLockedMode>
     <NuGetLockFilePath>$(MSBuildProjectDirectory)/packages.net10.0.lock.json</NuGetLockFilePath>
   </PropertyGroup>
-  <ItemGroup Condition="'$(Cp6PlatformEfNet10)' == 'true' and '$(TargetFramework)' == 'net10.0'">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
     <PackageVersion Update="Microsoft.EntityFrameworkCore" Version="[10.0.15]" />
     <PackageVersion Update="Microsoft.EntityFrameworkCore.Relational" Version="[10.0.15]" />
   </ItemGroup>
