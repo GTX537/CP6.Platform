@@ -13,7 +13,11 @@ public static class Cp6NuGetCertificateProfile
     {
         try
         {
+#if NET9_0_OR_GREATER
+            using var certificate = X509CertificateLoader.LoadCertificate(der);
+#else
             using var certificate = new X509Certificate2(der);
+#endif
             if (!string.Equals(certificate.SubjectName.Name, FormalSubject, StringComparison.Ordinal) ||
                 !string.Equals(certificate.IssuerName.Name, certificate.SubjectName.Name, StringComparison.Ordinal))
             {
