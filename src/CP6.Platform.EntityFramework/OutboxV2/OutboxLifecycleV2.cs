@@ -36,9 +36,9 @@ public sealed partial class CallerTransactionOutboxV2
         if (root.CurrentEpoch != expectedEpoch) return new(OutboxDecisionV2.RouteEpochChanged, root.CurrentEpoch);
         if (OutboxEncodingV2.Encode(root.Version) != expectedControlVersion || root.CurrentEpoch == long.MaxValue) return new(OutboxDecisionV2.Conflict, root.CurrentEpoch);
         var rows = await (from n in tx.Context.Set<Cp6OutboxMessage>().AsNoTracking()
-            join b in tx.Context.Set<OutboxLeaseBindingV2>().AsNoTracking() on n.Id equals b.NativeId
-            where b.RootId == root.Id && n.Status != Cp6OutboxStatus.Published && n.Status != Cp6OutboxStatus.DeadLettered
-            select n.Id).Take(tx.Registration.Policy.BatchLimit + 1).ToArrayAsync(ct);
+                          join b in tx.Context.Set<OutboxLeaseBindingV2>().AsNoTracking() on n.Id equals b.NativeId
+                          where b.RootId == root.Id && n.Status != Cp6OutboxStatus.Published && n.Status != Cp6OutboxStatus.DeadLettered
+                          select n.Id).Take(tx.Registration.Policy.BatchLimit + 1).ToArrayAsync(ct);
         if (rows.Length > tx.Registration.Policy.BatchLimit) return new(OutboxDecisionV2.RouteUnavailable, root.CurrentEpoch);
         await OutboxPostgreSqlV2.LockNative(tx, rows, ct);
         var handover = await owner.VerifyHandoverAsync(tx, switchId, ct);

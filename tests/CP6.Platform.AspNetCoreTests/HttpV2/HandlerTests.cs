@@ -8,8 +8,18 @@ namespace CP6.Platform.AspNetCoreTests.HttpV2;
 public sealed class HandlerTests
 {
     [Theory]
-    [InlineData(408, 3)] [InlineData(429, 3)] [InlineData(500, 3)] [InlineData(502, 3)] [InlineData(503, 3)] [InlineData(504, 3)]
-    [InlineData(401, 1)] [InlineData(403, 1)] [InlineData(409, 1)] [InlineData(422, 1)] [InlineData(400, 1)] [InlineData(200, 1)]
+    [InlineData(408, 3)]
+    [InlineData(429, 3)]
+    [InlineData(500, 3)]
+    [InlineData(502, 3)]
+    [InlineData(503, 3)]
+    [InlineData(504, 3)]
+    [InlineData(401, 1)]
+    [InlineData(403, 1)]
+    [InlineData(409, 1)]
+    [InlineData(422, 1)]
+    [InlineData(400, 1)]
+    [InlineData(200, 1)]
     public async Task ApprovedStatusSetHasBoundedAttempts_AndNoBusinessRejectionsRetry(int status, int expected)
     {
         var transport = new Scripted((_, _) => Task.FromResult(new HttpResponseMessage((HttpStatusCode)status)));
@@ -17,7 +27,9 @@ public sealed class HandlerTests
         using var response = await client.GetAsync("https://owner.example/read"); Assert.Equal(expected, transport.Attempts);
     }
     [Theory]
-    [InlineData("GET")] [InlineData("HEAD")] [InlineData("OPTIONS")]
+    [InlineData("GET")]
+    [InlineData("HEAD")]
+    [InlineData("OPTIONS")]
     public async Task DisabledReadIsOneAttempt(string method)
     {
         var transport = new Scripted((_, _) => Task.FromResult(new HttpResponseMessage(HttpStatusCode.ServiceUnavailable)));
@@ -26,7 +38,10 @@ public sealed class HandlerTests
         Assert.Equal(1, transport.Attempts);
     }
     [Theory]
-    [InlineData("POST")] [InlineData("PUT")] [InlineData("PATCH")] [InlineData("DELETE")]
+    [InlineData("POST")]
+    [InlineData("PUT")]
+    [InlineData("PATCH")]
+    [InlineData("DELETE")]
     public async Task NoProofWriteAndNonIdempotentAreNeverRetried(string method)
     {
         var transport = new Scripted((_, _) => Task.FromResult(new HttpResponseMessage(HttpStatusCode.ServiceUnavailable)));

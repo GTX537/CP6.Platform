@@ -42,7 +42,7 @@ public sealed class ReleaseSchemaAssetTests
         var path = Path.Combine(Root, "contracts", "release", "v1", "formal-package-publication.v1.schema.json");
         using var document = JsonDocument.Parse(File.ReadAllBytes(path));
         var root = document.RootElement;
-        var expected = new[] { "0.10.0", "0.10.1", "0.10.2", "0.10.3", "0.10.4" };
+        var expected = new[] { "0.10.0", "0.10.1", "0.10.2", "0.10.3", "0.10.4", "0.11.0" };
 
         Assert.Equal(expected, root.GetProperty("properties").GetProperty("version").GetProperty("enum")
             .EnumerateArray().Select(item => item.GetString()).ToArray());

@@ -1,10 +1,10 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0.302 AS build
 WORKDIR /src
 COPY . .
 RUN dotnet restore tests/CP6.Platform.DaprKafkaFixture/CP6.Platform.DaprKafkaFixture.csproj
 RUN dotnet publish tests/CP6.Platform.DaprKafkaFixture/CP6.Platform.DaprKafkaFixture.csproj --configuration Release --no-restore --output /out
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/aspnet:10.0.15
 WORKDIR /app
 COPY --from=build /out .
 COPY --from=build /src/contracts /contracts

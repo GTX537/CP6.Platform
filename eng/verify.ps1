@@ -263,7 +263,7 @@ function Assert-ReproduciblePackages {
 
     foreach ($packageId in $expectedPackageIds) {
         $runtimePackage = $firstPackages | Where-Object { $_.Name -eq "$packageId.$packageVersion.nupkg" }
-        $assemblyPath = "lib/net8.0/$packageId.dll"
+        $assemblyPath = "lib/net10.0/$packageId.dll"
         if (-not ($runtimePackage.Entries | Where-Object { $_.Name -eq $assemblyPath -and $_.Length -gt 0 })) {
             throw "$($runtimePackage.Name) does not contain the expected non-empty $assemblyPath runtime assembly."
         }

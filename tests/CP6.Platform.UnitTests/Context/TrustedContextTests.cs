@@ -118,17 +118,20 @@ public sealed class TrustedContextTests
             "registration-version" => r with { RegistrationVersion = " " },
             _ => r
         };
-        f.Input = f.Input with { Source = invalid switch
+        f.Input = f.Input with
         {
-            "source-expired" => s with { ExpiresAtUtc = ContextFixture.Now },
-            "source-future" => s with { AuthenticatedAtUtc = ContextFixture.Now.AddTicks(1) },
-            "source-scopes" => s with { Scopes = [] },
-            "authentication-reference" => s with { AuthenticationReference = " " },
-            "missing-actor" => s with { Actor = null! },
-            "missing-source-scopes" => s with { Scopes = null! },
-            "empty-scope" => s with { Scopes = ["read", " "] },
-            _ => s
-        } };
+            Source = invalid switch
+            {
+                "source-expired" => s with { ExpiresAtUtc = ContextFixture.Now },
+                "source-future" => s with { AuthenticatedAtUtc = ContextFixture.Now.AddTicks(1) },
+                "source-scopes" => s with { Scopes = [] },
+                "authentication-reference" => s with { AuthenticationReference = " " },
+                "missing-actor" => s with { Actor = null! },
+                "missing-source-scopes" => s with { Scopes = null! },
+                "empty-scope" => s with { Scopes = ["read", " "] },
+                _ => s
+            }
+        };
         if (invalid == "missing-operation") f.Input = f.Input with { Operation = null! };
         var error = await Assert.ThrowsAsync<ContextResolutionExceptionV1>(() => f.Executor.ExecuteAsync(
             ContextEntryKindV1.Http, "verified-native-input", f, _ => throw new InvalidOperationException("must not run")));
@@ -201,8 +204,11 @@ public sealed class TrustedContextTests
     {
         var f = new ContextFixture();
         var actor = f.Input!.Source.Actor with { Kind = ContextActorKindV1.Public };
-        f.Input = f.Input with { Source = f.Input.Source with { Actor = actor, EffectiveActor = actor },
-            Operation = f.Input.Operation with { RequiredScopes = [] } };
+        f.Input = f.Input with
+        {
+            Source = f.Input.Source with { Actor = actor, EffectiveActor = actor },
+            Operation = f.Input.Operation with { RequiredScopes = [] }
+        };
         f.Registration = f.Registration! with { Actor = actor, EffectiveActor = actor, PublicRouteAllowed = allowed };
         Task Run() => f.Run(_ =>
         {
@@ -222,8 +228,11 @@ public sealed class TrustedContextTests
         var required = new[] { "read" };
         var sourceScopes = new[] { "read", "write" };
         var allowed = new[] { "read", "write" };
-        f.Input = f.Input! with { Operation = f.Input!.Operation with { RequiredScopes = required },
-            Source = f.Input.Source with { Scopes = sourceScopes } };
+        f.Input = f.Input! with
+        {
+            Operation = f.Input!.Operation with { RequiredScopes = required },
+            Source = f.Input.Source with { Scopes = sourceScopes }
+        };
         f.Registration = f.Registration! with { AllowedScopes = allowed };
         f.Resolve = async _ =>
         {
@@ -252,8 +261,11 @@ public sealed class TrustedContextTests
         var audience = " " + new string('a', 400) + " ";
         var correlation = " " + new string('c', 400) + " ";
         var actor = f.Input!.Source.Actor with { Kind = ContextActorKindV1.Human, Subject = subject, UserId = null };
-        f.Input = f.Input with { Operation = f.Input.Operation with { Audience = audience, CorrelationId = correlation },
-            Source = f.Input.Source with { Actor = actor, EffectiveActor = actor, Audience = audience, TokenId = " " } };
+        f.Input = f.Input with
+        {
+            Operation = f.Input.Operation with { Audience = audience, CorrelationId = correlation },
+            Source = f.Input.Source with { Actor = actor, EffectiveActor = actor, Audience = audience, TokenId = " " }
+        };
         f.Registration = f.Registration! with { Actor = actor, EffectiveActor = actor, Audience = audience };
         await f.Run(_ =>
         {

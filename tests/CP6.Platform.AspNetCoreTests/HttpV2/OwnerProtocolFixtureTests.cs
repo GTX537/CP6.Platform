@@ -23,7 +23,8 @@ public sealed class OwnerProtocolFixtureTests
         Assert.True(request.Options.TryGetValue(Cp6HttpV2Outcome.RequestOption, out var outcome)); Assert.Equal(expected, outcome.State);
     }
     [Theory]
-    [InlineData(Cp6OriginalResultState.Unknown)] [InlineData(Cp6OriginalResultState.NotFound)]
+    [InlineData(Cp6OriginalResultState.Unknown)]
+    [InlineData(Cp6OriginalResultState.NotFound)]
     public async Task UnavailableOrNotFoundQueryPreservesUnknownWithoutAnotherSend(Cp6OriginalResultState result)
     {
         var binding = Binding(); var authority = new FixtureAuthority { Result = result };
@@ -34,7 +35,8 @@ public sealed class OwnerProtocolFixtureTests
         Assert.DoesNotContain("authorize", authority.Events);
     }
     [Theory]
-    [InlineData(Cp6HttpRetryMode.Disabled, 2)] [InlineData(Cp6HttpRetryMode.OwnerProvenIdempotent, 0)]
+    [InlineData(Cp6HttpRetryMode.Disabled, 2)]
+    [InlineData(Cp6HttpRetryMode.OwnerProvenIdempotent, 0)]
     public async Task VerifiedHistoricalQuerySurvivesDisabledOrZeroRetries(Cp6HttpRetryMode mode, int retries)
     {
         var binding = Binding(); var authority = new FixtureAuthority { Result = Cp6OriginalResultState.Applied, AllowReplay = false };
@@ -73,9 +75,16 @@ public sealed class OwnerProtocolFixtureTests
         Assert.All(authority.Snapshots, snapshot => Assert.Equal("Bearer fixture-credential", Assert.Single(snapshot.Headers["Authorization"])));
     }
     [Theory]
-    [InlineData("body")] [InlineData("key")] [InlineData("tenant")] [InlineData("epoch")]
-    [InlineData("destination")] [InlineData("credential")] [InlineData("method")] [InlineData("version")]
-    [InlineData("digest")] [InlineData("client")]
+    [InlineData("body")]
+    [InlineData("key")]
+    [InlineData("tenant")]
+    [InlineData("epoch")]
+    [InlineData("destination")]
+    [InlineData("credential")]
+    [InlineData("method")]
+    [InlineData("version")]
+    [InlineData("digest")]
+    [InlineData("client")]
     public async Task ConflictingIdentityAndActualTransportInputsAreRejectedBeforeSend(string conflict)
     {
         var binding = Binding(); var authority = new FixtureAuthority(); using var request = Request(binding);
@@ -107,7 +116,8 @@ public sealed class OwnerProtocolFixtureTests
         Assert.Equal(Cp6HttpV2Failure.BindingRejected, error.Outcome.Failure); Assert.Equal(0, transport.Attempts);
     }
     [Theory]
-    [InlineData(true)] [InlineData(false)]
+    [InlineData(true)]
+    [InlineData(false)]
     public async Task StreamOrOversizeCannotBecomeReplayableByBuffering(bool stream)
     {
         var binding = Binding(); var authority = new FixtureAuthority(); using var request = Request(binding);

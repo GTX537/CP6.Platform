@@ -9,6 +9,8 @@ namespace CP6.Platform.AspNetCore;
 
 public static class Cp6ProblemDetailsExtensions
 {
+    private static readonly object TraceIdItemKey = new();
+
     /// <summary>Explicitly registers a v2 safe policy; bind this same instance as endpoint metadata.</summary>
     public static IServiceCollection AddCp6ProblemDetails(this IServiceCollection services, HttpV2.Cp6SafeProblemPolicy policy)
     {
@@ -34,6 +36,20 @@ public static class Cp6ProblemDetailsExtensions
     {
         ArgumentNullException.ThrowIfNull(services);
         services.AddProblemDetails();
+        // .NET 10 的默认写入器会用 Activity.Id 或 TraceIdentifier 覆盖 traceId；
+        // 在宿主定制之后恢复 CP6 写入的 32 位 W3C trace id，只作用于 CP6 自己发出的问题响应。
+        services.PostConfigure<ProblemDetailsOptions>(options =>
+        {
+            var hostCustomization = options.CustomizeProblemDetails;
+            options.CustomizeProblemDetails = context =>
+            {
+                hostCustomization?.Invoke(context);
+                if (context.HttpContext.Items.TryGetValue(TraceIdItemKey, out var value) && value is string traceId)
+                {
+                    context.ProblemDetails.Extensions["traceId"] = traceId;
+                }
+            };
+        });
         return services;
     }
 
@@ -94,13 +110,24 @@ public static class Cp6ProblemDetailsExtensions
         }
 
         var service = httpContext.RequestServices.GetService<IProblemDetailsService>();
-        if (service is not null && await service.TryWriteAsync(new ProblemDetailsContext
+        if (service is not null)
         {
-            HttpContext = httpContext,
-            ProblemDetails = problem
-        }))
-        {
-            return;
+            httpContext.Items[TraceIdItemKey] = traceId;
+            try
+            {
+                if (await service.TryWriteAsync(new ProblemDetailsContext
+                {
+                    HttpContext = httpContext,
+                    ProblemDetails = problem
+                }))
+                {
+                    return;
+                }
+            }
+            finally
+            {
+                httpContext.Items.Remove(TraceIdItemKey);
+            }
         }
 
         await httpContext.Response.WriteAsJsonAsync(

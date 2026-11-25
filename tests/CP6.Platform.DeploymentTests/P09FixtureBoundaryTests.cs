@@ -111,8 +111,8 @@ public sealed class P09FixtureBoundaryTests
     {
         var dockerfile = File.ReadAllText(Path.Combine(FixtureRoot, "Dockerfile"));
 
-        Assert.Contains("FROM mcr.microsoft.com/dotnet/sdk:8.0.424 AS build", dockerfile, StringComparison.Ordinal);
-        Assert.Contains("FROM mcr.microsoft.com/dotnet/aspnet:8.0.30 AS final", dockerfile, StringComparison.Ordinal);
+        Assert.Contains("FROM mcr.microsoft.com/dotnet/sdk:10.0.302 AS build", dockerfile, StringComparison.Ordinal);
+        Assert.Contains("FROM mcr.microsoft.com/dotnet/aspnet:10.0.15 AS final", dockerfile, StringComparison.Ordinal);
         Assert.Contains("dotnet publish", dockerfile, StringComparison.Ordinal);
         Assert.Contains("--no-restore", dockerfile, StringComparison.Ordinal);
         Assert.Contains("COPY [\"tests/CP6.Platform.P09Fixture/CP6.Platform.P09Fixture.csproj\"", dockerfile, StringComparison.Ordinal);

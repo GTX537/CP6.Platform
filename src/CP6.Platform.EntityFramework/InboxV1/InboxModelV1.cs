@@ -25,12 +25,21 @@ public sealed class InboxTransportV1
 
     internal static InboxTransportV1 From(InboxInputV1 input) => new()
     {
-        Id = Guid.NewGuid(), Consumer = input.Delivery.ConsumerName, MessageId = input.Delivery.MessageId,
-        TenantId = input.Delivery.TenantId, Topic = input.Delivery.TopicName, Partition = input.Delivery.PartitionKey,
-        Aggregate = input.Delivery.AggregateId, Version = input.Delivery.AggregateVersion,
-        RawSha256 = input.RawEnvelopeSha256, DataSha256 = input.DataPayloadSha256,
-        EventType = input.Binding.EventType, Source = input.Binding.Source, Region = input.Binding.Region,
-        SchemaIdentity = input.Binding.SchemaIdentity, BundleIdentity = input.Binding.BundleIdentity,
+        Id = Guid.NewGuid(),
+        Consumer = input.Delivery.ConsumerName,
+        MessageId = input.Delivery.MessageId,
+        TenantId = input.Delivery.TenantId,
+        Topic = input.Delivery.TopicName,
+        Partition = input.Delivery.PartitionKey,
+        Aggregate = input.Delivery.AggregateId,
+        Version = input.Delivery.AggregateVersion,
+        RawSha256 = input.RawEnvelopeSha256,
+        DataSha256 = input.DataPayloadSha256,
+        EventType = input.Binding.EventType,
+        Source = input.Binding.Source,
+        Region = input.Binding.Region,
+        SchemaIdentity = input.Binding.SchemaIdentity,
+        BundleIdentity = input.Binding.BundleIdentity,
         OperationBindingSha256 = OperationBinding(input.Binding)
     };
     internal bool Matches(InboxInputV1 input) => TenantId == input.Delivery.TenantId &&

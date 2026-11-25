@@ -83,11 +83,14 @@ public sealed class TrustedContextMiddlewareTests
     public async Task CancellationOrUnexpectedVerifierFailure_PropagatesAndClears(bool cancel)
     {
         using var cts = new CancellationTokenSource();
-        var state = new HostFixture { VerifyAction = () =>
+        var state = new HostFixture
+        {
+            VerifyAction = () =>
         {
             if (!cancel) throw new InvalidOperationException("verifier fixture failure");
             cts.Cancel();
-        } };
+        }
+        };
         await using var provider = Build(state);
         await using var scope = provider.CreateAsyncScope();
         var http = new DefaultHttpContext { RequestAborted = cts.Token };

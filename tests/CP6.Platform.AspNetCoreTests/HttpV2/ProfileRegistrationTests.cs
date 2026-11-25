@@ -18,8 +18,13 @@ public sealed class ProfileRegistrationTests
         Assert.Equal(0, write.RetryAttempts); Assert.Equal(Cp6HttpRetryMode.Disabled, write.RetryMode);
     }
     [Theory]
-    [InlineData(-1, 100, 250)] [InlineData(6, 100, 250)] [InlineData(2, 99, 250)]
-    [InlineData(2, 30001, 120000)] [InlineData(2, 100, 249)] [InlineData(2, 100, 120001)] [InlineData(2, 251, 250)]
+    [InlineData(-1, 100, 250)]
+    [InlineData(6, 100, 250)]
+    [InlineData(2, 99, 250)]
+    [InlineData(2, 30001, 120000)]
+    [InlineData(2, 100, 249)]
+    [InlineData(2, 100, 120001)]
+    [InlineData(2, 251, 250)]
     public void InvalidRangesFail(int retries, int attempt, int total) => Assert.ThrowsAny<ArgumentException>(() =>
         new Cp6HttpV2Profile("test", Cp6HttpOperationKind.IdempotentRead, retryAttempts: retries,
             attemptTimeout: TimeSpan.FromMilliseconds(attempt), totalTimeout: TimeSpan.FromMilliseconds(total)));
@@ -45,7 +50,8 @@ public sealed class ProfileRegistrationTests
         Assert.Equal(Timeout.InfiniteTimeSpan, client.Timeout);
     }
     [Theory]
-    [InlineData(true)] [InlineData(false)]
+    [InlineData(true)]
+    [InlineData(false)]
     public void LegacyAndV2CannotStackInEitherOrder(bool legacyFirst)
     {
         var services = new ServiceCollection(); var builder = services.AddHttpClient("read");
@@ -82,7 +88,8 @@ public sealed class ProfileRegistrationTests
             Cp6HttpOperationKind.IdempotentWrite, Cp6HttpRetryMode.OwnerProvenIdempotent)));
     }
     [Theory]
-    [InlineData(true, false)] [InlineData(false, true)]
+    [InlineData(true, false)]
+    [InlineData(false, true)]
     public void RedirectAndCookieOverridesCannotBypassFrozenTransport(bool redirect, bool cookies)
     {
         var services = new ServiceCollection(); var builder = services.AddHttpClient("read");

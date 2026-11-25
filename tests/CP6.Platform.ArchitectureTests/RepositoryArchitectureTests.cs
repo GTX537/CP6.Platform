@@ -462,7 +462,7 @@ public sealed class RepositoryArchitectureTests
         Assert.Contains("SloEvidencePackageContent", verify, StringComparison.Ordinal);
         Assert.Contains("PackageContentSafety", verify, StringComparison.Ordinal);
         Assert.Contains("CP6.Platform.Testing", verify, StringComparison.Ordinal);
-        Assert.Contains("lib/net8.0/", verify, StringComparison.Ordinal);
+        Assert.Contains("lib/net10.0/", verify, StringComparison.Ordinal);
         Assert.Contains("*.snupkg", pack, StringComparison.Ordinal);
         Assert.Contains("contracts/observability", pack, StringComparison.Ordinal);
         Assert.Contains("CP6.Platform.Testing", pack, StringComparison.Ordinal);

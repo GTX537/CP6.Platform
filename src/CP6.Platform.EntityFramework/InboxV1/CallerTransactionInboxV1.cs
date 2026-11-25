@@ -68,10 +68,17 @@ public sealed class CallerTransactionInboxV1(ITrustedContextAccessorV1 context, 
         {
             result = new InboxOriginalResultV1
             {
-                Id = Guid.NewGuid(), TenantId = tx.TenantId, Owner = binding.Owner, OperationKey = binding.OperationKey,
-                RequestVersion = binding.RequestVersion, InputDomain = binding.InputDomain, InputCodec = binding.InputCodec,
-                InputDigest = binding.InputDigest, NativeReceiptReference = applied.NativeReceiptReference,
-                Result = resultBytes, ResultSha256 = InboxInputV1.Hash(resultBytes)
+                Id = Guid.NewGuid(),
+                TenantId = tx.TenantId,
+                Owner = binding.Owner,
+                OperationKey = binding.OperationKey,
+                RequestVersion = binding.RequestVersion,
+                InputDomain = binding.InputDomain,
+                InputCodec = binding.InputCodec,
+                InputDigest = binding.InputDigest,
+                NativeReceiptReference = applied.NativeReceiptReference,
+                Result = resultBytes,
+                ResultSha256 = InboxInputV1.Hash(resultBytes)
             };
             db.Add(result);
         }
@@ -84,21 +91,37 @@ public sealed class CallerTransactionInboxV1(ITrustedContextAccessorV1 context, 
         {
             if (checkpoint is null)
             {
-                checkpoint = new InboxCheckpointV1 { Id = Guid.NewGuid(), TenantId = tx.TenantId,
-                    Consumer = frozen.ConsumerName, Aggregate = frozen.AggregateId };
+                checkpoint = new InboxCheckpointV1
+                {
+                    Id = Guid.NewGuid(),
+                    TenantId = tx.TenantId,
+                    Consumer = frozen.ConsumerName,
+                    Aggregate = frozen.AggregateId
+                };
                 db.Add(checkpoint);
             }
             checkpoint.Version = frozen.AggregateVersion;
         }
         var outcome = new InboxDeliveryOutcomeV1
         {
-            Id = Guid.NewGuid(), TenantId = tx.TenantId, Owner = binding.Owner, OperationKey = binding.OperationKey,
-            RequestVersion = binding.RequestVersion, InputDomain = binding.InputDomain, InputCodec = binding.InputCodec,
-            InputDigest = binding.InputDigest, Consumer = frozen.ConsumerName, MessageId = frozen.MessageId,
-            RawSha256 = input.RawEnvelopeSha256, DataSha256 = input.DataPayloadSha256, Decision = decision,
-            NativeEvidenceReference = applied.NativeReceiptReference, OriginalResultId = result?.Id,
+            Id = Guid.NewGuid(),
+            TenantId = tx.TenantId,
+            Owner = binding.Owner,
+            OperationKey = binding.OperationKey,
+            RequestVersion = binding.RequestVersion,
+            InputDomain = binding.InputDomain,
+            InputCodec = binding.InputCodec,
+            InputDigest = binding.InputDigest,
+            Consumer = frozen.ConsumerName,
+            MessageId = frozen.MessageId,
+            RawSha256 = input.RawEnvelopeSha256,
+            DataSha256 = input.DataPayloadSha256,
+            Decision = decision,
+            NativeEvidenceReference = applied.NativeReceiptReference,
+            OriginalResultId = result?.Id,
             RegistrationReference = binding.RegistrationReference,
-            SourceReference = authority.Current?.SourceReference ?? "", SourceVersion = authority.Current?.Version
+            SourceReference = authority.Current?.SourceReference ?? "",
+            SourceVersion = authority.Current?.Version
         };
         db.Add(outcome);
         db.ChangeTracker.DetectChanges();

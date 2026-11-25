@@ -31,10 +31,10 @@ jobs:
           $main = (git rev-parse origin/main).Trim()
           if ($actual -ne '${{ inputs.expected_commit }}') { throw "Checked out $actual, not the approved commit." }
           if ($actual -ne $main) { throw "Approved commit is not current origin/main ($main)." }
-      - name: Set up .NET 8
+      - name: Set up pinned .NET SDK
         uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
         with:
-          dotnet-version: 8.0.x
+          global-json-file: global.json
       - name: Verify release source
         shell: pwsh
         run: |

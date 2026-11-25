@@ -23,8 +23,15 @@ public sealed class ContextEntryTests
         }));
         Assert.Null(f.Accessor.Current);
         var currentService = f.Input!.Source.Actor with { Subject = "replacement-service" };
-        f.Input = f.Input with { Source = f.Input.Source with { Actor = currentService, EffectiveActor = currentService,
-            SourceIdentityVersion = "identity-v2" } };
+        f.Input = f.Input with
+        {
+            Source = f.Input.Source with
+            {
+                Actor = currentService,
+                EffectiveActor = currentService,
+                SourceIdentityVersion = "identity-v2"
+            }
+        };
         f.Registration = f.Registration! with { Actor = currentService, EffectiveActor = currentService, RegistrationVersion = "version-2" };
         await Run(_ =>
         {

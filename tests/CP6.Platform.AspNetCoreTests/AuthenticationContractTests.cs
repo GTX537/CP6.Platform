@@ -270,6 +270,36 @@ public sealed class AuthenticationContractTests
     }
 
     [Fact]
+    public async Task ProblemWriter_KeepsW3cTraceIdWhenActivityAndHostCustomizationExist()
+    {
+        var services = new ServiceCollection();
+        services.AddLogging();
+        services.AddProblemDetails(options => options.CustomizeProblemDetails =
+            context => context.ProblemDetails.Extensions["host"] = "customized");
+        services.AddCp6ProblemDetails();
+        await using var provider = services.BuildServiceProvider();
+        var context = new DefaultHttpContext
+        {
+            RequestServices = provider,
+            TraceIdentifier = "correlation-456"
+        };
+        context.Response.Body = new MemoryStream();
+        using var activity = new System.Diagnostics.Activity("cp6-problem-test")
+            .SetIdFormat(System.Diagnostics.ActivityIdFormat.W3C)
+            .Start();
+
+        await context.WriteCp6ProblemAsync(Cp6Problems.AuthenticationRequired);
+        context.Response.Body.Position = 0;
+        using var document = await JsonDocument.ParseAsync(context.Response.Body);
+        var root = document.RootElement;
+
+        Assert.Equal(activity.TraceId.ToString(), root.GetProperty("traceId").GetString());
+        Assert.Equal("correlation-456", root.GetProperty("correlationId").GetString());
+        Assert.Equal("customized", root.GetProperty("host").GetString());
+        Assert.Empty(context.Items);
+    }
+
+    [Fact]
     public async Task AuthenticationChallenge_UsesTheSameSafeProblemProfile()
     {
         var key = CreateKey("key-challenge");

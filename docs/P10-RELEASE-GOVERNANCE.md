@@ -1,5 +1,21 @@
 # P10 Release Governance
 
+## NET10-03 0.11.0 生产者登记 — NOT_PUBLISHED
+
+UPG-NET10-01 的 Platform 包集改为只面向 `net10.0`：七个包均只含 `lib/net10.0`，
+Entity Framework 依赖 EF Core 10.0.15，AspNetCore 依赖 JwtBearer 10.0.15。
+因为去掉了 `net8.0` 目标并升级了框架家族依赖，版本号取次版本 `0.11.0`，不作为
+`0.10.x` 补丁发布。
+
+正常正式工作流和四个写入命令只接受 `0.11.0`。发布记录读取端和随包 Schema 接受
+`0.10.0` 到 `0.10.4` 的历史身份以及 `0.11.0`。`0.11.0` 的能力矩阵与 `0.10.4`
+相同，只接受能力和兼容列表为空的身份记录。`0.10.0` 到 `0.10.4` 的已发布字节、
+恢复工作流和历史证据保持不变；仍需 .NET 8 的历史消费者继续精确引用原版本。
+
+本登记只是本地源码准备。正式发布仍需：已采用的 Platform main 精确 SHA、七个 feed
+槽位的新鲜检查，以及单独授权的一次受保护 Windows 签名、RFC3161、发布与回读运行，
+并由 Linux 独立校验。Main 与 CRM 的采用以实际不可变发布记录和 feed 字节为准。
+
 ## BUG-844 0.10.4 producer registration — NOT_PUBLISHED
 
 The normal formal workflow and four writer commands select the exact

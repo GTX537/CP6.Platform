@@ -121,7 +121,7 @@ jobs:
         shell: pwsh
         run: |
           $publicRoot = 'artifacts/p10-formal/public-windows'
-          $releaseTool = (Resolve-Path tools/CP6.Platform.ReleaseTool/bin/Release/net8.0/CP6.Platform.ReleaseTool.dll).Path
+          $releaseTool = (Resolve-Path tools/CP6.Platform.ReleaseTool/bin/Release/net10.0/CP6.Platform.ReleaseTool.dll).Path
           ./eng/p10/Test-P10FormalPackageSet.ps1 `
             -PackagePath "$publicRoot/feed-readback-packages" `
             -ExpectedVersion $env:P10_PACKAGE_VERSION `

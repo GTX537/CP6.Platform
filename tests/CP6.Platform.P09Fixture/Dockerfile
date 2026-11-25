@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:8.0.424 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0.302 AS build
 WORKDIR /src
 
 COPY ["Directory.Build.props", "."]
@@ -17,7 +17,7 @@ RUN dotnet publish "tests/CP6.Platform.P09Fixture/CP6.Platform.P09Fixture.csproj
     --output /app/publish \
     --no-restore
 
-FROM mcr.microsoft.com/dotnet/aspnet:8.0.30 AS final
+FROM mcr.microsoft.com/dotnet/aspnet:10.0.15 AS final
 WORKDIR /app
 COPY --from=build /app/publish .
 USER app

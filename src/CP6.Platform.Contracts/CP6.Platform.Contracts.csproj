@@ -4,11 +4,6 @@
     <Description>Stable cross-service contracts for CP6 distributed services.</Description>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
-  <!-- Clear the inherited single target before the SDK 10 outer build. -->
-  <PropertyGroup Condition="$([MSBuild]::VersionGreaterThanOrEquals('$(NETCoreSdkVersion)', '10.0'))">
-    <TargetFramework />
-    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
-  </PropertyGroup>
   <ItemGroup>
     <None Include="../../contracts/observability/**/*" Pack="true" PackagePath="contracts/observability/%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>

@@ -87,7 +87,9 @@ public sealed class CapabilityValidationTests
     }
 
     [Theory]
-    [InlineData("nuspec")][InlineData("schema")][InlineData("duplicate")]
+    [InlineData("nuspec")]
+    [InlineData("schema")]
+    [InlineData("duplicate")]
     public void Updated_manifest_hash_cannot_hide_wrong_archive_contents(string mutation)
     {
         var f = new Fixture(); var id = "CP6.Platform.Contracts";
@@ -124,12 +126,23 @@ public sealed class CapabilityValidationTests
     }
 
     [Theory]
-    [InlineData("sdk")][InlineData("runtimeFramework")][InlineData("os")][InlineData("architecture")]
-    [InlineData("consumerApp")][InlineData("host")][InlineData("consumerSourceGitSha")]
-    [InlineData("sourceSchemaSha256")][InlineData("packagedSchemaSha256")]
-    [InlineData("semanticValidatorIdentity")][InlineData("databaseProvider")]
-    [InlineData("databaseDriver")][InlineData("migrationSet")][InlineData("configurationSha256")]
-    [InlineData("messageType")][InlineData("registrationPointRef")][InlineData("route")]
+    [InlineData("sdk")]
+    [InlineData("runtimeFramework")]
+    [InlineData("os")]
+    [InlineData("architecture")]
+    [InlineData("consumerApp")]
+    [InlineData("host")]
+    [InlineData("consumerSourceGitSha")]
+    [InlineData("sourceSchemaSha256")]
+    [InlineData("packagedSchemaSha256")]
+    [InlineData("semanticValidatorIdentity")]
+    [InlineData("databaseProvider")]
+    [InlineData("databaseDriver")]
+    [InlineData("migrationSet")]
+    [InlineData("configurationSha256")]
+    [InlineData("messageType")]
+    [InlineData("registrationPointRef")]
+    [InlineData("route")]
     public void Unmeasured_exact_combination_is_unknown(string property)
     {
         var f = new Fixture();
@@ -175,9 +188,12 @@ public sealed class CapabilityValidationTests
     }
 
     [Theory]
-    [InlineData("version", "latest")][InlineData("version", "0.10.2")]
-    [InlineData("sourceGitSha", "main")][InlineData("sourceGitSha", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")]
-    [InlineData("repository", "https://github.com/other/repo")][InlineData("lane", "Unknown")]
+    [InlineData("version", "latest")]
+    [InlineData("version", "0.10.2")]
+    [InlineData("sourceGitSha", "main")]
+    [InlineData("sourceGitSha", "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")]
+    [InlineData("repository", "https://github.com/other/repo")]
+    [InlineData("lane", "Unknown")]
     public void Mutable_or_wrong_identity_is_rejected(string field, string value)
     {
         var f = new Fixture(); f.Root[field] = value;
@@ -210,8 +226,10 @@ public sealed class CapabilityValidationTests
     }
 
     [Theory]
-    [InlineData("{\"x\":1,\"x\":2}")][InlineData("{\"x\":1,\"\\u0078\":2}")]
-    [InlineData("{\"x\":NaN}")][InlineData("{} ")]
+    [InlineData("{\"x\":1,\"x\":2}")]
+    [InlineData("{\"x\":1,\"\\u0078\":2}")]
+    [InlineData("{\"x\":NaN}")]
+    [InlineData("{} ")]
     public void Duplicate_malformed_and_noncanonical_bytes_are_rejected(string input) =>
         Assert.Throws<Cp6ReleaseContractException>(() => Cp6CapabilityValidator.ValidateShape(Encoding.UTF8.GetBytes(input)));
 
@@ -274,28 +292,58 @@ public sealed class CapabilityValidationTests
                     using var schema = zip.CreateEntry(packagedSchemaPath).Open(); schema.Write(evidence);
                 }
                 var bytes = stream.ToArray(); Packages[id] = bytes;
-                packages.Add(new JsonObject { ["packageId"] = id, ["version"] = version, ["sourceGitSha"] = Source,
-                    ["sha256"] = Cp6DeterministicJson.Sha256Hex(bytes), ["feedIdentity"] = formal ? $"https://nuget.pkg.github.com/GTX537/index.json#{id}/{version}" : $"task-local:wp02-27#{id}/{version}" });
+                packages.Add(new JsonObject
+                {
+                    ["packageId"] = id,
+                    ["version"] = version,
+                    ["sourceGitSha"] = Source,
+                    ["sha256"] = Cp6DeterministicJson.Sha256Hex(bytes),
+                    ["feedIdentity"] = formal ? $"https://nuget.pkg.github.com/GTX537/index.json#{id}/{version}" : $"task-local:wp02-27#{id}/{version}"
+                });
             }
-            Root = new JsonObject { ["$schemaId"] = Cp6CapabilityValidator.SchemaId,
-                ["repository"] = "https://github.com/GTX537/CP6.Platform", ["sourceGitSha"] = Source,
-                ["lane"] = formal ? "FormalPublished" : "TaskLocal", ["version"] = version, ["packages"] = packages,
+            Root = new JsonObject
+            {
+                ["$schemaId"] = Cp6CapabilityValidator.SchemaId,
+                ["repository"] = "https://github.com/GTX537/CP6.Platform",
+                ["sourceGitSha"] = Source,
+                ["lane"] = formal ? "FormalPublished" : "TaskLocal",
+                ["version"] = version,
+                ["packages"] = packages,
                 ["evidenceSha256"] = new JsonArray(EvidenceHash),
                 ["capabilities"] = new JsonArray(
                     new JsonObject { ["id"] = "S01-09", ["version"] = "1.0.0", ["profiles"] = new JsonArray("crm-inq-r3-v15", "erp-credit-current-v1", "erp-credit-frozen-r8"), ["scope"] = new JsonArray("native-contract-routing", "original-json-bytes") },
                     new JsonObject { ["id"] = "ctx-binding-v1", ["version"] = "1.0.0", ["profiles"] = new JsonArray("ctx-v1"), ["scope"] = new JsonArray("Background", "Http", "Message") }),
-                ["compatibility"] = new JsonArray(new JsonObject {
-                    ["route"] = "unit-test-route", ["consumerApp"] = "unit-test-consumer", ["host"] = "unit-test-host",
-                    ["consumerSourceGitSha"] = new string('b', 40), ["producerPackageId"] = "CP6.Platform.Contracts",
-                    ["sdk"] = "8.0.424", ["runtimeFramework"] = "Microsoft.NETCore.App/8.0.28", ["os"] = "Windows/10.0.26200", ["architecture"] = "x64",
-                    ["sourceSchemaSha256"] = EvidenceHash, ["packagedSchemaSha256"] = EvidenceHash, ["packagedSchemaPath"] = packagedSchemaPath,
+                ["compatibility"] = new JsonArray(new JsonObject
+                {
+                    ["route"] = "unit-test-route",
+                    ["consumerApp"] = "unit-test-consumer",
+                    ["host"] = "unit-test-host",
+                    ["consumerSourceGitSha"] = new string('b', 40),
+                    ["producerPackageId"] = "CP6.Platform.Contracts",
+                    ["sdk"] = "8.0.424",
+                    ["runtimeFramework"] = "Microsoft.NETCore.App/8.0.28",
+                    ["os"] = "Windows/10.0.26200",
+                    ["architecture"] = "x64",
+                    ["sourceSchemaSha256"] = EvidenceHash,
+                    ["packagedSchemaSha256"] = EvidenceHash,
+                    ["packagedSchemaPath"] = packagedSchemaPath,
                     ["semanticValidatorIdentity"] = "unit-test-validator/1.0.0/sha256:" + EvidenceHash,
-                    ["messageType"] = "native-test", ["schemaVersionsAccepted"] = new JsonArray("1.0.0"),
-                    ["databaseProvider"] = "PostgreSQL", ["databaseDriver"] = "unit-test-driver/1.0.0", ["migrationSet"] = "sha256:" + EvidenceHash,
-                    ["requiredCapabilityId"] = "S01-09", ["requiredCapabilityVersion"] = "1.0.0", ["profile"] = "crm-inq-r3-v15",
-                    ["apiSignatureRef"] = "unit-test-api/1", ["registrationPointRef"] = "unit-test-registration/1",
-                    ["configurationSha256"] = EvidenceHash, ["compatibilityDecision"] = "Allowed",
-                    ["evidenceSha256"] = new JsonArray(EvidenceHash), ["disableReason"] = "" }) };
+                    ["messageType"] = "native-test",
+                    ["schemaVersionsAccepted"] = new JsonArray("1.0.0"),
+                    ["databaseProvider"] = "PostgreSQL",
+                    ["databaseDriver"] = "unit-test-driver/1.0.0",
+                    ["migrationSet"] = "sha256:" + EvidenceHash,
+                    ["requiredCapabilityId"] = "S01-09",
+                    ["requiredCapabilityVersion"] = "1.0.0",
+                    ["profile"] = "crm-inq-r3-v15",
+                    ["apiSignatureRef"] = "unit-test-api/1",
+                    ["registrationPointRef"] = "unit-test-registration/1",
+                    ["configurationSha256"] = EvidenceHash,
+                    ["compatibilityDecision"] = "Allowed",
+                    ["evidenceSha256"] = new JsonArray(EvidenceHash),
+                    ["disableReason"] = ""
+                })
+            };
             if (formal) { Root["capabilities"] = new JsonArray(); Root["compatibility"] = new JsonArray(); }
         }
         internal Cp6CapabilityEvaluation Evaluate(Cp6CapabilityApproval? approval = null, byte[]? request = null) =>

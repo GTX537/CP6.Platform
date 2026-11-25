@@ -185,7 +185,7 @@ public sealed class FormalPackageVerifierTests
             new DateTimeOffset(2026, 9, 2, 0, 0, 0, TimeSpan.Zero),
             new DateTimeOffset(2028, 9, 1, 0, 5, 0, TimeSpan.Zero));
         var der = certificate.Export(X509ContentType.Cert);
-        using var publicCertificate = new X509Certificate2(der);
+        using var publicCertificate = X509CertificateLoader.LoadCertificate(der);
         using var publicKey = publicCertificate.GetRSAPublicKey()!;
         var testCertificate = new TestCertificate(
             der,
@@ -202,7 +202,7 @@ public sealed class FormalPackageVerifierTests
     {
         var tool = Path.Combine(
             ReleaseTestData.RepositoryRoot,
-            "tools", "CP6.Platform.ReleaseTool", "bin", "Release", "net8.0", "CP6.Platform.ReleaseTool.dll");
+            "tools", "CP6.Platform.ReleaseTool", "bin", "Release", "net10.0", "CP6.Platform.ReleaseTool.dll");
         return Run("dotnet", [tool, .. arguments]);
     }
 
