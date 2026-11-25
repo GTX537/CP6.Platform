@@ -41,12 +41,12 @@ public sealed partial class CallerTransactionOutboxV2(ITrustedContextAccessorV1 
         if (!Available(tx, root)) return new(OutboxDecisionV2.RouteUnavailable);
         var now = await Now(tx, ct);
         var rows = await (from n in tx.Context.Set<Cp6OutboxMessage>().AsNoTracking()
-            join b in tx.Context.Set<OutboxLeaseBindingV2>().AsNoTracking() on n.Id equals b.NativeId
-            where b.RootId == root!.Id && b.AssignedEpoch == root.CurrentEpoch && n.TenantId == tx.TenantId &&
-                ((n.Status == Cp6OutboxStatus.Pending && n.AvailableAtUtc <= now) ||
-                 (n.Status == Cp6OutboxStatus.Dispatching && n.LeaseExpiresAtUtc <= now))
-            orderby n.AvailableAtUtc, n.CreatedAtUtc, n.Id
-            select n.Id).Take(batchSize).ToArrayAsync(ct);
+                          join b in tx.Context.Set<OutboxLeaseBindingV2>().AsNoTracking() on n.Id equals b.NativeId
+                          where b.RootId == root!.Id && b.AssignedEpoch == root.CurrentEpoch && n.TenantId == tx.TenantId &&
+                              ((n.Status == Cp6OutboxStatus.Pending && n.AvailableAtUtc <= now) ||
+                               (n.Status == Cp6OutboxStatus.Dispatching && n.LeaseExpiresAtUtc <= now))
+                          orderby n.AvailableAtUtc, n.CreatedAtUtc, n.Id
+                          select n.Id).Take(batchSize).ToArrayAsync(ct);
         await OutboxPostgreSqlV2.LockNative(tx, rows, ct);
         var tickets = new List<ClaimTicketV2>();
         // Complete all validation before the first state write; a rejection has a genuinely empty write set.
@@ -79,8 +79,15 @@ public sealed partial class CallerTransactionOutboxV2(ITrustedContextAccessorV1 
             Audit(tx, id, "ClaimPrepared", receipt.ToString("D"), at);
         }
         tx.Context.Add(new OutboxClaimReceiptV2 { RootId = root!.Id, RequestId = claimRequestId, Input = input, Tickets = OutboxEncodingV2.Json(tickets), WriterTransaction = tx.TransactionId });
-        foreach (var ticket in tickets) tx.Context.Add(new OutboxClaimTicketReceiptV2 { RootId = root.Id, RequestId = claimRequestId, NativeId = ticket.NativeId,
-            ReceiptReference = ticket.ClaimReceiptRef, Ticket = OutboxEncodingV2.Json(ticket), WriterTransaction = tx.TransactionId });
+        foreach (var ticket in tickets) tx.Context.Add(new OutboxClaimTicketReceiptV2
+        {
+            RootId = root.Id,
+            RequestId = claimRequestId,
+            NativeId = ticket.NativeId,
+            ReceiptReference = ticket.ClaimReceiptRef,
+            Ticket = OutboxEncodingV2.Json(ticket),
+            WriterTransaction = tx.TransactionId
+        });
         await tx.Context.SaveChangesAsync(ct);
         foreach (var id in rows) await tx.Seal(id, ct);
         return new(OutboxDecisionV2.PendingCommit, new(claimRequestId, input, tickets));
@@ -216,8 +223,15 @@ public sealed partial class CallerTransactionOutboxV2(ITrustedContextAccessorV1 
         if (original is not null) return original.MutationId == mutationId && original.OriginalTicket == OutboxEncodingV2.Json(committed.Ticket)
             ? OutboxDecisionV2.OutcomeUnknown : OutboxDecisionV2.Conflict;
         var gate = await ValidateSendV2(tx, committed, ct); if (gate != OutboxDecisionV2.Committed) return gate;
-        tx.Context.Add(new OutboxSendAttemptV2 { RootId = tx.Registration.Root.Id, ClaimId = committed.Ticket.ClaimId, MutationId = mutationId,
-            OriginalTicket = OutboxEncodingV2.Json(committed.Ticket), PolicyVersion = tx.Registration.Policy.Version, WriterTransaction = tx.TransactionId });
+        tx.Context.Add(new OutboxSendAttemptV2
+        {
+            RootId = tx.Registration.Root.Id,
+            ClaimId = committed.Ticket.ClaimId,
+            MutationId = mutationId,
+            OriginalTicket = OutboxEncodingV2.Json(committed.Ticket),
+            PolicyVersion = tx.Registration.Policy.Version,
+            WriterTransaction = tx.TransactionId
+        });
         await tx.Context.SaveChangesAsync(ct); return OutboxDecisionV2.PendingCommit;
     }
 }

@@ -23,10 +23,10 @@ jobs:
           ref: ${{ github.sha }}
           persist-credentials: false
           fetch-depth: 0
-      - name: Set up .NET 8
+      - name: Set up pinned .NET SDK
         uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9
         with:
-          dotnet-version: 8.0.x
+          global-json-file: global.json
       - name: Assert exact main source
         shell: pwsh
         run: |

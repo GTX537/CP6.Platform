@@ -46,9 +46,13 @@ public static class Cp6SafeProblemWriter
         var definition = policy.Definition;
         var payload = new Dictionary<string, object?>
         {
-            ["type"] = definition.Type, ["title"] = definition.Title, ["status"] = definition.Status,
-            ["code"] = definition.Code, ["messageKey"] = definition.MessageKey,
-            ["traceId"] = trace, ["correlationId"] = correlation
+            ["type"] = definition.Type,
+            ["title"] = definition.Title,
+            ["status"] = definition.Status,
+            ["code"] = definition.Code,
+            ["messageKey"] = definition.MessageKey,
+            ["traceId"] = trace,
+            ["correlationId"] = correlation
         };
         if (errorCodes is not null) payload["errors"] = errors;
         var bytes = fallback ? [] : JsonSerializer.SerializeToUtf8Bytes(payload);

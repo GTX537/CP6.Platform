@@ -1,8 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <!-- ReleaseTool 仍以 net8.0 为目标。 -->
-    <TargetFramework />
-    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <AssemblyName>CP6.Platform.Release</AssemblyName>
     <RootNamespace>CP6.Platform.Release</RootNamespace>
     <Description>Deterministic release, evidence, trust, and candidate contracts for CP6.</Description>
@@ -12,7 +9,8 @@
     <VersionSuffix>test.local.1</VersionSuffix>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <NoWarn>$(NoWarn);1591</NoWarn>
+    <!-- SDK 10 的 NuGet 对 0.10.3 起已发布的契约夹具路径新增 NU5123 告警；保持包内路径不变。 -->
+    <NoWarn>$(NoWarn);1591;NU5123</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <None Include="../../contracts/release/capabilities/v1/**/*"

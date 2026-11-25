@@ -174,7 +174,7 @@ internal static class FormalCertificateTestData
 
         using var generated = request.CreateSelfSigned(NotBefore, NotAfter);
         var der = generated.Export(X509ContentType.Cert);
-        using var certificate = new X509Certificate2(der);
+        using var certificate = X509CertificateLoader.LoadCertificate(der);
         using var publicKey = certificate.GetRSAPublicKey()!;
         var fingerprint = Convert.ToHexString(SHA256.HashData(der)).ToLowerInvariant();
         var spkiKeyId = "sha256:" + Convert.ToHexString(SHA256.HashData(publicKey.ExportSubjectPublicKeyInfo())).ToLowerInvariant();

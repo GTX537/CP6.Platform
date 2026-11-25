@@ -35,7 +35,7 @@ public static class Cp6CapabilityValidator
             if (!Regex.IsMatch(version, @"\A0\.10\.3-wp02\.27\.g" + source + @"\.[1-9][0-9]*\z", RegexOptions.CultureInvariant))
                 throw Error("package-version", "Task-local packages require an exact unique WP02-27 prerelease identity.");
         }
-        else if (lane != "FormalPublished" || version is not ("0.10.0" or "0.10.1" or "0.10.2" or "0.10.3" or "0.10.4"))
+        else if (lane != "FormalPublished" || version is not ("0.10.0" or "0.10.1" or "0.10.2" or "0.10.3" or "0.10.4" or "0.11.0"))
             throw Error("package-version", "Unknown publication lane or unapproved formal version.");
         var packages = Array(root, "packages");
         if (packages.GetArrayLength() != PackageIds.Length) throw Error("package-set", "The exact seven packages are required.");
@@ -174,13 +174,18 @@ public static class Cp6CapabilityValidator
             }
             trusted = signatureVerifier?.VerifyCurrent(publicationSnapshot, snapshots, trustPolicy, evaluationUtc) == true;
         }
-        var consumerLock = new JsonObject {
+        var consumerLock = new JsonObject
+        {
             ["$schemaId"] = "https://schemas.cp6.dev/release/capabilities/v1/consumer-lock",
-            ["matrixSha256"] = hash, ["sourceGitSha"] = approval.SourceGitSha, ["repository"] = Repository,
-            ["requestedRowSha256"] = requestedHash, ["compatibilityDecision"] = decision.ToString(),
+            ["matrixSha256"] = hash,
+            ["sourceGitSha"] = approval.SourceGitSha,
+            ["repository"] = Repository,
+            ["requestedRowSha256"] = requestedHash,
+            ["compatibilityDecision"] = decision.ToString(),
             ["packages"] = JsonNode.Parse(root.GetProperty("packages").GetRawText()),
             ["evidenceSha256"] = JsonNode.Parse(root.GetProperty("evidenceSha256").GetRawText()),
-            ["publicationSha256"] = publicationHash, ["trustPolicySha256"] = formal ? approval.CurrentTrustPolicySha256 : null
+            ["publicationSha256"] = publicationHash,
+            ["trustPolicySha256"] = formal ? approval.CurrentTrustPolicySha256 : null
         };
         return new(Cp6CapabilityState.Verified, Cp6CapabilityState.Verified, Cp6CapabilityState.Verified,
             trusted ? Cp6CapabilityState.Verified : Cp6CapabilityState.Unknown, decision,

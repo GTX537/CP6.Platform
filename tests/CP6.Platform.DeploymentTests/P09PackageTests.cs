@@ -38,8 +38,8 @@ public sealed class P09PackageTests
         var names = package.Entries.Keys.Order(StringComparer.Ordinal).ToArray();
         var expectedExact = new[]
         {
-            "lib/net8.0/CP6.Platform.Deployment.dll",
-            "lib/net8.0/CP6.Platform.Deployment.xml",
+            "lib/net10.0/CP6.Platform.Deployment.dll",
+            "lib/net10.0/CP6.Platform.Deployment.xml",
             "README.md",
             "[Content_Types].xml",
             "CP6.Platform.Deployment.nuspec"

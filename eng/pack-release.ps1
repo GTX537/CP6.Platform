@@ -63,7 +63,7 @@ foreach ($package in $packages) {
     $packageId = $packageIds | Where-Object { $package.Name.StartsWith("$_.", [StringComparison]::Ordinal) }
     $archive = [IO.Compression.ZipFile]::OpenRead($package.FullName)
     try {
-        $assemblyPath = "lib/net8.0/$packageId.dll"
+        $assemblyPath = "lib/net10.0/$packageId.dll"
         if (-not ($archive.Entries | Where-Object { $_.FullName -eq $assemblyPath -and $_.Length -gt 0 })) {
             throw "$($package.Name) does not contain the expected non-empty $assemblyPath runtime assembly."
         }

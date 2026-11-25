@@ -25,8 +25,11 @@ public sealed class Cp6HttpV2Handler : DelegatingHandler
         var builder = new ResiliencePipelineBuilder<HttpResponseMessage> { TimeProvider = clock };
         circuit = builder.AddCircuitBreaker(new HttpCircuitBreakerStrategyOptions
         {
-            Name = "cp6-v2-circuit", FailureRatio = 0.5, SamplingDuration = profile.CircuitSamplingDuration,
-            MinimumThroughput = profile.CircuitMinimumThroughput, BreakDuration = profile.CircuitBreakDuration,
+            Name = "cp6-v2-circuit",
+            FailureRatio = 0.5,
+            SamplingDuration = profile.CircuitSamplingDuration,
+            MinimumThroughput = profile.CircuitMinimumThroughput,
+            BreakDuration = profile.CircuitBreakDuration,
             ShouldHandle = args => ValueTask.FromResult(args.Outcome.Exception is HttpRequestException ||
                 args.Outcome.Result is { } response && IsTransient(response.StatusCode))
         }).Build();

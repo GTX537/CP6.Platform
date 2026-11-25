@@ -142,13 +142,17 @@ public sealed class LoopbackTests
         var san = new SubjectAlternativeNameBuilder(); san.AddIpAddress(IPAddress.Loopback); san.AddDnsName("localhost");
         certificateRequest.CertificateExtensions.Add(san.Build());
         using var generated = certificateRequest.CreateSelfSigned(DateTimeOffset.UtcNow.AddMinutes(-5), DateTimeOffset.UtcNow.AddHours(1));
-        using var certificate = new X509Certificate2(generated.Export(X509ContentType.Pfx));
+        using var certificate = X509CertificateLoader.LoadPkcs12(generated.Export(X509ContentType.Pfx), password: null);
         var fingerprint = certificate.GetCertHashString(HashAlgorithmName.SHA256);
         SocketsHttpHandler Transport() => new()
         {
-            AllowAutoRedirect = false, UseCookies = false,
-            SslOptions = new() { RemoteCertificateValidationCallback = (_, presented, _, _) =>
-                presented is not null && presented.GetCertHashString(HashAlgorithmName.SHA256) == fingerprint }
+            AllowAutoRedirect = false,
+            UseCookies = false,
+            SslOptions = new()
+            {
+                RemoteCertificateValidationCallback = (_, presented, _, _) =>
+                presented is not null && presented.GetCertHashString(HashAlgorithmName.SHA256) == fingerprint
+            }
         };
         var wire = new ConcurrentQueue<(string Method, byte[] Body, string Key)>(); var posts = 0;
         await using var server = await Server.Start(async context =>

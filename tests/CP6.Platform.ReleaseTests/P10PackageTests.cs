@@ -26,6 +26,10 @@ public sealed class P10PackageTests
                 ("0.10.1", "0.10.2", "0.10.2", false),
                 ("0.10.3", "0.10.3", "0.10.3", true),
                 ("0.10.4", "0.10.4", "0.10.4", true),
+                ("0.11.0", "0.11.0", "0.11.0", true),
+                ("0.11.1", "0.11.1", "0.11.1", false),
+                ("0.11.0", "0.10.4", "0.11.0", false),
+                ("0.11.0", "0.11.0", "0.10.4", false),
                 ("0.10.5", "0.10.5", "0.10.5", false),
                 ("0.10.4", "0.10.3", "0.10.4", false),
                 ("0.10.4", "0.10.4", "0.10.3", false),
@@ -101,10 +105,10 @@ public sealed class P10PackageTests
     {
         var entries = P10PackageTestHarness.PackReleasePackage("0.10.0-test.local.1");
 
-        Assert.Contains("lib/net8.0/CP6.Platform.Release.dll", entries);
+        Assert.Contains("lib/net10.0/CP6.Platform.Release.dll", entries);
         Assert.All(entries, name => Assert.True(
-            name is "lib/net8.0/CP6.Platform.Release.dll"
-                or "lib/net8.0/CP6.Platform.Release.xml"
+            name is "lib/net10.0/CP6.Platform.Release.dll"
+                or "lib/net10.0/CP6.Platform.Release.xml"
                 or "README.md"
                 or "[Content_Types].xml"
                 or "CP6.Platform.Release.nuspec" ||

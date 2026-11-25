@@ -10,9 +10,9 @@ public sealed class AuthorityFaultRegressionTests
     public static IEnumerable<object[]> Faults()
     {
         foreach (var stage in new[] { "verify", "replay" })
-        foreach (var asynchronous in new[] { false, true })
-        foreach (var fault in new[] { "transport", "io", "timeout", "other" })
-            yield return [stage, asynchronous, fault];
+            foreach (var asynchronous in new[] { false, true })
+                foreach (var fault in new[] { "transport", "io", "timeout", "other" })
+                    yield return [stage, asynchronous, fault];
     }
 
     [Theory]
@@ -43,9 +43,12 @@ public sealed class AuthorityFaultRegressionTests
     }
 
     [Theory]
-    [InlineData("verify", "caller")] [InlineData("replay", "caller")]
-    [InlineData("verify", "parent-caller")] [InlineData("replay", "parent-caller")]
-    [InlineData("verify", "total")] [InlineData("replay", "total")]
+    [InlineData("verify", "caller")]
+    [InlineData("replay", "caller")]
+    [InlineData("verify", "parent-caller")]
+    [InlineData("replay", "parent-caller")]
+    [InlineData("verify", "total")]
+    [InlineData("replay", "total")]
     public async Task CancellationAndDeadlineTakePrecedenceOverConcurrentAuthorityFault(string stage, string signal)
     {
         var clock = new TestClock();
@@ -81,7 +84,8 @@ public sealed class AuthorityFaultRegressionTests
     }
 
     [Theory]
-    [InlineData("verify")] [InlineData("replay")]
+    [InlineData("verify")]
+    [InlineData("replay")]
     public async Task UnrelatedAuthorityCancellationRemainsUnknownSource(string stage)
     {
         var binding = OwnerProtocolFixtureTests.Binding();

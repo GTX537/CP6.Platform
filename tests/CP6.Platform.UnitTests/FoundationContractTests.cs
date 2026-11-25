@@ -105,12 +105,12 @@ public sealed class FoundationContractTests
     }
 
     [Fact]
-    public void BuildBaseline_FreezesDotNetEightAndPackageIntegritySettings()
+    public void BuildBaseline_FreezesDotNetTenAndPackageIntegritySettings()
     {
         var props = XDocument.Load(Path.Combine(RepositoryRoot, "Directory.Build.props"));
         string Property(string name) => props.Descendants(name).Single().Value;
 
-        Assert.Equal("net8.0", Property("TargetFramework"));
+        Assert.Equal("net10.0", Property("TargetFramework"));
         Assert.Equal("12.0", Property("LangVersion"));
         Assert.Equal("enable", Property("Nullable"));
         Assert.Equal("true", Property("TreatWarningsAsErrors"));
@@ -123,8 +123,8 @@ public sealed class FoundationContractTests
 
         using var globalJson = JsonDocument.Parse(File.ReadAllText(Path.Combine(RepositoryRoot, "global.json")));
         var sdk = globalJson.RootElement.GetProperty("sdk");
-        Assert.StartsWith("8.0.", sdk.GetProperty("version").GetString(), StringComparison.Ordinal);
-        Assert.Equal("latestFeature", sdk.GetProperty("rollForward").GetString());
+        Assert.StartsWith("10.0.", sdk.GetProperty("version").GetString(), StringComparison.Ordinal);
+        Assert.Equal("disable", sdk.GetProperty("rollForward").GetString());
     }
 
     [Fact]

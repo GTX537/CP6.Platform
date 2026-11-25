@@ -4,11 +4,6 @@
     <Description>Shared platform abstractions for CP6 distributed services.</Description>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
-  <!-- Clear the inherited single target before the SDK 10 outer build. -->
-  <PropertyGroup Condition="$([MSBuild]::VersionGreaterThanOrEquals('$(NETCoreSdkVersion)', '10.0'))">
-    <TargetFramework />
-    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
-  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="../CP6.Platform.Contracts/CP6.Platform.Contracts.csproj" />
   </ItemGroup>

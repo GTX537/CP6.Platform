@@ -53,8 +53,11 @@ public sealed class OutboxTransactionV2
         var identity = (string)(await OutboxPostgreSqlV2.Scalar(db, IdentitySql, ct))!;
         var xid = (string)(await OutboxPostgreSqlV2.Scalar(db, "SELECT pg_current_xact_id()::text", ct))!;
         var tx = new OutboxTransactionV2(db, native, accessor, trusted, owner,
-            registration with { OwnerLockKeys = Array.AsReadOnly(registration.OwnerLockKeys.ToArray()),
-                AuthorityRows = registration.AuthorityRows is null ? null : Array.AsReadOnly(registration.AuthorityRows.ToArray()) }, readOnly, identity, xid);
+            registration with
+            {
+                OwnerLockKeys = Array.AsReadOnly(registration.OwnerLockKeys.ToArray()),
+                AuthorityRows = registration.AuthorityRows is null ? null : Array.AsReadOnly(registration.AuthorityRows.ToArray())
+            }, readOnly, identity, xid);
         if (!readOnly)
         {
             var keys = registration.OwnerLockKeys.Append(registration.RouteLockKey).ToArray();

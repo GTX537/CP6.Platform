@@ -53,7 +53,12 @@ public sealed class CapabilityTrustTests
     }
 
     [Theory]
-    [InlineData("0.10.0")][InlineData("0.10.1")][InlineData("0.10.2")][InlineData("0.10.3")][InlineData("0.10.4")]
+    [InlineData("0.10.0")]
+    [InlineData("0.10.1")]
+    [InlineData("0.10.2")]
+    [InlineData("0.10.3")]
+    [InlineData("0.10.4")]
+    [InlineData("0.11.0")]
     public void Formal_shape_and_success_claims_do_not_grant_crypto_trust(string version)
     {
         var f = new FormalFixture(version);
@@ -68,7 +73,10 @@ public sealed class CapabilityTrustTests
     }
 
     [Theory]
-    [InlineData("0.10.2")][InlineData("0.10.3")][InlineData("0.10.4")]
+    [InlineData("0.10.2")]
+    [InlineData("0.10.3")]
+    [InlineData("0.10.4")]
+    [InlineData("0.11.0")]
     public void Host_boundary_receives_current_policy_exact_bytes_and_evaluation_time(string version)
     {
         var f = new FormalFixture(version); var verifier = new BoundaryVerifier(f, true);
@@ -89,8 +97,13 @@ public sealed class CapabilityTrustTests
     }
 
     [Theory]
-    [InlineData("Historical")][InlineData("Revoked")][InlineData("unknown")][InlineData("stale-policy")]
-    [InlineData("wrong-source")][InlineData("wrong-package")][InlineData("expired")]
+    [InlineData("Historical")]
+    [InlineData("Revoked")]
+    [InlineData("unknown")]
+    [InlineData("stale-policy")]
+    [InlineData("wrong-source")]
+    [InlineData("wrong-package")]
+    [InlineData("expired")]
     public void Noncurrent_or_mismatched_evidence_never_reaches_crypto_boundary(string mutation)
     {
         var f = new FormalFixture(); var verifier = new BoundaryVerifier(f, true);

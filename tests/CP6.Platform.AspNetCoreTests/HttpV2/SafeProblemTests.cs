@@ -24,7 +24,8 @@ public sealed class SafeProblemTests
         Assert.Equal(422, context.Response.StatusCode); Assert.DoesNotContain("detail", text); Assert.DoesNotContain("instance", text);
     }
     [Theory]
-    [InlineData(false)] [InlineData(true)]
+    [InlineData(false)]
+    [InlineData(true)]
     public async Task HiddenFieldIncludingEmptyMessagesFallsBackWithoutEcho(bool empty)
     {
         var policy = Policy(); using var provider = new ServiceCollection().AddCp6ProblemDetails(policy).BuildServiceProvider();
@@ -43,7 +44,10 @@ public sealed class SafeProblemTests
         Assert.DoesNotContain("SQL", Body(context));
     }
     [Theory]
-    [InlineData(33, 1, 1)] [InlineData(1, 5, 1)] [InlineData(1, 1, 257)] [InlineData(32, 4, 256)]
+    [InlineData(33, 1, 1)]
+    [InlineData(1, 5, 1)]
+    [InlineData(1, 1, 257)]
+    [InlineData(32, 4, 256)]
     public async Task CountCharacterAndSerializedUtf8LimitsProduceWholeGenericJson(int fieldCount, int messages, int length)
     {
         var fields = Enumerable.Range(0, fieldCount).ToDictionary(i => "f" + i,

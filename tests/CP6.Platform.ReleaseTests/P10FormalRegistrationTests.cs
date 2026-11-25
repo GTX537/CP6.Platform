@@ -25,6 +25,10 @@ public sealed class P10FormalRegistrationTests
     [InlineData("0.10.4", false, true)]
     [InlineData("0.10.4", true, false)]
     [InlineData("0.10.5", false, false)]
+    [InlineData("0.11.0", false, true)]
+    [InlineData("0.11.0", true, false)]
+    [InlineData("0.11.1", false, false)]
+    [InlineData("0.11.0-preview.1", false, false)]
     [InlineData("latest", false, false)]
     [InlineData("0.10.4+build.1", false, false)]
     [InlineData("0.10.4-preview.1", false, false)]
@@ -98,8 +102,9 @@ public sealed class P10FormalRegistrationTests
         var match = Regex.Match(script, @"\[ValidatePattern\('(?<pattern>[^']+)'\)\]\s*\[string\]\$" + parameter);
         Assert.True(match.Success);
         foreach (var version in new[] { "0.10.0", "0.10.1", "0.10.2", "0.10.3", "0.10.4", "0.10.5",
+            "0.11.0", "0.11.1", "0.11.0-preview.1", "0.11.0\n",
             "latest", "0.10.4+build.1", "0.10.4-preview.1", "0.10.4\n" })
-            Assert.Equal(version == "0.10.4" || reader && version is "0.10.0" or "0.10.1" or "0.10.2" or "0.10.3",
+            Assert.Equal(version == "0.11.0" || reader && version is "0.10.0" or "0.10.1" or "0.10.2" or "0.10.3" or "0.10.4",
                 Regex.IsMatch(version, match.Groups["pattern"].Value));
     }
 
@@ -119,10 +124,12 @@ public sealed class P10FormalRegistrationTests
                 new BuildOptions { SchemaRegistry = new SchemaRegistry() });
             foreach (var item in new[] { ("0.10.0", false, true), ("0.10.1", false, true), ("0.10.2", false, true),
                 ("0.10.3", true, true), ("0.10.4", false, true), ("0.10.2", true, false), ("0.10.4", true, false),
-                ("0.10.5", false, false), ("0.10.4+build.1", false, false) })
+                ("0.10.5", false, false), ("0.10.4+build.1", false, false),
+                ("0.11.0", false, true), ("0.11.0", true, false), ("0.11.1", false, false) })
                 Assert.Equal(item.Item3, capability.Evaluate(JsonSerializer.SerializeToElement(Matrix(item.Item1, item.Item2))).IsValid);
             foreach (var versionCase in new[] { ("0.10.0", true), ("0.10.1", true), ("0.10.2", true), ("0.10.3", true),
-                ("0.10.4", true), ("0.10.5", false), ("0.10.4-preview.1", false) })
+                ("0.10.4", true), ("0.10.5", false), ("0.10.4-preview.1", false),
+                ("0.11.0", true), ("0.11.1", false), ("0.11.0-preview.1", false) })
             {
                 var publication = JsonNode.Parse(ReleaseTestData.Fixture("supporting", "formal-package-publication.valid.json"))!;
                 publication["version"] = versionCase.Item1;
@@ -150,8 +157,10 @@ public sealed class P10FormalRegistrationTests
         {
             using var git = Process.Start(new ProcessStartInfo("git", "rev-parse HEAD")
             {
-                WorkingDirectory = ReleaseTestData.RepositoryRoot, RedirectStandardOutput = true,
-                UseShellExecute = false, CreateNoWindow = true
+                WorkingDirectory = ReleaseTestData.RepositoryRoot,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
             })!;
             var source = git.StandardOutput.ReadToEnd().Trim();
             git.WaitForExit();

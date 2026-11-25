@@ -7,13 +7,17 @@ namespace CP6.Platform.AspNetCoreTests.HttpV2;
 public sealed class ReviewRegressionsTests
 {
     [Theory]
-    [InlineData(false)] [InlineData(true)]
+    [InlineData(false)]
+    [InlineData(true)]
     public async Task ResponseBodyIoFailureQueriesOriginalAndKeepsUnknownWhenUnavailable(bool unavailable)
     {
         var binding = OwnerProtocolFixtureTests.Binding();
         var stream = new ControlledStream(() => throw new IOException("fixture body read failed"));
-        var authority = new Authority { Query = (_, _) => new(unavailable ? Cp6OriginalResultState.Unknown : Cp6OriginalResultState.Applied,
-            unavailable ? null : new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("original") }) };
+        var authority = new Authority
+        {
+            Query = (_, _) => new(unavailable ? Cp6OriginalResultState.Unknown : Cp6OriginalResultState.Applied,
+            unavailable ? null : new HttpResponseMessage(HttpStatusCode.OK) { Content = new StringContent("original") })
+        };
         var transport = new HandlerTests.Scripted((_, _) => Task.FromResult(new HttpResponseMessage(HttpStatusCode.OK) { Content = new StreamContent(stream) }));
         using var client = HandlerTests.Client(HandlerTests.Profile(Cp6HttpOperationKind.IdempotentWrite), transport, binding: binding, authority: authority);
         using var request = OwnerProtocolFixtureTests.Request(binding);
@@ -35,8 +39,11 @@ public sealed class ReviewRegressionsTests
     public async Task OriginalQueryBodyIoFailureRemainsUnknownAndDisposesBody()
     {
         var binding = OwnerProtocolFixtureTests.Binding(); var stream = new ControlledStream(() => throw new IOException("query fixture"));
-        var authority = new Authority { Query = (_, _) => new(Cp6OriginalResultState.Applied,
-            new HttpResponseMessage(HttpStatusCode.OK) { Content = new StreamContent(stream) }) };
+        var authority = new Authority
+        {
+            Query = (_, _) => new(Cp6OriginalResultState.Applied,
+            new HttpResponseMessage(HttpStatusCode.OK) { Content = new StreamContent(stream) })
+        };
         var transport = UnavailableTransport();
         using var client = HandlerTests.Client(HandlerTests.Profile(Cp6HttpOperationKind.IdempotentWrite), transport, binding: binding, authority: authority);
         using var request = OwnerProtocolFixtureTests.Request(binding);
@@ -46,17 +53,21 @@ public sealed class ReviewRegressionsTests
     }
 
     [Theory]
-    [InlineData(false)] [InlineData(true)]
+    [InlineData(false)]
+    [InlineData(true)]
     public async Task CompletedQueryBeyondTotalCannotReturnAppliedOrDisabled503(bool applied)
     {
         var clock = new TestClock(); var binding = OwnerProtocolFixtureTests.Binding();
         var stream = new ControlledStream(() => 0);
-        var authority = new Authority { Query = (_, _) =>
+        var authority = new Authority
+        {
+            Query = (_, _) =>
         {
             clock.Advance(TimeSpan.FromMilliseconds(301));
             return new(applied ? Cp6OriginalResultState.Applied : Cp6OriginalResultState.NotAppliedProven,
                 applied ? new HttpResponseMessage(HttpStatusCode.OK) { Content = new StreamContent(stream) } : null);
-        } };
+        }
+        };
         var transport = UnavailableTransport();
         using var client = HandlerTests.Client(Profile(), transport, clock, binding, authority);
         using var request = OwnerProtocolFixtureTests.Request(binding);
@@ -72,8 +83,11 @@ public sealed class ReviewRegressionsTests
     {
         var clock = new TestClock(); var binding = OwnerProtocolFixtureTests.Binding();
         var stream = new ControlledStream(() => { clock.Advance(TimeSpan.FromMilliseconds(milliseconds)); return 0; });
-        var authority = new Authority { Query = (_, _) => new(Cp6OriginalResultState.Applied,
-            new HttpResponseMessage(HttpStatusCode.OK) { Content = new StreamContent(stream) }) };
+        var authority = new Authority
+        {
+            Query = (_, _) => new(Cp6OriginalResultState.Applied,
+            new HttpResponseMessage(HttpStatusCode.OK) { Content = new StreamContent(stream) })
+        };
         var transport = UnavailableTransport();
         using var client = HandlerTests.Client(Profile(), transport, clock, binding, authority);
         using var request = OwnerProtocolFixtureTests.Request(binding);
@@ -83,9 +97,12 @@ public sealed class ReviewRegressionsTests
     }
 
     [Theory]
-    [InlineData("verify", false)] [InlineData("verify", true)]
-    [InlineData("authorize", false)] [InlineData("authorize", true)]
-    [InlineData("query", false)] [InlineData("query", true)]
+    [InlineData("verify", false)]
+    [InlineData("verify", true)]
+    [InlineData("authorize", false)]
+    [InlineData("authorize", true)]
+    [InlineData("query", false)]
+    [InlineData("query", true)]
     public async Task CompletedAuthorityCallbacksCannotOverrideCallerCancellation(string stage, bool answer)
     {
         using var cancellation = new CancellationTokenSource(); var binding = OwnerProtocolFixtureTests.Binding();
@@ -110,7 +127,8 @@ public sealed class ReviewRegressionsTests
     }
 
     [Theory]
-    [InlineData(false)] [InlineData(true)]
+    [InlineData(false)]
+    [InlineData(true)]
     public async Task CompletedVerificationBeyondTotalDoesNotReportBindingDeniedOrSend(bool answer)
     {
         var clock = new TestClock(); var binding = OwnerProtocolFixtureTests.Binding();
@@ -126,7 +144,9 @@ public sealed class ReviewRegressionsTests
         attemptTimeout: TimeSpan.FromMilliseconds(100), totalTimeout: TimeSpan.FromMilliseconds(300));
 
     [Theory]
-    [InlineData("send")] [InlineData("wait")] [InlineData("query")]
+    [InlineData("send")]
+    [InlineData("wait")]
+    [InlineData("query")]
     public async Task InheritedCallerCancellationStaysCallerCancellationAcrossSendWaitAndQuery(string stage)
     {
         var clock = new TestClock(); using var parentCaller = new CancellationTokenSource();
@@ -166,7 +186,8 @@ public sealed class ReviewRegressionsTests
     }
 
     [Theory]
-    [InlineData(false)] [InlineData(true)]
+    [InlineData(false)]
+    [InlineData(true)]
     public async Task CompletedReplayAuthorizationBeyondTotalCannotDenyOrSendAgain(bool answer)
     {
         var clock = new TestClock(); var binding = OwnerProtocolFixtureTests.Binding();

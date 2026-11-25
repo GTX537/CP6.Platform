@@ -55,7 +55,7 @@ jobs:
           P10_NUGET_SIGNING_PFX_BASE64: ${{ secrets.P10_NUGET_SIGNING_PFX_BASE64 }}
           P10_NUGET_SIGNING_PFX_PASSWORD: ${{ secrets.P10_NUGET_SIGNING_PFX_PASSWORD }}
         run: |
-          $releaseTool = (Resolve-Path tools/CP6.Platform.ReleaseTool/bin/Release/net8.0/CP6.Platform.ReleaseTool.dll).Path
+          $releaseTool = (Resolve-Path tools/CP6.Platform.ReleaseTool/bin/Release/net10.0/CP6.Platform.ReleaseTool.dll).Path
           $identity = ./eng/p10/Test-P10FormalSignerIdentity.ps1 `
             -TrustPolicyPath 'eng/p10/trust/p10-formal-nuget-trust-store.v1.json' `
             -CertificateDirectory 'eng/p10/trust/certificates' `

@@ -9,9 +9,9 @@ public sealed class RejectedBodyRegressionTests
     public static IEnumerable<object[]> BodyFailures()
     {
         foreach (var status in new[] { 200, 401, 403, 409, 422, 503 })
-        foreach (var write in new[] { false, true })
-        foreach (var timeout in new[] { false, true })
-            yield return [status, write, timeout];
+            foreach (var write in new[] { false, true })
+                foreach (var timeout in new[] { false, true })
+                    yield return [status, write, timeout];
     }
 
     [Theory]
