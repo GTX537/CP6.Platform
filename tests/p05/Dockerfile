@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:10.0.302 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0.404 AS build
 WORKDIR /src
 COPY . .
 RUN dotnet restore tests/CP6.Platform.DaprKafkaFixture/CP6.Platform.DaprKafkaFixture.csproj
